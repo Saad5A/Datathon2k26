@@ -1,0 +1,4 @@
+cve_id,published,snapshot_month,assigner,score,rank,percentile,in_top500,priority,epss,exploitdb,metasploit,nuclei,poc_github,any_public_exploit,reasons,model_version
+CVE-0000-0001,2026-03-02,2026-03,example-assigner-a,0.91,1,100.0,1,P0,0.42,1,0,0,0,1,"[{""signal"":""public_exploit_code"",""value"":1,""impact"":0.64,""direction"":""up""}]",v0
+CVE-0000-0002,2026-05-14,2026-05,example-assigner-b,0.33,250,99.7,1,P1,0.03,0,0,0,0,0,"[{""signal"":""assigner_kev_rate"",""value"":0.071,""impact"":0.82,""direction"":""up""}]",v0
+CVE-0000-0003,2026-08-20,2026-08,example-assigner-c,0.01,40000,45.0,0,P2,,0,0,0,0,0,"[]",v0

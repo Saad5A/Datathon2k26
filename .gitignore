@@ -46,3 +46,15 @@ outputs/
 *.lgb
 *.pt
 *.bin
+
+#Skills
+.claude/
+.impeccable/
+# Dashboard (Node)
+node_modules/
+*.tsbuildinfo
+dashboard/.env.local
+
+# Small contract fixtures are tracked despite the *.csv rule above
+!docs/*.csv
+!dashboard/public/*.csv

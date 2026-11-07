@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Channel triplets mirror src/theme/tokens.ts `surfaces`. */
+@layer base {
+  :root {
+    --bg: 244 244 245;
+    --surface: 255 255 255;
+    --surface-raised: 244 244 245;
+    --border: 228 228 231;
+    --border-strong: 212 212 216;
+    --fg: 15 23 42;
+    --fg-muted: 71 85 105;
+    --fg-subtle: 100 116 139;
+    color-scheme: light;
+  }
+  .dark {
+    --bg: 9 9 11;
+    --surface: 24 24 27;
+    --surface-raised: 39 39 42;
+    --border: 39 39 42;
+    --border-strong: 63 63 70;
+    --fg: 241 245 249;
+    --fg-muted: 148 163 184;
+    --fg-subtle: 100 116 139;
+    color-scheme: dark;
+  }
+
+  html {
+    @apply bg-bg text-fg antialiased;
+    font-feature-settings: 'tnum' 0;
+  }
+  body {
+    @apply min-h-screen bg-bg font-sans text-sm;
+  }
+  :focus-visible {
+    @apply outline-none ring-2 ring-sev-low ring-offset-2 ring-offset-bg;
+  }
+}
+
+@layer utilities {
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Recharts: keep focus rings off SVG surfaces, tooltips handle themselves. */
+.recharts-wrapper *:focus {
+  outline: none;
+}
