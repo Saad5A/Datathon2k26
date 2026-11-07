@@ -1,5 +1,5 @@
 # Team file: data-engineering-db  (data / database)
-Only the agent for this area edits THIS file. Read the other three with `tools/kb.sh show`.
+Only the agent for this area edits THIS file. Read the other three with `python tools/kb.py show`.
 
 <!-- STATUS-START -->
 STATUS: not started

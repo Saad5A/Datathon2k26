@@ -1,5 +1,5 @@
 # Team file: triage-playbook-gemini  (Gemini remediation agent)
-Only the agent for this area edits THIS file. Read the other three with `tools/kb.sh show`.
+Only the agent for this area edits THIS file. Read the other three with `python tools/kb.py show`.
 
 <!-- STATUS-START -->
 STATUS: on track

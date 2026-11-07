@@ -31,9 +31,9 @@ _Created 2026-11-07 by the model-ranking planning session._
 
 ## Coordination protocol (the `knowledge-base` branch is the shared bus)
 Team files live on the `knowledge-base` git branch, checked out in a sibling worktree so your feature branch is never disturbed. One helper does everything:
-- `tools/kb.sh show` : pull latest and print the STATUS block of all four team files. RUN THIS at the start of every session, before starting anything that depends on another branch, and after finishing each phase.
-- `tools/kb.sh show <area>` : print one full team file.
-- `tools/kb.sh sync` : update the worktree and print its path. Edit YOUR team file inside that path (`docs/kb/team/<area>.md`) and nothing else.
-- `tools/kb.sh publish <area> "short message"` : commit and push only your team file.
+- `python tools/kb.py show` : pull latest and print the STATUS block of all four team files. RUN THIS at the start of every session, before starting anything that depends on another branch, and after finishing each phase.
+- `python tools/kb.py show <area>` : print one full team file.
+- `python tools/kb.py sync` : update the worktree and print its path. Edit YOUR team file inside that path (`docs/kb/team/<area>.md`) and nothing else.
+- `python tools/kb.py publish <area> "short message"` : commit and push only your team file.
 **After EVERY update** (a finished task, a commit, a changed assumption or contract, a new blocker, a new file others will consume), update your team file (STATUS block, deliverable rows, a changelog line) and publish it. If you need something from another branch, add it to ASKS and to "What I need" in YOUR file; check the other files' ASKS for lines addressed to you. Never edit another area's file. Tag cross-team decisions `DECISION` in your changelog and tell the human so they are promoted to 04_decisions.md and docs/INTERFACES.md.
 Areas: model-ranking, data-engineering-db, ui-dashboard, triage-playbook-gemini.
