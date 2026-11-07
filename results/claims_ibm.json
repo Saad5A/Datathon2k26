@@ -1,0 +1,38 @@
+{
+  "embed_input.rows": {
+    "text": "CVE descriptions prepared for Granite embedding (pool + 2026 scoreboard)",
+    "value": 147818,
+    "unit": "count",
+    "source_script": "cloud/make_embed_input.py",
+    "output_file": "results/embed_input_summary.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "embed_input.unique_texts": {
+    "text": "Distinct masked description texts to embed",
+    "value": 141532,
+    "unit": "count",
+    "source_script": "cloud/make_embed_input.py",
+    "output_file": "results/embed_input_summary.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "embed_input.est_tokens_total": {
+    "text": "ESTIMATED tokens to embed (characters/4)",
+    "value": 16801448,
+    "unit": "count",
+    "source_script": "cloud/make_embed_input.py",
+    "output_file": "results/embed_input_summary.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "embed_input.share_over_max_tokens": {
+    "text": "ESTIMATED share of descriptions longer than 512 tokens",
+    "value": 0.0169,
+    "unit": "fraction",
+    "source_script": "cloud/make_embed_input.py",
+    "output_file": "results/embed_input_summary.json",
+    "status": "unverified",
+    "verified_by": null
+  }
+}
