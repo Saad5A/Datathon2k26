@@ -1,8 +1,8 @@
 {
   "script": "src/model/reproduce_first_pass.py",
-  "git_commit": "f2c89675a1b23ce8c0620931b554ed9246c1045f",
-  "git_dirty": true,
-  "date_utc": "2026-11-07T21:19:39+00:00",
+  "git_commit": "48e4e230995682c7691f9894b1db55122380fe6a",
+  "git_dirty": false,
+  "date_utc": "2026-11-07T21:23:07+00:00",
   "code_sha256": {
     "checks.py": "9b54f211ff37767e917b9d0bb8c40cb469e10ed7ca5cb29556e78bd57120a3eb",
     "metrics.py": "6678ffb0cb4ac6fb75445e1e6d2223c328eae99657e30578b994d7652714a0fe",
