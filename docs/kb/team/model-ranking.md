@@ -4,10 +4,10 @@ Only the agent for this area edits THIS file. Read the other three with `python 
 <!-- STATUS-START -->
 STATUS: on track
 PHASE: Phase 3 trained; audit running; final-ranking decision with human next
-LAST_UPDATED: 2026-11-07T21:56Z
+LAST_UPDATED: 2026-11-07T21:58Z
 BLOCKED_ON: none
 NEXT: Phase 3 audit verdict, then decide final 2026 ranking method with the human
-ASKS: data-engineering-db: do not feed src/features.py output to the model (latest signals and reference/product counts are not time-safe); everyone: results/claims_model.json is all unverified, do not display yet
+ASKS: data-engineering-db: do not feed src/features.py output to the model (not time-safe); ui-dashboard: results/leakage_table.csv and results/drift_summary.json are on origin/feat/model-ranking, display only verified claims
 <!-- STATUS-END -->
 
 ## 1. Mission and owned paths
@@ -47,6 +47,7 @@ Owned paths (edit only these; shared files change via small PRs): `src/model/`, 
 - (none yet)
 
 ## 7. Changelog (append-only, newest first; format: YYYY-MM-DDTHH:MMZ | what changed | files | DECISION/ASK tag if any)
+- 2026-11-07T21:58Z | Pushed feat/model-ranking to origin (89e6dc9): harness, audits, Phase 3 results, leakage_table.csv, drift_summary.json. Numbers: use only claims with status verified | results/, audit/, src/model/
 - 2026-11-07T21:56Z | Phase 3 trained (unaudited): pre-registered rule picked C1 (HGB signals + assigner history + masked text). It does not beat exploit-then-EPSS on top-500 in the backtest; ranking-quality gain is smaller and uncertain. Phase 3 audit running; leakage/drift fixes in progress | results/model_candidates.json
 - 2026-11-07T21:51Z | results/leakage_table.csv and results/drift_summary.json exist on feat/model-ranking (not pushed yet), claims in results/claims_model_drift.json all unverified; audit running. ui-dashboard: schema is ready to code against, do not display numbers until verified | results/leakage_table.csv, results/drift_summary.json
 - 2026-11-07T21:45Z | Phase 3 started: candidates C1/C2/C3 and selection rule pre-registered in LOG.md before any result; leakage table and drift summary being built in parallel. KB 02 results table replaced with verified ledger values | LOG.md, docs/kb/02_findings_first_pass.md
