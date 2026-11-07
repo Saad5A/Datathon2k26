@@ -9,4 +9,4 @@ You own `src/ibm/`. Rules:
 - Cache every API response to disk keyed by input hash. Estimate token/call usage first and report before large runs.
 - Explanations must be grounded: pass only that CVE's description plus our model's top signals; instruct the model not to add facts. After generation run an automatic grounding check (every product, version, CVE id or technical term in the output must appear in the input); flag failures and do not publish them. Label outputs "AI-generated".
 - Compare Granite embeddings to TF-IDF honestly on the held-out fold; if Granite does not help, say so.
-- Register numbers as `unverified` in `results/claims.json`.
+- Register numbers as `unverified` in `results/claims*.json`.

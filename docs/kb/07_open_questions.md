@@ -9,3 +9,4 @@
 | Is the assigner-history signal still strong when recomputed time-safely over a 24-month window? | Auditor + modeler | OPEN |
 | Do Granite embeddings beat TF-IDF on the held-out fold? | Modeler | OPEN |
 | Which GoDaddy Registry domain name/TLD and where is the app deployed (Vultr or other)? | UI teammate | OPEN |
+| .gitignore ignores *.csv, *.parquet, *.zip and data/. Deliverables in results/ are un-ignored, but big derived files (data_cache/*.parquet such as cve_display.parquet) are NOT shared by git. How do data, triage and ui teammates exchange them (shared drive, database, or rebuild from a script)? | Data teammate + team | OPEN |

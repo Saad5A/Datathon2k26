@@ -46,3 +46,9 @@ outputs/
 *.lgb
 *.pt
 *.bin
+
+# Deliverables teammates and judges need must be committed
+!results/
+!results/*.csv
+!results/*.json
+!docs/*.csv
