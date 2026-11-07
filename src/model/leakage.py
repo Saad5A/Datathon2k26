@@ -13,8 +13,10 @@ import numpy as np
 import pandas as pd
 from scipy.stats import beta
 
+import candidates as C
 import metrics as M
-from pool import ROOT, data_dir, load_pool
+from pool import ROOT, data_dir, load_kev, load_pool
+from reproduce_first_pass import text_test_score, text_vectors
 from reproduce_first_pass import EXPLOIT_WORDING
 from sidecar import claim, merge_claims, write_meta
 
@@ -71,7 +73,16 @@ def product_ids(ids):
     return found
 
 
-def rows(t):
+def text_score(pool, t):
+    """Selected model C1's text input on fold 1: masked-description TF-IDF + LR fit on 2024 rows with labels capped at
+    2024-12-31, scored on the 2025 test rows. Same functions as candidates.py."""
+    tr, te, y_tr = C.fold_data(pool, load_kev(), C.FOLDS["fold1"])
+    assert (te.cve_id.to_numpy() == t.cve_id.to_numpy()).all(), "fold-1 test rows differ from the 2025 pool"
+    Xtr, Xte = text_vectors(C.masked(tr), C.masked(te))
+    return text_test_score(Xtr, y_tr, Xte)
+
+
+def rows(t, txt):
     ids = pd.Index(t.cve_id)
     ref = reference_flags(ids)
     prods = product_ids(ids)
@@ -113,6 +124,10 @@ def rows(t):
          "Assigner KEV rate from KEV rows dated before the snapshot month (CVEs published 2021+). Assigner is today's value"),
         ("asg_kev", "yes", v(t.asg_kev),
          "Assigner KEV count from KEV rows dated before the snapshot month (CVEs published 2021+). Assigner is today's value"),
+        ("txt_masked_tfidf", "yes", v(txt),
+         "Today's description text, exploitation wording masked; TF-IDF+LR on 2024 rows. Residual risk: descriptions edited after attacks"),
+        ("asg_rate_24m", "no", v(t.asg24_rate),
+         "Assigner KEV rate over the 24 months before the snapshot month (C2 input, not selected). Assigner is today's value"),
         ("cvss3_score", "no", v(t.cvss3),
          "Today's NVD CVSS3 score, blank as -1 (also carries the blank pattern). Ablation only, not in the model"),
         ("attack_vector", "no", v(t.attack_vector.map(AV_ORDER).fillna(-1)),
@@ -121,8 +136,9 @@ def rows(t):
 
 
 def main():
-    pool = load_pool()
+    pool = C.add_window_features(load_pool())
     t = pool[pool.ym >= "2025-01"].reset_index(drop=True)
+    txt = text_score(pool, t)
     y = t.y.to_numpy()
     rng = np.random.default_rng(SEED)
     boots = []
@@ -132,7 +148,7 @@ def main():
             boots.append(i)
 
     out, ci = [], {}
-    facts, table = rows(t)
+    facts, table = rows(t, txt)
     for name, used, s, reason in table:
         a = M.auc(y, s)
         if s.min() == s.max():

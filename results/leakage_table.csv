@@ -14,5 +14,7 @@ any_public_exploit,yes,0.7011,1 if any of Exploit-DB/Metasploit/Nuclei/GitHub Po
 n_exploit_flags,yes,0.7021,Number of the 4 exploit flags set at snapshot month end. As-of value
 asg_rate,yes,0.7463,Assigner KEV rate from KEV rows dated before the snapshot month (CVEs published 2021+). Assigner is today's value
 asg_kev,yes,0.6665,Assigner KEV count from KEV rows dated before the snapshot month (CVEs published 2021+). Assigner is today's value
+txt_masked_tfidf,yes,0.8225,"Today's description text, exploitation wording masked; TF-IDF+LR on 2024 rows. Residual risk: descriptions edited after attacks"
+asg_rate_24m,no,0.7327,"Assigner KEV rate over the 24 months before the snapshot month (C2 input, not selected). Assigner is today's value"
 cvss3_score,no,0.7322,"Today's NVD CVSS3 score, blank as -1 (also carries the blank pattern). Ablation only, not in the model"
 attack_vector,no,0.5752,"Today's NVD value: NETWORK 3, ADJACENT 2, LOCAL 1, PHYSICAL 0, blank -1. Ablation only, not in the model"

@@ -368,6 +368,15 @@
     "status": "verified",
     "verified_by": "audit/2026-11-07-leakage-drift.md"
   },
+  "leakage.solo_auc.asg_rate_24m": {
+    "text": "Solo AUC of asg_rate_24m (used_in_model=no) on the 2025 test pool",
+    "value": 0.7327,
+    "unit": "fraction",
+    "source_script": "src/model/leakage.py",
+    "output_file": "results/leakage_table.csv",
+    "status": "unverified",
+    "verified_by": null
+  },
   "leakage.solo_auc.attack_vector": {
     "text": "Solo AUC of attack_vector (used_in_model=no) on the 2025 test pool",
     "value": 0.5752,
@@ -493,5 +502,14 @@
     "output_file": "results/leakage_table.csv",
     "status": "verified",
     "verified_by": "audit/2026-11-07-leakage-drift.md"
+  },
+  "leakage.solo_auc.txt_masked_tfidf": {
+    "text": "Solo AUC of txt_masked_tfidf (used_in_model=yes) on the 2025 test pool",
+    "value": 0.8225,
+    "unit": "fraction",
+    "source_script": "src/model/leakage.py",
+    "output_file": "results/leakage_table.csv",
+    "status": "unverified",
+    "verified_by": null
   }
 }
