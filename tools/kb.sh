@@ -23,8 +23,10 @@ ensure_wt() {
     fi
   fi
   if git -C "$WT" remote get-url origin >/dev/null 2>&1; then
-    if ! git -C "$WT" pull --rebase --autostash -q origin knowledge-base >/dev/null 2>&1; then
-      echo "(could not pull origin/knowledge-base; showing local copy)" >&2
+    if git -C "$WT" ls-remote --exit-code --heads origin knowledge-base >/dev/null 2>&1; then
+      git -C "$WT" pull --rebase --autostash -q origin knowledge-base >/dev/null 2>&1 || echo "(pull failed; showing local copy)" >&2
+    else
+      echo "(knowledge-base not on origin yet; push it once: git -C $WT push -u origin knowledge-base)" >&2
     fi
   fi
 }
@@ -50,7 +52,8 @@ case "$cmd" in
     sed -i.bak "s/^LAST_UPDATED:.*/LAST_UPDATED: $(date -u +%Y-%m-%dT%H:%MZ)/" "$f" && rm -f "$f.bak"
     git add "$f"; git commit -q -m "kb($area): $msg"
     if git remote get-url origin >/dev/null 2>&1; then
-      if git pull --rebase -q origin knowledge-base && git push -q origin knowledge-base; then echo "published and pushed"
+      if git ls-remote --exit-code --heads origin knowledge-base >/dev/null 2>&1; then git pull --rebase -q origin knowledge-base || true; fi
+      if git push -q -u origin knowledge-base; then echo "published and pushed"
       else echo "committed locally; push failed. Run: git -C $WT push origin knowledge-base" >&2; fi
     else echo "committed locally (no origin remote)"; fi ;;
   *) echo "usage: tools/kb.sh sync | show [area] | publish <area> \"message\"" >&2; exit 1 ;;
