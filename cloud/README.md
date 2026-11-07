@@ -12,6 +12,40 @@ The script caches every result in `data_cache/embed_cache/` (never committed). I
 run the same command again: it continues where it stopped. `--estimate` prints counts and tokens without any call;
 `--limit N` embeds only the first N rows (writes `*_subset.parquet`, not the main file).
 
+## For a teammate running this on their own computer (start here)
+You need: git, Python 3.12, about 2 GB free disk, the IBM `data.zip` (from the datathon page or a teammate), and for
+watsonx.ai your own watsonx.ai account. Commands are for Mac/Linux; on Windows use `py -3.12` instead of `python3.12`
+and `.venv\Scripts\python` instead of `.venv/bin/python`.
+
+1. Get the code:
+   ```
+   git clone https://github.com/Saad5A/Datathon2k26.git
+   cd Datathon2k26
+   git checkout feat/model-ranking
+   ```
+2. Make a Python environment with the exact versions we used:
+   ```
+   python3.12 -m venv .venv
+   .venv/bin/python -m pip install -r src/model/requirements.lock
+   ```
+3. Put the data in place: unzip `data.zip` so that `data/known_exploited.csv` exists inside the repo folder
+   (or set the env var `IBM_DATA_DIR` to the folder that holds the CSVs). The `data/` folder is gitignored.
+4. Build the input file (about 1 minute). It must print 147,818 rows:
+   ```
+   .venv/bin/python cloud/make_embed_input.py
+   ```
+   This writes `data_cache/descriptions_to_embed.parquet` (about 28 MB).
+5. Run ONE of the options below. Option A (Colab) for the full set, and Option B (watsonx.ai) for a small slice.
+6. Hand the results back. The full output is about 450 MB (147,818 x 768 numbers), too big for git, so do NOT
+   commit it. Upload `granite_embeddings.parquet` and `granite_embeddings.meta.json` (and, for watsonx.ai,
+   `granite_embeddings_watsonx_subset.parquet` plus its meta file) to the team's shared drive. Then tell the
+   model-ranking owner where they are. They go into `data_cache/` on the model-ranking laptop.
+
+Rules: never commit or paste `.env` or an API key into chat, Slack or Discord. Use your own watsonx.ai API key; if
+you must use someone else's, get it in person or in a password manager. Do not run the full watsonx.ai set without
+asking: it is paid above the free quota.
+If something fails, copy the last 20 lines of output (they contain no secrets) and send them to the model-ranking owner.
+
 ## Option A: Colab GPU (recommended for the full set; free, about 10-25 min on a T4, estimate)
 1. Open https://colab.research.google.com, New notebook. Runtime > Change runtime type > T4 GPU.
 2. In the Files pane (left), upload `cloud/embed_granite.py` and `data_cache/descriptions_to_embed.parquet` to `/content`.

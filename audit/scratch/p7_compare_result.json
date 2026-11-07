@@ -1,0 +1,504 @@
+{
+ "max_abs_vs_earlier_audit_run": 0.0,
+ "top500_overlap": 500,
+ "top500_same_order": true,
+ "max_abs_score_diff": 0.0,
+ "rank_mismatch_all": 0,
+ "top10_assigners": [
+  [
+   "disclosure@vulncheck.com",
+   50
+  ],
+  [
+   "security@apache.org",
+   50
+  ],
+  [
+   "secalert_us@oracle.com",
+   50
+  ],
+  [
+   "security-advisories@github.com",
+   41
+  ],
+  [
+   "psirt@adobe.com",
+   26
+  ],
+  [
+   "cve@mitre.org",
+   18
+  ],
+  [
+   "security@wordfence.com",
+   18
+  ],
+  [
+   "audit@patchstack.com",
+   14
+  ],
+  [
+   "f23511db-6c3e-4e32-a477-6aa17d310630",
+   12
+  ],
+  [
+   "cret@cert.org",
+   12
+  ]
+ ],
+ "n_assigners_at_12": [
+  "f23511db-6c3e-4e32-a477-6aa17d310630",
+  "cret@cert.org",
+  "5d1c2695-1a31-4499-88ae-e847036fd7e3",
+  "secure@microsoft.com"
+ ],
+ "share_any_public_exploit": 0.712,
+ "share_epss_gt_0_1": 0.048,
+ "share_epss_missing": 0.002,
+ "share_unseen_assigner": 0.158,
+ "train_rows": 75148,
+ "train_pos": 117,
+ "reasons_check": [
+  {
+   "cve_id": "CVE-2025-52694",
+   "match": true,
+   "deltas": {
+    "epss": 0.17098,
+    "public_exploit_code": 0.2036,
+    "assigner_kev_history": 0.00618,
+    "description_text": 0.23426
+   },
+   "mine": [
+    {
+     "signal": "description_text",
+     "value": 0.4246,
+     "direction": "up"
+    },
+    {
+     "signal": "public_exploit_code",
+     "value": 2,
+     "direction": "up"
+    },
+    {
+     "signal": "epss",
+     "value": 0.08999,
+     "direction": "up"
+    }
+   ],
+   "theirs": [
+    {
+     "signal": "description_text",
+     "value": 0.4246,
+     "direction": "up"
+    },
+    {
+     "signal": "public_exploit_code",
+     "value": 2,
+     "direction": "up"
+    },
+    {
+     "signal": "epss",
+     "value": 0.08999,
+     "direction": "up"
+    }
+   ]
+  },
+  {
+   "cve_id": "CVE-2025-71389",
+   "match": true,
+   "deltas": {
+    "epss": 0.09886,
+    "public_exploit_code": 0.1255,
+    "assigner_kev_history": -0.03313,
+    "description_text": 0.13613
+   },
+   "mine": [
+    {
+     "signal": "description_text",
+     "value": 0.3529,
+     "direction": "up"
+    },
+    {
+     "signal": "public_exploit_code",
+     "value": 1,
+     "direction": "up"
+    },
+    {
+     "signal": "epss",
+     "value": 0.00928,
+     "direction": "up"
+    }
+   ],
+   "theirs": [
+    {
+     "signal": "description_text",
+     "value": 0.3529,
+     "direction": "up"
+    },
+    {
+     "signal": "public_exploit_code",
+     "value": 1,
+     "direction": "up"
+    },
+    {
+     "signal": "epss",
+     "value": 0.00928,
+     "direction": "up"
+    }
+   ]
+  },
+  {
+   "cve_id": "CVE-2026-71067",
+   "match": true,
+   "deltas": {
+    "epss": 0.02149,
+    "public_exploit_code": 0.0,
+    "assigner_kev_history": -0.02693,
+    "description_text": 0.05054
+   },
+   "mine": [
+    {
+     "signal": "description_text",
+     "value": 0.9573,
+     "direction": "up"
+    },
+    {
+     "signal": "assigner_kev_history",
+     "value": 0.0025,
+     "direction": "down"
+    },
+    {
+     "signal": "epss",
+     "value": 0.00402,
+     "direction": "up"
+    }
+   ],
+   "theirs": [
+    {
+     "signal": "description_text",
+     "value": 0.9573,
+     "direction": "up"
+    },
+    {
+     "signal": "assigner_kev_history",
+     "value": 0.0025,
+     "direction": "down"
+    },
+    {
+     "signal": "epss",
+     "value": 0.00402,
+     "direction": "up"
+    }
+   ]
+  },
+  {
+   "cve_id": "CVE-2026-61137",
+   "match": true,
+   "deltas": {
+    "epss": 0.02002,
+    "public_exploit_code": 0.0,
+    "assigner_kev_history": -0.01659,
+    "description_text": 0.0608
+   },
+   "mine": [
+    {
+     "signal": "description_text",
+     "value": 0.6127,
+     "direction": "up"
+    },
+    {
+     "signal": "epss",
+     "value": 0.00291,
+     "direction": "up"
+    },
+    {
+     "signal": "assigner_kev_history",
+     "value": 0.0037,
+     "direction": "down"
+    }
+   ],
+   "theirs": [
+    {
+     "signal": "description_text",
+     "value": 0.6127,
+     "direction": "up"
+    },
+    {
+     "signal": "epss",
+     "value": 0.00291,
+     "direction": "up"
+    },
+    {
+     "signal": "assigner_kev_history",
+     "value": 0.0037,
+     "direction": "down"
+    }
+   ]
+  },
+  {
+   "cve_id": "CVE-2026-1056",
+   "match": true,
+   "deltas": {
+    "epss": 0.04219,
+    "public_exploit_code": 0.05216,
+    "assigner_kev_history": -0.00291,
+    "description_text": 0.04997
+   },
+   "mine": [
+    {
+     "signal": "public_exploit_code",
+     "value": 1,
+     "direction": "up"
+    },
+    {
+     "signal": "description_text",
+     "value": 0.048,
+     "direction": "up"
+    },
+    {
+     "signal": "epss",
+     "value": 0.0014,
+     "direction": "up"
+    }
+   ],
+   "theirs": [
+    {
+     "signal": "public_exploit_code",
+     "value": 1,
+     "direction": "up"
+    },
+    {
+     "signal": "description_text",
+     "value": 0.048,
+     "direction": "up"
+    },
+    {
+     "signal": "epss",
+     "value": 0.0014,
+     "direction": "up"
+    }
+   ]
+  },
+  {
+   "cve_id": "CVE-2026-17061",
+   "match": true,
+   "deltas": {
+    "epss": 0.0021,
+    "public_exploit_code": 0.0,
+    "assigner_kev_history": -0.00581,
+    "description_text": 0.06938
+   },
+   "mine": [
+    {
+     "signal": "description_text",
+     "value": 0.7999,
+     "direction": "up"
+    },
+    {
+     "signal": "assigner_kev_history",
+     "value": 0.0246,
+     "direction": "down"
+    },
+    {
+     "signal": "epss",
+     "value": 0.00557,
+     "direction": "up"
+    }
+   ],
+   "theirs": [
+    {
+     "signal": "description_text",
+     "value": 0.7999,
+     "direction": "up"
+    },
+    {
+     "signal": "assigner_kev_history",
+     "value": 0.0246,
+     "direction": "down"
+    },
+    {
+     "signal": "epss",
+     "value": 0.00557,
+     "direction": "up"
+    }
+   ]
+  },
+  {
+   "cve_id": "CVE-2026-42533",
+   "match": true,
+   "deltas": {
+    "epss": 0.10441,
+    "public_exploit_code": 0.1384,
+    "assigner_kev_history": 0.08672,
+    "description_text": 0.1141
+   },
+   "mine": [
+    {
+     "signal": "public_exploit_code",
+     "value": 1,
+     "direction": "up"
+    },
+    {
+     "signal": "description_text",
+     "value": 0.0309,
+     "direction": "up"
+    },
+    {
+     "signal": "epss",
+     "value": 0.03596,
+     "direction": "up"
+    }
+   ],
+   "theirs": [
+    {
+     "signal": "public_exploit_code",
+     "value": 1,
+     "direction": "up"
+    },
+    {
+     "signal": "description_text",
+     "value": 0.0309,
+     "direction": "up"
+    },
+    {
+     "signal": "epss",
+     "value": 0.03596,
+     "direction": "up"
+    }
+   ]
+  },
+  {
+   "cve_id": "CVE-2026-65643",
+   "match": true,
+   "deltas": {
+    "epss": 0.0649,
+    "public_exploit_code": 0.13088,
+    "assigner_kev_history": -0.01621,
+    "description_text": 0.11919
+   },
+   "mine": [
+    {
+     "signal": "public_exploit_code",
+     "value": 1,
+     "direction": "up"
+    },
+    {
+     "signal": "description_text",
+     "value": 0.2472,
+     "direction": "up"
+    },
+    {
+     "signal": "epss",
+     "value": 0.00875,
+     "direction": "up"
+    }
+   ],
+   "theirs": [
+    {
+     "signal": "public_exploit_code",
+     "value": 1,
+     "direction": "up"
+    },
+    {
+     "signal": "description_text",
+     "value": 0.2472,
+     "direction": "up"
+    },
+    {
+     "signal": "epss",
+     "value": 0.00875,
+     "direction": "up"
+    }
+   ]
+  },
+  {
+   "cve_id": "CVE-2026-66916",
+   "match": true,
+   "deltas": {
+    "epss": 0.05441,
+    "public_exploit_code": 0.06897,
+    "assigner_kev_history": 0.00362,
+    "description_text": 0.06357
+   },
+   "mine": [
+    {
+     "signal": "public_exploit_code",
+     "value": 1,
+     "direction": "up"
+    },
+    {
+     "signal": "description_text",
+     "value": 0.0487,
+     "direction": "up"
+    },
+    {
+     "signal": "epss",
+     "value": 0.00509,
+     "direction": "up"
+    }
+   ],
+   "theirs": [
+    {
+     "signal": "public_exploit_code",
+     "value": 1,
+     "direction": "up"
+    },
+    {
+     "signal": "description_text",
+     "value": 0.0487,
+     "direction": "up"
+    },
+    {
+     "signal": "epss",
+     "value": 0.00509,
+     "direction": "up"
+    }
+   ]
+  },
+  {
+   "cve_id": "CVE-2026-19853",
+   "match": true,
+   "deltas": {
+    "epss": 0.03049,
+    "public_exploit_code": 0.0,
+    "assigner_kev_history": -0.01615,
+    "description_text": 0.06121
+   },
+   "mine": [
+    {
+     "signal": "description_text",
+     "value": 0.8953,
+     "direction": "up"
+    },
+    {
+     "signal": "epss",
+     "value": 0.00335,
+     "direction": "up"
+    },
+    {
+     "signal": "assigner_kev_history",
+     "value": 0.0025,
+     "direction": "down"
+    }
+   ],
+   "theirs": [
+    {
+     "signal": "description_text",
+     "value": 0.8953,
+     "direction": "up"
+    },
+    {
+     "signal": "epss",
+     "value": 0.00335,
+     "direction": "up"
+    },
+    {
+     "signal": "assigner_kev_history",
+     "value": 0.0025,
+     "direction": "down"
+    }
+   ]
+  }
+ ],
+ "reasons_match": 10
+}

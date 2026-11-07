@@ -1,0 +1,2 @@
+neutral seed0 {'epss_f': 0.00043, 'exploitdb': 0.0, 'metasploit': 0.0, 'nuclei': 0.0, 'poc_github': 0.0, 'anyx': 0.0, 'nx': 0.0, 'asg_rate': 0.0003798670465337132, 'asg_kev': 1.0, 'txt': 0.004601057868975892}
+done
