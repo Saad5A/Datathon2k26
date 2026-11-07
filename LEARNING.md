@@ -267,3 +267,8 @@ Our KEV file stops at 2025-12-31, so we hold no labels for CVEs in 2026. Only th
 **Good sentence:** "On held-out 2025 data, our ranking caught X positives, with an interval of Y to Z. 2026 is different, and we have no labels to check it against." Fill in X, Y and Z only from verified claims.
 
 ## What we did, phase by phase
+
+### Phases 1-2: environment and backtest harness (first pass, not yet verified)
+- **What we did:** rebuilt the "pretend it is 2025" test from clean code. Train on 2024 vulnerabilities, rank the Jan-Sep 2025 ones, count how many of our top 500 CISA later confirmed as exploited.
+- **What we learned:** the old numbers come back, but the headline gain is shaky. Changing only the random seed moves our model's top-500 count by several hits. A fair rule (only use exploited-list labels known before the test period starts) lowers it. On a second, later test period, the simple "exploit code first, then EPSS" rule beat us on top-500. Our model still ranks the typical exploited vulnerability much higher overall (better AUC and median rank), which is a steadier signal than a top-500 count built on about 50 positives.
+- **A new trap:** vulnerability descriptions are today's text, and a few already say things like "actively exploited". That wording may have been added after the attack, so a text model can cheat by reading it.
