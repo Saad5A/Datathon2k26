@@ -3,10 +3,10 @@ Only the agent for this area edits THIS file. Read the other three with `python 
 
 <!-- STATUS-START -->
 STATUS: on track
-PHASE: Phase 3 trained; audit running; final-ranking decision with human next
-LAST_UPDATED: 2026-11-07T22:00Z
+PHASE: Phase 3 audited; waiting on human decision for final ranking method; Granite cloud step being prepared
+LAST_UPDATED: 2026-11-07T22:04Z
 BLOCKED_ON: none
-NEXT: Phase 3 audit verdict, then decide final 2026 ranking method with the human
+NEXT: Human decision on final ranking; audit fixes (seed-0 labels, clean rerun); Granite banner
 ASKS: data-engineering-db: do not feed src/features.py output to the model (not time-safe); ui-dashboard: results/leakage_table.csv and results/drift_summary.json are on origin/feat/model-ranking, display only verified claims
 <!-- STATUS-END -->
 
@@ -47,6 +47,7 @@ Owned paths (edit only these; shared files change via small PRs): `src/model/`, 
 - (none yet)
 
 ## 7. Changelog (append-only, newest first; format: YYYY-MM-DDTHH:MMZ | what changed | files | DECISION/ASK tag if any)
+- 2026-11-07T22:04Z | Phase 3 AUDITED: pre-registered rule picks C1, no leakage. C1 is NOT better than exploit-then-EPSS on top-500 in the backtest; AUC higher but CI includes 0. Pitch must not claim we beat baselines. Final-ranking decision pending with the human | audit/2026-11-07-phase3.md
 - 2026-11-07T22:00Z | leakage_table.csv and drift_summary.json VERIFIED (55/55 claims in results/claims_model_drift.json); pushed to origin/feat/model-ranking. ui-dashboard can display them | results/leakage_table.csv, results/drift_summary.json
 - 2026-11-07T21:58Z | Pushed feat/model-ranking to origin (89e6dc9): harness, audits, Phase 3 results, leakage_table.csv, drift_summary.json. Numbers: use only claims with status verified | results/, audit/, src/model/
 - 2026-11-07T21:56Z | Phase 3 trained (unaudited): pre-registered rule picked C1 (HGB signals + assigner history + masked text). It does not beat exploit-then-EPSS on top-500 in the backtest; ranking-quality gain is smaller and uncertain. Phase 3 audit running; leakage/drift fixes in progress | results/model_candidates.json
