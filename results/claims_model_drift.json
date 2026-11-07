@@ -1,0 +1,416 @@
+{
+  "drift.any_public_exploit.2025_pool.all": {
+    "text": "Share of 2025_pool rows: any_public_exploit",
+    "value": 0.021542,
+    "unit": "fraction",
+    "source_script": "src/model/drift.py",
+    "output_file": "results/drift_summary.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "drift.any_public_exploit.2026_scoreboard.all": {
+    "text": "Share of 2026_scoreboard rows: any_public_exploit",
+    "value": 0.022637,
+    "unit": "fraction",
+    "source_script": "src/model/drift.py",
+    "output_file": "results/drift_summary.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "drift.assigner_share.github_advisories.2025_pool": {
+    "text": "Share of 2025 pool rows assigned by security-advisories@github.com",
+    "value": 0.05623582766439909,
+    "unit": "fraction",
+    "source_script": "src/model/drift.py",
+    "output_file": "results/drift_summary.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "drift.assigner_share.github_advisories.2026_scoreboard": {
+    "text": "Share of 2026 scoreboard rows assigned by security-advisories@github.com",
+    "value": 0.14991055456171734,
+    "unit": "fraction",
+    "source_script": "src/model/drift.py",
+    "output_file": "results/drift_summary.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "drift.assigner_share.vulncheck.2025_pool": {
+    "text": "Share of 2025 pool rows assigned by disclosure@vulncheck.com",
+    "value": 0.011394557823129252,
+    "unit": "fraction",
+    "source_script": "src/model/drift.py",
+    "output_file": "results/drift_summary.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "drift.assigner_share.vulncheck.2026_scoreboard": {
+    "text": "Share of 2026 scoreboard rows assigned by disclosure@vulncheck.com",
+    "value": 0.09346360258703729,
+    "unit": "fraction",
+    "source_script": "src/model/drift.py",
+    "output_file": "results/drift_summary.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "drift.cvss3_blank.2025_pool.all": {
+    "text": "Share of 2025_pool rows: cvss3_blank",
+    "value": 0.037642,
+    "unit": "fraction",
+    "source_script": "src/model/drift.py",
+    "output_file": "results/drift_summary.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "drift.cvss3_blank.2026_scoreboard.all": {
+    "text": "Share of 2026_scoreboard rows: cvss3_blank",
+    "value": 0.087354,
+    "unit": "fraction",
+    "source_script": "src/model/drift.py",
+    "output_file": "results/drift_summary.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "drift.distinct_assigners.2025_pool": {
+    "text": "Distinct assigners, 2025_pool",
+    "value": 338,
+    "unit": "count",
+    "source_script": "src/model/drift.py",
+    "output_file": "results/drift_summary.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "drift.distinct_assigners.2026_scoreboard": {
+    "text": "Distinct assigners, 2026_scoreboard",
+    "value": 382,
+    "unit": "count",
+    "source_script": "src/model/drift.py",
+    "output_file": "results/drift_summary.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "drift.epss_blank.2025_pool.all": {
+    "text": "Share of 2025_pool rows: epss_blank",
+    "value": 0.098073,
+    "unit": "fraction",
+    "source_script": "src/model/drift.py",
+    "output_file": "results/drift_summary.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "drift.epss_blank.2026_scoreboard.all": {
+    "text": "Share of 2026_scoreboard rows: epss_blank",
+    "value": 0.019692,
+    "unit": "fraction",
+    "source_script": "src/model/drift.py",
+    "output_file": "results/drift_summary.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "drift.epss_gt_0_1.2025_pool.all": {
+    "text": "Share of 2025_pool rows: epss_gt_0_1",
+    "value": 0.002438,
+    "unit": "fraction",
+    "source_script": "src/model/drift.py",
+    "output_file": "results/drift_summary.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "drift.epss_gt_0_1.2026_scoreboard.all": {
+    "text": "Share of 2026_scoreboard rows: epss_gt_0_1",
+    "value": 0.000908,
+    "unit": "fraction",
+    "source_script": "src/model/drift.py",
+    "output_file": "results/drift_summary.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "drift.no_affected_product.2025_pool.all": {
+    "text": "Share of 2025_pool rows: no_affected_product",
+    "value": 0.350057,
+    "unit": "fraction",
+    "source_script": "src/model/drift.py",
+    "output_file": "results/drift_summary.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "drift.no_affected_product.2026_scoreboard.2026-08": {
+    "text": "Share of 2026 scoreboard rows with snapshot_month 2026-08 with no affected_products row",
+    "value": 0.664597,
+    "unit": "fraction",
+    "source_script": "src/model/drift.py",
+    "output_file": "results/drift_summary.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "drift.no_affected_product.2026_scoreboard.2026-09": {
+    "text": "Share of 2026 scoreboard rows with snapshot_month 2026-09 with no affected_products row",
+    "value": 0.679976,
+    "unit": "fraction",
+    "source_script": "src/model/drift.py",
+    "output_file": "results/drift_summary.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "drift.no_affected_product.2026_scoreboard.all": {
+    "text": "Share of 2026_scoreboard rows: no_affected_product",
+    "value": 0.496353,
+    "unit": "fraction",
+    "source_script": "src/model/drift.py",
+    "output_file": "results/drift_summary.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "drift.no_prior_kev_share.2025_pool": {
+    "text": "Share of 2025_pool rows whose assigner had 0 KEV rows before the snapshot month",
+    "value": 0.37911,
+    "unit": "fraction",
+    "source_script": "src/model/drift.py",
+    "output_file": "results/drift_summary.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "drift.no_prior_kev_share.2026_scoreboard": {
+    "text": "Share of 2026_scoreboard rows whose assigner had 0 KEV rows before the snapshot month",
+    "value": 0.249787,
+    "unit": "fraction",
+    "source_script": "src/model/drift.py",
+    "output_file": "results/drift_summary.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "drift.pool_rows_2025": {
+    "text": "2025 test pool rows (published 2025-01..09)",
+    "value": 35280,
+    "unit": "count",
+    "source_script": "src/model/drift.py",
+    "output_file": "results/drift_summary.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "drift.scoreboard_rows.2026-01": {
+    "text": "2026 scoreboard rows with snapshot_month 2026-01",
+    "value": 4295,
+    "unit": "count",
+    "source_script": "src/model/drift.py",
+    "output_file": "results/drift_summary.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "drift.scoreboard_rows.2026-02": {
+    "text": "2026 scoreboard rows with snapshot_month 2026-02",
+    "value": 4603,
+    "unit": "count",
+    "source_script": "src/model/drift.py",
+    "output_file": "results/drift_summary.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "drift.scoreboard_rows.2026-03": {
+    "text": "2026 scoreboard rows with snapshot_month 2026-03",
+    "value": 6227,
+    "unit": "count",
+    "source_script": "src/model/drift.py",
+    "output_file": "results/drift_summary.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "drift.scoreboard_rows.2026-04": {
+    "text": "2026 scoreboard rows with snapshot_month 2026-04",
+    "value": 5801,
+    "unit": "count",
+    "source_script": "src/model/drift.py",
+    "output_file": "results/drift_summary.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "drift.scoreboard_rows.2026-05": {
+    "text": "2026 scoreboard rows with snapshot_month 2026-05",
+    "value": 6922,
+    "unit": "count",
+    "source_script": "src/model/drift.py",
+    "output_file": "results/drift_summary.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "drift.scoreboard_rows.2026-07": {
+    "text": "2026 scoreboard rows with snapshot_month 2026-07",
+    "value": 17678,
+    "unit": "count",
+    "source_script": "src/model/drift.py",
+    "output_file": "results/drift_summary.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "drift.scoreboard_rows.2026-08": {
+    "text": "2026 scoreboard rows with snapshot_month 2026-08",
+    "value": 12242,
+    "unit": "count",
+    "source_script": "src/model/drift.py",
+    "output_file": "results/drift_summary.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "drift.scoreboard_rows.2026-09": {
+    "text": "2026 scoreboard rows with snapshot_month 2026-09",
+    "value": 14902,
+    "unit": "count",
+    "source_script": "src/model/drift.py",
+    "output_file": "results/drift_summary.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "drift.scoreboard_rows.total": {
+    "text": "2026 scoreboard rows",
+    "value": 72670,
+    "unit": "count",
+    "source_script": "src/model/drift.py",
+    "output_file": "results/drift_summary.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "leakage.solo_auc.any_public_exploit": {
+    "text": "Solo AUC of any_public_exploit (used_in_model=yes) on the 2025 test pool",
+    "value": 0.7011,
+    "unit": "fraction",
+    "source_script": "src/model/leakage.py",
+    "output_file": "results/leakage_table.csv",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "leakage.solo_auc.asg_rate": {
+    "text": "Solo AUC of asg_rate (used_in_model=yes) on the 2025 test pool",
+    "value": 0.7463,
+    "unit": "fraction",
+    "source_script": "src/model/leakage.py",
+    "output_file": "results/leakage_table.csv",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "leakage.solo_auc.attack_vector": {
+    "text": "Solo AUC of attack_vector (used_in_model=ablation only) on the 2025 test pool",
+    "value": 0.5752,
+    "unit": "fraction",
+    "source_script": "src/model/leakage.py",
+    "output_file": "results/leakage_table.csv",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "leakage.solo_auc.cvss3_blank": {
+    "text": "Solo AUC of cvss3_blank (used_in_model=no) on the 2025 test pool",
+    "value": 0.5188,
+    "unit": "fraction",
+    "source_script": "src/model/leakage.py",
+    "output_file": "results/leakage_table.csv",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "leakage.solo_auc.cvss3_score": {
+    "text": "Solo AUC of cvss3_score (used_in_model=ablation only) on the 2025 test pool",
+    "value": 0.7322,
+    "unit": "fraction",
+    "source_script": "src/model/leakage.py",
+    "output_file": "results/leakage_table.csv",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "leakage.solo_auc.cwe_blank": {
+    "text": "Solo AUC of cwe_blank (used_in_model=no) on the 2025 test pool",
+    "value": 0.5216,
+    "unit": "fraction",
+    "source_script": "src/model/leakage.py",
+    "output_file": "results/leakage_table.csv",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "leakage.solo_auc.desc_exploitation_wording": {
+    "text": "Solo AUC of desc_exploitation_wording (used_in_model=no) on the 2025 test pool",
+    "value": 0.557,
+    "unit": "fraction",
+    "source_script": "src/model/leakage.py",
+    "output_file": "results/leakage_table.csv",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "leakage.solo_auc.epss": {
+    "text": "Solo AUC of epss (used_in_model=yes) on the 2025 test pool",
+    "value": 0.7073,
+    "unit": "fraction",
+    "source_script": "src/model/leakage.py",
+    "output_file": "results/leakage_table.csv",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "leakage.solo_auc.has_affected_product": {
+    "text": "Solo AUC of has_affected_product (used_in_model=no) on the 2025 test pool",
+    "value": 0.6753,
+    "unit": "fraction",
+    "source_script": "src/model/leakage.py",
+    "output_file": "results/leakage_table.csv",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "leakage.solo_auc.n_affected_cpes": {
+    "text": "Solo AUC of n_affected_cpes (used_in_model=no) on the 2025 test pool",
+    "value": 0.7673,
+    "unit": "fraction",
+    "source_script": "src/model/leakage.py",
+    "output_file": "results/leakage_table.csv",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "leakage.solo_auc.n_exploit_flags": {
+    "text": "Solo AUC of n_exploit_flags (used_in_model=yes) on the 2025 test pool",
+    "value": 0.7021,
+    "unit": "fraction",
+    "source_script": "src/model/leakage.py",
+    "output_file": "results/leakage_table.csv",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "leakage.solo_auc.n_references": {
+    "text": "Solo AUC of n_references (used_in_model=no) on the 2025 test pool",
+    "value": 0.6434,
+    "unit": "fraction",
+    "source_script": "src/model/leakage.py",
+    "output_file": "results/leakage_table.csv",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "leakage.solo_auc.nvd_status_analysed": {
+    "text": "Solo AUC of nvd_status_analysed (used_in_model=no) on the 2025 test pool",
+    "value": 0.6754,
+    "unit": "fraction",
+    "source_script": "src/model/leakage.py",
+    "output_file": "results/leakage_table.csv",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "leakage.solo_auc.ref_exploit_tag": {
+    "text": "Solo AUC of ref_exploit_tag (used_in_model=no) on the 2025 test pool",
+    "value": 0.6904,
+    "unit": "fraction",
+    "source_script": "src/model/leakage.py",
+    "output_file": "results/leakage_table.csv",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "leakage.solo_auc.ref_news_threat_link": {
+    "text": "Solo AUC of ref_news_threat_link (used_in_model=no) on the 2025 test pool",
+    "value": 0.5951,
+    "unit": "fraction",
+    "source_script": "src/model/leakage.py",
+    "output_file": "results/leakage_table.csv",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "leakage.solo_auc.ref_xforce_link": {
+    "text": "Solo AUC of ref_xforce_link (used_in_model=no) on the 2025 test pool",
+    "value": 0.5,
+    "unit": "fraction",
+    "source_script": "src/model/leakage.py",
+    "output_file": "results/leakage_table.csv",
+    "status": "unverified",
+    "verified_by": null
+  }
+}

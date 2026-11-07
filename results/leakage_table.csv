@@ -1,0 +1,17 @@
+column,used_in_model,solo_auc,reason
+nvd_status_analysed,no,0.6754,1 if NVD status Analyzed/Modified (today's status). NIST analyses attacked CVEs first. README: leaks
+n_affected_cpes,no,0.7673,"Product (CPE) count from today's NVD file; filled in by NIST analysis, which reaches attacked CVEs first. README: leaks"
+n_references,no,0.6434,Reference count from today's file; links are added after attacks. README: leaks
+cvss3_blank,no,0.5188,FLIPPED (lower = more exploited). 1 if cvss3_score blank. Blank-score pattern reflects NIST review order. README: leaks
+cwe_blank,no,0.5216,FLIPPED (lower = more exploited). 1 if cwe_ids blank. Blank pattern reflects NIST review order
+has_affected_product,no,0.6753,1 if any affected_products.csv row (today's file); product lists come from NIST analysis
+ref_news_threat_link,no,0.5951,"1 if a reference is tagged Press/Media Coverage or its domain is in NEWS_DOMAINS (24 news/threat sites, leakage.py)"
+ref_xforce_link,no,0.5,CONSTANT in this pool (AUC 0.5 by definition). 1 if a reference domain contains exchange.xforce (IBM X-Force Exchange). Treated as leak-prone (data guide)
+ref_exploit_tag,no,0.6904,"1 if a reference is tagged Exploit. Tags and links are today's, often added after attacks"
+desc_exploitation_wording,no,0.557,"1 if today's description matches EXPLOIT_WORDING (exploited in the wild, CISA, KEV...); text may be edited later"
+epss,yes,0.7073,"EPSS at snapshot month end, blank as -1. As-of value from the signals file"
+any_public_exploit,yes,0.7011,1 if any of Exploit-DB/Metasploit/Nuclei/GitHub PoC flags at snapshot month end. As-of value
+n_exploit_flags,yes,0.7021,Number of the 4 exploit flags set at snapshot month end. As-of value
+asg_rate,yes,0.7463,Assigner KEV rate from KEV rows dated before the snapshot month (CVEs published 2021+). Assigner is today's value
+cvss3_score,ablation only,0.7322,"Today's NVD CVSS3 score, blank as -1 (so it also carries the blank pattern). Ablation only"
+attack_vector,ablation only,0.5752,"Today's NVD value: NETWORK 3, ADJACENT 2, LOCAL 1, PHYSICAL 0, blank -1. Ablation only"
