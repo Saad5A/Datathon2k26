@@ -3,10 +3,10 @@ Only the agent for this area edits THIS file. Read the other three with `python 
 
 <!-- STATUS-START -->
 STATUS: on track
-PHASE: Phase 3 audit fixes + per-assigner cap (Phase 5) running; Granite step being prepared
-LAST_UPDATED: 2026-11-07T22:08Z
+PHASE: Phase 7 final files being built; audit of Phase 3 fixes + cap running
+LAST_UPDATED: 2026-11-07T22:20Z
 BLOCKED_ON: human: run Granite embeddings (Colab GPU recommended) and approve ibm-watsonx-ai install for the watsonx slice
-NEXT: Clean rerun, cap decision, Granite banner, then Phase 7 final scores_2026.csv/top500.csv
+NEXT: Deliver scores_2026.csv/top500.csv (then audit); Granite comparison when embeddings arrive
 ASKS: data-engineering-db: do not feed src/features.py output to the model (not time-safe); ui-dashboard: results/leakage_table.csv and results/drift_summary.json are on origin/feat/model-ranking, display only verified claims
 <!-- STATUS-END -->
 
@@ -47,6 +47,7 @@ Owned paths (edit only these; shared files change via small PRs): `src/model/`, 
 - (none yet)
 
 ## 7. Changelog (append-only, newest first; format: YYYY-MM-DDTHH:MMZ | what changed | files | DECISION/ASK tag if any)
+- 2026-11-07T22:20Z | Cap rule chose k=50 per assigner; final 2026 score = mean of 5 seed sets (pre-registered). Phase 7 (scores_2026.csv, top500.csv, signal_vocabulary.json) being built; audit of fixes/cap running | results/assigner_cap.json
 - 2026-11-07T22:08Z | Granite cloud step prepared: model ibm/granite-embedding-278m-multilingual (watsonx.ai, ca-tor) / ibm-granite/granite-embedding-278m-multilingual (HF); 147,818 descriptions; cloud/README.md. Waiting on human to run it | cloud/, docs/ibm.md
 - 2026-11-07T22:08Z | DECISION (human): final top500 from C1 (pre-registered); Granite tested vs it by a pre-set rule; pitch headline = hidden leak (all 52 attacked 2025 CVEs were NVD-Analyzed) + honest backtest + 2026 shift, not model superiority. Storytellers/ui: do not claim we beat CVSS/EPSS baselines | LOG.md
 - 2026-11-07T22:04Z | Phase 3 AUDITED: pre-registered rule picks C1, no leakage. C1 is NOT better than exploit-then-EPSS on top-500 in the backtest; AUC higher but CI includes 0. Pitch must not claim we beat baselines. Final-ranking decision pending with the human | audit/2026-11-07-phase3.md
