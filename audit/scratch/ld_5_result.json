@@ -90,13 +90,13 @@
   true
  ],
  "drift.no_prior_kev_share.2025_pool": [
-  0.37911,
-  0.37910997732426305,
+  0.361678,
+  0.36167800453514737,
   true
  ],
  "drift.no_prior_kev_share.2026_scoreboard": [
-  0.249787,
-  0.24978670703178754,
+  0.237897,
+  0.23789734415852484,
   true
  ],
  "drift.pool_rows_2025": [
@@ -149,10 +149,55 @@
   72670,
   true
  ],
+ "leakage.positives.cvss3_present.count": [
+  52,
+  null,
+  false
+ ],
+ "leakage.positives.cvss3_present.cp95_lower": [
+  0.931518,
+  null,
+  false
+ ],
+ "leakage.positives.cwe_present.count": [
+  52,
+  null,
+  false
+ ],
+ "leakage.positives.cwe_present.cp95_lower": [
+  0.931518,
+  null,
+  false
+ ],
+ "leakage.positives.has_affected_product.count": [
+  52,
+  null,
+  false
+ ],
+ "leakage.positives.has_affected_product.cp95_lower": [
+  0.931518,
+  null,
+  false
+ ],
+ "leakage.positives.nvd_status_Analyzed.count": [
+  52,
+  null,
+  false
+ ],
+ "leakage.positives.nvd_status_Analyzed.cp95_lower": [
+  0.931518,
+  null,
+  false
+ ],
  "leakage.solo_auc.any_public_exploit": [
   0.7011,
   0.7011,
   true
+ ],
+ "leakage.solo_auc.asg_kev": [
+  0.6665,
+  null,
+  false
  ],
  "leakage.solo_auc.asg_rate": [
   0.7463,
@@ -220,9 +265,9 @@
   true
  ],
  "leakage.solo_auc.ref_news_threat_link": [
+  0.6524,
   0.5951,
-  0.5951,
-  true
+  false
  ],
  "leakage.solo_auc.ref_xforce_link": [
   0.5,

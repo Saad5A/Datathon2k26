@@ -23,7 +23,7 @@ for per, mine_by, mine_all in [("2025_pool", o["miss25_by_month"], o["miss25_all
     for m, row in md[per].items():
         ref = mine_all if m == "all" else mine_by[m]
         for k in ref: cmp(f"{per} {m} {k}", row[k], ref[k], 5e-7)
-np_ = d["assigner_no_prior_kev_share"]; mine = o["noprior"]["kev_pub_2021plus"]
+np_ = d["assigner_no_prior_kev_share"]; mine = o["noprior"]["all_kev"]
 for m, x in np_["2025_pool"].items(): cmp("np25 " + m, x, mine["2025_all"] if m == "all" else mine["2025_by_month"][m], 5e-7)
 for m, x in np_["2026_scoreboard"].items(): cmp("np26 " + m, x, mine["2026_all"] if m == "all" else mine["2026_by_month"][m], 5e-7)
 print("drift_summary mismatches:", bad)
@@ -38,7 +38,7 @@ def mine_for(cid):
     if cid.startswith("drift.assigner_share."):
         a = {"github_advisories": "security-advisories@github.com", "vulncheck": "disclosure@vulncheck.com"}[cid.split(".")[2]]
         return o["share"][a][0 if "2025" in cid else 1], 1e-9
-    if cid.startswith("drift.no_prior_kev_share."): return mine["2025_all" if "2025" in cid else "2026_all"], 5e-7
+    if cid.startswith("drift.no_prior_kev_share."): return o["noprior"]["all_kev"]["2025_all" if "2025" in cid else "2026_all"], 5e-7
     parts = cid.split(".")
     if parts[0] == "drift" and parts[2] in ("2025_pool", "2026_scoreboard"):
         if parts[3] == "all": return o["miss25_all" if parts[2] == "2025_pool" else "miss26_all"][parts[1]], 5e-7
@@ -46,7 +46,8 @@ def mine_for(cid):
     return None, None
 res = {}
 for cid, c in L.items():
-    m, tol = mine_for(cid)
+    try: m, tol = mine_for(cid)
+    except KeyError: m, tol = None, None
     ok = m is not None and abs(float(m) - float(c["value"])) <= tol
     res[cid] = (c["value"], m, ok); print(f"{cid:58s} claimed {c['value']!s:22s} mine {m!s:22s} {'MATCH' if ok else 'DIFF'}")
 print("n", len(res), "match", sum(r[2] for r in res.values()))

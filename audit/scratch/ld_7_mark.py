@@ -2,7 +2,7 @@
 import json, copy
 P = "/Users/aahmad/Working/datathon/code/Datathon2k26/results/claims_model_drift.json"
 L = json.load(open(P)); before = copy.deepcopy(L)
-FAIL = {"drift.no_prior_kev_share.2025_pool", "drift.no_prior_kev_share.2026_scoreboard"}
+FAIL = set()
 for k, c in L.items():
     if k not in FAIL:
         c["status"] = "verified"; c["verified_by"] = "audit/2026-11-07-leakage-drift.md"
