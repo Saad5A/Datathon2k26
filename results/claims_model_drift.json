@@ -374,8 +374,8 @@
     "unit": "fraction",
     "source_script": "src/model/leakage.py",
     "output_file": "results/leakage_table.csv",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3-fixes-cap.md"
   },
   "leakage.solo_auc.attack_vector": {
     "text": "Solo AUC of attack_vector (used_in_model=no) on the 2025 test pool",
@@ -509,7 +509,7 @@
     "unit": "fraction",
     "source_script": "src/model/leakage.py",
     "output_file": "results/leakage_table.csv",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3-fixes-cap.md"
   }
 }

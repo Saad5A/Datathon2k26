@@ -1,0 +1,2 @@
+fold1 seed-mean score top500 hits by cap {None: 22, 100: 22, 50: 21} ties at cut 1
+fold2 seed-mean score top500 hits by cap {None: 11, 100: 11, 50: 12} ties at cut 4

@@ -1,0 +1,3 @@
+txt_masked_tfidf 0.822498 seed-independent: True
+asg_rate_24m (D1, 2021+ KEV CVEs) 0.732668
+asg_rate_24m variant, all KEV additions 0.736833

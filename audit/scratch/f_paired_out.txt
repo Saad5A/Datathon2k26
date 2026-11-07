@@ -1,0 +1,63 @@
+p3.fold1.paired.auc.diff                                     mine=0.092080 claimed=0.092080 OK
+p3.fold1.paired.auc.diff.seed0                               mine=0.083917 claimed=0.083917 OK
+   per seed auc.diff: [0.0839, 0.1167, 0.1038, 0.0921, 0.0824]
+p3.fold1.paired.auc.ci95_lo                                  mine=-0.003363 claimed=-0.003363 OK
+p3.fold1.paired.auc.ci95_lo.seed0                            mine=-0.014963 claimed=-0.014963 OK
+   per seed auc.ci95_lo: [-0.015, 0.0315, 0.0195, -0.0034, -0.0073]
+p3.fold1.paired.auc.ci95_hi                                  mine=0.189142 claimed=0.189142 OK
+p3.fold1.paired.auc.ci95_hi.seed0                            mine=0.181406 claimed=0.181406 OK
+   per seed auc.ci95_hi: [0.1814, 0.204, 0.1942, 0.1891, 0.1745]
+p3.fold1.paired.top500_expected.diff                         mine=3.641975 claimed=3.641975 OK
+p3.fold1.paired.top500_expected.diff.seed0                   mine=-0.358025 claimed=-0.358025 OK
+   per seed top500_expected.diff: [-0.358, 3.642, 3.642, 3.642, -3.358]
+p3.fold1.paired.top500_expected.ci95_lo                      mine=-3.300870 claimed=-3.300870 OK
+p3.fold1.paired.top500_expected.ci95_lo.seed0                mine=-8.086176 claimed=-8.086176 OK
+   per seed top500_expected.ci95_lo: [-8.0862, -3.3009, -2.4584, -2.4759, -8.3231]
+p3.fold1.paired.top500_expected.ci95_hi                      mine=10.424188 claimed=10.424188 OK
+p3.fold1.paired.top500_expected.ci95_hi.seed0                mine=6.000000 claimed=6.000000 OK
+   per seed top500_expected.ci95_hi: [6.0, 11.0, 10.4437, 10.4242, 3.3243]
+fold1 share_auc_gt0 per seed [0.96, 0.9945, 0.9885, 0.971, 0.966]
+fold1 share_top_lt0 per seed [0.634, 0.153, 0.119, 0.1245, 0.782]
+p3.fold1.unseen_assigner.rows                                mine=13375.000000 claimed=13375.000000 OK
+p3.fold1.unseen_assigner.rows.seed0                          mine=13375.000000 claimed=13375.000000 OK
+p3.fold1.unseen_assigner.positives                           mine=9.000000 claimed=9.000000 OK
+p3.fold1.unseen_assigner.positives.seed0                     mine=9.000000 claimed=9.000000 OK
+p3.fold1.unseen_assigner.auc                                 mine=0.737452 claimed=0.737452 OK
+p3.fold1.unseen_assigner.auc.seed0                           mine=0.737452 claimed=0.737452 OK
+p3.fold1.unseen_assigner.top500_rows_from_subset             mine=44.000000 claimed=44.000000 OK
+p3.fold1.unseen_assigner.top500_rows_from_subset.seed0       mine=56.000000 claimed=56.000000 OK
+p3.fold1.unseen_assigner.top500_hits_from_subset             mine=3.000000 claimed=3.000000 OK
+p3.fold1.unseen_assigner.top500_hits_from_subset.seed0       mine=2.000000 claimed=2.000000 OK
+   unseen per seed: [{'rows': 13375, 'positives': 9, 'auc': 0.7374515769697574, 'top500_rows_from_subset': 56, 'top500_hits_from_subset': 2}, {'rows': 13375, 'positives': 9, 'auc': 0.7959125143398673, 'top500_rows_from_subset': 35, 'top500_hits_from_subset': 3}, {'rows': 13375, 'positives': 9, 'auc': 0.7195828553377558, 'top500_rows_from_subset': 44, 'top500_hits_from_subset': 3}, {'rows': 13375, 'positives': 9, 'auc': 0.7524523251367483, 'top500_rows_from_subset': 52, 'top500_hits_from_subset': 3}, {'rows': 13375, 'positives': 9, 'auc': 0.7241757693650556, 'top500_rows_from_subset': 38, 'top500_hits_from_subset': 3}]
+p3.fold2.paired.auc.diff                                     mine=0.070760 claimed=0.070760 OK
+p3.fold2.paired.auc.diff.seed0                               mine=0.082288 claimed=0.082288 OK
+   per seed auc.diff: [0.0823, 0.054, 0.0709, 0.0454, 0.0708]
+p3.fold2.paired.auc.ci95_lo                                  mine=-0.040103 claimed=-0.040103 OK
+p3.fold2.paired.auc.ci95_lo.seed0                            mine=-0.027077 claimed=-0.027077 OK
+   per seed auc.ci95_lo: [-0.0271, -0.0486, -0.0333, -0.0543, -0.0401]
+p3.fold2.paired.auc.ci95_hi                                  mine=0.181182 claimed=0.181182 OK
+p3.fold2.paired.auc.ci95_hi.seed0                            mine=0.199728 claimed=0.199728 OK
+   per seed auc.ci95_hi: [0.1997, 0.1666, 0.1812, 0.1593, 0.1915]
+p3.fold2.paired.top500_expected.diff                         mine=-3.600000 claimed=-3.600000 OK
+p3.fold2.paired.top500_expected.diff.seed0                   mine=-3.600000 claimed=-3.600000 OK
+   per seed top500_expected.diff: [-3.6, -3.6, -3.6, -2.6, -3.6]
+p3.fold2.paired.top500_expected.ci95_lo                      mine=-9.000000 claimed=-9.000000 OK
+p3.fold2.paired.top500_expected.ci95_lo.seed0                mine=-8.833929 claimed=-8.833929 OK
+   per seed top500_expected.ci95_lo: [-8.8339, -9.0, -9.0, -7.0, -9.0]
+p3.fold2.paired.top500_expected.ci95_hi                      mine=0.016667 claimed=0.016667 OK
+p3.fold2.paired.top500_expected.ci95_hi.seed0                mine=1.000000 claimed=1.000000 OK
+   per seed top500_expected.ci95_hi: [1.0, 0.0, 0.0167, 1.0, 0.0]
+fold2 share_auc_gt0 per seed [0.9235, 0.837, 0.9025, 0.7915, 0.888]
+fold2 share_top_lt0 per seed [0.8985, 0.947, 0.933, 0.868, 0.95]
+p3.fold2.unseen_assigner.rows                                mine=8201.000000 claimed=8201.000000 OK
+p3.fold2.unseen_assigner.rows.seed0                          mine=8201.000000 claimed=8201.000000 OK
+p3.fold2.unseen_assigner.positives                           mine=7.000000 claimed=7.000000 OK
+p3.fold2.unseen_assigner.positives.seed0                     mine=7.000000 claimed=7.000000 OK
+p3.fold2.unseen_assigner.auc                                 mine=0.936800 claimed=0.936800 OK
+p3.fold2.unseen_assigner.auc.seed0                           mine=0.939668 claimed=0.939668 OK
+p3.fold2.unseen_assigner.top500_rows_from_subset             mine=10.000000 claimed=10.000000 OK
+p3.fold2.unseen_assigner.top500_rows_from_subset.seed0       mine=10.000000 claimed=10.000000 OK
+p3.fold2.unseen_assigner.top500_hits_from_subset             mine=2.000000 claimed=2.000000 OK
+p3.fold2.unseen_assigner.top500_hits_from_subset.seed0       mine=2.000000 claimed=2.000000 OK
+   unseen per seed: [{'rows': 8201, 'positives': 7, 'auc': 0.9396683984797238, 'top500_rows_from_subset': 10, 'top500_hits_from_subset': 2}, {'rows': 8201, 'positives': 7, 'auc': 0.930140520938666, 'top500_rows_from_subset': 12, 'top500_hits_from_subset': 2}, {'rows': 8201, 'positives': 7, 'auc': 0.9368004463196067, 'top500_rows_from_subset': 12, 'top500_hits_from_subset': 2}, {'rows': 8201, 'positives': 7, 'auc': 0.9353621116496391, 'top500_rows_from_subset': 9, 'top500_hits_from_subset': 2}, {'rows': 8201, 'positives': 7, 'auc': 0.9408016318560619, 'top500_rows_from_subset': 9, 'top500_hits_from_subset': 2}]
+checked 44 ok 44
