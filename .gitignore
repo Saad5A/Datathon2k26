@@ -1,0 +1,44 @@
+# Virtual environments
+venv/
+.venv/
+env/
+.env/
+
+# Data and large artifacts
+data/
+*.parquet
+*.zip
+*.csv
+*.feather
+*.h5
+*.hdf5
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+dist/
+build/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Jupyter / IDE
+.ipynb_checkpoints/
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Model / local outputs
+models/
+outputs/
+*.pkl
+*.joblib
+*.lgb
+*.pt
+*.bin
