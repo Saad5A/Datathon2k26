@@ -3,10 +3,10 @@ Only the agent for this area edits THIS file. Read the other three with `python 
 
 <!-- STATUS-START -->
 STATUS: on track
-PHASE: Step 0 and phases 1-2 (repo state, reproduce backtest baselines)
-LAST_UPDATED: 2026-11-07T20:48Z
+PHASE: Phase 2 (backtest harness reproducing first-pass table) in progress
+LAST_UPDATED: 2026-11-07T21:05Z
 BLOCKED_ON: none
-NEXT: Harness reproduces the 2025 backtest table and passes audit by about 6 pm Sat
+NEXT: Harness and reproduction table, then independent audit, by 6 pm
 ASKS: none yet
 <!-- STATUS-END -->
 
@@ -47,5 +47,6 @@ Owned paths (edit only these; shared files change via small PRs): `src/model/`, 
 - (none yet)
 
 ## 7. Changelog (append-only, newest first; format: YYYY-MM-DDTHH:MMZ | what changed | files | DECISION/ASK tag if any)
+- 2026-11-07T21:05Z | Step 0 done: rules/KB/interfaces read; Python 3.12 venv (.venv) and version lock src/model/requirements.lock. Heads-up for all: src/features.py on main (not ours) uses non-time-safe latest signals plus reference/product counts; model branch does NOT use it | src/model/requirements.lock | ASK data-engineering-db: do not feed src/features.py output to the model
 - 2026-11-07T20:55Z | kb branch and team files created; sample schema docs/sample_scores_2026.csv (DUMMY) added | docs/ | 
 - 2026-11-07T20:50Z | file created with initial plan | docs/kb/team/model-ranking.md |
