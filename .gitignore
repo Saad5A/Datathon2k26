@@ -10,12 +10,18 @@ env/
 
 # Data and large artifacts
 data/
+data_cache/
+results/
 *.parquet
 *.zip
-*.csv
 *.feather
 *.h5
 *.hdf5
+
+# Large CSV dumps anywhere except committed fixtures under docs/
+*.csv
+!docs/
+!docs/**/*.csv
 
 # Python
 __pycache__/

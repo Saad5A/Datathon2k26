@@ -4,6 +4,9 @@ from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = PROJECT_ROOT / "data"
+DATA_CACHE_DIR = PROJECT_ROOT / "data_cache"
+DOCS_DIR = PROJECT_ROOT / "docs"
+RESULTS_DIR = PROJECT_ROOT / "results"
 OUTPUT_DIR = PROJECT_ROOT / "outputs"
 
 VULNERABILITIES_CSV = DATA_DIR / "vulnerabilities.csv"

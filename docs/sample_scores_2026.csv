@@ -1,0 +1,7 @@
+cve_id,rank,priority_score,priority,reasons,in_top500
+CVE-2026-10001,1,0.97,P0,"{""epss"":0.81,""has_public_exploit"":1,""attack_vector_network"":1,""desc_has_rce"":1}",True
+CVE-2026-10002,2,0.91,P0,"{""epss"":0.66,""has_public_exploit"":1,""privileges_required_none"":1,""ref_has_exploit_tag"":1}",True
+CVE-2026-10003,3,0.84,P1,"{""epss"":0.41,""n_products"":12,""desc_has_auth_bypass"":1,""cvss3_score"":9.1}",True
+CVE-2026-10004,4,0.72,P1,"{""epss"":0.28,""has_public_exploit"":0,""attack_complexity_low"":1,""n_vendors"":3}",True
+CVE-2026-10005,5,0.61,P2,"{""epss"":0.12,""user_interaction_required"":1,""cvss3_score"":7.5}",True
+CVE-2026-19999,900,0.05,P2,"{""epss"":0.01,""has_public_exploit"":0}",False
