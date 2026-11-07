@@ -1,0 +1,4 @@
+cve_id,published,snapshot_month,assigner,score,rank,in_top500,priority,epss,any_public_exploit,reasons
+CVE-0000-0001,2026-03-02,2026-03,example-assigner-a,0.91,1,1,P0,0.42,1,"[{""signal"":""assigner_kev_history"",""value"":0.07,""direction"":""up""},{""signal"":""public_exploit_code"",""value"":1,""direction"":""up""},{""signal"":""text_remote_unauthenticated"",""value"":0.6,""direction"":""up""}]"
+CVE-0000-0002,2026-05-14,2026-05,example-assigner-b,0.33,250,1,P1,0.03,0,"[{""signal"":""assigner_kev_history"",""value"":0.02,""direction"":""up""}]"
+CVE-0000-0003,2026-08-20,2026-08,example-assigner-c,0.01,40000,0,P2,,0,"[]"
