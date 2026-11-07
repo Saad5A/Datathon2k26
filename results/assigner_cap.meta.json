@@ -1,0 +1,28 @@
+{
+  "script": "src/model/cap.py",
+  "git_commit": "2d63b58b15380b26290a1bb0b4ca6518917ef2b6",
+  "git_dirty": false,
+  "git_dirty_files": [],
+  "code_sha256": {
+    "candidates.py": "ccacd693526908d82cfe8dd5c07e8ffaa757423398e129ec74a3a170e1c998c4",
+    "cap.py": "d5cbd63f4e8b1f55a3043e28d2ccaade891206196d72e7d51316e3b63014420d",
+    "checks.py": "3a6f128ea3251a088da6aa5221e5e1f0a34734a51a96abcf7474c65bc8165121",
+    "drift.py": "50452f4cc32f0a6ba8604e1c9b40cedf78099a55a4baadff37ea0e5c458716f4",
+    "leakage.py": "2e1dede661f7fdb67990bd86ddf02b859c0ff611a2c391692228cf0dc5e1982d",
+    "metrics.py": "6678ffb0cb4ac6fb75445e1e6d2223c328eae99657e30578b994d7652714a0fe",
+    "pool.py": "f71136c9932544913ef8a48fb31aba65b1bc5fc8b7f2096bff9e6801dd545b27",
+    "reproduce_first_pass.py": "4e236b25c57a7331559f471d4e40b49355dc80081d5a53d0c61894cb2b9d53fb",
+    "sidecar.py": "691592e4e621891793353197e51271cefdab66c50abadc7975b8dd3cc5776c06"
+  },
+  "date_utc": "2026-11-07T22:19:44+00:00",
+  "python": "3.12.15",
+  "machine": "arm64",
+  "libraries": {
+    "pandas": "3.1.1",
+    "numpy": "2.5.4",
+    "scikit-learn": "1.9.1",
+    "scipy": "1.18.1",
+    "pyarrow": "26.0.1",
+    "joblib": "1.6.0"
+  }
+}

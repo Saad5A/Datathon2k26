@@ -2844,6 +2844,7 @@
             "top500_tied_group": 1
           }
         ],
+        "excluded_field_warning": "Uses excluded blank-score fields (cvss3 missing indicator, blank CVSS vector category): comparison only, never adoptable as a model",
         "features": [
           "epss_f",
           "exploitdb",
@@ -4120,6 +4121,7 @@
             "top500_tied_group": 1
           }
         ],
+        "excluded_field_warning": "Uses excluded blank-score fields (cvss3 missing indicator, blank CVSS vector category): comparison only, never adoptable as a model",
         "features": [
           "epss_f",
           "exploitdb",
@@ -4474,24 +4476,152 @@
   },
   "unseen_assigner": {
     "fold1": {
-      "definition": "test rows whose assigner had 0 KEV rows (with assigner, CVE published 2021+) before the snapshot month (asg_kev == 0)",
-      "rows": 13375,
-      "positives": 9,
-      "auc_within_subset": 0.7374515769697575,
-      "top500_rows_from_subset": 56,
-      "top500_hits_from_subset": 2,
-      "exploit_then_epss_top500_rows_from_subset": 171,
-      "exploit_then_epss_top500_hits_from_subset": 3
+      "seed_median": {
+        "definition": "test rows whose assigner had 0 KEV rows (with assigner, CVE published 2021+) before the snapshot month (asg_kev == 0)",
+        "rows": 13375.0,
+        "positives": 9.0,
+        "auc_within_subset": 0.7374515769697575,
+        "top500_rows_from_subset": 44.0,
+        "top500_hits_from_subset": 3.0,
+        "exploit_then_epss_top500_rows_from_subset": 171.0,
+        "exploit_then_epss_top500_hits_from_subset": 3.0
+      },
+      "seed_set_0": {
+        "definition": "test rows whose assigner had 0 KEV rows (with assigner, CVE published 2021+) before the snapshot month (asg_kev == 0)",
+        "rows": 13375,
+        "positives": 9,
+        "auc_within_subset": 0.7374515769697575,
+        "top500_rows_from_subset": 56,
+        "top500_hits_from_subset": 2,
+        "exploit_then_epss_top500_rows_from_subset": 171,
+        "exploit_then_epss_top500_hits_from_subset": 3
+      },
+      "per_seed": [
+        {
+          "definition": "test rows whose assigner had 0 KEV rows (with assigner, CVE published 2021+) before the snapshot month (asg_kev == 0)",
+          "rows": 13375,
+          "positives": 9,
+          "auc_within_subset": 0.7374515769697575,
+          "top500_rows_from_subset": 56,
+          "top500_hits_from_subset": 2,
+          "exploit_then_epss_top500_rows_from_subset": 171,
+          "exploit_then_epss_top500_hits_from_subset": 3
+        },
+        {
+          "definition": "test rows whose assigner had 0 KEV rows (with assigner, CVE published 2021+) before the snapshot month (asg_kev == 0)",
+          "rows": 13375,
+          "positives": 9,
+          "auc_within_subset": 0.7959125143398673,
+          "top500_rows_from_subset": 35,
+          "top500_hits_from_subset": 3,
+          "exploit_then_epss_top500_rows_from_subset": 171,
+          "exploit_then_epss_top500_hits_from_subset": 3
+        },
+        {
+          "definition": "test rows whose assigner had 0 KEV rows (with assigner, CVE published 2021+) before the snapshot month (asg_kev == 0)",
+          "rows": 13375,
+          "positives": 9,
+          "auc_within_subset": 0.7195828553377558,
+          "top500_rows_from_subset": 44,
+          "top500_hits_from_subset": 3,
+          "exploit_then_epss_top500_rows_from_subset": 171,
+          "exploit_then_epss_top500_hits_from_subset": 3
+        },
+        {
+          "definition": "test rows whose assigner had 0 KEV rows (with assigner, CVE published 2021+) before the snapshot month (asg_kev == 0)",
+          "rows": 13375,
+          "positives": 9,
+          "auc_within_subset": 0.7524523251367482,
+          "top500_rows_from_subset": 52,
+          "top500_hits_from_subset": 3,
+          "exploit_then_epss_top500_rows_from_subset": 171,
+          "exploit_then_epss_top500_hits_from_subset": 3
+        },
+        {
+          "definition": "test rows whose assigner had 0 KEV rows (with assigner, CVE published 2021+) before the snapshot month (asg_kev == 0)",
+          "rows": 13375,
+          "positives": 9,
+          "auc_within_subset": 0.7241757693650556,
+          "top500_rows_from_subset": 38,
+          "top500_hits_from_subset": 3,
+          "exploit_then_epss_top500_rows_from_subset": 171,
+          "exploit_then_epss_top500_hits_from_subset": 3
+        }
+      ]
     },
     "fold2": {
-      "definition": "test rows whose assigner had 0 KEV rows (with assigner, CVE published 2021+) before the snapshot month (asg_kev == 0)",
-      "rows": 8201,
-      "positives": 7,
-      "auc_within_subset": 0.9396683984797238,
-      "top500_rows_from_subset": 10,
-      "top500_hits_from_subset": 2,
-      "exploit_then_epss_top500_rows_from_subset": 142,
-      "exploit_then_epss_top500_hits_from_subset": 2
+      "seed_median": {
+        "definition": "test rows whose assigner had 0 KEV rows (with assigner, CVE published 2021+) before the snapshot month (asg_kev == 0)",
+        "rows": 8201.0,
+        "positives": 7.0,
+        "auc_within_subset": 0.9368004463196067,
+        "top500_rows_from_subset": 10.0,
+        "top500_hits_from_subset": 2.0,
+        "exploit_then_epss_top500_rows_from_subset": 142.0,
+        "exploit_then_epss_top500_hits_from_subset": 2.0
+      },
+      "seed_set_0": {
+        "definition": "test rows whose assigner had 0 KEV rows (with assigner, CVE published 2021+) before the snapshot month (asg_kev == 0)",
+        "rows": 8201,
+        "positives": 7,
+        "auc_within_subset": 0.9396683984797238,
+        "top500_rows_from_subset": 10,
+        "top500_hits_from_subset": 2,
+        "exploit_then_epss_top500_rows_from_subset": 142,
+        "exploit_then_epss_top500_hits_from_subset": 2
+      },
+      "per_seed": [
+        {
+          "definition": "test rows whose assigner had 0 KEV rows (with assigner, CVE published 2021+) before the snapshot month (asg_kev == 0)",
+          "rows": 8201,
+          "positives": 7,
+          "auc_within_subset": 0.9396683984797238,
+          "top500_rows_from_subset": 10,
+          "top500_hits_from_subset": 2,
+          "exploit_then_epss_top500_rows_from_subset": 142,
+          "exploit_then_epss_top500_hits_from_subset": 2
+        },
+        {
+          "definition": "test rows whose assigner had 0 KEV rows (with assigner, CVE published 2021+) before the snapshot month (asg_kev == 0)",
+          "rows": 8201,
+          "positives": 7,
+          "auc_within_subset": 0.930140520938666,
+          "top500_rows_from_subset": 12,
+          "top500_hits_from_subset": 2,
+          "exploit_then_epss_top500_rows_from_subset": 142,
+          "exploit_then_epss_top500_hits_from_subset": 2
+        },
+        {
+          "definition": "test rows whose assigner had 0 KEV rows (with assigner, CVE published 2021+) before the snapshot month (asg_kev == 0)",
+          "rows": 8201,
+          "positives": 7,
+          "auc_within_subset": 0.9368004463196067,
+          "top500_rows_from_subset": 12,
+          "top500_hits_from_subset": 2,
+          "exploit_then_epss_top500_rows_from_subset": 142,
+          "exploit_then_epss_top500_hits_from_subset": 2
+        },
+        {
+          "definition": "test rows whose assigner had 0 KEV rows (with assigner, CVE published 2021+) before the snapshot month (asg_kev == 0)",
+          "rows": 8201,
+          "positives": 7,
+          "auc_within_subset": 0.9353621116496391,
+          "top500_rows_from_subset": 9,
+          "top500_hits_from_subset": 2,
+          "exploit_then_epss_top500_rows_from_subset": 142,
+          "exploit_then_epss_top500_hits_from_subset": 2
+        },
+        {
+          "definition": "test rows whose assigner had 0 KEV rows (with assigner, CVE published 2021+) before the snapshot month (asg_kev == 0)",
+          "rows": 8201,
+          "positives": 7,
+          "auc_within_subset": 0.9408016318560619,
+          "top500_rows_from_subset": 9,
+          "top500_hits_from_subset": 2,
+          "exploit_then_epss_top500_rows_from_subset": 142,
+          "exploit_then_epss_top500_hits_from_subset": 2
+        }
+      ]
     }
   },
   "permutation": {
@@ -4602,50 +4732,303 @@
   },
   "paired_bootstrap_vs_exploit_then_epss": {
     "fold1": {
-      "auc": {
-        "diff": 0.0839173493986427,
-        "ci95": [
-          -0.014963181979774207,
-          0.1814056488743325
-        ],
-        "share_resamples_diff_gt_0": 0.96,
-        "share_resamples_diff_lt_0": 0.04
+      "seed_median": {
+        "auc": {
+          "diff": 0.09207956302242115,
+          "ci95": [
+            -0.003362561998443969,
+            0.18914242991578106
+          ],
+          "share_resamples_diff_gt_0": 0.971,
+          "share_resamples_diff_lt_0": 0.029
+        },
+        "top500_expected": {
+          "diff": 3.6419753086419746,
+          "ci95": [
+            -3.3008698453608236,
+            10.424188311688306
+          ],
+          "share_resamples_diff_gt_0": 0.822,
+          "share_resamples_diff_lt_0": 0.153
+        }
       },
-      "top500_expected": {
-        "diff": -0.3580246913580254,
-        "ci95": [
-          -8.086176284083702,
-          6.0
-        ],
-        "share_resamples_diff_gt_0": 0.3235,
-        "share_resamples_diff_lt_0": 0.634
-      }
+      "seed_set_0": {
+        "auc": {
+          "diff": 0.0839173493986427,
+          "ci95": [
+            -0.014963181979774207,
+            0.1814056488743325
+          ],
+          "share_resamples_diff_gt_0": 0.96,
+          "share_resamples_diff_lt_0": 0.04
+        },
+        "top500_expected": {
+          "diff": -0.3580246913580254,
+          "ci95": [
+            -8.086176284083702,
+            6.0
+          ],
+          "share_resamples_diff_gt_0": 0.3235,
+          "share_resamples_diff_lt_0": 0.634
+        }
+      },
+      "per_seed": [
+        {
+          "auc": {
+            "diff": 0.0839173493986427,
+            "ci95": [
+              -0.014963181979774207,
+              0.1814056488743325
+            ],
+            "share_resamples_diff_gt_0": 0.96,
+            "share_resamples_diff_lt_0": 0.04
+          },
+          "top500_expected": {
+            "diff": -0.3580246913580254,
+            "ci95": [
+              -8.086176284083702,
+              6.0
+            ],
+            "share_resamples_diff_gt_0": 0.3235,
+            "share_resamples_diff_lt_0": 0.634
+          }
+        },
+        {
+          "auc": {
+            "diff": 0.1166764745700537,
+            "ci95": [
+              0.03145640456972924,
+              0.2040302479185187
+            ],
+            "share_resamples_diff_gt_0": 0.9945,
+            "share_resamples_diff_lt_0": 0.0055
+          },
+          "top500_expected": {
+            "diff": 3.6419753086419746,
+            "ci95": [
+              -3.3008698453608236,
+              11.0
+            ],
+            "share_resamples_diff_gt_0": 0.822,
+            "share_resamples_diff_lt_0": 0.153
+          }
+        },
+        {
+          "auc": {
+            "diff": 0.1037578827156721,
+            "ci95": [
+              0.019502515831444685,
+              0.19416088522264388
+            ],
+            "share_resamples_diff_gt_0": 0.9885,
+            "share_resamples_diff_lt_0": 0.0115
+          },
+          "top500_expected": {
+            "diff": 3.6419753086419746,
+            "ci95": [
+              -2.4584134615384605,
+              10.443650337004765
+            ],
+            "share_resamples_diff_gt_0": 0.8535,
+            "share_resamples_diff_lt_0": 0.119
+          }
+        },
+        {
+          "auc": {
+            "diff": 0.09207956302242115,
+            "ci95": [
+              -0.003362561998443969,
+              0.18914242991578106
+            ],
+            "share_resamples_diff_gt_0": 0.971,
+            "share_resamples_diff_lt_0": 0.029
+          },
+          "top500_expected": {
+            "diff": 3.6419753086419746,
+            "ci95": [
+              -2.47589899937461,
+              10.424188311688306
+            ],
+            "share_resamples_diff_gt_0": 0.8515,
+            "share_resamples_diff_lt_0": 0.1245
+          }
+        },
+        {
+          "auc": {
+            "diff": 0.08244261557677035,
+            "ci95": [
+              -0.007298057172913888,
+              0.17445920982782667
+            ],
+            "share_resamples_diff_gt_0": 0.966,
+            "share_resamples_diff_lt_0": 0.034
+          },
+          "top500_expected": {
+            "diff": -3.3580246913580254,
+            "ci95": [
+              -8.323098591549295,
+              3.3242722265932243
+            ],
+            "share_resamples_diff_gt_0": 0.172,
+            "share_resamples_diff_lt_0": 0.782
+          }
+        }
+      ]
     },
     "fold2": {
-      "auc": {
-        "diff": 0.08228787229483592,
-        "ci95": [
-          -0.02707690586209237,
-          0.19972759875751703
-        ],
-        "share_resamples_diff_gt_0": 0.9235,
-        "share_resamples_diff_lt_0": 0.0765
+      "seed_median": {
+        "auc": {
+          "diff": 0.07076012427683709,
+          "ci95": [
+            -0.04010306979372945,
+            0.18118208516599457
+          ],
+          "share_resamples_diff_gt_0": 0.888,
+          "share_resamples_diff_lt_0": 0.112
+        },
+        "top500_expected": {
+          "diff": -3.5999999999999996,
+          "ci95": [
+            -9.0,
+            0.0166666666665757
+          ],
+          "share_resamples_diff_gt_0": 0.025,
+          "share_resamples_diff_lt_0": 0.933
+        }
       },
-      "top500_expected": {
-        "diff": -3.5999999999999996,
-        "ci95": [
-          -8.83392857142857,
-          1.0
-        ],
-        "share_resamples_diff_gt_0": 0.047,
-        "share_resamples_diff_lt_0": 0.8985
-      }
+      "seed_set_0": {
+        "auc": {
+          "diff": 0.08228787229483592,
+          "ci95": [
+            -0.02707690586209237,
+            0.19972759875751703
+          ],
+          "share_resamples_diff_gt_0": 0.9235,
+          "share_resamples_diff_lt_0": 0.0765
+        },
+        "top500_expected": {
+          "diff": -3.5999999999999996,
+          "ci95": [
+            -8.83392857142857,
+            1.0
+          ],
+          "share_resamples_diff_gt_0": 0.047,
+          "share_resamples_diff_lt_0": 0.8985
+        }
+      },
+      "per_seed": [
+        {
+          "auc": {
+            "diff": 0.08228787229483592,
+            "ci95": [
+              -0.02707690586209237,
+              0.19972759875751703
+            ],
+            "share_resamples_diff_gt_0": 0.9235,
+            "share_resamples_diff_lt_0": 0.0765
+          },
+          "top500_expected": {
+            "diff": -3.5999999999999996,
+            "ci95": [
+              -8.83392857142857,
+              1.0
+            ],
+            "share_resamples_diff_gt_0": 0.047,
+            "share_resamples_diff_lt_0": 0.8985
+          }
+        },
+        {
+          "auc": {
+            "diff": 0.053957306620955325,
+            "ci95": [
+              -0.04860866423024115,
+              0.1665578424269705
+            ],
+            "share_resamples_diff_gt_0": 0.837,
+            "share_resamples_diff_lt_0": 0.163
+          },
+          "top500_expected": {
+            "diff": -3.5999999999999996,
+            "ci95": [
+              -9.0,
+              0.0
+            ],
+            "share_resamples_diff_gt_0": 0.0205,
+            "share_resamples_diff_lt_0": 0.947
+          }
+        },
+        {
+          "auc": {
+            "diff": 0.07088801692736213,
+            "ci95": [
+              -0.0332642189253187,
+              0.18118208516599457
+            ],
+            "share_resamples_diff_gt_0": 0.9025,
+            "share_resamples_diff_lt_0": 0.0975
+          },
+          "top500_expected": {
+            "diff": -3.5999999999999996,
+            "ci95": [
+              -9.0,
+              0.0166666666665757
+            ],
+            "share_resamples_diff_gt_0": 0.025,
+            "share_resamples_diff_lt_0": 0.933
+          }
+        },
+        {
+          "auc": {
+            "diff": 0.045361715234625954,
+            "ci95": [
+              -0.05428693640611386,
+              0.15934880009438906
+            ],
+            "share_resamples_diff_gt_0": 0.7915,
+            "share_resamples_diff_lt_0": 0.2085
+          },
+          "top500_expected": {
+            "diff": -2.5999999999999996,
+            "ci95": [
+              -7.0,
+              1.0
+            ],
+            "share_resamples_diff_gt_0": 0.052,
+            "share_resamples_diff_lt_0": 0.868
+          }
+        },
+        {
+          "auc": {
+            "diff": 0.07076012427683709,
+            "ci95": [
+              -0.04010306979372945,
+              0.19151824765090453
+            ],
+            "share_resamples_diff_gt_0": 0.888,
+            "share_resamples_diff_lt_0": 0.112
+          },
+          "top500_expected": {
+            "diff": -3.5999999999999996,
+            "ci95": [
+              -9.0,
+              0.0
+            ],
+            "share_resamples_diff_gt_0": 0.02,
+            "share_resamples_diff_lt_0": 0.95
+          }
+        }
+      ]
     }
+  },
+  "deviations": {
+    "D1": "Deviation D1: the 24-month window counts only KEV additions whose CVE was published 2021 or later (assigner is joined from vulnerabilities.csv rows published 2021+, as in the harness all-history feature); older KEV CVEs added inside the window are not counted. Did not affect the selection (C1 uses the all-history feature)."
   },
   "notes": {
     "seed_sets": "seed set s: text OOF folds seed s, HGB random_state s (single fit, early_stopping=False). Baselines are deterministic (one 'seed').",
     "ci95_seed0": "percentile bootstrap, 2000 resamples, seed 0, on the seed-set-0 scores; same resamples for every model in a fold",
-    "paired_bootstrap": "selected model seed set 0 minus exploit-then-EPSS; same resamples for both",
+    "paired_bootstrap": "selected model minus exploit-then-EPSS, run once per seed set (same resamples for every run); seed_median is the element-wise median over the 5 runs (each number its own median), seed_set_0 kept for reference",
+    "unseen_assigner": "computed per seed set; seed_median is the element-wise median, seed_set_0 kept for reference",
+    "permutation": "model seed set 0 for every shuffle",
     "c3": "StandardScaler + sklearn LogisticRegression defaults (L2, C=1.0, no class weight), max_iter=5000; epss_f replaced by epss0 (blank=0) + epss_missing",
     "asg24": "KEV rows (CVE published 2021+, as in the all-history feature) added in [month start - 24 months, month start); rate = count / (CVEs published in the same window + 20); assigners with KEV rows but no CVE published in the window get count / 20",
     "plus_structured": "cvss3 score (blank 0 + indicator), one-hot of the 8 CVSS vector fields and top-40 first CWE, vocabularies fitted on train rows only",

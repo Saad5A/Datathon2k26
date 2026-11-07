@@ -1,0 +1,475 @@
+{
+  "rule": "k in {none, 100, 50}; highest mean over the two folds of the seed-median expected top-500 hits; within 1 hit of the best, choose the strictest cap",
+  "model": "C1",
+  "folds": {
+    "fold1": {
+      "test_months": "2025-01..2025-09",
+      "test_positives": 52,
+      "caps": {
+        "none": {
+          "seed_median": {
+            "top500_cve_id": 22.0,
+            "top500_expected": 22.0,
+            "largest_assigner_share": 0.24,
+            "n_assigners": 62.0
+          },
+          "seed_min": {
+            "top500_cve_id": 15,
+            "top500_expected": 15.0,
+            "largest_assigner_share": 0.206,
+            "n_assigners": 57
+          },
+          "seed_max": {
+            "top500_cve_id": 22,
+            "top500_expected": 22.0,
+            "largest_assigner_share": 0.298,
+            "n_assigners": 64
+          },
+          "per_seed": [
+            {
+              "top500_cve_id": 18,
+              "top500_expected": 18.0,
+              "largest_assigner": "disclosure@vulncheck.com",
+              "largest_assigner_share": 0.238,
+              "n_assigners": 64
+            },
+            {
+              "top500_cve_id": 22,
+              "top500_expected": 22.0,
+              "largest_assigner": "disclosure@vulncheck.com",
+              "largest_assigner_share": 0.298,
+              "n_assigners": 57
+            },
+            {
+              "top500_cve_id": 22,
+              "top500_expected": 22.0,
+              "largest_assigner": "disclosure@vulncheck.com",
+              "largest_assigner_share": 0.206,
+              "n_assigners": 63
+            },
+            {
+              "top500_cve_id": 22,
+              "top500_expected": 22.0,
+              "largest_assigner": "disclosure@vulncheck.com",
+              "largest_assigner_share": 0.24,
+              "n_assigners": 62
+            },
+            {
+              "top500_cve_id": 15,
+              "top500_expected": 15.0,
+              "largest_assigner": "disclosure@vulncheck.com",
+              "largest_assigner_share": 0.264,
+              "n_assigners": 59
+            }
+          ]
+        },
+        "100": {
+          "seed_median": {
+            "top500_cve_id": 20.0,
+            "top500_expected": 20.0,
+            "largest_assigner_share": 0.2,
+            "n_assigners": 62.0
+          },
+          "seed_min": {
+            "top500_cve_id": 17,
+            "top500_expected": 17.0,
+            "largest_assigner_share": 0.2,
+            "n_assigners": 59
+          },
+          "seed_max": {
+            "top500_cve_id": 22,
+            "top500_expected": 22.0,
+            "largest_assigner_share": 0.2,
+            "n_assigners": 64
+          },
+          "per_seed": [
+            {
+              "top500_cve_id": 18,
+              "top500_expected": 18.0,
+              "largest_assigner": "disclosure@vulncheck.com",
+              "largest_assigner_share": 0.2,
+              "n_assigners": 64
+            },
+            {
+              "top500_cve_id": 21,
+              "top500_expected": 21.0,
+              "largest_assigner": "disclosure@vulncheck.com",
+              "largest_assigner_share": 0.2,
+              "n_assigners": 59
+            },
+            {
+              "top500_cve_id": 22,
+              "top500_expected": 22.0,
+              "largest_assigner": "disclosure@vulncheck.com",
+              "largest_assigner_share": 0.2,
+              "n_assigners": 63
+            },
+            {
+              "top500_cve_id": 20,
+              "top500_expected": 20.0,
+              "largest_assigner": "disclosure@vulncheck.com",
+              "largest_assigner_share": 0.2,
+              "n_assigners": 62
+            },
+            {
+              "top500_cve_id": 17,
+              "top500_expected": 17.0,
+              "largest_assigner": "disclosure@vulncheck.com",
+              "largest_assigner_share": 0.2,
+              "n_assigners": 61
+            }
+          ]
+        },
+        "50": {
+          "seed_median": {
+            "top500_cve_id": 20.0,
+            "top500_expected": 20.0,
+            "largest_assigner_share": 0.1,
+            "n_assigners": 66.0
+          },
+          "seed_min": {
+            "top500_cve_id": 19,
+            "top500_expected": 19.0,
+            "largest_assigner_share": 0.1,
+            "n_assigners": 63
+          },
+          "seed_max": {
+            "top500_cve_id": 21,
+            "top500_expected": 21.0,
+            "largest_assigner_share": 0.1,
+            "n_assigners": 70
+          },
+          "per_seed": [
+            {
+              "top500_cve_id": 19,
+              "top500_expected": 19.0,
+              "largest_assigner": "disclosure@vulncheck.com",
+              "largest_assigner_share": 0.1,
+              "n_assigners": 67
+            },
+            {
+              "top500_cve_id": 21,
+              "top500_expected": 21.0,
+              "largest_assigner": "disclosure@vulncheck.com",
+              "largest_assigner_share": 0.1,
+              "n_assigners": 63
+            },
+            {
+              "top500_cve_id": 21,
+              "top500_expected": 21.0,
+              "largest_assigner": "disclosure@vulncheck.com",
+              "largest_assigner_share": 0.1,
+              "n_assigners": 65
+            },
+            {
+              "top500_cve_id": 20,
+              "top500_expected": 20.0,
+              "largest_assigner": "disclosure@vulncheck.com",
+              "largest_assigner_share": 0.1,
+              "n_assigners": 70
+            },
+            {
+              "top500_cve_id": 20,
+              "top500_expected": 20.0,
+              "largest_assigner": "disclosure@vulncheck.com",
+              "largest_assigner_share": 0.1,
+              "n_assigners": 66
+            }
+          ]
+        }
+      }
+    },
+    "fold2": {
+      "test_months": "2025-04..2025-09",
+      "test_positives": 32,
+      "caps": {
+        "none": {
+          "seed_median": {
+            "top500_cve_id": 11.0,
+            "top500_expected": 11.0,
+            "largest_assigner_share": 0.254,
+            "n_assigners": 50.0
+          },
+          "seed_min": {
+            "top500_cve_id": 11,
+            "top500_expected": 11.0,
+            "largest_assigner_share": 0.19,
+            "n_assigners": 48
+          },
+          "seed_max": {
+            "top500_cve_id": 12,
+            "top500_expected": 12.0,
+            "largest_assigner_share": 0.334,
+            "n_assigners": 55
+          },
+          "per_seed": [
+            {
+              "top500_cve_id": 11,
+              "top500_expected": 11.0,
+              "largest_assigner": "disclosure@vulncheck.com",
+              "largest_assigner_share": 0.334,
+              "n_assigners": 50
+            },
+            {
+              "top500_cve_id": 11,
+              "top500_expected": 11.0,
+              "largest_assigner": "disclosure@vulncheck.com",
+              "largest_assigner_share": 0.332,
+              "n_assigners": 52
+            },
+            {
+              "top500_cve_id": 11,
+              "top500_expected": 11.0,
+              "largest_assigner": "disclosure@vulncheck.com",
+              "largest_assigner_share": 0.254,
+              "n_assigners": 49
+            },
+            {
+              "top500_cve_id": 12,
+              "top500_expected": 12.0,
+              "largest_assigner": "disclosure@vulncheck.com",
+              "largest_assigner_share": 0.19,
+              "n_assigners": 55
+            },
+            {
+              "top500_cve_id": 11,
+              "top500_expected": 11.0,
+              "largest_assigner": "disclosure@vulncheck.com",
+              "largest_assigner_share": 0.238,
+              "n_assigners": 48
+            }
+          ]
+        },
+        "100": {
+          "seed_median": {
+            "top500_cve_id": 11.0,
+            "top500_expected": 11.0,
+            "largest_assigner_share": 0.2,
+            "n_assigners": 51.0
+          },
+          "seed_min": {
+            "top500_cve_id": 11,
+            "top500_expected": 11.0,
+            "largest_assigner_share": 0.19,
+            "n_assigners": 49
+          },
+          "seed_max": {
+            "top500_cve_id": 12,
+            "top500_expected": 12.0,
+            "largest_assigner_share": 0.2,
+            "n_assigners": 55
+          },
+          "per_seed": [
+            {
+              "top500_cve_id": 12,
+              "top500_expected": 12.0,
+              "largest_assigner": "disclosure@vulncheck.com",
+              "largest_assigner_share": 0.2,
+              "n_assigners": 51
+            },
+            {
+              "top500_cve_id": 11,
+              "top500_expected": 11.0,
+              "largest_assigner": "disclosure@vulncheck.com",
+              "largest_assigner_share": 0.2,
+              "n_assigners": 54
+            },
+            {
+              "top500_cve_id": 11,
+              "top500_expected": 11.0,
+              "largest_assigner": "disclosure@vulncheck.com",
+              "largest_assigner_share": 0.2,
+              "n_assigners": 51
+            },
+            {
+              "top500_cve_id": 12,
+              "top500_expected": 12.0,
+              "largest_assigner": "disclosure@vulncheck.com",
+              "largest_assigner_share": 0.19,
+              "n_assigners": 55
+            },
+            {
+              "top500_cve_id": 11,
+              "top500_expected": 11.0,
+              "largest_assigner": "disclosure@vulncheck.com",
+              "largest_assigner_share": 0.2,
+              "n_assigners": 49
+            }
+          ]
+        },
+        "50": {
+          "seed_median": {
+            "top500_cve_id": 12.0,
+            "top500_expected": 12.0,
+            "largest_assigner_share": 0.1,
+            "n_assigners": 58.0
+          },
+          "seed_min": {
+            "top500_cve_id": 11,
+            "top500_expected": 11.0,
+            "largest_assigner_share": 0.1,
+            "n_assigners": 54
+          },
+          "seed_max": {
+            "top500_cve_id": 13,
+            "top500_expected": 13.0,
+            "largest_assigner_share": 0.1,
+            "n_assigners": 61
+          },
+          "per_seed": [
+            {
+              "top500_cve_id": 13,
+              "top500_expected": 13.0,
+              "largest_assigner": "disclosure@vulncheck.com",
+              "largest_assigner_share": 0.1,
+              "n_assigners": 54
+            },
+            {
+              "top500_cve_id": 12,
+              "top500_expected": 12.0,
+              "largest_assigner": "disclosure@vulncheck.com",
+              "largest_assigner_share": 0.1,
+              "n_assigners": 57
+            },
+            {
+              "top500_cve_id": 11,
+              "top500_expected": 11.0,
+              "largest_assigner": "disclosure@vulncheck.com",
+              "largest_assigner_share": 0.1,
+              "n_assigners": 59
+            },
+            {
+              "top500_cve_id": 12,
+              "top500_expected": 12.0,
+              "largest_assigner": "disclosure@vulncheck.com",
+              "largest_assigner_share": 0.1,
+              "n_assigners": 61
+            },
+            {
+              "top500_cve_id": 12,
+              "top500_expected": 12.0,
+              "largest_assigner": "disclosure@vulncheck.com",
+              "largest_assigner_share": 0.1,
+              "n_assigners": 58
+            }
+          ]
+        }
+      }
+    }
+  },
+  "selection": {
+    "mean_expected_top500_over_folds": {
+      "none": 16.5,
+      "100": 15.5,
+      "50": 16.0
+    },
+    "best": 16.5,
+    "eligible_within_1_hit": [
+      "50",
+      "100",
+      "none"
+    ],
+    "chosen": "50"
+  },
+  "preview_2026": {
+    "note": "C1 refitted on all labelled pool rows 2024-01..2025-09 (labels: KEV to 2025-12-31), scored on scoreboard_2026.csv (signals from that file, assigner history as of each snapshot_month from KEV rows dated before it, description masked). Shares only; no scores or top-500 file written. Ties by cve_id. Not an accuracy claim.",
+    "rows_scored": 72670,
+    "train_rows": 75148,
+    "train_positives": 117,
+    "caps": {
+      "none": {
+        "largest_assigner_share_seed_median": 0.158,
+        "largest_assigner_share_per_seed": [
+          0.13,
+          0.17,
+          0.19,
+          0.134,
+          0.158
+        ],
+        "largest_assigner_per_seed": [
+          "disclosure@vulncheck.com",
+          "disclosure@vulncheck.com",
+          "disclosure@vulncheck.com",
+          "disclosure@vulncheck.com",
+          "disclosure@vulncheck.com"
+        ],
+        "n_assigners_per_seed": [
+          77,
+          101,
+          91,
+          87,
+          79
+        ],
+        "top5_assigner_shares_seed_set_0": {
+          "disclosure@vulncheck.com": 0.13,
+          "secalert_us@oracle.com": 0.118,
+          "security@apache.org": 0.114,
+          "cve@mitre.org": 0.07,
+          "psirt@adobe.com": 0.056
+        }
+      },
+      "100": {
+        "largest_assigner_share_seed_median": 0.158,
+        "largest_assigner_share_per_seed": [
+          0.13,
+          0.17,
+          0.19,
+          0.134,
+          0.158
+        ],
+        "largest_assigner_per_seed": [
+          "disclosure@vulncheck.com",
+          "disclosure@vulncheck.com",
+          "disclosure@vulncheck.com",
+          "disclosure@vulncheck.com",
+          "disclosure@vulncheck.com"
+        ],
+        "n_assigners_per_seed": [
+          77,
+          101,
+          91,
+          87,
+          79
+        ],
+        "top5_assigner_shares_seed_set_0": {
+          "disclosure@vulncheck.com": 0.13,
+          "secalert_us@oracle.com": 0.118,
+          "security@apache.org": 0.114,
+          "cve@mitre.org": 0.07,
+          "psirt@adobe.com": 0.056
+        }
+      },
+      "50": {
+        "largest_assigner_share_seed_median": 0.1,
+        "largest_assigner_share_per_seed": [
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1
+        ],
+        "largest_assigner_per_seed": [
+          "disclosure@vulncheck.com",
+          "disclosure@vulncheck.com",
+          "disclosure@vulncheck.com",
+          "disclosure@vulncheck.com",
+          "disclosure@vulncheck.com"
+        ],
+        "n_assigners_per_seed": [
+          84,
+          105,
+          99,
+          87,
+          83
+        ],
+        "top5_assigner_shares_seed_set_0": {
+          "disclosure@vulncheck.com": 0.1,
+          "security@apache.org": 0.1,
+          "secalert_us@oracle.com": 0.1,
+          "cve@mitre.org": 0.078,
+          "security-advisories@github.com": 0.064
+        }
+      }
+    }
+  }
+}
