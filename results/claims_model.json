@@ -3227,8 +3227,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.train_positives": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09): train positives",
@@ -3236,8 +3236,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.test_rows": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09): test rows",
@@ -3245,8 +3245,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.test_positives": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09): test positives",
@@ -3254,8 +3254,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.exploit_then_epss.top500_cve_id.median": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline exploit_then_epss: top500_cve_id, median over seed sets",
@@ -3263,8 +3263,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.exploit_then_epss.top500_expected.median": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline exploit_then_epss: top500_expected, median over seed sets",
@@ -3272,8 +3272,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.exploit_then_epss.top500_best.median": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline exploit_then_epss: top500_best, median over seed sets",
@@ -3281,8 +3281,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.exploit_then_epss.top500_worst.median": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline exploit_then_epss: top500_worst, median over seed sets",
@@ -3290,8 +3290,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.exploit_then_epss.top250_cve_id.median": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline exploit_then_epss: top250_cve_id, median over seed sets",
@@ -3299,8 +3299,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.exploit_then_epss.auc.median": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline exploit_then_epss: auc, median over seed sets",
@@ -3308,8 +3308,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.exploit_then_epss.avg_precision.median": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline exploit_then_epss: avg_precision, median over seed sets",
@@ -3317,8 +3317,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.exploit_then_epss.median_rank_cve_id.median": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline exploit_then_epss: median_rank_cve_id, median over seed sets",
@@ -3326,8 +3326,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.exploit_then_epss.work50_cve_id.median": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline exploit_then_epss: work50_cve_id, median over seed sets",
@@ -3335,8 +3335,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.exploit_then_epss.top500_cve_id.min": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline exploit_then_epss: top500_cve_id, lowest seed set",
@@ -3344,8 +3344,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.exploit_then_epss.top500_cve_id.max": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline exploit_then_epss: top500_cve_id, highest seed set",
@@ -3353,8 +3353,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.exploit_then_epss.auc.min": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline exploit_then_epss: auc, lowest seed set",
@@ -3362,8 +3362,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.exploit_then_epss.auc.max": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline exploit_then_epss: auc, highest seed set",
@@ -3371,8 +3371,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.exploit_then_epss.ci95_lo.top500_expected": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline exploit_then_epss: bootstrap 95% CI lower bound, top500_expected (seed set 0)",
@@ -3380,8 +3380,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.exploit_then_epss.ci95_hi.top500_expected": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline exploit_then_epss: bootstrap 95% CI upper bound, top500_expected (seed set 0)",
@@ -3389,8 +3389,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.exploit_then_epss.ci95_lo.top250_expected": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline exploit_then_epss: bootstrap 95% CI lower bound, top250_expected (seed set 0)",
@@ -3398,8 +3398,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.exploit_then_epss.ci95_hi.top250_expected": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline exploit_then_epss: bootstrap 95% CI upper bound, top250_expected (seed set 0)",
@@ -3407,8 +3407,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.exploit_then_epss.ci95_lo.auc": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline exploit_then_epss: bootstrap 95% CI lower bound, auc (seed set 0)",
@@ -3416,8 +3416,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.exploit_then_epss.ci95_hi.auc": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline exploit_then_epss: bootstrap 95% CI upper bound, auc (seed set 0)",
@@ -3425,8 +3425,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.exploit_then_epss.ci95_lo.avg_precision": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline exploit_then_epss: bootstrap 95% CI lower bound, avg_precision (seed set 0)",
@@ -3434,8 +3434,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.exploit_then_epss.ci95_hi.avg_precision": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline exploit_then_epss: bootstrap 95% CI upper bound, avg_precision (seed set 0)",
@@ -3443,8 +3443,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.exploit_then_epss.ci95_lo.median_rank_mid": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline exploit_then_epss: bootstrap 95% CI lower bound, median_rank_mid (seed set 0)",
@@ -3452,8 +3452,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.exploit_then_epss.ci95_hi.median_rank_mid": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline exploit_then_epss: bootstrap 95% CI upper bound, median_rank_mid (seed set 0)",
@@ -3461,8 +3461,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.exploit_then_epss.ci95_lo.work50_mid": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline exploit_then_epss: bootstrap 95% CI lower bound, work50_mid (seed set 0)",
@@ -3470,8 +3470,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.exploit_then_epss.ci95_hi.work50_mid": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline exploit_then_epss: bootstrap 95% CI upper bound, work50_mid (seed set 0)",
@@ -3479,8 +3479,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.epss.top500_cve_id.median": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline epss: top500_cve_id, median over seed sets",
@@ -3488,8 +3488,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.epss.top500_expected.median": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline epss: top500_expected, median over seed sets",
@@ -3497,8 +3497,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.epss.top500_best.median": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline epss: top500_best, median over seed sets",
@@ -3506,8 +3506,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.epss.top500_worst.median": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline epss: top500_worst, median over seed sets",
@@ -3515,8 +3515,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.epss.top250_cve_id.median": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline epss: top250_cve_id, median over seed sets",
@@ -3524,8 +3524,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.epss.auc.median": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline epss: auc, median over seed sets",
@@ -3533,8 +3533,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.epss.avg_precision.median": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline epss: avg_precision, median over seed sets",
@@ -3542,8 +3542,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.epss.median_rank_cve_id.median": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline epss: median_rank_cve_id, median over seed sets",
@@ -3551,8 +3551,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.epss.work50_cve_id.median": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline epss: work50_cve_id, median over seed sets",
@@ -3560,8 +3560,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.epss.top500_cve_id.min": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline epss: top500_cve_id, lowest seed set",
@@ -3569,8 +3569,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.epss.top500_cve_id.max": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline epss: top500_cve_id, highest seed set",
@@ -3578,8 +3578,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.epss.auc.min": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline epss: auc, lowest seed set",
@@ -3587,8 +3587,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.epss.auc.max": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline epss: auc, highest seed set",
@@ -3596,8 +3596,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.epss.ci95_lo.top500_expected": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline epss: bootstrap 95% CI lower bound, top500_expected (seed set 0)",
@@ -3605,8 +3605,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.epss.ci95_hi.top500_expected": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline epss: bootstrap 95% CI upper bound, top500_expected (seed set 0)",
@@ -3614,8 +3614,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.epss.ci95_lo.top250_expected": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline epss: bootstrap 95% CI lower bound, top250_expected (seed set 0)",
@@ -3623,8 +3623,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.epss.ci95_hi.top250_expected": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline epss: bootstrap 95% CI upper bound, top250_expected (seed set 0)",
@@ -3632,8 +3632,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.epss.ci95_lo.auc": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline epss: bootstrap 95% CI lower bound, auc (seed set 0)",
@@ -3641,8 +3641,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.epss.ci95_hi.auc": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline epss: bootstrap 95% CI upper bound, auc (seed set 0)",
@@ -3650,8 +3650,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.epss.ci95_lo.avg_precision": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline epss: bootstrap 95% CI lower bound, avg_precision (seed set 0)",
@@ -3659,8 +3659,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.epss.ci95_hi.avg_precision": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline epss: bootstrap 95% CI upper bound, avg_precision (seed set 0)",
@@ -3668,8 +3668,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.epss.ci95_lo.median_rank_mid": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline epss: bootstrap 95% CI lower bound, median_rank_mid (seed set 0)",
@@ -3677,8 +3677,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.epss.ci95_hi.median_rank_mid": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline epss: bootstrap 95% CI upper bound, median_rank_mid (seed set 0)",
@@ -3686,8 +3686,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.epss.ci95_lo.work50_mid": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline epss: bootstrap 95% CI lower bound, work50_mid (seed set 0)",
@@ -3695,8 +3695,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.epss.ci95_hi.work50_mid": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline epss: bootstrap 95% CI upper bound, work50_mid (seed set 0)",
@@ -3704,8 +3704,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.cvss3.top500_cve_id.median": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline cvss3: top500_cve_id, median over seed sets",
@@ -3713,8 +3713,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.cvss3.top500_expected.median": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline cvss3: top500_expected, median over seed sets",
@@ -3722,8 +3722,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.cvss3.top500_best.median": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline cvss3: top500_best, median over seed sets",
@@ -3731,8 +3731,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.cvss3.top500_worst.median": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline cvss3: top500_worst, median over seed sets",
@@ -3740,8 +3740,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.cvss3.top250_cve_id.median": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline cvss3: top250_cve_id, median over seed sets",
@@ -3749,8 +3749,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.cvss3.auc.median": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline cvss3: auc, median over seed sets",
@@ -3758,8 +3758,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.cvss3.avg_precision.median": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline cvss3: avg_precision, median over seed sets",
@@ -3767,8 +3767,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.cvss3.median_rank_cve_id.median": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline cvss3: median_rank_cve_id, median over seed sets",
@@ -3776,8 +3776,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.cvss3.work50_cve_id.median": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline cvss3: work50_cve_id, median over seed sets",
@@ -3785,8 +3785,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.cvss3.top500_cve_id.min": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline cvss3: top500_cve_id, lowest seed set",
@@ -3794,8 +3794,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.cvss3.top500_cve_id.max": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline cvss3: top500_cve_id, highest seed set",
@@ -3803,8 +3803,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.cvss3.auc.min": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline cvss3: auc, lowest seed set",
@@ -3812,8 +3812,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.cvss3.auc.max": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline cvss3: auc, highest seed set",
@@ -3821,8 +3821,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.cvss3.ci95_lo.top500_expected": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline cvss3: bootstrap 95% CI lower bound, top500_expected (seed set 0)",
@@ -3830,8 +3830,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.cvss3.ci95_hi.top500_expected": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline cvss3: bootstrap 95% CI upper bound, top500_expected (seed set 0)",
@@ -3839,8 +3839,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.cvss3.ci95_lo.top250_expected": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline cvss3: bootstrap 95% CI lower bound, top250_expected (seed set 0)",
@@ -3848,8 +3848,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.cvss3.ci95_hi.top250_expected": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline cvss3: bootstrap 95% CI upper bound, top250_expected (seed set 0)",
@@ -3857,8 +3857,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.cvss3.ci95_lo.auc": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline cvss3: bootstrap 95% CI lower bound, auc (seed set 0)",
@@ -3866,8 +3866,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.cvss3.ci95_hi.auc": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline cvss3: bootstrap 95% CI upper bound, auc (seed set 0)",
@@ -3875,8 +3875,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.cvss3.ci95_lo.avg_precision": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline cvss3: bootstrap 95% CI lower bound, avg_precision (seed set 0)",
@@ -3884,8 +3884,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.cvss3.ci95_hi.avg_precision": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline cvss3: bootstrap 95% CI upper bound, avg_precision (seed set 0)",
@@ -3893,8 +3893,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.cvss3.ci95_lo.median_rank_mid": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline cvss3: bootstrap 95% CI lower bound, median_rank_mid (seed set 0)",
@@ -3902,8 +3902,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.cvss3.ci95_hi.median_rank_mid": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline cvss3: bootstrap 95% CI upper bound, median_rank_mid (seed set 0)",
@@ -3911,8 +3911,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.cvss3.ci95_lo.work50_mid": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline cvss3: bootstrap 95% CI lower bound, work50_mid (seed set 0)",
@@ -3920,8 +3920,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.cvss3.ci95_hi.work50_mid": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), baseline cvss3: bootstrap 95% CI upper bound, work50_mid (seed set 0)",
@@ -3929,8 +3929,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C1.top500_cve_id.median": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C1: top500_cve_id, median over seed sets",
@@ -3938,8 +3938,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C1.top500_expected.median": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C1: top500_expected, median over seed sets",
@@ -3947,8 +3947,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C1.top500_best.median": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C1: top500_best, median over seed sets",
@@ -3956,8 +3956,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C1.top500_worst.median": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C1: top500_worst, median over seed sets",
@@ -3965,8 +3965,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C1.top250_cve_id.median": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C1: top250_cve_id, median over seed sets",
@@ -3974,8 +3974,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C1.auc.median": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C1: auc, median over seed sets",
@@ -3983,8 +3983,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C1.avg_precision.median": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C1: avg_precision, median over seed sets",
@@ -3992,8 +3992,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C1.median_rank_cve_id.median": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C1: median_rank_cve_id, median over seed sets",
@@ -4001,8 +4001,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C1.work50_cve_id.median": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C1: work50_cve_id, median over seed sets",
@@ -4010,8 +4010,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C1.top500_cve_id.min": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C1: top500_cve_id, lowest seed set",
@@ -4019,8 +4019,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C1.top500_cve_id.max": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C1: top500_cve_id, highest seed set",
@@ -4028,8 +4028,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C1.auc.min": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C1: auc, lowest seed set",
@@ -4037,8 +4037,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C1.auc.max": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C1: auc, highest seed set",
@@ -4046,8 +4046,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C1.ci95_lo.top500_expected": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C1: bootstrap 95% CI lower bound, top500_expected (seed set 0)",
@@ -4055,8 +4055,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C1.ci95_hi.top500_expected": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C1: bootstrap 95% CI upper bound, top500_expected (seed set 0)",
@@ -4064,8 +4064,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C1.ci95_lo.top250_expected": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C1: bootstrap 95% CI lower bound, top250_expected (seed set 0)",
@@ -4073,8 +4073,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C1.ci95_hi.top250_expected": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C1: bootstrap 95% CI upper bound, top250_expected (seed set 0)",
@@ -4082,8 +4082,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C1.ci95_lo.auc": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C1: bootstrap 95% CI lower bound, auc (seed set 0)",
@@ -4091,8 +4091,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C1.ci95_hi.auc": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C1: bootstrap 95% CI upper bound, auc (seed set 0)",
@@ -4100,8 +4100,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C1.ci95_lo.avg_precision": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C1: bootstrap 95% CI lower bound, avg_precision (seed set 0)",
@@ -4109,8 +4109,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C1.ci95_hi.avg_precision": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C1: bootstrap 95% CI upper bound, avg_precision (seed set 0)",
@@ -4118,8 +4118,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C1.ci95_lo.median_rank_mid": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C1: bootstrap 95% CI lower bound, median_rank_mid (seed set 0)",
@@ -4127,8 +4127,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C1.ci95_hi.median_rank_mid": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C1: bootstrap 95% CI upper bound, median_rank_mid (seed set 0)",
@@ -4136,8 +4136,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C1.ci95_lo.work50_mid": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C1: bootstrap 95% CI lower bound, work50_mid (seed set 0)",
@@ -4145,8 +4145,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C1.ci95_hi.work50_mid": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C1: bootstrap 95% CI upper bound, work50_mid (seed set 0)",
@@ -4154,8 +4154,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C2.top500_cve_id.median": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C2: top500_cve_id, median over seed sets",
@@ -4163,8 +4163,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C2.top500_expected.median": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C2: top500_expected, median over seed sets",
@@ -4172,8 +4172,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C2.top500_best.median": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C2: top500_best, median over seed sets",
@@ -4208,8 +4208,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C2.avg_precision.median": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C2: avg_precision, median over seed sets",
@@ -4235,8 +4235,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C2.top500_cve_id.min": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C2: top500_cve_id, lowest seed set",
@@ -4244,8 +4244,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C2.top500_cve_id.max": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C2: top500_cve_id, highest seed set",
@@ -4253,8 +4253,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C2.auc.min": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C2: auc, lowest seed set",
@@ -4262,8 +4262,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C2.auc.max": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C2: auc, highest seed set",
@@ -4271,8 +4271,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C2.ci95_lo.top500_expected": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C2: bootstrap 95% CI lower bound, top500_expected (seed set 0)",
@@ -4280,8 +4280,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C2.ci95_hi.top500_expected": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C2: bootstrap 95% CI upper bound, top500_expected (seed set 0)",
@@ -4289,8 +4289,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C2.ci95_lo.top250_expected": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C2: bootstrap 95% CI lower bound, top250_expected (seed set 0)",
@@ -4298,8 +4298,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C2.ci95_hi.top250_expected": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C2: bootstrap 95% CI upper bound, top250_expected (seed set 0)",
@@ -4307,8 +4307,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C2.ci95_lo.auc": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C2: bootstrap 95% CI lower bound, auc (seed set 0)",
@@ -4316,8 +4316,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C2.ci95_hi.auc": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C2: bootstrap 95% CI upper bound, auc (seed set 0)",
@@ -4325,8 +4325,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C2.ci95_lo.avg_precision": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C2: bootstrap 95% CI lower bound, avg_precision (seed set 0)",
@@ -4334,8 +4334,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C2.ci95_hi.avg_precision": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C2: bootstrap 95% CI upper bound, avg_precision (seed set 0)",
@@ -4343,8 +4343,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C2.ci95_lo.median_rank_mid": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C2: bootstrap 95% CI lower bound, median_rank_mid (seed set 0)",
@@ -4352,8 +4352,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C2.ci95_hi.median_rank_mid": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C2: bootstrap 95% CI upper bound, median_rank_mid (seed set 0)",
@@ -4361,8 +4361,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C2.ci95_lo.work50_mid": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C2: bootstrap 95% CI lower bound, work50_mid (seed set 0)",
@@ -4370,8 +4370,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C2.ci95_hi.work50_mid": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C2: bootstrap 95% CI upper bound, work50_mid (seed set 0)",
@@ -4379,8 +4379,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C3.top500_cve_id.median": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C3: top500_cve_id, median over seed sets",
@@ -4388,8 +4388,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C3.top500_expected.median": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C3: top500_expected, median over seed sets",
@@ -4397,8 +4397,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C3.top500_best.median": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C3: top500_best, median over seed sets",
@@ -4433,8 +4433,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C3.avg_precision.median": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C3: avg_precision, median over seed sets",
@@ -4460,8 +4460,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C3.top500_cve_id.min": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C3: top500_cve_id, lowest seed set",
@@ -4469,8 +4469,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C3.top500_cve_id.max": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C3: top500_cve_id, highest seed set",
@@ -4478,8 +4478,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C3.auc.min": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C3: auc, lowest seed set",
@@ -4487,8 +4487,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C3.auc.max": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C3: auc, highest seed set",
@@ -4496,8 +4496,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C3.ci95_lo.top500_expected": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C3: bootstrap 95% CI lower bound, top500_expected (seed set 0)",
@@ -4505,8 +4505,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C3.ci95_hi.top500_expected": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C3: bootstrap 95% CI upper bound, top500_expected (seed set 0)",
@@ -4514,8 +4514,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C3.ci95_lo.top250_expected": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C3: bootstrap 95% CI lower bound, top250_expected (seed set 0)",
@@ -4523,8 +4523,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C3.ci95_hi.top250_expected": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C3: bootstrap 95% CI upper bound, top250_expected (seed set 0)",
@@ -4532,8 +4532,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C3.ci95_lo.auc": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C3: bootstrap 95% CI lower bound, auc (seed set 0)",
@@ -4541,8 +4541,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C3.ci95_hi.auc": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C3: bootstrap 95% CI upper bound, auc (seed set 0)",
@@ -4550,8 +4550,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C3.ci95_lo.avg_precision": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C3: bootstrap 95% CI lower bound, avg_precision (seed set 0)",
@@ -4559,8 +4559,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C3.ci95_hi.avg_precision": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C3: bootstrap 95% CI upper bound, avg_precision (seed set 0)",
@@ -4568,8 +4568,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C3.ci95_lo.median_rank_mid": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C3: bootstrap 95% CI lower bound, median_rank_mid (seed set 0)",
@@ -4577,8 +4577,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C3.ci95_hi.median_rank_mid": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C3: bootstrap 95% CI upper bound, median_rank_mid (seed set 0)",
@@ -4586,8 +4586,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C3.ci95_lo.work50_mid": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C3: bootstrap 95% CI lower bound, work50_mid (seed set 0)",
@@ -4595,8 +4595,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.C3.ci95_hi.work50_mid": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), candidate C3: bootstrap 95% CI upper bound, work50_mid (seed set 0)",
@@ -4604,8 +4604,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.drop_signals.top500_cve_id.median": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), ablation drop_signals: top500_cve_id, median over seed sets",
@@ -5963,8 +5963,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.unseen_assigner.positives": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), selected model, unseen-assigner test rows: positives",
@@ -5972,8 +5972,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.unseen_assigner.top500_rows_from_subset": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), selected model, unseen-assigner test rows: top500 rows from subset",
@@ -6008,8 +6008,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.permutation.auc_sd": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), selected model, 20 train-label shuffles: test AUC sd",
@@ -6017,8 +6017,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.permutation.auc_max": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09), selected model, 20 train-label shuffles: test AUC max",
@@ -6026,8 +6026,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold1.paired.auc.diff": {
     "text": "Phase 3 fold1 (train 2024-01..2024-12, labels to 2024-12-31; test 2025-01..2025-09): selected minus exploit-then-EPSS, auc",
@@ -6089,8 +6089,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.train_positives": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09): train positives",
@@ -6098,8 +6098,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.test_rows": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09): test rows",
@@ -6107,8 +6107,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.test_positives": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09): test positives",
@@ -6116,8 +6116,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.exploit_then_epss.top500_cve_id.median": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline exploit_then_epss: top500_cve_id, median over seed sets",
@@ -6125,8 +6125,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.exploit_then_epss.top500_expected.median": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline exploit_then_epss: top500_expected, median over seed sets",
@@ -6134,8 +6134,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.exploit_then_epss.top500_best.median": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline exploit_then_epss: top500_best, median over seed sets",
@@ -6143,8 +6143,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.exploit_then_epss.top500_worst.median": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline exploit_then_epss: top500_worst, median over seed sets",
@@ -6152,8 +6152,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.exploit_then_epss.top250_cve_id.median": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline exploit_then_epss: top250_cve_id, median over seed sets",
@@ -6161,8 +6161,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.exploit_then_epss.auc.median": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline exploit_then_epss: auc, median over seed sets",
@@ -6170,8 +6170,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.exploit_then_epss.avg_precision.median": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline exploit_then_epss: avg_precision, median over seed sets",
@@ -6179,8 +6179,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.exploit_then_epss.median_rank_cve_id.median": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline exploit_then_epss: median_rank_cve_id, median over seed sets",
@@ -6188,8 +6188,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.exploit_then_epss.work50_cve_id.median": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline exploit_then_epss: work50_cve_id, median over seed sets",
@@ -6197,8 +6197,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.exploit_then_epss.top500_cve_id.min": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline exploit_then_epss: top500_cve_id, lowest seed set",
@@ -6206,8 +6206,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.exploit_then_epss.top500_cve_id.max": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline exploit_then_epss: top500_cve_id, highest seed set",
@@ -6215,8 +6215,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.exploit_then_epss.auc.min": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline exploit_then_epss: auc, lowest seed set",
@@ -6224,8 +6224,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.exploit_then_epss.auc.max": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline exploit_then_epss: auc, highest seed set",
@@ -6233,8 +6233,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.exploit_then_epss.ci95_lo.top500_expected": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline exploit_then_epss: bootstrap 95% CI lower bound, top500_expected (seed set 0)",
@@ -6242,8 +6242,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.exploit_then_epss.ci95_hi.top500_expected": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline exploit_then_epss: bootstrap 95% CI upper bound, top500_expected (seed set 0)",
@@ -6251,8 +6251,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.exploit_then_epss.ci95_lo.top250_expected": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline exploit_then_epss: bootstrap 95% CI lower bound, top250_expected (seed set 0)",
@@ -6260,8 +6260,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.exploit_then_epss.ci95_hi.top250_expected": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline exploit_then_epss: bootstrap 95% CI upper bound, top250_expected (seed set 0)",
@@ -6269,8 +6269,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.exploit_then_epss.ci95_lo.auc": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline exploit_then_epss: bootstrap 95% CI lower bound, auc (seed set 0)",
@@ -6278,8 +6278,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.exploit_then_epss.ci95_hi.auc": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline exploit_then_epss: bootstrap 95% CI upper bound, auc (seed set 0)",
@@ -6287,8 +6287,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.exploit_then_epss.ci95_lo.avg_precision": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline exploit_then_epss: bootstrap 95% CI lower bound, avg_precision (seed set 0)",
@@ -6296,8 +6296,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.exploit_then_epss.ci95_hi.avg_precision": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline exploit_then_epss: bootstrap 95% CI upper bound, avg_precision (seed set 0)",
@@ -6305,8 +6305,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.exploit_then_epss.ci95_lo.median_rank_mid": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline exploit_then_epss: bootstrap 95% CI lower bound, median_rank_mid (seed set 0)",
@@ -6314,8 +6314,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.exploit_then_epss.ci95_hi.median_rank_mid": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline exploit_then_epss: bootstrap 95% CI upper bound, median_rank_mid (seed set 0)",
@@ -6323,8 +6323,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.exploit_then_epss.ci95_lo.work50_mid": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline exploit_then_epss: bootstrap 95% CI lower bound, work50_mid (seed set 0)",
@@ -6332,8 +6332,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.exploit_then_epss.ci95_hi.work50_mid": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline exploit_then_epss: bootstrap 95% CI upper bound, work50_mid (seed set 0)",
@@ -6341,8 +6341,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.epss.top500_cve_id.median": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline epss: top500_cve_id, median over seed sets",
@@ -6350,8 +6350,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.epss.top500_expected.median": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline epss: top500_expected, median over seed sets",
@@ -6359,8 +6359,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.epss.top500_best.median": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline epss: top500_best, median over seed sets",
@@ -6368,8 +6368,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.epss.top500_worst.median": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline epss: top500_worst, median over seed sets",
@@ -6377,8 +6377,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.epss.top250_cve_id.median": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline epss: top250_cve_id, median over seed sets",
@@ -6386,8 +6386,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.epss.auc.median": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline epss: auc, median over seed sets",
@@ -6395,8 +6395,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.epss.avg_precision.median": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline epss: avg_precision, median over seed sets",
@@ -6404,8 +6404,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.epss.median_rank_cve_id.median": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline epss: median_rank_cve_id, median over seed sets",
@@ -6413,8 +6413,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.epss.work50_cve_id.median": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline epss: work50_cve_id, median over seed sets",
@@ -6422,8 +6422,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.epss.top500_cve_id.min": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline epss: top500_cve_id, lowest seed set",
@@ -6431,8 +6431,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.epss.top500_cve_id.max": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline epss: top500_cve_id, highest seed set",
@@ -6440,8 +6440,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.epss.auc.min": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline epss: auc, lowest seed set",
@@ -6449,8 +6449,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.epss.auc.max": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline epss: auc, highest seed set",
@@ -6458,8 +6458,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.epss.ci95_lo.top500_expected": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline epss: bootstrap 95% CI lower bound, top500_expected (seed set 0)",
@@ -6467,8 +6467,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.epss.ci95_hi.top500_expected": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline epss: bootstrap 95% CI upper bound, top500_expected (seed set 0)",
@@ -6476,8 +6476,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.epss.ci95_lo.top250_expected": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline epss: bootstrap 95% CI lower bound, top250_expected (seed set 0)",
@@ -6485,8 +6485,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.epss.ci95_hi.top250_expected": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline epss: bootstrap 95% CI upper bound, top250_expected (seed set 0)",
@@ -6494,8 +6494,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.epss.ci95_lo.auc": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline epss: bootstrap 95% CI lower bound, auc (seed set 0)",
@@ -6503,8 +6503,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.epss.ci95_hi.auc": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline epss: bootstrap 95% CI upper bound, auc (seed set 0)",
@@ -6512,8 +6512,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.epss.ci95_lo.avg_precision": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline epss: bootstrap 95% CI lower bound, avg_precision (seed set 0)",
@@ -6521,8 +6521,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.epss.ci95_hi.avg_precision": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline epss: bootstrap 95% CI upper bound, avg_precision (seed set 0)",
@@ -6530,8 +6530,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.epss.ci95_lo.median_rank_mid": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline epss: bootstrap 95% CI lower bound, median_rank_mid (seed set 0)",
@@ -6539,8 +6539,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.epss.ci95_hi.median_rank_mid": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline epss: bootstrap 95% CI upper bound, median_rank_mid (seed set 0)",
@@ -6548,8 +6548,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.epss.ci95_lo.work50_mid": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline epss: bootstrap 95% CI lower bound, work50_mid (seed set 0)",
@@ -6557,8 +6557,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.epss.ci95_hi.work50_mid": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline epss: bootstrap 95% CI upper bound, work50_mid (seed set 0)",
@@ -6566,8 +6566,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.cvss3.top500_cve_id.median": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline cvss3: top500_cve_id, median over seed sets",
@@ -6575,8 +6575,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.cvss3.top500_expected.median": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline cvss3: top500_expected, median over seed sets",
@@ -6584,8 +6584,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.cvss3.top500_best.median": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline cvss3: top500_best, median over seed sets",
@@ -6593,8 +6593,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.cvss3.top500_worst.median": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline cvss3: top500_worst, median over seed sets",
@@ -6602,8 +6602,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.cvss3.top250_cve_id.median": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline cvss3: top250_cve_id, median over seed sets",
@@ -6611,8 +6611,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.cvss3.auc.median": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline cvss3: auc, median over seed sets",
@@ -6620,8 +6620,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.cvss3.avg_precision.median": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline cvss3: avg_precision, median over seed sets",
@@ -6629,8 +6629,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.cvss3.median_rank_cve_id.median": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline cvss3: median_rank_cve_id, median over seed sets",
@@ -6638,8 +6638,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.cvss3.work50_cve_id.median": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline cvss3: work50_cve_id, median over seed sets",
@@ -6647,8 +6647,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.cvss3.top500_cve_id.min": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline cvss3: top500_cve_id, lowest seed set",
@@ -6656,8 +6656,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.cvss3.top500_cve_id.max": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline cvss3: top500_cve_id, highest seed set",
@@ -6665,8 +6665,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.cvss3.auc.min": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline cvss3: auc, lowest seed set",
@@ -6674,8 +6674,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.cvss3.auc.max": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline cvss3: auc, highest seed set",
@@ -6683,8 +6683,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.cvss3.ci95_lo.top500_expected": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline cvss3: bootstrap 95% CI lower bound, top500_expected (seed set 0)",
@@ -6692,8 +6692,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.cvss3.ci95_hi.top500_expected": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline cvss3: bootstrap 95% CI upper bound, top500_expected (seed set 0)",
@@ -6701,8 +6701,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.cvss3.ci95_lo.top250_expected": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline cvss3: bootstrap 95% CI lower bound, top250_expected (seed set 0)",
@@ -6710,8 +6710,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.cvss3.ci95_hi.top250_expected": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline cvss3: bootstrap 95% CI upper bound, top250_expected (seed set 0)",
@@ -6719,8 +6719,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.cvss3.ci95_lo.auc": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline cvss3: bootstrap 95% CI lower bound, auc (seed set 0)",
@@ -6728,8 +6728,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.cvss3.ci95_hi.auc": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline cvss3: bootstrap 95% CI upper bound, auc (seed set 0)",
@@ -6737,8 +6737,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.cvss3.ci95_lo.avg_precision": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline cvss3: bootstrap 95% CI lower bound, avg_precision (seed set 0)",
@@ -6746,8 +6746,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.cvss3.ci95_hi.avg_precision": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline cvss3: bootstrap 95% CI upper bound, avg_precision (seed set 0)",
@@ -6755,8 +6755,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.cvss3.ci95_lo.median_rank_mid": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline cvss3: bootstrap 95% CI lower bound, median_rank_mid (seed set 0)",
@@ -6764,8 +6764,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.cvss3.ci95_hi.median_rank_mid": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline cvss3: bootstrap 95% CI upper bound, median_rank_mid (seed set 0)",
@@ -6773,8 +6773,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.cvss3.ci95_lo.work50_mid": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline cvss3: bootstrap 95% CI lower bound, work50_mid (seed set 0)",
@@ -6782,8 +6782,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.cvss3.ci95_hi.work50_mid": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), baseline cvss3: bootstrap 95% CI upper bound, work50_mid (seed set 0)",
@@ -6791,8 +6791,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C1.top500_cve_id.median": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C1: top500_cve_id, median over seed sets",
@@ -6800,8 +6800,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C1.top500_expected.median": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C1: top500_expected, median over seed sets",
@@ -6809,8 +6809,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C1.top500_best.median": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C1: top500_best, median over seed sets",
@@ -6818,8 +6818,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C1.top500_worst.median": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C1: top500_worst, median over seed sets",
@@ -6827,8 +6827,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C1.top250_cve_id.median": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C1: top250_cve_id, median over seed sets",
@@ -6836,8 +6836,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C1.auc.median": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C1: auc, median over seed sets",
@@ -6845,8 +6845,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C1.avg_precision.median": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C1: avg_precision, median over seed sets",
@@ -6854,8 +6854,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C1.median_rank_cve_id.median": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C1: median_rank_cve_id, median over seed sets",
@@ -6863,8 +6863,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C1.work50_cve_id.median": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C1: work50_cve_id, median over seed sets",
@@ -6872,8 +6872,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C1.top500_cve_id.min": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C1: top500_cve_id, lowest seed set",
@@ -6881,8 +6881,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C1.top500_cve_id.max": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C1: top500_cve_id, highest seed set",
@@ -6890,8 +6890,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C1.auc.min": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C1: auc, lowest seed set",
@@ -6899,8 +6899,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C1.auc.max": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C1: auc, highest seed set",
@@ -6908,8 +6908,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C1.ci95_lo.top500_expected": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C1: bootstrap 95% CI lower bound, top500_expected (seed set 0)",
@@ -6917,8 +6917,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C1.ci95_hi.top500_expected": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C1: bootstrap 95% CI upper bound, top500_expected (seed set 0)",
@@ -6926,8 +6926,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C1.ci95_lo.top250_expected": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C1: bootstrap 95% CI lower bound, top250_expected (seed set 0)",
@@ -6935,8 +6935,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C1.ci95_hi.top250_expected": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C1: bootstrap 95% CI upper bound, top250_expected (seed set 0)",
@@ -6944,8 +6944,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C1.ci95_lo.auc": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C1: bootstrap 95% CI lower bound, auc (seed set 0)",
@@ -6953,8 +6953,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C1.ci95_hi.auc": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C1: bootstrap 95% CI upper bound, auc (seed set 0)",
@@ -6962,8 +6962,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C1.ci95_lo.avg_precision": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C1: bootstrap 95% CI lower bound, avg_precision (seed set 0)",
@@ -6971,8 +6971,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C1.ci95_hi.avg_precision": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C1: bootstrap 95% CI upper bound, avg_precision (seed set 0)",
@@ -6980,8 +6980,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C1.ci95_lo.median_rank_mid": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C1: bootstrap 95% CI lower bound, median_rank_mid (seed set 0)",
@@ -6989,8 +6989,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C1.ci95_hi.median_rank_mid": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C1: bootstrap 95% CI upper bound, median_rank_mid (seed set 0)",
@@ -6998,8 +6998,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C1.ci95_lo.work50_mid": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C1: bootstrap 95% CI lower bound, work50_mid (seed set 0)",
@@ -7007,8 +7007,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C1.ci95_hi.work50_mid": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C1: bootstrap 95% CI upper bound, work50_mid (seed set 0)",
@@ -7016,8 +7016,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C2.top500_cve_id.median": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C2: top500_cve_id, median over seed sets",
@@ -7025,8 +7025,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C2.top500_expected.median": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C2: top500_expected, median over seed sets",
@@ -7034,8 +7034,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C2.top500_best.median": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C2: top500_best, median over seed sets",
@@ -7070,8 +7070,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C2.avg_precision.median": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C2: avg_precision, median over seed sets",
@@ -7097,8 +7097,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C2.top500_cve_id.min": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C2: top500_cve_id, lowest seed set",
@@ -7106,8 +7106,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C2.top500_cve_id.max": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C2: top500_cve_id, highest seed set",
@@ -7115,8 +7115,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C2.auc.min": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C2: auc, lowest seed set",
@@ -7124,8 +7124,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C2.auc.max": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C2: auc, highest seed set",
@@ -7133,8 +7133,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C2.ci95_lo.top500_expected": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C2: bootstrap 95% CI lower bound, top500_expected (seed set 0)",
@@ -7142,8 +7142,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C2.ci95_hi.top500_expected": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C2: bootstrap 95% CI upper bound, top500_expected (seed set 0)",
@@ -7151,8 +7151,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C2.ci95_lo.top250_expected": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C2: bootstrap 95% CI lower bound, top250_expected (seed set 0)",
@@ -7160,8 +7160,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C2.ci95_hi.top250_expected": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C2: bootstrap 95% CI upper bound, top250_expected (seed set 0)",
@@ -7169,8 +7169,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C2.ci95_lo.auc": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C2: bootstrap 95% CI lower bound, auc (seed set 0)",
@@ -7178,8 +7178,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C2.ci95_hi.auc": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C2: bootstrap 95% CI upper bound, auc (seed set 0)",
@@ -7187,8 +7187,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C2.ci95_lo.avg_precision": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C2: bootstrap 95% CI lower bound, avg_precision (seed set 0)",
@@ -7196,8 +7196,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C2.ci95_hi.avg_precision": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C2: bootstrap 95% CI upper bound, avg_precision (seed set 0)",
@@ -7205,8 +7205,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C2.ci95_lo.median_rank_mid": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C2: bootstrap 95% CI lower bound, median_rank_mid (seed set 0)",
@@ -7214,8 +7214,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C2.ci95_hi.median_rank_mid": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C2: bootstrap 95% CI upper bound, median_rank_mid (seed set 0)",
@@ -7223,8 +7223,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C2.ci95_lo.work50_mid": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C2: bootstrap 95% CI lower bound, work50_mid (seed set 0)",
@@ -7232,8 +7232,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C2.ci95_hi.work50_mid": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C2: bootstrap 95% CI upper bound, work50_mid (seed set 0)",
@@ -7241,8 +7241,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C3.top500_cve_id.median": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C3: top500_cve_id, median over seed sets",
@@ -7250,8 +7250,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C3.top500_expected.median": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C3: top500_expected, median over seed sets",
@@ -7259,8 +7259,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C3.top500_best.median": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C3: top500_best, median over seed sets",
@@ -7295,8 +7295,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C3.avg_precision.median": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C3: avg_precision, median over seed sets",
@@ -7322,8 +7322,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C3.top500_cve_id.min": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C3: top500_cve_id, lowest seed set",
@@ -7331,8 +7331,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C3.top500_cve_id.max": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C3: top500_cve_id, highest seed set",
@@ -7340,8 +7340,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C3.auc.min": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C3: auc, lowest seed set",
@@ -7349,8 +7349,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C3.auc.max": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C3: auc, highest seed set",
@@ -7358,8 +7358,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C3.ci95_lo.top500_expected": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C3: bootstrap 95% CI lower bound, top500_expected (seed set 0)",
@@ -7367,8 +7367,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C3.ci95_hi.top500_expected": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C3: bootstrap 95% CI upper bound, top500_expected (seed set 0)",
@@ -7376,8 +7376,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C3.ci95_lo.top250_expected": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C3: bootstrap 95% CI lower bound, top250_expected (seed set 0)",
@@ -7385,8 +7385,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C3.ci95_hi.top250_expected": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C3: bootstrap 95% CI upper bound, top250_expected (seed set 0)",
@@ -7394,8 +7394,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C3.ci95_lo.auc": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C3: bootstrap 95% CI lower bound, auc (seed set 0)",
@@ -7403,8 +7403,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C3.ci95_hi.auc": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C3: bootstrap 95% CI upper bound, auc (seed set 0)",
@@ -7412,8 +7412,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C3.ci95_lo.avg_precision": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C3: bootstrap 95% CI lower bound, avg_precision (seed set 0)",
@@ -7421,8 +7421,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C3.ci95_hi.avg_precision": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C3: bootstrap 95% CI upper bound, avg_precision (seed set 0)",
@@ -7430,8 +7430,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C3.ci95_lo.median_rank_mid": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C3: bootstrap 95% CI lower bound, median_rank_mid (seed set 0)",
@@ -7439,8 +7439,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C3.ci95_hi.median_rank_mid": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C3: bootstrap 95% CI upper bound, median_rank_mid (seed set 0)",
@@ -7448,8 +7448,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C3.ci95_lo.work50_mid": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C3: bootstrap 95% CI lower bound, work50_mid (seed set 0)",
@@ -7457,8 +7457,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.C3.ci95_hi.work50_mid": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), candidate C3: bootstrap 95% CI upper bound, work50_mid (seed set 0)",
@@ -7466,8 +7466,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.drop_signals.top500_cve_id.median": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), ablation drop_signals: top500_cve_id, median over seed sets",
@@ -8825,8 +8825,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.unseen_assigner.positives": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), selected model, unseen-assigner test rows: positives",
@@ -8834,8 +8834,8 @@
     "unit": "count",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.unseen_assigner.top500_rows_from_subset": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), selected model, unseen-assigner test rows: top500 rows from subset",
@@ -8870,8 +8870,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.permutation.auc_sd": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), selected model, 20 train-label shuffles: test AUC sd",
@@ -8879,8 +8879,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.permutation.auc_max": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09), selected model, 20 train-label shuffles: test AUC max",
@@ -8888,8 +8888,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.fold2.paired.auc.diff": {
     "text": "Phase 3 fold2 (train 2024-07..2025-03, labels to 2025-03-31; test 2025-04..2025-09): selected minus exploit-then-EPSS, auc",
@@ -8951,8 +8951,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.selection.C2.mean_auc": {
     "text": "Phase 3 C2: mean over the two folds of the seed-median AUC",
@@ -8960,8 +8960,8 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   },
   "p3.selection.C3.mean_auc": {
     "text": "Phase 3 C3: mean over the two folds of the seed-median AUC",
@@ -8969,7 +8969,7 @@
     "unit": "fraction",
     "source_script": "src/model/candidates.py",
     "output_file": "results/model_candidates.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-phase3.md"
   }
 }
