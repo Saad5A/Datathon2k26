@@ -4,7 +4,7 @@ Only the agent for this area edits THIS file. Read the other three with `tools/k
 <!-- STATUS-START -->
 STATUS: on track
 PHASE: Step 0 and phases 1-2 (repo state, reproduce backtest baselines)
-LAST_UPDATED: 2026-11-07T20:50Z
+LAST_UPDATED: 2026-11-07T20:48Z
 BLOCKED_ON: none
 NEXT: Harness reproduces the 2025 backtest table and passes audit by about 6 pm Sat
 ASKS: none yet
@@ -47,4 +47,5 @@ Owned paths (edit only these; shared files change via small PRs): `src/model/`, 
 - (none yet)
 
 ## 7. Changelog (append-only, newest first; format: YYYY-MM-DDTHH:MMZ | what changed | files | DECISION/ASK tag if any)
+- 2026-11-07T20:55Z | kb branch and team files created; sample schema docs/sample_scores_2026.csv (DUMMY) added | docs/ | 
 - 2026-11-07T20:50Z | file created with initial plan | docs/kb/team/model-ranking.md |
