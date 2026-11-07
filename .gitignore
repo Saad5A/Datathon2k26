@@ -11,17 +11,23 @@ env/
 # Data and large artifacts
 data/
 data_cache/
-results/
 *.parquet
 *.zip
 *.feather
 *.h5
 *.hdf5
 
-# Large CSV dumps anywhere except committed fixtures under docs/
+# Results: ignore by default, but keep submission evaluation artifacts
+results/*
+!results/top500_enriched.csv
+!results/cached_playbooks.json
+!results/agent_eval_report.json
+
+# Large CSV dumps anywhere except committed fixtures / eval artifacts
 *.csv
 !docs/
 !docs/**/*.csv
+!results/top500_enriched.csv
 
 # Python
 __pycache__/
