@@ -1,0 +1,6 @@
+# numbers allowed without a claim (fixed facts from the task rules, not our results)
+500
+250
+72,670
+92,205
+1,484
