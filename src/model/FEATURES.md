@@ -43,3 +43,19 @@ Status: unaudited. Pre-registration: LOG.md "PRE-REGISTRATION, Phase 3".
 | `epss0`, `epss_missing` (C3 only) | exploit_signals `epss` | Snapshot-month EPSS with blank -> 0, plus a 0/1 blank indicator, in place of `epss_f` (blank -> -1) | Same row as `epss_f` |
 | `txt` (masked) | vulnerabilities `description` | Before TF-IDF, every match of harness `EXPLOIT_WORDING` ("exploited in the wild", "actively exploited", "CISA", "KEV", ...) is replaced by a space, case-insensitive, in train and test rows. TF-IDF and the text LR are fitted on train rows only; train rows get 5-fold out-of-fold scores | Removes the known post-hoc wording only. `description` is still today's text: other later edits cannot be detected from this data |
 | `s_*` (ablation `plus_structured` only) | `cvss3_score`, 8 CVSS vector fields, first `cwe_ids` entry | cvss3 blank -> 0 + `s_cvss3_missing`; one-hot of the vector fields (blank is its own category) and of the top-40 first CWE, all vocabularies fitted on the fold's train rows; unseen test categories -> all zeros | Not a model feature. Today's NVD analysis values; the blank indicators are blank-score patterns (AGENTS.md rule 4), allowed only inside this one ablation |
+
+Deviation D1 (recorded after the Phase 3 audit): the 24-month window counts only KEV additions whose CVE was
+published 2021 or later, because the assigner is joined from vulnerabilities.csv rows published 2021+ (the same
+join as the all-history `asg_kev`). Older CVEs added to KEV inside the window are not counted. It did not affect the
+selection: the selected model C1 uses the all-history feature, not `asg24_*`.
+
+`plus_structured` uses excluded blank-score fields (`s_cvss3_missing`, the "blank" CVSS vector categories). It is a
+comparison row only and can never be adopted as a model.
+
+## 2026 scoring rows (src/model/cap.py preview; unaudited)
+
+Scoreboard rows take `epss`, the four flags (`anyx`, `nx` derived) from scoreboard_2026.csv itself, at its
+`snapshot_month` (blank EPSS -> -1 as in the pool). `assigner` and `description` (masked) are joined from
+vulnerabilities.csv. `asg_rate` / `asg_kev` are computed as of the first day of each row's `snapshot_month` from KEV
+rows dated before it and CVEs published before it (June 2026 CVEs have snapshot 2026-07, so their history runs to
+2026-07-01). C1 is refitted on all 75,148 pool rows with pool labels (KEV to 2025-12-31).

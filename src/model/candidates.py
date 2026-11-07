@@ -8,6 +8,7 @@ the selected candidate only: ablations, unseen-assigner subset, label permutatio
 Seed set s = text-fold seed s and HGB random_state s (one fit). With early_stopping=False and < 200k rows,
 HGB does not use its random_state, so seed spread comes from the text folds.
 """
+import hashlib
 import json
 import math
 import platform
@@ -46,6 +47,11 @@ CANDIDATES = {"C1": ("hgb", SIGNAL_FEATURES + ASSIGNER_FEATURES + ["txt"]),
 PREFERENCE = ["C3", "C2", "C1"]  # tie-break order inside 0.01 of the best mean AUC
 TIE_MARGIN = 0.01
 TOO_GOOD_AUC = 0.93
+D1 = ("Deviation D1: the 24-month window counts only KEV additions whose CVE was published 2021 or later (assigner is "
+      "joined from vulnerabilities.csv rows published 2021+, as in the harness all-history feature); older KEV CVEs "
+      "added inside the window are not counted. Did not affect the selection (C1 uses the all-history feature).")
+PLUS_STRUCTURED_WARNING = ("Uses excluded blank-score fields (cvss3 missing indicator, blank CVSS vector category): "
+                           "comparison only, never adoptable as a model")
 BASELINES = ["exploit_then_epss", "epss", "cvss3"]
 
 
@@ -187,7 +193,23 @@ class Fold:
 
     def run(self, kind, cols, **kw):
         scores = [self.score(kind, cols, s, **kw) for s in SEEDS]
-        return over_seeds([report(self.y_te, s, self.ids) for s in scores]), scores[0]
+        return over_seeds([report(self.y_te, s, self.ids) for s in scores]), scores
+
+
+def median_tree(rows):
+    """Element-wise median over seed sets of equally shaped dicts / lists of numbers; strings and None pass through."""
+    a = rows[0]
+    if isinstance(a, dict):
+        return {k: median_tree([r[k] for r in rows]) for k in a}
+    if isinstance(a, list):
+        return [median_tree([r[i] for r in rows]) for i in range(len(a))]
+    if a is None or isinstance(a, str) or any(r is None for r in rows):
+        return a
+    return float(np.median(rows))
+
+
+def per_seed(rows):
+    return {"seed_median": median_tree(rows), "seed_set_0": rows[0], "per_seed": rows}
 
 
 def add_ci(entries, folds, seed0):
@@ -248,54 +270,71 @@ def claims_from(res):
                 if "median" not in e:
                     continue
                 lab = f"{where}, {group[:-1]} {n}"
+                if n == "plus_structured":
+                    lab += f" [{PLUS_STRUCTURED_WARNING}]"
+                if group == "baselines":
+                    for k, u in CLAIM_KEYS:
+                        add(f"{f}.{n}.{k}.median", f"{lab}: {k} (deterministic baseline, no seed)", e["median"][k], u)
+                    for k, u in CI_KEYS:
+                        add(f"{f}.{n}.ci95_lo.{k}", f"{lab}: bootstrap 95% CI lower bound, {k} (deterministic baseline)", e["ci95_seed0"][k][0], u)
+                        add(f"{f}.{n}.ci95_hi.{k}", f"{lab}: bootstrap 95% CI upper bound, {k} (deterministic baseline)", e["ci95_seed0"][k][1], u)
+                    continue
                 for k, u in CLAIM_KEYS:
-                    add(f"{f}.{n}.{k}.median", f"{lab}: {k}, median over seed sets", e["median"][k], u)
+                    add(f"{f}.{n}.{k}.median", f"{lab}: {k}, median over seed sets 0-4", e["median"][k], u)
                 for k, u in (("top500_cve_id", "count"), ("auc", "fraction")):
-                    add(f"{f}.{n}.{k}.min", f"{lab}: {k}, lowest seed set", e["min"][k], u)
-                    add(f"{f}.{n}.{k}.max", f"{lab}: {k}, highest seed set", e["max"][k], u)
+                    add(f"{f}.{n}.{k}.min", f"{lab}: {k}, lowest of seed sets 0-4", e["min"][k], u)
+                    add(f"{f}.{n}.{k}.max", f"{lab}: {k}, highest of seed sets 0-4", e["max"][k], u)
                 for k, u in CI_KEYS:
                     add(f"{f}.{n}.ci95_lo.{k}", f"{lab}: bootstrap 95% CI lower bound, {k} (seed set 0)", e["ci95_seed0"][k][0], u)
                     add(f"{f}.{n}.ci95_hi.{k}", f"{lab}: bootstrap 95% CI upper bound, {k} (seed set 0)", e["ci95_seed0"][k][1], u)
-        u = res["unseen_assigner"][f]
-        for k in ("rows", "positives", "top500_rows_from_subset", "top500_hits_from_subset"):
-            add(f"{f}.unseen_assigner.{k}", f"{where}, selected model, unseen-assigner test rows: {k.replace('_', ' ')}", u[k], "count")
-        if u["auc_within_subset"] is not None:
-            add(f"{f}.unseen_assigner.auc", f"{where}, selected model: AUC within unseen-assigner test rows", u["auc_within_subset"], "fraction")
+        for which, tag, sfx in (("seed_median", "median over seed sets 0-4", ""), ("seed_set_0", "seed set 0", ".seed0")):
+            u = res["unseen_assigner"][f][which]
+            for k in ("rows", "positives", "top500_rows_from_subset", "top500_hits_from_subset"):
+                add(f"{f}.unseen_assigner.{k}{sfx}", f"{where}, selected model ({tag}), unseen-assigner test rows: {k.replace('_', ' ')}", u[k], "count")
+            if u["auc_within_subset"] is not None:
+                add(f"{f}.unseen_assigner.auc{sfx}", f"{where}, selected model ({tag}): AUC within unseen-assigner test rows", u["auc_within_subset"], "fraction")
+            b = res["paired_bootstrap_vs_exploit_then_epss"][f][which]
+            for k, unit in (("auc", "fraction"), ("top500_expected", "count")):
+                add(f"{f}.paired.{k}.diff{sfx}", f"{where}: selected ({tag}) minus exploit-then-EPSS, {k}", b[k]["diff"], unit)
+                add(f"{f}.paired.{k}.ci95_lo{sfx}", f"{where}: paired bootstrap 95% CI lower bound, selected ({tag}) minus exploit-then-EPSS, {k}", b[k]["ci95"][0], unit)
+                add(f"{f}.paired.{k}.ci95_hi{sfx}", f"{where}: paired bootstrap 95% CI upper bound, selected ({tag}) minus exploit-then-EPSS, {k}", b[k]["ci95"][1], unit)
         p = res["permutation"][f]
         for k in ("mean", "sd", "max"):
-            add(f"{f}.permutation.auc_{k}", f"{where}, selected model, {N_PERM} train-label shuffles: test AUC {k}", p[k], "fraction")
-        b = res["paired_bootstrap_vs_exploit_then_epss"][f]
-        for k, unit in (("auc", "fraction"), ("top500_expected", "count")):
-            add(f"{f}.paired.{k}.diff", f"{where}: selected minus exploit-then-EPSS, {k}", b[k]["diff"], unit)
-            add(f"{f}.paired.{k}.ci95_lo", f"{where}: paired bootstrap 95% CI lower bound, selected minus exploit-then-EPSS, {k}", b[k]["ci95"][0], unit)
-            add(f"{f}.paired.{k}.ci95_hi", f"{where}: paired bootstrap 95% CI upper bound, selected minus exploit-then-EPSS, {k}", b[k]["ci95"][1], unit)
+            add(f"{f}.permutation.auc_{k}", f"{where}, selected model (seed set 0), {N_PERM} train-label shuffles: test AUC {k}", p[k], "fraction")
     for cnd, v in res["selection"]["mean_auc_over_folds"].items():
         add(f"selection.{cnd}.mean_auc", f"Phase 3 {cnd}: mean over the two folds of the seed-median AUC", v, "fraction")
     return c
 
 
-def merge_claims(new):
-    """Only p3.* entries are written; stale p3.* entries are dropped; status kept only if the value is unchanged."""
+def merge_claims(new, prefix="p3."):
+    """Only `prefix` entries are written; stale ones are dropped; status kept only if value and text are unchanged."""
     path = RESULTS / "claims_model.json"
     old = json.loads(path.read_text()) if path.exists() else {}
-    old = {k: v for k, v in old.items() if not k.startswith("p3.") or k in new}
+    old = {k: v for k, v in old.items() if not k.startswith(prefix) or k in new}
     for key, claim in new.items():
+        assert key.startswith(prefix), key
         prev = old.get(key)
-        if prev and math.isclose(prev["value"], claim["value"], rel_tol=1e-9, abs_tol=1e-12):
+        if (prev and prev["text"] == claim["text"]
+                and math.isclose(prev["value"], claim["value"], rel_tol=1e-9, abs_tol=1e-12)):
             claim["status"], claim["verified_by"] = prev["status"], prev["verified_by"]
     old.update(new)
     path.write_text(json.dumps(old, indent=2) + "\n")
     return len(new)
 
 
-def write_meta():
-    git = lambda *a: subprocess.run(["git", *a], cwd=ROOT, capture_output=True, text=True).stdout.strip()
-    meta = {"script": SCRIPT_REL, "git_commit": git("rev-parse", "HEAD"), "git_dirty": bool(git("status", "--porcelain")),
+def write_meta(script=SCRIPT_REL, out="model_candidates.meta.json"):
+    """git_dirty: any change, tracked or untracked, under src/model/ (the code). Output files under results/ are
+    rewritten by the run itself and are not counted."""
+    git = lambda *a: subprocess.run(["git", *a], cwd=ROOT, capture_output=True, text=True).stdout.rstrip("\n")
+    changed = git("status", "--porcelain", "--", "src/model").splitlines()
+    meta = {"script": script, "git_commit": git("rev-parse", "HEAD"), "git_dirty": bool(changed),
+            "git_dirty_files": changed,
+            "code_sha256": {f.name: hashlib.sha256(f.read_bytes()).hexdigest() for f in sorted((ROOT / "src" / "model").glob("*.py"))},
             "date_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"), "python": platform.python_version(),
             "machine": platform.machine(),
             "libraries": {"pandas": pd.__version__, "numpy": np.__version__, "scikit-learn": sklearn.__version__,
                           "scipy": scipy.__version__, "pyarrow": pyarrow.__version__, "joblib": joblib.__version__}}
-    (RESULTS / "model_candidates.meta.json").write_text(json.dumps(meta, indent=2) + "\n")
+    (RESULTS / out).write_text(json.dumps(meta, indent=2) + "\n")
 
 
 # ---------- main ----------
@@ -306,7 +345,7 @@ def main():
     pool = add_window_features(load_pool())
     kev = load_kev()
     folds, res = {}, {"folds": {}, "baselines": {}, "candidates": {}, "ablations": {}}
-    seed0 = {}
+    seed0, all_scores = {}, {f: {} for f in FOLDS}
     for f, spec in FOLDS.items():
         tr, te, y_tr = fold_data(pool, kev, spec)
         folds[f] = Fold(f, tr, te, y_tr)
@@ -319,7 +358,8 @@ def main():
         seed0[f] = {n: base[n] for n in BASELINES}
         res["candidates"][f] = {}
         for c, (kind, cols) in CANDIDATES.items():
-            res["candidates"][f][c], seed0[f][c] = folds[f].run(kind, cols)
+            res["candidates"][f][c], all_scores[f][c] = folds[f].run(kind, cols)
+            seed0[f][c] = all_scores[f][c][0]
             tick(f"{f} {c}: AUC median {res['candidates'][f][c]['median']['auc']:.4f}")
 
     too_good = {f"{f}.{c}": e["max"]["auc"] for f in res["candidates"] for c, e in res["candidates"][f].items()
@@ -349,12 +389,17 @@ def main():
                 res["ablations"][f][n] = {"not_applicable": "selected model is a logistic regression; no early stopping"}
                 continue
             extra = structured(fold.tr, fold.te) if a.get("structured") else (None, None)
-            res["ablations"][f][n], seed0[f][n] = fold.run(kind, a["cols"], mask=a.get("mask", True), extra=extra,
+            res["ablations"][f][n], sc = fold.run(kind, a["cols"], mask=a.get("mask", True), extra=extra,
                                                            early_stopping=a.get("early_stopping", False))
+            seed0[f][n] = sc[0]
+            if n == "plus_structured":
+                res["ablations"][f][n]["excluded_field_warning"] = PLUS_STRUCTURED_WARNING
             res["ablations"][f][n]["features"] = list(a["cols"]) + (list(extra[0].columns) if extra[0] is not None else [])
             tick(f"{f} ablation {n}: AUC median {res['ablations'][f][n]['median']['auc']:.4f}")
-        res["unseen_assigner"][f] = unseen_assigner(fold, seed0[f][chosen], seed0[f]["exploit_then_epss"])
-        res["paired_bootstrap_vs_exploit_then_epss"][f] = paired_bootstrap(fold.y_te, seed0[f][chosen], seed0[f]["exploit_then_epss"])
+        base = seed0[f]["exploit_then_epss"]
+        res["unseen_assigner"][f] = per_seed([unseen_assigner(fold, s, base) for s in all_scores[f][chosen]])
+        res["paired_bootstrap_vs_exploit_then_epss"][f] = per_seed(joblib.Parallel(n_jobs=-1)(
+            joblib.delayed(paired_bootstrap)(fold.y_te, s, base) for s in all_scores[f][chosen]))
         tick(f"{f} unseen + paired bootstrap done")
         res["permutation"][f] = permutation(fold, kind, cols)
         tick(f"{f} permutation AUC mean {res['permutation'][f]['mean']:.4f} max {res['permutation'][f]['max']:.4f}")
@@ -362,10 +407,13 @@ def main():
     for g in ("baselines", "candidates", "ablations"):
         add_ci({f: {n: e for n, e in res[g][f].items() if "median" in e} for f in FOLDS}, folds, seed0)
     tick("bootstrap CIs done")
+    res["deviations"] = {"D1": D1}
     res["notes"] = {
         "seed_sets": "seed set s: text OOF folds seed s, HGB random_state s (single fit, early_stopping=False). Baselines are deterministic (one 'seed').",
         "ci95_seed0": f"percentile bootstrap, {N_BOOT} resamples, seed {BOOT_SEED}, on the seed-set-0 scores; same resamples for every model in a fold",
-        "paired_bootstrap": "selected model seed set 0 minus exploit-then-EPSS; same resamples for both",
+        "paired_bootstrap": "selected model minus exploit-then-EPSS, run once per seed set (same resamples for every run); seed_median is the element-wise median over the 5 runs (each number its own median), seed_set_0 kept for reference",
+        "unseen_assigner": "computed per seed set; seed_median is the element-wise median, seed_set_0 kept for reference",
+        "permutation": "model seed set 0 for every shuffle",
         "c3": "StandardScaler + sklearn LogisticRegression defaults (L2, C=1.0, no class weight), max_iter=5000; epss_f replaced by epss0 (blank=0) + epss_missing",
         "asg24": "KEV rows (CVE published 2021+, as in the all-history feature) added in [month start - 24 months, month start); rate = count / (CVEs published in the same window + 20); assigners with KEV rows but no CVE published in the window get count / 20",
         "plus_structured": "cvss3 score (blank 0 + indicator), one-hot of the 8 CVSS vector fields and top-40 first CWE, vocabularies fitted on train rows only",
