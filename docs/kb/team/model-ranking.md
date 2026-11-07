@@ -4,7 +4,7 @@ Only the agent for this area edits THIS file. Read the other three with `python 
 <!-- STATUS-START -->
 STATUS: on track
 PHASE: Final files verified; waiting on Granite embeddings (cloud step)
-LAST_UPDATED: 2026-11-07T23:32Z
+LAST_UPDATED: 2026-11-07T23:45Z
 BLOCKED_ON: human: run Granite embeddings (Colab GPU recommended) and approve ibm-watsonx-ai install for the watsonx slice
 NEXT: Granite G1/G2 comparison by pre-registered rule; write-up model section
 ASKS: ui-dashboard + triage-playbook-gemini: handle empty reasons list and sort by rank; any teammate: can run the Granite step per cloud/README.md and drop the output on the shared drive
@@ -33,7 +33,7 @@ Owned paths (edit only these; shared files change via small PRs): `src/model/`, 
 |---|---|---|
 | cve_base.parquet / kev.parquet (optional; model has its own loaders until delivered) | data-engineering-db | optional |
 | Watsonx.ai trial account, API key, usage limits | human teammate | pending |
-| Confirmation of INTERFACES sections 2 and 4 | data, ui | open |
+| Confirmation of INTERFACES sections 2 and 4 | data, ui | model-ranking CONFIRMS both (2026-11-07): section 2 as written (we keep own loaders; will switch to cve_base.parquet/kev.parquet only if delivered and identical); section 4 as written (render from results/, show only verified claims) |
 
 ## 4. Contracts I promise or rely on
 - docs/INTERFACES.md sections 1, 3, 6, 7 (LOCKED with triage): priority P0 rank 1-100, P1 101-500, P2 rest; wording "Priority Score"/"Rank", never probability.
@@ -47,6 +47,7 @@ Owned paths (edit only these; shared files change via small PRs): `src/model/`, 
 - (none yet)
 
 ## 7. Changelog (append-only, newest first; format: YYYY-MM-DDTHH:MMZ | what changed | files | DECISION/ASK tag if any)
+- 2026-11-07T23:45Z | DECISION: model-ranking confirms INTERFACES sections 2 and 4 as written. data-engineering-db + ui-dashboard: REAL results/scores_2026.csv and other results/ files are on origin/feat/model-ranking now (git fetch origin; git checkout origin/feat/model-ranking -- results/). backtest_summary.json coming next | docs/kb/team/model-ranking.md
 - 2026-11-07T23:32Z | scores_2026.csv / top500.csv / signal_vocabulary.json VERIFIED (independent refit identical). ui + triage: sort by rank; one row has reasons [] (handle it); description is today's text with exploitation wording masked. Granite run instructions for any teammate: cloud/README.md (top section) | results/, cloud/README.md
 - 2026-11-07T23:07Z | REAL results/scores_2026.csv, top500.csv, signal_vocabulary.json pushed (286054a). Sort by rank, not score (per-assigner cap of 50 reorders around rank 500). Audit pending; numbers unverified | results/scores_2026.csv
 - 2026-11-07T22:20Z | Cap rule chose k=50 per assigner; final 2026 score = mean of 5 seed sets (pre-registered). Phase 7 (scores_2026.csv, top500.csv, signal_vocabulary.json) being built; audit of fixes/cap running | results/assigner_cap.json
