@@ -4,7 +4,7 @@ Only the agent for this area edits THIS file. Read the other three with `python 
 <!-- STATUS-START -->
 STATUS: on track
 PHASE: Phase 3 trained; audit running; final-ranking decision with human next
-LAST_UPDATED: 2026-11-07T21:58Z
+LAST_UPDATED: 2026-11-07T22:00Z
 BLOCKED_ON: none
 NEXT: Phase 3 audit verdict, then decide final 2026 ranking method with the human
 ASKS: data-engineering-db: do not feed src/features.py output to the model (not time-safe); ui-dashboard: results/leakage_table.csv and results/drift_summary.json are on origin/feat/model-ranking, display only verified claims
@@ -22,8 +22,8 @@ Owned paths (edit only these; shared files change via small PRs): `src/model/`, 
 | top500.csv (cve_id only; the judged file) | results/top500.csv | not started | judges, ui, triage |
 | signal vocabulary for reasons | results/signal_vocabulary.json | not started | triage, ui |
 | backtest summary (ours vs CVSS vs EPSS vs exploit-then-EPSS, with intervals) | results/backtest_summary.json | not started | ui |
-| drift summary (2025 vs 2026 volume, assigner mix, missing data) | results/drift_summary.json | delivered (committed cecfbc5, audit running; not verified yet) | ui |
-| leakage table (column, used?, solo AUC, reason) | results/leakage_table.csv | delivered (committed cecfbc5, audit running; not verified yet) | ui, write-up |
+| drift summary (2025 vs 2026 volume, assigner mix, missing data) | results/drift_summary.json | delivered and VERIFIED (audit/2026-11-07-leakage-drift.md; claims in results/claims_model_drift.json) | ui |
+| leakage table (column, used?, solo AUC, reason) | results/leakage_table.csv | delivered and VERIFIED (text-score row to be added after the Phase 3 audit) | ui, write-up |
 | claims ledger | results/claims_model.json | exists, all unverified | everyone (check_claims) |
 | IBM tech documentation | docs/ibm.md | not started | write-up, Devpost |
 | Granite embeddings (cloud step) | data_cache/granite_embeddings.parquet | not started | model |
@@ -47,6 +47,7 @@ Owned paths (edit only these; shared files change via small PRs): `src/model/`, 
 - (none yet)
 
 ## 7. Changelog (append-only, newest first; format: YYYY-MM-DDTHH:MMZ | what changed | files | DECISION/ASK tag if any)
+- 2026-11-07T22:00Z | leakage_table.csv and drift_summary.json VERIFIED (55/55 claims in results/claims_model_drift.json); pushed to origin/feat/model-ranking. ui-dashboard can display them | results/leakage_table.csv, results/drift_summary.json
 - 2026-11-07T21:58Z | Pushed feat/model-ranking to origin (89e6dc9): harness, audits, Phase 3 results, leakage_table.csv, drift_summary.json. Numbers: use only claims with status verified | results/, audit/, src/model/
 - 2026-11-07T21:56Z | Phase 3 trained (unaudited): pre-registered rule picked C1 (HGB signals + assigner history + masked text). It does not beat exploit-then-EPSS on top-500 in the backtest; ranking-quality gain is smaller and uncertain. Phase 3 audit running; leakage/drift fixes in progress | results/model_candidates.json
 - 2026-11-07T21:51Z | results/leakage_table.csv and results/drift_summary.json exist on feat/model-ranking (not pushed yet), claims in results/claims_model_drift.json all unverified; audit running. ui-dashboard: schema is ready to code against, do not display numbers until verified | results/leakage_table.csv, results/drift_summary.json
