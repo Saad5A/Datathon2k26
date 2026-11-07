@@ -117,6 +117,35 @@ def check_feature_lists():
     assert set(SIGNAL_FEATURES) | set(ASSIGNER_FEATURES) | {"txt"} == set(BEST_FEATURES)
 
 
+def check_assigner_window():
+    """24-month assigner window (Phase 3, candidates.py): only KEV rows in [start - 24 months, start) count."""
+    from candidates import assigner_window
+    v = load_vulns(cols=["cve_id", "published", "assigner"])
+    kv = kev_with_assigner(load_kev(), v)
+    start = pd.Timestamp(SAMPLE_MONTH + "-01")
+    lo = start - pd.DateOffset(months=24)
+    rate, kc = assigner_window(kv, v, SAMPLE_MONTH)
+    same = lambda a, b: a.sort_index().equals(b.sort_index())
+    later, earlier = kv.date_added >= start, kv.date_added < lo
+    assert later.sum() > 0 and earlier.sum() > 0
+    # Dropping or moving later KEV rows, dropping KEV rows before the window, or later CVEs: no change.
+    for alt_kv, alt_v in ((kv[~later], v), (kv.assign(date_added=kv.date_added.where(~later, kv.date_added + pd.Timedelta(days=30))), v),
+                          (kv[~earlier], v), (kv, v[v.published < start])):
+        r2, k2 = assigner_window(alt_kv, alt_v, SAMPLE_MONTH)
+        assert same(r2, rate) and same(k2, kc)
+    # Independent recompute for the largest assigners by a plain loop.
+    for a in kc.sort_values().index[-3:]:
+        n_kev = sum(1 for d, x in zip(kv.date_added, kv.assigner) if x == a and lo <= d < start)
+        n_pub = sum(1 for d, x in zip(v.published, v.assigner) if x == a and lo <= d < start)
+        assert kc[a] == n_kev and abs(rate[a] - n_kev / (n_pub + 20)) < 1e-12
+    # Power: pulling one later row to just before the month start raises its assigner's count by one.
+    row = kv[later].index[0]
+    moved = kv.copy()
+    moved.loc[row, "date_added"] = start - pd.Timedelta(days=1)
+    a = kv.loc[row, "assigner"]
+    assert assigner_window(moved, v, SAMPLE_MONTH)[1][a] == kc.get(a, 0) + 1
+
+
 if __name__ == "__main__":
     pool = load_pool()
     for check in (check_row_counts, check_split, check_labels, check_assigner_history, check_signals_as_of):
@@ -124,4 +153,6 @@ if __name__ == "__main__":
         print("OK", check.__name__)
     check_feature_lists()
     print("OK check_feature_lists")
+    check_assigner_window()
+    print("OK check_assigner_window")
     print("all checks passed")

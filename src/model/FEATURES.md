@@ -31,3 +31,15 @@ Where that cannot be shown from the data, the row says so. Status: unaudited.
 | `cwe_<id>` (top 40), `cwe_` (blank CWE) | first entry of `cwe_ids` | Today's NVD values. The top-40 list is picked over the whole pool including test rows (no labels used), as in the first pass |
 | `ncpe` | `n_affected_cpes` | LEAKY. Only in the "LEAKY + n_affected_cpes" row to show what leakage buys. Never a model feature |
 | `nvd_status`, `n_references` | | Kept in the cache for leak comparisons; never features |
+
+## Phase 3 features (src/model/candidates.py)
+
+Status: unaudited. Pre-registration: LOG.md "PRE-REGISTRATION, Phase 3".
+
+| Feature | Source column | As-of logic | Why it cannot leak |
+|---|---|---|---|
+| `asg24_kev` | KEV `date_added`, vulnerabilities `assigner` | Per assigner: KEV rows with `date_added` in [first day of snapshot month - 24 months, first day of snapshot month). Assigner comes from vulnerabilities.csv, CVEs published 2021+ only (same join as `asg_kev`) | `assigner_window` filters on `date_added < start` and asserts it; `checks.py check_assigner_window` drops, moves later or pulls in KEV rows and confirms only rows inside the window change the value. Same caveat as `asg_rate`: `assigner` is today's value |
+| `asg24_rate` | same + vulnerabilities `published` | `asg24_kev` / (CVEs by that assigner published in the same 24-month window + 20). An assigner with KEV rows but no CVE published in the window gets count / 20 (the all-history feature gives 0 in that case) | Same as above; CVEs published on/after the month start do not enter the denominator (checked) |
+| `epss0`, `epss_missing` (C3 only) | exploit_signals `epss` | Snapshot-month EPSS with blank -> 0, plus a 0/1 blank indicator, in place of `epss_f` (blank -> -1) | Same row as `epss_f` |
+| `txt` (masked) | vulnerabilities `description` | Before TF-IDF, every match of harness `EXPLOIT_WORDING` ("exploited in the wild", "actively exploited", "CISA", "KEV", ...) is replaced by a space, case-insensitive, in train and test rows. TF-IDF and the text LR are fitted on train rows only; train rows get 5-fold out-of-fold scores | Removes the known post-hoc wording only. `description` is still today's text: other later edits cannot be detected from this data |
+| `s_*` (ablation `plus_structured` only) | `cvss3_score`, 8 CVSS vector fields, first `cwe_ids` entry | cvss3 blank -> 0 + `s_cvss3_missing`; one-hot of the vector fields (blank is its own category) and of the top-40 first CWE, all vocabularies fitted on the fold's train rows; unseen test categories -> all zeros | Not a model feature. Today's NVD analysis values; the blank indicators are blank-score patterns (AGENTS.md rule 4), allowed only inside this one ablation |

@@ -1,0 +1,16 @@
+{
+  "script": "src/model/candidates.py",
+  "git_commit": "cecfbc565c7ac7d5966f196818212f30e6baff6a",
+  "git_dirty": true,
+  "date_utc": "2026-11-07T21:55:38+00:00",
+  "python": "3.12.15",
+  "machine": "arm64",
+  "libraries": {
+    "pandas": "3.1.1",
+    "numpy": "2.5.4",
+    "scikit-learn": "1.9.1",
+    "scipy": "1.18.1",
+    "pyarrow": "26.0.1",
+    "joblib": "1.6.0"
+  }
+}
