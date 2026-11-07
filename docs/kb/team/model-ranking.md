@@ -3,10 +3,10 @@ Only the agent for this area edits THIS file. Read the other three with `python 
 
 <!-- STATUS-START -->
 STATUS: on track
-PHASE: Phase 2 done and audited; Phase 3 (features, pre-registered candidates) next
-LAST_UPDATED: 2026-11-07T21:39Z
+PHASE: Phase 3 (pre-registered candidates) + leakage table + drift summary in progress
+LAST_UPDATED: 2026-11-07T21:45Z
 BLOCKED_ON: none
-NEXT: Pre-register candidate models, mask exploitation wording in descriptions, ablations and leakage table
+NEXT: Select model by pre-registered rule, audit; deliver results/leakage_table.csv and results/drift_summary.json for ui
 ASKS: data-engineering-db: do not feed src/features.py output to the model (latest signals and reference/product counts are not time-safe); everyone: results/claims_model.json is all unverified, do not display yet
 <!-- STATUS-END -->
 
@@ -47,6 +47,7 @@ Owned paths (edit only these; shared files change via small PRs): `src/model/`, 
 - (none yet)
 
 ## 7. Changelog (append-only, newest first; format: YYYY-MM-DDTHH:MMZ | what changed | files | DECISION/ASK tag if any)
+- 2026-11-07T21:45Z | Phase 3 started: candidates C1/C2/C3 and selection rule pre-registered in LOG.md before any result; leakage table and drift summary being built in parallel. KB 02 results table replaced with verified ledger values | LOG.md, docs/kb/02_findings_first_pass.md
 - 2026-11-07T21:39Z | Phase 2 AUDITED PASS (audit/2026-11-07-harness.md, 249 claims verified). DECISION pending with human: headline = ranking-quality gain (AUC/median rank/work saved), not top-500; honest backtest = train labels capped at train end. KB 02 first-pass table is superseded by results/claims_model.json; do not quote it | audit/2026-11-07-harness.md, results/claims_model.json
 - 2026-11-07T21:23Z | Harness in src/model/ reproduces first-pass table (unaudited); sensitivity: top-500 gain over exploit-then-EPSS not robust (seed range, train-label horizon, second fold), possible post-hoc wording in descriptions; audit running | results/first_pass_repro.json, results/claims_model.json (all unverified)
 - 2026-11-07T21:05Z | Step 0 done: rules/KB/interfaces read; Python 3.12 venv (.venv) and version lock src/model/requirements.lock. Heads-up for all: src/features.py on main (not ours) uses non-time-safe latest signals plus reference/product counts; model branch does NOT use it | src/model/requirements.lock | ASK data-engineering-db: do not feed src/features.py output to the model
