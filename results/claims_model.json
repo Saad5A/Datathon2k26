@@ -1,0 +1,3224 @@
+{
+  "pool.pool_rows": {
+    "text": "Backtest pool: pool rows",
+    "value": 75148,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "pool.pool_positives": {
+    "text": "Backtest pool: pool positives",
+    "value": 117,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "pool.train_rows": {
+    "text": "Backtest pool: train rows",
+    "value": 39868,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "pool.train_positives": {
+    "text": "Backtest pool: train positives",
+    "value": 65,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "pool.test_rows": {
+    "text": "Backtest pool: test rows",
+    "value": 35280,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "pool.test_positives": {
+    "text": "Backtest pool: test positives",
+    "value": 52,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.cvss3.top500_first_pass_order": {
+    "text": "CVSS3, 2025-01..09 test pool: top-500 hits, first-pass unstable sort order",
+    "value": 6,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.cvss3.top1000_first_pass_order": {
+    "text": "CVSS3, 2025-01..09 test pool: top-1000 hits, first-pass unstable sort order",
+    "value": 9,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.cvss3.median_rank_first_pass_order": {
+    "text": "CVSS3, 2025-01..09 test pool: median rank of positives, first-pass sort order",
+    "value": 7884,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.cvss3.auc": {
+    "text": "CVSS3, 2025-01..09 test pool: AUC",
+    "value": 0.7321511625367934,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.cvss3.avg_precision": {
+    "text": "CVSS3, 2025-01..09 test pool: average precision",
+    "value": 0.0063501574171049065,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.cvss3.top500_cve_id": {
+    "text": "CVSS3, 2025-01..09 test pool: top-500 hits, ties by cve_id",
+    "value": 5,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.cvss3.top250_cve_id": {
+    "text": "CVSS3, 2025-01..09 test pool: top-250 hits, ties by cve_id",
+    "value": 5,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.cvss3.top500_best": {
+    "text": "CVSS3, 2025-01..09 test pool: top-500 hits, best order of tied rows",
+    "value": 17,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.cvss3.top500_expected": {
+    "text": "CVSS3, 2025-01..09 test pool: top-500 hits, expected over tied rows",
+    "value": 5.947946638765368,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.cvss3.top500_worst": {
+    "text": "CVSS3, 2025-01..09 test pool: top-500 hits, worst order of tied rows",
+    "value": 5,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.cvss3.top500_tied_group": {
+    "text": "CVSS3, 2025-01..09 test pool: size of the tied group spanning rank 500",
+    "value": 3823,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.cvss3.work50_cve_id": {
+    "text": "CVSS3, 2025-01..09 test pool: CVEs to review to catch 50% of positives, ties by cve_id",
+    "value": 7952.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.cvss3.ci95_lo.top500_expected": {
+    "text": "CVSS3, 2025-01..09 test pool: 95% CI lower bound, top500_expected",
+    "value": 1.9670235376568563,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.cvss3.ci95_hi.top500_expected": {
+    "text": "CVSS3, 2025-01..09 test pool: 95% CI upper bound, top500_expected",
+    "value": 10.876568790530603,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.cvss3.ci95_lo.top250_expected": {
+    "text": "CVSS3, 2025-01..09 test pool: 95% CI lower bound, top250_expected",
+    "value": 1.169940902558049,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.cvss3.ci95_hi.top250_expected": {
+    "text": "CVSS3, 2025-01..09 test pool: 95% CI upper bound, top250_expected",
+    "value": 10.14173421977334,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.cvss3.ci95_lo.auc": {
+    "text": "CVSS3, 2025-01..09 test pool: 95% CI lower bound, auc",
+    "value": 0.6616020164762174,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.cvss3.ci95_hi.auc": {
+    "text": "CVSS3, 2025-01..09 test pool: 95% CI upper bound, auc",
+    "value": 0.7972149993355573,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.cvss3.ci95_lo.avg_precision": {
+    "text": "CVSS3, 2025-01..09 test pool: 95% CI lower bound, avg_precision",
+    "value": 0.0028693678808665926,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.cvss3.ci95_hi.avg_precision": {
+    "text": "CVSS3, 2025-01..09 test pool: 95% CI upper bound, avg_precision",
+    "value": 0.016418944209894808,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.cvss3.ci95_lo.median_rank_mid": {
+    "text": "CVSS3, 2025-01..09 test pool: 95% CI lower bound, median_rank_mid",
+    "value": 4558.29375,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.cvss3.ci95_hi.median_rank_mid": {
+    "text": "CVSS3, 2025-01..09 test pool: 95% CI upper bound, median_rank_mid",
+    "value": 9768.5,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.cvss3.ci95_lo.work50_mid": {
+    "text": "CVSS3, 2025-01..09 test pool: 95% CI lower bound, work50_mid",
+    "value": 4531.375,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.cvss3.ci95_hi.work50_mid": {
+    "text": "CVSS3, 2025-01..09 test pool: 95% CI upper bound, work50_mid",
+    "value": 9759.6125,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.epss.top500_first_pass_order": {
+    "text": "EPSS, 2025-01..09 test pool: top-500 hits, first-pass unstable sort order",
+    "value": 8,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.epss.top1000_first_pass_order": {
+    "text": "EPSS, 2025-01..09 test pool: top-1000 hits, first-pass unstable sort order",
+    "value": 13,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.epss.median_rank_first_pass_order": {
+    "text": "EPSS, 2025-01..09 test pool: median rank of positives, first-pass sort order",
+    "value": 3376,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.epss.auc": {
+    "text": "EPSS, 2025-01..09 test pool: AUC",
+    "value": 0.7072561926264946,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.epss.avg_precision": {
+    "text": "EPSS, 2025-01..09 test pool: average precision",
+    "value": 0.030922176708477904,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.epss.top500_cve_id": {
+    "text": "EPSS, 2025-01..09 test pool: top-500 hits, ties by cve_id",
+    "value": 8,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.epss.top250_cve_id": {
+    "text": "EPSS, 2025-01..09 test pool: top-250 hits, ties by cve_id",
+    "value": 8,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.epss.top500_best": {
+    "text": "EPSS, 2025-01..09 test pool: top-500 hits, best order of tied rows",
+    "value": 8,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.epss.top500_expected": {
+    "text": "EPSS, 2025-01..09 test pool: top-500 hits, expected over tied rows",
+    "value": 8.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.epss.top500_worst": {
+    "text": "EPSS, 2025-01..09 test pool: top-500 hits, worst order of tied rows",
+    "value": 8,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.epss.top500_tied_group": {
+    "text": "EPSS, 2025-01..09 test pool: size of the tied group spanning rank 500",
+    "value": 1,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.epss.work50_cve_id": {
+    "text": "EPSS, 2025-01..09 test pool: CVEs to review to catch 50% of positives, ties by cve_id",
+    "value": 3273.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.epss.ci95_lo.top500_expected": {
+    "text": "EPSS, 2025-01..09 test pool: 95% CI lower bound, top500_expected",
+    "value": 3.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.epss.ci95_hi.top500_expected": {
+    "text": "EPSS, 2025-01..09 test pool: 95% CI upper bound, top500_expected",
+    "value": 14.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.epss.ci95_lo.top250_expected": {
+    "text": "EPSS, 2025-01..09 test pool: 95% CI lower bound, top250_expected",
+    "value": 3.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.epss.ci95_hi.top250_expected": {
+    "text": "EPSS, 2025-01..09 test pool: 95% CI upper bound, top250_expected",
+    "value": 14.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.epss.ci95_lo.auc": {
+    "text": "EPSS, 2025-01..09 test pool: 95% CI lower bound, auc",
+    "value": 0.613564621039671,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.epss.ci95_hi.auc": {
+    "text": "EPSS, 2025-01..09 test pool: 95% CI upper bound, auc",
+    "value": 0.7970647356186846,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.epss.ci95_lo.avg_precision": {
+    "text": "EPSS, 2025-01..09 test pool: 95% CI lower bound, avg_precision",
+    "value": 0.006205227932206305,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.epss.ci95_hi.avg_precision": {
+    "text": "EPSS, 2025-01..09 test pool: 95% CI upper bound, avg_precision",
+    "value": 0.10149562191500049,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.epss.ci95_lo.median_rank_mid": {
+    "text": "EPSS, 2025-01..09 test pool: 95% CI lower bound, median_rank_mid",
+    "value": 2106.3875000000003,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.epss.ci95_hi.median_rank_mid": {
+    "text": "EPSS, 2025-01..09 test pool: 95% CI upper bound, median_rank_mid",
+    "value": 12551.599999999999,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.epss.ci95_lo.work50_mid": {
+    "text": "EPSS, 2025-01..09 test pool: 95% CI lower bound, work50_mid",
+    "value": 2037.3625,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.epss.ci95_hi.work50_mid": {
+    "text": "EPSS, 2025-01..09 test pool: 95% CI upper bound, work50_mid",
+    "value": 12550.0375,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.exploit_then_epss.top500_first_pass_order": {
+    "text": "exploit flag then EPSS, 2025-01..09 test pool: top-500 hits, first-pass unstable sort order",
+    "value": 19,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.exploit_then_epss.top1000_first_pass_order": {
+    "text": "exploit flag then EPSS, 2025-01..09 test pool: top-1000 hits, first-pass unstable sort order",
+    "value": 22,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.exploit_then_epss.median_rank_first_pass_order": {
+    "text": "exploit flag then EPSS, 2025-01..09 test pool: median rank of positives, first-pass sort order",
+    "value": 2496,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.exploit_then_epss.auc": {
+    "text": "exploit flag then EPSS, 2025-01..09 test pool: AUC",
+    "value": 0.7680295285218924,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.exploit_then_epss.avg_precision": {
+    "text": "exploit flag then EPSS, 2025-01..09 test pool: average precision",
+    "value": 0.047119029429330925,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.exploit_then_epss.top500_cve_id": {
+    "text": "exploit flag then EPSS, 2025-01..09 test pool: top-500 hits, ties by cve_id",
+    "value": 18,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.exploit_then_epss.top250_cve_id": {
+    "text": "exploit flag then EPSS, 2025-01..09 test pool: top-250 hits, ties by cve_id",
+    "value": 15,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.exploit_then_epss.top500_best": {
+    "text": "exploit flag then EPSS, 2025-01..09 test pool: top-500 hits, best order of tied rows",
+    "value": 19,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.exploit_then_epss.top500_expected": {
+    "text": "exploit flag then EPSS, 2025-01..09 test pool: top-500 hits, expected over tied rows",
+    "value": 18.358024691358025,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.exploit_then_epss.top500_worst": {
+    "text": "exploit flag then EPSS, 2025-01..09 test pool: top-500 hits, worst order of tied rows",
+    "value": 18,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.exploit_then_epss.top500_tied_group": {
+    "text": "exploit flag then EPSS, 2025-01..09 test pool: size of the tied group spanning rank 500",
+    "value": 81,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.exploit_then_epss.work50_cve_id": {
+    "text": "exploit flag then EPSS, 2025-01..09 test pool: CVEs to review to catch 50% of positives, ties by cve_id",
+    "value": 2253.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.exploit_then_epss.ci95_lo.top500_expected": {
+    "text": "exploit flag then EPSS, 2025-01..09 test pool: 95% CI lower bound, top500_expected",
+    "value": 10.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.exploit_then_epss.ci95_hi.top500_expected": {
+    "text": "exploit flag then EPSS, 2025-01..09 test pool: 95% CI upper bound, top500_expected",
+    "value": 26.70705249841872,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.exploit_then_epss.ci95_lo.top250_expected": {
+    "text": "exploit flag then EPSS, 2025-01..09 test pool: 95% CI lower bound, top250_expected",
+    "value": 7.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.exploit_then_epss.ci95_hi.top250_expected": {
+    "text": "exploit flag then EPSS, 2025-01..09 test pool: 95% CI upper bound, top250_expected",
+    "value": 22.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.exploit_then_epss.ci95_lo.auc": {
+    "text": "exploit flag then EPSS, 2025-01..09 test pool: 95% CI lower bound, auc",
+    "value": 0.6812321306116131,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.exploit_then_epss.ci95_hi.auc": {
+    "text": "exploit flag then EPSS, 2025-01..09 test pool: 95% CI upper bound, auc",
+    "value": 0.8505716926693253,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.exploit_then_epss.ci95_lo.avg_precision": {
+    "text": "exploit flag then EPSS, 2025-01..09 test pool: 95% CI lower bound, avg_precision",
+    "value": 0.016969721468167897,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.exploit_then_epss.ci95_hi.avg_precision": {
+    "text": "exploit flag then EPSS, 2025-01..09 test pool: 95% CI upper bound, avg_precision",
+    "value": 0.12299145656705995,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.exploit_then_epss.ci95_lo.median_rank_mid": {
+    "text": "exploit flag then EPSS, 2025-01..09 test pool: 95% CI lower bound, median_rank_mid",
+    "value": 691.14375,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.exploit_then_epss.ci95_hi.median_rank_mid": {
+    "text": "exploit flag then EPSS, 2025-01..09 test pool: 95% CI upper bound, median_rank_mid",
+    "value": 5178.65,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.exploit_then_epss.ci95_lo.work50_mid": {
+    "text": "exploit flag then EPSS, 2025-01..09 test pool: 95% CI lower bound, work50_mid",
+    "value": 683.325,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.exploit_then_epss.ci95_hi.work50_mid": {
+    "text": "exploit flag then EPSS, 2025-01..09 test pool: 95% CI upper bound, work50_mid",
+    "value": 5121.537499999999,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.assigner_only.top500_first_pass_order": {
+    "text": "assigner KEV-rate only, 2025-01..09 test pool: top-500 hits, first-pass unstable sort order",
+    "value": 13,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.assigner_only.top1000_first_pass_order": {
+    "text": "assigner KEV-rate only, 2025-01..09 test pool: top-1000 hits, first-pass unstable sort order",
+    "value": 15,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.assigner_only.median_rank_first_pass_order": {
+    "text": "assigner KEV-rate only, 2025-01..09 test pool: median rank of positives, first-pass sort order",
+    "value": 6075,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.assigner_only.auc": {
+    "text": "assigner KEV-rate only, 2025-01..09 test pool: AUC",
+    "value": 0.7463299516992603,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.assigner_only.avg_precision": {
+    "text": "assigner KEV-rate only, 2025-01..09 test pool: average precision",
+    "value": 0.010890060166561112,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.assigner_only.top500_cve_id": {
+    "text": "assigner KEV-rate only, 2025-01..09 test pool: top-500 hits, ties by cve_id",
+    "value": 13,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.assigner_only.top250_cve_id": {
+    "text": "assigner KEV-rate only, 2025-01..09 test pool: top-250 hits, ties by cve_id",
+    "value": 8,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.assigner_only.top500_best": {
+    "text": "assigner KEV-rate only, 2025-01..09 test pool: top-500 hits, best order of tied rows",
+    "value": 13,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.assigner_only.top500_expected": {
+    "text": "assigner KEV-rate only, 2025-01..09 test pool: top-500 hits, expected over tied rows",
+    "value": 12.6,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.assigner_only.top500_worst": {
+    "text": "assigner KEV-rate only, 2025-01..09 test pool: top-500 hits, worst order of tied rows",
+    "value": 11,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.assigner_only.top500_tied_group": {
+    "text": "assigner KEV-rate only, 2025-01..09 test pool: size of the tied group spanning rank 500",
+    "value": 10,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.assigner_only.work50_cve_id": {
+    "text": "assigner KEV-rate only, 2025-01..09 test pool: CVEs to review to catch 50% of positives, ties by cve_id",
+    "value": 6011.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.assigner_only.ci95_lo.top500_expected": {
+    "text": "assigner KEV-rate only, 2025-01..09 test pool: 95% CI lower bound, top500_expected",
+    "value": 6.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.assigner_only.ci95_hi.top500_expected": {
+    "text": "assigner KEV-rate only, 2025-01..09 test pool: 95% CI upper bound, top500_expected",
+    "value": 19.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.assigner_only.ci95_lo.top250_expected": {
+    "text": "assigner KEV-rate only, 2025-01..09 test pool: 95% CI lower bound, top250_expected",
+    "value": 3.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.assigner_only.ci95_hi.top250_expected": {
+    "text": "assigner KEV-rate only, 2025-01..09 test pool: 95% CI upper bound, top250_expected",
+    "value": 14.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.assigner_only.ci95_lo.auc": {
+    "text": "assigner KEV-rate only, 2025-01..09 test pool: 95% CI lower bound, auc",
+    "value": 0.6660030308861816,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.assigner_only.ci95_hi.auc": {
+    "text": "assigner KEV-rate only, 2025-01..09 test pool: 95% CI upper bound, auc",
+    "value": 0.8188357944828106,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.assigner_only.ci95_lo.avg_precision": {
+    "text": "assigner KEV-rate only, 2025-01..09 test pool: 95% CI lower bound, avg_precision",
+    "value": 0.005469856604846923,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.assigner_only.ci95_hi.avg_precision": {
+    "text": "assigner KEV-rate only, 2025-01..09 test pool: 95% CI upper bound, avg_precision",
+    "value": 0.02396729036302293,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.assigner_only.ci95_lo.median_rank_mid": {
+    "text": "assigner KEV-rate only, 2025-01..09 test pool: 95% CI lower bound, median_rank_mid",
+    "value": 3294.2875,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.assigner_only.ci95_hi.median_rank_mid": {
+    "text": "assigner KEV-rate only, 2025-01..09 test pool: 95% CI upper bound, median_rank_mid",
+    "value": 7873.075,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.assigner_only.ci95_lo.work50_mid": {
+    "text": "assigner KEV-rate only, 2025-01..09 test pool: 95% CI lower bound, work50_mid",
+    "value": 3282.9,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.assigner_only.ci95_hi.work50_mid": {
+    "text": "assigner KEV-rate only, 2025-01..09 test pool: 95% CI upper bound, work50_mid",
+    "value": 7862.5125,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals.top500_first_pass_order": {
+    "text": "HGB signals, 2025-01..09 test pool: top-500 hits, first-pass unstable sort order",
+    "value": 20,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals.top1000_first_pass_order": {
+    "text": "HGB signals, 2025-01..09 test pool: top-1000 hits, first-pass unstable sort order",
+    "value": 22,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals.median_rank_first_pass_order": {
+    "text": "HGB signals, 2025-01..09 test pool: median rank of positives, first-pass sort order",
+    "value": 2602,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals.auc": {
+    "text": "HGB signals, 2025-01..09 test pool: AUC",
+    "value": 0.7252728926291151,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals.avg_precision": {
+    "text": "HGB signals, 2025-01..09 test pool: average precision",
+    "value": 0.03686081929898636,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals.top500_cve_id": {
+    "text": "HGB signals, 2025-01..09 test pool: top-500 hits, ties by cve_id",
+    "value": 18,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals.top250_cve_id": {
+    "text": "HGB signals, 2025-01..09 test pool: top-250 hits, ties by cve_id",
+    "value": 15,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals.top500_best": {
+    "text": "HGB signals, 2025-01..09 test pool: top-500 hits, best order of tied rows",
+    "value": 22,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals.top500_expected": {
+    "text": "HGB signals, 2025-01..09 test pool: top-500 hits, expected over tied rows",
+    "value": 19.305263157894736,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals.top500_worst": {
+    "text": "HGB signals, 2025-01..09 test pool: top-500 hits, worst order of tied rows",
+    "value": 18,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals.top500_tied_group": {
+    "text": "HGB signals, 2025-01..09 test pool: size of the tied group spanning rank 500",
+    "value": 285,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals.work50_cve_id": {
+    "text": "HGB signals, 2025-01..09 test pool: CVEs to review to catch 50% of positives, ties by cve_id",
+    "value": 2777.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals.ci95_lo.top500_expected": {
+    "text": "HGB signals, 2025-01..09 test pool: 95% CI lower bound, top500_expected",
+    "value": 11.360536311943392,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals.ci95_hi.top500_expected": {
+    "text": "HGB signals, 2025-01..09 test pool: 95% CI upper bound, top500_expected",
+    "value": 27.637258888541336,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals.ci95_lo.top250_expected": {
+    "text": "HGB signals, 2025-01..09 test pool: 95% CI lower bound, top250_expected",
+    "value": 8.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals.ci95_hi.top250_expected": {
+    "text": "HGB signals, 2025-01..09 test pool: 95% CI upper bound, top250_expected",
+    "value": 22.363989898989896,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals.ci95_lo.auc": {
+    "text": "HGB signals, 2025-01..09 test pool: 95% CI lower bound, auc",
+    "value": 0.6322148650398302,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals.ci95_hi.auc": {
+    "text": "HGB signals, 2025-01..09 test pool: 95% CI upper bound, auc",
+    "value": 0.8071254417935391,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals.ci95_lo.avg_precision": {
+    "text": "HGB signals, 2025-01..09 test pool: 95% CI lower bound, avg_precision",
+    "value": 0.01494062079840552,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals.ci95_hi.avg_precision": {
+    "text": "HGB signals, 2025-01..09 test pool: 95% CI upper bound, avg_precision",
+    "value": 0.07817678887187378,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals.ci95_lo.median_rank_mid": {
+    "text": "HGB signals, 2025-01..09 test pool: 95% CI lower bound, median_rank_mid",
+    "value": 534.5,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals.ci95_hi.median_rank_mid": {
+    "text": "HGB signals, 2025-01..09 test pool: 95% CI upper bound, median_rank_mid",
+    "value": 14536.5125,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals.ci95_lo.work50_mid": {
+    "text": "HGB signals, 2025-01..09 test pool: 95% CI lower bound, work50_mid",
+    "value": 532.4875,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals.ci95_hi.work50_mid": {
+    "text": "HGB signals, 2025-01..09 test pool: 95% CI upper bound, work50_mid",
+    "value": 14536.5125,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_struct.top500_first_pass_order": {
+    "text": "HGB signals+structured, 2025-01..09 test pool: top-500 hits, first-pass unstable sort order",
+    "value": 19,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_struct.top1000_first_pass_order": {
+    "text": "HGB signals+structured, 2025-01..09 test pool: top-1000 hits, first-pass unstable sort order",
+    "value": 20,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_struct.median_rank_first_pass_order": {
+    "text": "HGB signals+structured, 2025-01..09 test pool: median rank of positives, first-pass sort order",
+    "value": 3551,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_struct.auc": {
+    "text": "HGB signals+structured, 2025-01..09 test pool: AUC",
+    "value": 0.8029774174389253,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_struct.avg_precision": {
+    "text": "HGB signals+structured, 2025-01..09 test pool: average precision",
+    "value": 0.06277207175816439,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_struct.top500_cve_id": {
+    "text": "HGB signals+structured, 2025-01..09 test pool: top-500 hits, ties by cve_id",
+    "value": 19,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_struct.top250_cve_id": {
+    "text": "HGB signals+structured, 2025-01..09 test pool: top-250 hits, ties by cve_id",
+    "value": 14,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_struct.top500_best": {
+    "text": "HGB signals+structured, 2025-01..09 test pool: top-500 hits, best order of tied rows",
+    "value": 19,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_struct.top500_expected": {
+    "text": "HGB signals+structured, 2025-01..09 test pool: top-500 hits, expected over tied rows",
+    "value": 19.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_struct.top500_worst": {
+    "text": "HGB signals+structured, 2025-01..09 test pool: top-500 hits, worst order of tied rows",
+    "value": 19,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_struct.top500_tied_group": {
+    "text": "HGB signals+structured, 2025-01..09 test pool: size of the tied group spanning rank 500",
+    "value": 64,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_struct.work50_cve_id": {
+    "text": "HGB signals+structured, 2025-01..09 test pool: CVEs to review to catch 50% of positives, ties by cve_id",
+    "value": 3521.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_struct.ci95_lo.top500_expected": {
+    "text": "HGB signals+structured, 2025-01..09 test pool: 95% CI lower bound, top500_expected",
+    "value": 11.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_struct.ci95_hi.top500_expected": {
+    "text": "HGB signals+structured, 2025-01..09 test pool: 95% CI upper bound, top500_expected",
+    "value": 27.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_struct.ci95_lo.top250_expected": {
+    "text": "HGB signals+structured, 2025-01..09 test pool: 95% CI lower bound, top250_expected",
+    "value": 7.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_struct.ci95_hi.top250_expected": {
+    "text": "HGB signals+structured, 2025-01..09 test pool: 95% CI upper bound, top250_expected",
+    "value": 21.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_struct.ci95_lo.auc": {
+    "text": "HGB signals+structured, 2025-01..09 test pool: 95% CI lower bound, auc",
+    "value": 0.735617832268244,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_struct.ci95_hi.auc": {
+    "text": "HGB signals+structured, 2025-01..09 test pool: 95% CI upper bound, auc",
+    "value": 0.8634688927689691,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_struct.ci95_lo.avg_precision": {
+    "text": "HGB signals+structured, 2025-01..09 test pool: 95% CI lower bound, avg_precision",
+    "value": 0.01851675594655221,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_struct.ci95_hi.avg_precision": {
+    "text": "HGB signals+structured, 2025-01..09 test pool: 95% CI upper bound, avg_precision",
+    "value": 0.14003139284326432,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_struct.ci95_lo.median_rank_mid": {
+    "text": "HGB signals+structured, 2025-01..09 test pool: 95% CI lower bound, median_rank_mid",
+    "value": 1444.9875,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_struct.ci95_hi.median_rank_mid": {
+    "text": "HGB signals+structured, 2025-01..09 test pool: 95% CI upper bound, median_rank_mid",
+    "value": 7360.387499999998,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_struct.ci95_lo.work50_mid": {
+    "text": "HGB signals+structured, 2025-01..09 test pool: 95% CI lower bound, work50_mid",
+    "value": 399.95,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_struct.ci95_hi.work50_mid": {
+    "text": "HGB signals+structured, 2025-01..09 test pool: 95% CI upper bound, work50_mid",
+    "value": 7360.387499999998,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_assigner.top500_first_pass_order": {
+    "text": "HGB signals+assigner, 2025-01..09 test pool: top-500 hits, first-pass unstable sort order",
+    "value": 17,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_assigner.top1000_first_pass_order": {
+    "text": "HGB signals+assigner, 2025-01..09 test pool: top-1000 hits, first-pass unstable sort order",
+    "value": 24,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_assigner.median_rank_first_pass_order": {
+    "text": "HGB signals+assigner, 2025-01..09 test pool: median rank of positives, first-pass sort order",
+    "value": 1183,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_assigner.auc": {
+    "text": "HGB signals+assigner, 2025-01..09 test pool: AUC",
+    "value": 0.879561766863771,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_assigner.avg_precision": {
+    "text": "HGB signals+assigner, 2025-01..09 test pool: average precision",
+    "value": 0.07272102843053574,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_assigner.top500_cve_id": {
+    "text": "HGB signals+assigner, 2025-01..09 test pool: top-500 hits, ties by cve_id",
+    "value": 17,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_assigner.top250_cve_id": {
+    "text": "HGB signals+assigner, 2025-01..09 test pool: top-250 hits, ties by cve_id",
+    "value": 14,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_assigner.top500_best": {
+    "text": "HGB signals+assigner, 2025-01..09 test pool: top-500 hits, best order of tied rows",
+    "value": 17,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_assigner.top500_expected": {
+    "text": "HGB signals+assigner, 2025-01..09 test pool: top-500 hits, expected over tied rows",
+    "value": 16.483870967741936,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_assigner.top500_worst": {
+    "text": "HGB signals+assigner, 2025-01..09 test pool: top-500 hits, worst order of tied rows",
+    "value": 16,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_assigner.top500_tied_group": {
+    "text": "HGB signals+assigner, 2025-01..09 test pool: size of the tied group spanning rank 500",
+    "value": 62,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_assigner.work50_cve_id": {
+    "text": "HGB signals+assigner, 2025-01..09 test pool: CVEs to review to catch 50% of positives, ties by cve_id",
+    "value": 1182.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_assigner.ci95_lo.top500_expected": {
+    "text": "HGB signals+assigner, 2025-01..09 test pool: 95% CI lower bound, top500_expected",
+    "value": 9.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_assigner.ci95_hi.top500_expected": {
+    "text": "HGB signals+assigner, 2025-01..09 test pool: 95% CI upper bound, top500_expected",
+    "value": 24.083522727272726,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_assigner.ci95_lo.top250_expected": {
+    "text": "HGB signals+assigner, 2025-01..09 test pool: 95% CI lower bound, top250_expected",
+    "value": 7.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_assigner.ci95_hi.top250_expected": {
+    "text": "HGB signals+assigner, 2025-01..09 test pool: 95% CI upper bound, top250_expected",
+    "value": 22.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_assigner.ci95_lo.auc": {
+    "text": "HGB signals+assigner, 2025-01..09 test pool: 95% CI lower bound, auc",
+    "value": 0.8262784287200229,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_assigner.ci95_hi.auc": {
+    "text": "HGB signals+assigner, 2025-01..09 test pool: 95% CI upper bound, auc",
+    "value": 0.9263895475598063,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_assigner.ci95_lo.avg_precision": {
+    "text": "HGB signals+assigner, 2025-01..09 test pool: 95% CI lower bound, avg_precision",
+    "value": 0.023802340513131456,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_assigner.ci95_hi.avg_precision": {
+    "text": "HGB signals+assigner, 2025-01..09 test pool: 95% CI upper bound, avg_precision",
+    "value": 0.16542792813399224,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_assigner.ci95_lo.median_rank_mid": {
+    "text": "HGB signals+assigner, 2025-01..09 test pool: 95% CI lower bound, median_rank_mid",
+    "value": 626.475,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_assigner.ci95_hi.median_rank_mid": {
+    "text": "HGB signals+assigner, 2025-01..09 test pool: 95% CI upper bound, median_rank_mid",
+    "value": 3411.5874999999915,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_assigner.ci95_lo.work50_mid": {
+    "text": "HGB signals+assigner, 2025-01..09 test pool: 95% CI lower bound, work50_mid",
+    "value": 618.5,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_assigner.ci95_hi.work50_mid": {
+    "text": "HGB signals+assigner, 2025-01..09 test pool: 95% CI upper bound, work50_mid",
+    "value": 3277.0125,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_struct_assigner.top500_first_pass_order": {
+    "text": "HGB signals+structured+assigner, 2025-01..09 test pool: top-500 hits, first-pass unstable sort order",
+    "value": 14,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_struct_assigner.top1000_first_pass_order": {
+    "text": "HGB signals+structured+assigner, 2025-01..09 test pool: top-1000 hits, first-pass unstable sort order",
+    "value": 24,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_struct_assigner.median_rank_first_pass_order": {
+    "text": "HGB signals+structured+assigner, 2025-01..09 test pool: median rank of positives, first-pass sort order",
+    "value": 1635,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_struct_assigner.auc": {
+    "text": "HGB signals+structured+assigner, 2025-01..09 test pool: AUC",
+    "value": 0.8785977172878217,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_struct_assigner.avg_precision": {
+    "text": "HGB signals+structured+assigner, 2025-01..09 test pool: average precision",
+    "value": 0.10310475278963233,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_struct_assigner.top500_cve_id": {
+    "text": "HGB signals+structured+assigner, 2025-01..09 test pool: top-500 hits, ties by cve_id",
+    "value": 14,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_struct_assigner.top250_cve_id": {
+    "text": "HGB signals+structured+assigner, 2025-01..09 test pool: top-250 hits, ties by cve_id",
+    "value": 13,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_struct_assigner.top500_best": {
+    "text": "HGB signals+structured+assigner, 2025-01..09 test pool: top-500 hits, best order of tied rows",
+    "value": 14,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_struct_assigner.top500_expected": {
+    "text": "HGB signals+structured+assigner, 2025-01..09 test pool: top-500 hits, expected over tied rows",
+    "value": 14.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_struct_assigner.top500_worst": {
+    "text": "HGB signals+structured+assigner, 2025-01..09 test pool: top-500 hits, worst order of tied rows",
+    "value": 14,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_struct_assigner.top500_tied_group": {
+    "text": "HGB signals+structured+assigner, 2025-01..09 test pool: size of the tied group spanning rank 500",
+    "value": 5,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_struct_assigner.work50_cve_id": {
+    "text": "HGB signals+structured+assigner, 2025-01..09 test pool: CVEs to review to catch 50% of positives, ties by cve_id",
+    "value": 1636.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_struct_assigner.ci95_lo.top500_expected": {
+    "text": "HGB signals+structured+assigner, 2025-01..09 test pool: 95% CI lower bound, top500_expected",
+    "value": 7.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_struct_assigner.ci95_hi.top500_expected": {
+    "text": "HGB signals+structured+assigner, 2025-01..09 test pool: 95% CI upper bound, top500_expected",
+    "value": 22.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_struct_assigner.ci95_lo.top250_expected": {
+    "text": "HGB signals+structured+assigner, 2025-01..09 test pool: 95% CI lower bound, top250_expected",
+    "value": 6.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_struct_assigner.ci95_hi.top250_expected": {
+    "text": "HGB signals+structured+assigner, 2025-01..09 test pool: 95% CI upper bound, top250_expected",
+    "value": 20.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_struct_assigner.ci95_lo.auc": {
+    "text": "HGB signals+structured+assigner, 2025-01..09 test pool: 95% CI lower bound, auc",
+    "value": 0.8390108658167053,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_struct_assigner.ci95_hi.auc": {
+    "text": "HGB signals+structured+assigner, 2025-01..09 test pool: 95% CI upper bound, auc",
+    "value": 0.9133480172328792,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_struct_assigner.ci95_lo.avg_precision": {
+    "text": "HGB signals+structured+assigner, 2025-01..09 test pool: 95% CI lower bound, avg_precision",
+    "value": 0.03260267120489915,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_struct_assigner.ci95_hi.avg_precision": {
+    "text": "HGB signals+structured+assigner, 2025-01..09 test pool: 95% CI upper bound, avg_precision",
+    "value": 0.20448964743278647,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_struct_assigner.ci95_lo.median_rank_mid": {
+    "text": "HGB signals+structured+assigner, 2025-01..09 test pool: 95% CI lower bound, median_rank_mid",
+    "value": 818.4875,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_struct_assigner.ci95_hi.median_rank_mid": {
+    "text": "HGB signals+structured+assigner, 2025-01..09 test pool: 95% CI upper bound, median_rank_mid",
+    "value": 6520.35625,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_struct_assigner.ci95_lo.work50_mid": {
+    "text": "HGB signals+structured+assigner, 2025-01..09 test pool: 95% CI lower bound, work50_mid",
+    "value": 785.375,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_struct_assigner.ci95_hi.work50_mid": {
+    "text": "HGB signals+structured+assigner, 2025-01..09 test pool: 95% CI upper bound, work50_mid",
+    "value": 6507.049999999999,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.text_only.top500_first_pass_order": {
+    "text": "text-only TF-IDF LR, 2025-01..09 test pool: top-500 hits, first-pass unstable sort order",
+    "value": 9,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.text_only.top1000_first_pass_order": {
+    "text": "text-only TF-IDF LR, 2025-01..09 test pool: top-1000 hits, first-pass unstable sort order",
+    "value": 14,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.text_only.median_rank_first_pass_order": {
+    "text": "text-only TF-IDF LR, 2025-01..09 test pool: median rank of positives, first-pass sort order",
+    "value": 3379,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.text_only.auc": {
+    "text": "text-only TF-IDF LR, 2025-01..09 test pool: AUC",
+    "value": 0.8140129464324706,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.text_only.avg_precision": {
+    "text": "text-only TF-IDF LR, 2025-01..09 test pool: average precision",
+    "value": 0.00996350755353356,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.text_only.top500_cve_id": {
+    "text": "text-only TF-IDF LR, 2025-01..09 test pool: top-500 hits, ties by cve_id",
+    "value": 9,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.text_only.top250_cve_id": {
+    "text": "text-only TF-IDF LR, 2025-01..09 test pool: top-250 hits, ties by cve_id",
+    "value": 7,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.text_only.top500_best": {
+    "text": "text-only TF-IDF LR, 2025-01..09 test pool: top-500 hits, best order of tied rows",
+    "value": 9,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.text_only.top500_expected": {
+    "text": "text-only TF-IDF LR, 2025-01..09 test pool: top-500 hits, expected over tied rows",
+    "value": 9.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.text_only.top500_worst": {
+    "text": "text-only TF-IDF LR, 2025-01..09 test pool: top-500 hits, worst order of tied rows",
+    "value": 9,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.text_only.top500_tied_group": {
+    "text": "text-only TF-IDF LR, 2025-01..09 test pool: size of the tied group spanning rank 500",
+    "value": 17,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.text_only.work50_cve_id": {
+    "text": "text-only TF-IDF LR, 2025-01..09 test pool: CVEs to review to catch 50% of positives, ties by cve_id",
+    "value": 3087.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.text_only.ci95_lo.top500_expected": {
+    "text": "text-only TF-IDF LR, 2025-01..09 test pool: 95% CI lower bound, top500_expected",
+    "value": 3.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.text_only.ci95_hi.top500_expected": {
+    "text": "text-only TF-IDF LR, 2025-01..09 test pool: 95% CI upper bound, top500_expected",
+    "value": 15.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.text_only.ci95_lo.top250_expected": {
+    "text": "text-only TF-IDF LR, 2025-01..09 test pool: 95% CI lower bound, top250_expected",
+    "value": 2.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.text_only.ci95_hi.top250_expected": {
+    "text": "text-only TF-IDF LR, 2025-01..09 test pool: 95% CI upper bound, top250_expected",
+    "value": 12.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.text_only.ci95_lo.auc": {
+    "text": "text-only TF-IDF LR, 2025-01..09 test pool: 95% CI lower bound, auc",
+    "value": 0.7569138932339553,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.text_only.ci95_hi.auc": {
+    "text": "text-only TF-IDF LR, 2025-01..09 test pool: 95% CI upper bound, auc",
+    "value": 0.8641040630699466,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.text_only.ci95_lo.avg_precision": {
+    "text": "text-only TF-IDF LR, 2025-01..09 test pool: 95% CI lower bound, avg_precision",
+    "value": 0.005690657515289268,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.text_only.ci95_hi.avg_precision": {
+    "text": "text-only TF-IDF LR, 2025-01..09 test pool: 95% CI upper bound, avg_precision",
+    "value": 0.017793991621790895,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.text_only.ci95_lo.median_rank_mid": {
+    "text": "text-only TF-IDF LR, 2025-01..09 test pool: 95% CI lower bound, median_rank_mid",
+    "value": 1502.2,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.text_only.ci95_hi.median_rank_mid": {
+    "text": "text-only TF-IDF LR, 2025-01..09 test pool: 95% CI upper bound, median_rank_mid",
+    "value": 7109.012499999996,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.text_only.ci95_lo.work50_mid": {
+    "text": "text-only TF-IDF LR, 2025-01..09 test pool: 95% CI lower bound, work50_mid",
+    "value": 1388.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.text_only.ci95_hi.work50_mid": {
+    "text": "text-only TF-IDF LR, 2025-01..09 test pool: 95% CI upper bound, work50_mid",
+    "value": 6735.549999999999,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_all_text.top500_first_pass_order": {
+    "text": "HGB all + text score, 2025-01..09 test pool: top-500 hits, first-pass unstable sort order",
+    "value": 21,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_all_text.top1000_first_pass_order": {
+    "text": "HGB all + text score, 2025-01..09 test pool: top-1000 hits, first-pass unstable sort order",
+    "value": 25,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_all_text.median_rank_first_pass_order": {
+    "text": "HGB all + text score, 2025-01..09 test pool: median rank of positives, first-pass sort order",
+    "value": 1086,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_all_text.auc": {
+    "text": "HGB all + text score, 2025-01..09 test pool: AUC",
+    "value": 0.8834223323230648,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_all_text.avg_precision": {
+    "text": "HGB all + text score, 2025-01..09 test pool: average precision",
+    "value": 0.11301030594755732,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_all_text.top500_cve_id": {
+    "text": "HGB all + text score, 2025-01..09 test pool: top-500 hits, ties by cve_id",
+    "value": 21,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_all_text.top250_cve_id": {
+    "text": "HGB all + text score, 2025-01..09 test pool: top-250 hits, ties by cve_id",
+    "value": 14,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_all_text.top500_best": {
+    "text": "HGB all + text score, 2025-01..09 test pool: top-500 hits, best order of tied rows",
+    "value": 21,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_all_text.top500_expected": {
+    "text": "HGB all + text score, 2025-01..09 test pool: top-500 hits, expected over tied rows",
+    "value": 21.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_all_text.top500_worst": {
+    "text": "HGB all + text score, 2025-01..09 test pool: top-500 hits, worst order of tied rows",
+    "value": 21,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_all_text.top500_tied_group": {
+    "text": "HGB all + text score, 2025-01..09 test pool: size of the tied group spanning rank 500",
+    "value": 1,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_all_text.work50_cve_id": {
+    "text": "HGB all + text score, 2025-01..09 test pool: CVEs to review to catch 50% of positives, ties by cve_id",
+    "value": 1016.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_all_text.ci95_lo.top500_expected": {
+    "text": "HGB all + text score, 2025-01..09 test pool: 95% CI lower bound, top500_expected",
+    "value": 12.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_all_text.ci95_hi.top500_expected": {
+    "text": "HGB all + text score, 2025-01..09 test pool: 95% CI upper bound, top500_expected",
+    "value": 30.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_all_text.ci95_lo.top250_expected": {
+    "text": "HGB all + text score, 2025-01..09 test pool: 95% CI lower bound, top250_expected",
+    "value": 7.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_all_text.ci95_hi.top250_expected": {
+    "text": "HGB all + text score, 2025-01..09 test pool: 95% CI upper bound, top250_expected",
+    "value": 22.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_all_text.ci95_lo.auc": {
+    "text": "HGB all + text score, 2025-01..09 test pool: 95% CI lower bound, auc",
+    "value": 0.8377479610607009,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_all_text.ci95_hi.auc": {
+    "text": "HGB all + text score, 2025-01..09 test pool: 95% CI upper bound, auc",
+    "value": 0.9222117437984625,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_all_text.ci95_lo.avg_precision": {
+    "text": "HGB all + text score, 2025-01..09 test pool: 95% CI lower bound, avg_precision",
+    "value": 0.04338575308877782,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_all_text.ci95_hi.avg_precision": {
+    "text": "HGB all + text score, 2025-01..09 test pool: 95% CI upper bound, avg_precision",
+    "value": 0.22354944188102352,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_all_text.ci95_lo.median_rank_mid": {
+    "text": "HGB all + text score, 2025-01..09 test pool: 95% CI lower bound, median_rank_mid",
+    "value": 453.9875,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_all_text.ci95_hi.median_rank_mid": {
+    "text": "HGB all + text score, 2025-01..09 test pool: 95% CI upper bound, median_rank_mid",
+    "value": 4598.637499999996,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_all_text.ci95_lo.work50_mid": {
+    "text": "HGB all + text score, 2025-01..09 test pool: 95% CI lower bound, work50_mid",
+    "value": 447.4625,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_all_text.ci95_hi.work50_mid": {
+    "text": "HGB all + text score, 2025-01..09 test pool: 95% CI upper bound, work50_mid",
+    "value": 4244.112499999999,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_assigner_text.top500_first_pass_order": {
+    "text": "HGB signals+assigner+text score, 2025-01..09 test pool: top-500 hits, first-pass unstable sort order",
+    "value": 25,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_assigner_text.top1000_first_pass_order": {
+    "text": "HGB signals+assigner+text score, 2025-01..09 test pool: top-1000 hits, first-pass unstable sort order",
+    "value": 28,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_assigner_text.median_rank_first_pass_order": {
+    "text": "HGB signals+assigner+text score, 2025-01..09 test pool: median rank of positives, first-pass sort order",
+    "value": 778,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_assigner_text.auc": {
+    "text": "HGB signals+assigner+text score, 2025-01..09 test pool: AUC",
+    "value": 0.8880206741141226,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_assigner_text.avg_precision": {
+    "text": "HGB signals+assigner+text score, 2025-01..09 test pool: average precision",
+    "value": 0.10568247366264288,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_assigner_text.top500_cve_id": {
+    "text": "HGB signals+assigner+text score, 2025-01..09 test pool: top-500 hits, ties by cve_id",
+    "value": 25,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_assigner_text.top250_cve_id": {
+    "text": "HGB signals+assigner+text score, 2025-01..09 test pool: top-250 hits, ties by cve_id",
+    "value": 16,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_assigner_text.top500_best": {
+    "text": "HGB signals+assigner+text score, 2025-01..09 test pool: top-500 hits, best order of tied rows",
+    "value": 25,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_assigner_text.top500_expected": {
+    "text": "HGB signals+assigner+text score, 2025-01..09 test pool: top-500 hits, expected over tied rows",
+    "value": 25.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_assigner_text.top500_worst": {
+    "text": "HGB signals+assigner+text score, 2025-01..09 test pool: top-500 hits, worst order of tied rows",
+    "value": 25,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_assigner_text.top500_tied_group": {
+    "text": "HGB signals+assigner+text score, 2025-01..09 test pool: size of the tied group spanning rank 500",
+    "value": 3,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_assigner_text.work50_cve_id": {
+    "text": "HGB signals+assigner+text score, 2025-01..09 test pool: CVEs to review to catch 50% of positives, ties by cve_id",
+    "value": 686.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_assigner_text.ci95_lo.top500_expected": {
+    "text": "HGB signals+assigner+text score, 2025-01..09 test pool: 95% CI lower bound, top500_expected",
+    "value": 15.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_assigner_text.ci95_hi.top500_expected": {
+    "text": "HGB signals+assigner+text score, 2025-01..09 test pool: 95% CI upper bound, top500_expected",
+    "value": 35.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_assigner_text.ci95_lo.top250_expected": {
+    "text": "HGB signals+assigner+text score, 2025-01..09 test pool: 95% CI lower bound, top250_expected",
+    "value": 9.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_assigner_text.ci95_hi.top250_expected": {
+    "text": "HGB signals+assigner+text score, 2025-01..09 test pool: 95% CI upper bound, top250_expected",
+    "value": 24.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_assigner_text.ci95_lo.auc": {
+    "text": "HGB signals+assigner+text score, 2025-01..09 test pool: 95% CI lower bound, auc",
+    "value": 0.8389549618626433,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_assigner_text.ci95_hi.auc": {
+    "text": "HGB signals+assigner+text score, 2025-01..09 test pool: 95% CI upper bound, auc",
+    "value": 0.9309023722396079,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_assigner_text.ci95_lo.avg_precision": {
+    "text": "HGB signals+assigner+text score, 2025-01..09 test pool: 95% CI lower bound, avg_precision",
+    "value": 0.039860945406438315,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_assigner_text.ci95_hi.avg_precision": {
+    "text": "HGB signals+assigner+text score, 2025-01..09 test pool: 95% CI upper bound, avg_precision",
+    "value": 0.19992601955012812,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_assigner_text.ci95_lo.median_rank_mid": {
+    "text": "HGB signals+assigner+text score, 2025-01..09 test pool: 95% CI lower bound, median_rank_mid",
+    "value": 334.975,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_assigner_text.ci95_hi.median_rank_mid": {
+    "text": "HGB signals+assigner+text score, 2025-01..09 test pool: 95% CI upper bound, median_rank_mid",
+    "value": 2807.5499999999997,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_assigner_text.ci95_lo.work50_mid": {
+    "text": "HGB signals+assigner+text score, 2025-01..09 test pool: 95% CI lower bound, work50_mid",
+    "value": 331.4125,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.hgb_signals_assigner_text.ci95_hi.work50_mid": {
+    "text": "HGB signals+assigner+text score, 2025-01..09 test pool: 95% CI upper bound, work50_mid",
+    "value": 2763.0125,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.leaky_ncpe.top500_first_pass_order": {
+    "text": "LEAKY + n_affected_cpes (comparison only), 2025-01..09 test pool: top-500 hits, first-pass unstable sort order",
+    "value": 26,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.leaky_ncpe.top1000_first_pass_order": {
+    "text": "LEAKY + n_affected_cpes (comparison only), 2025-01..09 test pool: top-1000 hits, first-pass unstable sort order",
+    "value": 29,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.leaky_ncpe.median_rank_first_pass_order": {
+    "text": "LEAKY + n_affected_cpes (comparison only), 2025-01..09 test pool: median rank of positives, first-pass sort order",
+    "value": 430,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.leaky_ncpe.auc": {
+    "text": "LEAKY + n_affected_cpes (comparison only), 2025-01..09 test pool: AUC",
+    "value": 0.9133168764357024,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.leaky_ncpe.avg_precision": {
+    "text": "LEAKY + n_affected_cpes (comparison only), 2025-01..09 test pool: average precision",
+    "value": 0.1312241651539693,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.leaky_ncpe.top500_cve_id": {
+    "text": "LEAKY + n_affected_cpes (comparison only), 2025-01..09 test pool: top-500 hits, ties by cve_id",
+    "value": 26,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.leaky_ncpe.top250_cve_id": {
+    "text": "LEAKY + n_affected_cpes (comparison only), 2025-01..09 test pool: top-250 hits, ties by cve_id",
+    "value": 21,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.leaky_ncpe.top500_best": {
+    "text": "LEAKY + n_affected_cpes (comparison only), 2025-01..09 test pool: top-500 hits, best order of tied rows",
+    "value": 26,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.leaky_ncpe.top500_expected": {
+    "text": "LEAKY + n_affected_cpes (comparison only), 2025-01..09 test pool: top-500 hits, expected over tied rows",
+    "value": 26.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.leaky_ncpe.top500_worst": {
+    "text": "LEAKY + n_affected_cpes (comparison only), 2025-01..09 test pool: top-500 hits, worst order of tied rows",
+    "value": 26,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.leaky_ncpe.top500_tied_group": {
+    "text": "LEAKY + n_affected_cpes (comparison only), 2025-01..09 test pool: size of the tied group spanning rank 500",
+    "value": 1,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.leaky_ncpe.work50_cve_id": {
+    "text": "LEAKY + n_affected_cpes (comparison only), 2025-01..09 test pool: CVEs to review to catch 50% of positives, ties by cve_id",
+    "value": 352.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.leaky_ncpe.ci95_lo.top500_expected": {
+    "text": "LEAKY + n_affected_cpes (comparison only), 2025-01..09 test pool: 95% CI lower bound, top500_expected",
+    "value": 17.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.leaky_ncpe.ci95_hi.top500_expected": {
+    "text": "LEAKY + n_affected_cpes (comparison only), 2025-01..09 test pool: 95% CI upper bound, top500_expected",
+    "value": 36.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.leaky_ncpe.ci95_lo.top250_expected": {
+    "text": "LEAKY + n_affected_cpes (comparison only), 2025-01..09 test pool: 95% CI lower bound, top250_expected",
+    "value": 12.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.leaky_ncpe.ci95_hi.top250_expected": {
+    "text": "LEAKY + n_affected_cpes (comparison only), 2025-01..09 test pool: 95% CI upper bound, top250_expected",
+    "value": 30.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.leaky_ncpe.ci95_lo.auc": {
+    "text": "LEAKY + n_affected_cpes (comparison only), 2025-01..09 test pool: 95% CI lower bound, auc",
+    "value": 0.873505769320381,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.leaky_ncpe.ci95_hi.auc": {
+    "text": "LEAKY + n_affected_cpes (comparison only), 2025-01..09 test pool: 95% CI upper bound, auc",
+    "value": 0.9462818392980273,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.leaky_ncpe.ci95_lo.avg_precision": {
+    "text": "LEAKY + n_affected_cpes (comparison only), 2025-01..09 test pool: 95% CI lower bound, avg_precision",
+    "value": 0.0580372789467682,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.leaky_ncpe.ci95_hi.avg_precision": {
+    "text": "LEAKY + n_affected_cpes (comparison only), 2025-01..09 test pool: 95% CI upper bound, avg_precision",
+    "value": 0.25887551063601844,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.leaky_ncpe.ci95_lo.median_rank_mid": {
+    "text": "LEAKY + n_affected_cpes (comparison only), 2025-01..09 test pool: 95% CI lower bound, median_rank_mid",
+    "value": 210.5,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.leaky_ncpe.ci95_hi.median_rank_mid": {
+    "text": "LEAKY + n_affected_cpes (comparison only), 2025-01..09 test pool: 95% CI upper bound, median_rank_mid",
+    "value": 2421.5312499999973,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.leaky_ncpe.ci95_lo.work50_mid": {
+    "text": "LEAKY + n_affected_cpes (comparison only), 2025-01..09 test pool: 95% CI lower bound, work50_mid",
+    "value": 208.5,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "primary.leaky_ncpe.ci95_hi.work50_mid": {
+    "text": "LEAKY + n_affected_cpes (comparison only), 2025-01..09 test pool: 95% CI upper bound, work50_mid",
+    "value": 2169.7124999999987,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "b.train_positives": {
+    "text": "Train positives with labels restricted to KEV additions on or before 2024-12-31",
+    "value": 40,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "b.top500_first_pass_order": {
+    "text": "Best model with restricted train labels: top-500 hits, first-pass sort order",
+    "value": 21,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "b.top500_cve_id": {
+    "text": "Best model with restricted train labels: top-500 hits, ties by cve_id",
+    "value": 21,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "b.auc": {
+    "text": "Best model with restricted train labels: AUC",
+    "value": 0.8706022744145828,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "b.avg_precision": {
+    "text": "Best model with restricted train labels: average precision",
+    "value": 0.07498323562339759,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "b.median_rank": {
+    "text": "Best model with restricted train labels: median rank, first-pass sort order",
+    "value": 1288,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "c.best.n_iter_seed0": {
+    "text": "Best model: boosting iterations actually used by seed 0 under early_stopping='auto'",
+    "value": 150,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "c.best.n_iter_seed1": {
+    "text": "Best model: boosting iterations actually used by seed 1 under early_stopping='auto'",
+    "value": 138,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "c.best.n_iter_seed2": {
+    "text": "Best model: boosting iterations actually used by seed 2 under early_stopping='auto'",
+    "value": 55,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "c.best.top500_no_early_stop": {
+    "text": "Best model, early_stopping=False: top-500 hits, first-pass sort order",
+    "value": 22,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "c.best.auc_no_early_stop": {
+    "text": "Best model, early_stopping=False: AUC",
+    "value": 0.8862451524573984,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "c.best.avg_precision_no_early_stop": {
+    "text": "Best model, early_stopping=False: average precision",
+    "value": 0.1076303258961811,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "d.top500_min": {
+    "text": "Best model, 10 HGB+fold seed sets: lowest top-500 hits, ties by cve_id",
+    "value": 21,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "d.top500_max": {
+    "text": "Best model, 10 HGB+fold seed sets: highest top-500 hits, ties by cve_id",
+    "value": 25,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "e.train_positives": {
+    "text": "Second fold train positives (2024-07..2025-03 snapshots)",
+    "value": 59,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "e.train_positives_capped": {
+    "text": "Second fold train positives with labels to 2025-03-31",
+    "value": 38,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "e.test_rows": {
+    "text": "Second fold test rows (2025-04..2025-09 snapshots)",
+    "value": 23367,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "e.test_positives": {
+    "text": "Second fold test positives",
+    "value": 32,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "e.cvss3.top500_cve_id": {
+    "text": "Second fold, cvss3: top-500 hits, ties by cve_id",
+    "value": 5,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "e.cvss3.top500_expected": {
+    "text": "Second fold, cvss3: top-500 hits, expected over tied rows",
+    "value": 4.735511064278188,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "e.cvss3.auc": {
+    "text": "Second fold, cvss3: AUC",
+    "value": 0.714113054424684,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "e.cvss3.avg_precision": {
+    "text": "Second fold, cvss3: average precision",
+    "value": 0.00825380455726565,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "e.epss.top500_cve_id": {
+    "text": "Second fold, epss: top-500 hits, ties by cve_id",
+    "value": 6,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "e.epss.top500_expected": {
+    "text": "Second fold, epss: top-500 hits, expected over tied rows",
+    "value": 6.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "e.epss.auc": {
+    "text": "Second fold, epss: AUC",
+    "value": 0.7127363670452111,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "e.epss.avg_precision": {
+    "text": "Second fold, epss: average precision",
+    "value": 0.02992048645432422,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "e.exploit_then_epss.top500_cve_id": {
+    "text": "Second fold, exploit_then_epss: top-500 hits, ties by cve_id",
+    "value": 15,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "e.exploit_then_epss.top500_expected": {
+    "text": "Second fold, exploit_then_epss: top-500 hits, expected over tied rows",
+    "value": 14.6,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "e.exploit_then_epss.auc": {
+    "text": "Second fold, exploit_then_epss: AUC",
+    "value": 0.8088647685879582,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "e.exploit_then_epss.avg_precision": {
+    "text": "Second fold, exploit_then_epss: average precision",
+    "value": 0.05229005556396248,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "e.assigner_only.top500_cve_id": {
+    "text": "Second fold, assigner_only: top-500 hits, ties by cve_id",
+    "value": 8,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "e.assigner_only.top500_expected": {
+    "text": "Second fold, assigner_only: top-500 hits, expected over tied rows",
+    "value": 8.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "e.assigner_only.auc": {
+    "text": "Second fold, assigner_only: AUC",
+    "value": 0.7136008142275553,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "e.assigner_only.avg_precision": {
+    "text": "Second fold, assigner_only: average precision",
+    "value": 0.007976170667701543,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "e.hgb_signals_assigner_text.top500_cve_id": {
+    "text": "Second fold, hgb_signals_assigner_text: top-500 hits, ties by cve_id",
+    "value": 11,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "e.hgb_signals_assigner_text.top500_expected": {
+    "text": "Second fold, hgb_signals_assigner_text: top-500 hits, expected over tied rows",
+    "value": 11.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "e.hgb_signals_assigner_text.auc": {
+    "text": "Second fold, hgb_signals_assigner_text: AUC",
+    "value": 0.8610175166059567,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "e.hgb_signals_assigner_text.avg_precision": {
+    "text": "Second fold, hgb_signals_assigner_text: average precision",
+    "value": 0.07109491003219164,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "e.hgb_signals_assigner_text__train_labels_to_2025_03_31.top500_cve_id": {
+    "text": "Second fold, hgb_signals_assigner_text__train_labels_to_2025_03_31: top-500 hits, ties by cve_id",
+    "value": 12,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "e.hgb_signals_assigner_text__train_labels_to_2025_03_31.top500_expected": {
+    "text": "Second fold, hgb_signals_assigner_text__train_labels_to_2025_03_31: top-500 hits, expected over tied rows",
+    "value": 12.0,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "e.hgb_signals_assigner_text__train_labels_to_2025_03_31.auc": {
+    "text": "Second fold, hgb_signals_assigner_text__train_labels_to_2025_03_31: AUC",
+    "value": 0.8796429719305765,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "e.hgb_signals_assigner_text__train_labels_to_2025_03_31.avg_precision": {
+    "text": "Second fold, hgb_signals_assigner_text__train_labels_to_2025_03_31: average precision",
+    "value": 0.06829057524347454,
+    "unit": "fraction",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "f.2025-01.positives": {
+    "text": "Test positives from snapshot month 2025-01",
+    "value": 7,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "f.2025-01.window_days": {
+    "text": "Label window length in days, snapshot month 2025-01",
+    "value": 334,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "f.2025-02.positives": {
+    "text": "Test positives from snapshot month 2025-02",
+    "value": 6,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "f.2025-02.window_days": {
+    "text": "Label window length in days, snapshot month 2025-02",
+    "value": 306,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "f.2025-03.positives": {
+    "text": "Test positives from snapshot month 2025-03",
+    "value": 7,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "f.2025-03.window_days": {
+    "text": "Label window length in days, snapshot month 2025-03",
+    "value": 275,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "f.2025-04.positives": {
+    "text": "Test positives from snapshot month 2025-04",
+    "value": 5,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "f.2025-04.window_days": {
+    "text": "Label window length in days, snapshot month 2025-04",
+    "value": 245,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "f.2025-05.positives": {
+    "text": "Test positives from snapshot month 2025-05",
+    "value": 6,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "f.2025-05.window_days": {
+    "text": "Label window length in days, snapshot month 2025-05",
+    "value": 214,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "f.2025-06.positives": {
+    "text": "Test positives from snapshot month 2025-06",
+    "value": 8,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "f.2025-06.window_days": {
+    "text": "Label window length in days, snapshot month 2025-06",
+    "value": 184,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "f.2025-07.positives": {
+    "text": "Test positives from snapshot month 2025-07",
+    "value": 2,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "f.2025-07.window_days": {
+    "text": "Label window length in days, snapshot month 2025-07",
+    "value": 153,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "f.2025-08.positives": {
+    "text": "Test positives from snapshot month 2025-08",
+    "value": 5,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "f.2025-08.window_days": {
+    "text": "Label window length in days, snapshot month 2025-08",
+    "value": 122,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "f.2025-09.positives": {
+    "text": "Test positives from snapshot month 2025-09",
+    "value": 6,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "f.2025-09.window_days": {
+    "text": "Label window length in days, snapshot month 2025-09",
+    "value": 92,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "h.train.positives_with_wording": {
+    "text": "train positives whose description has exploitation wording",
+    "value": 2,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "h.train.negatives_with_wording": {
+    "text": "train negatives whose description has exploitation wording",
+    "value": 32,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "h.test.positives_with_wording": {
+    "text": "test positives whose description has exploitation wording",
+    "value": 6,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "h.test.negatives_with_wording": {
+    "text": "test negatives whose description has exploitation wording",
+    "value": 49,
+    "unit": "count",
+    "source_script": "src/model/reproduce_first_pass.py",
+    "output_file": "results/first_pass_repro.json",
+    "status": "unverified",
+    "verified_by": null
+  }
+}

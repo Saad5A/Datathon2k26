@@ -1,0 +1,22 @@
+{
+  "script": "src/model/reproduce_first_pass.py",
+  "git_commit": "f2c89675a1b23ce8c0620931b554ed9246c1045f",
+  "git_dirty": true,
+  "date_utc": "2026-11-07T21:19:39+00:00",
+  "code_sha256": {
+    "checks.py": "9b54f211ff37767e917b9d0bb8c40cb469e10ed7ca5cb29556e78bd57120a3eb",
+    "metrics.py": "6678ffb0cb4ac6fb75445e1e6d2223c328eae99657e30578b994d7652714a0fe",
+    "pool.py": "f71136c9932544913ef8a48fb31aba65b1bc5fc8b7f2096bff9e6801dd545b27",
+    "reproduce_first_pass.py": "4e236b25c57a7331559f471d4e40b49355dc80081d5a53d0c61894cb2b9d53fb"
+  },
+  "python": "3.12.15",
+  "machine": "arm64",
+  "libraries": {
+    "pandas": "3.1.1",
+    "numpy": "2.5.4",
+    "scikit-learn": "1.9.1",
+    "scipy": "1.18.1",
+    "pyarrow": "26.0.1",
+    "joblib": "1.6.0"
+  }
+}

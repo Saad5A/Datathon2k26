@@ -1,0 +1,4380 @@
+{
+  "pool": {
+    "pool_rows": 75148,
+    "pool_positives": 117,
+    "train_rows": 39868,
+    "train_positives": 65,
+    "test_rows": 35280,
+    "test_positives": 52
+  },
+  "primary": {
+    "cvss3": {
+      "first_pass_order": {
+        "top500": 6,
+        "top1000": 9,
+        "auc": 0.7321511625367934,
+        "avg_precision": 0.0063501574171049065,
+        "median_rank": 7884
+      },
+      "deterministic": {
+        "top250_cve_id": 5,
+        "top250_expected": 5.163222600052315,
+        "top500_cve_id": 5,
+        "top500_expected": 5.947946638765368,
+        "top1000_cve_id": 8,
+        "top1000_expected": 7.517394716191473,
+        "auc": 0.7321511625367934,
+        "avg_precision": 0.0063501574171049065,
+        "median_rank_cve_id": 7960.0,
+        "median_rank_mid": 8073.0,
+        "work50_cve_id": 7952.0,
+        "work50_mid": 8073.0
+      },
+      "ties_top500": {
+        "best": 17,
+        "expected": 5.947946638765368,
+        "worst": 5,
+        "tied_group_size": 3823,
+        "positives_in_tied_group": 12,
+        "slots_in_tied_group": 302
+      },
+      "ties_top250": {
+        "best": 17,
+        "expected": 5.163222600052315,
+        "worst": 5,
+        "tied_group_size": 3823,
+        "positives_in_tied_group": 12,
+        "slots_in_tied_group": 52
+      },
+      "ties_top1000": {
+        "best": 17,
+        "expected": 7.517394716191473,
+        "worst": 5,
+        "tied_group_size": 3823,
+        "positives_in_tied_group": 12,
+        "slots_in_tied_group": 802
+      },
+      "ci95": {
+        "top250_cve_id": [
+          1.0,
+          10.0
+        ],
+        "top250_expected": [
+          1.169940902558049,
+          10.14173421977334
+        ],
+        "top500_cve_id": [
+          1.0,
+          10.0
+        ],
+        "top500_expected": [
+          1.9670235376568563,
+          10.876568790530603
+        ],
+        "top1000_cve_id": [
+          3.0,
+          14.0
+        ],
+        "top1000_expected": [
+          3.4698508319908687,
+          12.594066991513488
+        ],
+        "auc": [
+          0.6616020164762174,
+          0.7972149993355573
+        ],
+        "avg_precision": [
+          0.0028693678808665926,
+          0.016418944209894808
+        ],
+        "median_rank_cve_id": [
+          4612.975,
+          10229.687499999998
+        ],
+        "median_rank_mid": [
+          4558.29375,
+          9768.5
+        ],
+        "work50_cve_id": [
+          4597.975,
+          10188.025
+        ],
+        "work50_mid": [
+          4531.375,
+          9759.6125
+        ]
+      }
+    },
+    "epss": {
+      "first_pass_order": {
+        "top500": 8,
+        "top1000": 13,
+        "auc": 0.7072561926264946,
+        "avg_precision": 0.030922176708477904,
+        "median_rank": 3376
+      },
+      "deterministic": {
+        "top250_cve_id": 8,
+        "top250_expected": 8.0,
+        "top500_cve_id": 8,
+        "top500_expected": 8.0,
+        "top1000_cve_id": 13,
+        "top1000_expected": 13.0,
+        "auc": 0.7072561926264946,
+        "avg_precision": 0.030922176708477904,
+        "median_rank_cve_id": 3379.0,
+        "median_rank_mid": 3382.25,
+        "work50_cve_id": 3273.0,
+        "work50_mid": 3293.5
+      },
+      "ties_top500": {
+        "best": 8,
+        "expected": 8.0,
+        "worst": 8,
+        "tied_group_size": 1,
+        "positives_in_tied_group": 0,
+        "slots_in_tied_group": 1
+      },
+      "ties_top250": {
+        "best": 8,
+        "expected": 8.0,
+        "worst": 8,
+        "tied_group_size": 1,
+        "positives_in_tied_group": 0,
+        "slots_in_tied_group": 1
+      },
+      "ties_top1000": {
+        "best": 13,
+        "expected": 13.0,
+        "worst": 13,
+        "tied_group_size": 6,
+        "positives_in_tied_group": 0,
+        "slots_in_tied_group": 3
+      },
+      "ci95": {
+        "top250_cve_id": [
+          3.0,
+          14.0
+        ],
+        "top250_expected": [
+          3.0,
+          14.0
+        ],
+        "top500_cve_id": [
+          3.0,
+          14.0
+        ],
+        "top500_expected": [
+          3.0,
+          14.0
+        ],
+        "top1000_cve_id": [
+          6.0,
+          20.0
+        ],
+        "top1000_expected": [
+          6.0,
+          20.0
+        ],
+        "auc": [
+          0.613564621039671,
+          0.7970647356186846
+        ],
+        "avg_precision": [
+          0.006205227932206305,
+          0.10149562191500049
+        ],
+        "median_rank_cve_id": [
+          2107.975,
+          11337.0375
+        ],
+        "median_rank_mid": [
+          2106.3875000000003,
+          12551.599999999999
+        ],
+        "work50_cve_id": [
+          2038.975,
+          11337.025
+        ],
+        "work50_mid": [
+          2037.3625,
+          12550.0375
+        ]
+      }
+    },
+    "exploit_then_epss": {
+      "first_pass_order": {
+        "top500": 19,
+        "top1000": 22,
+        "auc": 0.7680295285218924,
+        "avg_precision": 0.047119029429330925,
+        "median_rank": 2496
+      },
+      "deterministic": {
+        "top250_cve_id": 15,
+        "top250_expected": 15.0,
+        "top500_cve_id": 18,
+        "top500_expected": 18.358024691358025,
+        "top1000_cve_id": 22,
+        "top1000_expected": 22.0,
+        "auc": 0.7680295285218924,
+        "avg_precision": 0.047119029429330925,
+        "median_rank_cve_id": 2498.5,
+        "median_rank_mid": 2498.5,
+        "work50_cve_id": 2253.0,
+        "work50_mid": 2253.0
+      },
+      "ties_top500": {
+        "best": 19,
+        "expected": 18.358024691358025,
+        "worst": 18,
+        "tied_group_size": 81,
+        "positives_in_tied_group": 1,
+        "slots_in_tied_group": 29
+      },
+      "ties_top250": {
+        "best": 15,
+        "expected": 15.0,
+        "worst": 15,
+        "tied_group_size": 1,
+        "positives_in_tied_group": 0,
+        "slots_in_tied_group": 1
+      },
+      "ties_top1000": {
+        "best": 22,
+        "expected": 22.0,
+        "worst": 22,
+        "tied_group_size": 9,
+        "positives_in_tied_group": 0,
+        "slots_in_tied_group": 2
+      },
+      "ci95": {
+        "top250_cve_id": [
+          7.0,
+          22.0
+        ],
+        "top250_expected": [
+          7.0,
+          22.0
+        ],
+        "top500_cve_id": [
+          10.0,
+          26.0
+        ],
+        "top500_expected": [
+          10.0,
+          26.70705249841872
+        ],
+        "top1000_cve_id": [
+          13.0,
+          31.0
+        ],
+        "top1000_expected": [
+          13.0,
+          31.0
+        ],
+        "auc": [
+          0.6812321306116131,
+          0.8505716926693253
+        ],
+        "avg_precision": [
+          0.016969721468167897,
+          0.12299145656705995
+        ],
+        "median_rank_cve_id": [
+          689.4625,
+          5155.237499999998
+        ],
+        "median_rank_mid": [
+          691.14375,
+          5178.65
+        ],
+        "work50_cve_id": [
+          682.2750000000001,
+          5098.124999999999
+        ],
+        "work50_mid": [
+          683.325,
+          5121.537499999999
+        ]
+      }
+    },
+    "assigner_only": {
+      "first_pass_order": {
+        "top500": 13,
+        "top1000": 15,
+        "auc": 0.7463299516992603,
+        "avg_precision": 0.010890060166561112,
+        "median_rank": 6075
+      },
+      "deterministic": {
+        "top250_cve_id": 8,
+        "top250_expected": 8.0,
+        "top500_cve_id": 13,
+        "top500_expected": 12.6,
+        "top1000_cve_id": 15,
+        "top1000_expected": 15.0,
+        "auc": 0.7463299516992603,
+        "avg_precision": 0.010890060166561112,
+        "median_rank_cve_id": 6053.5,
+        "median_rank_mid": 6034.0,
+        "work50_cve_id": 6011.0,
+        "work50_mid": 6034.0
+      },
+      "ties_top500": {
+        "best": 13,
+        "expected": 12.6,
+        "worst": 11,
+        "tied_group_size": 10,
+        "positives_in_tied_group": 2,
+        "slots_in_tied_group": 8
+      },
+      "ties_top250": {
+        "best": 8,
+        "expected": 8.0,
+        "worst": 8,
+        "tied_group_size": 11,
+        "positives_in_tied_group": 0,
+        "slots_in_tied_group": 2
+      },
+      "ties_top1000": {
+        "best": 15,
+        "expected": 15.0,
+        "worst": 15,
+        "tied_group_size": 75,
+        "positives_in_tied_group": 0,
+        "slots_in_tied_group": 16
+      },
+      "ci95": {
+        "top250_cve_id": [
+          3.0,
+          14.0
+        ],
+        "top250_expected": [
+          3.0,
+          14.0
+        ],
+        "top500_cve_id": [
+          6.0,
+          19.0
+        ],
+        "top500_expected": [
+          6.0,
+          19.0
+        ],
+        "top1000_cve_id": [
+          8.0,
+          23.0
+        ],
+        "top1000_expected": [
+          8.0,
+          23.0
+        ],
+        "auc": [
+          0.6660030308861816,
+          0.8188357944828106
+        ],
+        "avg_precision": [
+          0.005469856604846923,
+          0.02396729036302293
+        ],
+        "median_rank_cve_id": [
+          3300.775,
+          7902.199999999999
+        ],
+        "median_rank_mid": [
+          3294.2875,
+          7873.075
+        ],
+        "work50_cve_id": [
+          3284.95,
+          7890.124999999999
+        ],
+        "work50_mid": [
+          3282.9,
+          7862.5125
+        ]
+      }
+    },
+    "hgb_signals": {
+      "first_pass_order": {
+        "top500": 20,
+        "top1000": 22,
+        "auc": 0.7252728926291151,
+        "avg_precision": 0.03686081929898636,
+        "median_rank": 2602
+      },
+      "deterministic": {
+        "top250_cve_id": 15,
+        "top250_expected": 14.911111111111111,
+        "top500_cve_id": 18,
+        "top500_expected": 19.305263157894736,
+        "top1000_cve_id": 22,
+        "top1000_expected": 22.545454545454547,
+        "auc": 0.7252728926291151,
+        "avg_precision": 0.03686081929898636,
+        "median_rank_cve_id": 3311.0,
+        "median_rank_mid": 3443.5,
+        "work50_cve_id": 2777.0,
+        "work50_mid": 3443.5
+      },
+      "ties_top500": {
+        "best": 22,
+        "expected": 19.305263157894736,
+        "worst": 18,
+        "tied_group_size": 285,
+        "positives_in_tied_group": 4,
+        "slots_in_tied_group": 93
+      },
+      "ties_top250": {
+        "best": 15,
+        "expected": 14.911111111111111,
+        "worst": 14,
+        "tied_group_size": 45,
+        "positives_in_tied_group": 1,
+        "slots_in_tied_group": 41
+      },
+      "ties_top1000": {
+        "best": 23,
+        "expected": 22.545454545454547,
+        "worst": 22,
+        "tied_group_size": 440,
+        "positives_in_tied_group": 1,
+        "slots_in_tied_group": 240
+      },
+      "ci95": {
+        "top250_cve_id": [
+          8.0,
+          22.0
+        ],
+        "top250_expected": [
+          8.0,
+          22.363989898989896
+        ],
+        "top500_cve_id": [
+          10.0,
+          27.0
+        ],
+        "top500_expected": [
+          11.360536311943392,
+          27.637258888541336
+        ],
+        "top1000_cve_id": [
+          13.0,
+          31.0
+        ],
+        "top1000_expected": [
+          13.992547928262214,
+          31.945389871545505
+        ],
+        "auc": [
+          0.6322148650398302,
+          0.8071254417935391
+        ],
+        "avg_precision": [
+          0.01494062079840552,
+          0.07817678887187378
+        ],
+        "median_rank_cve_id": [
+          559.975,
+          13379.524999999998
+        ],
+        "median_rank_mid": [
+          534.5,
+          14536.5125
+        ],
+        "work50_cve_id": [
+          537.975,
+          11928.199999999999
+        ],
+        "work50_mid": [
+          532.4875,
+          14536.5125
+        ]
+      }
+    },
+    "hgb_signals_struct": {
+      "first_pass_order": {
+        "top500": 19,
+        "top1000": 20,
+        "auc": 0.8029774174389253,
+        "avg_precision": 0.06277207175816439,
+        "median_rank": 3551
+      },
+      "deterministic": {
+        "top250_cve_id": 14,
+        "top250_expected": 14.0,
+        "top500_cve_id": 19,
+        "top500_expected": 19.0,
+        "top1000_cve_id": 20,
+        "top1000_expected": 19.235261401557285,
+        "auc": 0.8029774174389253,
+        "avg_precision": 0.06277207175816439,
+        "median_rank_cve_id": 3521.5,
+        "median_rank_mid": 3599.0,
+        "work50_cve_id": 3521.0,
+        "work50_mid": 3599.0
+      },
+      "ties_top500": {
+        "best": 19,
+        "expected": 19.0,
+        "worst": 19,
+        "tied_group_size": 64,
+        "positives_in_tied_group": 0,
+        "slots_in_tied_group": 58
+      },
+      "ties_top250": {
+        "best": 14,
+        "expected": 14.0,
+        "worst": 14,
+        "tied_group_size": 6,
+        "positives_in_tied_group": 0,
+        "slots_in_tied_group": 1
+      },
+      "ties_top1000": {
+        "best": 20,
+        "expected": 19.235261401557285,
+        "worst": 19,
+        "tied_group_size": 1798,
+        "positives_in_tied_group": 1,
+        "slots_in_tied_group": 423
+      },
+      "ci95": {
+        "top250_cve_id": [
+          7.0,
+          21.0
+        ],
+        "top250_expected": [
+          7.0,
+          21.0
+        ],
+        "top500_cve_id": [
+          11.0,
+          27.0
+        ],
+        "top500_expected": [
+          11.0,
+          27.0
+        ],
+        "top1000_cve_id": [
+          11.0,
+          29.0
+        ],
+        "top1000_expected": [
+          11.0,
+          27.474723776855026
+        ],
+        "auc": [
+          0.735617832268244,
+          0.8634688927689691
+        ],
+        "avg_precision": [
+          0.01851675594655221,
+          0.14003139284326432
+        ],
+        "median_rank_cve_id": [
+          662.725,
+          7379.549999999997
+        ],
+        "median_rank_mid": [
+          1444.9875,
+          7360.387499999998
+        ],
+        "work50_cve_id": [
+          400.95,
+          7363.399999999998
+        ],
+        "work50_mid": [
+          399.95,
+          7360.387499999998
+        ]
+      }
+    },
+    "hgb_signals_assigner": {
+      "first_pass_order": {
+        "top500": 17,
+        "top1000": 24,
+        "auc": 0.879561766863771,
+        "avg_precision": 0.07272102843053574,
+        "median_rank": 1183
+      },
+      "deterministic": {
+        "top250_cve_id": 14,
+        "top250_expected": 14.0,
+        "top500_cve_id": 17,
+        "top500_expected": 16.483870967741936,
+        "top1000_cve_id": 24,
+        "top1000_expected": 24.0,
+        "auc": 0.879561766863771,
+        "avg_precision": 0.07272102843053574,
+        "median_rank_cve_id": 1183.0,
+        "median_rank_mid": 1181.5,
+        "work50_cve_id": 1182.0,
+        "work50_mid": 1181.5
+      },
+      "ties_top500": {
+        "best": 17,
+        "expected": 16.483870967741936,
+        "worst": 16,
+        "tied_group_size": 62,
+        "positives_in_tied_group": 1,
+        "slots_in_tied_group": 30
+      },
+      "ties_top250": {
+        "best": 14,
+        "expected": 14.0,
+        "worst": 14,
+        "tied_group_size": 16,
+        "positives_in_tied_group": 0,
+        "slots_in_tied_group": 15
+      },
+      "ties_top1000": {
+        "best": 24,
+        "expected": 24.0,
+        "worst": 24,
+        "tied_group_size": 100,
+        "positives_in_tied_group": 0,
+        "slots_in_tied_group": 16
+      },
+      "ci95": {
+        "top250_cve_id": [
+          7.0,
+          22.0
+        ],
+        "top250_expected": [
+          7.0,
+          22.0
+        ],
+        "top500_cve_id": [
+          9.0,
+          25.0
+        ],
+        "top500_expected": [
+          9.0,
+          24.083522727272726
+        ],
+        "top1000_cve_id": [
+          14.0,
+          34.0
+        ],
+        "top1000_expected": [
+          14.0,
+          34.0
+        ],
+        "auc": [
+          0.8262784287200229,
+          0.9263895475598063
+        ],
+        "avg_precision": [
+          0.023802340513131456,
+          0.16542792813399224
+        ],
+        "median_rank_cve_id": [
+          615.95,
+          3319.174999999994
+        ],
+        "median_rank_mid": [
+          626.475,
+          3411.5874999999915
+        ],
+        "work50_cve_id": [
+          608.0,
+          3274.0499999999997
+        ],
+        "work50_mid": [
+          618.5,
+          3277.0125
+        ]
+      }
+    },
+    "hgb_signals_struct_assigner": {
+      "first_pass_order": {
+        "top500": 14,
+        "top1000": 24,
+        "auc": 0.8785977172878217,
+        "avg_precision": 0.10310475278963233,
+        "median_rank": 1635
+      },
+      "deterministic": {
+        "top250_cve_id": 13,
+        "top250_expected": 13.0,
+        "top500_cve_id": 14,
+        "top500_expected": 14.0,
+        "top1000_cve_id": 24,
+        "top1000_expected": 24.0,
+        "auc": 0.8785977172878217,
+        "avg_precision": 0.10310475278963233,
+        "median_rank_cve_id": 1636.5,
+        "median_rank_mid": 1636.0,
+        "work50_cve_id": 1636.0,
+        "work50_mid": 1636.0
+      },
+      "ties_top500": {
+        "best": 14,
+        "expected": 14.0,
+        "worst": 14,
+        "tied_group_size": 5,
+        "positives_in_tied_group": 0,
+        "slots_in_tied_group": 2
+      },
+      "ties_top250": {
+        "best": 13,
+        "expected": 13.0,
+        "worst": 13,
+        "tied_group_size": 22,
+        "positives_in_tied_group": 0,
+        "slots_in_tied_group": 13
+      },
+      "ties_top1000": {
+        "best": 24,
+        "expected": 24.0,
+        "worst": 24,
+        "tied_group_size": 1,
+        "positives_in_tied_group": 0,
+        "slots_in_tied_group": 1
+      },
+      "ci95": {
+        "top250_cve_id": [
+          6.0,
+          20.0
+        ],
+        "top250_expected": [
+          6.0,
+          20.0
+        ],
+        "top500_cve_id": [
+          7.0,
+          22.0
+        ],
+        "top500_expected": [
+          7.0,
+          22.0
+        ],
+        "top1000_cve_id": [
+          14.0,
+          33.0
+        ],
+        "top1000_expected": [
+          14.0,
+          33.0
+        ],
+        "auc": [
+          0.8390108658167053,
+          0.9133480172328792
+        ],
+        "avg_precision": [
+          0.03260267120489915,
+          0.20448964743278647
+        ],
+        "median_rank_cve_id": [
+          819.0,
+          6524.437499999997
+        ],
+        "median_rank_mid": [
+          818.4875,
+          6520.35625
+        ],
+        "work50_cve_id": [
+          785.875,
+          6507.049999999999
+        ],
+        "work50_mid": [
+          785.375,
+          6507.049999999999
+        ]
+      }
+    },
+    "text_only": {
+      "first_pass_order": {
+        "top500": 9,
+        "top1000": 14,
+        "auc": 0.8140129464324706,
+        "avg_precision": 0.00996350755353356,
+        "median_rank": 3379
+      },
+      "deterministic": {
+        "top250_cve_id": 7,
+        "top250_expected": 7.0,
+        "top500_cve_id": 9,
+        "top500_expected": 9.0,
+        "top1000_cve_id": 14,
+        "top1000_expected": 14.0,
+        "auc": 0.8140129464324706,
+        "avg_precision": 0.00996350755353356,
+        "median_rank_cve_id": 3379.5,
+        "median_rank_mid": 3379.5,
+        "work50_cve_id": 3087.0,
+        "work50_mid": 3087.0
+      },
+      "ties_top500": {
+        "best": 9,
+        "expected": 9.0,
+        "worst": 9,
+        "tied_group_size": 17,
+        "positives_in_tied_group": 0,
+        "slots_in_tied_group": 4
+      },
+      "ties_top250": {
+        "best": 7,
+        "expected": 7.0,
+        "worst": 7,
+        "tied_group_size": 1,
+        "positives_in_tied_group": 0,
+        "slots_in_tied_group": 1
+      },
+      "ties_top1000": {
+        "best": 14,
+        "expected": 14.0,
+        "worst": 14,
+        "tied_group_size": 1,
+        "positives_in_tied_group": 0,
+        "slots_in_tied_group": 1
+      },
+      "ci95": {
+        "top250_cve_id": [
+          2.0,
+          12.0
+        ],
+        "top250_expected": [
+          2.0,
+          12.0
+        ],
+        "top500_cve_id": [
+          3.0,
+          15.0
+        ],
+        "top500_expected": [
+          3.0,
+          15.0
+        ],
+        "top1000_cve_id": [
+          7.0,
+          21.0
+        ],
+        "top1000_expected": [
+          7.0,
+          21.0
+        ],
+        "auc": [
+          0.7569138932339553,
+          0.8641040630699466
+        ],
+        "avg_precision": [
+          0.005690657515289268,
+          0.017793991621790895
+        ],
+        "median_rank_cve_id": [
+          1502.9375,
+          7108.762499999996
+        ],
+        "median_rank_mid": [
+          1502.2,
+          7109.012499999996
+        ],
+        "work50_cve_id": [
+          1388.0,
+          6735.075
+        ],
+        "work50_mid": [
+          1388.0,
+          6735.549999999999
+        ]
+      }
+    },
+    "hgb_all_text": {
+      "first_pass_order": {
+        "top500": 21,
+        "top1000": 25,
+        "auc": 0.8834223323230648,
+        "avg_precision": 0.11301030594755732,
+        "median_rank": 1086
+      },
+      "deterministic": {
+        "top250_cve_id": 14,
+        "top250_expected": 14.0,
+        "top500_cve_id": 21,
+        "top500_expected": 21.0,
+        "top1000_cve_id": 25,
+        "top1000_expected": 25.0,
+        "auc": 0.8834223323230648,
+        "avg_precision": 0.11301030594755732,
+        "median_rank_cve_id": 1086.5,
+        "median_rank_mid": 1086.25,
+        "work50_cve_id": 1016.0,
+        "work50_mid": 1016.0
+      },
+      "ties_top500": {
+        "best": 21,
+        "expected": 21.0,
+        "worst": 21,
+        "tied_group_size": 1,
+        "positives_in_tied_group": 0,
+        "slots_in_tied_group": 1
+      },
+      "ties_top250": {
+        "best": 14,
+        "expected": 14.0,
+        "worst": 14,
+        "tied_group_size": 3,
+        "positives_in_tied_group": 0,
+        "slots_in_tied_group": 1
+      },
+      "ties_top1000": {
+        "best": 25,
+        "expected": 25.0,
+        "worst": 25,
+        "tied_group_size": 1,
+        "positives_in_tied_group": 0,
+        "slots_in_tied_group": 1
+      },
+      "ci95": {
+        "top250_cve_id": [
+          7.0,
+          22.0
+        ],
+        "top250_expected": [
+          7.0,
+          22.0
+        ],
+        "top500_cve_id": [
+          12.0,
+          30.0
+        ],
+        "top500_expected": [
+          12.0,
+          30.0
+        ],
+        "top1000_cve_id": [
+          15.975000000000001,
+          35.0
+        ],
+        "top1000_expected": [
+          15.975000000000001,
+          35.0
+        ],
+        "auc": [
+          0.8377479610607009,
+          0.9222117437984625
+        ],
+        "avg_precision": [
+          0.04338575308877782,
+          0.22354944188102352
+        ],
+        "median_rank_cve_id": [
+          454.0,
+          4598.212499999996
+        ],
+        "median_rank_mid": [
+          453.9875,
+          4598.637499999996
+        ],
+        "work50_cve_id": [
+          447.975,
+          4244.099999999999
+        ],
+        "work50_mid": [
+          447.4625,
+          4244.112499999999
+        ]
+      }
+    },
+    "hgb_signals_assigner_text": {
+      "first_pass_order": {
+        "top500": 25,
+        "top1000": 28,
+        "auc": 0.8880206741141226,
+        "avg_precision": 0.10568247366264288,
+        "median_rank": 778
+      },
+      "deterministic": {
+        "top250_cve_id": 16,
+        "top250_expected": 16.1,
+        "top500_cve_id": 25,
+        "top500_expected": 25.0,
+        "top1000_cve_id": 28,
+        "top1000_expected": 28.0,
+        "auc": 0.8880206741141226,
+        "avg_precision": 0.10568247366264288,
+        "median_rank_cve_id": 778.5,
+        "median_rank_mid": 778.25,
+        "work50_cve_id": 686.0,
+        "work50_mid": 686.5
+      },
+      "ties_top500": {
+        "best": 25,
+        "expected": 25.0,
+        "worst": 25,
+        "tied_group_size": 3,
+        "positives_in_tied_group": 0,
+        "slots_in_tied_group": 1
+      },
+      "ties_top250": {
+        "best": 17,
+        "expected": 16.1,
+        "worst": 16,
+        "tied_group_size": 10,
+        "positives_in_tied_group": 1,
+        "slots_in_tied_group": 1
+      },
+      "ties_top1000": {
+        "best": 28,
+        "expected": 28.0,
+        "worst": 28,
+        "tied_group_size": 1,
+        "positives_in_tied_group": 0,
+        "slots_in_tied_group": 1
+      },
+      "ci95": {
+        "top250_cve_id": [
+          9.0,
+          24.0
+        ],
+        "top250_expected": [
+          9.0,
+          24.0
+        ],
+        "top500_cve_id": [
+          15.0,
+          35.0
+        ],
+        "top500_expected": [
+          15.0,
+          35.0
+        ],
+        "top1000_cve_id": [
+          18.0,
+          38.0
+        ],
+        "top1000_expected": [
+          18.0,
+          38.0
+        ],
+        "auc": [
+          0.8389549618626433,
+          0.9309023722396079
+        ],
+        "avg_precision": [
+          0.039860945406438315,
+          0.19992601955012812
+        ],
+        "median_rank_cve_id": [
+          334.975,
+          2806.075
+        ],
+        "median_rank_mid": [
+          334.975,
+          2807.5499999999997
+        ],
+        "work50_cve_id": [
+          332.9,
+          2762.0249999999996
+        ],
+        "work50_mid": [
+          331.4125,
+          2763.0125
+        ]
+      }
+    },
+    "leaky_ncpe": {
+      "first_pass_order": {
+        "top500": 26,
+        "top1000": 29,
+        "auc": 0.9133168764357024,
+        "avg_precision": 0.1312241651539693,
+        "median_rank": 430
+      },
+      "deterministic": {
+        "top250_cve_id": 21,
+        "top250_expected": 21.0,
+        "top500_cve_id": 26,
+        "top500_expected": 26.0,
+        "top1000_cve_id": 29,
+        "top1000_expected": 29.0,
+        "auc": 0.9133168764357024,
+        "avg_precision": 0.1312241651539693,
+        "median_rank_cve_id": 430.0,
+        "median_rank_mid": 430.0,
+        "work50_cve_id": 352.0,
+        "work50_mid": 352.0
+      },
+      "ties_top500": {
+        "best": 26,
+        "expected": 26.0,
+        "worst": 26,
+        "tied_group_size": 1,
+        "positives_in_tied_group": 0,
+        "slots_in_tied_group": 1
+      },
+      "ties_top250": {
+        "best": 21,
+        "expected": 21.0,
+        "worst": 21,
+        "tied_group_size": 2,
+        "positives_in_tied_group": 0,
+        "slots_in_tied_group": 2
+      },
+      "ties_top1000": {
+        "best": 29,
+        "expected": 29.0,
+        "worst": 29,
+        "tied_group_size": 1,
+        "positives_in_tied_group": 0,
+        "slots_in_tied_group": 1
+      },
+      "ci95": {
+        "top250_cve_id": [
+          12.0,
+          30.0
+        ],
+        "top250_expected": [
+          12.0,
+          30.0
+        ],
+        "top500_cve_id": [
+          17.0,
+          36.0
+        ],
+        "top500_expected": [
+          17.0,
+          36.0
+        ],
+        "top1000_cve_id": [
+          19.0,
+          40.0
+        ],
+        "top1000_expected": [
+          19.0,
+          40.0
+        ],
+        "auc": [
+          0.873505769320381,
+          0.9462818392980273
+        ],
+        "avg_precision": [
+          0.0580372789467682,
+          0.25887551063601844
+        ],
+        "median_rank_cve_id": [
+          211.4875,
+          2421.049999999997
+        ],
+        "median_rank_mid": [
+          210.5,
+          2421.5312499999973
+        ],
+        "work50_cve_id": [
+          209.0,
+          2169.2249999999985
+        ],
+        "work50_mid": [
+          208.5,
+          2169.7124999999987
+        ]
+      }
+    }
+  },
+  "claimed_vs_reproduced": [
+    {
+      "method": "cvss3",
+      "label": "CVSS3",
+      "claimed": {
+        "top500": 6,
+        "top1000": 9,
+        "auc": 0.732,
+        "avg_precision": 0.0064,
+        "median_rank": 7884
+      },
+      "reproduced": {
+        "top500": 6,
+        "top1000": 9,
+        "auc": 0.7321511625367934,
+        "avg_precision": 0.0063501574171049065,
+        "median_rank": 7884
+      },
+      "same_at_printed_precision": true
+    },
+    {
+      "method": "epss",
+      "label": "EPSS",
+      "claimed": {
+        "top500": 8,
+        "top1000": 13,
+        "auc": 0.707,
+        "avg_precision": 0.0309,
+        "median_rank": 3376
+      },
+      "reproduced": {
+        "top500": 8,
+        "top1000": 13,
+        "auc": 0.7072561926264946,
+        "avg_precision": 0.030922176708477904,
+        "median_rank": 3376
+      },
+      "same_at_printed_precision": true
+    },
+    {
+      "method": "exploit_then_epss",
+      "label": "exploit flag then EPSS",
+      "claimed": {
+        "top500": 19,
+        "top1000": 22,
+        "auc": 0.768,
+        "avg_precision": 0.0471,
+        "median_rank": 2496
+      },
+      "reproduced": {
+        "top500": 19,
+        "top1000": 22,
+        "auc": 0.7680295285218924,
+        "avg_precision": 0.047119029429330925,
+        "median_rank": 2496
+      },
+      "same_at_printed_precision": true
+    },
+    {
+      "method": "assigner_only",
+      "label": "assigner KEV-rate only",
+      "claimed": {
+        "top500": 13,
+        "top1000": 15,
+        "auc": 0.746,
+        "avg_precision": 0.0109,
+        "median_rank": 6075
+      },
+      "reproduced": {
+        "top500": 13,
+        "top1000": 15,
+        "auc": 0.7463299516992603,
+        "avg_precision": 0.010890060166561112,
+        "median_rank": 6075
+      },
+      "same_at_printed_precision": true
+    },
+    {
+      "method": "hgb_signals",
+      "label": "HGB signals",
+      "claimed": {
+        "top500": 20,
+        "top1000": 22,
+        "auc": 0.726,
+        "avg_precision": 0.0368,
+        "median_rank": 2652
+      },
+      "reproduced": {
+        "top500": 20,
+        "top1000": 22,
+        "auc": 0.7252728926291151,
+        "avg_precision": 0.03686081929898636,
+        "median_rank": 2602
+      },
+      "same_at_printed_precision": false
+    },
+    {
+      "method": "hgb_signals_struct",
+      "label": "HGB signals+structured",
+      "claimed": {
+        "top500": 19,
+        "top1000": 20,
+        "auc": 0.803,
+        "avg_precision": 0.0627,
+        "median_rank": 3551
+      },
+      "reproduced": {
+        "top500": 19,
+        "top1000": 20,
+        "auc": 0.8029774174389253,
+        "avg_precision": 0.06277207175816439,
+        "median_rank": 3551
+      },
+      "same_at_printed_precision": false
+    },
+    {
+      "method": "hgb_signals_assigner",
+      "label": "HGB signals+assigner",
+      "claimed": {
+        "top500": 16,
+        "top1000": 24,
+        "auc": 0.884,
+        "avg_precision": 0.0727,
+        "median_rank": 1190
+      },
+      "reproduced": {
+        "top500": 17,
+        "top1000": 24,
+        "auc": 0.879561766863771,
+        "avg_precision": 0.07272102843053574,
+        "median_rank": 1183
+      },
+      "same_at_printed_precision": false
+    },
+    {
+      "method": "hgb_signals_struct_assigner",
+      "label": "HGB signals+structured+assigner",
+      "claimed": {
+        "top500": 14,
+        "top1000": 24,
+        "auc": 0.879,
+        "avg_precision": 0.1032,
+        "median_rank": 1634
+      },
+      "reproduced": {
+        "top500": 14,
+        "top1000": 24,
+        "auc": 0.8785977172878217,
+        "avg_precision": 0.10310475278963233,
+        "median_rank": 1635
+      },
+      "same_at_printed_precision": false
+    },
+    {
+      "method": "text_only",
+      "label": "text-only TF-IDF LR",
+      "claimed": {
+        "top500": 9,
+        "top1000": 14,
+        "auc": 0.814,
+        "avg_precision": 0.01,
+        "median_rank": 3379
+      },
+      "reproduced": {
+        "top500": 9,
+        "top1000": 14,
+        "auc": 0.8140129464324706,
+        "avg_precision": 0.00996350755353356,
+        "median_rank": 3379
+      },
+      "same_at_printed_precision": true
+    },
+    {
+      "method": "hgb_all_text",
+      "label": "HGB all + text score",
+      "claimed": {
+        "top500": 21,
+        "top1000": 25,
+        "auc": 0.883,
+        "avg_precision": 0.1142,
+        "median_rank": 1103
+      },
+      "reproduced": {
+        "top500": 21,
+        "top1000": 25,
+        "auc": 0.8834223323230648,
+        "avg_precision": 0.11301030594755732,
+        "median_rank": 1086
+      },
+      "same_at_printed_precision": false
+    },
+    {
+      "method": "hgb_signals_assigner_text",
+      "label": "HGB signals+assigner+text score",
+      "claimed": {
+        "top500": 25,
+        "top1000": 28,
+        "auc": 0.886,
+        "avg_precision": 0.105,
+        "median_rank": 829
+      },
+      "reproduced": {
+        "top500": 25,
+        "top1000": 28,
+        "auc": 0.8880206741141226,
+        "avg_precision": 0.10568247366264288,
+        "median_rank": 778
+      },
+      "same_at_printed_precision": false
+    },
+    {
+      "method": "leaky_ncpe",
+      "label": "LEAKY + n_affected_cpes (comparison only)",
+      "claimed": {
+        "top500": 27,
+        "top1000": 29,
+        "auc": 0.913,
+        "avg_precision": 0.1315,
+        "median_rank": 421
+      },
+      "reproduced": {
+        "top500": 26,
+        "top1000": 29,
+        "auc": 0.9133168764357024,
+        "avg_precision": 0.1312241651539693,
+        "median_rank": 430
+      },
+      "same_at_printed_precision": false
+    }
+  ],
+  "A_ties": {
+    "how_ranks_are_made_deterministic": "Ranks sort by score descending, then cve_id ascending (lexical), so they do not depend on row order or machine. The expected value (random order inside the tied group) is reported beside it and is the tie-neutral number.",
+    "first_pass_order_note": "first_pass_top500 and the table's 'reproduced' column use the first pass's own order: pandas sort_values with the default unstable quicksort on pool row order, descending. Its tie order is arbitrary and may depend on the numpy build and CPU.",
+    "methods": {
+      "cvss3": {
+        "first_pass_top500": 6,
+        "cve_id_top500": 5,
+        "best_top500": 17,
+        "expected_top500": 5.947946638765368,
+        "worst_top500": 5,
+        "tied_group_size_at_rank_500": 3823,
+        "slots_in_tied_group": 302,
+        "positives_in_tied_group": 12
+      },
+      "epss": {
+        "first_pass_top500": 8,
+        "cve_id_top500": 8,
+        "best_top500": 8,
+        "expected_top500": 8.0,
+        "worst_top500": 8,
+        "tied_group_size_at_rank_500": 1,
+        "slots_in_tied_group": 1,
+        "positives_in_tied_group": 0
+      },
+      "exploit_then_epss": {
+        "first_pass_top500": 19,
+        "cve_id_top500": 18,
+        "best_top500": 19,
+        "expected_top500": 18.358024691358025,
+        "worst_top500": 18,
+        "tied_group_size_at_rank_500": 81,
+        "slots_in_tied_group": 29,
+        "positives_in_tied_group": 1
+      },
+      "assigner_only": {
+        "first_pass_top500": 13,
+        "cve_id_top500": 13,
+        "best_top500": 13,
+        "expected_top500": 12.6,
+        "worst_top500": 11,
+        "tied_group_size_at_rank_500": 10,
+        "slots_in_tied_group": 8,
+        "positives_in_tied_group": 2
+      },
+      "hgb_signals": {
+        "first_pass_top500": 20,
+        "cve_id_top500": 18,
+        "best_top500": 22,
+        "expected_top500": 19.305263157894736,
+        "worst_top500": 18,
+        "tied_group_size_at_rank_500": 285,
+        "slots_in_tied_group": 93,
+        "positives_in_tied_group": 4
+      },
+      "hgb_signals_struct": {
+        "first_pass_top500": 19,
+        "cve_id_top500": 19,
+        "best_top500": 19,
+        "expected_top500": 19.0,
+        "worst_top500": 19,
+        "tied_group_size_at_rank_500": 64,
+        "slots_in_tied_group": 58,
+        "positives_in_tied_group": 0
+      },
+      "hgb_signals_assigner": {
+        "first_pass_top500": 17,
+        "cve_id_top500": 17,
+        "best_top500": 17,
+        "expected_top500": 16.483870967741936,
+        "worst_top500": 16,
+        "tied_group_size_at_rank_500": 62,
+        "slots_in_tied_group": 30,
+        "positives_in_tied_group": 1
+      },
+      "hgb_signals_struct_assigner": {
+        "first_pass_top500": 14,
+        "cve_id_top500": 14,
+        "best_top500": 14,
+        "expected_top500": 14.0,
+        "worst_top500": 14,
+        "tied_group_size_at_rank_500": 5,
+        "slots_in_tied_group": 2,
+        "positives_in_tied_group": 0
+      },
+      "text_only": {
+        "first_pass_top500": 9,
+        "cve_id_top500": 9,
+        "best_top500": 9,
+        "expected_top500": 9.0,
+        "worst_top500": 9,
+        "tied_group_size_at_rank_500": 17,
+        "slots_in_tied_group": 4,
+        "positives_in_tied_group": 0
+      },
+      "hgb_all_text": {
+        "first_pass_top500": 21,
+        "cve_id_top500": 21,
+        "best_top500": 21,
+        "expected_top500": 21.0,
+        "worst_top500": 21,
+        "tied_group_size_at_rank_500": 1,
+        "slots_in_tied_group": 1,
+        "positives_in_tied_group": 0
+      },
+      "hgb_signals_assigner_text": {
+        "first_pass_top500": 25,
+        "cve_id_top500": 25,
+        "best_top500": 25,
+        "expected_top500": 25.0,
+        "worst_top500": 25,
+        "tied_group_size_at_rank_500": 3,
+        "slots_in_tied_group": 1,
+        "positives_in_tied_group": 0
+      },
+      "leaky_ncpe": {
+        "first_pass_top500": 26,
+        "cve_id_top500": 26,
+        "best_top500": 26,
+        "expected_top500": 26.0,
+        "worst_top500": 26,
+        "tied_group_size_at_rank_500": 1,
+        "slots_in_tied_group": 1,
+        "positives_in_tied_group": 0
+      }
+    }
+  },
+  "B_train_labels_restricted": {
+    "model": "hgb_signals_assigner_text",
+    "train_label_cap": "2024-12-31",
+    "train_rows": 39868,
+    "train_positives_restricted": 40,
+    "train_positives_first_pass": 65,
+    "train_positives_lost": 25,
+    "hgb_n_iter_per_seed": [
+      150,
+      49,
+      42
+    ],
+    "first_pass_order": {
+      "top500": 21,
+      "top1000": 26,
+      "auc": 0.8706022744145828,
+      "avg_precision": 0.07498323562339759,
+      "median_rank": 1288
+    },
+    "deterministic": {
+      "top250_cve_id": 13,
+      "top250_expected": 13.0,
+      "top500_cve_id": 21,
+      "top500_expected": 21.0,
+      "top1000_cve_id": 26,
+      "top1000_expected": 26.0,
+      "auc": 0.8706022744145828,
+      "avg_precision": 0.07498323562339759,
+      "median_rank_cve_id": 1288.0,
+      "median_rank_mid": 1288.0,
+      "work50_cve_id": 971.0,
+      "work50_mid": 971.0
+    },
+    "ties_top500": {
+      "best": 21,
+      "expected": 21.0,
+      "worst": 21,
+      "tied_group_size": 2,
+      "positives_in_tied_group": 0,
+      "slots_in_tied_group": 1
+    },
+    "ties_top250": {
+      "best": 13,
+      "expected": 13.0,
+      "worst": 13,
+      "tied_group_size": 1,
+      "positives_in_tied_group": 0,
+      "slots_in_tied_group": 1
+    },
+    "ties_top1000": {
+      "best": 26,
+      "expected": 26.0,
+      "worst": 26,
+      "tied_group_size": 3,
+      "positives_in_tied_group": 0,
+      "slots_in_tied_group": 3
+    },
+    "ci95": {
+      "top250_cve_id": [
+        7.0,
+        21.0
+      ],
+      "top250_expected": [
+        7.0,
+        21.0
+      ],
+      "top500_cve_id": [
+        12.0,
+        30.0
+      ],
+      "top500_expected": [
+        12.0,
+        30.0
+      ],
+      "top1000_cve_id": [
+        16.0,
+        36.0
+      ],
+      "top1000_expected": [
+        16.0,
+        36.0
+      ],
+      "auc": [
+        0.8145740059810958,
+        0.9193859478010412
+      ],
+      "avg_precision": [
+        0.028409497996336575,
+        0.16819268445996594
+      ],
+      "median_rank_cve_id": [
+        319.975,
+        3928.2249999999985
+      ],
+      "median_rank_mid": [
+        319.975,
+        3917.187499999999
+      ],
+      "work50_cve_id": [
+        313.975,
+        3906.0249999999996
+      ],
+      "work50_mid": [
+        313.9875,
+        3902.5249999999996
+      ]
+    }
+  },
+  "C_early_stopping": {
+    "validation_fraction": 0.1,
+    "train_rows": 39868,
+    "train_positives": 65,
+    "positives_in_a_stratified_10pct_validation_split_per_seed": {
+      "0": 7,
+      "1": 7,
+      "2": 7
+    },
+    "note": "max_iter=150 is the documented setting; n_iter_ is what each fit actually used under early_stopping='auto'.",
+    "methods": {
+      "hgb_signals": {
+        "n_iter_per_seed_auto": [
+          91,
+          55,
+          75
+        ],
+        "n_iter_per_seed_no_early_stop": [
+          150,
+          150,
+          150
+        ],
+        "auto": {
+          "top500": 20,
+          "top1000": 22,
+          "auc": 0.7252728926291151,
+          "avg_precision": 0.03686081929898636,
+          "median_rank": 2602
+        },
+        "no_early_stop": {
+          "top500": 19,
+          "top1000": 23,
+          "auc": 0.679843011677774,
+          "avg_precision": 0.03676638115947059,
+          "median_rank": 3903
+        },
+        "no_early_stop_deterministic": {
+          "top250_cve_id": 15,
+          "top250_expected": 15.0,
+          "top500_cve_id": 20,
+          "top500_expected": 20.130434782608695,
+          "top1000_cve_id": 23,
+          "top1000_expected": 22.816326530612244,
+          "auc": 0.679843011677774,
+          "avg_precision": 0.03676638115947059,
+          "median_rank_cve_id": 4305.0,
+          "median_rank_mid": 3370.5,
+          "work50_cve_id": 3772.0,
+          "work50_mid": 3370.5
+        },
+        "no_early_stop_ties_top500": {
+          "best": 22,
+          "expected": 20.130434782608695,
+          "worst": 19,
+          "tied_group_size": 207,
+          "positives_in_tied_group": 3,
+          "slots_in_tied_group": 78
+        }
+      },
+      "hgb_signals_struct": {
+        "n_iter_per_seed_auto": [
+          118,
+          46,
+          35
+        ],
+        "n_iter_per_seed_no_early_stop": [
+          150,
+          150,
+          150
+        ],
+        "auto": {
+          "top500": 19,
+          "top1000": 20,
+          "auc": 0.8029774174389253,
+          "avg_precision": 0.06277207175816439,
+          "median_rank": 3551
+        },
+        "no_early_stop": {
+          "top500": 19,
+          "top1000": 21,
+          "auc": 0.8078331484570839,
+          "avg_precision": 0.06384748787419448,
+          "median_rank": 3315
+        },
+        "no_early_stop_deterministic": {
+          "top250_cve_id": 15,
+          "top250_expected": 15.0,
+          "top500_cve_id": 19,
+          "top500_expected": 19.0,
+          "top1000_cve_id": 21,
+          "top1000_expected": 21.0,
+          "auc": 0.8078331484570839,
+          "avg_precision": 0.06384748787419448,
+          "median_rank_cve_id": 3237.5,
+          "median_rank_mid": 3297.0,
+          "work50_cve_id": 3237.0,
+          "work50_mid": 3297.0
+        },
+        "no_early_stop_ties_top500": {
+          "best": 19,
+          "expected": 19.0,
+          "worst": 19,
+          "tied_group_size": 25,
+          "positives_in_tied_group": 0,
+          "slots_in_tied_group": 21
+        }
+      },
+      "hgb_signals_assigner": {
+        "n_iter_per_seed_auto": [
+          99,
+          150,
+          150
+        ],
+        "n_iter_per_seed_no_early_stop": [
+          150,
+          150,
+          150
+        ],
+        "auto": {
+          "top500": 17,
+          "top1000": 24,
+          "auc": 0.879561766863771,
+          "avg_precision": 0.07272102843053574,
+          "median_rank": 1183
+        },
+        "no_early_stop": {
+          "top500": 16,
+          "top1000": 22,
+          "auc": 0.8840828645919766,
+          "avg_precision": 0.07228980488681927,
+          "median_rank": 1162
+        },
+        "no_early_stop_deterministic": {
+          "top250_cve_id": 13,
+          "top250_expected": 13.053333333333333,
+          "top500_cve_id": 16,
+          "top500_expected": 16.0,
+          "top1000_cve_id": 22,
+          "top1000_expected": 22.0,
+          "auc": 0.8840828645919766,
+          "avg_precision": 0.07228980488681927,
+          "median_rank_cve_id": 1163.0,
+          "median_rank_mid": 1162.0,
+          "work50_cve_id": 1162.0,
+          "work50_mid": 1162.0
+        },
+        "no_early_stop_ties_top500": {
+          "best": 16,
+          "expected": 16.0,
+          "worst": 16,
+          "tied_group_size": 48,
+          "positives_in_tied_group": 0,
+          "slots_in_tied_group": 41
+        }
+      },
+      "hgb_signals_struct_assigner": {
+        "n_iter_per_seed_auto": [
+          127,
+          70,
+          150
+        ],
+        "n_iter_per_seed_no_early_stop": [
+          150,
+          150,
+          150
+        ],
+        "auto": {
+          "top500": 14,
+          "top1000": 24,
+          "auc": 0.8785977172878217,
+          "avg_precision": 0.10310475278963233,
+          "median_rank": 1635
+        },
+        "no_early_stop": {
+          "top500": 15,
+          "top1000": 20,
+          "auc": 0.8825748312094401,
+          "avg_precision": 0.10023116448195171,
+          "median_rank": 1755
+        },
+        "no_early_stop_deterministic": {
+          "top250_cve_id": 13,
+          "top250_expected": 13.0,
+          "top500_cve_id": 15,
+          "top500_expected": 15.0,
+          "top1000_cve_id": 20,
+          "top1000_expected": 20.0,
+          "auc": 0.8825748312094401,
+          "avg_precision": 0.10023116448195171,
+          "median_rank_cve_id": 1755.5,
+          "median_rank_mid": 1755.5,
+          "work50_cve_id": 1540.0,
+          "work50_mid": 1540.0
+        },
+        "no_early_stop_ties_top500": {
+          "best": 15,
+          "expected": 15.0,
+          "worst": 15,
+          "tied_group_size": 2,
+          "positives_in_tied_group": 0,
+          "slots_in_tied_group": 2
+        }
+      },
+      "hgb_all_text": {
+        "n_iter_per_seed_auto": [
+          145,
+          109,
+          56
+        ],
+        "n_iter_per_seed_no_early_stop": [
+          150,
+          150,
+          150
+        ],
+        "auto": {
+          "top500": 21,
+          "top1000": 25,
+          "auc": 0.8834223323230648,
+          "avg_precision": 0.11301030594755732,
+          "median_rank": 1086
+        },
+        "no_early_stop": {
+          "top500": 16,
+          "top1000": 25,
+          "auc": 0.8759539505288625,
+          "avg_precision": 0.09492744213403069,
+          "median_rank": 1190
+        },
+        "no_early_stop_deterministic": {
+          "top250_cve_id": 14,
+          "top250_expected": 14.0,
+          "top500_cve_id": 16,
+          "top500_expected": 16.0,
+          "top1000_cve_id": 25,
+          "top1000_expected": 25.0,
+          "auc": 0.8759539505288625,
+          "avg_precision": 0.09492744213403069,
+          "median_rank_cve_id": 1189.5,
+          "median_rank_mid": 1189.25,
+          "work50_cve_id": 1033.0,
+          "work50_mid": 1032.5
+        },
+        "no_early_stop_ties_top500": {
+          "best": 16,
+          "expected": 16.0,
+          "worst": 16,
+          "tied_group_size": 2,
+          "positives_in_tied_group": 0,
+          "slots_in_tied_group": 2
+        }
+      },
+      "hgb_signals_assigner_text": {
+        "n_iter_per_seed_auto": [
+          150,
+          138,
+          55
+        ],
+        "n_iter_per_seed_no_early_stop": [
+          150,
+          150,
+          150
+        ],
+        "auto": {
+          "top500": 25,
+          "top1000": 28,
+          "auc": 0.8880206741141226,
+          "avg_precision": 0.10568247366264288,
+          "median_rank": 778
+        },
+        "no_early_stop": {
+          "top500": 22,
+          "top1000": 28,
+          "auc": 0.8862451524573984,
+          "avg_precision": 0.1076303258961811,
+          "median_rank": 729
+        },
+        "no_early_stop_deterministic": {
+          "top250_cve_id": 19,
+          "top250_expected": 19.666666666666668,
+          "top500_cve_id": 22,
+          "top500_expected": 22.0,
+          "top1000_cve_id": 28,
+          "top1000_expected": 28.0,
+          "auc": 0.8862451524573984,
+          "avg_precision": 0.1076303258961811,
+          "median_rank_cve_id": 728.5,
+          "median_rank_mid": 729.0,
+          "work50_cve_id": 728.0,
+          "work50_mid": 729.0
+        },
+        "no_early_stop_ties_top500": {
+          "best": 22,
+          "expected": 22.0,
+          "worst": 22,
+          "tied_group_size": 1,
+          "positives_in_tied_group": 0,
+          "slots_in_tied_group": 1
+        }
+      },
+      "leaky_ncpe": {
+        "n_iter_per_seed_auto": [
+          150,
+          150,
+          150
+        ],
+        "n_iter_per_seed_no_early_stop": [
+          150,
+          150,
+          150
+        ],
+        "auto": {
+          "top500": 26,
+          "top1000": 29,
+          "auc": 0.9133168764357024,
+          "avg_precision": 0.1312241651539693,
+          "median_rank": 430
+        },
+        "no_early_stop": {
+          "top500": 26,
+          "top1000": 28,
+          "auc": 0.9096162580464839,
+          "avg_precision": 0.11968262462585214,
+          "median_rank": 586
+        },
+        "no_early_stop_deterministic": {
+          "top250_cve_id": 18,
+          "top250_expected": 18.0,
+          "top500_cve_id": 26,
+          "top500_expected": 26.0,
+          "top1000_cve_id": 28,
+          "top1000_expected": 28.0,
+          "auc": 0.9096162580464839,
+          "avg_precision": 0.11968262462585214,
+          "median_rank_cve_id": 586.0,
+          "median_rank_mid": 585.5,
+          "work50_cve_id": 458.0,
+          "work50_mid": 457.0
+        },
+        "no_early_stop_ties_top500": {
+          "best": 26,
+          "expected": 26.0,
+          "worst": 26,
+          "tied_group_size": 1,
+          "positives_in_tied_group": 0,
+          "slots_in_tied_group": 1
+        }
+      }
+    }
+  },
+  "D_seed_noise": {
+    "model": "hgb_signals_assigner_text",
+    "seed_scheme": "Run i uses text folds seed i (fold_only / both_vary) and HGB seeds 3i, 3i+1, 3i+2 (hgb_only / both_vary), each a mean of 3 HGB fits. Run 0 equals the primary run.",
+    "runs": {
+      "both_vary": [
+        {
+          "top500_first_pass_order": 25,
+          "top500_cve_id": 25,
+          "top500_expected": 25.0,
+          "top250_cve_id": 16,
+          "auc": 0.8880206741141226,
+          "avg_precision": 0.10568247366264288,
+          "median_rank_cve_id": 778.5,
+          "hgb_seeds": [
+            0,
+            1,
+            2
+          ],
+          "hgb_n_iter": [
+            150,
+            138,
+            55
+          ]
+        },
+        {
+          "top500_first_pass_order": 21,
+          "top500_cve_id": 21,
+          "top500_expected": 21.0,
+          "top250_cve_id": 16,
+          "auc": 0.870763586220751,
+          "avg_precision": 0.10274011310834097,
+          "median_rank_cve_id": 1046.0,
+          "hgb_seeds": [
+            3,
+            4,
+            5
+          ],
+          "hgb_n_iter": [
+            50,
+            116,
+            60
+          ]
+        },
+        {
+          "top500_first_pass_order": 22,
+          "top500_cve_id": 22,
+          "top500_expected": 22.0,
+          "top250_cve_id": 20,
+          "auc": 0.8726750355923173,
+          "avg_precision": 0.07760743968660525,
+          "median_rank_cve_id": 1043.0,
+          "hgb_seeds": [
+            6,
+            7,
+            8
+          ],
+          "hgb_n_iter": [
+            137,
+            90,
+            109
+          ]
+        },
+        {
+          "top500_first_pass_order": 19,
+          "top500_cve_id": 21,
+          "top500_expected": 20.714285714285715,
+          "top250_cve_id": 15,
+          "auc": 0.8942373199640147,
+          "avg_precision": 0.09833212466104033,
+          "median_rank_cve_id": 731.0,
+          "hgb_seeds": [
+            9,
+            10,
+            11
+          ],
+          "hgb_n_iter": [
+            143,
+            74,
+            150
+          ]
+        },
+        {
+          "top500_first_pass_order": 23,
+          "top500_cve_id": 23,
+          "top500_expected": 23.0,
+          "top250_cve_id": 17,
+          "auc": 0.8930338956773896,
+          "avg_precision": 0.08121974036383645,
+          "median_rank_cve_id": 737.5,
+          "hgb_seeds": [
+            12,
+            13,
+            14
+          ],
+          "hgb_n_iter": [
+            60,
+            140,
+            104
+          ]
+        },
+        {
+          "top500_first_pass_order": 24,
+          "top500_cve_id": 24,
+          "top500_expected": 24.0,
+          "top250_cve_id": 17,
+          "auc": 0.8667179625472744,
+          "avg_precision": 0.09063459935861659,
+          "median_rank_cve_id": 796.5,
+          "hgb_seeds": [
+            15,
+            16,
+            17
+          ],
+          "hgb_n_iter": [
+            150,
+            147,
+            108
+          ]
+        },
+        {
+          "top500_first_pass_order": 23,
+          "top500_cve_id": 23,
+          "top500_expected": 23.0,
+          "top250_cve_id": 14,
+          "auc": 0.8843569035994094,
+          "avg_precision": 0.08677016532841363,
+          "median_rank_cve_id": 1062.0,
+          "hgb_seeds": [
+            18,
+            19,
+            20
+          ],
+          "hgb_n_iter": [
+            119,
+            25,
+            102
+          ]
+        },
+        {
+          "top500_first_pass_order": 24,
+          "top500_cve_id": 24,
+          "top500_expected": 24.0,
+          "top250_cve_id": 21,
+          "auc": 0.8771898555344962,
+          "avg_precision": 0.08208189002241639,
+          "median_rank_cve_id": 899.5,
+          "hgb_seeds": [
+            21,
+            22,
+            23
+          ],
+          "hgb_n_iter": [
+            64,
+            150,
+            150
+          ]
+        },
+        {
+          "top500_first_pass_order": 24,
+          "top500_cve_id": 24,
+          "top500_expected": 24.0,
+          "top250_cve_id": 21,
+          "auc": 0.8843866548462327,
+          "avg_precision": 0.10052743077626095,
+          "median_rank_cve_id": 929.5,
+          "hgb_seeds": [
+            24,
+            25,
+            26
+          ],
+          "hgb_n_iter": [
+            72,
+            81,
+            134
+          ]
+        },
+        {
+          "top500_first_pass_order": 21,
+          "top500_cve_id": 21,
+          "top500_expected": 21.0,
+          "top250_cve_id": 17,
+          "auc": 0.8720423439396983,
+          "avg_precision": 0.09193975058823761,
+          "median_rank_cve_id": 824.0,
+          "hgb_seeds": [
+            27,
+            28,
+            29
+          ],
+          "hgb_n_iter": [
+            81,
+            64,
+            51
+          ]
+        }
+      ],
+      "hgb_only": [
+        {
+          "top500_first_pass_order": 25,
+          "top500_cve_id": 25,
+          "top500_expected": 25.0,
+          "top250_cve_id": 16,
+          "auc": 0.8880206741141226,
+          "avg_precision": 0.10568247366264288,
+          "median_rank_cve_id": 778.5,
+          "hgb_seeds": [
+            0,
+            1,
+            2
+          ],
+          "hgb_n_iter": [
+            150,
+            138,
+            55
+          ]
+        },
+        {
+          "top500_first_pass_order": 22,
+          "top500_cve_id": 22,
+          "top500_expected": 22.0,
+          "top250_cve_id": 17,
+          "auc": 0.8802916277261967,
+          "avg_precision": 0.11084871385586825,
+          "median_rank_cve_id": 769.0,
+          "hgb_seeds": [
+            3,
+            4,
+            5
+          ],
+          "hgb_n_iter": [
+            80,
+            114,
+            74
+          ]
+        },
+        {
+          "top500_first_pass_order": 25,
+          "top500_cve_id": 25,
+          "top500_expected": 25.0,
+          "top250_cve_id": 18,
+          "auc": 0.8838672362893153,
+          "avg_precision": 0.09375057318465382,
+          "median_rank_cve_id": 904.0,
+          "hgb_seeds": [
+            6,
+            7,
+            8
+          ],
+          "hgb_n_iter": [
+            148,
+            92,
+            103
+          ]
+        },
+        {
+          "top500_first_pass_order": 22,
+          "top500_cve_id": 22,
+          "top500_expected": 22.0,
+          "top250_cve_id": 17,
+          "auc": 0.8863065655815741,
+          "avg_precision": 0.08477346823029401,
+          "median_rank_cve_id": 794.5,
+          "hgb_seeds": [
+            9,
+            10,
+            11
+          ],
+          "hgb_n_iter": [
+            133,
+            66,
+            150
+          ]
+        },
+        {
+          "top500_first_pass_order": 22,
+          "top500_cve_id": 22,
+          "top500_expected": 22.0,
+          "top250_cve_id": 20,
+          "auc": 0.8927470281506843,
+          "avg_precision": 0.10889255206609437,
+          "median_rank_cve_id": 794.5,
+          "hgb_seeds": [
+            12,
+            13,
+            14
+          ],
+          "hgb_n_iter": [
+            44,
+            146,
+            108
+          ]
+        },
+        {
+          "top500_first_pass_order": 21,
+          "top500_cve_id": 21,
+          "top500_expected": 21.0,
+          "top250_cve_id": 16,
+          "auc": 0.8767826182844066,
+          "avg_precision": 0.10655380103532312,
+          "median_rank_cve_id": 691.0,
+          "hgb_seeds": [
+            15,
+            16,
+            17
+          ],
+          "hgb_n_iter": [
+            45,
+            150,
+            65
+          ]
+        },
+        {
+          "top500_first_pass_order": 22,
+          "top500_cve_id": 22,
+          "top500_expected": 22.0,
+          "top250_cve_id": 19,
+          "auc": 0.8817715475452218,
+          "avg_precision": 0.09117124490738213,
+          "median_rank_cve_id": 807.5,
+          "hgb_seeds": [
+            18,
+            19,
+            20
+          ],
+          "hgb_n_iter": [
+            72,
+            31,
+            140
+          ]
+        },
+        {
+          "top500_first_pass_order": 25,
+          "top500_cve_id": 25,
+          "top500_expected": 25.0,
+          "top250_cve_id": 18,
+          "auc": 0.8876914997685407,
+          "avg_precision": 0.09684571598853221,
+          "median_rank_cve_id": 774.5,
+          "hgb_seeds": [
+            21,
+            22,
+            23
+          ],
+          "hgb_n_iter": [
+            68,
+            150,
+            147
+          ]
+        },
+        {
+          "top500_first_pass_order": 25,
+          "top500_cve_id": 25,
+          "top500_expected": 25.0,
+          "top250_cve_id": 18,
+          "auc": 0.8852737333065481,
+          "avg_precision": 0.09427615849205828,
+          "median_rank_cve_id": 844.0,
+          "hgb_seeds": [
+            24,
+            25,
+            26
+          ],
+          "hgb_n_iter": [
+            79,
+            83,
+            150
+          ]
+        },
+        {
+          "top500_first_pass_order": 23,
+          "top500_cve_id": 23,
+          "top500_expected": 23.0,
+          "top250_cve_id": 18,
+          "auc": 0.8801573376946659,
+          "avg_precision": 0.09230898668787711,
+          "median_rank_cve_id": 686.5,
+          "hgb_seeds": [
+            27,
+            28,
+            29
+          ],
+          "hgb_n_iter": [
+            89,
+            74,
+            53
+          ]
+        }
+      ],
+      "fold_only": [
+        {
+          "top500_first_pass_order": 25,
+          "top500_cve_id": 25,
+          "top500_expected": 25.0,
+          "top250_cve_id": 16,
+          "auc": 0.8880206741141226,
+          "avg_precision": 0.10568247366264288,
+          "median_rank_cve_id": 778.5,
+          "hgb_seeds": [
+            0,
+            1,
+            2
+          ],
+          "hgb_n_iter": [
+            150,
+            138,
+            55
+          ]
+        },
+        {
+          "top500_first_pass_order": 21,
+          "top500_cve_id": 21,
+          "top500_expected": 21.0,
+          "top250_cve_id": 16,
+          "auc": 0.8655434706658165,
+          "avg_precision": 0.09003220489246243,
+          "median_rank_cve_id": 1064.5,
+          "hgb_seeds": [
+            0,
+            1,
+            2
+          ],
+          "hgb_n_iter": [
+            80,
+            116,
+            141
+          ]
+        },
+        {
+          "top500_first_pass_order": 22,
+          "top500_cve_id": 22,
+          "top500_expected": 22.0,
+          "top250_cve_id": 18,
+          "auc": 0.8703713610676822,
+          "avg_precision": 0.07975144290421456,
+          "median_rank_cve_id": 992.5,
+          "hgb_seeds": [
+            0,
+            1,
+            2
+          ],
+          "hgb_n_iter": [
+            70,
+            150,
+            86
+          ]
+        },
+        {
+          "top500_first_pass_order": 23,
+          "top500_cve_id": 23,
+          "top500_expected": 23.0,
+          "top250_cve_id": 18,
+          "auc": 0.892647129468692,
+          "avg_precision": 0.11348705641105264,
+          "median_rank_cve_id": 799.0,
+          "hgb_seeds": [
+            0,
+            1,
+            2
+          ],
+          "hgb_n_iter": [
+            150,
+            150,
+            56
+          ]
+        },
+        {
+          "top500_first_pass_order": 24,
+          "top500_cve_id": 24,
+          "top500_expected": 24.0,
+          "top250_cve_id": 16,
+          "auc": 0.8837143858469224,
+          "avg_precision": 0.10817617563237594,
+          "median_rank_cve_id": 1001.0,
+          "hgb_seeds": [
+            0,
+            1,
+            2
+          ],
+          "hgb_n_iter": [
+            79,
+            150,
+            150
+          ]
+        },
+        {
+          "top500_first_pass_order": 24,
+          "top500_cve_id": 24,
+          "top500_expected": 24.0,
+          "top250_cve_id": 18,
+          "auc": 0.8663074499305622,
+          "avg_precision": 0.07955787293813413,
+          "median_rank_cve_id": 1074.0,
+          "hgb_seeds": [
+            0,
+            1,
+            2
+          ],
+          "hgb_n_iter": [
+            74,
+            131,
+            80
+          ]
+        },
+        {
+          "top500_first_pass_order": 22,
+          "top500_cve_id": 22,
+          "top500_expected": 22.0,
+          "top250_cve_id": 14,
+          "auc": 0.868995980033365,
+          "avg_precision": 0.0765605633525455,
+          "median_rank_cve_id": 1083.5,
+          "hgb_seeds": [
+            0,
+            1,
+            2
+          ],
+          "hgb_n_iter": [
+            60,
+            73,
+            85
+          ]
+        },
+        {
+          "top500_first_pass_order": 25,
+          "top500_cve_id": 25,
+          "top500_expected": 25.0,
+          "top250_cve_id": 22,
+          "auc": 0.8650060375924744,
+          "avg_precision": 0.09297760248527176,
+          "median_rank_cve_id": 1086.0,
+          "hgb_seeds": [
+            0,
+            1,
+            2
+          ],
+          "hgb_n_iter": [
+            69,
+            150,
+            150
+          ]
+        },
+        {
+          "top500_first_pass_order": 23,
+          "top500_cve_id": 23,
+          "top500_expected": 23.0,
+          "top250_cve_id": 19,
+          "auc": 0.8848804163646049,
+          "avg_precision": 0.09402028059279485,
+          "median_rank_cve_id": 899.5,
+          "hgb_seeds": [
+            0,
+            1,
+            2
+          ],
+          "hgb_n_iter": [
+            150,
+            150,
+            150
+          ]
+        },
+        {
+          "top500_first_pass_order": 25,
+          "top500_cve_id": 25,
+          "top500_expected": 25.0,
+          "top250_cve_id": 15,
+          "auc": 0.8774726288529229,
+          "avg_precision": 0.1029918035685289,
+          "median_rank_cve_id": 891.0,
+          "hgb_seeds": [
+            0,
+            1,
+            2
+          ],
+          "hgb_n_iter": [
+            72,
+            146,
+            63
+          ]
+        }
+      ]
+    },
+    "spread": {
+      "both_vary": {
+        "top500_first_pass_order": {
+          "min": 19,
+          "median": 23.0,
+          "max": 25,
+          "std": 1.837873166945363,
+          "values": [
+            25,
+            21,
+            22,
+            19,
+            23,
+            24,
+            23,
+            24,
+            24,
+            21
+          ]
+        },
+        "top500_cve_id": {
+          "min": 21,
+          "median": 23.0,
+          "max": 25,
+          "std": 1.4757295747452437,
+          "values": [
+            25,
+            21,
+            22,
+            21,
+            23,
+            24,
+            23,
+            24,
+            24,
+            21
+          ]
+        },
+        "auc": {
+          "min": 0.8667179625472744,
+          "median": 0.8807733795669528,
+          "max": 0.8942373199640147,
+          "std": 0.009778479242163669,
+          "values": [
+            0.8880206741141226,
+            0.870763586220751,
+            0.8726750355923173,
+            0.8942373199640147,
+            0.8930338956773896,
+            0.8667179625472744,
+            0.8843569035994094,
+            0.8771898555344962,
+            0.8843866548462327,
+            0.8720423439396983
+          ]
+        },
+        "avg_precision": {
+          "min": 0.07760743968660525,
+          "median": 0.0912871749734271,
+          "max": 0.10568247366264288,
+          "std": 0.009807670155595393,
+          "values": [
+            0.10568247366264288,
+            0.10274011310834097,
+            0.07760743968660525,
+            0.09833212466104033,
+            0.08121974036383645,
+            0.09063459935861659,
+            0.08677016532841363,
+            0.08208189002241639,
+            0.10052743077626095,
+            0.09193975058823761
+          ]
+        },
+        "median_rank_cve_id": {
+          "min": 731.0,
+          "median": 861.75,
+          "max": 1062.0,
+          "std": 130.2867030820874,
+          "values": [
+            778.5,
+            1046.0,
+            1043.0,
+            731.0,
+            737.5,
+            796.5,
+            1062.0,
+            899.5,
+            929.5,
+            824.0
+          ]
+        }
+      },
+      "hgb_only": {
+        "top500_first_pass_order": {
+          "min": 21,
+          "median": 22.5,
+          "max": 25,
+          "std": 1.6193277068654826,
+          "values": [
+            25,
+            22,
+            25,
+            22,
+            22,
+            21,
+            22,
+            25,
+            25,
+            23
+          ]
+        },
+        "top500_cve_id": {
+          "min": 21,
+          "median": 22.5,
+          "max": 25,
+          "std": 1.6193277068654826,
+          "values": [
+            25,
+            22,
+            25,
+            22,
+            22,
+            21,
+            22,
+            25,
+            25,
+            23
+          ]
+        },
+        "auc": {
+          "min": 0.8767826182844066,
+          "median": 0.8845704847979317,
+          "max": 0.8927470281506843,
+          "std": 0.0046903174981693906,
+          "values": [
+            0.8880206741141226,
+            0.8802916277261967,
+            0.8838672362893153,
+            0.8863065655815741,
+            0.8927470281506843,
+            0.8767826182844066,
+            0.8817715475452218,
+            0.8876914997685407,
+            0.8852737333065481,
+            0.8801573376946659
+          ]
+        },
+        "avg_precision": {
+          "min": 0.08477346823029401,
+          "median": 0.09556093724029524,
+          "max": 0.11084871385586825,
+          "std": 0.008822559186928048,
+          "values": [
+            0.10568247366264288,
+            0.11084871385586825,
+            0.09375057318465382,
+            0.08477346823029401,
+            0.10889255206609437,
+            0.10655380103532312,
+            0.09117124490738213,
+            0.09684571598853221,
+            0.09427615849205828,
+            0.09230898668787711
+          ]
+        },
+        "median_rank_cve_id": {
+          "min": 686.5,
+          "median": 786.5,
+          "max": 904.0,
+          "std": 64.35310576982452,
+          "values": [
+            778.5,
+            769.0,
+            904.0,
+            794.5,
+            794.5,
+            691.0,
+            807.5,
+            774.5,
+            844.0,
+            686.5
+          ]
+        }
+      },
+      "fold_only": {
+        "top500_first_pass_order": {
+          "min": 21,
+          "median": 23.5,
+          "max": 25,
+          "std": 1.4298407059684812,
+          "values": [
+            25,
+            21,
+            22,
+            23,
+            24,
+            24,
+            22,
+            25,
+            23,
+            25
+          ]
+        },
+        "top500_cve_id": {
+          "min": 21,
+          "median": 23.5,
+          "max": 25,
+          "std": 1.4298407059684812,
+          "values": [
+            25,
+            21,
+            22,
+            23,
+            24,
+            24,
+            22,
+            25,
+            23,
+            25
+          ]
+        },
+        "auc": {
+          "min": 0.8650060375924744,
+          "median": 0.8739219949603025,
+          "max": 0.892647129468692,
+          "std": 0.010361142338575071,
+          "values": [
+            0.8880206741141226,
+            0.8655434706658165,
+            0.8703713610676822,
+            0.892647129468692,
+            0.8837143858469224,
+            0.8663074499305622,
+            0.868995980033365,
+            0.8650060375924744,
+            0.8848804163646049,
+            0.8774726288529229
+          ]
+        },
+        "avg_precision": {
+          "min": 0.0765605633525455,
+          "median": 0.0934989415390333,
+          "max": 0.11348705641105264,
+          "std": 0.013036331240934914,
+          "values": [
+            0.10568247366264288,
+            0.09003220489246243,
+            0.07975144290421456,
+            0.11348705641105264,
+            0.10817617563237594,
+            0.07955787293813413,
+            0.0765605633525455,
+            0.09297760248527176,
+            0.09402028059279485,
+            0.1029918035685289
+          ]
+        },
+        "median_rank_cve_id": {
+          "min": 778.5,
+          "median": 996.75,
+          "max": 1086.0,
+          "std": 117.65449653776756,
+          "values": [
+            778.5,
+            1064.5,
+            992.5,
+            799.0,
+            1001.0,
+            1074.0,
+            1083.5,
+            1086.0,
+            899.5,
+            891.0
+          ]
+        }
+      }
+    }
+  },
+  "E_second_fold": {
+    "train_months": "2024-07..2025-03",
+    "test_months": "2025-04..2025-09",
+    "train_rows": 31440,
+    "train_positives": 59,
+    "train_positives_labels_to_2025_03_31": 38,
+    "test_rows": 23367,
+    "test_positives": 32,
+    "hgb_n_iter_per_seed": [
+      75,
+      150,
+      102
+    ],
+    "hgb_n_iter_per_seed_labels_capped": [
+      150,
+      58,
+      150
+    ],
+    "methods": {
+      "cvss3": {
+        "first_pass_order": {
+          "top500": 6,
+          "top1000": 7,
+          "auc": 0.714113054424684,
+          "avg_precision": 0.00825380455726565,
+          "median_rank": 5326
+        },
+        "deterministic": {
+          "top250_cve_id": 4,
+          "top250_expected": 4.208640674394099,
+          "top500_cve_id": 5,
+          "top500_expected": 4.735511064278188,
+          "top1000_cve_id": 9,
+          "top1000_expected": 5.7892518440463645,
+          "auc": 0.714113054424684,
+          "avg_precision": 0.00825380455726565,
+          "median_rank_cve_id": 5048.0,
+          "median_rank_mid": 5093.5,
+          "work50_cve_id": 4080.0,
+          "work50_mid": 4325.0
+        },
+        "ties_top500": {
+          "best": 10,
+          "expected": 4.735511064278188,
+          "worst": 4,
+          "tied_group_size": 2847,
+          "positives_in_tied_group": 6,
+          "slots_in_tied_group": 349
+        },
+        "ties_top250": {
+          "best": 10,
+          "expected": 4.208640674394099,
+          "worst": 4,
+          "tied_group_size": 2847,
+          "positives_in_tied_group": 6,
+          "slots_in_tied_group": 99
+        },
+        "ties_top1000": {
+          "best": 10,
+          "expected": 5.7892518440463645,
+          "worst": 4,
+          "tied_group_size": 2847,
+          "positives_in_tied_group": 6,
+          "slots_in_tied_group": 849
+        },
+        "ci95": {
+          "top250_cve_id": [
+            1.0,
+            8.0
+          ],
+          "top250_expected": [
+            1.102600379508029,
+            8.32188295233359
+          ],
+          "top500_cve_id": [
+            1.0,
+            10.0
+          ],
+          "top500_expected": [
+            1.3715187915708775,
+            9.141077430302552
+          ],
+          "top1000_cve_id": [
+            4.0,
+            16.0
+          ],
+          "top1000_expected": [
+            2.176657805442089,
+            10.46646541498543
+          ],
+          "auc": [
+            0.6148003212841177,
+            0.8047032027369689
+          ],
+          "avg_precision": [
+            0.0022934593124304633,
+            0.025237448802418263
+          ],
+          "median_rank_cve_id": [
+            3281.925,
+            7198.0625
+          ],
+          "median_rank_mid": [
+            3198.4375,
+            7078.549999999999
+          ],
+          "work50_cve_id": [
+            3264.925,
+            7166.15
+          ],
+          "work50_mid": [
+            3179.925,
+            7068.549999999999
+          ]
+        }
+      },
+      "epss": {
+        "first_pass_order": {
+          "top500": 6,
+          "top1000": 12,
+          "auc": 0.7127363670452111,
+          "avg_precision": 0.02992048645432422,
+          "median_rank": 1864
+        },
+        "deterministic": {
+          "top250_cve_id": 6,
+          "top250_expected": 6.0,
+          "top500_cve_id": 6,
+          "top500_expected": 6.0,
+          "top1000_cve_id": 12,
+          "top1000_expected": 12.0,
+          "auc": 0.7127363670452111,
+          "avg_precision": 0.02992048645432422,
+          "median_rank_cve_id": 1867.0,
+          "median_rank_mid": 1865.25,
+          "work50_cve_id": 1767.0,
+          "work50_mid": 1763.0
+        },
+        "ties_top500": {
+          "best": 6,
+          "expected": 6.0,
+          "worst": 6,
+          "tied_group_size": 1,
+          "positives_in_tied_group": 0,
+          "slots_in_tied_group": 1
+        },
+        "ties_top250": {
+          "best": 6,
+          "expected": 6.0,
+          "worst": 6,
+          "tied_group_size": 1,
+          "positives_in_tied_group": 0,
+          "slots_in_tied_group": 1
+        },
+        "ties_top1000": {
+          "best": 12,
+          "expected": 12.0,
+          "worst": 12,
+          "tied_group_size": 3,
+          "positives_in_tied_group": 0,
+          "slots_in_tied_group": 3
+        },
+        "ci95": {
+          "top250_cve_id": [
+            2.0,
+            11.0
+          ],
+          "top250_expected": [
+            2.0,
+            11.0
+          ],
+          "top500_cve_id": [
+            2.0,
+            12.0
+          ],
+          "top500_expected": [
+            2.0,
+            12.0
+          ],
+          "top1000_cve_id": [
+            6.0,
+            19.024999999999864
+          ],
+          "top1000_expected": [
+            6.0,
+            19.34999999999991
+          ],
+          "auc": [
+            0.5834050160585528,
+            0.8373975034078092
+          ],
+          "avg_precision": [
+            0.00563960929733093,
+            0.11146309321351218
+          ],
+          "median_rank_cve_id": [
+            925.5,
+            5291.075
+          ],
+          "median_rank_mid": [
+            926.4875,
+            5236.037499999999
+          ],
+          "work50_cve_id": [
+            920.0,
+            5258.0
+          ],
+          "work50_mid": [
+            918.4875,
+            5199.099999999999
+          ]
+        }
+      },
+      "exploit_then_epss": {
+        "first_pass_order": {
+          "top500": 14,
+          "top1000": 17,
+          "auc": 0.8088647685879582,
+          "avg_precision": 0.05229005556396248,
+          "median_rank": 524
+        },
+        "deterministic": {
+          "top250_cve_id": 13,
+          "top250_expected": 13.0,
+          "top500_cve_id": 15,
+          "top500_expected": 14.6,
+          "top1000_cve_id": 17,
+          "top1000_expected": 17.0,
+          "auc": 0.8088647685879582,
+          "avg_precision": 0.05229005556396248,
+          "median_rank_cve_id": 524.0,
+          "median_rank_mid": 524.75,
+          "work50_cve_id": 510.0,
+          "work50_mid": 510.5
+        },
+        "ties_top500": {
+          "best": 15,
+          "expected": 14.6,
+          "worst": 14,
+          "tied_group_size": 5,
+          "positives_in_tied_group": 1,
+          "slots_in_tied_group": 3
+        },
+        "ties_top250": {
+          "best": 13,
+          "expected": 13.0,
+          "worst": 13,
+          "tied_group_size": 3,
+          "positives_in_tied_group": 0,
+          "slots_in_tied_group": 2
+        },
+        "ties_top1000": {
+          "best": 17,
+          "expected": 17.0,
+          "worst": 17,
+          "tied_group_size": 3,
+          "positives_in_tied_group": 0,
+          "slots_in_tied_group": 2
+        },
+        "ci95": {
+          "top250_cve_id": [
+            6.0,
+            21.0
+          ],
+          "top250_expected": [
+            6.0,
+            21.0
+          ],
+          "top500_cve_id": [
+            8.0,
+            23.0
+          ],
+          "top500_expected": [
+            8.0,
+            23.0
+          ],
+          "top1000_cve_id": [
+            9.0,
+            26.0
+          ],
+          "top1000_expected": [
+            9.0,
+            26.0
+          ],
+          "auc": [
+            0.691873527841518,
+            0.9122682741583599
+          ],
+          "avg_precision": [
+            0.01727609919808059,
+            0.14316158478976931
+          ],
+          "median_rank_cve_id": [
+            164.9625,
+            2301.5999999999995
+          ],
+          "median_rank_mid": [
+            165.95,
+            2304.5499999999997
+          ],
+          "work50_cve_id": [
+            150.975,
+            2276.0
+          ],
+          "work50_mid": [
+            150.5,
+            2275.575
+          ]
+        }
+      },
+      "assigner_only": {
+        "first_pass_order": {
+          "top500": 8,
+          "top1000": 9,
+          "auc": 0.7136008142275553,
+          "avg_precision": 0.007976170667701543,
+          "median_rank": 4330
+        },
+        "deterministic": {
+          "top250_cve_id": 5,
+          "top250_expected": 5.0,
+          "top500_cve_id": 8,
+          "top500_expected": 8.0,
+          "top1000_cve_id": 9,
+          "top1000_expected": 9.0,
+          "auc": 0.7136008142275553,
+          "avg_precision": 0.007976170667701543,
+          "median_rank_cve_id": 4218.5,
+          "median_rank_mid": 4297.5,
+          "work50_cve_id": 3842.0,
+          "work50_mid": 3977.0
+        },
+        "ties_top500": {
+          "best": 8,
+          "expected": 8.0,
+          "worst": 8,
+          "tied_group_size": 133,
+          "positives_in_tied_group": 0,
+          "slots_in_tied_group": 16
+        },
+        "ties_top250": {
+          "best": 5,
+          "expected": 5.0,
+          "worst": 5,
+          "tied_group_size": 120,
+          "positives_in_tied_group": 0,
+          "slots_in_tied_group": 2
+        },
+        "ties_top1000": {
+          "best": 9,
+          "expected": 9.0,
+          "worst": 9,
+          "tied_group_size": 116,
+          "positives_in_tied_group": 0,
+          "slots_in_tied_group": 96
+        },
+        "ci95": {
+          "top250_cve_id": [
+            1.0,
+            9.0
+          ],
+          "top250_expected": [
+            1.0,
+            9.0
+          ],
+          "top500_cve_id": [
+            3.0,
+            14.0
+          ],
+          "top500_expected": [
+            3.0,
+            14.0
+          ],
+          "top1000_cve_id": [
+            3.9750000000000014,
+            15.0
+          ],
+          "top1000_expected": [
+            3.9750000000000014,
+            15.0
+          ],
+          "auc": [
+            0.6027090632688503,
+            0.8121196469850162
+          ],
+          "avg_precision": [
+            0.0031377728685476627,
+            0.0238364381219579
+          ],
+          "median_rank_cve_id": [
+            2358.9625,
+            6686.274999999999
+          ],
+          "median_rank_mid": [
+            2345.4875,
+            6791.737499999998
+          ],
+          "work50_cve_id": [
+            2308.95,
+            6681.124999999999
+          ],
+          "work50_mid": [
+            2304.475,
+            6791.525
+          ]
+        }
+      },
+      "hgb_signals_assigner_text": {
+        "first_pass_order": {
+          "top500": 11,
+          "top1000": 16,
+          "auc": 0.8610175166059567,
+          "avg_precision": 0.07109491003219164,
+          "median_rank": 1145
+        },
+        "deterministic": {
+          "top250_cve_id": 8,
+          "top250_expected": 8.0,
+          "top500_cve_id": 11,
+          "top500_expected": 11.0,
+          "top1000_cve_id": 16,
+          "top1000_expected": 16.0,
+          "auc": 0.8610175166059567,
+          "avg_precision": 0.07109491003219164,
+          "median_rank_cve_id": 1145.0,
+          "median_rank_mid": 1145.0,
+          "work50_cve_id": 915.0,
+          "work50_mid": 915.0
+        },
+        "ties_top500": {
+          "best": 11,
+          "expected": 11.0,
+          "worst": 11,
+          "tied_group_size": 1,
+          "positives_in_tied_group": 0,
+          "slots_in_tied_group": 1
+        },
+        "ties_top250": {
+          "best": 8,
+          "expected": 8.0,
+          "worst": 8,
+          "tied_group_size": 2,
+          "positives_in_tied_group": 0,
+          "slots_in_tied_group": 2
+        },
+        "ties_top1000": {
+          "best": 16,
+          "expected": 16.0,
+          "worst": 16,
+          "tied_group_size": 2,
+          "positives_in_tied_group": 0,
+          "slots_in_tied_group": 2
+        },
+        "ci95": {
+          "top250_cve_id": [
+            3.0,
+            14.0
+          ],
+          "top250_expected": [
+            3.0,
+            14.0
+          ],
+          "top500_cve_id": [
+            5.0,
+            18.0
+          ],
+          "top500_expected": [
+            5.0,
+            18.0
+          ],
+          "top1000_cve_id": [
+            8.0,
+            24.0
+          ],
+          "top1000_expected": [
+            8.0,
+            24.0
+          ],
+          "auc": [
+            0.7930371686354516,
+            0.9218692184387963
+          ],
+          "avg_precision": [
+            0.011719531401618282,
+            0.19232071961709166
+          ],
+          "median_rank_cve_id": [
+            479.0,
+            2844.0249999999996
+          ],
+          "median_rank_mid": [
+            479.9875,
+            2841.5874999999996
+          ],
+          "work50_cve_id": [
+            458.975,
+            2819.0
+          ],
+          "work50_mid": [
+            457.9875,
+            2817.0125
+          ]
+        }
+      },
+      "hgb_signals_assigner_text__train_labels_to_2025_03_31": {
+        "first_pass_order": {
+          "top500": 12,
+          "top1000": 15,
+          "auc": 0.8796429719305765,
+          "avg_precision": 0.06829057524347454,
+          "median_rank": 1319
+        },
+        "deterministic": {
+          "top250_cve_id": 10,
+          "top250_expected": 10.0,
+          "top500_cve_id": 12,
+          "top500_expected": 12.0,
+          "top1000_cve_id": 15,
+          "top1000_expected": 15.0,
+          "auc": 0.8796429719305765,
+          "avg_precision": 0.06829057524347454,
+          "median_rank_cve_id": 1319.0,
+          "median_rank_mid": 1319.0,
+          "work50_cve_id": 1196.0,
+          "work50_mid": 1196.0
+        },
+        "ties_top500": {
+          "best": 12,
+          "expected": 12.0,
+          "worst": 12,
+          "tied_group_size": 7,
+          "positives_in_tied_group": 0,
+          "slots_in_tied_group": 1
+        },
+        "ties_top250": {
+          "best": 10,
+          "expected": 10.0,
+          "worst": 10,
+          "tied_group_size": 1,
+          "positives_in_tied_group": 1,
+          "slots_in_tied_group": 1
+        },
+        "ties_top1000": {
+          "best": 15,
+          "expected": 15.0,
+          "worst": 15,
+          "tied_group_size": 1,
+          "positives_in_tied_group": 0,
+          "slots_in_tied_group": 1
+        },
+        "ci95": {
+          "top250_cve_id": [
+            3.0,
+            15.024999999999864
+          ],
+          "top250_expected": [
+            3.0,
+            15.024999999999864
+          ],
+          "top500_cve_id": [
+            5.0,
+            19.0
+          ],
+          "top500_expected": [
+            5.0,
+            19.0
+          ],
+          "top1000_cve_id": [
+            7.0,
+            23.0
+          ],
+          "top1000_expected": [
+            7.0,
+            23.0
+          ],
+          "auc": [
+            0.8141577766215156,
+            0.9327184108553987
+          ],
+          "avg_precision": [
+            0.013222461059158358,
+            0.19491950120882273
+          ],
+          "median_rank_cve_id": [
+            399.975,
+            2241.5
+          ],
+          "median_rank_mid": [
+            398.9875,
+            2238.0125
+          ],
+          "work50_cve_id": [
+            374.0,
+            2231.0249999999996
+          ],
+          "work50_mid": [
+            374.4875,
+            2222.5874999999996
+          ]
+        }
+      }
+    }
+  },
+  "F_censoring": {
+    "note": "All windows end at the 2025-12-31 cap in the test pool, so later months have less time to reach KEV.",
+    "by_snapshot_month": [
+      {
+        "snapshot_month": "2025-01",
+        "rows": 4267,
+        "positives": 7,
+        "label_window_days": 334,
+        "label_window_end": "2025-12-31",
+        "epss_missing_share": 0.4473869228966487
+      },
+      {
+        "snapshot_month": "2025-02",
+        "rows": 3664,
+        "positives": 6,
+        "label_window_days": 306,
+        "label_window_end": "2025-12-31",
+        "epss_missing_share": 0.23253275109170304
+      },
+      {
+        "snapshot_month": "2025-03",
+        "rows": 3982,
+        "positives": 7,
+        "label_window_days": 275,
+        "label_window_end": "2025-12-31",
+        "epss_missing_share": 0.08262179809141135
+      },
+      {
+        "snapshot_month": "2025-04",
+        "rows": 4024,
+        "positives": 5,
+        "label_window_days": 245,
+        "label_window_end": "2025-12-31",
+        "epss_missing_share": 0.024353876739562623
+      },
+      {
+        "snapshot_month": "2025-05",
+        "rows": 3967,
+        "positives": 6,
+        "label_window_days": 214,
+        "label_window_end": "2025-12-31",
+        "epss_missing_share": 0.004537433829089992
+      },
+      {
+        "snapshot_month": "2025-06",
+        "rows": 3674,
+        "positives": 8,
+        "label_window_days": 184,
+        "label_window_end": "2025-12-31",
+        "epss_missing_share": 0.0130647795318454
+      },
+      {
+        "snapshot_month": "2025-07",
+        "rows": 3768,
+        "positives": 2,
+        "label_window_days": 153,
+        "label_window_end": "2025-12-31",
+        "epss_missing_share": 0.02043524416135881
+      },
+      {
+        "snapshot_month": "2025-08",
+        "rows": 3621,
+        "positives": 5,
+        "label_window_days": 122,
+        "label_window_end": "2025-12-31",
+        "epss_missing_share": 0.007456503728251864
+      },
+      {
+        "snapshot_month": "2025-09",
+        "rows": 4313,
+        "positives": 6,
+        "label_window_days": 92,
+        "label_window_end": "2025-12-31",
+        "epss_missing_share": 0.02364943194991885
+      }
+    ],
+    "epss_missing_share_all_pool_months": {
+      "2024-01": 0.04719535783365571,
+      "2024-02": 0.022358456545257845,
+      "2024-03": 0.019062027231467472,
+      "2024-04": 0.020487264673311186,
+      "2024-05": 0.10098176718092566,
+      "2024-06": 0.033821138211382114,
+      "2024-07": 0.0821256038647343,
+      "2024-08": 0.010398613518197574,
+      "2024-09": 0.02711323763955343,
+      "2024-10": 0.017445132245357344,
+      "2024-11": 0.00691699604743083,
+      "2024-12": 0.02888824044353662,
+      "2025-01": 0.4473869228966487,
+      "2025-02": 0.23253275109170304,
+      "2025-03": 0.08262179809141135,
+      "2025-04": 0.024353876739562623,
+      "2025-05": 0.004537433829089992,
+      "2025-06": 0.0130647795318454,
+      "2025-07": 0.02043524416135881,
+      "2025-08": 0.007456503728251864,
+      "2025-09": 0.02364943194991885
+    },
+    "kev_rows_outside_label_window_counted_negative": 2
+  },
+  "G_bootstrap": {
+    "cvss3": {
+      "point": {
+        "top250_cve_id": 5,
+        "top250_expected": 5.163222600052315,
+        "top500_cve_id": 5,
+        "top500_expected": 5.947946638765368,
+        "top1000_cve_id": 8,
+        "top1000_expected": 7.517394716191473,
+        "auc": 0.7321511625367934,
+        "avg_precision": 0.0063501574171049065,
+        "median_rank_cve_id": 7960.0,
+        "median_rank_mid": 8073.0,
+        "work50_cve_id": 7952.0,
+        "work50_mid": 8073.0
+      },
+      "ci95": {
+        "top250_cve_id": [
+          1.0,
+          10.0
+        ],
+        "top250_expected": [
+          1.169940902558049,
+          10.14173421977334
+        ],
+        "top500_cve_id": [
+          1.0,
+          10.0
+        ],
+        "top500_expected": [
+          1.9670235376568563,
+          10.876568790530603
+        ],
+        "top1000_cve_id": [
+          3.0,
+          14.0
+        ],
+        "top1000_expected": [
+          3.4698508319908687,
+          12.594066991513488
+        ],
+        "auc": [
+          0.6616020164762174,
+          0.7972149993355573
+        ],
+        "avg_precision": [
+          0.0028693678808665926,
+          0.016418944209894808
+        ],
+        "median_rank_cve_id": [
+          4612.975,
+          10229.687499999998
+        ],
+        "median_rank_mid": [
+          4558.29375,
+          9768.5
+        ],
+        "work50_cve_id": [
+          4597.975,
+          10188.025
+        ],
+        "work50_mid": [
+          4531.375,
+          9759.6125
+        ]
+      }
+    },
+    "epss": {
+      "point": {
+        "top250_cve_id": 8,
+        "top250_expected": 8.0,
+        "top500_cve_id": 8,
+        "top500_expected": 8.0,
+        "top1000_cve_id": 13,
+        "top1000_expected": 13.0,
+        "auc": 0.7072561926264946,
+        "avg_precision": 0.030922176708477904,
+        "median_rank_cve_id": 3379.0,
+        "median_rank_mid": 3382.25,
+        "work50_cve_id": 3273.0,
+        "work50_mid": 3293.5
+      },
+      "ci95": {
+        "top250_cve_id": [
+          3.0,
+          14.0
+        ],
+        "top250_expected": [
+          3.0,
+          14.0
+        ],
+        "top500_cve_id": [
+          3.0,
+          14.0
+        ],
+        "top500_expected": [
+          3.0,
+          14.0
+        ],
+        "top1000_cve_id": [
+          6.0,
+          20.0
+        ],
+        "top1000_expected": [
+          6.0,
+          20.0
+        ],
+        "auc": [
+          0.613564621039671,
+          0.7970647356186846
+        ],
+        "avg_precision": [
+          0.006205227932206305,
+          0.10149562191500049
+        ],
+        "median_rank_cve_id": [
+          2107.975,
+          11337.0375
+        ],
+        "median_rank_mid": [
+          2106.3875000000003,
+          12551.599999999999
+        ],
+        "work50_cve_id": [
+          2038.975,
+          11337.025
+        ],
+        "work50_mid": [
+          2037.3625,
+          12550.0375
+        ]
+      }
+    },
+    "exploit_then_epss": {
+      "point": {
+        "top250_cve_id": 15,
+        "top250_expected": 15.0,
+        "top500_cve_id": 18,
+        "top500_expected": 18.358024691358025,
+        "top1000_cve_id": 22,
+        "top1000_expected": 22.0,
+        "auc": 0.7680295285218924,
+        "avg_precision": 0.047119029429330925,
+        "median_rank_cve_id": 2498.5,
+        "median_rank_mid": 2498.5,
+        "work50_cve_id": 2253.0,
+        "work50_mid": 2253.0
+      },
+      "ci95": {
+        "top250_cve_id": [
+          7.0,
+          22.0
+        ],
+        "top250_expected": [
+          7.0,
+          22.0
+        ],
+        "top500_cve_id": [
+          10.0,
+          26.0
+        ],
+        "top500_expected": [
+          10.0,
+          26.70705249841872
+        ],
+        "top1000_cve_id": [
+          13.0,
+          31.0
+        ],
+        "top1000_expected": [
+          13.0,
+          31.0
+        ],
+        "auc": [
+          0.6812321306116131,
+          0.8505716926693253
+        ],
+        "avg_precision": [
+          0.016969721468167897,
+          0.12299145656705995
+        ],
+        "median_rank_cve_id": [
+          689.4625,
+          5155.237499999998
+        ],
+        "median_rank_mid": [
+          691.14375,
+          5178.65
+        ],
+        "work50_cve_id": [
+          682.2750000000001,
+          5098.124999999999
+        ],
+        "work50_mid": [
+          683.325,
+          5121.537499999999
+        ]
+      }
+    },
+    "assigner_only": {
+      "point": {
+        "top250_cve_id": 8,
+        "top250_expected": 8.0,
+        "top500_cve_id": 13,
+        "top500_expected": 12.6,
+        "top1000_cve_id": 15,
+        "top1000_expected": 15.0,
+        "auc": 0.7463299516992603,
+        "avg_precision": 0.010890060166561112,
+        "median_rank_cve_id": 6053.5,
+        "median_rank_mid": 6034.0,
+        "work50_cve_id": 6011.0,
+        "work50_mid": 6034.0
+      },
+      "ci95": {
+        "top250_cve_id": [
+          3.0,
+          14.0
+        ],
+        "top250_expected": [
+          3.0,
+          14.0
+        ],
+        "top500_cve_id": [
+          6.0,
+          19.0
+        ],
+        "top500_expected": [
+          6.0,
+          19.0
+        ],
+        "top1000_cve_id": [
+          8.0,
+          23.0
+        ],
+        "top1000_expected": [
+          8.0,
+          23.0
+        ],
+        "auc": [
+          0.6660030308861816,
+          0.8188357944828106
+        ],
+        "avg_precision": [
+          0.005469856604846923,
+          0.02396729036302293
+        ],
+        "median_rank_cve_id": [
+          3300.775,
+          7902.199999999999
+        ],
+        "median_rank_mid": [
+          3294.2875,
+          7873.075
+        ],
+        "work50_cve_id": [
+          3284.95,
+          7890.124999999999
+        ],
+        "work50_mid": [
+          3282.9,
+          7862.5125
+        ]
+      }
+    },
+    "hgb_signals": {
+      "point": {
+        "top250_cve_id": 15,
+        "top250_expected": 14.911111111111111,
+        "top500_cve_id": 18,
+        "top500_expected": 19.305263157894736,
+        "top1000_cve_id": 22,
+        "top1000_expected": 22.545454545454547,
+        "auc": 0.7252728926291151,
+        "avg_precision": 0.03686081929898636,
+        "median_rank_cve_id": 3311.0,
+        "median_rank_mid": 3443.5,
+        "work50_cve_id": 2777.0,
+        "work50_mid": 3443.5
+      },
+      "ci95": {
+        "top250_cve_id": [
+          8.0,
+          22.0
+        ],
+        "top250_expected": [
+          8.0,
+          22.363989898989896
+        ],
+        "top500_cve_id": [
+          10.0,
+          27.0
+        ],
+        "top500_expected": [
+          11.360536311943392,
+          27.637258888541336
+        ],
+        "top1000_cve_id": [
+          13.0,
+          31.0
+        ],
+        "top1000_expected": [
+          13.992547928262214,
+          31.945389871545505
+        ],
+        "auc": [
+          0.6322148650398302,
+          0.8071254417935391
+        ],
+        "avg_precision": [
+          0.01494062079840552,
+          0.07817678887187378
+        ],
+        "median_rank_cve_id": [
+          559.975,
+          13379.524999999998
+        ],
+        "median_rank_mid": [
+          534.5,
+          14536.5125
+        ],
+        "work50_cve_id": [
+          537.975,
+          11928.199999999999
+        ],
+        "work50_mid": [
+          532.4875,
+          14536.5125
+        ]
+      }
+    },
+    "hgb_signals_struct": {
+      "point": {
+        "top250_cve_id": 14,
+        "top250_expected": 14.0,
+        "top500_cve_id": 19,
+        "top500_expected": 19.0,
+        "top1000_cve_id": 20,
+        "top1000_expected": 19.235261401557285,
+        "auc": 0.8029774174389253,
+        "avg_precision": 0.06277207175816439,
+        "median_rank_cve_id": 3521.5,
+        "median_rank_mid": 3599.0,
+        "work50_cve_id": 3521.0,
+        "work50_mid": 3599.0
+      },
+      "ci95": {
+        "top250_cve_id": [
+          7.0,
+          21.0
+        ],
+        "top250_expected": [
+          7.0,
+          21.0
+        ],
+        "top500_cve_id": [
+          11.0,
+          27.0
+        ],
+        "top500_expected": [
+          11.0,
+          27.0
+        ],
+        "top1000_cve_id": [
+          11.0,
+          29.0
+        ],
+        "top1000_expected": [
+          11.0,
+          27.474723776855026
+        ],
+        "auc": [
+          0.735617832268244,
+          0.8634688927689691
+        ],
+        "avg_precision": [
+          0.01851675594655221,
+          0.14003139284326432
+        ],
+        "median_rank_cve_id": [
+          662.725,
+          7379.549999999997
+        ],
+        "median_rank_mid": [
+          1444.9875,
+          7360.387499999998
+        ],
+        "work50_cve_id": [
+          400.95,
+          7363.399999999998
+        ],
+        "work50_mid": [
+          399.95,
+          7360.387499999998
+        ]
+      }
+    },
+    "hgb_signals_assigner": {
+      "point": {
+        "top250_cve_id": 14,
+        "top250_expected": 14.0,
+        "top500_cve_id": 17,
+        "top500_expected": 16.483870967741936,
+        "top1000_cve_id": 24,
+        "top1000_expected": 24.0,
+        "auc": 0.879561766863771,
+        "avg_precision": 0.07272102843053574,
+        "median_rank_cve_id": 1183.0,
+        "median_rank_mid": 1181.5,
+        "work50_cve_id": 1182.0,
+        "work50_mid": 1181.5
+      },
+      "ci95": {
+        "top250_cve_id": [
+          7.0,
+          22.0
+        ],
+        "top250_expected": [
+          7.0,
+          22.0
+        ],
+        "top500_cve_id": [
+          9.0,
+          25.0
+        ],
+        "top500_expected": [
+          9.0,
+          24.083522727272726
+        ],
+        "top1000_cve_id": [
+          14.0,
+          34.0
+        ],
+        "top1000_expected": [
+          14.0,
+          34.0
+        ],
+        "auc": [
+          0.8262784287200229,
+          0.9263895475598063
+        ],
+        "avg_precision": [
+          0.023802340513131456,
+          0.16542792813399224
+        ],
+        "median_rank_cve_id": [
+          615.95,
+          3319.174999999994
+        ],
+        "median_rank_mid": [
+          626.475,
+          3411.5874999999915
+        ],
+        "work50_cve_id": [
+          608.0,
+          3274.0499999999997
+        ],
+        "work50_mid": [
+          618.5,
+          3277.0125
+        ]
+      }
+    },
+    "hgb_signals_struct_assigner": {
+      "point": {
+        "top250_cve_id": 13,
+        "top250_expected": 13.0,
+        "top500_cve_id": 14,
+        "top500_expected": 14.0,
+        "top1000_cve_id": 24,
+        "top1000_expected": 24.0,
+        "auc": 0.8785977172878217,
+        "avg_precision": 0.10310475278963233,
+        "median_rank_cve_id": 1636.5,
+        "median_rank_mid": 1636.0,
+        "work50_cve_id": 1636.0,
+        "work50_mid": 1636.0
+      },
+      "ci95": {
+        "top250_cve_id": [
+          6.0,
+          20.0
+        ],
+        "top250_expected": [
+          6.0,
+          20.0
+        ],
+        "top500_cve_id": [
+          7.0,
+          22.0
+        ],
+        "top500_expected": [
+          7.0,
+          22.0
+        ],
+        "top1000_cve_id": [
+          14.0,
+          33.0
+        ],
+        "top1000_expected": [
+          14.0,
+          33.0
+        ],
+        "auc": [
+          0.8390108658167053,
+          0.9133480172328792
+        ],
+        "avg_precision": [
+          0.03260267120489915,
+          0.20448964743278647
+        ],
+        "median_rank_cve_id": [
+          819.0,
+          6524.437499999997
+        ],
+        "median_rank_mid": [
+          818.4875,
+          6520.35625
+        ],
+        "work50_cve_id": [
+          785.875,
+          6507.049999999999
+        ],
+        "work50_mid": [
+          785.375,
+          6507.049999999999
+        ]
+      }
+    },
+    "text_only": {
+      "point": {
+        "top250_cve_id": 7,
+        "top250_expected": 7.0,
+        "top500_cve_id": 9,
+        "top500_expected": 9.0,
+        "top1000_cve_id": 14,
+        "top1000_expected": 14.0,
+        "auc": 0.8140129464324706,
+        "avg_precision": 0.00996350755353356,
+        "median_rank_cve_id": 3379.5,
+        "median_rank_mid": 3379.5,
+        "work50_cve_id": 3087.0,
+        "work50_mid": 3087.0
+      },
+      "ci95": {
+        "top250_cve_id": [
+          2.0,
+          12.0
+        ],
+        "top250_expected": [
+          2.0,
+          12.0
+        ],
+        "top500_cve_id": [
+          3.0,
+          15.0
+        ],
+        "top500_expected": [
+          3.0,
+          15.0
+        ],
+        "top1000_cve_id": [
+          7.0,
+          21.0
+        ],
+        "top1000_expected": [
+          7.0,
+          21.0
+        ],
+        "auc": [
+          0.7569138932339553,
+          0.8641040630699466
+        ],
+        "avg_precision": [
+          0.005690657515289268,
+          0.017793991621790895
+        ],
+        "median_rank_cve_id": [
+          1502.9375,
+          7108.762499999996
+        ],
+        "median_rank_mid": [
+          1502.2,
+          7109.012499999996
+        ],
+        "work50_cve_id": [
+          1388.0,
+          6735.075
+        ],
+        "work50_mid": [
+          1388.0,
+          6735.549999999999
+        ]
+      }
+    },
+    "hgb_all_text": {
+      "point": {
+        "top250_cve_id": 14,
+        "top250_expected": 14.0,
+        "top500_cve_id": 21,
+        "top500_expected": 21.0,
+        "top1000_cve_id": 25,
+        "top1000_expected": 25.0,
+        "auc": 0.8834223323230648,
+        "avg_precision": 0.11301030594755732,
+        "median_rank_cve_id": 1086.5,
+        "median_rank_mid": 1086.25,
+        "work50_cve_id": 1016.0,
+        "work50_mid": 1016.0
+      },
+      "ci95": {
+        "top250_cve_id": [
+          7.0,
+          22.0
+        ],
+        "top250_expected": [
+          7.0,
+          22.0
+        ],
+        "top500_cve_id": [
+          12.0,
+          30.0
+        ],
+        "top500_expected": [
+          12.0,
+          30.0
+        ],
+        "top1000_cve_id": [
+          15.975000000000001,
+          35.0
+        ],
+        "top1000_expected": [
+          15.975000000000001,
+          35.0
+        ],
+        "auc": [
+          0.8377479610607009,
+          0.9222117437984625
+        ],
+        "avg_precision": [
+          0.04338575308877782,
+          0.22354944188102352
+        ],
+        "median_rank_cve_id": [
+          454.0,
+          4598.212499999996
+        ],
+        "median_rank_mid": [
+          453.9875,
+          4598.637499999996
+        ],
+        "work50_cve_id": [
+          447.975,
+          4244.099999999999
+        ],
+        "work50_mid": [
+          447.4625,
+          4244.112499999999
+        ]
+      }
+    },
+    "hgb_signals_assigner_text": {
+      "point": {
+        "top250_cve_id": 16,
+        "top250_expected": 16.1,
+        "top500_cve_id": 25,
+        "top500_expected": 25.0,
+        "top1000_cve_id": 28,
+        "top1000_expected": 28.0,
+        "auc": 0.8880206741141226,
+        "avg_precision": 0.10568247366264288,
+        "median_rank_cve_id": 778.5,
+        "median_rank_mid": 778.25,
+        "work50_cve_id": 686.0,
+        "work50_mid": 686.5
+      },
+      "ci95": {
+        "top250_cve_id": [
+          9.0,
+          24.0
+        ],
+        "top250_expected": [
+          9.0,
+          24.0
+        ],
+        "top500_cve_id": [
+          15.0,
+          35.0
+        ],
+        "top500_expected": [
+          15.0,
+          35.0
+        ],
+        "top1000_cve_id": [
+          18.0,
+          38.0
+        ],
+        "top1000_expected": [
+          18.0,
+          38.0
+        ],
+        "auc": [
+          0.8389549618626433,
+          0.9309023722396079
+        ],
+        "avg_precision": [
+          0.039860945406438315,
+          0.19992601955012812
+        ],
+        "median_rank_cve_id": [
+          334.975,
+          2806.075
+        ],
+        "median_rank_mid": [
+          334.975,
+          2807.5499999999997
+        ],
+        "work50_cve_id": [
+          332.9,
+          2762.0249999999996
+        ],
+        "work50_mid": [
+          331.4125,
+          2763.0125
+        ]
+      }
+    },
+    "leaky_ncpe": {
+      "point": {
+        "top250_cve_id": 21,
+        "top250_expected": 21.0,
+        "top500_cve_id": 26,
+        "top500_expected": 26.0,
+        "top1000_cve_id": 29,
+        "top1000_expected": 29.0,
+        "auc": 0.9133168764357024,
+        "avg_precision": 0.1312241651539693,
+        "median_rank_cve_id": 430.0,
+        "median_rank_mid": 430.0,
+        "work50_cve_id": 352.0,
+        "work50_mid": 352.0
+      },
+      "ci95": {
+        "top250_cve_id": [
+          12.0,
+          30.0
+        ],
+        "top250_expected": [
+          12.0,
+          30.0
+        ],
+        "top500_cve_id": [
+          17.0,
+          36.0
+        ],
+        "top500_expected": [
+          17.0,
+          36.0
+        ],
+        "top1000_cve_id": [
+          19.0,
+          40.0
+        ],
+        "top1000_expected": [
+          19.0,
+          40.0
+        ],
+        "auc": [
+          0.873505769320381,
+          0.9462818392980273
+        ],
+        "avg_precision": [
+          0.0580372789467682,
+          0.25887551063601844
+        ],
+        "median_rank_cve_id": [
+          211.4875,
+          2421.049999999997
+        ],
+        "median_rank_mid": [
+          210.5,
+          2421.5312499999973
+        ],
+        "work50_cve_id": [
+          209.0,
+          2169.2249999999985
+        ],
+        "work50_mid": [
+          208.5,
+          2169.7124999999987
+        ]
+      }
+    },
+    "_note": "Percentile CI over 2000 row resamples, seed 0, the same resamples for every method. _cve_id ties by id, _expected and _mid are tie-neutral; they match unless a method has ties at the cutoff."
+  },
+  "H_description_exploit_wording": {
+    "pattern": "exploited in the wild|actively exploited|known to be exploited|has been exploited|may have been exploited|is being exploited|CISA|KEV",
+    "note": "Cannot tell from the data whether the wording was there at publication or added later. Measurement only; nothing is removed.",
+    "train": {
+      "positives": 65,
+      "positives_with_wording": 2,
+      "negatives": 39803,
+      "negatives_with_wording": 32
+    },
+    "test": {
+      "positives": 52,
+      "positives_with_wording": 6,
+      "negatives": 35228,
+      "negatives_with_wording": 49
+    },
+    "positive_ids_with_wording": [
+      "CVE-2024-51378",
+      "CVE-2024-51567",
+      "CVE-2024-58136",
+      "CVE-2025-27363",
+      "CVE-2025-48927",
+      "CVE-2025-48928",
+      "CVE-2025-55177",
+      "CVE-2025-9242"
+    ]
+  },
+  "context_final_2026_model": {
+    "kev_last_date_added": "2025-12-29",
+    "scoreboard_first_published": "2026-01-01",
+    "scoreboard_first_snapshot_month": "2026-01",
+    "final_model_labels_overlap_scoreboard": false
+  }
+}
