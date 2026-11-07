@@ -4,7 +4,28 @@ Produced by `_probe/ibm/build.py`, `model1.py`, `model2.py` on 2026-11-07 (Sonne
 ## Backtest setup
 Rows: CVEs published 2024-01..2025-09, snapshot = publish month, excluding CVEs already on KEV at snapshot. Label = added to KEV after the snapshot month end, within 12 months, capped at 2025-12-31. Train = 2024 snapshots (39,868 rows, 65 positives). Test = 2025-01..2025-09 (35,280 rows, 52 positives, base rate about 0.15%). Combined 2024-01..2025-09 pool: 75,148 rows, 117 positives.
 
-## Results (test pool)
+## Results (test pool), VERIFIED [audit/2026-11-07-harness.md; values from results/claims_model.json, feat/model-ranking]
+Ties broken by cve_id; "range" = worst..best over all orders of rows tied at rank 500. Train labels use KEV additions up to 2025-12-31 (overlaps the test period; see the honest estimate below).
+
+| Approach | top500 | range | top250 | AUC | Avg precision | CVEs to fix to catch 50% |
+|---|---|---|---|---|---|---|
+| CVSS3 | 5 | 5..17 | 5 | 0.732 | 0.0064 | 7,952 |
+| EPSS | 8 | 8..8 | 8 | 0.707 | 0.0309 | 3,273 |
+| exploit flag then EPSS | 18 | 18..19 | 15 | 0.768 | 0.0471 | 2,253 |
+| assigner KEV-rate only | 13 | 11..13 | 8 | 0.746 | 0.0109 | 6,011 |
+| HGB signals only | 18 | 18..22 | 15 | 0.725 | 0.0369 | 2,777 |
+| HGB signals+assigner | 17 | 16..17 | 14 | 0.880 | 0.0727 | 1,182 |
+| text-only TF-IDF LR | 9 | 9..9 | 7 | 0.814 | 0.0100 | 3,087 |
+| HGB signals+assigner+text score | 25 | 25..25 | 16 | 0.888 | 0.1057 | 686 |
+
+Structured CVSS/CWE rows and the LEAKY n_affected_cpes row: reproduced but UNCHECKED by the audit; do not quote.
+
+**Honest estimate (time-safe train labels, KEV additions up to 2024-12-31 only, which mirrors the 2026 setup):** best model top500 21, AUC 0.871, from 40 train positives. Seed spread of the best model with the original labels: top500 21..25 over 10 seed sets.
+**Second fold (train 2024-07..2025-03, test 2025-04..09, 32 positives):** best model top500 11 (AUC 0.861) vs exploit-then-EPSS 15 (AUC 0.809).
+**What holds:** the gain in ranking quality (AUC, CVEs to fix to catch 50%) over every baseline, in both folds and with time-safe labels. **What does not hold:** a top-500 win over exploit-then-EPSS (reverses in fold 2). CVSS3 top500 depends on tie order (see range).
+Early stopping: HGB uses scikit-learn default early stopping (on above 10,000 rows), so "150 iterations" is a maximum; actual per seed: 150, 138, 55.
+
+## SUPERSEDED: first-pass results table (old run, 7 of 12 rows differ at printed precision; do not quote)
 | Approach | top500 | top1000 | AUC | Avg precision | Median rank of positives |
 |---|---|---|---|---|---|
 | CVSS3 | 6 | 9 | .732 | .0064 | 7,884 |
@@ -20,7 +41,7 @@ Rows: CVEs published 2024-01..2025-09, snapshot = publish month, excluding CVEs 
 | **HGB signals+assigner+text score (best)** | **25** | **28** | **.886** | **.1050** | **829** |
 | LEAKY: + n_affected_cpes (never use) | 27 | 29 | .913 | .1315 | 421 |
 
-HGB = scikit-learn HistGradientBoosting (depth 3, 150 iterations, lr .05, min leaf 40, L2 5), mean of 3 seeds. Text score = out-of-fold TF-IDF (1-2 grams, min_df 8, 30k features) logistic regression.
+HGB = scikit-learn HistGradientBoosting (depth 3, up to 150 iterations with default early stopping, lr .05, min leaf 40, L2 5), mean of 3 seeds. Text score = out-of-fold TF-IDF (1-2 grams, min_df 8, 30k features) logistic regression.
 Caveats: only 52 positives (one hit is about 2%); several variants were compared on the same test set (selection optimism); the 2026 pool is about twice as large, so top 500 there is a stricter cut (about top 250 here).
 Takeaway: the gain is clear in ranking quality (AUC, median rank), small and noisy in top-500 hits.
 
@@ -32,7 +53,7 @@ analyzed status .675, n_affected_cpes .767, n_references .643, cvss3 score .732,
 - Top positive words in the text model include: "remote unauthenticated", "unauthenticated attacker", "windows kernel", "kernel elevation", "sharepoint", "outlook", "microsoft outlook", "error reporting", "net framework", "webmail". The text model partly re-learns vendor identity.
 - Of the 52 test positives, 22 had any public exploit flag at snapshot and only 4 had EPSS above 0.1 (first backtest pass, 2025 Jan-Sep).
 - KEV additions per year in the file: 2021 311 (from Nov), 2022 555, 2023 187, 2024 186, 2025 245.
-- CAVEAT (correction): "all 52 test positives come from assigners with a prior KEV" and "25% of the 2026 pool is from assigners with no KEV history" were computed against the WHOLE KEV file, not time-safely. Treat both as unverified until recomputed with only KEV additions before each snapshot.
+- CAVEAT (correction): "all 52 test positives come from assigners with a prior KEV" and "25% of the 2026 pool is from assigners with no KEV history" were computed against the WHOLE KEV file, not time-safely. Treat both as unverified until recomputed with only KEV additions before each snapshot. UPDATE: recomputed time-safely by the auditor, 9 of 52 test positives come from assigners with no prior KEV row (audit/2026-11-07-harness.md; not yet in the claims ledger). The 2026 pool share is still unchecked.
 
 ## 2026 distribution shift
 - Published CVEs per month: about 3,600-4,300 through 2025; 2026: Jan 4,302, Mar 6,234, Jun 7,942, Jul 9,770, Aug 12,256, Sep 14,928.
@@ -42,5 +63,6 @@ analyzed status .675, n_affected_cpes .767, n_references .643, cvss3 score .732,
 - Any public exploit flag: 2.26% in the 2026 scoreboard (1,645 CVEs) vs 2.15% in 2025 test. EPSS blank: 2% vs 10%. EPSS above 0.1: 66 CVEs in the 2026 scoreboard.
 
 ## Changelog
+- 2026-11-07 (feat/model-ranking): added the VERIFIED results table generated from results/claims_model.json; old table marked SUPERSEDED; fixed "150 iterations"; added the time-safe assigner caveat result.
 - 2026-11-07: created.
 - 2026-11-07: corrected 2025 missing-data ranges after re-checking the monthly table.
