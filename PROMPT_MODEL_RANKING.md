@@ -4,7 +4,7 @@ You are the orchestrating Claude Code agent for ONE teammate (ML beginner, learn
 
 ## Step 0: set up (ask the human before any git write)
 1. `git status`; `git branch`. If CLAUDE.md, .claude/, tools/, docs/ and the prompt files are not yet on main, tell the human to commit them to main and push FIRST so all branches share them. Then ensure you are on `feat/model-ranking` (create it if needed). Commit only to this branch; pull main regularly; never force-push.
-2. Read, in order: CLAUDE.md (rules, claims ledger), docs/kb/README.md and the knowledge-base files it lists, AGENT_PROMPT_IBM.md (shared context, what we already found, split policy, watsonx), docs/INTERFACES.md (what we must produce), `.claude/agents/*.md` (your team), and the skills datathon-team-orchestration, evidence-first-verification and leakage-safe-backtest if available.
+2. Read, in order: AGENTS.md (rules, claims ledger; CLAUDE.md only imports it), docs/kb/README.md and the knowledge-base files it lists, AGENT_PROMPT_IBM.md (shared context, what we already found, split policy, watsonx), docs/INTERFACES.md (what we must produce), `.claude/agents/*.md` (your team), and the skills datathon-team-orchestration, evidence-first-verification and leakage-safe-backtest if available.
 3. Data is at `~/Working/datathon/IBM/data.zip`, already unzipped at `~/Working/datathon/_probe/ibm/data/` (leave originals untouched). Our first-pass scripts and caches (build.py, model1.py, model2.py, v_2021plus.pkl, bt.pkl) are in `~/Working/datathon/_probe/ibm/`. Copy what you need into `src/model/` and clean it up; do not depend on `_probe`.
 
 ## Coordination (do this throughout)

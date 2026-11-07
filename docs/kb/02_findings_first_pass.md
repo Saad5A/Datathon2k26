@@ -38,8 +38,9 @@ analyzed status .675, n_affected_cpes .767, n_references .643, cvss3 score .732,
 - Published CVEs per month: about 3,600-4,300 through 2025; 2026: Jan 4,302, Mar 6,234, Jun 7,942, Jul 9,770, Aug 12,256, Sep 14,928.
 - Scoreboard rows by snapshot month: Jan 4,295; Feb 4,603; Mar 6,227; Apr 5,801; May 6,922; Jul (incl. June) 17,678; Aug 12,242; Sep 14,902.
 - Assigner share 2026 vs 2025 test pool: GitHub advisories 15.0% vs 5.6%; VulnCheck 9.3% vs 1.1%; Oracle 4.2% vs 0.7%; Chrome admin 4.0% vs 0.3%; Microsoft 4.0% vs 2.6%; Patchstack 5.6% vs 15.8%; VulDB 7.4% vs 13.4%; MITRE 4.6% vs 10.7%.
-- CVEs with zero affected-product rows: about 30-40% in 2025 months, 66-68% in Aug-Sep 2026. Blank CVSS3 about 2-8% in 2025, 14-16% in Aug-Sep 2026.
+- CVEs with zero affected-product rows: about 28-43% per month in 2025 (50% in Dec 2025), 66-68% in Aug-Sep 2026. Blank CVSS3: about 1-8% per month Jan-Oct 2025 (16% in Dec 2025), 14-16% in Aug-Sep 2026.
 - Any public exploit flag: 2.26% in the 2026 scoreboard (1,645 CVEs) vs 2.15% in 2025 test. EPSS blank: 2% vs 10%. EPSS above 0.1: 66 CVEs in the 2026 scoreboard.
 
 ## Changelog
 - 2026-11-07: created.
+- 2026-11-07: corrected 2025 missing-data ranges after re-checking the monthly table.

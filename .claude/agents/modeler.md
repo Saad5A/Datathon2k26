@@ -9,4 +9,4 @@ You own `src/models/`. Rules:
 - Report for every model: top-500 hits, top-250 hits, AUC, average precision, median rank of positives, and bootstrap 95% intervals; plus the "work saved" metric (CVEs to fix to catch 50% of exploited) versus CVSS and EPSS.
 - Ablations: drop each feature group. Permutation test: shuffle training labels and confirm AUC is about 0.5. Per-assigner cap analysis for the final top 500.
 - If any metric looks too good, stop and investigate leakage; say so in your summary.
-- Validate top500.csv programmatically (single column cve_id, 500 unique ids, all in scoreboard_2026.csv). Register numbers in `results/claims.json` as `unverified`.
+- Validate top500.csv programmatically (single column cve_id, 500 unique ids, all in scoreboard_2026.csv). Register numbers in `results/claims*.json` as `unverified`.
