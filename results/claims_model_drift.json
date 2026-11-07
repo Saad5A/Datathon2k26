@@ -167,8 +167,8 @@
     "unit": "fraction",
     "source_script": "src/model/drift.py",
     "output_file": "results/drift_summary.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
   },
   "drift.no_prior_kev_share.2026_scoreboard": {
     "text": "Share of 2026_scoreboard rows whose assigner had 0 KEV rows (any CVE publish year, assigner from vulnerabilities.csv) with date_added before the first day of the snapshot month; upper bound, KEV file ends 2025-12-31",
@@ -176,8 +176,8 @@
     "unit": "fraction",
     "source_script": "src/model/drift.py",
     "output_file": "results/drift_summary.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
   },
   "drift.pool_rows_2025": {
     "text": "2025 test pool rows (published 2025-01..09)",
@@ -275,8 +275,8 @@
     "unit": "count",
     "source_script": "src/model/leakage.py",
     "output_file": "results/leakage_table.csv",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
   },
   "leakage.positives.cvss3_present.cp95_lower": {
     "text": "Clopper-Pearson 95% lower bound on the share of 2025 test positives with cvss3_present",
@@ -284,8 +284,8 @@
     "unit": "fraction",
     "source_script": "src/model/leakage.py",
     "output_file": "results/leakage_table.csv",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
   },
   "leakage.positives.cwe_present.count": {
     "text": "2025 test positives with cwe_present (of 52)",
@@ -293,8 +293,8 @@
     "unit": "count",
     "source_script": "src/model/leakage.py",
     "output_file": "results/leakage_table.csv",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
   },
   "leakage.positives.cwe_present.cp95_lower": {
     "text": "Clopper-Pearson 95% lower bound on the share of 2025 test positives with cwe_present",
@@ -302,8 +302,8 @@
     "unit": "fraction",
     "source_script": "src/model/leakage.py",
     "output_file": "results/leakage_table.csv",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
   },
   "leakage.positives.has_affected_product.count": {
     "text": "2025 test positives with has_affected_product (of 52)",
@@ -311,8 +311,8 @@
     "unit": "count",
     "source_script": "src/model/leakage.py",
     "output_file": "results/leakage_table.csv",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
   },
   "leakage.positives.has_affected_product.cp95_lower": {
     "text": "Clopper-Pearson 95% lower bound on the share of 2025 test positives with has_affected_product",
@@ -320,8 +320,8 @@
     "unit": "fraction",
     "source_script": "src/model/leakage.py",
     "output_file": "results/leakage_table.csv",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
   },
   "leakage.positives.nvd_status_Analyzed.count": {
     "text": "2025 test positives with nvd_status_Analyzed (of 52)",
@@ -329,8 +329,8 @@
     "unit": "count",
     "source_script": "src/model/leakage.py",
     "output_file": "results/leakage_table.csv",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
   },
   "leakage.positives.nvd_status_Analyzed.cp95_lower": {
     "text": "Clopper-Pearson 95% lower bound on the share of 2025 test positives with nvd_status_Analyzed",
@@ -338,8 +338,8 @@
     "unit": "fraction",
     "source_script": "src/model/leakage.py",
     "output_file": "results/leakage_table.csv",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
   },
   "leakage.solo_auc.any_public_exploit": {
     "text": "Solo AUC of any_public_exploit (used_in_model=yes) on the 2025 test pool",
@@ -356,8 +356,8 @@
     "unit": "fraction",
     "source_script": "src/model/leakage.py",
     "output_file": "results/leakage_table.csv",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
   },
   "leakage.solo_auc.asg_rate": {
     "text": "Solo AUC of asg_rate (used_in_model=yes) on the 2025 test pool",
@@ -374,8 +374,8 @@
     "unit": "fraction",
     "source_script": "src/model/leakage.py",
     "output_file": "results/leakage_table.csv",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
   },
   "leakage.solo_auc.cvss3_blank": {
     "text": "Solo AUC of cvss3_blank (used_in_model=no) on the 2025 test pool",
@@ -392,8 +392,8 @@
     "unit": "fraction",
     "source_script": "src/model/leakage.py",
     "output_file": "results/leakage_table.csv",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
   },
   "leakage.solo_auc.cwe_blank": {
     "text": "Solo AUC of cwe_blank (used_in_model=no) on the 2025 test pool",
@@ -482,8 +482,8 @@
     "unit": "fraction",
     "source_script": "src/model/leakage.py",
     "output_file": "results/leakage_table.csv",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
   },
   "leakage.solo_auc.ref_xforce_link": {
     "text": "Solo AUC of ref_xforce_link (used_in_model=no) on the 2025 test pool",

@@ -88,3 +88,24 @@ Every number in `drift_summary.json` matches my recomputation: 0 mismatches at t
 4. meta note: replace "README says the leak is stronger for 2026" with the wording in section 4.
 5. Report the 52/52 Analyzed / 52/52 with products / 0/52 blank CVSS3 or CWE facts with the rule-of-three bound, not the near-zero-width bootstrap CI.
 6. (From the harness audit, still open) mask the exploitation wording in descriptions before the 2026 text model.
+
+## Re-audit of fixes (commit f64fccf)
+
+Scope: the 14 claims in `results/claims_model_drift.json` that are new or changed and were reset to unverified. My own code: `audit/scratch/ld_8_reaudit.py` (new), and `ld_5_compare.py` switched to my all-KEV no-prior result. The 41 claims verified earlier still match the new files exactly. In `drift_summary.json`, only the no-prior-KEV block changed, and every number in the file still matches mine (0 mismatches).
+
+| claim | mine | claimed | verdict |
+|---|---|---|---|
+| drift.no_prior_kev_share.2025_pool (all KEV rows, any publish year) | 0.361678 | 0.361678 | PASS |
+| drift.no_prior_kev_share.2026_scoreboard (upper bound) | 0.237897 | 0.237897 | PASS |
+| leakage.solo_auc.asg_kev | 0.666461 | 0.6665 | PASS |
+| leakage.solo_auc.ref_news_threat_link (new rule) | 0.652384 (16 positives / 103 negatives) | 0.6524 | PASS |
+| leakage.solo_auc.cvss3_score / attack_vector (now used_in_model=no) | 0.7322 / 0.5752 | same | PASS |
+| leakage.positives.{nvd_status_Analyzed, has_affected_product, cvss3_present, cwe_present}.count | 52 / 52 each | 52 | PASS |
+| same four, .cp95_lower | 0.931518 (closed form 0.025^(1/52) for k = n) | 0.931518 | PASS |
+
+- Negative shares in `positive_facts` match mine: Analyzed 0.500681, products 0.649427, cvss3 present 0.962303, CWE present 0.956881. "Analyzed" now means strictly Analyzed, not Modified, and that is correct.
+- **Sophos/Tenable/Rapid7 exclusion: fair.** In the test pool, sophos.com links are `/security-advisories/sophos-sa-*` (vendor advisories). tenable.com links are `/plugins/nessus/*` and TNS/TRA advisories. Rapid7 outside `/blog/` is `/db/modules/*` (Metasploit module pages). None of these domains touches any test positive. Including them anyway adds 48 negatives and changes the AUC only from 0.6524 to 0.6517. The exclusion is not inflating the number. news.sophos.com (2 CVEs, 0 positives) is arguably threat research, but its effect is negligible.
+- Notes/reasons: the meta note now quotes the README and data dictionary verbatim and says the 2026 leak size cannot be measured. The n_references reason now says "often". The news reason says "hand-picked, incomplete, lower bound". The no-prior note states the wider mapping and the upper-bound direction. `used_in_model` is strictly yes/no. PASS.
+- **Still open (minor, not a claim):** the table still has no row for the masked description-text score `txt`. The selected Phase-3 candidate C1 uses it (`src/model/candidates.py` line 43: signals + asg_rate/asg_kev + txt). Add a row (`yes`, with its AUC or "n/a: model output") so the table lists every model input. asg_kev = yes is consistent with C1.
+
+Result: all 14 re-audited claims PASS and are marked verified. The ledger now has 55 of 55 verified.
