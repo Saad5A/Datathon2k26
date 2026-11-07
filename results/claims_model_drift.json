@@ -5,8 +5,8 @@
     "unit": "fraction",
     "source_script": "src/model/drift.py",
     "output_file": "results/drift_summary.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
   },
   "drift.any_public_exploit.2026_scoreboard.all": {
     "text": "Share of 2026_scoreboard rows: any_public_exploit",
@@ -14,8 +14,8 @@
     "unit": "fraction",
     "source_script": "src/model/drift.py",
     "output_file": "results/drift_summary.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
   },
   "drift.assigner_share.github_advisories.2025_pool": {
     "text": "Share of 2025 pool rows assigned by security-advisories@github.com",
@@ -23,8 +23,8 @@
     "unit": "fraction",
     "source_script": "src/model/drift.py",
     "output_file": "results/drift_summary.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
   },
   "drift.assigner_share.github_advisories.2026_scoreboard": {
     "text": "Share of 2026 scoreboard rows assigned by security-advisories@github.com",
@@ -32,8 +32,8 @@
     "unit": "fraction",
     "source_script": "src/model/drift.py",
     "output_file": "results/drift_summary.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
   },
   "drift.assigner_share.vulncheck.2025_pool": {
     "text": "Share of 2025 pool rows assigned by disclosure@vulncheck.com",
@@ -41,8 +41,8 @@
     "unit": "fraction",
     "source_script": "src/model/drift.py",
     "output_file": "results/drift_summary.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
   },
   "drift.assigner_share.vulncheck.2026_scoreboard": {
     "text": "Share of 2026 scoreboard rows assigned by disclosure@vulncheck.com",
@@ -50,8 +50,8 @@
     "unit": "fraction",
     "source_script": "src/model/drift.py",
     "output_file": "results/drift_summary.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
   },
   "drift.cvss3_blank.2025_pool.all": {
     "text": "Share of 2025_pool rows: cvss3_blank",
@@ -59,8 +59,8 @@
     "unit": "fraction",
     "source_script": "src/model/drift.py",
     "output_file": "results/drift_summary.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
   },
   "drift.cvss3_blank.2026_scoreboard.all": {
     "text": "Share of 2026_scoreboard rows: cvss3_blank",
@@ -68,8 +68,8 @@
     "unit": "fraction",
     "source_script": "src/model/drift.py",
     "output_file": "results/drift_summary.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
   },
   "drift.distinct_assigners.2025_pool": {
     "text": "Distinct assigners, 2025_pool",
@@ -77,8 +77,8 @@
     "unit": "count",
     "source_script": "src/model/drift.py",
     "output_file": "results/drift_summary.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
   },
   "drift.distinct_assigners.2026_scoreboard": {
     "text": "Distinct assigners, 2026_scoreboard",
@@ -86,8 +86,8 @@
     "unit": "count",
     "source_script": "src/model/drift.py",
     "output_file": "results/drift_summary.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
   },
   "drift.epss_blank.2025_pool.all": {
     "text": "Share of 2025_pool rows: epss_blank",
@@ -95,8 +95,8 @@
     "unit": "fraction",
     "source_script": "src/model/drift.py",
     "output_file": "results/drift_summary.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
   },
   "drift.epss_blank.2026_scoreboard.all": {
     "text": "Share of 2026_scoreboard rows: epss_blank",
@@ -104,8 +104,8 @@
     "unit": "fraction",
     "source_script": "src/model/drift.py",
     "output_file": "results/drift_summary.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
   },
   "drift.epss_gt_0_1.2025_pool.all": {
     "text": "Share of 2025_pool rows: epss_gt_0_1",
@@ -113,8 +113,8 @@
     "unit": "fraction",
     "source_script": "src/model/drift.py",
     "output_file": "results/drift_summary.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
   },
   "drift.epss_gt_0_1.2026_scoreboard.all": {
     "text": "Share of 2026_scoreboard rows: epss_gt_0_1",
@@ -122,8 +122,8 @@
     "unit": "fraction",
     "source_script": "src/model/drift.py",
     "output_file": "results/drift_summary.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
   },
   "drift.no_affected_product.2025_pool.all": {
     "text": "Share of 2025_pool rows: no_affected_product",
@@ -131,8 +131,8 @@
     "unit": "fraction",
     "source_script": "src/model/drift.py",
     "output_file": "results/drift_summary.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
   },
   "drift.no_affected_product.2026_scoreboard.2026-08": {
     "text": "Share of 2026 scoreboard rows with snapshot_month 2026-08 with no affected_products row",
@@ -140,8 +140,8 @@
     "unit": "fraction",
     "source_script": "src/model/drift.py",
     "output_file": "results/drift_summary.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
   },
   "drift.no_affected_product.2026_scoreboard.2026-09": {
     "text": "Share of 2026 scoreboard rows with snapshot_month 2026-09 with no affected_products row",
@@ -149,8 +149,8 @@
     "unit": "fraction",
     "source_script": "src/model/drift.py",
     "output_file": "results/drift_summary.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
   },
   "drift.no_affected_product.2026_scoreboard.all": {
     "text": "Share of 2026_scoreboard rows: no_affected_product",
@@ -158,8 +158,8 @@
     "unit": "fraction",
     "source_script": "src/model/drift.py",
     "output_file": "results/drift_summary.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
   },
   "drift.no_prior_kev_share.2025_pool": {
     "text": "Share of 2025_pool rows whose assigner had 0 KEV rows before the snapshot month",
@@ -185,8 +185,8 @@
     "unit": "count",
     "source_script": "src/model/drift.py",
     "output_file": "results/drift_summary.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
   },
   "drift.scoreboard_rows.2026-01": {
     "text": "2026 scoreboard rows with snapshot_month 2026-01",
@@ -194,8 +194,8 @@
     "unit": "count",
     "source_script": "src/model/drift.py",
     "output_file": "results/drift_summary.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
   },
   "drift.scoreboard_rows.2026-02": {
     "text": "2026 scoreboard rows with snapshot_month 2026-02",
@@ -203,8 +203,8 @@
     "unit": "count",
     "source_script": "src/model/drift.py",
     "output_file": "results/drift_summary.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
   },
   "drift.scoreboard_rows.2026-03": {
     "text": "2026 scoreboard rows with snapshot_month 2026-03",
@@ -212,8 +212,8 @@
     "unit": "count",
     "source_script": "src/model/drift.py",
     "output_file": "results/drift_summary.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
   },
   "drift.scoreboard_rows.2026-04": {
     "text": "2026 scoreboard rows with snapshot_month 2026-04",
@@ -221,8 +221,8 @@
     "unit": "count",
     "source_script": "src/model/drift.py",
     "output_file": "results/drift_summary.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
   },
   "drift.scoreboard_rows.2026-05": {
     "text": "2026 scoreboard rows with snapshot_month 2026-05",
@@ -230,8 +230,8 @@
     "unit": "count",
     "source_script": "src/model/drift.py",
     "output_file": "results/drift_summary.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
   },
   "drift.scoreboard_rows.2026-07": {
     "text": "2026 scoreboard rows with snapshot_month 2026-07",
@@ -239,8 +239,8 @@
     "unit": "count",
     "source_script": "src/model/drift.py",
     "output_file": "results/drift_summary.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
   },
   "drift.scoreboard_rows.2026-08": {
     "text": "2026 scoreboard rows with snapshot_month 2026-08",
@@ -248,8 +248,8 @@
     "unit": "count",
     "source_script": "src/model/drift.py",
     "output_file": "results/drift_summary.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
   },
   "drift.scoreboard_rows.2026-09": {
     "text": "2026 scoreboard rows with snapshot_month 2026-09",
@@ -257,8 +257,8 @@
     "unit": "count",
     "source_script": "src/model/drift.py",
     "output_file": "results/drift_summary.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
   },
   "drift.scoreboard_rows.total": {
     "text": "2026 scoreboard rows",
@@ -266,8 +266,8 @@
     "unit": "count",
     "source_script": "src/model/drift.py",
     "output_file": "results/drift_summary.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
   },
   "leakage.solo_auc.any_public_exploit": {
     "text": "Solo AUC of any_public_exploit (used_in_model=yes) on the 2025 test pool",
@@ -275,8 +275,8 @@
     "unit": "fraction",
     "source_script": "src/model/leakage.py",
     "output_file": "results/leakage_table.csv",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
   },
   "leakage.solo_auc.asg_rate": {
     "text": "Solo AUC of asg_rate (used_in_model=yes) on the 2025 test pool",
@@ -284,8 +284,8 @@
     "unit": "fraction",
     "source_script": "src/model/leakage.py",
     "output_file": "results/leakage_table.csv",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
   },
   "leakage.solo_auc.attack_vector": {
     "text": "Solo AUC of attack_vector (used_in_model=ablation only) on the 2025 test pool",
@@ -293,8 +293,8 @@
     "unit": "fraction",
     "source_script": "src/model/leakage.py",
     "output_file": "results/leakage_table.csv",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
   },
   "leakage.solo_auc.cvss3_blank": {
     "text": "Solo AUC of cvss3_blank (used_in_model=no) on the 2025 test pool",
@@ -302,8 +302,8 @@
     "unit": "fraction",
     "source_script": "src/model/leakage.py",
     "output_file": "results/leakage_table.csv",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
   },
   "leakage.solo_auc.cvss3_score": {
     "text": "Solo AUC of cvss3_score (used_in_model=ablation only) on the 2025 test pool",
@@ -311,8 +311,8 @@
     "unit": "fraction",
     "source_script": "src/model/leakage.py",
     "output_file": "results/leakage_table.csv",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
   },
   "leakage.solo_auc.cwe_blank": {
     "text": "Solo AUC of cwe_blank (used_in_model=no) on the 2025 test pool",
@@ -320,8 +320,8 @@
     "unit": "fraction",
     "source_script": "src/model/leakage.py",
     "output_file": "results/leakage_table.csv",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
   },
   "leakage.solo_auc.desc_exploitation_wording": {
     "text": "Solo AUC of desc_exploitation_wording (used_in_model=no) on the 2025 test pool",
@@ -329,8 +329,8 @@
     "unit": "fraction",
     "source_script": "src/model/leakage.py",
     "output_file": "results/leakage_table.csv",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
   },
   "leakage.solo_auc.epss": {
     "text": "Solo AUC of epss (used_in_model=yes) on the 2025 test pool",
@@ -338,8 +338,8 @@
     "unit": "fraction",
     "source_script": "src/model/leakage.py",
     "output_file": "results/leakage_table.csv",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
   },
   "leakage.solo_auc.has_affected_product": {
     "text": "Solo AUC of has_affected_product (used_in_model=no) on the 2025 test pool",
@@ -347,8 +347,8 @@
     "unit": "fraction",
     "source_script": "src/model/leakage.py",
     "output_file": "results/leakage_table.csv",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
   },
   "leakage.solo_auc.n_affected_cpes": {
     "text": "Solo AUC of n_affected_cpes (used_in_model=no) on the 2025 test pool",
@@ -356,8 +356,8 @@
     "unit": "fraction",
     "source_script": "src/model/leakage.py",
     "output_file": "results/leakage_table.csv",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
   },
   "leakage.solo_auc.n_exploit_flags": {
     "text": "Solo AUC of n_exploit_flags (used_in_model=yes) on the 2025 test pool",
@@ -365,8 +365,8 @@
     "unit": "fraction",
     "source_script": "src/model/leakage.py",
     "output_file": "results/leakage_table.csv",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
   },
   "leakage.solo_auc.n_references": {
     "text": "Solo AUC of n_references (used_in_model=no) on the 2025 test pool",
@@ -374,8 +374,8 @@
     "unit": "fraction",
     "source_script": "src/model/leakage.py",
     "output_file": "results/leakage_table.csv",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
   },
   "leakage.solo_auc.nvd_status_analysed": {
     "text": "Solo AUC of nvd_status_analysed (used_in_model=no) on the 2025 test pool",
@@ -383,8 +383,8 @@
     "unit": "fraction",
     "source_script": "src/model/leakage.py",
     "output_file": "results/leakage_table.csv",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
   },
   "leakage.solo_auc.ref_exploit_tag": {
     "text": "Solo AUC of ref_exploit_tag (used_in_model=no) on the 2025 test pool",
@@ -392,8 +392,8 @@
     "unit": "fraction",
     "source_script": "src/model/leakage.py",
     "output_file": "results/leakage_table.csv",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
   },
   "leakage.solo_auc.ref_news_threat_link": {
     "text": "Solo AUC of ref_news_threat_link (used_in_model=no) on the 2025 test pool",
@@ -401,8 +401,8 @@
     "unit": "fraction",
     "source_script": "src/model/leakage.py",
     "output_file": "results/leakage_table.csv",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
   },
   "leakage.solo_auc.ref_xforce_link": {
     "text": "Solo AUC of ref_xforce_link (used_in_model=no) on the 2025 test pool",
@@ -410,7 +410,7 @@
     "unit": "fraction",
     "source_script": "src/model/leakage.py",
     "output_file": "results/leakage_table.csv",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
   }
 }

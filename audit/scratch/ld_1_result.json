@@ -1,0 +1,132 @@
+{
+ "nvd_status_analysed": {
+  "raw_auc": 0.675414,
+  "oriented": 0.6754,
+  "claimed": 0.6754,
+  "pos_mean": 1.0,
+  "neg_mean": 0.6492,
+  "pos_ones": 52,
+  "neg_ones": 22869
+ },
+ "n_affected_cpes": {
+  "raw_auc": 0.767307,
+  "oriented": 0.7673,
+  "claimed": 0.7673,
+  "pos_mean": 15.2308,
+  "neg_mean": 4.9265
+ },
+ "n_references": {
+  "raw_auc": 0.643427,
+  "oriented": 0.6434,
+  "claimed": 0.6434,
+  "pos_mean": 3.9423,
+  "neg_mean": 2.6959
+ },
+ "cvss3_blank": {
+  "raw_auc": 0.481151,
+  "oriented": 0.5188,
+  "claimed": 0.5188,
+  "pos_mean": 0.0,
+  "neg_mean": 0.0377,
+  "pos_ones": 0,
+  "neg_ones": 1328
+ },
+ "cwe_blank": {
+  "raw_auc": 0.47844,
+  "oriented": 0.5216,
+  "claimed": 0.5216,
+  "pos_mean": 0.0,
+  "neg_mean": 0.0431,
+  "pos_ones": 0,
+  "neg_ones": 1519
+ },
+ "has_affected_product": {
+  "raw_auc": 0.675287,
+  "oriented": 0.6753,
+  "claimed": 0.6753,
+  "pos_mean": 1.0,
+  "neg_mean": 0.6494,
+  "pos_ones": 52,
+  "neg_ones": 22878
+ },
+ "ref_news_threat_link": {
+  "raw_auc": 0.595061,
+  "oriented": 0.5951,
+  "claimed": 0.5951,
+  "pos_mean": 0.1923,
+  "neg_mean": 0.0022,
+  "pos_ones": 10,
+  "neg_ones": 77
+ },
+ "ref_xforce_link": {
+  "raw_auc": 0.5,
+  "oriented": 0.5,
+  "claimed": 0.5,
+  "pos_mean": 0.0,
+  "neg_mean": 0.0,
+  "pos_ones": 0,
+  "neg_ones": 0
+ },
+ "ref_exploit_tag": {
+  "raw_auc": 0.690421,
+  "oriented": 0.6904,
+  "claimed": 0.6904,
+  "pos_mean": 0.5962,
+  "neg_mean": 0.2153,
+  "pos_ones": 31,
+  "neg_ones": 7585
+ },
+ "desc_exploitation_wording": {
+  "raw_auc": 0.556997,
+  "oriented": 0.557,
+  "claimed": 0.557,
+  "pos_mean": 0.1154,
+  "neg_mean": 0.0014,
+  "pos_ones": 6,
+  "neg_ones": 49
+ },
+ "epss": {
+  "raw_auc": 0.707256,
+  "oriented": 0.7073,
+  "claimed": 0.7073,
+  "pos_mean": -0.0526,
+  "neg_mean": -0.0967
+ },
+ "any_public_exploit": {
+  "raw_auc": 0.701064,
+  "oriented": 0.7011,
+  "claimed": 0.7011,
+  "pos_mean": 0.4231,
+  "neg_mean": 0.0209,
+  "pos_ones": 22,
+  "neg_ones": 738
+ },
+ "n_exploit_flags": {
+  "raw_auc": 0.702059,
+  "oriented": 0.7021,
+  "claimed": 0.7021,
+  "pos_mean": 0.5962,
+  "neg_mean": 0.0232
+ },
+ "asg_rate": {
+  "raw_auc": 0.74633,
+  "oriented": 0.7463,
+  "claimed": 0.7463,
+  "pos_mean": 0.0182,
+  "neg_mean": 0.0039
+ },
+ "cvss3_score": {
+  "raw_auc": 0.732151,
+  "oriented": 0.7322,
+  "claimed": 0.7322,
+  "pos_mean": 8.2269,
+  "neg_mean": 6.5876
+ },
+ "attack_vector": {
+  "raw_auc": 0.575191,
+  "oriented": 0.5752,
+  "claimed": 0.5752,
+  "pos_mean": 2.6923,
+  "neg_mean": 2.3368
+ }
+}
