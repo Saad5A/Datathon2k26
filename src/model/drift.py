@@ -8,8 +8,7 @@ import json
 
 import pandas as pd
 
-from pool import (FLAGS, ROOT, assigner_history, data_dir, kev_with_assigner, load_kev, load_pool,
-                  load_vulns)
+from pool import FLAGS, ROOT, assigner_history, data_dir, load_kev, load_pool, load_vulns
 from sidecar import claim, merge_claims, write_meta
 
 SCRIPT = "src/model/drift.py"
@@ -23,6 +22,16 @@ def product_ids(ids):
     for c in pd.read_csv(data_dir() / "affected_products.csv", usecols=["cve_id"], chunksize=1_000_000):
         found.update(c.cve_id[c.cve_id.isin(ids)])
     return found
+
+
+def kev_assigners(k):
+    """Every KEV row with its assigner from vulnerabilities.csv, any publish year (load_vulns keeps 2021+ only)."""
+    ids = set(k.cve_id)
+    a = pd.concat(c[c.cve_id.isin(ids)] for c in pd.read_csv(
+        data_dir() / "vulnerabilities.csv", usecols=["cve_id", "assigner"], chunksize=100_000))
+    kv = k.merge(a, on="cve_id", how="left", validate="one_to_one")
+    assert kv.assigner.notna().all(), "KEV row without an assigner"
+    return kv
 
 
 def missing(df, month_col):
@@ -56,11 +65,12 @@ def main():
         d["no_product"] = ~d.cve_id.isin(prods)
         d["cvss3_blank"] = d.cvss3_score.isna()
 
-    # Assigner KEV count before the snapshot month, same function and inputs as the pool's asg_kev feature.
-    kv = kev_with_assigner(k, v)
+    # Assigner KEV count from KEV rows dated before the snapshot month's first day, every KEV row counted whatever
+    # its CVE's publish year. (The model's asg_kev feature counts only CVEs published 2021+; this metric is wider.)
+    kv = kev_assigners(k)
     hist = {m: assigner_history(kv, v, m)[1] for m in sorted(set(sb.snapshot_month) | set(t.ym))}
     t_kev = pd.Series([hist[m].get(a, 0) for m, a in zip(t.ym, t.assigner)], index=t.index)
-    assert (t_kev == t.asg_kev).all(), "recomputed asg_kev differs from the cached pool"
+    assert (t_kev >= t.asg_kev).all(), "all-years KEV count below the 2021+ count"
     sb_kev = pd.Series([hist[m].get(a, 0) for m, a in zip(sb.snapshot_month, sb.assigner)], index=sb.index)
 
     vm = v[(v.ym >= "2024-01") & (v.ym <= "2026-09")].groupby("ym").size()
@@ -93,9 +103,12 @@ def main():
             "group holds June and July publications. 2026 per-month rates are grouped by snapshot_month.",
             "The 2026 scoreboard excludes CVEs already on KEV at their snapshot (built by the organisers with KEV data "
             "after 2025-12-31 that we do not have). The 2025 pool applies the same exclusion with our KEV file.",
-            "assigner_no_prior_kev_share: assigner had 0 KEV rows with date_added before the first day of the snapshot "
-            "month; assigner attached via vulnerabilities.csv for CVEs published 2021+ (same code as the asg_kev "
-            "feature). Our KEV file ends 2025-12-31, so 2026 KEV additions are invisible: the 2026 share is an upper bound.",
+            "assigner_no_prior_kev_share: share of rows whose assigner had 0 rows in known_exploited.csv with date_added "
+            "before the first day of the row's snapshot month; every KEV row is mapped to its assigner via "
+            f"vulnerabilities.csv whatever the CVE's publish year (all {len(kv):,} map). This is wider than the model's asg_kev "
+            "feature, which counts only CVEs published 2021+.",
+            "KEV additions during 2026 are not in our KEV file (it ends 2025-12-31), so the 2026 no-prior-KEV share is "
+            "an upper bound: those additions could only lower it.",
             "cvss3 and product presence are today's NVD values: 2026 CVEs have had less time for NIST analysis "
             "(51,046 of 92,205 2026 CVEs unreviewed per README), so blank rates mix real drift with review backlog.",
             "epss_blank and any_public_exploit come from snapshot-month signals; Feb 2025 signals miss about 14,500 "
@@ -122,7 +135,9 @@ def main():
     for p in ("2025_pool", "2026_scoreboard"):
         claims[f"drift.distinct_assigners.{p}"] = c(f"Distinct assigners, {p}", out["assigner_mix"]["distinct_assigners"][p], "count")
         claims[f"drift.no_prior_kev_share.{p}"] = c(
-            f"Share of {p} rows whose assigner had 0 KEV rows before the snapshot month", nk[p]["all"])
+            f"Share of {p} rows whose assigner had 0 KEV rows (any CVE publish year, assigner from vulnerabilities.csv) "
+            "with date_added before the first day of the snapshot month"
+            + ("; upper bound, KEV file ends 2025-12-31" if p == "2026_scoreboard" else ""), nk[p]["all"])
         for k_ in ("no_affected_product", "cvss3_blank", "epss_blank", "any_public_exploit", "epss_gt_0_1"):
             claims[f"drift.{k_}.{p}.all"] = c(f"Share of {p} rows: {k_}", miss[p]["all"][k_])
     for m in ("2026-08", "2026-09"):

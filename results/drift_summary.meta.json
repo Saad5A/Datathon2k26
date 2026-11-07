@@ -1,12 +1,12 @@
 {
   "script": "src/model/drift.py",
   "output_file": "results/drift_summary.json",
-  "git_commit": "b18032bd2bb39a061af4de1439f9c4a91d330d68",
+  "git_commit": "89e6dc94b56c609364e6ed6243728a1811ba0cc7",
   "git_dirty": true,
-  "date_utc": "2026-11-07T21:49:18+00:00",
+  "date_utc": "2026-11-07T21:58:51+00:00",
   "code_sha256": {
-    "src/model/drift.py": "3f9341aad8ffcd590970c57ec9a1ff9fd447419bad4a3bffafc507e3d24abaeb",
-    "src/model/sidecar.py": "b080b3711d46d290159da2c43a1394bf2af6a6fa49d5be485bcfae8bd02f6d09",
+    "src/model/drift.py": "50452f4cc32f0a6ba8604e1c9b40cedf78099a55a4baadff37ea0e5c458716f4",
+    "src/model/sidecar.py": "691592e4e621891793353197e51271cefdab66c50abadc7975b8dd3cc5776c06",
     "src/model/pool.py": "f71136c9932544913ef8a48fb31aba65b1bc5fc8b7f2096bff9e6801dd545b27",
     "src/model/metrics.py": "6678ffb0cb4ac6fb75445e1e6d2223c328eae99657e30578b994d7652714a0fe"
   },

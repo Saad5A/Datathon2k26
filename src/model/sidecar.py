@@ -35,11 +35,12 @@ def claim(text, value, unit, script, output_file):
 
 
 def merge_claims(new):
-    """Update this script's keys in the ledger. An unchanged value keeps an auditor's verdict."""
+    """Update this script's keys in the ledger. Only an unchanged value AND text keeps an auditor's verdict."""
     old = json.loads(CLAIMS.read_text()) if CLAIMS.exists() else {}
     for key, c in new.items():
         prev = old.get(key)
-        if prev and math.isclose(prev["value"], c["value"], rel_tol=1e-9, abs_tol=1e-12):
+        if (prev and prev["text"] == c["text"]
+                and math.isclose(prev["value"], c["value"], rel_tol=1e-9, abs_tol=1e-12)):
             c["status"], c["verified_by"] = prev["status"], prev["verified_by"]
     old.update(new)
     CLAIMS.write_text(json.dumps(dict(sorted(old.items())), indent=2) + "\n")
