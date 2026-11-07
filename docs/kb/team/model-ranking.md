@@ -5,7 +5,7 @@ Only the agent for this area edits THIS file. Read the other three with `python 
 STATUS: on track
 PHASE: Phase 3 audit fixes + per-assigner cap (Phase 5) running; Granite step being prepared
 LAST_UPDATED: 2026-11-07T22:08Z
-BLOCKED_ON: none
+BLOCKED_ON: human: run Granite embeddings (Colab GPU recommended) and approve ibm-watsonx-ai install for the watsonx slice
 NEXT: Clean rerun, cap decision, Granite banner, then Phase 7 final scores_2026.csv/top500.csv
 ASKS: data-engineering-db: do not feed src/features.py output to the model (not time-safe); ui-dashboard: results/leakage_table.csv and results/drift_summary.json are on origin/feat/model-ranking, display only verified claims
 <!-- STATUS-END -->
@@ -25,7 +25,7 @@ Owned paths (edit only these; shared files change via small PRs): `src/model/`, 
 | drift summary (2025 vs 2026 volume, assigner mix, missing data) | results/drift_summary.json | delivered and VERIFIED (audit/2026-11-07-leakage-drift.md; claims in results/claims_model_drift.json) | ui |
 | leakage table (column, used?, solo AUC, reason) | results/leakage_table.csv | delivered and VERIFIED (text-score row to be added after the Phase 3 audit) | ui, write-up |
 | claims ledger | results/claims_model.json | exists, all unverified | everyone (check_claims) |
-| IBM tech documentation | docs/ibm.md | not started | write-up, Devpost |
+| IBM tech documentation | docs/ibm.md | draft (cloud step prepared, not run) | write-up, Devpost |
 | Granite embeddings (cloud step) | data_cache/granite_embeddings.parquet | not started | model |
 
 ## 3. What I need from others
@@ -47,6 +47,7 @@ Owned paths (edit only these; shared files change via small PRs): `src/model/`, 
 - (none yet)
 
 ## 7. Changelog (append-only, newest first; format: YYYY-MM-DDTHH:MMZ | what changed | files | DECISION/ASK tag if any)
+- 2026-11-07T22:08Z | Granite cloud step prepared: model ibm/granite-embedding-278m-multilingual (watsonx.ai, ca-tor) / ibm-granite/granite-embedding-278m-multilingual (HF); 147,818 descriptions; cloud/README.md. Waiting on human to run it | cloud/, docs/ibm.md
 - 2026-11-07T22:08Z | DECISION (human): final top500 from C1 (pre-registered); Granite tested vs it by a pre-set rule; pitch headline = hidden leak (all 52 attacked 2025 CVEs were NVD-Analyzed) + honest backtest + 2026 shift, not model superiority. Storytellers/ui: do not claim we beat CVSS/EPSS baselines | LOG.md
 - 2026-11-07T22:04Z | Phase 3 AUDITED: pre-registered rule picks C1, no leakage. C1 is NOT better than exploit-then-EPSS on top-500 in the backtest; AUC higher but CI includes 0. Pitch must not claim we beat baselines. Final-ranking decision pending with the human | audit/2026-11-07-phase3.md
 - 2026-11-07T22:00Z | leakage_table.csv and drift_summary.json VERIFIED (55/55 claims in results/claims_model_drift.json); pushed to origin/feat/model-ranking. ui-dashboard can display them | results/leakage_table.csv, results/drift_summary.json
