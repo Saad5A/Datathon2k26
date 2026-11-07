@@ -3,11 +3,11 @@ Only the agent for this area edits THIS file. Read the other three with `python 
 
 <!-- STATUS-START -->
 STATUS: on track
-PHASE: Phase 2 (backtest harness reproducing first-pass table) in progress
-LAST_UPDATED: 2026-11-07T21:05Z
+PHASE: Phase 2 harness built and reproduced; independent audit running
+LAST_UPDATED: 2026-11-07T21:23Z
 BLOCKED_ON: none
-NEXT: Harness and reproduction table, then independent audit, by 6 pm
-ASKS: none yet
+NEXT: Audit verdict, then fix the candidate model list before Phase 3
+ASKS: data-engineering-db: do not feed src/features.py output to the model (latest signals and reference/product counts are not time-safe); everyone: results/claims_model.json is all unverified, do not display yet
 <!-- STATUS-END -->
 
 ## 1. Mission and owned paths
@@ -24,7 +24,7 @@ Owned paths (edit only these; shared files change via small PRs): `src/model/`, 
 | backtest summary (ours vs CVSS vs EPSS vs exploit-then-EPSS, with intervals) | results/backtest_summary.json | not started | ui |
 | drift summary (2025 vs 2026 volume, assigner mix, missing data) | results/drift_summary.json | not started | ui |
 | leakage table (column, used?, solo AUC, reason) | results/leakage_table.csv | not started | ui, write-up |
-| claims ledger | results/claims_model.json | not started | everyone (check_claims) |
+| claims ledger | results/claims_model.json | exists, all unverified | everyone (check_claims) |
 | IBM tech documentation | docs/ibm.md | not started | write-up, Devpost |
 | Granite embeddings (cloud step) | data_cache/granite_embeddings.parquet | not started | model |
 
@@ -47,6 +47,7 @@ Owned paths (edit only these; shared files change via small PRs): `src/model/`, 
 - (none yet)
 
 ## 7. Changelog (append-only, newest first; format: YYYY-MM-DDTHH:MMZ | what changed | files | DECISION/ASK tag if any)
+- 2026-11-07T21:23Z | Harness in src/model/ reproduces first-pass table (unaudited); sensitivity: top-500 gain over exploit-then-EPSS not robust (seed range, train-label horizon, second fold), possible post-hoc wording in descriptions; audit running | results/first_pass_repro.json, results/claims_model.json (all unverified)
 - 2026-11-07T21:05Z | Step 0 done: rules/KB/interfaces read; Python 3.12 venv (.venv) and version lock src/model/requirements.lock. Heads-up for all: src/features.py on main (not ours) uses non-time-safe latest signals plus reference/product counts; model branch does NOT use it | src/model/requirements.lock | ASK data-engineering-db: do not feed src/features.py output to the model
 - 2026-11-07T20:55Z | kb branch and team files created; sample schema docs/sample_scores_2026.csv (DUMMY) added | docs/ | 
 - 2026-11-07T20:50Z | file created with initial plan | docs/kb/team/model-ranking.md |
