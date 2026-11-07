@@ -1,0 +1,83 @@
+{
+  "_note": "Reasons come from occlusion: each signal is set to its neutral value and the change in the CVE's priority score (mean over 5 seed sets) is measured; the up to 3 largest changes are listed. The score ranks CVEs; it is not a probability of exploitation.",
+  "_direction": {
+    "up": "this signal's actual value raises the CVE's priority score compared with the neutral value",
+    "down": "this signal's actual value lowers the CVE's priority score compared with the neutral value"
+  },
+  "epss": {
+    "label": "EPSS score at the snapshot month",
+    "value_meaning": "the CVE's EPSS score in its snapshot month (null if EPSS was blank)",
+    "direction_meaning": {
+      "up": "this signal's actual value raises the CVE's priority score compared with the neutral value",
+      "down": "this signal's actual value lowers the CVE's priority score compared with the neutral value"
+    },
+    "neutral_value": 0.00043,
+    "neutral_rule": "median over the training rows",
+    "model_columns_set_to_neutral": [
+      "epss_f"
+    ],
+    "neutral_values_per_column_seed_set_0": {
+      "epss_f": 0.00043
+    }
+  },
+  "public_exploit_code": {
+    "label": "Public exploit code flags",
+    "value_meaning": "number of public exploit flags set in the snapshot month (Exploit-DB, Metasploit, Nuclei, GitHub PoC), 0-4",
+    "direction_meaning": {
+      "up": "this signal's actual value raises the CVE's priority score compared with the neutral value",
+      "down": "this signal's actual value lowers the CVE's priority score compared with the neutral value"
+    },
+    "neutral_value": 0,
+    "neutral_rule": "0 for every flag",
+    "model_columns_set_to_neutral": [
+      "exploitdb",
+      "metasploit",
+      "nuclei",
+      "poc_github",
+      "anyx",
+      "nx"
+    ],
+    "neutral_values_per_column_seed_set_0": {
+      "exploitdb": 0.0,
+      "metasploit": 0.0,
+      "nuclei": 0.0,
+      "poc_github": 0.0,
+      "anyx": 0.0,
+      "nx": 0.0
+    }
+  },
+  "assigner_kev_history": {
+    "label": "Assigner's KEV history",
+    "value_meaning": "share of the assigning organisation's earlier CVEs (published 2021+, before the snapshot month) that were added to KEV before the snapshot month, smoothed: KEV count / (CVE count + 20)",
+    "direction_meaning": {
+      "up": "this signal's actual value raises the CVE's priority score compared with the neutral value",
+      "down": "this signal's actual value lowers the CVE's priority score compared with the neutral value"
+    },
+    "neutral_value": 0.0003798670465337132,
+    "neutral_rule": "median over the training rows",
+    "model_columns_set_to_neutral": [
+      "asg_rate",
+      "asg_kev"
+    ],
+    "neutral_values_per_column_seed_set_0": {
+      "asg_rate": 0.0003798670465337132,
+      "asg_kev": 1.0
+    }
+  },
+  "description_text": {
+    "label": "Description text score",
+    "value_meaning": "text model score (0-1) from the CVE description with exploitation wording masked; a ranking input, not a probability",
+    "direction_meaning": {
+      "up": "this signal's actual value raises the CVE's priority score compared with the neutral value",
+      "down": "this signal's actual value lowers the CVE's priority score compared with the neutral value"
+    },
+    "neutral_value": 0.0042438962605217305,
+    "neutral_rule": "median over the training rows",
+    "model_columns_set_to_neutral": [
+      "txt"
+    ],
+    "neutral_values_per_column_seed_set_0": {
+      "txt": 0.004601057868975892
+    }
+  }
+}

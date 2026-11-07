@@ -1,0 +1,99 @@
+{
+  "script": "src/model/final.py",
+  "git_commit": "2760292781a9f2f7b043c3e1fa1823ae82118c5a",
+  "git_dirty": false,
+  "git_dirty_files": [],
+  "code_sha256": {
+    "candidates.py": "ccacd693526908d82cfe8dd5c07e8ffaa757423398e129ec74a3a170e1c998c4",
+    "cap.py": "d5cbd63f4e8b1f55a3043e28d2ccaade891206196d72e7d51316e3b63014420d",
+    "checks.py": "3a6f128ea3251a088da6aa5221e5e1f0a34734a51a96abcf7474c65bc8165121",
+    "drift.py": "50452f4cc32f0a6ba8604e1c9b40cedf78099a55a4baadff37ea0e5c458716f4",
+    "final.py": "7fef96c8c7bf2382be9a64143c2885410cca59e781d80975debf06b9c5db71bf",
+    "leakage.py": "2e1dede661f7fdb67990bd86ddf02b859c0ff611a2c391692228cf0dc5e1982d",
+    "metrics.py": "6678ffb0cb4ac6fb75445e1e6d2223c328eae99657e30578b994d7652714a0fe",
+    "pool.py": "f71136c9932544913ef8a48fb31aba65b1bc5fc8b7f2096bff9e6801dd545b27",
+    "reproduce_first_pass.py": "4e236b25c57a7331559f471d4e40b49355dc80081d5a53d0c61894cb2b9d53fb",
+    "sidecar.py": "691592e4e621891793353197e51271cefdab66c50abadc7975b8dd3cc5776c06"
+  },
+  "date_utc": "2026-11-07T23:07:16+00:00",
+  "python": "3.12.15",
+  "machine": "arm64",
+  "libraries": {
+    "pandas": "3.1.1",
+    "numpy": "2.5.4",
+    "scikit-learn": "1.9.1",
+    "scipy": "1.18.1",
+    "pyarrow": "26.0.1",
+    "joblib": "1.6.0"
+  },
+  "model": "C1",
+  "seed_sets": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "score": "mean of the 5 seed-set scores",
+  "assigner_cap_k": 50,
+  "tie_break": "cve_id ascending",
+  "train_rows": 75148,
+  "train_positives": 117,
+  "train_label_cap": "2025-12-31",
+  "rows_scored": 72670,
+  "summary": {
+    "train_rows": 75148,
+    "train_positives": 117,
+    "rows_scored": 72670,
+    "top10_assigners": [
+      [
+        "disclosure@vulncheck.com",
+        50
+      ],
+      [
+        "security@apache.org",
+        50
+      ],
+      [
+        "secalert_us@oracle.com",
+        50
+      ],
+      [
+        "security-advisories@github.com",
+        41
+      ],
+      [
+        "psirt@adobe.com",
+        26
+      ],
+      [
+        "cve@mitre.org",
+        18
+      ],
+      [
+        "security@wordfence.com",
+        18
+      ],
+      [
+        "audit@patchstack.com",
+        14
+      ],
+      [
+        "f23511db-6c3e-4e32-a477-6aa17d310630",
+        12
+      ],
+      [
+        "cret@cert.org",
+        12
+      ]
+    ],
+    "share_any_public_exploit": 0.712,
+    "share_epss_gt_0_1": 0.048,
+    "share_unseen_assigner": 0.158,
+    "tier_counts": {
+      "P0": 100,
+      "P1": 400,
+      "P2": 72170
+    }
+  }
+}
