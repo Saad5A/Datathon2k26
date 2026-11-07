@@ -4,9 +4,9 @@ Only the agent for this area edits THIS file. Read the other three with `python 
 <!-- STATUS-START -->
 STATUS: on track
 PHASE: Phase 7 final files being built; audit of Phase 3 fixes + cap running
-LAST_UPDATED: 2026-11-07T22:20Z
+LAST_UPDATED: 2026-11-07T23:07Z
 BLOCKED_ON: human: run Granite embeddings (Colab GPU recommended) and approve ibm-watsonx-ai install for the watsonx slice
-NEXT: Deliver scores_2026.csv/top500.csv (then audit); Granite comparison when embeddings arrive
+NEXT: Audit final files; Granite comparison when embeddings arrive
 ASKS: data-engineering-db: do not feed src/features.py output to the model (not time-safe); ui-dashboard: results/leakage_table.csv and results/drift_summary.json are on origin/feat/model-ranking, display only verified claims
 <!-- STATUS-END -->
 
@@ -18,9 +18,9 @@ Owned paths (edit only these; shared files change via small PRs): `src/model/`, 
 ## 2. Deliverables
 | Item | Path | Status | Consumers |
 |---|---|---|---|
-| scores_2026.csv (all 72,670 scoreboard CVEs: cve_id, published, snapshot_month, assigner, score, rank, in_top500, priority, epss, any_public_exploit, reasons) | results/scores_2026.csv | not started | triage, ui, data |
-| top500.csv (cve_id only; the judged file) | results/top500.csv | not started | judges, ui, triage |
-| signal vocabulary for reasons | results/signal_vocabulary.json | not started | triage, ui |
+| scores_2026.csv (all 72,670 scoreboard CVEs: cve_id, published, snapshot_month, assigner, score, rank, in_top500, priority, epss, any_public_exploit, reasons) | results/scores_2026.csv | delivered on origin/feat/model-ranking (TF-IDF text; audit pending; may be regenerated if Granite qualifies) | triage, ui, data |
+| top500.csv (cve_id only; the judged file) | results/top500.csv | delivered (audit pending) | judges, ui, triage |
+| signal vocabulary for reasons | results/signal_vocabulary.json | delivered (audit pending) | triage, ui |
 | backtest summary (ours vs CVSS vs EPSS vs exploit-then-EPSS, with intervals) | results/backtest_summary.json | not started | ui |
 | drift summary (2025 vs 2026 volume, assigner mix, missing data) | results/drift_summary.json | delivered and VERIFIED (audit/2026-11-07-leakage-drift.md; claims in results/claims_model_drift.json) | ui |
 | leakage table (column, used?, solo AUC, reason) | results/leakage_table.csv | delivered and VERIFIED (text-score row to be added after the Phase 3 audit) | ui, write-up |
@@ -47,6 +47,7 @@ Owned paths (edit only these; shared files change via small PRs): `src/model/`, 
 - (none yet)
 
 ## 7. Changelog (append-only, newest first; format: YYYY-MM-DDTHH:MMZ | what changed | files | DECISION/ASK tag if any)
+- 2026-11-07T23:07Z | REAL results/scores_2026.csv, top500.csv, signal_vocabulary.json pushed (286054a). Sort by rank, not score (per-assigner cap of 50 reorders around rank 500). Audit pending; numbers unverified | results/scores_2026.csv
 - 2026-11-07T22:20Z | Cap rule chose k=50 per assigner; final 2026 score = mean of 5 seed sets (pre-registered). Phase 7 (scores_2026.csv, top500.csv, signal_vocabulary.json) being built; audit of fixes/cap running | results/assigner_cap.json
 - 2026-11-07T22:08Z | Granite cloud step prepared: model ibm/granite-embedding-278m-multilingual (watsonx.ai, ca-tor) / ibm-granite/granite-embedding-278m-multilingual (HF); 147,818 descriptions; cloud/README.md. Waiting on human to run it | cloud/, docs/ibm.md
 - 2026-11-07T22:08Z | DECISION (human): final top500 from C1 (pre-registered); Granite tested vs it by a pre-set rule; pitch headline = hidden leak (all 52 attacked 2025 CVEs were NVD-Analyzed) + honest backtest + 2026 shift, not model superiority. Storytellers/ui: do not claim we beat CVSS/EPSS baselines | LOG.md
