@@ -88,7 +88,12 @@ curl -s https://pancakess.work/api/ranking/similar/CVE-2026-10523?top_k=5
 
 ## UI
 
-The panel is in `dashboard/src/components/dashboard/CveInspectionDrawer.tsx` under **“Nearest neighbours · IBM Granite”**. It is labelled as retrieval evidence and names the embedding model and index size.
+The panel is a shared component, `dashboard/src/components/dashboard/SimilarCves.tsx`. It is mounted in:
+
+- the PancakeSec home's CVE brief column (`dashboard/src/components/pancake/PancakeSecDashboard.tsx`),
+- the classic inspection drawer (`dashboard/src/components/dashboard/CveInspectionDrawer.tsx`).
+
+Both label it **“Nearest neighbours · IBM Granite”** and state that it is retrieval evidence, not a score input.
 
 ## Tests
 
