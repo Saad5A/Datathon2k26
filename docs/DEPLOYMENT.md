@@ -64,6 +64,24 @@ curl -s 'http://127.0.0.1:8000/api/ranking/similar/CVE-2026-10523?top_k=5'
 `/api/health` should report `similarity_rows` greater than zero. This index is retrieval-only; it does not
 change the ranking or any audited metric. See [`docs/RETRIEVAL.md`](RETRIEVAL.md).
 
+### Live Gemini Judge Q&A
+
+The `/api/gemini/chat` endpoint (also `/api/chat`) uses Gemini 2.5 Flash and needs:
+
+- `GEMINI_API_KEY` in `/opt/pancakess/.env` (mode `600`, never committed)
+- `google-genai` installed in `/opt/pancakess/.venv` (listed in `server/requirements.txt`)
+
+```bash
+/opt/pancakess/.venv/bin/python -m pip install google-genai
+systemctl restart pancakess-api
+curl -s -X POST https://pancakess.work/api/gemini/chat \
+  -H 'Content-Type: application/json' \
+  --data '{"question":"What is KEV?","active_cve":"CVE-2026-10523"}'
+```
+
+The response must say `"provider": "GEMINI"` and `"source": "live"`. If it returns a configuration error,
+the key is missing. Do not paste the key into git, logs, or chat.
+
 ## DNS
 
 At **Porkbun** (authoritative nameservers `*.ns.porkbun.com`), the records are:
