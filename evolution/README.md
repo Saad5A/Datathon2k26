@@ -7,13 +7,13 @@ A standalone evolution diagram for the pancakess search. The light, high-contras
 The dashboard is already being served locally at:
 
 ```text
-http://localhost:5174/evolve
+http://127.0.0.1:8010/
 ```
 
 The default is **focus mode**: the diagram alone, with no surrounding UI or text. Add `?ui=1` for the full dashboard (rail, dossier, timeline, controls).
 
 ```text
-http://localhost:5174/evolve?ui=1
+http://127.0.0.1:8010/?ui=1
 ```
 
 Restart it with:

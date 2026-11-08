@@ -4,3 +4,25 @@
 
 
 .backend-note{font-size:11px;line-height:1.7;color:#62756a;padding:6px 0}.backend-snapshot{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;padding:15px 18px;background:#f8f5e9;border:1px solid #dce4d7;border-radius:12px}.backend-snapshot>div{display:flex;flex-direction:column;gap:6px}.backend-snapshot span{font-size:10px;color:#68796c}.backend-snapshot strong{font:500 19px/1.2 ui-monospace,monospace;color:#2f5141;font-variant-numeric:tabular-nums}.results-columns{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(260px,.75fr);align-items:start;gap:18px}.gemini-brief{display:flex;flex-direction:column;gap:12px}.gemini-brief-heading{display:flex;align-items:center;gap:9px;color:#3b7761}.gemini-brief-heading>div{display:flex;flex-direction:column;gap:2px;min-width:0}.gemini-brief-heading strong{font:600 12px ui-monospace,monospace;color:#30493a}.gemini-brief-heading span{font-size:9px;color:#6b7d6e}.gemini-brief-heading code{margin-left:auto;max-width:150px;overflow:hidden;text-overflow:ellipsis;font-size:8px;color:#62756a}.gemini-summary{font-size:12px;line-height:1.8;color:#3d5344}.gemini-steps{display:flex;flex-direction:column;gap:10px;border-top:1px solid #dce4d7;padding-top:12px}.gemini-steps li{display:flex;flex-direction:column;gap:3px;font-size:10px;line-height:1.7;color:#5c7060}.gemini-steps strong{font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:#426b54}.grounding-label{font-size:9px;color:#617863}@media(max-width:900px){.results-columns{grid-template-columns:1fr}}@media(max-width:560px){.backend-snapshot{grid-template-columns:1fr;gap:10px}.backend-snapshot>div{display:flex;flex-direction:row;align-items:center;justify-content:space-between}.backend-snapshot strong{font-size:16px}}
+
+/* Upload result rationale panel */
+.backend-snapshot{grid-template-columns:repeat(2,minmax(0,1fr))}
+.signal-panel{display:flex;flex-direction:column;gap:12px}
+.signal-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.signal-heading>div{display:flex;flex-direction:column;gap:4px;min-width:0}
+.signal-heading strong{font:600 12px ui-monospace,monospace;color:#30493a;overflow-wrap:anywhere}
+.signal-heading span{font-size:9px;color:#6b7d6e}
+.signal-heading code{font-size:8px;color:#62756a;text-align:right;max-width:130px;overflow:hidden;text-overflow:ellipsis}
+.signal-note{font-size:10px;line-height:1.7;color:#62756a}
+.signal-reasons{display:flex;flex-direction:column;gap:11px;border-top:1px solid #dce4d7;padding-top:12px}
+.signal-reasons li{display:grid;grid-template-columns:1fr auto;gap:4px 10px;position:relative;padding-bottom:8px;font-size:10px;color:#5c7060}
+.signal-reasons li strong{font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:#426b54}
+.signal-reasons li span{font-size:9px;color:#6b7d6e}
+.signal-reasons li i{grid-column:1/-1;height:3px;border-radius:2px;background:linear-gradient(90deg,#4c8c73,#9ab89a);display:block;min-width:4px}
+
+/* IBM Granite technical note in the result rail */
+.granite-note{margin-top:14px;padding-top:12px;border-top:1px solid #dce4d7;display:flex;flex-direction:column;gap:7px}
+.granite-note-heading{display:flex;flex-direction:column;gap:3px}
+.granite-note-heading strong{font:600 9px ui-monospace,monospace;letter-spacing:.1em;text-transform:uppercase;color:#426b54}
+.granite-note-heading span{font-size:8px;color:#6b7d6e}
+.granite-note p{font-size:10px;line-height:1.75;color:#4e6457}

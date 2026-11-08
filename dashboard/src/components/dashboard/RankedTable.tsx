@@ -77,7 +77,7 @@ function ReasonsPanel({ row, onSelectCve }: { row: ScoreRow; onSelectCve?: (cveI
       <div>
         <div className="mb-2 flex items-center justify-between gap-3">
           <h3 className="text-[11px] font-semibold uppercase tracking-wider text-fg-muted">Why it ranks #{fmtInt(row.rank)}</h3>
-          {onSelectCve && <button type="button" onClick={() => onSelectCve(row.cve_id)} className="inline-flex items-center gap-1.5 rounded-md border border-line-strong px-2.5 py-1.5 text-xs font-medium text-fg-muted hover:bg-raised hover:text-fg"><Sparkles className="size-3.5" aria-hidden/> Gemini brief</button>}
+          {onSelectCve && <button type="button" onClick={() => onSelectCve(row.cve_id)} className="inline-flex items-center gap-1.5 rounded-md border border-line-strong px-2.5 py-1.5 text-xs font-medium text-fg-muted hover:bg-raised hover:text-fg"><Sparkles className="size-3.5" aria-hidden/> Granite note</button>}
         </div>
         {row.reasons.length === 0 ? (
           <p className="text-xs text-fg-subtle">No signals above the explanation threshold. The score sits near the base rate.</p>

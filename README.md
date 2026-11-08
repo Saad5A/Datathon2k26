@@ -1,75 +1,133 @@
-# Datathon2k26: Before the Breach
+# Before the Breach — CVE exploitation triage
 
-[TAGLINE]
+Sheridan Datathon 2026 · IBM “Before the Breach” track.
 
-This is our student entry for the IBM track "Before the Breach" at Sheridan Datathon 2026. We rank the 72,670 CVEs (published software vulnerabilities) on the 2026 scoreboard by how likely each is to be added to CISA's Known Exploited Vulnerabilities list (KEV). Each CVE is scored using only what was known at the end of its snapshot month, apart from today's description and assigner fields. The judged submission is `results/top500.csv`.
+We rank the 72,670 CVEs on the 2026 scoreboard by how likely each is to be added to CISA KEV, using only information known at the end of its snapshot month. The judged submission is `results/top500.csv`; the full ranking is `results/scores_2026.csv`.
 
-The score orders the list. It is not a probability of attack. The full write-up is in `docs/writeup_model.md`, and likely judge questions are answered in `JUDGE_QA.md`.
+> **No 2026 labels.** We have no 2026 KEV outcomes. We report 2025 backtests, 2026 distributions and the predicted ranking; we do not claim 2026 accuracy.
 
-## What we found
-- **A hidden leak in NIST fields.** All 52 later KEV-listed CVEs in our 2025 test had NIST status "Analyzed", a product list, and a filled CVSS3 score and CWE. Among the other test CVEs, only 50.1% were "Analyzed" and 64.9% had a product list. We do not use these fields.
-- **The first-pass "win" was inflated.** Its 25 vs 18-19 top-500 result was inflated by training labels that overlapped the test period and by seed luck (time-safe labels still give 21). With time-safe labels and a pre-registered test, our model roughly ties "exploit code first, then EPSS" in fold 1 (22 vs 18) and loses in fold 2 (11 vs 15). Its AUC (how well it orders the whole list) is higher in every fold and seed. The gain is borderline, though: for seed set 0 the paired interval includes zero. We do not claim to beat the baselines at the judges' metric.
-- **2026 looks different.** There are about twice as many rows as in the same 2025 months (72,670 vs 35,280). GitHub advisories rose from 5.6% to 15.0% of rows and VulnCheck from 1.1% to 9.3%. In August-September, 66-68% of CVEs have no product list.
-- **IBM Granite was adopted with no measurable gain.** A pre-registered rule added a Granite text score because its mean AUC was within a pre-set margin of the base model (0.871 vs 0.870). Granite alone scored lower (0.837).
-- **We make no 2026 accuracy claim,** because we have no 2026 labels.
+## What is in this repo
+
+| Area | What it does |
+|---|---|
+| `dashboard/` | React/Vite pancake dashboard. Upload a CSV/JSON of CVEs, score locally or through the API, inspect the ranking, export it. |
+| `server/` | FastAPI bridge: ranking artifacts, Granite/Gemini explanations, upload scoring. |
+| `src/model/` | The audited ranking model: time-safe features, backtests, G2/Granite test, final files. |
+| `cloud/` | IBM Granite embedding and explanation scripts (watsonx.ai + local Hugging Face/Ollama). |
+| `evolution/` | Separate research observatory: the evolutionary search and its interactive braid. |
+| `results/` | Ranked scores, submission, claims, audits and supporting artifacts. |
+| `audit/` | Independent audit reports and evidence. |
+| `docs/` | Model notes, IBM details, interfaces and this project’s supporting documentation. |
+
+## Run the dashboard
+
+### 1. Start the API
+
+```bash
+.venv/bin/pip install -r server/requirements.txt
+.venv/bin/uvicorn server.app:app --host 0.0.0.0 --port 8000
+```
+
+Check: <http://localhost:8000/api/health>
+
+### 2. Start the dashboard
+
+```bash
+cd dashboard
+npm install
+printf 'VITE_API_URL=http://localhost:8000/api\n' > .env.local
+npm run dev -- --host 0.0.0.0 --port 5173
+```
+
+Open <http://localhost:5173/>.
+
+The default upload engine is **Model API** when `VITE_API_URL` is configured. It sends rows to `POST /api/predict`; known scoreboard CVEs use the audited **G2** score, unknown CVEs use a transparent fallback labelled `api-heuristic-v1`. If the API is unavailable, use **Local demo** in *Processing options*; no file leaves the browser.
+
+To run the dashboard with no backend:
+
+```bash
+VITE_API_URL=demo npm run dev -- --host 0.0.0.0 --port 5173
+```
+
+### 3. Upload data
+
+- Accepted: **CSV or JSON**, up to 50 MB / 50,000 rows.
+- Required: `cve_id`.
+- Optional: `published`, `assigner`, `epss`, `exploitdb`, `metasploit`, `nuclei`, `poc_github`, `score`, `rank`, `priority`, `reasons`.
+- Pre-scored files keep their supplied scores unless you choose to re-score them.
+- There is a built-in sample: **“Try a sample batch”**.
+
+### 4. Evolution observatory (separate)
+
+```bash
+bash evolution/serve.sh
+# http://127.0.0.1:8010/
+```
+
+This is a separate D3 research UI; it is not part of the pancake app. Add `?ui=1` for its full control rail.
 
 ## IBM technology
-We use IBM's Granite multilingual embedding model, run on the open weights locally and on a subset through IBM watsonx.ai. Its text score is part of the final model. Details, model IDs and evidence are in `docs/ibm.md`.
 
-## How to reproduce
-1. Create a virtual environment with `python3.12` and install the locked versions:
-   ```
-   python3.12 -m venv .venv
-   .venv/bin/pip install -r src/model/requirements.lock
-   ```
-2. Unzip the IBM datathon data into `data/`, or point the `IBM_DATA_DIR` environment variable at the folder that holds the CSVs; `known_exploited.csv` must sit directly in that folder (e.g. `data/known_exploited.csv`).
-3. Run the whole pipeline:
-   ```
-   .venv/bin/python run_all.py
-   ```
-   This rebuilds every file in `results/`, stopping at the first failure. `python run_all.py --from <step>` resumes from a step.
+| IBM technology | How it is used | Evidence / code |
+|---|---|---|
+| **IBM Granite embeddings** `ibm/granite-embedding-278m-multilingual` (768-d, 512 tokens) | Text score for the ranking model. The pre-registered G1/G2 test adopted G2 (C1 + Granite text) with no measurable gain over C1. | `cloud/embed_granite.py`, `src/model/granite.py`, `docs/ibm.md`, `results/granite_comparison.json` |
+| **IBM watsonx.ai** (`ca-tor`) + `ibm-watsonx-ai` 1.9.1 | Provider for a 1,966-description Granite embedding subset. | `data_cache/granite_embeddings_watsonx_subset.meta.json`; audit `audit/2026-11-08-granite-final.md` |
+| **IBM Granite instruct** `ibm/granite-3-8b-instruct` | Grounded explanations for the top-ranked CVEs via `cloud/explain_granite_top100.py` (optional). | `results/granite_explanations_top100.json`, `cloud/granite_instruct_model_id.txt` |
+| **IBM Granite 4.2 3B** via Ollama | Separate top-100 grounded summaries; does not change the ranking. | `cloud/explain_granite_ollama.py`, `results/granite_summaries_top100.json` |
 
-The Granite step runs only if `data_cache/granite_embeddings.parquet` exists. That file is produced by `cloud/embed_granite.py` (it needs `sentence-transformers` or `ibm-watsonx-ai`); see `cloud/README.md`. The submitted `top500.csv` and `scores_2026.csv` use Granite (G2), so create the embeddings first. Without the file, `run_all.py` stops instead of overwriting them with the TF-IDF-only version (pass `--tfidf-only` to rebuild that version on purpose).
+Gemini is used only as an optional executive-synthesis layer (`src/remediation_agent.py`); it is **not** IBM technology and never re-ranks CVEs. The dashboard’s upload results use the ranking’s supplied signals, not a live Gemini call.
 
-## Repo map
-- `src/model/`: the model code: pool and labels, checks, candidate models, assigner cap, leakage, drift, final scoring and Granite test. `src/model/FEATURES.md` documents every feature.
-- `results/`: the outputs.
-  - `top500.csv`: the submission (one column, `cve_id`).
-  - `scores_2026.csv`: every scoreboard CVE with score, rank, priority tier and up to three reasons.
-  - `signal_vocabulary.json`: what each reason signal means.
-  - `backtest_summary.json`: backtest metrics for our model and the baselines, with claim ids.
-  - `leakage_table.csv`: every column considered, whether we use it, and its solo AUC.
-  - `drift_summary.json`: how 2026 differs from 2025.
-  - `model_candidates.json`: the pre-registered candidate comparison.
-  - `assigner_cap.json`: the per-assigner cap test.
-  - `granite_comparison.json`: the pre-registered Granite test.
-  - `first_pass_repro.json`: the reproduced first pass and its sensitivity checks.
-  - `reverse_time.json`: a reverse-time check. It is not a time-safe evaluation and is not used as evidence.
-  - `claims*.json`: the claims ledger.
-  - `*.meta.json`: run provenance (commit, code hashes, versions).
-- `audit/`: independent audit reports. `audit/scratch/` holds the auditors' own scripts.
-- `cloud/`: Granite embedding scripts and the step-by-step guide (`cloud/README.md`).
-- `docs/`: the write-up (`writeup_model.md`), IBM details (`ibm.md`) and branch interfaces (`INTERFACES.md`). The shared knowledge base `docs/kb/` lives on the `knowledge-base` branch.
-- `LOG.md`: the decision log, including pre-registrations.
-- `LEARNING.md`: a plain-English guide for beginners.
-- `JUDGE_QA.md`: answers to likely judge questions.
-- `tools/`: `check_claims.py` and the knowledge-base helper `kb.py`.
+Detailed IDs, runs, limits and caveats: **[`docs/ibm.md`](docs/ibm.md)** and **[`docs/IBM_USAGE.md`](docs/IBM_USAGE.md)**.
 
-## How the numbers are checked
-- Every number we publish is registered in `results/claims*.json`, with the script and output file that produced it.
-- A separate auditor, working in a fresh context, re-derives the numbers with its own code and only then marks a claim `verified`. The reports are in `audit/`.
-- `python3 tools/check_claims.py <files>` fails if a document contains a number that no verified claim supports.
+## API keys and environment
 
-## Team branches
-- `feat/model-ranking`: this branch. The ranking model, backtest, leakage and drift analysis, Granite test, and audits.
-- `feat/ui-dashboard`: a web dashboard (`dashboard/`, setup and deploy in [`dashboard/README.md`](dashboard/README.md)), merged into `main` through pull requests. Its data contract is [`docs/INTERFACES_dashboard.md`](docs/INTERFACES_dashboard.md); it differs from the delivered scores file (see the note at the top of [`docs/INTERFACES.md`](docs/INTERFACES.md)).
-- `feat/triage-playbook-gemini`: a Gemini triage-playbook pipeline and a Streamlit presentation app.
-- `feat/ibm-granite`: a teammate's Granite and watsonx.ai work (Colab embedding path and Granite explanations).
-- `feat/data-engineering-db`: listed in `docs/INTERFACES.md`. We found no such branch on the remote.
+No key is needed for the dashboard, the backend, uploads, the sample batch, or local Ollama.
 
-## Limits
-- Our first pass had already compared about a dozen variants on the 2025 test period, so that period is not fully held out.
-- KEV is a proxy for "exploited". It lists confirmed attacks only, so a CVE not on KEV may still have been attacked.
-- Our 2025 test has only 52 positives, so one hit is about 2%. We always report ranges.
-- Descriptions are today's text, not the text at the snapshot month. We mask known exploitation wording, but other later edits cannot be checked.
-- We have no 2026 labels and make no claim about 2026 accuracy.
+| Variable | Needed for | Notes |
+|---|---|---|
+| `WATSONX_APIKEY` | regenerating Granite embeddings / watsonx explanations | IBM Cloud API key; never commit |
+| `WATSONX_URL` | watsonx.ai | e.g. `https://ca-tor.ml.cloud.ibm.com` |
+| `WATSONX_PROJECT_ID` | watsonx.ai | project ID, not a secret |
+| `GRANITE_INSTRUCT_MODEL` | Granite instruct explanations | optional; default `ibm/granite-3-8b-instruct` |
+| `GEMINI_API_KEY` | optional live Gemini remediation playbooks | not required for the dashboard or uploads |
+| `VITE_API_URL` | dashboard → API | `http://localhost:8000/api`; not a secret |
+| `IBM_DATA_DIR` | rebuilding the model from raw IBM data | optional; folder containing `known_exploited.csv` |
+
+Copy `.env.example` → `.env` for Granite/Gemini regeneration. `.env`, `.env.local` and keys are gitignored. See `cloud/README.md` for the Granite steps.
+
+## Reproduce / test
+
+```bash
+# Ranking pipeline (requires data/ or IBM_DATA_DIR)
+.venv/bin/python run_all.py
+
+# API
+.venv/bin/uvicorn server.app:app --host 0.0.0.0 --port 8000
+
+# Dashboard production build + tests
+cd dashboard
+npm run build
+npm test
+```
+
+The production dashboard is `dashboard/dist/`. The API serves only read-only artifacts plus the upload scorer; it never writes to `results/`.
+
+## Honest limits
+
+- 2025 test has **52 positives**; one top-500 hit is about **2%**. Always read intervals.
+- The final test set was already used for model selection; it is not fully held out.
+- Granite was adopted by a pre-registered tie-break with **no measurable gain** (0.871 vs 0.870 mean AUC).
+- `desc`/`assigner` fields are today’s values, not historical snapshots; exploitation wording is masked, but later edits cannot be ruled out.
+- KEV is a proxy for exploitation; absence from KEV is not proof of safety.
+- Priority scores are **ranking scores / review urgency**, not exploit probabilities.
+
+## Documentation map
+
+- [`docs/ibm.md`](docs/ibm.md) — full IBM Granite/watsonx.ai record
+- [`docs/IBM_USAGE.md`](docs/IBM_USAGE.md) — one-page IBM usage + keys
+- [`server/README.md`](server/README.md) — API endpoints and upload contract
+- [`dashboard/README.md`](dashboard/README.md) — dashboard setup, engines, upload
+- [`evolution/README.md`](evolution/README.md) — evolutionary search observatory
+- [`docs/INTERFACES.md`](docs/INTERFACES.md) — data contracts
+- [`audit/`](audit/) — independent audits
+- [`JUDGE_QA.md`](JUDGE_QA.md) — likely judge questions

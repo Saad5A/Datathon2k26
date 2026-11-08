@@ -1,10 +1,8 @@
 import { useEffect, useState } from 'react'
-import { Sparkles } from 'lucide-react'
 import { RankedTable, type TableFilters } from '@/components/dashboard/RankedTable'
 import { WidgetCard } from '@/components/dashboard/WidgetCard'
-import { LIVE_API, fetchBackendSummary, fetchGeminiBrief, type BackendSummary, type GeminiBrief } from '@/lib/backend'
-import { ApiError } from '@/lib/apiClient'
-import type { Dataset } from '@/lib/types'
+import { LIVE_API, fetchBackendSummary, fetchExplanation, type BackendSummary, type ExplanationPayload } from '@/lib/backend'
+import type { Dataset, ScoreRow } from '@/lib/types'
 
 function BackendSnapshot() {
   const [data, setData] = useState<BackendSummary | null>(null)
@@ -25,51 +23,47 @@ function BackendSnapshot() {
 
   return <div className="backend-snapshot" aria-label="Backend ranking summary">
     <div><span>Reference ranking</span><strong>{data.ranking_rows > 0 ? 'Connected' : 'Not loaded'}</strong></div>
-    <div><span>Gemini briefs</span><strong>{(data.multi_model?.gemini_explanations ?? 0) > 0 ? 'Connected' : 'Not loaded'}</strong></div>
     <div><span>Upload scoring</span><strong>{LIVE_API ? 'Model API · enabled' : 'Local demo'}</strong></div>
+    <div><span>Granite notes</span><strong>{(data.multi_model?.granite_explanations ?? 0) > 0 ? `${data.multi_model?.granite_explanations} available` : 'None loaded'}</strong></div>
   </div>
 }
 
-function GeminiPanel({ cveId }: { cveId: string | null }) {
-  const [brief, setBrief] = useState<GeminiBrief | null>(null)
-  const [error, setError] = useState<string | null>(null)
-  const [loading, setLoading] = useState(false)
+function SignalPanel({ row }: { row: ScoreRow | null }) {
+  if (!row) {
+    return <p className="backend-note">Select a CVE in the review queue to inspect the signals supplied with its ranking.</p>
+  }
+  return <div className="signal-panel" aria-live="polite">
+    <div className="signal-heading"><div><strong>{row.cve_id}</strong><span>Rank {row.rank} · {row.priority} · score {row.score.toFixed(3)}</span></div><code>{row.model_version}</code></div>
+    <p className="signal-note">Signals are supplied with the ranking row. They explain ordering, not a probability of exploitation.</p>
+    {row.reasons.length > 0 ? <ol className="signal-reasons">{row.reasons.map((reason, i) => <li key={i}><strong>{reason.signal.replace(/_/g, ' ')}</strong><span>{reason.direction === 'up' ? 'raises priority' : 'lowers priority'}{reason.value != null ? ` · ${String(reason.value)}` : ''}</span><i style={{ width: `${Math.max(4, Math.round(reason.impact * 100))}%` }} /></li>)}</ol> : <p className="backend-note">This row was pre-scored; no signal breakdown was supplied.</p>}
+  </div>
+}
 
+function GraniteNote({ cveId }: { cveId: string | null }) {
+  const [payload, setPayload] = useState<ExplanationPayload | null>(null)
+  const [missing, setMissing] = useState(false)
   useEffect(() => {
-    if (!cveId) { setBrief(null); setError(null); return }
-    if (!LIVE_API) { setBrief(null); setError('Gemini briefs need the FastAPI backend.'); return }
+    if (!cveId || !LIVE_API) { setPayload(null); setMissing(false); return }
     const ac = new AbortController()
-    setLoading(true); setBrief(null); setError(null)
-    fetchGeminiBrief(cveId, ac.signal).then(setBrief).catch((reason) => {
-      if ((reason as Error).name === 'AbortError') return
-      setError(reason instanceof ApiError && reason.status === 404
-        ? `No Gemini brief is available from the backend for ${cveId}.`
-        : (reason as Error).message)
-    }).finally(() => { if (!ac.signal.aborted) setLoading(false) })
+    setMissing(false)
+    fetchExplanation(cveId, ac.signal, 'granite').then((response) => {
+      if (response.granite) setPayload(response)
+      else { setPayload(null); setMissing(true) }
+    }).catch((error) => {
+      if ((error as Error).name === 'AbortError') return
+      setPayload(null); setMissing(true)
+    })
     return () => ac.abort()
   }, [cveId])
-
-  if (!cveId) return <p className="backend-note">Expand a CVE and open its Gemini brief for backend-provided context.</p>
-  const gemini = brief?.gemini
-  const summary = brief?.gemini_executive_summary || gemini?.executive_summary || gemini?.summary
-  const playbook = brief?.gemini_triage_playbook || gemini?.playbook
-  const hasGeminiProviderMetadata = gemini?.is_ai_generated === true && Boolean(gemini.provider && gemini.model_id)
-  const steps = [
-    ['Containment', playbook?.containment],
-    ['Remediation', playbook?.remediation],
-    ['Verification', playbook?.verification],
-  ].filter((step): step is [string, string] => Boolean(step[1]))
-
-  return <div className="gemini-brief" aria-live="polite">
-    <div className="gemini-brief-heading"><Sparkles size={16} aria-hidden/><div><strong>{cveId}</strong><span>{hasGeminiProviderMetadata ? `${gemini?.provider} · AI-generated` : 'Source metadata unavailable'}</span></div>
-      {gemini?.model_id && <code>{gemini.model_id}</code>}
-    </div>
-    {loading && <p className="backend-note">Loading brief from backend…</p>}
-    {error && !loading && <p className="backend-note" role="status">{error}</p>}
-    {brief && !loading && <>
-      {summary ? <p className="gemini-summary">{summary}</p> : <p className="backend-note">No executive summary in the backend response.</p>}
-      {steps.length > 0 && <ol className="gemini-steps">{steps.map(([label, detail]) => <li key={label}><strong>{label}</strong><span>{detail}</span></li>)}</ol>}
-    </>}
+  if (!cveId) return null
+  if (!LIVE_API) return null
+  if (missing) return <p className="backend-note">No IBM Granite note is available for this CVE.</p>
+  if (!payload?.granite) return null
+  const g = payload.granite
+  return <div className="granite-note" aria-live="polite">
+    <div className="granite-note-heading"><strong>IBM Granite technical note</strong><span>{g.provider || 'Granite'} · {g.model_id || 'model id unavailable'}</span></div>
+    {g.grounding_ok === false && <p className="backend-note">Grounding check reported a warning; use the source record.</p>}
+    <p>{g.summary || 'No summary was supplied in the Granite artifact.'}</p>
   </div>
 }
 
@@ -84,8 +78,9 @@ export function KitchenResults({ dataset, warnings }: { dataset: Dataset; warnin
       <div className="scroll-mt-20"><WidgetCard title="Review queue" subtitle="Ranked rows from this batch · expand a row for its supplied signals" bodyClassName="px-0">
         <RankedTable rows={dataset.rows} filters={filters} onFiltersChange={setFilters} datasetKey={dataset.id} onSelectCve={setSelectedCve}/>
       </WidgetCard></div>
-      <WidgetCard title="Gemini briefing" subtitle="Available summaries are fetched from the backend">
-        <GeminiPanel cveId={selectedCve}/>
+      <WidgetCard title="Signal rationale" subtitle="Why this row sits where it does">
+        <SignalPanel row={dataset.rows.find((row) => row.cve_id === selectedCve) ?? null}/>
+        <GraniteNote cveId={selectedCve}/>
       </WidgetCard>
     </div>
   </>

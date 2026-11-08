@@ -25,10 +25,11 @@ export function Kitchen({controller, onUpload, onServed, settled, onReview, hasR
     fetchBackendCapabilities(ac.signal).then((response) => {
       const supported = response.capabilities?.upload_scoring
       setUploadScoring(supported === true)
-      if (supported === false && controller.engine === 'api') controller.setEngine('client')
-    }).catch(() => { if (!ac.signal.aborted) { setUploadScoring(false); if (controller.engine === 'api') controller.setEngine('client') } })
+      if (supported === true) controller.setEngine('api')
+      else controller.setEngine('client')
+    }).catch(() => { if (!ac.signal.aborted) { setUploadScoring(false); controller.setEngine('client') } })
     return () => ac.abort()
-  }, [controller.engine, controller.setEngine])
+  }, [controller.setEngine])
   const active = busy || (phase.kind === 'done' && !settled && step !== 'plated')
   const presentation = useCallback((next: CookingStep) => setStep(next), [])
   const status = phase.kind === 'error' ? 'This batch needs another look.'

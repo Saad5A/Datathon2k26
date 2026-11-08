@@ -24,7 +24,7 @@ Owned paths (edit only these; shared files change via small PRs): `web/`
 | why-2026-is-different page | web/ | not started | judges |
 | methodology and leakage page | web/ | not started | judges |
 | deployed public URL and domain | web/ | not started | everyone |
-| standalone evolution visual with direct /evolve route | dashboard/evolution/ | implemented; production build includes dist/evolve | judges
+| standalone evolution visual | evolution/ | implemented; served separately on port 8010 | judges
 
 ## 3. What I need from others
 | Need | From | Status |
@@ -44,5 +44,5 @@ Owned paths (edit only these; shared files change via small PRs): `web/`
 - (none yet)
 
 ## 7. Changelog (append-only, newest first; format: YYYY-MM-DDTHH:MMZ | what changed | files | DECISION/ASK tag if any)
-- 2026-11-08T20:00Z | lightened evolution diagram and added standalone /evolve route | dashboard/evolution/, dashboard/vite.config.ts, dashboard/vercel.json |
+- 2026-11-08T20:00Z | moved the evolution visual to its own top-level directory and kept it separate from the pancake app | evolution/, evolution/README.md |
 - 2026-11-07T20:50Z | file created with initial plan | docs/kb/team/ui-dashboard.md |

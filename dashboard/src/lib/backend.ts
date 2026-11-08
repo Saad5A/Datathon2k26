@@ -203,7 +203,7 @@ export async function fetchModelsComparison(signal?: AbortSignal): Promise<Model
 /* ------------------------------------------------------------------ */
 
 export interface BackendSummary extends StatsSummary {
-  multi_model?: { gemini_explanations?: number }
+  multi_model?: { gemini_explanations?: number; granite_explanations?: number }
 }
 
 export interface BackendCapabilities {
