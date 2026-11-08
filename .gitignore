@@ -47,6 +47,11 @@ outputs/
 *.pt
 *.bin
 
+# Deliverables teammates and judges need must be committed
+!results/
+!results/*.csv
+!results/*.json
+!docs/*.csv
 #Skills
 .claude/
 .impeccable/
@@ -56,7 +61,6 @@ node_modules/
 dashboard/.env.local
 
 # Small contract fixtures are tracked despite the *.csv rule above
-!docs/*.csv
 !dashboard/public/*.csv
 
 # dashboard source dir named "data" (mock generator) must not be caught by the data/ rule above

@@ -1,0 +1,160 @@
+{
+  "script": "src/model/leakage.py",
+  "output_file": "results/leakage_table.csv",
+  "git_commit": "106386210e290f3896b362c5ad2df192087ec345",
+  "git_dirty": false,
+  "git_dirty_files": [],
+  "date_utc": "2026-11-08T03:10:12+00:00",
+  "code_sha256": {
+    "src/model/leakage.py": "8a9825d50d186393a06f429c94b8802054087ce35ded7821c285e54a5f2d8bea",
+    "src/model/sidecar.py": "6f6921fd27bbd5114d8bb42f48f9a44719fe8e43d2278120ef67db4b2b32ce71",
+    "src/model/pool.py": "f71136c9932544913ef8a48fb31aba65b1bc5fc8b7f2096bff9e6801dd545b27",
+    "src/model/metrics.py": "6678ffb0cb4ac6fb75445e1e6d2223c328eae99657e30578b994d7652714a0fe"
+  },
+  "python": "3.12.15",
+  "pool": "2025 test pool, snapshots 2025-01..2025-09, label y",
+  "rows": 35280,
+  "positives": 52,
+  "solo_auc_ci95": {
+    "nvd_status_analysed": [
+      0.6730424796216806,
+      0.6779703179384274
+    ],
+    "n_affected_cpes": [
+      0.7159834611838555,
+      0.821164888502849
+    ],
+    "n_references": [
+      0.579535391910063,
+      0.708259344962738
+    ],
+    "cvss3_blank": [
+      0.5178460004443762,
+      0.5198729713352338
+    ],
+    "cwe_blank": [
+      0.5205160254565456,
+      0.5226712632602523
+    ],
+    "has_affected_product": [
+      0.6728781971174961,
+      0.6778620162213431
+    ],
+    "ref_news_threat_link": [
+      0.5912291062873309,
+      0.710430814031389
+    ],
+    "ref_xforce_link": [
+      0.5,
+      0.5
+    ],
+    "ref_exploit_tag": [
+      0.6224398507449075,
+      0.7580979176204409
+    ],
+    "desc_exploitation_wording": [
+      0.516805350720298,
+      0.6012561698942337
+    ],
+    "epss": [
+      0.6115982551727744,
+      0.793579386946323
+    ],
+    "any_public_exploit": [
+      0.6319375638581746,
+      0.7632555568504787
+    ],
+    "n_exploit_flags": [
+      0.6326547256253312,
+      0.7647487483924224
+    ],
+    "asg_rate": [
+      0.66685489209612,
+      0.8189131607824827
+    ],
+    "asg_kev": [
+      0.5957488653559514,
+      0.7304816648662995
+    ],
+    "txt_masked_tfidf": [
+      0.7753780331650154,
+      0.8685816039351414
+    ],
+    "asg_rate_24m": [
+      0.657909801961664,
+      0.8058267530016384
+    ],
+    "cvss3_score": [
+      0.6588375960968355,
+      0.7965194359918261
+    ],
+    "attack_vector": [
+      0.5266527588627542,
+      0.6190890853247505
+    ]
+  },
+  "ci_method": "1000 paired row bootstrap resamples, seed 0, percentile 95%",
+  "ci_caveat": "For a value carried by every positive (or none), AUC = 1 - 0.5 x share of negatives with it, so the bootstrap CI only reflects the negatives and is near zero width. Quote positive_facts instead.",
+  "positive_facts": {
+    "nvd_status_Analyzed": {
+      "positives_with_value": 52,
+      "positives": 52,
+      "cp95_lower_share": 0.931518,
+      "negatives_share_with_value": 0.500681
+    },
+    "has_affected_product": {
+      "positives_with_value": 52,
+      "positives": 52,
+      "cp95_lower_share": 0.931518,
+      "negatives_share_with_value": 0.649427
+    },
+    "cvss3_present": {
+      "positives_with_value": 52,
+      "positives": 52,
+      "cp95_lower_share": 0.931518,
+      "negatives_share_with_value": 0.962303
+    },
+    "cwe_present": {
+      "positives_with_value": 52,
+      "positives": 52,
+      "cp95_lower_share": 0.931518,
+      "negatives_share_with_value": 0.956881
+    }
+  },
+  "positive_facts_method": "Clopper-Pearson exact two-sided 95% interval, lower end (Beta(0.025; k, n-k+1)).",
+  "news_rule": {
+    "tag": "Press/Media Coverage",
+    "domains": [
+      "arstechnica.com",
+      "bleepingcomputer.com",
+      "blog.talosintelligence.com",
+      "crowdstrike.com",
+      "darkreading.com",
+      "greynoise.io",
+      "helpnetsecurity.com",
+      "horizon3.ai",
+      "huntress.com",
+      "isc.sans.edu",
+      "krebsonsecurity.com",
+      "labs.greynoise.io",
+      "labs.watchtowr.com",
+      "mandiant.com",
+      "research.checkpoint.com",
+      "securelist.com",
+      "securityaffairs.com",
+      "securityweek.com",
+      "techcrunch.com",
+      "thehackernews.com",
+      "therecord.media",
+      "theregister.com",
+      "unit42.paloaltonetworks.com",
+      "volexity.com",
+      "welivesecurity.com",
+      "wired.com"
+    ],
+    "url_parts": [
+      "rapid7.com/blog/"
+    ]
+  },
+  "note": "Measures leak size in the 2025 backtest only. README 'Keep it fair': \"For 2026 vulnerabilities, `nvd_status`, `n_affected_cpes`, `n_references`, blank severity scores, and links to news or threat reports in `references.csv` can give part of the answer away, because NIST reviews attacked vulnerabilities first.\" DATA_DICTIONARY.md: \"can give much of the answer away\". The 2026 leak size cannot be measured (no 2026 labels)."
+}

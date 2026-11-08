@@ -1,0 +1,277 @@
+{
+ "drift.any_public_exploit.2025_pool.all": [
+  0.021542,
+  0.021541950113378686,
+  true
+ ],
+ "drift.any_public_exploit.2026_scoreboard.all": [
+  0.022637,
+  0.02263657630383927,
+  true
+ ],
+ "drift.assigner_share.github_advisories.2025_pool": [
+  0.05623582766439909,
+  0.05623582766439909,
+  true
+ ],
+ "drift.assigner_share.github_advisories.2026_scoreboard": [
+  0.14991055456171734,
+  0.14991055456171734,
+  true
+ ],
+ "drift.assigner_share.vulncheck.2025_pool": [
+  0.011394557823129252,
+  0.011394557823129252,
+  true
+ ],
+ "drift.assigner_share.vulncheck.2026_scoreboard": [
+  0.09346360258703729,
+  0.09346360258703729,
+  true
+ ],
+ "drift.cvss3_blank.2025_pool.all": [
+  0.037642,
+  0.03764172335600907,
+  true
+ ],
+ "drift.cvss3_blank.2026_scoreboard.all": [
+  0.087354,
+  0.08735379111049951,
+  true
+ ],
+ "drift.distinct_assigners.2025_pool": [
+  338,
+  338,
+  true
+ ],
+ "drift.distinct_assigners.2026_scoreboard": [
+  382,
+  382,
+  true
+ ],
+ "drift.epss_blank.2025_pool.all": [
+  0.098073,
+  0.09807256235827665,
+  true
+ ],
+ "drift.epss_blank.2026_scoreboard.all": [
+  0.019692,
+  0.019691757258841338,
+  true
+ ],
+ "drift.epss_gt_0_1.2025_pool.all": [
+  0.002438,
+  0.002437641723356009,
+  true
+ ],
+ "drift.epss_gt_0_1.2026_scoreboard.all": [
+  0.000908,
+  0.0009082152194853447,
+  true
+ ],
+ "drift.no_affected_product.2025_pool.all": [
+  0.350057,
+  0.35005668934240364,
+  true
+ ],
+ "drift.no_affected_product.2026_scoreboard.2026-08": [
+  0.664597,
+  0.6645972880248325,
+  true
+ ],
+ "drift.no_affected_product.2026_scoreboard.2026-09": [
+  0.679976,
+  0.6799758421688364,
+  true
+ ],
+ "drift.no_affected_product.2026_scoreboard.all": [
+  0.496353,
+  0.49635337828539977,
+  true
+ ],
+ "drift.no_prior_kev_share.2025_pool": [
+  0.361678,
+  0.36167800453514737,
+  true
+ ],
+ "drift.no_prior_kev_share.2026_scoreboard": [
+  0.237897,
+  0.23789734415852484,
+  true
+ ],
+ "drift.pool_rows_2025": [
+  35280,
+  35280,
+  true
+ ],
+ "drift.scoreboard_rows.2026-01": [
+  4295,
+  4295,
+  true
+ ],
+ "drift.scoreboard_rows.2026-02": [
+  4603,
+  4603,
+  true
+ ],
+ "drift.scoreboard_rows.2026-03": [
+  6227,
+  6227,
+  true
+ ],
+ "drift.scoreboard_rows.2026-04": [
+  5801,
+  5801,
+  true
+ ],
+ "drift.scoreboard_rows.2026-05": [
+  6922,
+  6922,
+  true
+ ],
+ "drift.scoreboard_rows.2026-07": [
+  17678,
+  17678,
+  true
+ ],
+ "drift.scoreboard_rows.2026-08": [
+  12242,
+  12242,
+  true
+ ],
+ "drift.scoreboard_rows.2026-09": [
+  14902,
+  14902,
+  true
+ ],
+ "drift.scoreboard_rows.total": [
+  72670,
+  72670,
+  true
+ ],
+ "leakage.positives.cvss3_present.count": [
+  52,
+  null,
+  false
+ ],
+ "leakage.positives.cvss3_present.cp95_lower": [
+  0.931518,
+  null,
+  false
+ ],
+ "leakage.positives.cwe_present.count": [
+  52,
+  null,
+  false
+ ],
+ "leakage.positives.cwe_present.cp95_lower": [
+  0.931518,
+  null,
+  false
+ ],
+ "leakage.positives.has_affected_product.count": [
+  52,
+  null,
+  false
+ ],
+ "leakage.positives.has_affected_product.cp95_lower": [
+  0.931518,
+  null,
+  false
+ ],
+ "leakage.positives.nvd_status_Analyzed.count": [
+  52,
+  null,
+  false
+ ],
+ "leakage.positives.nvd_status_Analyzed.cp95_lower": [
+  0.931518,
+  null,
+  false
+ ],
+ "leakage.solo_auc.any_public_exploit": [
+  0.7011,
+  0.7011,
+  true
+ ],
+ "leakage.solo_auc.asg_kev": [
+  0.6665,
+  null,
+  false
+ ],
+ "leakage.solo_auc.asg_rate": [
+  0.7463,
+  0.7463,
+  true
+ ],
+ "leakage.solo_auc.attack_vector": [
+  0.5752,
+  0.5752,
+  true
+ ],
+ "leakage.solo_auc.cvss3_blank": [
+  0.5188,
+  0.5188,
+  true
+ ],
+ "leakage.solo_auc.cvss3_score": [
+  0.7322,
+  0.7322,
+  true
+ ],
+ "leakage.solo_auc.cwe_blank": [
+  0.5216,
+  0.5216,
+  true
+ ],
+ "leakage.solo_auc.desc_exploitation_wording": [
+  0.557,
+  0.557,
+  true
+ ],
+ "leakage.solo_auc.epss": [
+  0.7073,
+  0.7073,
+  true
+ ],
+ "leakage.solo_auc.has_affected_product": [
+  0.6753,
+  0.6753,
+  true
+ ],
+ "leakage.solo_auc.n_affected_cpes": [
+  0.7673,
+  0.7673,
+  true
+ ],
+ "leakage.solo_auc.n_exploit_flags": [
+  0.7021,
+  0.7021,
+  true
+ ],
+ "leakage.solo_auc.n_references": [
+  0.6434,
+  0.6434,
+  true
+ ],
+ "leakage.solo_auc.nvd_status_analysed": [
+  0.6754,
+  0.6754,
+  true
+ ],
+ "leakage.solo_auc.ref_exploit_tag": [
+  0.6904,
+  0.6904,
+  true
+ ],
+ "leakage.solo_auc.ref_news_threat_link": [
+  0.6524,
+  0.5951,
+  false
+ ],
+ "leakage.solo_auc.ref_xforce_link": [
+  0.5,
+  0.5,
+  true
+ ]
+}

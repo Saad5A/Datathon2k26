@@ -1,0 +1,392 @@
+{
+ "top500_header": [
+  "cve_id"
+ ],
+ "top500_ncols_set": [
+  1
+ ],
+ "top500_n": 500,
+ "top500_unique": 500,
+ "top500_in_scoreboard": 500,
+ "top500_eq_rank1_500": true,
+ "top500_on_kev_by_snapshot_end": 0,
+ "top500_on_kev_ever": 0,
+ "scoreboard_on_kev_ever": 0,
+ "cols_ok": true,
+ "n_rows": 72670,
+ "unique": 72670,
+ "set_eq_scoreboard": true,
+ "rank_perm": true,
+ "priority_ok": true,
+ "tier_counts": {
+  "P2": 72170,
+  "P1": 400,
+  "P0": 100
+ },
+ "in_top500_ok": true,
+ "reasons_bad": 0,
+ "reasons_len_hist": {
+  "3": 67714,
+  "2": 4869,
+  "1": 86,
+  "0": 1
+ },
+ "epss_mismatch": 0,
+ "any_public_exploit_mismatch": 0,
+ "snapshot_mismatch": 0,
+ "published_mismatch_vs_scoreboard": 0,
+ "assigner_mismatch": 0,
+ "published_mismatch_vs_vuln": 0,
+ "published_after_snapshot_month": 0,
+ "snapshot_months": {
+  "2026-01": 4295,
+  "2026-02": 4603,
+  "2026-03": 6227,
+  "2026-04": 5801,
+  "2026-05": 6922,
+  "2026-07": 17678,
+  "2026-08": 12242,
+  "2026-09": 14902
+ },
+ "mono_top": true,
+ "mono_rest": true,
+ "max_assigner_top500": 50,
+ "asg_sample": [
+  {
+   "cve_id": "CVE-2022-50913",
+   "month": "2026-01",
+   "assigner": "disclosure@vulncheck.com",
+   "kev": 10,
+   "n": 1120,
+   "rate": 0.0088
+  },
+  {
+   "cve_id": "CVE-2025-71121",
+   "month": "2026-01",
+   "assigner": "416baaa9-dc9f-4396-8d5f-8c081fb06d67",
+   "kev": 6,
+   "n": 9962,
+   "rate": 0.0006
+  },
+  {
+   "cve_id": "CVE-2025-14453",
+   "month": "2026-01",
+   "assigner": "security@wordfence.com",
+   "kev": 0,
+   "n": 8176,
+   "rate": 0.0
+  },
+  {
+   "cve_id": "CVE-2026-24577",
+   "month": "2026-01",
+   "assigner": "audit@patchstack.com",
+   "kev": 0,
+   "n": 14127,
+   "rate": 0.0
+  },
+  {
+   "cve_id": "CVE-2026-26290",
+   "month": "2026-02",
+   "assigner": "ics-cert@hq.dhs.gov",
+   "kev": 3,
+   "n": 1739,
+   "rate": 0.0017
+  },
+  {
+   "cve_id": "CVE-2026-1847",
+   "month": "2026-02",
+   "assigner": "cna@mongodb.com",
+   "kev": 1,
+   "n": 79,
+   "rate": 0.0101
+  },
+  {
+   "cve_id": "CVE-2026-28557",
+   "month": "2026-02",
+   "assigner": "disclosure@vulncheck.com",
+   "kev": 10,
+   "n": 1587,
+   "rate": 0.0062
+  },
+  {
+   "cve_id": "CVE-2025-68846",
+   "month": "2026-02",
+   "assigner": "audit@patchstack.com",
+   "kev": 0,
+   "n": 14682,
+   "rate": 0.0
+  },
+  {
+   "cve_id": "CVE-2026-4219",
+   "month": "2026-03",
+   "assigner": "cna@vuldb.com",
+   "kev": 4,
+   "n": 12425,
+   "rate": 0.0003
+  },
+  {
+   "cve_id": "CVE-2026-30234",
+   "month": "2026-03",
+   "assigner": "security-advisories@github.com",
+   "kev": 22,
+   "n": 10634,
+   "rate": 0.0021
+  },
+  {
+   "cve_id": "CVE-2025-47373",
+   "month": "2026-03",
+   "assigner": "product-security@qualcomm.com",
+   "kev": 11,
+   "n": 1382,
+   "rate": 0.0078
+  },
+  {
+   "cve_id": "CVE-2026-30308",
+   "month": "2026-03",
+   "assigner": "cve@mitre.org",
+   "kev": 131,
+   "n": 31963,
+   "rate": 0.0041
+  },
+  {
+   "cve_id": "CVE-2026-5460",
+   "month": "2026-04",
+   "assigner": "facts@wolfssl.com",
+   "kev": 0,
+   "n": 46,
+   "rate": 0.0
+  },
+  {
+   "cve_id": "CVE-2026-34828",
+   "month": "2026-04",
+   "assigner": "security-advisories@github.com",
+   "kev": 22,
+   "n": 12193,
+   "rate": 0.0018
+  },
+  {
+   "cve_id": "CVE-2026-33793",
+   "month": "2026-04",
+   "assigner": "sirt@juniper.net",
+   "kev": 6,
+   "n": 580,
+   "rate": 0.01
+  },
+  {
+   "cve_id": "CVE-2025-50670",
+   "month": "2026-04",
+   "assigner": "cve@mitre.org",
+   "kev": 131,
+   "n": 32354,
+   "rate": 0.004
+  },
+  {
+   "cve_id": "CVE-2026-44088",
+   "month": "2026-05",
+   "assigner": "cvd@cert.pl",
+   "kev": 0,
+   "n": 340,
+   "rate": 0.0
+  },
+  {
+   "cve_id": "CVE-2026-46125",
+   "month": "2026-05",
+   "assigner": "416baaa9-dc9f-4396-8d5f-8c081fb06d67",
+   "kev": 6,
+   "n": 10983,
+   "rate": 0.0005
+  },
+  {
+   "cve_id": "CVE-2025-66592",
+   "month": "2026-05",
+   "assigner": "security@synology.com",
+   "kev": 0,
+   "n": 160,
+   "rate": 0.0
+  },
+  {
+   "cve_id": "CVE-2026-41947",
+   "month": "2026-05",
+   "assigner": "disclosure@vulncheck.com",
+   "kev": 10,
+   "n": 3227,
+   "rate": 0.0031
+  },
+  {
+   "cve_id": "CVE-2026-53304",
+   "month": "2026-07",
+   "assigner": "416baaa9-dc9f-4396-8d5f-8c081fb06d67",
+   "kev": 6,
+   "n": 12523,
+   "rate": 0.0005
+  },
+  {
+   "cve_id": "CVE-2026-52846",
+   "month": "2026-07",
+   "assigner": "security-advisories@github.com",
+   "kev": 22,
+   "n": 15905,
+   "rate": 0.0014
+  },
+  {
+   "cve_id": "CVE-2020-37256",
+   "month": "2026-07",
+   "assigner": "disclosure@vulncheck.com",
+   "kev": 10,
+   "n": 4386,
+   "rate": 0.0023
+  },
+  {
+   "cve_id": "CVE-2026-13532",
+   "month": "2026-07",
+   "assigner": "cna@vuldb.com",
+   "kev": 4,
+   "n": 14932,
+   "rate": 0.0003
+  },
+  {
+   "cve_id": "CVE-2026-70940",
+   "month": "2026-08",
+   "assigner": "secalert_us@oracle.com",
+   "kev": 9,
+   "n": 3532,
+   "rate": 0.0025
+  },
+  {
+   "cve_id": "CVE-2026-48437",
+   "month": "2026-08",
+   "assigner": "psirt@adobe.com",
+   "kev": 15,
+   "n": 3659,
+   "rate": 0.0041
+  },
+  {
+   "cve_id": "CVE-2026-71940",
+   "month": "2026-08",
+   "assigner": "disclosure@vulncheck.com",
+   "kev": 10,
+   "n": 5087,
+   "rate": 0.002
+  },
+  {
+   "cve_id": "CVE-2026-57104",
+   "month": "2026-08",
+   "assigner": "secure@microsoft.com",
+   "kev": 159,
+   "n": 6626,
+   "rate": 0.0239
+  },
+  {
+   "cve_id": "CVE-2026-75886",
+   "month": "2026-09",
+   "assigner": "secalert@redhat.com",
+   "kev": 7,
+   "n": 2903,
+   "rate": 0.0024
+  },
+  {
+   "cve_id": "CVE-2026-93337",
+   "month": "2026-09",
+   "assigner": "disclosure@vulncheck.com",
+   "kev": 10,
+   "n": 6328,
+   "rate": 0.0016
+  },
+  {
+   "cve_id": "CVE-2026-61525",
+   "month": "2026-09",
+   "assigner": "security-advisories@github.com",
+   "kev": 22,
+   "n": 18574,
+   "rate": 0.0012
+  },
+  {
+   "cve_id": "CVE-2026-84064",
+   "month": "2026-09",
+   "assigner": "psirt@us.ibm.com",
+   "kev": 1,
+   "n": 3376,
+   "rate": 0.0003
+  },
+  {
+   "cve_id": "CVE-2026-49098",
+   "month": "2026-07",
+   "assigner": "security@apache.org",
+   "kev": 18,
+   "n": 1505,
+   "rate": 0.0118
+  },
+  {
+   "cve_id": "CVE-2026-60581",
+   "month": "2026-07",
+   "assigner": "secalert_us@oracle.com",
+   "kev": 9,
+   "n": 2424,
+   "rate": 0.0037
+  },
+  {
+   "cve_id": "CVE-2026-19626",
+   "month": "2026-08",
+   "assigner": "vulnreport@tenable.com",
+   "kev": 4,
+   "n": 322,
+   "rate": 0.0117
+  },
+  {
+   "cve_id": "CVE-2025-71334",
+   "month": "2026-07",
+   "assigner": "disclosure@vulncheck.com",
+   "kev": 10,
+   "n": 4386,
+   "rate": 0.0023
+  },
+  {
+   "cve_id": "CVE-2026-76639",
+   "month": "2026-08",
+   "assigner": "disclosure@vulncheck.com",
+   "kev": 10,
+   "n": 5087,
+   "rate": 0.002
+  },
+  {
+   "cve_id": "CVE-2025-56005",
+   "month": "2026-01",
+   "assigner": "cve@mitre.org",
+   "kev": 131,
+   "n": 31450,
+   "rate": 0.0042
+  },
+  {
+   "cve_id": "CVE-2026-5788",
+   "month": "2026-05",
+   "assigner": "3c1d8aa1-5a33-4ea4-8992-aadd6440af75",
+   "kev": 12,
+   "n": 174,
+   "rate": 0.0619
+  },
+  {
+   "cve_id": "CVE-2026-19912",
+   "month": "2026-08",
+   "assigner": "cret@cert.org",
+   "kev": 2,
+   "n": 279,
+   "rate": 0.0067
+  },
+  {
+   "cve_id": "CVE-2026-59543",
+   "month": "2026-07",
+   "assigner": "audit@patchstack.com",
+   "kev": 0,
+   "n": 16831,
+   "rate": 0.0
+  },
+  {
+   "cve_id": "CVE-2026-48349",
+   "month": "2026-07",
+   "assigner": "psirt@adobe.com",
+   "kev": 15,
+   "n": 3552,
+   "rate": 0.0042
+  }
+ ]
+}

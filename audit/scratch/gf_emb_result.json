@@ -1,0 +1,35 @@
+{
+ "input_sha256": "2fc1cd5f6e9b4c893c924c3e1fa2933ff2a6a550b85589a59cb03a80e674e276",
+ "sha_match_local_meta": true,
+ "sha_match_watsonx_meta": true,
+ "emb_shape": [
+  147818,
+  768
+ ],
+ "emb_ids_unique": true,
+ "finite": true,
+ "norm_min": 0.9999998769016153,
+ "norm_max": 1.0000001438444068,
+ "emb_ids_eq_input_ids": true,
+ "pool_missing": 0,
+ "sb_missing": 0,
+ "pool_rows": 75148,
+ "sb_rows": 72670,
+ "n_extra_ids": 0,
+ "text_eq_my_masked_raw": 147818,
+ "text_rows": 147818,
+ "texts_with_wording_left": 0,
+ "raw_with_wording": 160,
+ "wx_rows": 1500,
+ "wx_unique": true,
+ "wx_cos_min": 0.9999822489159752,
+ "wx_cos_mean": 0.9999880259242024,
+ "wx_n_cos_ge_0_99995": 1500,
+ "wx_max_abs_diff": 0.0018563717603683472,
+ "wx_n_bit_identical": 0,
+ "wx_norm_min_max": [
+  0.9999999399179087,
+  1.0000001028222163
+ ],
+ "wx_cos_shuffled_mean": 0.63616718804551
+}

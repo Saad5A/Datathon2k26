@@ -1,0 +1,20 @@
+{
+  "rows": 147818,
+  "rows_pool": 75148,
+  "rows_scoreboard": 72670,
+  "overlap": 0,
+  "scoreboard_missing_description": 0,
+  "empty_texts": 0,
+  "unique_texts": 141532,
+  "chars_percentiles": {
+    "p50": 341,
+    "p90": 809,
+    "p99": 2650,
+    "p100": 3997
+  },
+  "est_tokens_total": 16801448,
+  "est_tokens_mean": 113.7,
+  "est_tokens_capped_total": 16231786,
+  "share_over_max_tokens": 0.0169,
+  "_note": "Token figures are ESTIMATES (characters / 4), not the model tokenizer; max input 512."
+}

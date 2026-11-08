@@ -1,0 +1,25 @@
+hgb_signals_struct {'top500_best_worst': (np.int64(19), np.int64(19)), 'top1000_best_worst': (np.int64(20), np.int64(19)), 'median_rank_range_approx': [3380.0, 3818.0]}
+hgb_signals_struct_assigner {'top500_best_worst': (np.int64(14), np.int64(14)), 'top1000_best_worst': (np.int64(24), np.int64(24)), 'median_rank_range_approx': [1635.0, 1637.0]}
+hgb_all_text {'top500_best_worst': (np.int64(21), np.int64(21)), 'top1000_best_worst': (np.int64(25), np.int64(25)), 'median_rank_range_approx': [1086.0, 1086.5]}
+leaky_ncpe {'top500_best_worst': (np.int64(26), np.int64(26)), 'top1000_best_worst': (np.int64(29), np.int64(29)), 'median_rank_range_approx': [430.0, 430.0]}
+leaky_ncpe-hgb_all_text {'auc_diff': np.float64(0.0298945441126377), 'auc_ci': [0.00843484179653931, 0.05470369159394807], 'top500_exp_diff': np.float64(5.0), 'top500_ci': [1.0, 10.0], 'p_auc_le0': 0.003}
+leaky_ncpe-best_check {'auc_diff': np.float64(0.025296202321579808), 'auc_ci': [-0.009134390106229833, 0.06121548492786162], 'top500_exp_diff': np.float64(1.0), 'top500_ci': [-2.0, 5.0], 'p_auc_le0': 0.071}
+best_check {'auc': np.float64(0.8880206741141226), 'top500_id': 25}
+p3.fold1.drop_signals {'auc': [0.8366, 0.8521], 'top500_cve_id': [10, 12], 'top500_expected': [10.0, 12.0], 'work50_cve_id': [2319.0, 3443.0], 'avg_precision': [0.01, 0.0128]}
+p3.fold1.drop_assigner {'auc': [0.8481, 0.8674], 'top500_cve_id': [15, 18], 'top500_expected': [15.0, 18.0], 'work50_cve_id': [881.0, 1668.0], 'avg_precision': [0.0911, 0.1185]}
+p3.fold1.drop_text {'auc': [0.836, 0.836], 'top500_cve_id': [9, 9], 'top500_expected': [9.0, 9.0], 'work50_cve_id': [1751.0, 1751.0], 'avg_precision': [0.0497, 0.0497]}
+p3.fold1.unmasked_text {'auc': [0.8501, 0.8773], 'top500_cve_id': [20, 22], 'top500_expected': [20.0, 22.0], 'work50_cve_id': [860.0, 1127.0], 'avg_precision': [0.0734, 0.0865]}
+p3.fold1.plus_structured {'auc': [0.8822, 0.8949], 'top500_cve_id': [19, 22], 'top500_expected': [19.0, 22.0], 'work50_cve_id': [955.0, 1144.0], 'avg_precision': [0.045, 0.0731]}
+p3.fold1.early_stopping_on {'auc': [0.8613, 0.8893], 'top500_cve_id': [15, 22], 'top500_expected': [15.0, 22.0], 'work50_cve_id': [1201.0, 1463.0], 'avg_precision': [0.045, 0.0673]}
+p3.fold1.C1 {'auc': [0.8505, 0.8847], 'top500_cve_id': [15, 22], 'top500_expected': [15.0, 22.0], 'work50_cve_id': [855.0, 1355.0], 'avg_precision': [0.0647, 0.0922]}
+p3.fold1.C2 {'auc': [0.7949, 0.883], 'top500_cve_id': [16, 18], 'top500_expected': [16.0, 18.6667], 'work50_cve_id': [1035.0, 1905.0], 'avg_precision': [0.0392, 0.0588]}
+p3.fold1.C3 {'auc': [0.7981, 0.7999], 'top500_cve_id': [18, 20], 'top500_expected': [18.0, 20.0], 'work50_cve_id': [781.0, 1059.0], 'avg_precision': [0.0593, 0.0642]}
+p3.fold2.drop_signals {'auc': [0.7874, 0.8528], 'top500_cve_id': [3, 6], 'top500_expected': [3.0, 6.0], 'work50_cve_id': [1382.0, 1769.0], 'avg_precision': [0.0074, 0.0113]}
+p3.fold2.drop_assigner {'auc': [0.8588, 0.8939], 'top500_cve_id': [11, 13], 'top500_expected': [11.0, 13.0], 'work50_cve_id': [896.0, 1687.0], 'avg_precision': [0.1038, 0.1311]}
+p3.fold2.drop_text {'auc': [0.7876, 0.7876], 'top500_cve_id': [8, 8], 'top500_expected': [8.0, 8.0], 'work50_cve_id': [1334.0, 1334.0], 'avg_precision': [0.0426, 0.0426]}
+p3.fold2.unmasked_text {'auc': [0.853, 0.8843], 'top500_cve_id': [10, 12], 'top500_expected': [10.0, 12.0], 'work50_cve_id': [851.0, 1329.0], 'avg_precision': [0.0607, 0.083]}
+p3.fold2.plus_structured {'auc': [0.854, 0.8875], 'top500_cve_id': [9, 12], 'top500_expected': [9.0, 12.0], 'work50_cve_id': [801.0, 892.0], 'avg_precision': [0.069, 0.0934]}
+p3.fold2.early_stopping_on {'auc': [0.8404, 0.8943], 'top500_cve_id': [6, 11], 'top500_expected': [6.0, 11.0], 'work50_cve_id': [1039.0, 1348.0], 'avg_precision': [0.0108, 0.0685]}
+p3.fold2.C1 {'auc': [0.8542, 0.8912], 'top500_cve_id': [11, 12], 'top500_expected': [11.0, 12.0], 'work50_cve_id': [1036.0, 1412.0], 'avg_precision': [0.0585, 0.0845]}
+p3.fold2.C2 {'auc': [0.8547, 0.8891], 'top500_cve_id': [10, 13], 'top500_expected': [10.0, 13.0], 'work50_cve_id': [770.0, 1662.0], 'avg_precision': [0.0678, 0.0988]}
+p3.fold2.C3 {'auc': [0.8693, 0.8807], 'top500_cve_id': [13, 13], 'top500_expected': [13.0, 13.0], 'work50_cve_id': [651.0, 700.0], 'avg_precision': [0.0746, 0.0829]}

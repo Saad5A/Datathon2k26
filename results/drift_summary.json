@@ -1,0 +1,423 @@
+{
+  "periods": {
+    "2025_pool": "backtest test pool: CVEs published 2025-01..2025-09, not on KEV at snapshot (src/model/pool.py), snapshot = publish month",
+    "2026_scoreboard": "scoreboard_2026.csv, joined to vulnerabilities.csv on cve_id"
+  },
+  "rows": {
+    "2025_pool": 35280,
+    "2026_scoreboard": 72670,
+    "2026_scoreboard_without_vulnerabilities_row": 0
+  },
+  "monthly_volume": {
+    "cves_published_per_month_vulnerabilities_csv": {
+      "2024-01": 2594,
+      "2024-02": 2778,
+      "2024-03": 3309,
+      "2024-04": 3621,
+      "2024-05": 4999,
+      "2024-06": 3078,
+      "2024-07": 3113,
+      "2024-08": 2896,
+      "2024-09": 2514,
+      "2024-10": 3564,
+      "2024-11": 4056,
+      "2024-12": 3431,
+      "2025-01": 4275,
+      "2025-02": 3673,
+      "2025-03": 3998,
+      "2025-04": 4034,
+      "2025-05": 3980,
+      "2025-06": 3681,
+      "2025-07": 3776,
+      "2025-08": 3628,
+      "2025-09": 4321,
+      "2025-10": 4273,
+      "2025-11": 3020,
+      "2025-12": 5491,
+      "2026-01": 4302,
+      "2026-02": 4616,
+      "2026-03": 6234,
+      "2026-04": 5810,
+      "2026-05": 6936,
+      "2026-06": 7942,
+      "2026-07": 9770,
+      "2026-08": 12256,
+      "2026-09": 14928
+    },
+    "pool_rows_per_snapshot_month_2025": {
+      "2025-01": 4267,
+      "2025-02": 3664,
+      "2025-03": 3982,
+      "2025-04": 4024,
+      "2025-05": 3967,
+      "2025-06": 3674,
+      "2025-07": 3768,
+      "2025-08": 3621,
+      "2025-09": 4313
+    },
+    "scoreboard_rows_per_snapshot_month_2026": {
+      "2026-01": 4295,
+      "2026-02": 4603,
+      "2026-03": 6227,
+      "2026-04": 5801,
+      "2026-05": 6922,
+      "2026-07": 17678,
+      "2026-08": 12242,
+      "2026-09": 14902
+    }
+  },
+  "assigner_mix": {
+    "distinct_assigners": {
+      "2025_pool": 338,
+      "2026_scoreboard": 382
+    },
+    "top15_2025_pool": [
+      {
+        "assigner": "audit@patchstack.com",
+        "share_2025_pool": 0.157625,
+        "share_2026_scoreboard": 0.056034
+      },
+      {
+        "assigner": "cna@vuldb.com",
+        "share_2025_pool": 0.1339,
+        "share_2026_scoreboard": 0.073689
+      },
+      {
+        "assigner": "416baaa9-dc9f-4396-8d5f-8c081fb06d67",
+        "share_2025_pool": 0.10958,
+        "share_2026_scoreboard": 0.098349
+      },
+      {
+        "assigner": "cve@mitre.org",
+        "share_2025_pool": 0.107256,
+        "share_2026_scoreboard": 0.045824
+      },
+      {
+        "assigner": "security@wordfence.com",
+        "share_2025_pool": 0.066468,
+        "share_2026_scoreboard": 0.042851
+      },
+      {
+        "assigner": "security-advisories@github.com",
+        "share_2025_pool": 0.056236,
+        "share_2026_scoreboard": 0.149911
+      },
+      {
+        "assigner": "secure@microsoft.com",
+        "share_2025_pool": 0.02568,
+        "share_2026_scoreboard": 0.040471
+      },
+      {
+        "assigner": "psirt@adobe.com",
+        "share_2025_pool": 0.017829,
+        "share_2026_scoreboard": 0.01138
+      },
+      {
+        "assigner": "product-security@apple.com",
+        "share_2025_pool": 0.015164,
+        "share_2026_scoreboard": 0.011133
+      },
+      {
+        "assigner": "contact@wpscan.com",
+        "share_2025_pool": 0.014909,
+        "share_2026_scoreboard": 0.019898
+      },
+      {
+        "assigner": "psirt@us.ibm.com",
+        "share_2025_pool": 0.014116,
+        "share_2026_scoreboard": 0.017036
+      },
+      {
+        "assigner": "disclosure@vulncheck.com",
+        "share_2025_pool": 0.011395,
+        "share_2026_scoreboard": 0.093464
+      },
+      {
+        "assigner": "zdi-disclosures@trendmicro.com",
+        "share_2025_pool": 0.010658,
+        "share_2026_scoreboard": 0.003027
+      },
+      {
+        "assigner": "security@huntr.dev",
+        "share_2025_pool": 0.009722,
+        "share_2026_scoreboard": 0.001005
+      },
+      {
+        "assigner": "cve-coordination@incibe.es",
+        "share_2025_pool": 0.007426,
+        "share_2026_scoreboard": 0.002683
+      }
+    ],
+    "top15_2026_scoreboard": [
+      {
+        "assigner": "security-advisories@github.com",
+        "share_2025_pool": 0.056236,
+        "share_2026_scoreboard": 0.149911
+      },
+      {
+        "assigner": "416baaa9-dc9f-4396-8d5f-8c081fb06d67",
+        "share_2025_pool": 0.10958,
+        "share_2026_scoreboard": 0.098349
+      },
+      {
+        "assigner": "disclosure@vulncheck.com",
+        "share_2025_pool": 0.011395,
+        "share_2026_scoreboard": 0.093464
+      },
+      {
+        "assigner": "cna@vuldb.com",
+        "share_2025_pool": 0.1339,
+        "share_2026_scoreboard": 0.073689
+      },
+      {
+        "assigner": "audit@patchstack.com",
+        "share_2025_pool": 0.157625,
+        "share_2026_scoreboard": 0.056034
+      },
+      {
+        "assigner": "cve@mitre.org",
+        "share_2025_pool": 0.107256,
+        "share_2026_scoreboard": 0.045824
+      },
+      {
+        "assigner": "security@wordfence.com",
+        "share_2025_pool": 0.066468,
+        "share_2026_scoreboard": 0.042851
+      },
+      {
+        "assigner": "secalert_us@oracle.com",
+        "share_2025_pool": 0.006661,
+        "share_2026_scoreboard": 0.042315
+      },
+      {
+        "assigner": "secure@microsoft.com",
+        "share_2025_pool": 0.02568,
+        "share_2026_scoreboard": 0.040471
+      },
+      {
+        "assigner": "chrome-cve-admin@google.com",
+        "share_2025_pool": 0.002976,
+        "share_2026_scoreboard": 0.040292
+      },
+      {
+        "assigner": "contact@wpscan.com",
+        "share_2025_pool": 0.014909,
+        "share_2026_scoreboard": 0.019898
+      },
+      {
+        "assigner": "psirt@us.ibm.com",
+        "share_2025_pool": 0.014116,
+        "share_2026_scoreboard": 0.017036
+      },
+      {
+        "assigner": "secalert@redhat.com",
+        "share_2025_pool": 0.006774,
+        "share_2026_scoreboard": 0.014256
+      },
+      {
+        "assigner": "security@apache.org",
+        "share_2025_pool": 0.004535,
+        "share_2026_scoreboard": 0.012412
+      },
+      {
+        "assigner": "psirt@adobe.com",
+        "share_2025_pool": 0.017829,
+        "share_2026_scoreboard": 0.01138
+      }
+    ]
+  },
+  "missing_data_by_snapshot_month": {
+    "2025_pool": {
+      "2025-01": {
+        "rows": 4267,
+        "no_affected_product": 0.408015,
+        "cvss3_blank": 0.014999,
+        "epss_blank": 0.447387,
+        "any_public_exploit": 0.016405,
+        "epss_gt_0_1": 0.0
+      },
+      "2025-02": {
+        "rows": 3664,
+        "no_affected_product": 0.282751,
+        "cvss3_blank": 0.018286,
+        "epss_blank": 0.232533,
+        "any_public_exploit": 0.01774,
+        "epss_gt_0_1": 0.0
+      },
+      "2025-03": {
+        "rows": 3982,
+        "no_affected_product": 0.358363,
+        "cvss3_blank": 0.031391,
+        "epss_blank": 0.082622,
+        "any_public_exploit": 0.021346,
+        "epss_gt_0_1": 0.004269
+      },
+      "2025-04": {
+        "rows": 4024,
+        "no_affected_product": 0.428926,
+        "cvss3_blank": 0.028827,
+        "epss_blank": 0.024354,
+        "any_public_exploit": 0.020129,
+        "epss_gt_0_1": 0.002237
+      },
+      "2025-05": {
+        "rows": 3967,
+        "no_affected_product": 0.293673,
+        "cvss3_blank": 0.033527,
+        "epss_blank": 0.004537,
+        "any_public_exploit": 0.021931,
+        "epss_gt_0_1": 0.007562
+      },
+      "2025-06": {
+        "rows": 3674,
+        "no_affected_product": 0.327708,
+        "cvss3_blank": 0.037289,
+        "epss_blank": 0.013065,
+        "any_public_exploit": 0.019869,
+        "epss_gt_0_1": 0.001633
+      },
+      "2025-07": {
+        "rows": 3768,
+        "no_affected_product": 0.286093,
+        "cvss3_blank": 0.065287,
+        "epss_blank": 0.020435,
+        "any_public_exploit": 0.028132,
+        "epss_gt_0_1": 0.003185
+      },
+      "2025-08": {
+        "rows": 3621,
+        "no_affected_product": 0.398785,
+        "cvss3_blank": 0.077327,
+        "epss_blank": 0.007457,
+        "any_public_exploit": 0.025407,
+        "epss_gt_0_1": 0.001657
+      },
+      "2025-09": {
+        "rows": 4313,
+        "no_affected_product": 0.35451,
+        "cvss3_blank": 0.037097,
+        "epss_blank": 0.023649,
+        "any_public_exploit": 0.023418,
+        "epss_gt_0_1": 0.001391
+      },
+      "all": {
+        "rows": 35280,
+        "no_affected_product": 0.350057,
+        "cvss3_blank": 0.037642,
+        "epss_blank": 0.098073,
+        "any_public_exploit": 0.021542,
+        "epss_gt_0_1": 0.002438
+      }
+    },
+    "2026_scoreboard": {
+      "2026-01": {
+        "rows": 4295,
+        "no_affected_product": 0.40326,
+        "cvss3_blank": 0.057974,
+        "epss_blank": 0.009546,
+        "any_public_exploit": 0.025844,
+        "epss_gt_0_1": 0.000931
+      },
+      "2026-02": {
+        "rows": 4603,
+        "no_affected_product": 0.340647,
+        "cvss3_blank": 0.043667,
+        "epss_blank": 0.002824,
+        "any_public_exploit": 0.02607,
+        "epss_gt_0_1": 0.000869
+      },
+      "2026-03": {
+        "rows": 6227,
+        "no_affected_product": 0.286494,
+        "cvss3_blank": 0.016862,
+        "epss_blank": 0.036133,
+        "any_public_exploit": 0.022804,
+        "epss_gt_0_1": 0.001445
+      },
+      "2026-04": {
+        "rows": 5801,
+        "no_affected_product": 0.319772,
+        "cvss3_blank": 0.022238,
+        "epss_blank": 0.026375,
+        "any_public_exploit": 0.029133,
+        "epss_gt_0_1": 0.001207
+      },
+      "2026-05": {
+        "rows": 6922,
+        "no_affected_product": 0.428489,
+        "cvss3_blank": 0.055764,
+        "epss_blank": 0.005056,
+        "any_public_exploit": 0.024415,
+        "epss_gt_0_1": 0.0013
+      },
+      "2026-07": {
+        "rows": 17678,
+        "no_affected_product": 0.446657,
+        "cvss3_blank": 0.068107,
+        "epss_blank": 0.006336,
+        "any_public_exploit": 0.02489,
+        "epss_gt_0_1": 0.00164
+      },
+      "2026-08": {
+        "rows": 12242,
+        "no_affected_product": 0.664597,
+        "cvss3_blank": 0.137559,
+        "epss_blank": 0.025159,
+        "any_public_exploit": 0.01985,
+        "epss_gt_0_1": 0.000327
+      },
+      "2026-09": {
+        "rows": 14902,
+        "no_affected_product": 0.679976,
+        "cvss3_blank": 0.160381,
+        "epss_blank": 0.036505,
+        "any_public_exploit": 0.016843,
+        "epss_gt_0_1": 0.0
+      },
+      "all": {
+        "rows": 72670,
+        "no_affected_product": 0.496353,
+        "cvss3_blank": 0.087354,
+        "epss_blank": 0.019692,
+        "any_public_exploit": 0.022637,
+        "epss_gt_0_1": 0.000908
+      }
+    }
+  },
+  "assigner_no_prior_kev_share": {
+    "2025_pool": {
+      "2025-01": 0.439888,
+      "2025-02": 0.327511,
+      "2025-03": 0.46434,
+      "2025-04": 0.456262,
+      "2025-05": 0.354424,
+      "2025-06": 0.309472,
+      "2025-07": 0.241507,
+      "2025-08": 0.30544,
+      "2025-09": 0.333642,
+      "all": 0.361678
+    },
+    "2026_scoreboard": {
+      "2026-01": 0.346449,
+      "2026-02": 0.298935,
+      "2026-03": 0.269953,
+      "2026-04": 0.185658,
+      "2026-05": 0.215256,
+      "2026-07": 0.246238,
+      "2026-08": 0.228884,
+      "2026-09": 0.202724,
+      "all": 0.237897
+    }
+  },
+  "notes": [
+    "June 2026 signals are missing, so June 2026 CVEs use snapshot_month 2026-07: the 2026-07 scoreboard group holds June and July publications. 2026 per-month rates are grouped by snapshot_month.",
+    "The 2026 scoreboard excludes CVEs already on KEV at their snapshot (built by the organisers with KEV data after 2025-12-31 that we do not have). The 2025 pool applies the same exclusion with our KEV file.",
+    "assigner_no_prior_kev_share: share of rows whose assigner had 0 rows in known_exploited.csv with date_added before the first day of the row's snapshot month; every KEV row is mapped to its assigner via vulnerabilities.csv whatever the CVE's publish year (all 1,484 map). This is wider than the model's asg_kev feature, which counts only CVEs published 2021+.",
+    "KEV additions during 2026 are not in our KEV file (it ends 2025-12-31), so the 2026 no-prior-KEV share is an upper bound: those additions could only lower it.",
+    "cvss3 and product presence are today's NVD values: 2026 CVEs have had less time for NIST analysis (51,046 of 92,205 2026 CVEs unreviewed per README), so blank rates mix real drift with review backlog.",
+    "epss_blank and any_public_exploit come from snapshot-month signals; Feb 2025 signals miss about 14,500 CVEs and EPSS changed model in March 2025, so 2025-02 and 2025-01 EPSS rates are not comparable to later months.",
+    "monthly_volume.cves_published_per_month counts today's vulnerabilities.csv (rejected CVEs removed).",
+    "GitHub advisories = assigner security-advisories@github.com only (product-cna@github.com is separate); VulnCheck = disclosure@vulncheck.com.",
+    "No 2026 accuracy is claimed anywhere here: there are no 2026 labels."
+  ]
+}

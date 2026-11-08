@@ -1,0 +1,395 @@
+{
+  "notes": [
+    "Backtest only: 2025 CVEs scored with information available at their publication month, checked against later KEV additions. This is NOT an estimate of 2026 accuracy; there are no 2026 labels.",
+    "Few positives: fold 1 has 52 exploited CVEs in its test pool and fold 2 has 32, so one hit is about 2% (fold 1) to 3% (fold 2) of all positives. Read every number with its interval.",
+    "The top-500 difference between 'ours' and 'exploit_then_epss' is not robust: it changes sign between folds and seed sets, and its paired bootstrap interval (seed set 0) includes 0. 'ours' ranks better on AUC in both folds, but that interval also includes 0 for seed set 0.",
+    "'ours' = C1 (HGB on exploit signals + assigner KEV history + masked description text score), trained with time-safe labels (KEV additions only up to the train end). Values are medians over 5 seed sets; top500_seed_range is [lowest, highest] over the seed sets; ci95 for 'ours' is from seed set 0.",
+    "'ours_first_pass_optimistic' (fold 1 only) is the first-pass model with train labels that overlap the test period (KEV additions to 2025-12-31). It is optimistic and is shown only for comparison; do not quote it as the result.",
+    "top500 and top250 break tied scores by cve_id; top500_tie_range is [worst, best] over all orders of the tied rows and appears only where ties change the count. ci95.top500 is the 95% bootstrap interval of the tie-neutral expected top-500 hits (2000 resamples). median_rank and work_to_catch_50pct use ties by cve_id.",
+    "work_to_catch_50pct = how many CVEs from the top of the ranking you must fix to catch half of the exploited ones.",
+    "claim_ids name the ledger entry (results/claims_model.json) behind each value; null means no claim exists, so the value must not be published. Check each claim's status before display."
+  ],
+  "fold1": {
+    "pool_size": 35280,
+    "n_positives": 52,
+    "split": "train snapshots 2024-01..2024-12 (39868 rows, 40 positives, labels = KEV additions up to 2024-12-31); test snapshots 2025-01..2025-09 (labels = KEV additions within 365 days of the snapshot end, capped at 2025-12-31)",
+    "claim_ids": {
+      "pool_size": "p3.fold1.test_rows",
+      "n_positives": "p3.fold1.test_positives"
+    },
+    "cvss3": {
+      "top500": 5.0,
+      "top250": 5.0,
+      "auc": 0.7321511625367934,
+      "avg_precision": 0.0063501574171049065,
+      "median_rank": 7960.0,
+      "work_to_catch_50pct": 7952.0,
+      "top500_tie_range": [
+        5.0,
+        17.0
+      ],
+      "ci95": {
+        "top500": [
+          1.9670235376568563,
+          10.876568790530603
+        ]
+      },
+      "claim_ids": {
+        "top500": "p3.fold1.cvss3.top500_cve_id.median",
+        "top250": "p3.fold1.cvss3.top250_cve_id.median",
+        "auc": "p3.fold1.cvss3.auc.median",
+        "avg_precision": "p3.fold1.cvss3.avg_precision.median",
+        "median_rank": "p3.fold1.cvss3.median_rank_cve_id.median",
+        "work_to_catch_50pct": "p3.fold1.cvss3.work50_cve_id.median",
+        "top500_tie_range": [
+          "p3.fold1.cvss3.top500_worst.median",
+          "p3.fold1.cvss3.top500_best.median"
+        ],
+        "ci95": {
+          "top500": [
+            "p3.fold1.cvss3.ci95_lo.top500_expected",
+            "p3.fold1.cvss3.ci95_hi.top500_expected"
+          ]
+        }
+      }
+    },
+    "epss": {
+      "top500": 8.0,
+      "top250": 8.0,
+      "auc": 0.7072561926264946,
+      "avg_precision": 0.030922176708477904,
+      "median_rank": 3379.0,
+      "work_to_catch_50pct": 3273.0,
+      "ci95": {
+        "top500": [
+          3.0,
+          14.0
+        ]
+      },
+      "claim_ids": {
+        "top500": "p3.fold1.epss.top500_cve_id.median",
+        "top250": "p3.fold1.epss.top250_cve_id.median",
+        "auc": "p3.fold1.epss.auc.median",
+        "avg_precision": "p3.fold1.epss.avg_precision.median",
+        "median_rank": "p3.fold1.epss.median_rank_cve_id.median",
+        "work_to_catch_50pct": "p3.fold1.epss.work50_cve_id.median",
+        "ci95": {
+          "top500": [
+            "p3.fold1.epss.ci95_lo.top500_expected",
+            "p3.fold1.epss.ci95_hi.top500_expected"
+          ]
+        }
+      }
+    },
+    "exploit_then_epss": {
+      "top500": 18.0,
+      "top250": 15.0,
+      "auc": 0.7680295285218924,
+      "avg_precision": 0.047119029429330925,
+      "median_rank": 2498.5,
+      "work_to_catch_50pct": 2253.0,
+      "top500_tie_range": [
+        18.0,
+        19.0
+      ],
+      "ci95": {
+        "top500": [
+          10.0,
+          26.70705249841872
+        ]
+      },
+      "claim_ids": {
+        "top500": "p3.fold1.exploit_then_epss.top500_cve_id.median",
+        "top250": "p3.fold1.exploit_then_epss.top250_cve_id.median",
+        "auc": "p3.fold1.exploit_then_epss.auc.median",
+        "avg_precision": "p3.fold1.exploit_then_epss.avg_precision.median",
+        "median_rank": "p3.fold1.exploit_then_epss.median_rank_cve_id.median",
+        "work_to_catch_50pct": "p3.fold1.exploit_then_epss.work50_cve_id.median",
+        "top500_tie_range": [
+          "p3.fold1.exploit_then_epss.top500_worst.median",
+          "p3.fold1.exploit_then_epss.top500_best.median"
+        ],
+        "ci95": {
+          "top500": [
+            "p3.fold1.exploit_then_epss.ci95_lo.top500_expected",
+            "p3.fold1.exploit_then_epss.ci95_hi.top500_expected"
+          ]
+        }
+      }
+    },
+    "assigner_only": {
+      "top500": 13,
+      "top250": 8,
+      "auc": 0.7463299516992603,
+      "avg_precision": 0.010890060166561112,
+      "median_rank": 6053.5,
+      "work_to_catch_50pct": 6011.0,
+      "top500_tie_range": [
+        11,
+        13
+      ],
+      "ci95": {
+        "top500": [
+          6.0,
+          19.0
+        ]
+      },
+      "claim_ids": {
+        "top500": "primary.assigner_only.top500_cve_id",
+        "top250": "primary.assigner_only.top250_cve_id",
+        "auc": "primary.assigner_only.auc",
+        "avg_precision": "primary.assigner_only.avg_precision",
+        "median_rank": null,
+        "work_to_catch_50pct": "primary.assigner_only.work50_cve_id",
+        "top500_tie_range": [
+          "primary.assigner_only.top500_worst",
+          "primary.assigner_only.top500_best"
+        ],
+        "ci95": {
+          "top500": [
+            "primary.assigner_only.ci95_lo.top500_expected",
+            "primary.assigner_only.ci95_hi.top500_expected"
+          ]
+        }
+      }
+    },
+    "ours": {
+      "top500": 22.0,
+      "top250": 14.0,
+      "auc": 0.8601090915443136,
+      "avg_precision": 0.07588182927920298,
+      "median_rank": 1249.0,
+      "work_to_catch_50pct": 1226.0,
+      "top500_seed_range": [
+        15,
+        22
+      ],
+      "ci95": {
+        "top500": [
+          9.0,
+          25.0
+        ]
+      },
+      "claim_ids": {
+        "top500": "p3.fold1.C1.top500_cve_id.median",
+        "top250": "p3.fold1.C1.top250_cve_id.median",
+        "auc": "p3.fold1.C1.auc.median",
+        "avg_precision": "p3.fold1.C1.avg_precision.median",
+        "median_rank": "p3.fold1.C1.median_rank_cve_id.median",
+        "work_to_catch_50pct": "p3.fold1.C1.work50_cve_id.median",
+        "top500_seed_range": [
+          "p3.fold1.C1.top500_cve_id.min",
+          "p3.fold1.C1.top500_cve_id.max"
+        ],
+        "ci95": {
+          "top500": [
+            "p3.fold1.C1.ci95_lo.top500_expected",
+            "p3.fold1.C1.ci95_hi.top500_expected"
+          ]
+        }
+      }
+    },
+    "ours_first_pass_optimistic": {
+      "top500": 25,
+      "top250": 16,
+      "auc": 0.8880206741141226,
+      "avg_precision": 0.10568247366264288,
+      "median_rank": 778.5,
+      "work_to_catch_50pct": 686.0,
+      "ci95": {
+        "top500": [
+          15.0,
+          35.0
+        ]
+      },
+      "claim_ids": {
+        "top500": "primary.hgb_signals_assigner_text.top500_cve_id",
+        "top250": "primary.hgb_signals_assigner_text.top250_cve_id",
+        "auc": "primary.hgb_signals_assigner_text.auc",
+        "avg_precision": "primary.hgb_signals_assigner_text.avg_precision",
+        "median_rank": null,
+        "work_to_catch_50pct": "primary.hgb_signals_assigner_text.work50_cve_id",
+        "ci95": {
+          "top500": [
+            "primary.hgb_signals_assigner_text.ci95_lo.top500_expected",
+            "primary.hgb_signals_assigner_text.ci95_hi.top500_expected"
+          ]
+        }
+      },
+      "label": "OPTIMISTIC: first-pass model, train labels overlap the test period; comparison only"
+    }
+  },
+  "fold2": {
+    "pool_size": 23367,
+    "n_positives": 32,
+    "split": "train snapshots 2024-07..2025-03 (31440 rows, 38 positives, labels = KEV additions up to 2025-03-31); test snapshots 2025-04..2025-09 (labels = KEV additions within 365 days of the snapshot end, capped at 2025-12-31)",
+    "claim_ids": {
+      "pool_size": "p3.fold2.test_rows",
+      "n_positives": "p3.fold2.test_positives"
+    },
+    "cvss3": {
+      "top500": 5.0,
+      "top250": 4.0,
+      "auc": 0.714113054424684,
+      "avg_precision": 0.00825380455726565,
+      "median_rank": 5048.0,
+      "work_to_catch_50pct": 4080.0,
+      "top500_tie_range": [
+        4.0,
+        10.0
+      ],
+      "ci95": {
+        "top500": [
+          1.3715187915708775,
+          9.141077430302552
+        ]
+      },
+      "claim_ids": {
+        "top500": "p3.fold2.cvss3.top500_cve_id.median",
+        "top250": "p3.fold2.cvss3.top250_cve_id.median",
+        "auc": "p3.fold2.cvss3.auc.median",
+        "avg_precision": "p3.fold2.cvss3.avg_precision.median",
+        "median_rank": "p3.fold2.cvss3.median_rank_cve_id.median",
+        "work_to_catch_50pct": "p3.fold2.cvss3.work50_cve_id.median",
+        "top500_tie_range": [
+          "p3.fold2.cvss3.top500_worst.median",
+          "p3.fold2.cvss3.top500_best.median"
+        ],
+        "ci95": {
+          "top500": [
+            "p3.fold2.cvss3.ci95_lo.top500_expected",
+            "p3.fold2.cvss3.ci95_hi.top500_expected"
+          ]
+        }
+      }
+    },
+    "epss": {
+      "top500": 6.0,
+      "top250": 6.0,
+      "auc": 0.7127363670452111,
+      "avg_precision": 0.02992048645432422,
+      "median_rank": 1867.0,
+      "work_to_catch_50pct": 1767.0,
+      "ci95": {
+        "top500": [
+          2.0,
+          12.0
+        ]
+      },
+      "claim_ids": {
+        "top500": "p3.fold2.epss.top500_cve_id.median",
+        "top250": "p3.fold2.epss.top250_cve_id.median",
+        "auc": "p3.fold2.epss.auc.median",
+        "avg_precision": "p3.fold2.epss.avg_precision.median",
+        "median_rank": "p3.fold2.epss.median_rank_cve_id.median",
+        "work_to_catch_50pct": "p3.fold2.epss.work50_cve_id.median",
+        "ci95": {
+          "top500": [
+            "p3.fold2.epss.ci95_lo.top500_expected",
+            "p3.fold2.epss.ci95_hi.top500_expected"
+          ]
+        }
+      }
+    },
+    "exploit_then_epss": {
+      "top500": 15.0,
+      "top250": 13.0,
+      "auc": 0.8088647685879582,
+      "avg_precision": 0.05229005556396248,
+      "median_rank": 524.0,
+      "work_to_catch_50pct": 510.0,
+      "top500_tie_range": [
+        14.0,
+        15.0
+      ],
+      "ci95": {
+        "top500": [
+          8.0,
+          23.0
+        ]
+      },
+      "claim_ids": {
+        "top500": "p3.fold2.exploit_then_epss.top500_cve_id.median",
+        "top250": "p3.fold2.exploit_then_epss.top250_cve_id.median",
+        "auc": "p3.fold2.exploit_then_epss.auc.median",
+        "avg_precision": "p3.fold2.exploit_then_epss.avg_precision.median",
+        "median_rank": "p3.fold2.exploit_then_epss.median_rank_cve_id.median",
+        "work_to_catch_50pct": "p3.fold2.exploit_then_epss.work50_cve_id.median",
+        "top500_tie_range": [
+          "p3.fold2.exploit_then_epss.top500_worst.median",
+          "p3.fold2.exploit_then_epss.top500_best.median"
+        ],
+        "ci95": {
+          "top500": [
+            "p3.fold2.exploit_then_epss.ci95_lo.top500_expected",
+            "p3.fold2.exploit_then_epss.ci95_hi.top500_expected"
+          ]
+        }
+      }
+    },
+    "assigner_only": {
+      "top500": 8,
+      "top250": 5,
+      "auc": 0.7136008142275553,
+      "avg_precision": 0.007976170667701543,
+      "median_rank": 4218.5,
+      "work_to_catch_50pct": 3842.0,
+      "ci95": {
+        "top500": [
+          3.0,
+          14.0
+        ]
+      },
+      "claim_ids": {
+        "top500": "e.assigner_only.top500_cve_id",
+        "top250": null,
+        "auc": "e.assigner_only.auc",
+        "avg_precision": "e.assigner_only.avg_precision",
+        "median_rank": null,
+        "work_to_catch_50pct": null,
+        "ci95": {
+          "top500": [
+            null,
+            null
+          ]
+        }
+      }
+    },
+    "ours": {
+      "top500": 11.0,
+      "top250": 10.0,
+      "auc": 0.8796248928647953,
+      "avg_precision": 0.06372945917979955,
+      "median_rank": 1347.5,
+      "work_to_catch_50pct": 1240.0,
+      "top500_seed_range": [
+        11,
+        12
+      ],
+      "ci95": {
+        "top500": [
+          5.0,
+          18.0
+        ]
+      },
+      "claim_ids": {
+        "top500": "p3.fold2.C1.top500_cve_id.median",
+        "top250": "p3.fold2.C1.top250_cve_id.median",
+        "auc": "p3.fold2.C1.auc.median",
+        "avg_precision": "p3.fold2.C1.avg_precision.median",
+        "median_rank": "p3.fold2.C1.median_rank_cve_id.median",
+        "work_to_catch_50pct": "p3.fold2.C1.work50_cve_id.median",
+        "top500_seed_range": [
+          "p3.fold2.C1.top500_cve_id.min",
+          "p3.fold2.C1.top500_cve_id.max"
+        ],
+        "ci95": {
+          "top500": [
+            "p3.fold2.C1.ci95_lo.top500_expected",
+            "p3.fold2.C1.ci95_hi.top500_expected"
+          ]
+        }
+      }
+    }
+  }
+}

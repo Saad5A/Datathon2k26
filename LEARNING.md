@@ -1,0 +1,344 @@
+# Learning guide: how our vulnerability ranking works
+
+This is for teammates who are new to machine learning (ML). Read it top to bottom once, then use it as a lookup. The shorter glossary is in `docs/kb/03_primer.md`.
+
+**How to read the numbers here**
+- Anything labelled "Toy example" uses numbers we made up to explain an idea. Never quote them.
+- A real project figure is always marked "(first pass, not yet verified)". It comes from `docs/kb/`, and no audit has checked it. Do not publish it.
+- Model results appear only in the "What we did, phase by phase" section, and only as values copied from verified entries in the claims ledger (`results/claims*.json`).
+
+## The project in one paragraph
+
+A **CVE** is a public ID for one software vulnerability. New CVEs appear far faster than anyone can fix them, so teams need to know what to fix first. We rank CVEs by how likely attackers are to exploit them. The judges count how many of our top 500 later appear on **KEV**, the Known Exploited Vulnerabilities list from CISA (a US government security agency).
+
+Three more terms come up a lot:
+- **CVSS**: a 0-10 score for how bad an attack would be. It does not say how likely an attack is.
+- **EPSS**: a public model's estimate of the chance a CVE is attacked in the next 30 days.
+- **Assigner**: the organization that issued the CVE ID, often the software vendor.
+
+## Row, feature and label
+
+- **Row**: one example. For us, one CVE as it looked at the end of one month, called its **snapshot month**.
+- **Feature**: something we knew about that row at that time, such as its EPSS score.
+- **Label**: the outcome we want to predict. For us: was this CVE added to KEV after the snapshot month? Yes is 1 (a **positive**), no is 0 (a **negative**).
+
+**Toy example (invented numbers):**
+
+| cve_id | snapshot month | epss | public exploit code? | assigner's past KEV entries | label |
+|---|---|---|---|---|---|
+| CVE-TOY-0001 | March | 0.02 | yes | 12 | 1 |
+| CVE-TOY-0002 | March | 0.001 | no | 0 | 0 |
+
+The model sees everything except the label and learns how the columns relate to it.
+
+**One honest limit:** KEV lists confirmed attacks only. A CVE that is not on KEV may still have been attacked, so our label stands in for "exploited" without matching it exactly. The word for this is a **proxy**.
+
+## Why so few rows are positive
+
+Most vulnerabilities are never seen being attacked. Attackers concentrate on a small number that are useful to them, and KEV only records the attacks that were confirmed. In our backtest (a replay of the method on past data), only about 0.15% of rows are positive (first pass, not yet verified). This situation is called **class imbalance**.
+
+**Toy example (invented numbers):** take 10,000 rows with 15 positives.
+- A "model" that always answers "no" is right 9,985 times out of 10,000. That is 99.85% accuracy, and it catches nothing. So we do not use accuracy.
+- Picking 500 rows at random catches 0.75 positives on average (500 x 15 / 10,000).
+
+What this means for us:
+- We judge the order of the list, using the metrics further down.
+- With so few positives, big models memorize instead of learning, so we keep ours small.
+- One lucky or unlucky CVE moves the results a lot, so we always report a range.
+- Our scores put CVEs in order. They are not probabilities, so never say "this CVE has an X% chance of attack".
+
+## Train vs validation, and why we split by time
+
+- **Training set**: the rows the model learns from.
+- **Validation set** (also called a held-out set): rows kept away from the model and used only to score it. You will also see "test" used for this. In our docs, the 2025 "test" pool and the "validation" set mean the same rows.
+
+Our main split is to train on CVEs from 2024 and validate on CVEs from January to September 2025. A second split trains on July 2024 to March 2025 and validates on April to September 2025. We report both.
+
+**Why not split at random?** A random split lets the model learn from the future. In real use we only ever have the past.
+
+**Toy example (invented numbers):** attackers hit a product called ToyVPN in June. Three ToyVPN CVEs from around that time reach KEV.
+- With a random split, two land in training and one in validation. The model learns "ToyVPN means attack" and then "predicts" the third. Suppose this scores 20 hits.
+- With a time split, the model trains only on rows before June and has never seen this campaign. Suppose this scores 9 hits.
+
+The 9 is the honest number, because it matches the position we are in when predicting new CVEs.
+
+## Overfitting
+
+**Overfitting** means memorizing the training rows instead of learning patterns that carry over to new rows. The sign is a great score on training data and a poor score on held-out data.
+
+**Toy example (invented numbers):** a model scores 0.99 on training rows and 0.60 on validation rows. It may have learned "a description containing this one odd phrase means positive", which was true for one CVE and means nothing elsewhere.
+
+We fight overfitting by keeping models small, adding **regularization** (a penalty on complicated models), and always scoring on held-out rows. We have only about 65 training positives (first pass, not yet verified), so this matters a lot.
+
+## Logistic regression
+
+Think of a weighted checklist. Each feature adds or subtracts points, and a formula squeezes the total into a number between 0 and 1. Training finds the weights.
+
+**Toy example (invented weights):** start at -3, add 2 if public exploit code exists, add 1 if no login is needed.
+
+| CVE | total points | squeezed to 0-1 |
+|---|---|---|
+| Neither | -3 | about 0.05 |
+| No login needed | -2 | about 0.12 |
+| Exploit code and no login needed | 0 | 0.50 |
+
+It is simple, hard to overfit, and you can read the weights to see why a CVE scored high. The weakness is that it cannot easily capture "this feature matters only when that other one is true" unless you build that in by hand.
+
+## Gradient-boosted trees
+
+A **decision tree** is a small flowchart of yes/no questions. **Gradient boosting** builds many small trees in a row, and each new tree tries to fix the errors the earlier ones still make. The final score adds up all the trees. We use scikit-learn's HistGradientBoosting and keep the trees shallow.
+
+**Toy example (invented points):**
+- Tree 1 asks "public exploit code?" Yes gets +3, no gets 0.
+- Looking at the remaining errors, tree 2 asks "exploit code, but an assigner with no KEV history?" Yes gets -1, no gets 0.
+
+| CVE | tree 1 | tree 2 | total |
+|---|---|---|---|
+| Exploit code, assigner with KEV history | +3 | 0 | 3 |
+| Exploit code, assigner with no history | +3 | -1 | 2 |
+| No exploit code | 0 | 0 | 0 |
+
+Trees capture feature combinations by themselves, which logistic regression cannot. The price is that they overfit more easily, which is why we keep them shallow.
+
+## TF-IDF
+
+Models need numbers, so text has to be converted. **TF-IDF** gives each word a score: how often it appears in this description (term frequency, TF) times how rare it is across all descriptions (inverse document frequency, IDF). Common words score near zero and distinctive words score high.
+
+**Toy example (invented numbers):** we have 1,000 descriptions, using a base-10 logarithm for rarity. Real libraries adjust this formula slightly, but the idea is the same.
+
+| word | times in this description | descriptions containing it | rarity | TF-IDF |
+|---|---|---|---|---|
+| the | 3 | 1,000 | log10(1,000 / 1,000) = 0 | 3 x 0 = 0 |
+| unauthenticated | 1 | 10 | log10(1,000 / 10) = 2 | 1 x 2 = 2 |
+
+We feed these word scores into logistic regression to get one "text score" per CVE. The gradient-boosted trees can then use that score as a feature.
+
+Two traps:
+- **Out-of-fold scores.** If the text model scores rows it trained on, those scores look better than they should and the trees trust them too much. So we split the training rows into parts and score each part with a text model trained on the other parts.
+- **Hidden vendor names.** Words like a product name mean the text model partly re-learns which vendor is involved, which overlaps with the assigner feature (first pass, not yet verified).
+
+## Embeddings
+
+An **embedding** turns a whole text into a list of numbers that captures its meaning, so texts with similar meanings get similar lists. Ours come from an IBM Granite embedding model (see the Granite phase below).
+
+**Toy example (invented numbers, and real lists are much longer):**
+
+| description | embedding |
+|---|---|
+| Attacker can run code without logging in | [0.9, 0.1, 0.2] |
+| Remote code execution, no authentication needed | [0.8, 0.2, 0.2] |
+| Wrong button colour on the settings page | [0.1, 0.9, 0.1] |
+
+The first two lists are close even though the sentences share few words. TF-IDF treats "without logging in" and "no authentication" as unrelated words. That is the appeal of embeddings. On our held-out data they did not beat TF-IDF: Granite alone scored lower, and adding it to TF-IDF made no measurable difference (see the Granite phase below).
+
+## How we score a ranking
+
+All the toy examples in this section use this invented list of six CVEs, best-ranked first (P is a positive, N is a negative):
+
+`rank 1: P | rank 2: N | rank 3: P | rank 4: N | rank 5: N | rank 6: N`
+
+### AUC
+
+**AUC** is the chance that a randomly chosen positive is ranked above a randomly chosen negative. 0.5 is coin-flip quality and 1.0 is perfect.
+
+**Toy example:** there are 2 positives and 4 negatives, so 8 possible pairs. The positive at rank 1 beats all 4 negatives. The positive at rank 3 beats 3 of them. So AUC is 7 / 8 = 0.875.
+
+AUC looks at the whole list, so it can be high even when the very top is mediocre. Our project rule is that an AUC above about 0.93 means we stop and hunt for leakage (explained below).
+
+### Average precision
+
+**Precision** at a point in the list is the share of rows so far that are positive. **Average precision** takes that value at each positive and averages them, so it rewards putting positives right at the top.
+
+**Toy example:** at rank 1, precision is 1/1. At rank 3, it is 2/3. The average is about 0.83. If the positives had instead been at ranks 3 and 4, it would be (1/3 + 2/4) / 2, about 0.42.
+
+Do not be alarmed by small average precision values in our work. A random list scores about the share of positives, which is tiny here, so compare against that and against the baselines.
+
+### Top-500 hits
+
+**Top-500 hits** is how many positives land in our 500 highest-ranked rows. This is what the judges count.
+
+**Toy example:** a top-2 cut of our list has 1 hit, and a top-3 cut has 2.
+
+It is easy to explain but noisy, because it ignores everything below the cut. With about 52 test positives, one hit is about 2% (first pass, not yet verified). Also, the 2026 pool is about twice as large as our test pool, so a top 500 there is a stricter cut, closer to a top 250 here (first pass, not yet verified).
+
+### Median rank of positives
+
+Line up the rank of every positive and take the middle one. It tells you how far down the list the typical attacked CVE sits. Lower is better.
+
+**Toy example (a different, invented list):** positives at ranks 3, 40, 90, 700 and 5,000 have a median rank of 90. The one at 5,000 does not distort it, which an average would.
+
+### Work saved
+
+**Work saved** asks how many CVEs a team must fix, working down the ranking, to catch half of the ones later exploited. We compare this between rankings.
+
+**Toy example (invented numbers):** there are 10 positives, so half is 5. Ranking A reaches its 5th positive at rank 1,200 and ranking B at rank 300. Ranking B saves 900 fixes, which is 75% less work than A (900 / 1,200). This is the most practical number for a real security team.
+
+## Bootstrap intervals
+
+Our test set is one sample, and a slightly different set of CVEs would give a different score. A **bootstrap** estimates how much that matters:
+1. Draw rows at random from the test set, the same number as the original, allowing repeats.
+2. Recompute the metric on that redraw.
+3. Repeat many times, sort the results, and keep the middle 95%. That range is the **95% interval**.
+
+**Toy example (invented numbers):** rows A B C D E might redraw as A A C D E. After 1,000 redraws of a larger test set, a ranking with 12 hits might have an interval of 7 to 17. We would then say "12 hits, plausibly anywhere from 7 to 17".
+
+To compare two rankings, redraw the same rows for both and look at the interval on the difference between them. If it comfortably includes zero, we cannot claim that one is better.
+
+## The leakage columns
+
+**Leakage** means using information that would not have existed at prediction time. Results look great in testing and then fail in real use, because the model is reading the answer instead of predicting it.
+
+Why it can happen here: NIST files are today's versions, not historic copies, and NIST (the US agency that runs the NVD vulnerability database) reviews attacked CVEs first and fills in their details afterwards. So some columns partly record "someone already noticed this was attacked". They give away the answer for 2026, and we never use them as model features:
+
+| Column | What it is | Why it cheats |
+|---|---|---|
+| `nvd_status` | How far NIST's review has got | Attacked CVEs get reviewed sooner |
+| `n_affected_cpes` | How many affected products NIST has listed | The list gets filled in during that review |
+| `n_references` | How many web links the CVE has | Attacked CVEs collect more links over time |
+| Blank severity scores | Whether a CVSS score is still missing | A blank means "not reviewed yet", so a filled score can hint at attention |
+| News/threat links in `references.csv` | Links to reports about the vulnerability | A threat report can be written because of the attack. Links to IBM X-Force Exchange are treated as leak-prone too |
+
+**Toy example:** on the same day, two toy CVEs are published. Attackers hit CVE-TOY-A in May, so NIST reviews it, lists 40 products and adds 15 links. CVE-TOY-B is ignored, with 0 products and 1 link. A model trained on these counts will rank A high, but in the snapshot month those counts did not exist yet. It is really detecting that attention came later.
+
+A related judgement call: `cvss3_score`, `cwe_ids` and the `attack_*` columns are also filled in by NIST's analysis. Our preferred model avoids them, and we use them only to measure what they would add.
+
+**Leaks can also come from our own calculations.** A feature like "how many KEV entries does this assigner have?" must only count KEV rows added before the snapshot month. Using the whole KEV file sneaks the future in. Our first pass made this mistake on two side statistics, and `docs/kb/02_findings_first_pass.md` records the correction. Everyone can slip here, which is why an independent auditor checks the work.
+
+## Why ties matter when you rank
+
+Many CVEs can share exactly the same score. When a ranking has more tied CVEs than slots left, the order inside the tie, and so who makes the cut, is decided by something arbitrary such as file order.
+
+**Toy example (invented numbers):** a CVSS ranking has 200 CVEs at 10.0 and 1,000 CVEs at 9.8. The first 200 slots are clear. The other 300 slots go to 300 of the 1,000 tied CVEs. If 6 positives sit among those 1,000, a random pick catches 1.8 of them on average (6 x 300 / 1,000), and any given pick might catch 0, or 4.
+
+So a baseline's hit count is one draw, not a fixed fact, and a small win over it may only be tie luck.
+
+What we do about it:
+- Write down the tie-break rule, and use the same one for every ranking we compare.
+- For rankings with many ties, repeat the count with shuffled tie order and report the range.
+- Check our own model too, since small trees can give many rows the same score.
+
+AUC handles ties by counting a tied pair as half a win, so top-500 hits are much more exposed to this problem.
+
+## Why comparing many models on one test set flatters the winner
+
+Each score contains some luck. If you try many models and keep the best score, you are partly selecting for luck, so the winner's score is too high as an estimate of how it will do next time. This is called **selection optimism**.
+
+**Toy example (invented setup):** 20 students all guess randomly on a 10-question true/false quiz. The average is 5 correct. There is about a two-in-three chance that at least one of them gets 8 or more. That student is not smart, and would likely score about 5 on the next quiz.
+
+Our first pass compared several variants on the same test set, so this applies to it (first pass, not yet verified).
+
+What we do about it:
+- Decide a small list of candidate models **before** looking at validation results.
+- Do any tuning with **cross-validation** inside the training years only. Cross-validation means repeatedly holding out part of the training data to check a choice.
+- Use the second time split as a further check.
+- Record the held-out numbers in `LOG.md` and freeze them.
+- Say how many models we compared, and report intervals.
+
+## Why refitting on all labelled data at the end is OK
+
+The process has two separate jobs:
+1. **Estimate quality.** Train on the earlier data, score on held-out data, and freeze those numbers.
+2. **Build the final model.** Use the same recipe (same features, same settings) and train it on all labelled 2024-2025 data.
+
+This is OK because positives are scarce and throwing some away would weaken the final model. In the combined pool we have about 117 positives, compared with about 65 for the 2024 training alone (first pass, not yet verified). Nothing is being chosen at this step: the recipe was fixed before the refit.
+
+**The honest estimate is the frozen held-out number**, and it stays that way after the refit.
+
+**Toy example (invented numbers):** the recipe trained on the early data scores 12 hits on the held-out data, with an interval of 7 to 17. After the refit, scoring that same 2025 data gives 30 hits. The 30 means nothing, because the model has now trained on those rows and is grading its own homework. We report 12, with its interval.
+
+Even that is an estimate for a recipe on past data, not a promise about 2026.
+
+## Why we can make no accuracy claim about 2026
+
+Our KEV file stops at 2025-12-31, so we hold no labels for CVEs in 2026. Only the judges can count hits, using KEV additions through November 4, 2026. A claim about accuracy needs an answer key, and we do not have one.
+
+2026 also differs from our test period: the number of CVEs rose and the mix of assigners shifted. CVEs from later months also have less time to reach KEV, about 1.5 months for September versus about 10 for January (first pass, not yet verified). The final count could land anywhere in a wide range, partly by luck.
+
+**What we can say about 2026:**
+- How it differs from earlier years (distributions and shift).
+- What our model ranked, and which signals drove it.
+- What our held-out results were on 2025, clearly labelled as past data.
+
+**What we cannot say:**
+- "Our model catches X of the attacked CVEs in 2026."
+- "We expect exactly X hits."
+- "This 2026 CVE will be attacked."
+
+**Good sentence:** "On held-out 2025 data, our ranking caught X positives, with an interval of Y to Z. 2026 is different, and we have no labels to check it against." Fill in X, Y and Z only from verified claims.
+
+## What we did, phase by phase
+
+### Phases 1-2: environment and backtest harness (audited: audit/2026-11-07-harness.md)
+- **What we did:** rebuilt the "pretend it is 2025" test from clean code. Train on 2024 vulnerabilities, rank the Jan-Sep 2025 ones, count how many of our top 500 CISA later confirmed as exploited.
+- **What we learned:** the baseline and text-only numbers come back exactly, and the boosted-tree rows differ slightly. The headline gain is shaky, though. Changing only the random seed moves our model's top-500 count by several hits. A fair rule (only use exploited-list labels known before the test period starts) lowers it. On a second, later test period, the simple "exploit code first, then EPSS" rule beat us on top-500. Our model still has a higher AUC (it orders the whole list better). That is a steadier signal than a top-500 count built on about 50 positives, but Phase 3 showed the gain is smaller and less certain than it first looked. The median-rank advantage did not hold in the second fold (see Phase 3).
+- **A new trap:** vulnerability descriptions are today's text, and a few already say things like "actively exploited". That wording may have been added after the attack, so a text model can cheat by reading it.
+
+### Phase 3: pre-registration and three candidate models (audited: audit/2026-11-07-phase3.md, audit/2026-11-07-phase3-fixes-cap.md)
+- **Pre-registration** means writing down, before running anything, exactly which models we will try, how we will test them, and the rule for picking the winner. It is our defence against selection optimism (see above): once the rule is fixed, we cannot quietly pick whichever variant got lucky. Ours is in LOG.md under "PRE-REGISTRATION, Phase 3". The auditor found the commit order consistent with this, though it cannot rule out unlogged earlier runs. One honest caveat: our first pass had already compared about a dozen variants on the 2025-01..09 period, and C1 reuses the first-pass winner's inputs. So that period is not fully held out, and fold-1 numbers may be slightly optimistic.
+- **The test setup** has two time splits. Both use "time-safe" training labels, meaning only KEV additions known by the end of the training period, which is the position we are in for 2026. Fold 1 trains on 2024 and tests on Jan-Sep 2025 (52 exploited CVEs). Fold 2 trains on Jul 2024-Mar 2025 and tests on Apr-Sep 2025 (32).
+- **The three candidates** all share the same inputs, apart from the assigner feature:
+  - **C1:** gradient-boosted trees on the exploit signals, the assigner's KEV history over all earlier years, and the masked text score.
+  - **C2:** the same, but with the assigner history counted over only the previous 24 months.
+  - **C3:** logistic regression on C2's inputs (the simplest option).
+- **Why we select on AUC, not top-500 hits.** Top-500 hits is what the judges count, but with 32-52 exploited CVEs per fold it jumps by several hits when we only change the random seed. In the first pass it also flipped between folds. AUC looks at the whole list, so it is much steadier. The rule was: highest mean AUC over the two folds, with a preference for the simpler model if it came within a small margin. It picked C1 (mean AUC 0.870, against 0.848 for C2 and 0.836 for C3). This does not prove C1 is better than C2, because the seed spread is larger than the gap between them. It is simply what the rule picked.
+- **C1 against "exploit code first, then EPSS":**
+
+| | Fold 1 | Fold 2 |
+|---|---|---|
+| AUC (seed median) | 0.860 vs 0.768 | 0.880 vs 0.809 |
+| Top-500 hits | 22 vs 18 (seeds 15-22) | 11 vs 15 |
+| CVEs to review to catch half | 1,226 vs 2,253 | 1,240 vs 510 |
+| Median rank of positives | 1,249 vs 2,498.5 | 1,347.5 vs 524 |
+
+- **How to read it:** C1 has a higher AUC in every fold and every seed set. At the judges' 500-CVE cut, though, it roughly ties in fold 1 and loses in fold 2. Even the AUC gain is uncertain. For seed set 0, the paired bootstrap interval on the gain includes zero in both folds (fold 1 -0.015 to +0.181). So call the gain borderline.
+- **Leak check:** when we shuffle the training labels and refit, the test AUC falls to about chance (fold 1 mean 0.532, fold 2 mean 0.506). This shows that no path from the test labels into the model bypasses training. It does not prove the features are time-safe; the auditor checked that separately, feature by feature.
+
+### The leakage table (results/leakage_table.csv; audited: audit/2026-11-07-leakage-drift.md)
+- **What it is:** one row per column we considered, saying whether the model uses it, its "solo AUC" (how well that column alone orders the 2025 test CVEs), and why it is or is not allowed.
+- **The headline:** all 52 later KEV-listed 2025 test CVEs have NIST status "Analyzed", at least one product listed, and a CVSS3 score and CWE filled in. Among the other test CVEs, only 50.1% are "Analyzed" and 64.9% have a product list. With only 52 cases, the true share could still be as low as about 93% (the lower end of its confidence interval), so we say "all 52 in this sample", not "always".
+- **Why it matters:** these columns are filled in by NIST's review. The organisers' README explains that NIST reviews attacked CVEs first, so these columns can partly record that an attack was already noticed. In this backtest, the product count alone scores a higher AUC than EPSS (0.767 vs 0.707), although the intervals overlap. A model that used them would look great in a backtest and would mostly be detecting that NIST had already paid attention.
+- **A trap in the table itself:** for a yes/no column that every positive has, the bootstrap interval comes out almost zero-width, because it only reflects the negatives. So we quote the "52 of 52" fact and its lower bound, not that interval.
+- **The news-link row is a lower bound.** Its list of news and threat-report sites is hand-picked and incomplete, so the real leak from those links is probably larger.
+- **Our own text input** has a solo AUC of 0.8225, which is close to the full model. Text is therefore our strongest single input, and dropping it, or dropping the exploit/EPSS signals, clearly hurts. The masked wording covers phrases such as "actively exploited", "exploited in the wild", "CISA" and "KEV"; that is why masking matters.
+
+### The drift summary (results/drift_summary.json; audited)
+"Drift" means the 2026 data looks different from the 2025 data we tested on. We cannot measure 2026 accuracy, but we can measure how different 2026 looks:
+- **Volume:** 72,670 scoreboard rows for Jan-Sep 2026, against 35,280 for Jan-Sep 2025. A top 500 is therefore a stricter cut in 2026.
+- **Who issues the CVEs:** GitHub advisories rose from 5.6% to 15.0% of rows, and VulnCheck from 1.1% to 9.3%. The number of distinct assigners went from 338 to 382.
+- **Missing product lists:** 35% of 2025 rows have none, against 50% of 2026 rows, and 66-68% in Aug-Sep 2026. This is possibly because NIST review lags.
+- **No prior KEV history:** 36.2% of 2025 rows come from assigners with no earlier KEV entry, against 23.8% in 2026. The 2026 figure is an upper bound, because our KEV file ends with 2025.
+- **EPSS blanks:** 9.8% of 2025 rows have no EPSS, against 2.0% in 2026. Most of the 2025 blanks are in January and February, so keep that note next to the number.
+
+### Granite phase: IBM embeddings as a second text signal (audited: audit/2026-11-08-granite-final.md)
+- **What an embedding is (recap):** a model reads the whole description and turns it into a list of numbers that captures its meaning. Descriptions that mean similar things get similar lists, even when they use different words. TF-IDF, by contrast, only counts which words appear.
+- **What we ran:** IBM's Granite multilingual embedding model (exact ID in `docs/ibm.md`), on the same masked descriptions the TF-IDF model sees. We embedded every description with the open weights on our own machine. A subset of 1,966 also went through IBM watsonx.ai; on the 1,500 descriptions also embedded locally, the auditor found the vectors match. That they came from watsonx.ai rests on the run metadata. A small logistic regression turns the vectors into one "Granite text score" per CVE.
+- **What we tested (the rule was pre-registered in LOG.md before any embeddings existed; the settings clarification was written after the original rule, but before the full embeddings were made; it may postdate the teammate's subset embeddings, which the audit could not check):**
+  - **G1:** C1 with the Granite text score *instead of* TF-IDF.
+  - **G2:** C1 with *both* text scores.
+  - Same folds, labels, masking, tree settings and five seed sets as Phase 3.
+  - The rule: take the better of G1 and G2 by mean AUC. Adopt it if its mean AUC is within the pre-set 0.01 of C1's, a deliberate tie-break in favour of IBM technology, because the track requires it.
+- **Result:**
+
+| | Fold 1 | Fold 2 | Mean |
+|---|---|---|---|
+| AUC: C1 / G1 / G2 | 0.860 / 0.857 / 0.874 | 0.880 / 0.817 / 0.868 | 0.870 / 0.837 / 0.871 |
+| Top-500 hits: C1 / G1 / G2 | 22 / 12 / 20 | 11 / 8 / 11 | |
+
+- **How to read it:** G2 was adopted, and it has **no measurable gain**. The difference in mean AUC is tiny next to the seed-to-seed spread, the per-fold order flips, and top-500 is equal or slightly worse. Granite alone (G1) is clearly lower.
+- **Why "adopted, but no gain" is an honest outcome:** we wrote the rule before seeing results, followed it, and report what happened. A rule that keeps IBM technology when its mean AUC is within the pre-set 0.01 of C1's is a stated preference, not a hidden tweak. G2 met that test, though fold 2 alone was 0.868 vs 0.880. Claiming Granite "improved" the model would be false, so we do not.
+- An exploratory subset check also exists, but it is not comparable; see the audit.
+
+### Final model and the per-assigner cap (results/scores_2026.csv, results/top500.csv; audited: audit/2026-11-08-granite-final.md)
+- **Final model:** G2, which is C1 plus the Granite text score.
+- **Refit:** we took that recipe unchanged and trained it on all labelled data: 75,148 rows, 117 exploited, with labels up to the end of 2025. This is the "refit on all labelled data" step explained above. The honest quality estimate is still the frozen Phase 3 backtest.
+- **Seed averaging:** the final score is the average of the five pre-registered seed sets. This removes seed luck instead of picking a lucky seed.
+- **Per-assigner cap:** we walk down the ranking and skip a CVE once its assigner already has 50 places in the top 500, so no single issuer can take more than 10% of the list. The pre-set rule was to take the strictest cap within one hit of the best. In the backtest the cap was **neutral, not an improvement** (tested with C1; not re-tested with G2): fold 1 went from 22 to 20 hits, and fold 2 from 11 to 12. We kept it because 2026's assigner mix shifted.
+- **What the top 500 looks like:** VulnCheck and Apache each hit the cap of 50, GitHub advisories has 49 and Oracle 47. MITRE and Microsoft tie at 16, and Adobe's 11 is one of three assigners tied at 11, so the order inside those ties is arbitrary. These counts depend on the assigner-history window (CVEs published 2021+). 74.6% of the top 500 have public exploit code, 4.8% have EPSS above 0.1, and 17.0% come from assigners with no earlier KEV entry.
+- **Tiers:** P0 is ranks 1-100, P1 is the remaining 400 of the top 500, and P2 is everything else (72,170 rows).
+- **Still true:** the score is a ranking, not a probability, and we make no claim about how many 2026 hits it will get.
+
+### What the "reasons" are
+- Each CVE in `scores_2026.csv` lists up to three reasons. Each reason names a signal (for example EPSS, public exploit code, the assigner's KEV history or the description text), gives its value, and says whether it pushed the score "up" or "down".
+- **How we compute them (occlusion):** for one CVE, we set one signal to a neutral value, such as the training median or "no exploit flags", and re-score it. The size of the score change shows how much that signal mattered. We keep the up to three biggest changes.
+- **Toy example (invented numbers):** a CVE scores 9 points. With its exploit flags set to 0 it scores 3, and with its EPSS set to the median it scores 8. "Public exploit code, up" is therefore the top reason.
+- **What reasons are not:** they explain our model's score. They are not evidence that the CVE was attacked. In the final model, the description reason shows the TF-IDF text score, and the Granite text score is reset together with it. A display should still handle an empty list, which the earlier model produced for one row. Any AI-written explanation built from these reasons must be labelled AI-generated and may only restate facts in that CVE's record.

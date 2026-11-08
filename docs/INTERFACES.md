@@ -1,98 +1,42 @@
-# Interfaces — scoring output & dashboard contract
+> **Note (2026-11-08, feat/model-ranking):** `main` had replaced this file with the dashboard contract, now kept unchanged as [`INTERFACES_dashboard.md`](INTERFACES_dashboard.md). Columns are now reconciled: `results/scores_2026.csv` carries all 17 dashboard columns and `impact` in `reasons`. Remaining differences for the UI: read from `results/` (not `outputs/`), use signal names from `results/signal_vocabulary.json`, and keep our `priority` (P0 rank 1-100, P1 101-500) for this file; the percentile bands apply only to uploads.
 
-This is the contract between the Python model pipeline and the triage dashboard
-(`dashboard/`). The dashboard's mock data, CSV export, upload parser and
-`/predict` client all follow it.
+# Branch ownership and interfaces (model <-> Gemini sections LOCKED 2026-11-07 15:30; data and UI teammates still to confirm)
 
-## 1. Scores file (`outputs/scores_2026.csv`)
+| Branch | Owner area | Owns (only edit these) | Produces |
+|---|---|---|---|
+| feat/model-ranking | ML ranking | `src/model/`, `cloud/`, `results/`, `audit/` | scores, top500.csv, backtest + drift + leakage results |
+| feat/data-engineering-db | Data / DB | `src/data/`, `db/`, `data_cache/` schemas, `docs/features.md` | clean loaders, DB tables, shared base tables |
+| feat/ui-dashboard | Web UI | `web/` | the public app |
+| feat/triage-playbook-gemini | Gemini triage agent | `src/triage/` | grounded fix playbooks per CVE |
 
-One row per CVE. RFC 4180 CSV, UTF-8, header row required. Quotes inside a
-field are doubled (`""`), which is pandas' default `to_csv` behaviour.
-See [`sample_scores_2026.csv`](sample_scores_2026.csv) for a minimal example.
+Shared and edited only via small PRs to main: `CLAUDE.md`, `tools/`, `docs/INTERFACES.md`, `LOG.md` (append-only, prefix lines with your branch name).
 
-```
-cve_id,published,snapshot_month,assigner,score,rank,percentile,in_top500,priority,epss,exploitdb,metasploit,nuclei,poc_github,any_public_exploit,reasons,model_version
-```
+## 1. Model -> everyone (files in `results/`)
+- `scores_2026.csv` (all 72,670 scoreboard CVEs, i.e. not on the KEV list at their snapshot month; not guaranteed unexploited): `cve_id, published, snapshot_month, assigner, score, rank, percentile, in_top500, priority, epss, exploitdb, metasploit, nuclei, poc_github, any_public_exploit, reasons, model_version` (2026-11-08: `percentile`, the four flags, `model_version` and a per-reason `impact` share were added so the file also satisfies the dashboard contract in INTERFACES_dashboard.md; all earlier columns unchanged). `score` is a RANKING score, not a calibrated probability (about 0.15% of CVEs are later exploited), so the UI and Gemini must say "priority score"/"rank", never "X% chance of exploit". `priority` is a fixed rule computed here, not by an LLM: P0 = rank 1-100, P1 = rank 101-500, P2 = everything else (thresholds proposed; team to confirm). `reasons` is a JSON string: a list of up to 3 `{"signal": "assigner_kev_history", "value": 0.07, "direction": "up"}` objects. Signals are named from a fixed vocabulary in `results/signal_vocabulary.json`. The triage agent and the UI may use ONLY these fields as facts about the model.
+- `top500.csv`: single column `cve_id` (the judged submission).
+- `backtest_summary.json`: `{ "<method>": {"top500":..,"top250":..,"auc":..,"avg_precision":..,"median_rank":..,"ci95":{"top500":[lo,hi]}} }` for methods cvss3, epss, exploit_then_epss, assigner_only, ours (+ ablations); plus `pool_size`, `n_positives`, `split` description.
+- `drift_summary.json`: monthly volume, assigner mix 2025 vs 2026, missing-data rates.
+- `leakage_table.csv`: `column, used_in_model (yes/no), solo_auc, reason`.
+- `claims_model.json`: claims ledger entries (see CLAUDE.md).
 
-| Column | Type | Notes |
-|---|---|---|
-| `cve_id` | string | `CVE-YYYY-NNNN+`. Unique. |
-| `published` | string | `YYYY-MM-DD` |
-| `snapshot_month` | string | `YYYY-MM`, month the features were frozen |
-| `assigner` | string | CNA short name |
-| `score` | float | 0.000 – 1.000. Uncalibrated ranking score; compare by rank, not as a probability. |
-| `rank` | int | 1 … N (N = 72,670 for the 2026 set). Unique, 1 = highest risk. |
-| `percentile` | float | 0.0 – 100.0, `round(100 × (1 − (rank − 1) / N), 1)` |
-| `in_top500` | int | 1 if `rank ≤ 500` |
-| `priority` | string | `P0` \| `P1` \| `P2` (see §2) |
-| `epss` | float \| empty | EPSS at snapshot. Empty when not yet scored. |
-| `exploitdb` | int | 0/1 |
-| `metasploit` | int | 0/1 |
-| `nuclei` | int | 0/1 |
-| `poc_github` | int | 0/1 |
-| `any_public_exploit` | int | 0/1, OR of the four flags above |
-| `reasons` | JSON string | Top signals behind the score, highest impact first (see §3) |
-| `model_version` | string | e.g. `v0` |
+## 2. Data -> model
+Until the data branch delivers, the model branch reads raw CSVs and keeps its own feature code in `src/model/`. When delivered, the model switches to `data_cache/cve_base.parquet` (one row per CVE: `cve_id, published, assigner, description, cvss3_score, attack_vector, ... cwe_ids`) and `data_cache/kev.parquet` (`cve_id, date_added, vendor`). Data branch: never reshape or drop rows silently; document every cleaning step in `docs/features.md`. If you load a database, keep `scores_2026.csv` loadable into it as table `cve_scores`.
 
-## 2. Priority bands
+## 3. Triage (Gemini) rules
+Input per CVE: the NVD description, `reasons`, `score`, `rank`, assigner. Output: a short playbook labelled AI-generated. Must not invent affected versions, patches, CVE facts or URLs. Grounding check: every product/version/ID/term in the output must appear in the input; otherwise discard. IBM technology must still be genuinely used elsewhere (Granite embeddings in the model branch): do not remove it.
 
-| Priority | Rule | Meaning |
-|---|---|---|
-| **P0** | `percentile ≥ 99.85` (≈ top 100 of 72,670) | Patch now |
-| **P1** | `percentile ≥ 90` | Schedule this cycle |
-| **P2** | everything else | Routine |
+## 4. UI rules
+Render every number from `results/*.json|csv`; never hardcode statistics; show only claims whose status is `verified` in the demo build.
 
-Defined in `dashboard/src/lib/scoring.ts` (`P0_MIN_PERCENTILE`, `P1_MIN_PERCENTILE`).
-Bands use percentile, not absolute rank, so they still make sense for a small judge upload.
+## 5. Display metadata (owner: data branch; model branch does NOT duplicate it)
+Gemini and the UI also need NVD fields for display. The data branch provides one row per CVE keyed by `cve_id` (`data_cache/cve_display.parquet` and/or a DB view): `description, cvss3_score, cvss3_severity, attack_vector, cwe_ids, cwe_names, vendor, product, references` (list of `{url, tags}`; patch/advisory links for citing). These are for DISPLAY only; the model does not use CVSS/CWE/product as features. Many 2026 CVEs have no product list or blank CWE/CVSS (about two thirds of Aug-Sep 2026 CVEs lack products): nulls must stay null, and `vendor` may fall back to `assigner` only if labelled as such. A joined export `results/top500_enriched.csv` = scores + display metadata for the top 500 (built by the data branch from our files).
 
-## 3. `reasons`
+## 6. Gemini output rules (owner: triage branch)
+Four sections per CVE: Plain-English impact, Immediate workaround, Remediation action, Urgency. Urgency comes from `priority` (do not let the LLM decide it); it may only explain it using `reasons`. Impact is grounded in the description. Workaround/remediation: only generic, standard mitigations or links present in `references`; never invent patch versions, product names, URLs or CVE facts; if no patch reference exists, say "no vendor patch reference in our data; check the vendor advisory". Everything is labelled AI-generated; run the grounding check from section 3.
 
-```json
-[{ "signal": "assigner_kev_rate", "value": 0.071, "impact": 0.82, "direction": "up" }]
-```
-
-| Field | Type | Notes |
-|---|---|---|
-| `signal` | string | snake_case feature name |
-| `value` | number \| string \| null | Feature value for this CVE |
-| `impact` | float | Relative contribution, 0–1 |
-| `direction` | `"up"` \| `"down"` | Raises or lowers risk |
-
-`[]` is valid (no signal cleared the explanation threshold).
-
-## 4. `POST /predict`
-
-The dashboard's "Evaluate dataset → Model API" mode calls this endpoint at
-`${VITE_API_URL}/predict`. The browser calls the backend directly (no proxy), so
-the backend must allow the app's origin via CORS; see `dashboard/README.md`.
-Timeout: 60 s.
-
-**Request** (`Content-Type: application/json`)
-
-```json
-{ "rows": [ { "cve_id": "CVE-2026-12345", "published": "2026-05-14", "assigner": "microsoft",
-              "epss": 0.03, "exploitdb": 0, "metasploit": 0, "nuclei": 0, "poc_github": 1 } ] }
-```
-
-Rows are passed through as parsed from the uploaded file, so extra columns may be present.
-
-**Response** — `200`, JSON: either an array of §1 rows or `{ "rows": [...] }`.
-`score` is required on every row. `reasons` may be a JSON string or an array.
-If `rank`, `percentile` and `priority` are present on every row and ranks are
-unique, the dashboard keeps them; otherwise it ranks by `score` within the batch.
-
-## 4a. `GET /health`
-
-Used by the footer "API status" indicator (every 60 s and on click). Any `2xx`
-response means online; the body is ignored. Timeout: 5 s.
-
-## 5. Judge uploads (CSV / JSON)
-
-Accepted by the dashboard's upload modal:
-
-- **CSV** with a header row, or **JSON** as an array of objects or `{ "rows": [...] }`.
-- Only `cve_id` is required. `published, assigner, epss, exploitdb, metasploit, nuclei, poc_github`
-  feed the in-browser scorer when present.
-- If every row already has `score`, the file is treated as pre-scored and shown as-is
-  (unless "Re-score" is ticked).
-- Duplicate `cve_id`s keep the first occurrence. Limit 50 MB.
+## 7. Decisions log
+- LOCKED (model + triage branches): priority tiers P0 = rank 1-100, P1 = rank 101-500, P2 = rest, computed by the model branch; Gemini treats `priority` as ground truth and explains it from `reasons`.
+- LOCKED: UI and prompts say "Priority Score" / "Rank", never probability or "% chance".
+- LOCKED: Gemini falls back to `assigner` when vendor is null, handles missing CWE/CVSS, never invents patch versions or URLs; if no patch reference exists it says so and gives standard mitigations only.
+- LOCKED: `results/top500_enriched.csv` is built by the triage teammate (join of top 500 from `scores_2026.csv` with `cve_display.parquet` or raw `vulnerabilities.csv` + `references.csv`). Display fields are never used as model features.
+- OPEN: data and UI teammates confirm sections 2 and 4. `docs/sample_scores_2026.csv` is a DUMMY file (fake ids, fake values) so others can code against the schema before real scores exist; never put it in results/.

@@ -1,0 +1,95 @@
+{
+ "none": {
+  "largest_per_seed": [
+   0.13,
+   0.17,
+   0.19,
+   0.134,
+   0.158
+  ],
+  "largest_name": [
+   "disclosure@vulncheck.com",
+   "disclosure@vulncheck.com",
+   "disclosure@vulncheck.com",
+   "disclosure@vulncheck.com",
+   "disclosure@vulncheck.com"
+  ],
+  "n_assigners": [
+   77,
+   101,
+   91,
+   87,
+   79
+  ],
+  "seed0_top5": {
+   "disclosure@vulncheck.com": 0.13,
+   "secalert_us@oracle.com": 0.118,
+   "security@apache.org": 0.114,
+   "cve@mitre.org": 0.07,
+   "psirt@adobe.com": 0.056
+  },
+  "median_largest": 0.158
+ },
+ "100": {
+  "largest_per_seed": [
+   0.13,
+   0.17,
+   0.19,
+   0.134,
+   0.158
+  ],
+  "largest_name": [
+   "disclosure@vulncheck.com",
+   "disclosure@vulncheck.com",
+   "disclosure@vulncheck.com",
+   "disclosure@vulncheck.com",
+   "disclosure@vulncheck.com"
+  ],
+  "n_assigners": [
+   77,
+   101,
+   91,
+   87,
+   79
+  ],
+  "seed0_top5": {
+   "disclosure@vulncheck.com": 0.13,
+   "secalert_us@oracle.com": 0.118,
+   "security@apache.org": 0.114,
+   "cve@mitre.org": 0.07,
+   "psirt@adobe.com": 0.056
+  },
+  "median_largest": 0.158
+ },
+ "50": {
+  "largest_per_seed": [
+   0.1,
+   0.1,
+   0.1,
+   0.1,
+   0.1
+  ],
+  "largest_name": [
+   "disclosure@vulncheck.com",
+   "disclosure@vulncheck.com",
+   "disclosure@vulncheck.com",
+   "disclosure@vulncheck.com",
+   "disclosure@vulncheck.com"
+  ],
+  "n_assigners": [
+   84,
+   105,
+   99,
+   87,
+   83
+  ],
+  "seed0_top5": {
+   "disclosure@vulncheck.com": 0.1,
+   "security@apache.org": 0.1,
+   "secalert_us@oracle.com": 0.1,
+   "cve@mitre.org": 0.078,
+   "security-advisories@github.com": 0.064
+  },
+  "median_largest": 0.1
+ }
+}

@@ -1,0 +1,20 @@
+{
+  "p6.granite_subset.n_vectors": {
+    "text": "Watsonx Granite embedding vectors available for subset evaluation",
+    "value": 1966,
+    "unit": "count",
+    "source_script": "src/model/granite_subset_eval.py",
+    "output_file": "results/granite_subset_comparison.json",
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-granite-subset.md"
+  },
+  "p6.granite_subset.mean_delta_auc": {
+    "text": "Mean (Granite text LR AUC - TF-IDF text LR AUC) on embedding-covered fold slices",
+    "value": 0.03280789030789044,
+    "unit": "fraction",
+    "source_script": "src/model/granite_subset_eval.py",
+    "output_file": "results/granite_subset_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  }
+}

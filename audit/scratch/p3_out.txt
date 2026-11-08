@@ -1,0 +1,52 @@
+/Users/aahmad/Working/datathon/code/Datathon2k26/audit/scratch/p3_rederive.py:64: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  lim = np.minimum(me + 365, np.datetime64(cap))
+fold1 {'train_rows': 39868, 'train_pos': 40, 'train_pos_uncapped': 65, 'test_rows': 35280, 'test_pos': 52, 'exploit_then_epss': {'auc': 0.7680295285218925, 'top500': 18, 'work50': 2253, 'top500_expected': 18.358024691358025}, 'id_overlap': 0}
+/Users/aahmad/Working/datathon/code/Datathon2k26/audit/scratch/p3_rederive.py:64: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  lim = np.minimum(me + 365, np.datetime64(cap))
+fold2 {'train_rows': 31440, 'train_pos': 38, 'train_pos_uncapped': 59, 'test_rows': 23367, 'test_pos': 32, 'exploit_then_epss': {'auc': 0.808864768587958, 'top500': 15, 'work50': 510, 'top500_expected': 14.6}, 'id_overlap': 0}
+[Parallel(n_jobs=10)]: Using backend LokyBackend with 10 concurrent workers.
+/Users/aahmad/Working/datathon/code/Datathon2k26/audit/scratch/p3_rederive.py:64: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  lim = np.minimum(me + 365, np.datetime64(cap))
+/Users/aahmad/Working/datathon/code/Datathon2k26/audit/scratch/p3_rederive.py:64: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  lim = np.minimum(me + 365, np.datetime64(cap))
+/Users/aahmad/Working/datathon/code/Datathon2k26/audit/scratch/p3_rederive.py:64: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  lim = np.minimum(me + 365, np.datetime64(cap))
+/Users/aahmad/Working/datathon/code/Datathon2k26/audit/scratch/p3_rederive.py:64: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  lim = np.minimum(me + 365, np.datetime64(cap))
+/Users/aahmad/Working/datathon/code/Datathon2k26/audit/scratch/p3_rederive.py:64: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  lim = np.minimum(me + 365, np.datetime64(cap))
+/Users/aahmad/Working/datathon/code/Datathon2k26/audit/scratch/p3_rederive.py:64: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  lim = np.minimum(me + 365, np.datetime64(cap))
+/Users/aahmad/Working/datathon/code/Datathon2k26/audit/scratch/p3_rederive.py:64: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  lim = np.minimum(me + 365, np.datetime64(cap))
+/Users/aahmad/Working/datathon/code/Datathon2k26/audit/scratch/p3_rederive.py:64: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  lim = np.minimum(me + 365, np.datetime64(cap))
+/Users/aahmad/Working/datathon/code/Datathon2k26/audit/scratch/p3_rederive.py:64: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  lim = np.minimum(me + 365, np.datetime64(cap))
+/Users/aahmad/Working/datathon/code/Datathon2k26/audit/scratch/p3_rederive.py:64: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  lim = np.minimum(me + 365, np.datetime64(cap))
+/Users/aahmad/Working/datathon/code/Datathon2k26/audit/scratch/p3_rederive.py:64: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  lim = np.minimum(me + 365, np.datetime64(cap))
+/Users/aahmad/Working/datathon/code/Datathon2k26/audit/scratch/p3_rederive.py:64: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  lim = np.minimum(me + 365, np.datetime64(cap))
+/Users/aahmad/Working/datathon/code/Datathon2k26/audit/scratch/p3_rederive.py:64: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  lim = np.minimum(me + 365, np.datetime64(cap))
+/Users/aahmad/Working/datathon/code/Datathon2k26/audit/scratch/p3_rederive.py:64: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  lim = np.minimum(me + 365, np.datetime64(cap))
+/Users/aahmad/Working/datathon/code/Datathon2k26/audit/scratch/p3_rederive.py:64: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  lim = np.minimum(me + 365, np.datetime64(cap))
+[Parallel(n_jobs=10)]: Done   6 out of  20 | elapsed:   11.9s remaining:   27.8s
+/Users/aahmad/Working/datathon/code/Datathon2k26/audit/scratch/p3_rederive.py:64: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  lim = np.minimum(me + 365, np.datetime64(cap))
+/Users/aahmad/Working/datathon/code/Datathon2k26/audit/scratch/p3_rederive.py:64: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  lim = np.minimum(me + 365, np.datetime64(cap))
+/Users/aahmad/Working/datathon/code/Datathon2k26/audit/scratch/p3_rederive.py:64: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  lim = np.minimum(me + 365, np.datetime64(cap))
+/Users/aahmad/Working/datathon/code/Datathon2k26/audit/scratch/p3_rederive.py:64: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  lim = np.minimum(me + 365, np.datetime64(cap))
+/Users/aahmad/Working/datathon/code/Datathon2k26/audit/scratch/p3_rederive.py:64: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  lim = np.minimum(me + 365, np.datetime64(cap))
+[Parallel(n_jobs=10)]: Done  11 out of  20 | elapsed:   16.2s remaining:   13.3s
+[Parallel(n_jobs=10)]: Done  16 out of  20 | elapsed:   18.5s remaining:    4.6s
+[Parallel(n_jobs=10)]: Done  20 out of  20 | elapsed:   18.6s finished
+done

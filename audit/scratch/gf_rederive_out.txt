@@ -1,0 +1,51 @@
+/Users/aahmad/Working/datathon/code/Datathon2k26/audit/scratch/gf_rederive.py:31: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  ytr = ((~np.isnat(kd)) & (kd > me) & (kd <= np.minimum(me + 365, np.datetime64(cap)))).astype(int)
+/Users/aahmad/Working/datathon/code/Datathon2k26/audit/scratch/gf_rederive.py:31: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  ytr = ((~np.isnat(kd)) & (kd > me) & (kd <= np.minimum(me + 365, np.datetime64(cap)))).astype(int)
+{'fold1': {'train_rows': 39868, 'train_pos': 40, 'test_rows': 35280, 'test_pos': 52, 'id_overlap': 0, 'train_max_month': '2024-12', 'test_min_month': '2025-01'}, 'fold2': {'train_rows': 31440, 'train_pos': 38, 'test_rows': 23367, 'test_pos': 32, 'id_overlap': 0, 'train_max_month': '2025-03', 'test_min_month': '2025-04'}}
+[Parallel(n_jobs=10)]: Using backend LokyBackend with 10 concurrent workers.
+/Users/aahmad/Working/datathon/code/Datathon2k26/audit/scratch/gf_rederive.py:31: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  ytr = ((~np.isnat(kd)) & (kd > me) & (kd <= np.minimum(me + 365, np.datetime64(cap)))).astype(int)
+/Users/aahmad/Working/datathon/code/Datathon2k26/audit/scratch/gf_rederive.py:31: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  ytr = ((~np.isnat(kd)) & (kd > me) & (kd <= np.minimum(me + 365, np.datetime64(cap)))).astype(int)
+/Users/aahmad/Working/datathon/code/Datathon2k26/audit/scratch/gf_rederive.py:31: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  ytr = ((~np.isnat(kd)) & (kd > me) & (kd <= np.minimum(me + 365, np.datetime64(cap)))).astype(int)
+/Users/aahmad/Working/datathon/code/Datathon2k26/audit/scratch/gf_rederive.py:31: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  ytr = ((~np.isnat(kd)) & (kd > me) & (kd <= np.minimum(me + 365, np.datetime64(cap)))).astype(int)
+/Users/aahmad/Working/datathon/code/Datathon2k26/audit/scratch/gf_rederive.py:31: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  ytr = ((~np.isnat(kd)) & (kd > me) & (kd <= np.minimum(me + 365, np.datetime64(cap)))).astype(int)
+/Users/aahmad/Working/datathon/code/Datathon2k26/audit/scratch/gf_rederive.py:31: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  ytr = ((~np.isnat(kd)) & (kd > me) & (kd <= np.minimum(me + 365, np.datetime64(cap)))).astype(int)
+/Users/aahmad/Working/datathon/code/Datathon2k26/audit/scratch/gf_rederive.py:31: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  ytr = ((~np.isnat(kd)) & (kd > me) & (kd <= np.minimum(me + 365, np.datetime64(cap)))).astype(int)
+/Users/aahmad/Working/datathon/code/Datathon2k26/audit/scratch/gf_rederive.py:31: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  ytr = ((~np.isnat(kd)) & (kd > me) & (kd <= np.minimum(me + 365, np.datetime64(cap)))).astype(int)
+/Users/aahmad/Working/datathon/code/Datathon2k26/audit/scratch/gf_rederive.py:31: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  ytr = ((~np.isnat(kd)) & (kd > me) & (kd <= np.minimum(me + 365, np.datetime64(cap)))).astype(int)
+/Users/aahmad/Working/datathon/code/Datathon2k26/audit/scratch/gf_rederive.py:31: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  ytr = ((~np.isnat(kd)) & (kd > me) & (kd <= np.minimum(me + 365, np.datetime64(cap)))).astype(int)
+/Users/aahmad/Working/datathon/code/Datathon2k26/audit/scratch/gf_rederive.py:31: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  ytr = ((~np.isnat(kd)) & (kd > me) & (kd <= np.minimum(me + 365, np.datetime64(cap)))).astype(int)
+/Users/aahmad/Working/datathon/code/Datathon2k26/audit/scratch/gf_rederive.py:31: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  ytr = ((~np.isnat(kd)) & (kd > me) & (kd <= np.minimum(me + 365, np.datetime64(cap)))).astype(int)
+/Users/aahmad/Working/datathon/code/Datathon2k26/audit/scratch/gf_rederive.py:31: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  ytr = ((~np.isnat(kd)) & (kd > me) & (kd <= np.minimum(me + 365, np.datetime64(cap)))).astype(int)
+/Users/aahmad/Working/datathon/code/Datathon2k26/audit/scratch/gf_rederive.py:31: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  ytr = ((~np.isnat(kd)) & (kd > me) & (kd <= np.minimum(me + 365, np.datetime64(cap)))).astype(int)
+/Users/aahmad/Working/datathon/code/Datathon2k26/audit/scratch/gf_rederive.py:31: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  ytr = ((~np.isnat(kd)) & (kd > me) & (kd <= np.minimum(me + 365, np.datetime64(cap)))).astype(int)
+[Parallel(n_jobs=10)]: Done   6 out of  20 | elapsed:   15.2s remaining:   35.4s
+/Users/aahmad/Working/datathon/code/Datathon2k26/audit/scratch/gf_rederive.py:31: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  ytr = ((~np.isnat(kd)) & (kd > me) & (kd <= np.minimum(me + 365, np.datetime64(cap)))).astype(int)
+/Users/aahmad/Working/datathon/code/Datathon2k26/audit/scratch/gf_rederive.py:31: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  ytr = ((~np.isnat(kd)) & (kd > me) & (kd <= np.minimum(me + 365, np.datetime64(cap)))).astype(int)
+/Users/aahmad/Working/datathon/code/Datathon2k26/audit/scratch/gf_rederive.py:31: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  ytr = ((~np.isnat(kd)) & (kd > me) & (kd <= np.minimum(me + 365, np.datetime64(cap)))).astype(int)
+/Users/aahmad/Working/datathon/code/Datathon2k26/audit/scratch/gf_rederive.py:31: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  ytr = ((~np.isnat(kd)) & (kd > me) & (kd <= np.minimum(me + 365, np.datetime64(cap)))).astype(int)
+/Users/aahmad/Working/datathon/code/Datathon2k26/audit/scratch/gf_rederive.py:31: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  ytr = ((~np.isnat(kd)) & (kd > me) & (kd <= np.minimum(me + 365, np.datetime64(cap)))).astype(int)
+[Parallel(n_jobs=10)]: Done  11 out of  20 | elapsed:   23.9s remaining:   19.6s
+[Parallel(n_jobs=10)]: Done  16 out of  20 | elapsed:   27.8s remaining:    6.9s
+[Parallel(n_jobs=10)]: Done  20 out of  20 | elapsed:   28.4s finished
+done

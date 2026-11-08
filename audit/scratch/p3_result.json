@@ -1,0 +1,532 @@
+{
+ "fold1": {
+  "train_rows": 39868,
+  "train_pos": 40,
+  "train_pos_uncapped": 65,
+  "test_rows": 35280,
+  "test_pos": 52,
+  "exploit_then_epss": {
+   "auc": 0.7680295285218925,
+   "top500": 18,
+   "work50": 2253,
+   "top500_expected": 18.358024691358025
+  },
+  "id_overlap": 0
+ },
+ "fold2": {
+  "train_rows": 31440,
+  "train_pos": 38,
+  "train_pos_uncapped": 59,
+  "test_rows": 23367,
+  "test_pos": 32,
+  "exploit_then_epss": {
+   "auc": 0.808864768587958,
+   "top500": 15,
+   "work50": 510,
+   "top500_expected": 14.6
+  },
+  "id_overlap": 0
+ },
+ "runs": [
+  {
+   "fold": "fold1",
+   "seed": 0,
+   "perm": null,
+   "out": {
+    "C1": {
+     "auc": 0.8519468779205353,
+     "top500": 18,
+     "work50": 1355,
+     "top500_expected": 18.0,
+     "unseen_rows": 13375,
+     "unseen_pos": 9,
+     "unseen_auc": 0.7374515769697574
+    },
+    "C2": {
+     "auc": 0.7948599671589907,
+     "top500": 16,
+     "work50": 1905,
+     "top500_expected": 16.0
+    },
+    "C3": {
+     "auc": 0.7990191368753876,
+     "top500": 20,
+     "work50": 828,
+     "top500_expected": 20.0
+    },
+    "C2_allkev": {
+     "auc": 0.8155643784227581,
+     "top500": 20,
+     "work50": 1237,
+     "top500_expected": 20.0
+    }
+   }
+  },
+  {
+   "fold": "fold1",
+   "seed": 1,
+   "perm": null,
+   "out": {
+    "C1": {
+     "auc": 0.8847060030919461,
+     "top500": 22,
+     "work50": 855,
+     "top500_expected": 22.0,
+     "unseen_rows": 13375,
+     "unseen_pos": 9,
+     "unseen_auc": 0.7959125143398673
+    },
+    "C2": {
+     "auc": 0.8829722423596614,
+     "top500": 18,
+     "work50": 1035,
+     "top500_expected": 18.2
+    },
+    "C3": {
+     "auc": 0.7980878409656654,
+     "top500": 19,
+     "work50": 1047,
+     "top500_expected": 19.0
+    },
+    "C2_allkev": {
+     "auc": 0.8846140198792918,
+     "top500": 23,
+     "work50": 652,
+     "top500_expected": 23.0
+    }
+   }
+  },
+  {
+   "fold": "fold1",
+   "seed": 2,
+   "perm": null,
+   "out": {
+    "C1": {
+     "auc": 0.8717874112375645,
+     "top500": 22,
+     "work50": 1107,
+     "top500_expected": 22.0,
+     "unseen_rows": 13375,
+     "unseen_pos": 9,
+     "unseen_auc": 0.7195828553377558
+    },
+    "C2": {
+     "auc": 0.8357848542680211,
+     "top500": 18,
+     "work50": 1613,
+     "top500_expected": 18.666666666666668
+    },
+    "C3": {
+     "auc": 0.7991206732406914,
+     "top500": 20,
+     "work50": 781,
+     "top500_expected": 20.0
+    },
+    "C2_allkev": {
+     "auc": 0.8703072184713209,
+     "top500": 23,
+     "work50": 795,
+     "top500_expected": 23.0
+    }
+   }
+  },
+  {
+   "fold": "fold1",
+   "seed": 3,
+   "perm": null,
+   "out": {
+    "C1": {
+     "auc": 0.8601090915443135,
+     "top500": 22,
+     "work50": 1251,
+     "top500_expected": 22.0,
+     "unseen_rows": 13375,
+     "unseen_pos": 9,
+     "unseen_auc": 0.7524523251367483
+    },
+    "C2": {
+     "auc": 0.8243311701356438,
+     "top500": 18,
+     "work50": 1723,
+     "top500_expected": 18.0
+    },
+    "C3": {
+     "auc": 0.7998903843970269,
+     "top500": 19,
+     "work50": 831,
+     "top500_expected": 19.0
+    },
+    "C2_allkev": {
+     "auc": 0.8178191953952713,
+     "top500": 23,
+     "work50": 977,
+     "top500_expected": 23.0
+    }
+   }
+  },
+  {
+   "fold": "fold1",
+   "seed": 4,
+   "perm": null,
+   "out": {
+    "C1": {
+     "auc": 0.8504721440986628,
+     "top500": 15,
+     "work50": 1226,
+     "top500_expected": 15.0,
+     "unseen_rows": 13375,
+     "unseen_pos": 9,
+     "unseen_auc": 0.7241757693650556
+    },
+    "C2": {
+     "auc": 0.8296787520416452,
+     "top500": 17,
+     "work50": 1542,
+     "top500_expected": 17.0
+    },
+    "C3": {
+     "auc": 0.7982363242525613,
+     "top500": 18,
+     "work50": 1059,
+     "top500_expected": 18.0
+    },
+    "C2_allkev": {
+     "auc": 0.8375671996052091,
+     "top500": 23,
+     "work50": 1522,
+     "top500_expected": 23.0
+    }
+   }
+  },
+  {
+   "fold": "fold2",
+   "seed": 0,
+   "perm": null,
+   "out": {
+    "C1": {
+     "auc": 0.8911526408827941,
+     "top500": 11,
+     "work50": 1216,
+     "top500_expected": 11.0,
+     "unseen_rows": 8201,
+     "unseen_pos": 7,
+     "unseen_auc": 0.9396683984797238
+    },
+    "C2": {
+     "auc": 0.8890976537390186,
+     "top500": 13,
+     "work50": 1137,
+     "top500_expected": 13.0
+    },
+    "C3": {
+     "auc": 0.8693499571459181,
+     "top500": 13,
+     "work50": 660,
+     "top500_expected": 13.0
+    },
+    "C2_allkev": {
+     "auc": 0.877960949217913,
+     "top500": 13,
+     "work50": 914,
+     "top500_expected": 13.0
+    }
+   }
+  },
+  {
+   "fold": "fold2",
+   "seed": 1,
+   "perm": null,
+   "out": {
+    "C1": {
+     "auc": 0.8628220752089136,
+     "top500": 11,
+     "work50": 1240,
+     "top500_expected": 11.0,
+     "unseen_rows": 8201,
+     "unseen_pos": 7,
+     "unseen_auc": 0.930140520938666
+    },
+    "C2": {
+     "auc": 0.863949003642597,
+     "top500": 12,
+     "work50": 982,
+     "top500_expected": 12.0
+    },
+    "C3": {
+     "auc": 0.8716305978144419,
+     "top500": 13,
+     "work50": 700,
+     "top500_expected": 13.0
+    },
+    "C2_allkev": {
+     "auc": 0.8541863081208485,
+     "top500": 12,
+     "work50": 772,
+     "top500_expected": 12.0
+    }
+   }
+  },
+  {
+   "fold": "fold2",
+   "seed": 2,
+   "perm": null,
+   "out": {
+    "C1": {
+     "auc": 0.8797527855153203,
+     "top500": 11,
+     "work50": 1314,
+     "top500_expected": 11.0,
+     "unseen_rows": 8201,
+     "unseen_pos": 7,
+     "unseen_auc": 0.9368004463196067
+    },
+    "C2": {
+     "auc": 0.8795217752303407,
+     "top500": 12,
+     "work50": 1662,
+     "top500_expected": 12.0
+    },
+    "C3": {
+     "auc": 0.8729604135418899,
+     "top500": 13,
+     "work50": 651,
+     "top500_expected": 13.0
+    },
+    "C2_allkev": {
+     "auc": 0.8722432772659096,
+     "top500": 12,
+     "work50": 1927,
+     "top500_expected": 12.0
+    }
+   }
+  },
+  {
+   "fold": "fold2",
+   "seed": 3,
+   "perm": null,
+   "out": {
+    "C1": {
+     "auc": 0.8542264838225841,
+     "top500": 12,
+     "work50": 1412,
+     "top500_expected": 12.0,
+     "unseen_rows": 8201,
+     "unseen_pos": 7,
+     "unseen_auc": 0.9353621116496391
+    },
+    "C2": {
+     "auc": 0.8547085922434112,
+     "top500": 10,
+     "work50": 770,
+     "top500_expected": 10.0
+    },
+    "C3": {
+     "auc": 0.8807156631669166,
+     "top500": 13,
+     "work50": 656,
+     "top500_expected": 13.0
+    },
+    "C2_allkev": {
+     "auc": 0.8499919648596529,
+     "top500": 12,
+     "work50": 669,
+     "top500_expected": 12.0
+    }
+   }
+  },
+  {
+   "fold": "fold2",
+   "seed": 4,
+   "perm": null,
+   "out": {
+    "C1": {
+     "auc": 0.8796248928647954,
+     "top500": 11,
+     "work50": 1036,
+     "top500_expected": 11.0,
+     "unseen_rows": 8201,
+     "unseen_pos": 7,
+     "unseen_auc": 0.9408016318560619
+    },
+    "C2": {
+     "auc": 0.8665249357188772,
+     "top500": 12,
+     "work50": 955,
+     "top500_expected": 12.0
+    },
+    "C3": {
+     "auc": 0.875902614098993,
+     "top500": 13,
+     "work50": 651,
+     "top500_expected": 13.0
+    },
+    "C2_allkev": {
+     "auc": 0.8596548907220912,
+     "top500": 11,
+     "work50": 1245,
+     "top500_expected": 11.0
+    }
+   }
+  },
+  {
+   "fold": "fold2",
+   "seed": 0,
+   "perm": 1000,
+   "out": {
+    "C1": {
+     "auc": 0.34760084101135635,
+     "top500": 1,
+     "work50": 16034,
+     "top500_expected": 1.0,
+     "unseen_rows": 8201,
+     "unseen_pos": 7,
+     "unseen_auc": 0.41519927473063917
+    }
+   }
+  },
+  {
+   "fold": "fold2",
+   "seed": 0,
+   "perm": 1001,
+   "out": {
+    "C1": {
+     "auc": 0.587518079065781,
+     "top500": 1,
+     "work50": 7819,
+     "top500_expected": 1.0,
+     "unseen_rows": 8201,
+     "unseen_pos": 7,
+     "unseen_auc": 0.7968112556225809
+    }
+   }
+  },
+  {
+   "fold": "fold2",
+   "seed": 0,
+   "perm": 1002,
+   "out": {
+    "C1": {
+     "auc": 0.5002584636811657,
+     "top500": 0,
+     "work50": 11402,
+     "top500_expected": 0.0,
+     "unseen_rows": 8201,
+     "unseen_pos": 7,
+     "unseen_auc": 0.4566407475853412
+    }
+   }
+  },
+  {
+   "fold": "fold2",
+   "seed": 0,
+   "perm": 1003,
+   "out": {
+    "C1": {
+     "auc": 0.59547152881937,
+     "top500": 2,
+     "work50": 6856,
+     "top500_expected": 2.0,
+     "unseen_rows": 8201,
+     "unseen_pos": 7,
+     "unseen_auc": 0.351276195125353
+    }
+   }
+  },
+  {
+   "fold": "fold2",
+   "seed": 0,
+   "perm": 1004,
+   "out": {
+    "C1": {
+     "auc": 0.5968254499678595,
+     "top500": 0,
+     "work50": 11016,
+     "top500_expected": 0.0,
+     "unseen_rows": 8201,
+     "unseen_pos": 7,
+     "unseen_auc": 0.6711269570068691
+    }
+   }
+  },
+  {
+   "fold": "fold2",
+   "seed": 0,
+   "perm": 1005,
+   "out": {
+    "C1": {
+     "auc": 0.4566959502892651,
+     "top500": 0,
+     "work50": 15071,
+     "top500_expected": 0.0,
+     "unseen_rows": 8201,
+     "unseen_pos": 7,
+     "unseen_auc": 0.5048641863384358
+    }
+   }
+  },
+  {
+   "fold": "fold2",
+   "seed": 0,
+   "perm": 1006,
+   "out": {
+    "C1": {
+     "auc": 0.4955592457681594,
+     "top500": 1,
+     "work50": 12394,
+     "top500_expected": 1.0,
+     "unseen_rows": 8201,
+     "unseen_pos": 7,
+     "unseen_auc": 0.5417552913281495
+    }
+   }
+  },
+  {
+   "fold": "fold2",
+   "seed": 0,
+   "perm": 1007,
+   "out": {
+    "C1": {
+     "auc": 0.3240672541247054,
+     "top500": 0,
+     "work50": 16362,
+     "top500_expected": 0.0,
+     "unseen_rows": 8201,
+     "unseen_pos": 7,
+     "unseen_auc": 0.32620558596882737
+    }
+   }
+  },
+  {
+   "fold": "fold2",
+   "seed": 0,
+   "perm": 1008,
+   "out": {
+    "C1": {
+     "auc": 0.5423344761088493,
+     "top500": 2,
+     "work50": 10257,
+     "top500_expected": 2.0,
+     "unseen_rows": 8201,
+     "unseen_pos": 7,
+     "unseen_auc": 0.4017137975522159
+    }
+   }
+  },
+  {
+   "fold": "fold2",
+   "seed": 0,
+   "perm": 1009,
+   "out": {
+    "C1": {
+     "auc": 0.47559794836083136,
+     "top500": 2,
+     "work50": 12850,
+     "top500_expected": 2.0,
+     "unseen_rows": 8201,
+     "unseen_pos": 7,
+     "unseen_auc": 0.7271086857979706
+    }
+   }
+  }
+ ]
+}

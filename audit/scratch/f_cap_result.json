@@ -1,0 +1,264 @@
+{
+ "fold1": {
+  "none": {
+   "per_seed": [
+    {
+     "by_id": 18,
+     "expected": 18.0,
+     "ties": 33268,
+     "max_share": 0.238,
+     "n": 500
+    },
+    {
+     "by_id": 22,
+     "expected": 22.0,
+     "ties": 33583,
+     "max_share": 0.298,
+     "n": 500
+    },
+    {
+     "by_id": 22,
+     "expected": 22.0,
+     "ties": 33559,
+     "max_share": 0.206,
+     "n": 500
+    },
+    {
+     "by_id": 22,
+     "expected": 22.0,
+     "ties": 33667,
+     "max_share": 0.24,
+     "n": 500
+    },
+    {
+     "by_id": 15,
+     "expected": 15.0,
+     "ties": 33713,
+     "max_share": 0.264,
+     "n": 500
+    }
+   ],
+   "median_expected": 22.0,
+   "median_by_id": 22.0,
+   "median_share": 0.24
+  },
+  "100": {
+   "per_seed": [
+    {
+     "by_id": 18,
+     "expected": 18.0,
+     "ties": 33268,
+     "max_share": 0.2,
+     "n": 500
+    },
+    {
+     "by_id": 21,
+     "expected": 21.0,
+     "ties": 33583,
+     "max_share": 0.2,
+     "n": 500
+    },
+    {
+     "by_id": 22,
+     "expected": 22.0,
+     "ties": 33559,
+     "max_share": 0.2,
+     "n": 500
+    },
+    {
+     "by_id": 20,
+     "expected": 20.0,
+     "ties": 33667,
+     "max_share": 0.2,
+     "n": 500
+    },
+    {
+     "by_id": 17,
+     "expected": 17.0,
+     "ties": 33713,
+     "max_share": 0.2,
+     "n": 500
+    }
+   ],
+   "median_expected": 20.0,
+   "median_by_id": 20.0,
+   "median_share": 0.2
+  },
+  "50": {
+   "per_seed": [
+    {
+     "by_id": 19,
+     "expected": 19.0,
+     "ties": 33268,
+     "max_share": 0.1,
+     "n": 500
+    },
+    {
+     "by_id": 21,
+     "expected": 21.0,
+     "ties": 33583,
+     "max_share": 0.1,
+     "n": 500
+    },
+    {
+     "by_id": 21,
+     "expected": 21.0,
+     "ties": 33559,
+     "max_share": 0.1,
+     "n": 500
+    },
+    {
+     "by_id": 20,
+     "expected": 20.0,
+     "ties": 33667,
+     "max_share": 0.1,
+     "n": 500
+    },
+    {
+     "by_id": 20,
+     "expected": 20.0,
+     "ties": 33713,
+     "max_share": 0.1,
+     "n": 500
+    }
+   ],
+   "median_expected": 20.0,
+   "median_by_id": 20.0,
+   "median_share": 0.1
+  }
+ },
+ "fold2": {
+  "none": {
+   "per_seed": [
+    {
+     "by_id": 11,
+     "expected": 11.0,
+     "ties": 22109,
+     "max_share": 0.334,
+     "n": 500
+    },
+    {
+     "by_id": 11,
+     "expected": 11.0,
+     "ties": 22122,
+     "max_share": 0.332,
+     "n": 500
+    },
+    {
+     "by_id": 11,
+     "expected": 11.0,
+     "ties": 22207,
+     "max_share": 0.254,
+     "n": 500
+    },
+    {
+     "by_id": 12,
+     "expected": 12.0,
+     "ties": 22349,
+     "max_share": 0.19,
+     "n": 500
+    },
+    {
+     "by_id": 11,
+     "expected": 11.0,
+     "ties": 22198,
+     "max_share": 0.238,
+     "n": 500
+    }
+   ],
+   "median_expected": 11.0,
+   "median_by_id": 11.0,
+   "median_share": 0.254
+  },
+  "100": {
+   "per_seed": [
+    {
+     "by_id": 12,
+     "expected": 12.0,
+     "ties": 22109,
+     "max_share": 0.2,
+     "n": 500
+    },
+    {
+     "by_id": 11,
+     "expected": 11.0,
+     "ties": 22122,
+     "max_share": 0.2,
+     "n": 500
+    },
+    {
+     "by_id": 11,
+     "expected": 11.0,
+     "ties": 22207,
+     "max_share": 0.2,
+     "n": 500
+    },
+    {
+     "by_id": 12,
+     "expected": 12.0,
+     "ties": 22349,
+     "max_share": 0.19,
+     "n": 500
+    },
+    {
+     "by_id": 11,
+     "expected": 11.0,
+     "ties": 22198,
+     "max_share": 0.2,
+     "n": 500
+    }
+   ],
+   "median_expected": 11.0,
+   "median_by_id": 11.0,
+   "median_share": 0.2
+  },
+  "50": {
+   "per_seed": [
+    {
+     "by_id": 13,
+     "expected": 13.0,
+     "ties": 22109,
+     "max_share": 0.1,
+     "n": 500
+    },
+    {
+     "by_id": 12,
+     "expected": 12.0,
+     "ties": 22122,
+     "max_share": 0.1,
+     "n": 500
+    },
+    {
+     "by_id": 11,
+     "expected": 11.0,
+     "ties": 22207,
+     "max_share": 0.1,
+     "n": 500
+    },
+    {
+     "by_id": 12,
+     "expected": 12.0,
+     "ties": 22349,
+     "max_share": 0.1,
+     "n": 500
+    },
+    {
+     "by_id": 12,
+     "expected": 12.0,
+     "ties": 22198,
+     "max_share": 0.1,
+     "n": 500
+    }
+   ],
+   "median_expected": 12.0,
+   "median_by_id": 12.0,
+   "median_share": 0.1
+  }
+ },
+ "mean": {
+  "none": 16.5,
+  "100": 15.5,
+  "50": 16.0
+ },
+ "chosen": "50"
+}
