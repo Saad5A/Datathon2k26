@@ -1,0 +1,785 @@
+{
+  "p6.granite.fold1.C1.auc.median": {
+    "text": "Granite comparison fold1 (test 2025-01..2025-09), C1: auc, median over seed sets 0-4",
+    "value": 0.8601090915443136,
+    "unit": "fraction",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold1.C1.top500_cve_id.median": {
+    "text": "Granite comparison fold1 (test 2025-01..2025-09), C1: top500_cve_id, median over seed sets 0-4",
+    "value": 22.0,
+    "unit": "count",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold1.C1.top500_expected.median": {
+    "text": "Granite comparison fold1 (test 2025-01..2025-09), C1: top500_expected, median over seed sets 0-4",
+    "value": 22.0,
+    "unit": "count",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold1.C1.avg_precision.median": {
+    "text": "Granite comparison fold1 (test 2025-01..2025-09), C1: avg_precision, median over seed sets 0-4",
+    "value": 0.07588182927920298,
+    "unit": "fraction",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold1.C1.median_rank_cve_id.median": {
+    "text": "Granite comparison fold1 (test 2025-01..2025-09), C1: median_rank_cve_id, median over seed sets 0-4",
+    "value": 1249.0,
+    "unit": "count",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold1.C1.work50_cve_id.median": {
+    "text": "Granite comparison fold1 (test 2025-01..2025-09), C1: work50_cve_id, median over seed sets 0-4",
+    "value": 1226.0,
+    "unit": "count",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold1.C1.auc.min": {
+    "text": "Granite comparison fold1 (test 2025-01..2025-09), C1: auc, lowest of seed sets 0-4",
+    "value": 0.8504721440986628,
+    "unit": "fraction",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold1.C1.auc.max": {
+    "text": "Granite comparison fold1 (test 2025-01..2025-09), C1: auc, highest of seed sets 0-4",
+    "value": 0.8847060030919461,
+    "unit": "fraction",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold1.C1.top500_cve_id.min": {
+    "text": "Granite comparison fold1 (test 2025-01..2025-09), C1: top500_cve_id, lowest of seed sets 0-4",
+    "value": 15,
+    "unit": "count",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold1.C1.top500_cve_id.max": {
+    "text": "Granite comparison fold1 (test 2025-01..2025-09), C1: top500_cve_id, highest of seed sets 0-4",
+    "value": 22,
+    "unit": "count",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold1.C1.ci95_lo.auc": {
+    "text": "Granite comparison fold1 (test 2025-01..2025-09), C1: bootstrap 95% CI lower bound, auc (seed set 0)",
+    "value": 0.789309877760884,
+    "unit": "fraction",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold1.C1.ci95_hi.auc": {
+    "text": "Granite comparison fold1 (test 2025-01..2025-09), C1: bootstrap 95% CI upper bound, auc (seed set 0)",
+    "value": 0.9088328803797365,
+    "unit": "fraction",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold1.C1.ci95_lo.top500_expected": {
+    "text": "Granite comparison fold1 (test 2025-01..2025-09), C1: bootstrap 95% CI lower bound, top500_expected (seed set 0)",
+    "value": 9.0,
+    "unit": "count",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold1.C1.ci95_hi.top500_expected": {
+    "text": "Granite comparison fold1 (test 2025-01..2025-09), C1: bootstrap 95% CI upper bound, top500_expected (seed set 0)",
+    "value": 25.0,
+    "unit": "count",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold1.G1.auc.median": {
+    "text": "Granite comparison fold1 (test 2025-01..2025-09), G1: auc, median over seed sets 0-4",
+    "value": 0.8573932667196548,
+    "unit": "fraction",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold1.G1.top500_cve_id.median": {
+    "text": "Granite comparison fold1 (test 2025-01..2025-09), G1: top500_cve_id, median over seed sets 0-4",
+    "value": 12.0,
+    "unit": "count",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold1.G1.top500_expected.median": {
+    "text": "Granite comparison fold1 (test 2025-01..2025-09), G1: top500_expected, median over seed sets 0-4",
+    "value": 12.0,
+    "unit": "count",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold1.G1.avg_precision.median": {
+    "text": "Granite comparison fold1 (test 2025-01..2025-09), G1: avg_precision, median over seed sets 0-4",
+    "value": 0.039632329716615095,
+    "unit": "fraction",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold1.G1.median_rank_cve_id.median": {
+    "text": "Granite comparison fold1 (test 2025-01..2025-09), G1: median_rank_cve_id, median over seed sets 0-4",
+    "value": 1527.0,
+    "unit": "count",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold1.G1.work50_cve_id.median": {
+    "text": "Granite comparison fold1 (test 2025-01..2025-09), G1: work50_cve_id, median over seed sets 0-4",
+    "value": 1484.0,
+    "unit": "count",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold1.G1.auc.min": {
+    "text": "Granite comparison fold1 (test 2025-01..2025-09), G1: auc, lowest of seed sets 0-4",
+    "value": 0.843475960992567,
+    "unit": "fraction",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold1.G1.auc.max": {
+    "text": "Granite comparison fold1 (test 2025-01..2025-09), G1: auc, highest of seed sets 0-4",
+    "value": 0.8642977395603149,
+    "unit": "fraction",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold1.G1.top500_cve_id.min": {
+    "text": "Granite comparison fold1 (test 2025-01..2025-09), G1: top500_cve_id, lowest of seed sets 0-4",
+    "value": 11,
+    "unit": "count",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold1.G1.top500_cve_id.max": {
+    "text": "Granite comparison fold1 (test 2025-01..2025-09), G1: top500_cve_id, highest of seed sets 0-4",
+    "value": 16,
+    "unit": "count",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold1.G1.ci95_lo.auc": {
+    "text": "Granite comparison fold1 (test 2025-01..2025-09), G1: bootstrap 95% CI lower bound, auc (seed set 0)",
+    "value": 0.799170875142521,
+    "unit": "fraction",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold1.G1.ci95_hi.auc": {
+    "text": "Granite comparison fold1 (test 2025-01..2025-09), G1: bootstrap 95% CI upper bound, auc (seed set 0)",
+    "value": 0.9068679826327899,
+    "unit": "fraction",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold1.G1.ci95_lo.top500_expected": {
+    "text": "Granite comparison fold1 (test 2025-01..2025-09), G1: bootstrap 95% CI lower bound, top500_expected (seed set 0)",
+    "value": 5.0,
+    "unit": "count",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold1.G1.ci95_hi.top500_expected": {
+    "text": "Granite comparison fold1 (test 2025-01..2025-09), G1: bootstrap 95% CI upper bound, top500_expected (seed set 0)",
+    "value": 18.0,
+    "unit": "count",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold1.G2.auc.median": {
+    "text": "Granite comparison fold1 (test 2025-01..2025-09), G2: auc, median over seed sets 0-4",
+    "value": 0.874285697129032,
+    "unit": "fraction",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold1.G2.top500_cve_id.median": {
+    "text": "Granite comparison fold1 (test 2025-01..2025-09), G2: top500_cve_id, median over seed sets 0-4",
+    "value": 20.0,
+    "unit": "count",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold1.G2.top500_expected.median": {
+    "text": "Granite comparison fold1 (test 2025-01..2025-09), G2: top500_expected, median over seed sets 0-4",
+    "value": 20.0,
+    "unit": "count",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold1.G2.avg_precision.median": {
+    "text": "Granite comparison fold1 (test 2025-01..2025-09), G2: avg_precision, median over seed sets 0-4",
+    "value": 0.05183786203475063,
+    "unit": "fraction",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold1.G2.median_rank_cve_id.median": {
+    "text": "Granite comparison fold1 (test 2025-01..2025-09), G2: median_rank_cve_id, median over seed sets 0-4",
+    "value": 1287.5,
+    "unit": "count",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold1.G2.work50_cve_id.median": {
+    "text": "Granite comparison fold1 (test 2025-01..2025-09), G2: work50_cve_id, median over seed sets 0-4",
+    "value": 1238.0,
+    "unit": "count",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold1.G2.auc.min": {
+    "text": "Granite comparison fold1 (test 2025-01..2025-09), G2: auc, lowest of seed sets 0-4",
+    "value": 0.8582560528775188,
+    "unit": "fraction",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold1.G2.auc.max": {
+    "text": "Granite comparison fold1 (test 2025-01..2025-09), G2: auc, highest of seed sets 0-4",
+    "value": 0.8808921116070259,
+    "unit": "fraction",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold1.G2.top500_cve_id.min": {
+    "text": "Granite comparison fold1 (test 2025-01..2025-09), G2: top500_cve_id, lowest of seed sets 0-4",
+    "value": 14,
+    "unit": "count",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold1.G2.top500_cve_id.max": {
+    "text": "Granite comparison fold1 (test 2025-01..2025-09), G2: top500_cve_id, highest of seed sets 0-4",
+    "value": 21,
+    "unit": "count",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold1.G2.ci95_lo.auc": {
+    "text": "Granite comparison fold1 (test 2025-01..2025-09), G2: bootstrap 95% CI lower bound, auc (seed set 0)",
+    "value": 0.821636254646665,
+    "unit": "fraction",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold1.G2.ci95_hi.auc": {
+    "text": "Granite comparison fold1 (test 2025-01..2025-09), G2: bootstrap 95% CI upper bound, auc (seed set 0)",
+    "value": 0.9193159044318379,
+    "unit": "fraction",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold1.G2.ci95_lo.top500_expected": {
+    "text": "Granite comparison fold1 (test 2025-01..2025-09), G2: bootstrap 95% CI lower bound, top500_expected (seed set 0)",
+    "value": 11.0,
+    "unit": "count",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold1.G2.ci95_hi.top500_expected": {
+    "text": "Granite comparison fold1 (test 2025-01..2025-09), G2: bootstrap 95% CI upper bound, top500_expected (seed set 0)",
+    "value": 28.0,
+    "unit": "count",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold2.C1.auc.median": {
+    "text": "Granite comparison fold2 (test 2025-04..2025-09), C1: auc, median over seed sets 0-4",
+    "value": 0.8796248928647953,
+    "unit": "fraction",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold2.C1.top500_cve_id.median": {
+    "text": "Granite comparison fold2 (test 2025-04..2025-09), C1: top500_cve_id, median over seed sets 0-4",
+    "value": 11.0,
+    "unit": "count",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold2.C1.top500_expected.median": {
+    "text": "Granite comparison fold2 (test 2025-04..2025-09), C1: top500_expected, median over seed sets 0-4",
+    "value": 11.0,
+    "unit": "count",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold2.C1.avg_precision.median": {
+    "text": "Granite comparison fold2 (test 2025-04..2025-09), C1: avg_precision, median over seed sets 0-4",
+    "value": 0.06372945917979955,
+    "unit": "fraction",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold2.C1.median_rank_cve_id.median": {
+    "text": "Granite comparison fold2 (test 2025-04..2025-09), C1: median_rank_cve_id, median over seed sets 0-4",
+    "value": 1347.5,
+    "unit": "count",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold2.C1.work50_cve_id.median": {
+    "text": "Granite comparison fold2 (test 2025-04..2025-09), C1: work50_cve_id, median over seed sets 0-4",
+    "value": 1240.0,
+    "unit": "count",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold2.C1.auc.min": {
+    "text": "Granite comparison fold2 (test 2025-04..2025-09), C1: auc, lowest of seed sets 0-4",
+    "value": 0.8542264838225841,
+    "unit": "fraction",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold2.C1.auc.max": {
+    "text": "Granite comparison fold2 (test 2025-04..2025-09), C1: auc, highest of seed sets 0-4",
+    "value": 0.8911526408827941,
+    "unit": "fraction",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold2.C1.top500_cve_id.min": {
+    "text": "Granite comparison fold2 (test 2025-04..2025-09), C1: top500_cve_id, lowest of seed sets 0-4",
+    "value": 11,
+    "unit": "count",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold2.C1.top500_cve_id.max": {
+    "text": "Granite comparison fold2 (test 2025-04..2025-09), C1: top500_cve_id, highest of seed sets 0-4",
+    "value": 12,
+    "unit": "count",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold2.C1.ci95_lo.auc": {
+    "text": "Granite comparison fold2 (test 2025-04..2025-09), C1: bootstrap 95% CI lower bound, auc (seed set 0)",
+    "value": 0.8300465241612459,
+    "unit": "fraction",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold2.C1.ci95_hi.auc": {
+    "text": "Granite comparison fold2 (test 2025-04..2025-09), C1: bootstrap 95% CI upper bound, auc (seed set 0)",
+    "value": 0.9422072608845904,
+    "unit": "fraction",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold2.C1.ci95_lo.top500_expected": {
+    "text": "Granite comparison fold2 (test 2025-04..2025-09), C1: bootstrap 95% CI lower bound, top500_expected (seed set 0)",
+    "value": 5.0,
+    "unit": "count",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold2.C1.ci95_hi.top500_expected": {
+    "text": "Granite comparison fold2 (test 2025-04..2025-09), C1: bootstrap 95% CI upper bound, top500_expected (seed set 0)",
+    "value": 18.0,
+    "unit": "count",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold2.G1.auc.median": {
+    "text": "Granite comparison fold2 (test 2025-04..2025-09), G1: auc, median over seed sets 0-4",
+    "value": 0.8165644418255839,
+    "unit": "fraction",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold2.G1.top500_cve_id.median": {
+    "text": "Granite comparison fold2 (test 2025-04..2025-09), G1: top500_cve_id, median over seed sets 0-4",
+    "value": 8.0,
+    "unit": "count",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold2.G1.top500_expected.median": {
+    "text": "Granite comparison fold2 (test 2025-04..2025-09), G1: top500_expected, median over seed sets 0-4",
+    "value": 8.0,
+    "unit": "count",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold2.G1.avg_precision.median": {
+    "text": "Granite comparison fold2 (test 2025-04..2025-09), G1: avg_precision, median over seed sets 0-4",
+    "value": 0.09191633185702568,
+    "unit": "fraction",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold2.G1.median_rank_cve_id.median": {
+    "text": "Granite comparison fold2 (test 2025-04..2025-09), G1: median_rank_cve_id, median over seed sets 0-4",
+    "value": 1655.5,
+    "unit": "count",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold2.G1.work50_cve_id.median": {
+    "text": "Granite comparison fold2 (test 2025-04..2025-09), G1: work50_cve_id, median over seed sets 0-4",
+    "value": 1607.0,
+    "unit": "count",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold2.G1.auc.min": {
+    "text": "Granite comparison fold2 (test 2025-04..2025-09), G1: auc, lowest of seed sets 0-4",
+    "value": 0.7941062245553889,
+    "unit": "fraction",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold2.G1.auc.max": {
+    "text": "Granite comparison fold2 (test 2025-04..2025-09), G1: auc, highest of seed sets 0-4",
+    "value": 0.849016364902507,
+    "unit": "fraction",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold2.G1.top500_cve_id.min": {
+    "text": "Granite comparison fold2 (test 2025-04..2025-09), G1: top500_cve_id, lowest of seed sets 0-4",
+    "value": 7,
+    "unit": "count",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold2.G1.top500_cve_id.max": {
+    "text": "Granite comparison fold2 (test 2025-04..2025-09), G1: top500_cve_id, highest of seed sets 0-4",
+    "value": 9,
+    "unit": "count",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold2.G1.ci95_lo.auc": {
+    "text": "Granite comparison fold2 (test 2025-04..2025-09), G1: bootstrap 95% CI lower bound, auc (seed set 0)",
+    "value": 0.7523967127053373,
+    "unit": "fraction",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold2.G1.ci95_hi.auc": {
+    "text": "Granite comparison fold2 (test 2025-04..2025-09), G1: bootstrap 95% CI upper bound, auc (seed set 0)",
+    "value": 0.9055069778758857,
+    "unit": "fraction",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold2.G1.ci95_lo.top500_expected": {
+    "text": "Granite comparison fold2 (test 2025-04..2025-09), G1: bootstrap 95% CI lower bound, top500_expected (seed set 0)",
+    "value": 3.0,
+    "unit": "count",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold2.G1.ci95_hi.top500_expected": {
+    "text": "Granite comparison fold2 (test 2025-04..2025-09), G1: bootstrap 95% CI upper bound, top500_expected (seed set 0)",
+    "value": 15.0,
+    "unit": "count",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold2.G2.auc.median": {
+    "text": "Granite comparison fold2 (test 2025-04..2025-09), G2: auc, median over seed sets 0-4",
+    "value": 0.8681453556888792,
+    "unit": "fraction",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold2.G2.top500_cve_id.median": {
+    "text": "Granite comparison fold2 (test 2025-04..2025-09), G2: top500_cve_id, median over seed sets 0-4",
+    "value": 11.0,
+    "unit": "count",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold2.G2.top500_expected.median": {
+    "text": "Granite comparison fold2 (test 2025-04..2025-09), G2: top500_expected, median over seed sets 0-4",
+    "value": 11.0,
+    "unit": "count",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold2.G2.avg_precision.median": {
+    "text": "Granite comparison fold2 (test 2025-04..2025-09), G2: avg_precision, median over seed sets 0-4",
+    "value": 0.050714511244800614,
+    "unit": "fraction",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold2.G2.median_rank_cve_id.median": {
+    "text": "Granite comparison fold2 (test 2025-04..2025-09), G2: median_rank_cve_id, median over seed sets 0-4",
+    "value": 1236.0,
+    "unit": "count",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold2.G2.work50_cve_id.median": {
+    "text": "Granite comparison fold2 (test 2025-04..2025-09), G2: work50_cve_id, median over seed sets 0-4",
+    "value": 1206.0,
+    "unit": "count",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold2.G2.auc.min": {
+    "text": "Granite comparison fold2 (test 2025-04..2025-09), G2: auc, lowest of seed sets 0-4",
+    "value": 0.8478064066852367,
+    "unit": "fraction",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold2.G2.auc.max": {
+    "text": "Granite comparison fold2 (test 2025-04..2025-09), G2: auc, highest of seed sets 0-4",
+    "value": 0.8886316155988858,
+    "unit": "fraction",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold2.G2.top500_cve_id.min": {
+    "text": "Granite comparison fold2 (test 2025-04..2025-09), G2: top500_cve_id, lowest of seed sets 0-4",
+    "value": 10,
+    "unit": "count",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold2.G2.top500_cve_id.max": {
+    "text": "Granite comparison fold2 (test 2025-04..2025-09), G2: top500_cve_id, highest of seed sets 0-4",
+    "value": 14,
+    "unit": "count",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold2.G2.ci95_lo.auc": {
+    "text": "Granite comparison fold2 (test 2025-04..2025-09), G2: bootstrap 95% CI lower bound, auc (seed set 0)",
+    "value": 0.8284802541237547,
+    "unit": "fraction",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold2.G2.ci95_hi.auc": {
+    "text": "Granite comparison fold2 (test 2025-04..2025-09), G2: bootstrap 95% CI upper bound, auc (seed set 0)",
+    "value": 0.9391210208641297,
+    "unit": "fraction",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold2.G2.ci95_lo.top500_expected": {
+    "text": "Granite comparison fold2 (test 2025-04..2025-09), G2: bootstrap 95% CI lower bound, top500_expected (seed set 0)",
+    "value": 7.0,
+    "unit": "count",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.fold2.G2.ci95_hi.top500_expected": {
+    "text": "Granite comparison fold2 (test 2025-04..2025-09), G2: bootstrap 95% CI upper bound, top500_expected (seed set 0)",
+    "value": 22.0,
+    "unit": "count",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.selection.C1.mean_auc": {
+    "text": "Granite comparison C1: mean over the two folds of the seed-median AUC",
+    "value": 0.8698669922045544,
+    "unit": "fraction",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.selection.G1.mean_auc": {
+    "text": "Granite comparison G1: mean over the two folds of the seed-median AUC",
+    "value": 0.8369788542726193,
+    "unit": "fraction",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "p6.granite.selection.G2.mean_auc": {
+    "text": "Granite comparison G2: mean over the two folds of the seed-median AUC",
+    "value": 0.8712155264089556,
+    "unit": "fraction",
+    "source_script": "src/model/granite.py",
+    "output_file": "results/granite_comparison.json",
+    "status": "unverified",
+    "verified_by": null
+  }
+}

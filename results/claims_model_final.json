@@ -1,173 +1,173 @@
 {
   "p7.train_rows": {
-    "text": "Final 2026 ranking (C1, mean of seed sets 0-4, k=50 assigner cap): training rows (pool 2024-01..2025-09)",
+    "text": "Final 2026 ranking (C1 with Granite text G2, mean of seed sets 0-4, k=50 assigner cap): training rows (pool 2024-01..2025-09)",
     "value": 75148,
     "unit": "count",
     "source_script": "src/model/final.py",
     "output_file": "results/scores_2026.csv",
-    "status": "verified",
-    "verified_by": "audit/2026-11-07-final.md"
+    "status": "unverified",
+    "verified_by": null
   },
   "p7.train_positives": {
-    "text": "Final 2026 ranking (C1, mean of seed sets 0-4, k=50 assigner cap): training positives (KEV additions to 2025-12-31)",
+    "text": "Final 2026 ranking (C1 with Granite text G2, mean of seed sets 0-4, k=50 assigner cap): training positives (KEV additions to 2025-12-31)",
     "value": 117,
     "unit": "count",
     "source_script": "src/model/final.py",
     "output_file": "results/scores_2026.csv",
-    "status": "verified",
-    "verified_by": "audit/2026-11-07-final.md"
+    "status": "unverified",
+    "verified_by": null
   },
   "p7.rows_scored": {
-    "text": "Final 2026 ranking (C1, mean of seed sets 0-4, k=50 assigner cap): scoreboard rows scored",
+    "text": "Final 2026 ranking (C1 with Granite text G2, mean of seed sets 0-4, k=50 assigner cap): scoreboard rows scored",
     "value": 72670,
     "unit": "count",
     "source_script": "src/model/final.py",
     "output_file": "results/scores_2026.csv",
-    "status": "verified",
-    "verified_by": "audit/2026-11-07-final.md"
+    "status": "unverified",
+    "verified_by": null
   },
   "p7.top500.assigner_rank1.count": {
-    "text": "Final 2026 ranking (C1, mean of seed sets 0-4, k=50 assigner cap): top-500 rows from assigner #1 by count (disclosure@vulncheck.com)",
+    "text": "Final 2026 ranking (C1 with Granite text G2, mean of seed sets 0-4, k=50 assigner cap): top-500 rows from assigner #1 by count (disclosure@vulncheck.com)",
     "value": 50,
     "unit": "count",
     "source_script": "src/model/final.py",
     "output_file": "results/scores_2026.csv",
-    "status": "verified",
-    "verified_by": "audit/2026-11-07-final.md"
+    "status": "unverified",
+    "verified_by": null
   },
   "p7.top500.assigner_rank2.count": {
-    "text": "Final 2026 ranking (C1, mean of seed sets 0-4, k=50 assigner cap): top-500 rows from assigner #2 by count (security@apache.org)",
+    "text": "Final 2026 ranking (C1 with Granite text G2, mean of seed sets 0-4, k=50 assigner cap): top-500 rows from assigner #2 by count (security@apache.org)",
     "value": 50,
     "unit": "count",
     "source_script": "src/model/final.py",
     "output_file": "results/scores_2026.csv",
-    "status": "verified",
-    "verified_by": "audit/2026-11-07-final.md"
+    "status": "unverified",
+    "verified_by": null
   },
   "p7.top500.assigner_rank3.count": {
-    "text": "Final 2026 ranking (C1, mean of seed sets 0-4, k=50 assigner cap): top-500 rows from assigner #3 by count (secalert_us@oracle.com)",
-    "value": 50,
+    "text": "Final 2026 ranking (C1 with Granite text G2, mean of seed sets 0-4, k=50 assigner cap): top-500 rows from assigner #3 by count (security-advisories@github.com)",
+    "value": 49,
     "unit": "count",
     "source_script": "src/model/final.py",
     "output_file": "results/scores_2026.csv",
-    "status": "verified",
-    "verified_by": "audit/2026-11-07-final.md"
+    "status": "unverified",
+    "verified_by": null
   },
   "p7.top500.assigner_rank4.count": {
-    "text": "Final 2026 ranking (C1, mean of seed sets 0-4, k=50 assigner cap): top-500 rows from assigner #4 by count (security-advisories@github.com)",
-    "value": 41,
+    "text": "Final 2026 ranking (C1 with Granite text G2, mean of seed sets 0-4, k=50 assigner cap): top-500 rows from assigner #4 by count (secalert_us@oracle.com)",
+    "value": 47,
     "unit": "count",
     "source_script": "src/model/final.py",
     "output_file": "results/scores_2026.csv",
-    "status": "verified",
-    "verified_by": "audit/2026-11-07-final.md"
+    "status": "unverified",
+    "verified_by": null
   },
   "p7.top500.assigner_rank5.count": {
-    "text": "Final 2026 ranking (C1, mean of seed sets 0-4, k=50 assigner cap): top-500 rows from assigner #5 by count (psirt@adobe.com)",
-    "value": 26,
+    "text": "Final 2026 ranking (C1 with Granite text G2, mean of seed sets 0-4, k=50 assigner cap): top-500 rows from assigner #5 by count (security@wordfence.com)",
+    "value": 21,
     "unit": "count",
     "source_script": "src/model/final.py",
     "output_file": "results/scores_2026.csv",
-    "status": "verified",
-    "verified_by": "audit/2026-11-07-final.md"
+    "status": "unverified",
+    "verified_by": null
   },
   "p7.top500.assigner_rank6.count": {
-    "text": "Final 2026 ranking (C1, mean of seed sets 0-4, k=50 assigner cap): top-500 rows from assigner #6 by count (cve@mitre.org)",
-    "value": 18,
+    "text": "Final 2026 ranking (C1 with Granite text G2, mean of seed sets 0-4, k=50 assigner cap): top-500 rows from assigner #6 by count (cve@mitre.org)",
+    "value": 16,
     "unit": "count",
     "source_script": "src/model/final.py",
     "output_file": "results/scores_2026.csv",
-    "status": "verified",
-    "verified_by": "audit/2026-11-07-final.md"
+    "status": "unverified",
+    "verified_by": null
   },
   "p7.top500.assigner_rank7.count": {
-    "text": "Final 2026 ranking (C1, mean of seed sets 0-4, k=50 assigner cap): top-500 rows from assigner #7 by count (security@wordfence.com)",
-    "value": 18,
+    "text": "Final 2026 ranking (C1 with Granite text G2, mean of seed sets 0-4, k=50 assigner cap): top-500 rows from assigner #7 by count (secure@microsoft.com)",
+    "value": 16,
     "unit": "count",
     "source_script": "src/model/final.py",
     "output_file": "results/scores_2026.csv",
-    "status": "verified",
-    "verified_by": "audit/2026-11-07-final.md"
+    "status": "unverified",
+    "verified_by": null
   },
   "p7.top500.assigner_rank8.count": {
-    "text": "Final 2026 ranking (C1, mean of seed sets 0-4, k=50 assigner cap): top-500 rows from assigner #8 by count (audit@patchstack.com)",
-    "value": 14,
+    "text": "Final 2026 ranking (C1 with Granite text G2, mean of seed sets 0-4, k=50 assigner cap): top-500 rows from assigner #8 by count (audit@patchstack.com)",
+    "value": 15,
     "unit": "count",
     "source_script": "src/model/final.py",
     "output_file": "results/scores_2026.csv",
-    "status": "verified",
-    "verified_by": "audit/2026-11-07-final.md"
+    "status": "unverified",
+    "verified_by": null
   },
   "p7.top500.assigner_rank9.count": {
-    "text": "Final 2026 ranking (C1, mean of seed sets 0-4, k=50 assigner cap): top-500 rows from assigner #9 by count (f23511db-6c3e-4e32-a477-6aa17d310630)",
+    "text": "Final 2026 ranking (C1 with Granite text G2, mean of seed sets 0-4, k=50 assigner cap): top-500 rows from assigner #9 by count (cret@cert.org)",
     "value": 12,
     "unit": "count",
     "source_script": "src/model/final.py",
     "output_file": "results/scores_2026.csv",
-    "status": "verified",
-    "verified_by": "audit/2026-11-07-final.md"
+    "status": "unverified",
+    "verified_by": null
   },
   "p7.top500.assigner_rank10.count": {
-    "text": "Final 2026 ranking (C1, mean of seed sets 0-4, k=50 assigner cap): top-500 rows from assigner #10 by count (cret@cert.org)",
-    "value": 12,
+    "text": "Final 2026 ranking (C1 with Granite text G2, mean of seed sets 0-4, k=50 assigner cap): top-500 rows from assigner #10 by count (psirt@adobe.com)",
+    "value": 11,
     "unit": "count",
     "source_script": "src/model/final.py",
     "output_file": "results/scores_2026.csv",
-    "status": "verified",
-    "verified_by": "audit/2026-11-07-final.md"
+    "status": "unverified",
+    "verified_by": null
   },
   "p7.top500.share_any_public_exploit": {
-    "text": "Final 2026 ranking (C1, mean of seed sets 0-4, k=50 assigner cap): share of top-500 rows with any public exploit flag",
-    "value": 0.712,
+    "text": "Final 2026 ranking (C1 with Granite text G2, mean of seed sets 0-4, k=50 assigner cap): share of top-500 rows with any public exploit flag",
+    "value": 0.746,
     "unit": "fraction",
     "source_script": "src/model/final.py",
     "output_file": "results/scores_2026.csv",
-    "status": "verified",
-    "verified_by": "audit/2026-11-07-final.md"
+    "status": "unverified",
+    "verified_by": null
   },
   "p7.top500.share_epss_gt_0_1": {
-    "text": "Final 2026 ranking (C1, mean of seed sets 0-4, k=50 assigner cap): share of top-500 rows with EPSS > 0.1",
+    "text": "Final 2026 ranking (C1 with Granite text G2, mean of seed sets 0-4, k=50 assigner cap): share of top-500 rows with EPSS > 0.1",
     "value": 0.048,
     "unit": "fraction",
     "source_script": "src/model/final.py",
     "output_file": "results/scores_2026.csv",
-    "status": "verified",
-    "verified_by": "audit/2026-11-07-final.md"
+    "status": "unverified",
+    "verified_by": null
   },
   "p7.top500.share_unseen_assigner": {
-    "text": "Final 2026 ranking (C1, mean of seed sets 0-4, k=50 assigner cap): share of top-500 rows from assigners with no KEV row before the snapshot month",
-    "value": 0.158,
+    "text": "Final 2026 ranking (C1 with Granite text G2, mean of seed sets 0-4, k=50 assigner cap): share of top-500 rows from assigners with no KEV row before the snapshot month",
+    "value": 0.17,
     "unit": "fraction",
     "source_script": "src/model/final.py",
     "output_file": "results/scores_2026.csv",
-    "status": "verified",
-    "verified_by": "audit/2026-11-07-final.md"
+    "status": "unverified",
+    "verified_by": null
   },
   "p7.tier.P0.count": {
-    "text": "Final 2026 ranking (C1, mean of seed sets 0-4, k=50 assigner cap): rows in priority tier P0",
+    "text": "Final 2026 ranking (C1 with Granite text G2, mean of seed sets 0-4, k=50 assigner cap): rows in priority tier P0",
     "value": 100,
     "unit": "count",
     "source_script": "src/model/final.py",
     "output_file": "results/scores_2026.csv",
-    "status": "verified",
-    "verified_by": "audit/2026-11-07-final.md"
+    "status": "unverified",
+    "verified_by": null
   },
   "p7.tier.P1.count": {
-    "text": "Final 2026 ranking (C1, mean of seed sets 0-4, k=50 assigner cap): rows in priority tier P1",
+    "text": "Final 2026 ranking (C1 with Granite text G2, mean of seed sets 0-4, k=50 assigner cap): rows in priority tier P1",
     "value": 400,
     "unit": "count",
     "source_script": "src/model/final.py",
     "output_file": "results/scores_2026.csv",
-    "status": "verified",
-    "verified_by": "audit/2026-11-07-final.md"
+    "status": "unverified",
+    "verified_by": null
   },
   "p7.tier.P2.count": {
-    "text": "Final 2026 ranking (C1, mean of seed sets 0-4, k=50 assigner cap): rows in priority tier P2",
+    "text": "Final 2026 ranking (C1 with Granite text G2, mean of seed sets 0-4, k=50 assigner cap): rows in priority tier P2",
     "value": 72170,
     "unit": "count",
     "source_script": "src/model/final.py",
     "output_file": "results/scores_2026.csv",
-    "status": "verified",
-    "verified_by": "audit/2026-11-07-final.md"
+    "status": "unverified",
+    "verified_by": null
   }
 }

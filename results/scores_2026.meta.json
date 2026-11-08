@@ -1,6 +1,6 @@
 {
   "script": "src/model/final.py",
-  "git_commit": "10672d166414edb238137bf770839b94cf59893d",
+  "git_commit": "31614c8ff6c70777d78947f5f422cf0a187c8046",
   "git_dirty": false,
   "git_dirty_files": [],
   "code_sha256": {
@@ -11,14 +11,15 @@
     "drift.py": "50452f4cc32f0a6ba8604e1c9b40cedf78099a55a4baadff37ea0e5c458716f4",
     "final.py": "9ea16cd72d36f1fb9232ed6ad838d1b7e4bfc7c83f1e5addd6902594eef0965c",
     "granite.py": "f916e12ce0e3fc3897c74161f16fc972c855e7adf175923e63f539d4709bfaea",
+    "granite_subset_eval.py": "b24219a8ca556303bf50cc5b6773f91e4599af79a75c04971e5f441126a6ead1",
     "leakage.py": "8a9825d50d186393a06f429c94b8802054087ce35ded7821c285e54a5f2d8bea",
     "metrics.py": "6678ffb0cb4ac6fb75445e1e6d2223c328eae99657e30578b994d7652714a0fe",
     "pool.py": "f71136c9932544913ef8a48fb31aba65b1bc5fc8b7f2096bff9e6801dd545b27",
     "reproduce_first_pass.py": "4e236b25c57a7331559f471d4e40b49355dc80081d5a53d0c61894cb2b9d53fb",
     "reverse_time.py": "93c5b80facc0b1a22309587669f766bec2605378ad05b50cf5b0dfd5cf6e4f6f",
-    "sidecar.py": "691592e4e621891793353197e51271cefdab66c50abadc7975b8dd3cc5776c06"
+    "sidecar.py": "6f6921fd27bbd5114d8bb42f48f9a44719fe8e43d2278120ef67db4b2b32ce71"
   },
-  "date_utc": "2026-11-08T03:07:11+00:00",
+  "date_utc": "2026-11-08T05:14:56+00:00",
   "python": "3.12.15",
   "machine": "arm64",
   "libraries": {
@@ -58,45 +59,48 @@
         50
       ],
       [
-        "secalert_us@oracle.com",
-        50
-      ],
-      [
         "security-advisories@github.com",
-        41
+        49
       ],
       [
-        "psirt@adobe.com",
-        26
-      ],
-      [
-        "cve@mitre.org",
-        18
+        "secalert_us@oracle.com",
+        47
       ],
       [
         "security@wordfence.com",
-        18
+        21
+      ],
+      [
+        "cve@mitre.org",
+        16
+      ],
+      [
+        "secure@microsoft.com",
+        16
       ],
       [
         "audit@patchstack.com",
-        14
-      ],
-      [
-        "f23511db-6c3e-4e32-a477-6aa17d310630",
-        12
+        15
       ],
       [
         "cret@cert.org",
         12
+      ],
+      [
+        "psirt@adobe.com",
+        11
       ]
     ],
-    "share_any_public_exploit": 0.712,
+    "share_any_public_exploit": 0.746,
     "share_epss_gt_0_1": 0.048,
-    "share_unseen_assigner": 0.158,
+    "share_unseen_assigner": 0.17,
     "tier_counts": {
       "P0": 100,
       "P1": 400,
       "P2": 72170
-    }
-  }
+    },
+    "text_source": "G2"
+  },
+  "text_source": "G2",
+  "granite_embeddings": "/Users/aahmad/Working/datathon/code/Datathon2k26/data_cache/granite_embeddings.parquet"
 }
