@@ -92,11 +92,30 @@ def make_embedder(provider, batch):
 
     from sentence_transformers import SentenceTransformer  # verified against sbert.net v6.2 API reference
     model = SentenceTransformer(MODELS["LOCAL"], revision=HF_REVISION)  # device=None: picks GPU if available
-    # max_seq_length 512 comes from the model's sentence_bert_config.json; longer inputs are truncated.
+    # Hard-cap at the model limit so long CVE descriptions never exceed 512 tokens (GPU OOM / tokenizer overflow).
+    model.max_seq_length = MAX_TOKENS
+    # Encode micro-batch: smaller than the cache commit --batch so T4 (16 GB) stays under token*batch memory.
+    encode_bs = min(int(batch), 64)
+    device = str(model.device)
+    if "cuda" in device.lower():
+        encode_bs = min(int(batch), 128)  # A100/T4: still truncate to MAX_TOKENS per text
 
     def fn(texts):
-        return model.encode(texts, batch_size=64, convert_to_numpy=True, show_progress_bar=False)
-    return fn, {"sdk": "sentence-transformers", "hf_revision": HF_REVISION, "device": str(model.device)}
+        return model.encode(
+            texts,
+            batch_size=encode_bs,
+            convert_to_numpy=True,
+            show_progress_bar=False,
+            truncate_dim=None,
+        )
+
+    return fn, {
+        "sdk": "sentence-transformers",
+        "hf_revision": HF_REVISION,
+        "device": device,
+        "encode_batch_size": encode_bs,
+        "max_seq_length": MAX_TOKENS,
+    }
 
 
 def key(model_id, text):
