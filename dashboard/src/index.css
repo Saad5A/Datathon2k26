@@ -4,36 +4,20 @@
 
 /* Channel triplets mirror src/theme/tokens.ts `surfaces`. */
 @layer base {
-  :root {
-    --bg: 244 244 245;
-    --surface: 255 255 255;
-    --surface-raised: 244 244 245;
-    --border: 228 228 231;
-    --border-strong: 212 212 216;
-    --fg: 15 23 42;
-    --fg-muted: 71 85 105;
-    --fg-subtle: 86 98 117;
-    /* severity colours as TEXT (AA on surfaces); fills keep the brand tokens */
-    --sevfg-p0: 185 28 28;
-    --sevfg-p1: 194 65 12;
-    --sevfg-p2: 180 83 9;
-    --sevfg-low: 37 99 235;
+  :root, .dark {
+    --bg: 247 248 241;
+    --surface: 255 255 250;
+    --surface-raised: 238 242 233;
+    --border: 218 226 216;
+    --border-strong: 181 199 188;
+    --fg: 35 57 52;
+    --fg-muted: 84 108 99;
+    --fg-subtle: 94 116 106;
+    --sevfg-p0: 160 65 49;
+    --sevfg-p1: 143 88 32;
+    --sevfg-p2: 133 102 25;
+    --sevfg-low: 30 108 99;
     color-scheme: light;
-  }
-  .dark {
-    --bg: 9 9 11;
-    --surface: 24 24 27;
-    --surface-raised: 39 39 42;
-    --border: 39 39 42;
-    --border-strong: 63 63 70;
-    --fg: 241 245 249;
-    --fg-muted: 148 163 184;
-    --fg-subtle: 139 154 176;
-    --sevfg-p0: 248 113 113;
-    --sevfg-p1: 251 146 60;
-    --sevfg-p2: 217 119 6;
-    --sevfg-low: 96 165 250;
-    color-scheme: dark;
   }
 
   html {

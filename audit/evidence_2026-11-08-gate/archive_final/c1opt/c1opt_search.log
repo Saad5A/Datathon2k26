@@ -1,0 +1,60 @@
+available groups: ['signals', 'assigner', 'text_tfidf', 'temporal', 'assigner24']
+[gen 1] evaluated=24 best_top243=13.5 elapsed=20.2s
+[gen 2] evaluated=46 best_top243=14.5 elapsed=34.8s
+[gen 3] evaluated=66 best_top243=14.5 elapsed=45.5s
+[gen 4] evaluated=86 best_top243=14.5 elapsed=57.7s
+[gen 5] evaluated=107 best_top243=14.5 elapsed=69.7s
+[gen 6] evaluated=126 best_top243=14.5 elapsed=80.0s
+[gen 7] evaluated=147 best_top243=15.5 elapsed=93.9s
+[gen 8] evaluated=168 best_top243=15.5 elapsed=110.8s
+[gen 9] evaluated=187 best_top243=15.5 elapsed=125.9s
+[gen 10] evaluated=209 best_top243=15.5 elapsed=141.2s
+[gen 11] evaluated=228 best_top243=15.5 elapsed=165.0s
+[gen 12] evaluated=249 best_top243=15.5 elapsed=183.7s
+[gen 13] evaluated=269 best_top243=15.5 elapsed=201.6s
+[gen 14] evaluated=291 best_top243=15.5 elapsed=217.3s
+[gen 15] evaluated=313 best_top243=16.0 elapsed=237.7s
+[gen 16] evaluated=334 best_top243=16.0 elapsed=254.7s
+[gen 17] evaluated=352 best_top243=16.0 elapsed=268.6s
+[gen 18] evaluated=371 best_top243=18.0 elapsed=284.9s
+[gen 19] evaluated=393 best_top243=18.0 elapsed=303.9s
+[gen 20] evaluated=415 best_top243=18.0 elapsed=323.9s
+[gen 21] evaluated=436 best_top243=18.0 elapsed=339.5s
+[gen 22] evaluated=456 best_top243=18.0 elapsed=352.9s
+[gen 23] evaluated=478 best_top243=18.0 elapsed=363.9s
+[gen 24] evaluated=498 best_top243=18.0 elapsed=376.1s
+[gen 25] evaluated=519 best_top243=18.0 elapsed=388.6s
+[gen 26] evaluated=538 best_top243=18.0 elapsed=408.1s
+[gen 27] evaluated=556 best_top243=18.0 elapsed=417.1s
+[gen 28] evaluated=578 best_top243=18.0 elapsed=430.2s
+[gen 29] evaluated=596 best_top243=18.0 elapsed=442.9s
+[gen 30] evaluated=614 best_top243=18.0 elapsed=457.3s
+[gen 31] evaluated=632 best_top243=18.0 elapsed=474.5s
+[gen 32] evaluated=651 best_top243=18.0 elapsed=495.9s
+[gen 33] evaluated=672 best_top243=18.0 elapsed=517.0s
+[gen 34] evaluated=693 best_top243=18.0 elapsed=539.7s
+[gen 35] evaluated=711 best_top243=18.0 elapsed=552.8s
+[gen 36] evaluated=732 best_top243=18.0 elapsed=567.6s
+[gen 37] evaluated=753 best_top243=18.0 elapsed=581.3s
+[gen 38] evaluated=772 best_top243=18.0 elapsed=593.0s
+[gen 39] evaluated=794 best_top243=18.0 elapsed=613.3s
+[gen 40] evaluated=816 best_top243=18.0 elapsed=630.2s
+[gen 41] evaluated=838 best_top243=18.0 elapsed=649.6s
+[gen 42] evaluated=859 best_top243=18.0 elapsed=668.1s
+[gen 43] evaluated=880 best_top243=18.0 elapsed=683.7s
+[gen 44] evaluated=902 best_top243=18.0 elapsed=691.4s
+[gen 45] evaluated=923 best_top243=18.0 elapsed=700.6s
+[gen 46] evaluated=944 best_top243=18.0 elapsed=716.2s
+[gen 47] evaluated=966 best_top243=18.0 elapsed=732.8s
+[gen 48] evaluated=986 best_top243=18.0 elapsed=745.3s
+[gen 49] evaluated=1007 best_top243=18.0 elapsed=753.6s
+[gen 50] evaluated=1028 best_top243=18.0 elapsed=760.9s
+{
+  "budget": 1500,
+  "evaluated": 1028,
+  "generations": 50,
+  "elapsed_seconds": 761.0,
+  "seed_c1": true
+}
+c1_like candidates: 10
+/root/datathon/results/autorank/report.md

@@ -12,11 +12,11 @@ export type ThemeMode = 'dark' | 'light'
 
 /** Severity scale. Reserved for risk meaning only — never decoration. */
 export const severity = {
-  critical: '#DC2626', // red-600    → P0
-  high: '#EA580C', //     orange-600 → P1
-  medium: '#D97706', //   amber-600  → P2
-  low: '#2563EB', //      blue-600   → informational / low
-  neutral: '#64748B', //  slate-500  → no signal
+  critical: '#B45B49',
+  high: '#B67C38',
+  medium: '#C4A64D',
+  low: '#3C998E',
+  neutral: '#718C79',
 } as const
 
 export const priorityColor: Record<Priority, string> = {
@@ -25,11 +25,11 @@ export const priorityColor: Record<Priority, string> = {
   P2: severity.medium,
 }
 
-/** Text on a solid priority fill. White fails AA on orange/amber, so those use near-black. */
+/** Priority badges use dark ink on warm fills; labels retain risk meaning. */
 export const priorityText: Record<Priority, string> = {
-  P0: '#FFFFFF', // 4.83:1
-  P1: '#09090B', // 5.59:1
-  P2: '#09090B', // 6.24:1
+  P0: '#FFFFFF',
+  P1: '#14251E',
+  P2: '#233934',
 }
 
 export const priorityLabel: Record<Priority, string> = {
@@ -38,46 +38,18 @@ export const priorityLabel: Record<Priority, string> = {
   P2: 'Medium',
 }
 
-/** Surfaces & text. Dark is the default; light is opt-in via the toggle. */
-export const surfaces: Record<ThemeMode, {
-  bg: string
-  surface: string
-  surfaceRaised: string
-  border: string
-  borderStrong: string
-  fg: string
-  fgMuted: string
-  fgSubtle: string
-  grid: string
-}> = {
-  dark: {
-    bg: '#09090B', //            zinc-950
-    surface: '#18181B', //       zinc-900
-    surfaceRaised: '#27272A', // zinc-800
-    border: '#27272A', //        zinc-800
-    borderStrong: '#3F3F46', //  zinc-700
-    fg: '#F1F5F9', //            slate-100
-    fgMuted: '#94A3B8', //       slate-400
-    fgSubtle: '#8B9AB0', //      4.5:1+ on surface, bg and raised
-    grid: '#27272A',
-  },
-  light: {
-    bg: '#F4F4F5', //            zinc-100
-    surface: '#FFFFFF',
-    surfaceRaised: '#F4F4F5',
-    border: '#E4E4E7', //        zinc-200
-    borderStrong: '#D4D4D8', //  zinc-300
-    fg: '#0F172A', //            slate-900
-    fgMuted: '#475569', //       slate-600
-    fgSubtle: '#566275', //      4.5:1+ on white and zinc-100
-    grid: '#E4E4E7',
-  },
+/** Kitchen palette shared by CSS surfaces and chart tooltips. */
+const kitchenSurfaces = {
+  bg: '#F7F8F1', surface: '#FFFFFA', surfaceRaised: '#EEF2E9',
+  border: '#DAE2D8', borderStrong: '#B5C7BC',
+  fg: '#233934', fgMuted: '#546C63', fgSubtle: '#5E746A', grid: '#DAE2D8',
 }
-
-/** Non-severity data colour (volumes, neutral series). */
+export const surfaces: Record<ThemeMode, typeof kitchenSurfaces> = {
+  light: kitchenSurfaces,
+  dark: kitchenSurfaces,
+}
 export const dataNeutral: Record<ThemeMode, string> = {
-  dark: '#94A3B8',
-  light: '#64748B',
+  dark: '#597D76', light: '#597D76',
 }
 
 /** 4px spacing scale — maps 1:1 onto Tailwind's default `p-1` … `p-12`. */

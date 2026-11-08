@@ -1,0 +1,17 @@
+{
+  "features": [
+    "signals",
+    "assigner"
+  ],
+  "model": "gam",
+  "params": {
+    "C": 0.1,
+    "n_knots": 4
+  },
+  "postprocess": {
+    "cap": 50,
+    "flag_quota": 400,
+    "month_allocation": "none",
+    "seed_average": 1
+  }
+}

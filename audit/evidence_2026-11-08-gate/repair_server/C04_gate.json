@@ -1,0 +1,70 @@
+{
+  "best_genome": {
+    "features": [
+      "assigner24",
+      "signals",
+      "temporal",
+      "text_tfidf"
+    ],
+    "model": "gam",
+    "params": {
+      "C": 0.1,
+      "n_knots": 4
+    },
+    "postprocess": {
+      "cap": 75,
+      "flag_quota": 400,
+      "month_allocation": "none",
+      "seed_average": 5
+    }
+  },
+  "folds": [
+    "primary",
+    "rolling"
+  ],
+  "mean_top243_gain": 7.5,
+  "mean_top500_gain": 3.0,
+  "mean_ap_gain": 0.05697175375792847,
+  "eligible": false,
+  "per_fold": [
+    {
+      "fold": "primary",
+      "top243_diff": {
+        "diff": 8.0,
+        "lo": 1.4750000000000014,
+        "hi": 13.0,
+        "p_gt0": 0.98,
+        "p_lt0": 0.004
+      },
+      "top500_diff": {
+        "diff": 3.0,
+        "lo": -4.0,
+        "hi": 10.0,
+        "p_gt0": 0.754,
+        "p_lt0": 0.168
+      },
+      "ap_best": 0.11080733419989973,
+      "ap_c1": 0.06325185149219811
+    },
+    {
+      "fold": "rolling",
+      "top243_diff": {
+        "diff": 7.0,
+        "lo": 2.0,
+        "hi": 12.0,
+        "p_gt0": 1.0,
+        "p_lt0": 0.0
+      },
+      "top500_diff": {
+        "diff": 3.0,
+        "lo": 0.0,
+        "hi": 7.0,
+        "p_gt0": 0.962,
+        "p_lt0": 0.0
+      },
+      "ap_best": 0.1594376811089686,
+      "ap_c1": 0.09304965630081329
+    }
+  ],
+  "note": "Five-seed protocol; paired bootstrap 500; adoption requires the pre-registered gate."
+}

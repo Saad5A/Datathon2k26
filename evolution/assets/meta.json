@@ -1,0 +1,57 @@
+{
+ "title": "AutoRank Lab \u2014 Evolution Observatory",
+ "subtitle": "Time-safe CVE ranking \u00b7 2025 backtest \u00b7 2026 scoreboard",
+ "generated_from": [
+  "audit/evidence_2026-11-08-gate/archive_final/blind/evolution_tree.json",
+  "audit/evidence_2026-11-08-gate/archive_final/c1opt/evolution_tree.json",
+  "results/autorank/arena.sqlite (dumped to evolution/assets/arena_raw.json)"
+ ],
+ "family_colors": {
+  "gam": "#ffd166",
+  "extra_trees": "#2ec4b6",
+  "logistic": "#4cc9f0",
+  "xgboost": "#f77f00",
+  "hgb": "#ef476f",
+  "catboost": "#b388ff",
+  "random_forest": "#8ac926",
+  "adaboost": "#ff70a6",
+  "mlp": "#adb5bd",
+  "lightgbm": "#c7f464",
+  "gradient_boosting": "#e09f3e",
+  "unknown": "#6c757d"
+ },
+ "kpis": {
+  "evaluations": 5371,
+  "blind_evaluations": 2213,
+  "c1opt_evaluations": 1028,
+  "arena_evaluations": 2130,
+  "generations": 80,
+  "families": 11,
+  "champion": {
+   "model": "gam",
+   "features": "assigner24,signals,temporal",
+   "top243": 18.0,
+   "top500": 20.0,
+   "avg_precision": 0.1323221673844398,
+   "generation": 18
+  },
+  "c1": {
+   "model": "hgb",
+   "features": "signals,assigner,text_tfidf",
+   "top243": 13.5,
+   "top500": 16.0,
+   "avg_precision": 0.07702105176655141
+  },
+  "gate": {
+   "top243_gain": 7.5,
+   "top500_gain": 4.0,
+   "ap_gain": 0.054171413487934104
+  },
+  "submission": {
+   "file": "results/top500.csv",
+   "model": "G2 (C1 + Granite text)",
+   "note": "After pulling origin/feat/model-ranking, the audited submission is G2, adopted by the pre-registered IBM tie-break with no measurable gain over C1."
+  }
+ },
+ "story_note": "C1 is shown at the end as a baseline comparison branch."
+}

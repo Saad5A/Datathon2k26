@@ -17,6 +17,7 @@ import {
   ChevronRight as Caret,
   Loader2,
   Search,
+  Sparkles,
   TrendingDown,
   TrendingUp,
   X,
@@ -42,6 +43,8 @@ export interface RankedTableProps {
   onFiltersChange: (f: TableFilters) => void
   /** Bumps when the dataset changes so pagination resets. */
   datasetKey: string
+  /** Opens a backend-provided Gemini brief for this CVE. */
+  onSelectCve?: (cveId: string) => void
 }
 
 const PAGE_SIZES = [10, 25, 50, 100]
@@ -67,14 +70,15 @@ function SortIcon({ dir }: { dir: false | 'asc' | 'desc' }) {
   return <ArrowUpDown className="size-3 opacity-40" />
 }
 
-function ReasonsPanel({ row }: { row: ScoreRow }) {
+function ReasonsPanel({ row, onSelectCve }: { row: ScoreRow; onSelectCve?: (cveId: string) => void }) {
   const max = Math.max(0.0001, ...row.reasons.map((r) => r.impact))
   return (
-    <div className="grid gap-4 border-t border-line bg-bg/60 px-4 py-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+    <div className="border-t border-line bg-bg/60 px-4 py-4">
       <div>
-        <h3 className="mb-2 text-[11px] font-semibold uppercase tracking-wider text-fg-muted">
-          Why it ranks #{fmtInt(row.rank)}
-        </h3>
+        <div className="mb-2 flex items-center justify-between gap-3">
+          <h3 className="text-[11px] font-semibold uppercase tracking-wider text-fg-muted">Why it ranks #{fmtInt(row.rank)}</h3>
+          {onSelectCve && <button type="button" onClick={() => onSelectCve(row.cve_id)} className="inline-flex items-center gap-1.5 rounded-md border border-line-strong px-2.5 py-1.5 text-xs font-medium text-fg-muted hover:bg-raised hover:text-fg"><Sparkles className="size-3.5" aria-hidden/> Gemini brief</button>}
+        </div>
         {row.reasons.length === 0 ? (
           <p className="text-xs text-fg-subtle">No signals above the explanation threshold. The score sits near the base rate.</p>
         ) : (
@@ -111,17 +115,11 @@ function ReasonsPanel({ row }: { row: ScoreRow }) {
           ))}
         </dl>
       </div>
-      <div className="min-w-0">
-        <h3 className="mb-2 text-[11px] font-semibold uppercase tracking-wider text-fg-muted">reasons (raw JSON)</h3>
-        <pre className="max-h-56 overflow-auto rounded-md border border-line bg-surface p-3 font-mono text-[11px] leading-relaxed text-fg-muted">
-          {JSON.stringify(row.reasons, null, 2)}
-        </pre>
-      </div>
     </div>
   )
 }
 
-export function RankedTable({ rows, filters, onFiltersChange, datasetKey }: RankedTableProps) {
+export function RankedTable({ rows, filters, onFiltersChange, datasetKey, onSelectCve }: RankedTableProps) {
   const [sorting, setSorting] = useState<SortingState>([{ id: 'rank', desc: false }])
   const [pagination, setPagination] = useState<PaginationState>({ pageIndex: 0, pageSize: 25 })
   const [expanded, setExpanded] = useState<Record<string, boolean>>({})
@@ -468,7 +466,7 @@ export function RankedTable({ rows, filters, onFiltersChange, datasetKey }: Rank
                 {row.getIsExpanded() && (
                   <tr>
                     <td colSpan={columns.length} className="p-0">
-                      <ReasonsPanel row={row.original} />
+                      <ReasonsPanel row={row.original} onSelectCve={onSelectCve} />
                     </td>
                   </tr>
                 )}

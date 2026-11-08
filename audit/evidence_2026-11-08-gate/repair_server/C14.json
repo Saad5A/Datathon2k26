@@ -1,0 +1,19 @@
+{
+  "features": [
+    "signals",
+    "assigner",
+    "text_tfidf",
+    "assigner24"
+  ],
+  "model": "gam",
+  "params": {
+    "C": 0.3,
+    "n_knots": 4
+  },
+  "postprocess": {
+    "cap": 100,
+    "flag_quota": 400,
+    "month_allocation": "none",
+    "seed_average": 1
+  }
+}

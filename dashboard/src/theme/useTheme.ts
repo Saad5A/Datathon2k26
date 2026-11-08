@@ -3,14 +3,9 @@ import { dataNeutral, surfaces, type ThemeMode } from './tokens'
 
 const KEY = 'btb-theme'
 
-function initial(): ThemeMode {
-  if (typeof document === 'undefined') return 'dark'
-  return document.documentElement.classList.contains('dark') ? 'dark' : 'light'
-}
-
-/** Dark-first theme state; also exposes resolved hex values for Recharts. */
+/** The kitchen uses a light palette, including sessions with an old dark preference. */
 export function useTheme() {
-  const [mode, setMode] = useState<ThemeMode>(initial)
+  const [mode, setMode] = useState<ThemeMode>('light')
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', mode === 'dark')

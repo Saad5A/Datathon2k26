@@ -60,6 +60,8 @@ export const EXPLOIT_FLAG_LABEL: Record<ExploitFlag, string> = {
 }
 
 export interface Dataset {
+  /** True only for the built-in sample action, never inferred from filenames. */
+  isSample?: boolean
   id: string
   name: string
   source: 'sample' | 'upload-client' | 'upload-api'

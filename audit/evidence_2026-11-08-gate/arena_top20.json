@@ -1,0 +1,490 @@
+[
+  {
+    "genome": {
+      "features": [
+        "assigner24",
+        "signals",
+        "temporal"
+      ],
+      "model": "gam",
+      "params": {
+        "C": 1.0,
+        "n_knots": 4
+      },
+      "postprocess": {
+        "cap": 75,
+        "flag_quota": 350,
+        "month_allocation": "none",
+        "seed_average": 1
+      }
+    },
+    "top243": 18.0,
+    "top500": 20.0,
+    "avg_precision": 0.1323221673844398,
+    "generation": 14
+  },
+  {
+    "genome": {
+      "features": [
+        "assigner24",
+        "signals",
+        "temporal"
+      ],
+      "model": "gam",
+      "params": {
+        "C": 1.0,
+        "n_knots": 4
+      },
+      "postprocess": {
+        "cap": 100,
+        "flag_quota": 400,
+        "month_allocation": "none",
+        "seed_average": 1
+      }
+    },
+    "top243": 18.0,
+    "top500": 20.0,
+    "avg_precision": 0.13226733888140402,
+    "generation": 15
+  },
+  {
+    "genome": {
+      "features": [
+        "assigner24",
+        "signals",
+        "temporal"
+      ],
+      "model": "gam",
+      "params": {
+        "C": 1.0,
+        "n_knots": 4
+      },
+      "postprocess": {
+        "cap": 100,
+        "flag_quota": 350,
+        "month_allocation": "none",
+        "seed_average": 1
+      }
+    },
+    "top243": 18.0,
+    "top500": 20.0,
+    "avg_precision": 0.13226733888140402,
+    "generation": 18
+  },
+  {
+    "genome": {
+      "features": [
+        "assigner24",
+        "signals",
+        "temporal"
+      ],
+      "model": "gam",
+      "params": {
+        "C": 1.0,
+        "n_knots": 4
+      },
+      "postprocess": {
+        "cap": 75,
+        "flag_quota": 400,
+        "month_allocation": "none",
+        "seed_average": 1
+      }
+    },
+    "top243": 18.0,
+    "top500": 20.0,
+    "avg_precision": 0.1323221673844398,
+    "generation": 20
+  },
+  {
+    "genome": {
+      "features": [
+        "assigner24",
+        "signals",
+        "temporal"
+      ],
+      "model": "gam",
+      "params": {
+        "C": 1.0,
+        "n_knots": 4
+      },
+      "postprocess": {
+        "cap": 75,
+        "flag_quota": null,
+        "month_allocation": "none",
+        "seed_average": 1
+      }
+    },
+    "top243": 18.0,
+    "top500": 20.0,
+    "avg_precision": 0.1323221673844398,
+    "generation": 23
+  },
+  {
+    "genome": {
+      "features": [
+        "assigner24",
+        "signals",
+        "temporal"
+      ],
+      "model": "gam",
+      "params": {
+        "C": 1.0,
+        "n_knots": 4
+      },
+      "postprocess": {
+        "cap": 100,
+        "flag_quota": null,
+        "month_allocation": "none",
+        "seed_average": 1
+      }
+    },
+    "top243": 18.0,
+    "top500": 20.0,
+    "avg_precision": 0.13226733888140402,
+    "generation": 23
+  },
+  {
+    "genome": {
+      "features": [
+        "signals",
+        "temporal",
+        "assigner24"
+      ],
+      "model": "gam",
+      "params": {
+        "C": 1.0,
+        "n_knots": 4
+      },
+      "postprocess": {
+        "cap": 75,
+        "flag_quota": 400,
+        "month_allocation": "none",
+        "seed_average": 1
+      }
+    },
+    "top243": 18.0,
+    "top500": 20.0,
+    "avg_precision": 0.1323221673844398,
+    "generation": 48
+  },
+  {
+    "genome": {
+      "features": [
+        "signals",
+        "assigner24",
+        "temporal"
+      ],
+      "model": "gam",
+      "params": {
+        "C": 1.0,
+        "n_knots": 4
+      },
+      "postprocess": {
+        "cap": 75,
+        "flag_quota": 350,
+        "month_allocation": "none",
+        "seed_average": 1
+      }
+    },
+    "top243": 18.0,
+    "top500": 20.0,
+    "avg_precision": 0.1323221673844398,
+    "generation": 51
+  },
+  {
+    "genome": {
+      "features": [
+        "signals",
+        "assigner24",
+        "temporal"
+      ],
+      "model": "gam",
+      "params": {
+        "C": 1.0,
+        "n_knots": 4
+      },
+      "postprocess": {
+        "cap": 75,
+        "flag_quota": 400,
+        "month_allocation": "none",
+        "seed_average": 1
+      }
+    },
+    "top243": 18.0,
+    "top500": 20.0,
+    "avg_precision": 0.1323221673844398,
+    "generation": 56
+  },
+  {
+    "genome": {
+      "features": [
+        "assigner24",
+        "signals",
+        "temporal",
+        "text_tfidf"
+      ],
+      "model": "gam",
+      "params": {
+        "C": 0.1,
+        "n_knots": 4
+      },
+      "postprocess": {
+        "cap": null,
+        "flag_quota": 400,
+        "month_allocation": "none",
+        "seed_average": 1
+      }
+    },
+    "top243": 18.0,
+    "top500": 19.5,
+    "avg_precision": 0.13891548492458952,
+    "generation": 5
+  },
+  {
+    "genome": {
+      "features": [
+        "assigner24",
+        "signals",
+        "temporal",
+        "text_tfidf"
+      ],
+      "model": "gam",
+      "params": {
+        "C": 0.1,
+        "n_knots": 4
+      },
+      "postprocess": {
+        "cap": null,
+        "flag_quota": null,
+        "month_allocation": "none",
+        "seed_average": 1
+      }
+    },
+    "top243": 18.0,
+    "top500": 19.5,
+    "avg_precision": 0.13891548492458952,
+    "generation": 6
+  },
+  {
+    "genome": {
+      "features": [
+        "assigner24",
+        "signals",
+        "temporal",
+        "text_tfidf"
+      ],
+      "model": "gam",
+      "params": {
+        "C": 0.1,
+        "n_knots": 4
+      },
+      "postprocess": {
+        "cap": 100,
+        "flag_quota": null,
+        "month_allocation": "none",
+        "seed_average": 1
+      }
+    },
+    "top243": 18.0,
+    "top500": 19.5,
+    "avg_precision": 0.13891548492458952,
+    "generation": 6
+  },
+  {
+    "genome": {
+      "features": [
+        "assigner24",
+        "signals",
+        "temporal",
+        "text_tfidf"
+      ],
+      "model": "gam",
+      "params": {
+        "C": 0.1,
+        "n_knots": 4
+      },
+      "postprocess": {
+        "cap": 100,
+        "flag_quota": 350,
+        "month_allocation": "none",
+        "seed_average": 1
+      }
+    },
+    "top243": 18.0,
+    "top500": 19.5,
+    "avg_precision": 0.13891548492458952,
+    "generation": 7
+  },
+  {
+    "genome": {
+      "features": [
+        "assigner24",
+        "signals",
+        "temporal",
+        "text_tfidf"
+      ],
+      "model": "gam",
+      "params": {
+        "C": 0.1,
+        "n_knots": 4
+      },
+      "postprocess": {
+        "cap": null,
+        "flag_quota": 350,
+        "month_allocation": "none",
+        "seed_average": 1
+      }
+    },
+    "top243": 18.0,
+    "top500": 19.5,
+    "avg_precision": 0.13891548492458952,
+    "generation": 8
+  },
+  {
+    "genome": {
+      "features": [
+        "signals",
+        "assigner24",
+        "text_tfidf",
+        "temporal"
+      ],
+      "model": "gam",
+      "params": {
+        "C": 0.1,
+        "n_knots": 4
+      },
+      "postprocess": {
+        "cap": null,
+        "flag_quota": 400,
+        "month_allocation": "none",
+        "seed_average": 1
+      }
+    },
+    "top243": 18.0,
+    "top500": 19.5,
+    "avg_precision": 0.13891548492458952,
+    "generation": 12
+  },
+  {
+    "genome": {
+      "features": [
+        "signals",
+        "assigner24",
+        "temporal",
+        "text_tfidf"
+      ],
+      "model": "gam",
+      "params": {
+        "C": 0.1,
+        "n_knots": 4
+      },
+      "postprocess": {
+        "cap": null,
+        "flag_quota": null,
+        "month_allocation": "none",
+        "seed_average": 1
+      }
+    },
+    "top243": 18.0,
+    "top500": 19.5,
+    "avg_precision": 0.13891548492458952,
+    "generation": 12
+  },
+  {
+    "genome": {
+      "features": [
+        "assigner24",
+        "signals",
+        "temporal"
+      ],
+      "model": "gam",
+      "params": {
+        "C": 1.0,
+        "n_knots": 4
+      },
+      "postprocess": {
+        "cap": null,
+        "flag_quota": null,
+        "month_allocation": "none",
+        "seed_average": 1
+      }
+    },
+    "top243": 18.0,
+    "top500": 19.5,
+    "avg_precision": 0.13213215404570622,
+    "generation": 13
+  },
+  {
+    "genome": {
+      "features": [
+        "signals",
+        "assigner24",
+        "temporal",
+        "text_tfidf"
+      ],
+      "model": "gam",
+      "params": {
+        "C": 0.1,
+        "n_knots": 4
+      },
+      "postprocess": {
+        "cap": null,
+        "flag_quota": 400,
+        "month_allocation": "none",
+        "seed_average": 1
+      }
+    },
+    "top243": 18.0,
+    "top500": 19.5,
+    "avg_precision": 0.13891548492458952,
+    "generation": 14
+  },
+  {
+    "genome": {
+      "features": [
+        "assigner24",
+        "signals",
+        "temporal"
+      ],
+      "model": "gam",
+      "params": {
+        "C": 1.0,
+        "n_knots": 4
+      },
+      "postprocess": {
+        "cap": null,
+        "flag_quota": 400,
+        "month_allocation": "none",
+        "seed_average": 1
+      }
+    },
+    "top243": 18.0,
+    "top500": 19.5,
+    "avg_precision": 0.13213215404570622,
+    "generation": 15
+  },
+  {
+    "genome": {
+      "features": [
+        "assigner24",
+        "signals",
+        "temporal"
+      ],
+      "model": "gam",
+      "params": {
+        "C": 1.0,
+        "n_knots": 4
+      },
+      "postprocess": {
+        "cap": null,
+        "flag_quota": 350,
+        "month_allocation": "none",
+        "seed_average": 1
+      }
+    },
+    "top243": 18.0,
+    "top500": 19.5,
+    "avg_precision": 0.13213215404570622,
+    "generation": 20
+  }
+]

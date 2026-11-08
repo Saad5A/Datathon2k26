@@ -1,99 +1,27 @@
 import { AlertTriangle, CheckCircle2, Cpu, FileUp, FlaskConical, Loader2, RotateCw, Server, Upload } from 'lucide-react'
-import { useCallback, useEffect, useRef, useState, type DragEvent, type ReactNode } from 'react'
+import { useRef, useState, type DragEvent, type ReactNode } from 'react'
 import { PriorityBadge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from '@/components/ui/dialog'
-import { predict } from '@/lib/api'
-import { API_BASE, ApiError } from '@/lib/apiClient'
-import { IngestError, normalizeStreaming, readRecords, type RawRecord } from '@/lib/parse'
+import { API_BASE } from '@/lib/apiClient'
 import { TOP_K } from '@/lib/scoring'
-import type { Dataset, ScoreRow } from '@/lib/types'
 import { cn, fmtInt, fmtScore } from '@/lib/utils'
 import { priorityColor } from '@/theme/tokens'
 
-type Engine = 'client' | 'api'
-type Phase =
-  | { kind: 'idle' }
-  | { kind: 'parsing'; file: File }
-  | { kind: 'scoring'; file: File; done: number; total: number; leaders: ScoreRow[]; engine: Engine }
-  | { kind: 'done'; file: File; rows: ScoreRow[]; warnings: string[]; preScored: boolean; engine: Engine; ms: number }
-  | { kind: 'error'; message: string; file?: File; canFallback: boolean }
+import type { UploadPhase as Phase, KitchenUpload } from '@/hooks/useKitchenUpload'
 
-const MAX_BYTES = 50 * 1024 * 1024
 const ACCEPT = '.csv,.json,text/csv,application/json'
 
 export interface JudgeUploadModalProps {
   open: boolean
   onOpenChange: (open: boolean) => void
-  onApply: (ds: Dataset) => void
+  controller: KitchenUpload
 }
 
-export function JudgeUploadModal({ open, onOpenChange, onApply }: JudgeUploadModalProps) {
-  const [engine, setEngine] = useState<Engine>('client')
-  const [rescore, setRescore] = useState(false)
-  const [phase, setPhase] = useState<Phase>({ kind: 'idle' })
+export function JudgeUploadModal({ open, onOpenChange, controller }: JudgeUploadModalProps) {
+  const { phase, engine, setEngine, rescore, setRescore, run, reset, trySample } = controller
   const [dragging, setDragging] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
-  const abortRef = useRef<AbortController | null>(null)
-
-  useEffect(() => {
-    if (!open) {
-      abortRef.current?.abort()
-      setPhase({ kind: 'idle' })
-      setDragging(false)
-    }
-  }, [open])
-
-  const run = useCallback(
-    async (file: File, eng: Engine = engine) => {
-      abortRef.current?.abort()
-      const ac = new AbortController()
-      abortRef.current = ac
-      const t0 = performance.now()
-
-      if (file.size > MAX_BYTES) {
-        setPhase({ kind: 'error', message: `File is ${(file.size / 1e6).toFixed(1)} MB; the limit is 50 MB.`, file, canFallback: false })
-        return
-      }
-
-      try {
-        setPhase({ kind: 'parsing', file })
-        const records: RawRecord[] = await readRecords(file)
-        if (!records.length) throw new IngestError('File contains no rows.')
-
-        if (eng === 'api') {
-          setPhase({ kind: 'scoring', file, done: 0, total: records.length, leaders: [], engine: eng })
-          const rows = await predict(records, ac.signal)
-          // Reveal the server's ranking progressively so the leaderboard animates in.
-          for (let i = 1; i <= Math.min(10, rows.length); i++) {
-            if (ac.signal.aborted) return
-            setPhase({ kind: 'scoring', file, done: Math.round((i / 10) * rows.length), total: rows.length, leaders: rows.slice(0, i), engine: eng })
-            await new Promise((r) => setTimeout(r, 40))
-          }
-          setPhase({ kind: 'done', file, rows, warnings: [], preScored: true, engine: eng, ms: performance.now() - t0 })
-          return
-        }
-
-        const summary = await normalizeStreaming(
-          records,
-          rescore ? 'rescore' : 'auto',
-          (p) => setPhase({ kind: 'scoring', file, engine: eng, ...p }),
-          { signal: ac.signal },
-        )
-        setPhase({ kind: 'done', file, engine: eng, ms: performance.now() - t0, ...summary })
-      } catch (e) {
-        if ((e as Error).name === 'AbortError') return
-        setPhase({
-          kind: 'error',
-          message: e instanceof IngestError || e instanceof ApiError ? e.message : `Unexpected error: ${(e as Error).message}`,
-          file,
-          canFallback: eng === 'api',
-        })
-      }
-    },
-    [engine, rescore],
-  )
-
   const pick = (files: FileList | null) => {
     const f = files?.[0]
     if (f) void run(f)
@@ -105,29 +33,6 @@ export function JudgeUploadModal({ open, onOpenChange, onApply }: JudgeUploadMod
     pick(e.dataTransfer.files)
   }
 
-  const trySample = async () => {
-    try {
-      const res = await fetch('/sample_judge_input.csv')
-      if (!res.ok) throw new Error(`HTTP ${res.status}`)
-      const blob = await res.blob()
-      void run(new File([blob], 'sample_judge_input.csv', { type: 'text/csv' }))
-    } catch (e) {
-      setPhase({ kind: 'error', message: `Could not load the bundled sample: ${(e as Error).message}`, canFallback: false })
-    }
-  }
-
-  const apply = () => {
-    if (phase.kind !== 'done') return
-    onApply({
-      id: `${phase.file.name}-${Date.now()}`,
-      name: phase.file.name,
-      source: phase.engine === 'api' ? 'upload-api' : 'upload-client',
-      rows: phase.rows,
-      loadedAt: new Date(),
-    })
-    onOpenChange(false)
-  }
-
   const busy = phase.kind === 'parsing' || phase.kind === 'scoring'
 
   return (
@@ -136,7 +41,7 @@ export function JudgeUploadModal({ open, onOpenChange, onApply }: JudgeUploadMod
         <div className="border-b border-line px-6 py-4 pr-12">
           <DialogTitle>Evaluate a dataset</DialogTitle>
           <DialogDescription>
-            Upload CVEs as CSV or JSON. Rows are scored, ranked and loaded into every widget on the dashboard.
+            Upload CSV or JSON. Cooking follows processing; completed results appear automatically. Close this panel to watch the kitchen.
           </DialogDescription>
         </div>
 
@@ -258,18 +163,19 @@ export function JudgeUploadModal({ open, onOpenChange, onApply }: JudgeUploadMod
               : 'Files are processed locally unless Model API is selected.'}
           </p>
           <div className="ml-auto flex gap-2">
+            {busy && <Button variant="outline" size="sm" onClick={() => onOpenChange(false)}>Watch the kitchen</Button>}
             {phase.kind === 'done' && (
-              <Button variant="ghost" size="sm" onClick={() => setPhase({ kind: 'idle' })}>
+              <Button variant="ghost" size="sm" onClick={reset}>
                 Upload another
               </Button>
             )}
             {busy && (
-              <Button variant="ghost" size="sm" onClick={() => { abortRef.current?.abort(); setPhase({ kind: 'idle' }) }}>
+              <Button variant="ghost" size="sm" onClick={reset}>
                 Cancel
               </Button>
             )}
-            <Button variant="danger" size="sm" disabled={phase.kind !== 'done'} onClick={apply}>
-              Load into dashboard
+            <Button variant="danger" size="sm" disabled={phase.kind !== 'done'} onClick={() => onOpenChange(false)}>
+              View dashboard
             </Button>
           </div>
         </div>
@@ -347,7 +253,7 @@ function LiveRanking({ phase }: { phase: Extract<Phase, { kind: 'parsing' | 'sco
           </span>
           <span className="max-w-[50%] truncate font-mono text-fg-subtle">{phase.file.name}</span>
         </div>
-        <div className="h-1.5 overflow-hidden rounded-full bg-raised" role="progressbar" aria-valuenow={Math.round(pct)} aria-valuemin={0} aria-valuemax={100}>
+        <div className="h-1.5 overflow-hidden rounded-full bg-raised" role="progressbar" aria-label={label} aria-valuenow={phase.kind === 'parsing' || (phase.kind === 'scoring' && phase.engine === 'api') ? undefined : Math.round(pct)} aria-valuemin={0} aria-valuemax={100}>
           <div
             className={cn('h-full rounded-full bg-sev-low transition-[width] duration-150', phase.kind === 'parsing' && 'w-1/3 animate-pulse')}
             style={phase.kind === 'parsing' ? undefined : { width: `${pct}%` }}

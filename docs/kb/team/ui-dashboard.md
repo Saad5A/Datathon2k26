@@ -2,9 +2,9 @@
 Only the agent for this area edits THIS file. Read the other three with `python tools/kb.py show`.
 
 <!-- STATUS-START -->
-STATUS: not started
-PHASE: scaffold the app against docs/sample_scores_2026.csv (DUMMY data)
-LAST_UPDATED: 2026-11-07T20:50Z
+STATUS: active
+PHASE: pancakess dashboard and standalone evolution visual
+LAST_UPDATED: 2026-11-08T20:00Z
 BLOCKED_ON: none
 NEXT: Build landing chart page and fix-first list from the sample schema
 ASKS: model-ranking: tell me when real results/*.json exist; triage-playbook-gemini: playbook file location and format
@@ -24,6 +24,7 @@ Owned paths (edit only these; shared files change via small PRs): `web/`
 | why-2026-is-different page | web/ | not started | judges |
 | methodology and leakage page | web/ | not started | judges |
 | deployed public URL and domain | web/ | not started | everyone |
+| standalone evolution visual with direct /evolve route | dashboard/evolution/ | implemented; production build includes dist/evolve | judges
 
 ## 3. What I need from others
 | Need | From | Status |
@@ -43,4 +44,5 @@ Owned paths (edit only these; shared files change via small PRs): `web/`
 - (none yet)
 
 ## 7. Changelog (append-only, newest first; format: YYYY-MM-DDTHH:MMZ | what changed | files | DECISION/ASK tag if any)
+- 2026-11-08T20:00Z | lightened evolution diagram and added standalone /evolve route | dashboard/evolution/, dashboard/vite.config.ts, dashboard/vercel.json |
 - 2026-11-07T20:50Z | file created with initial plan | docs/kb/team/ui-dashboard.md |

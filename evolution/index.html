@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<base href="/evolve/">
+<title>pancakess — Evolution Braid</title>
+<meta name="description" content="Explore the pancakess model evolution search, its population, competing lineages, and champion branch.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="focus">
+<div class="grain" aria-hidden="true"></div>
+
+<header class="topbar">
+  <div class="wordmark">
+    <span class="mark" aria-hidden="true">
+      <svg viewBox="0 0 28 28"><path d="M14 1.5 26.5 14 14 26.5 1.5 14Z"/><path d="M14 7 21 14 14 21 7 14Z"/></svg>
+    </span>
+    <span>pancakess</span>
+    <span class="slash">/</span>
+    <span class="muted">Evolution Observatory</span>
+  </div>
+  <div class="topmeta">
+    <span>2025 backtest</span>
+    <span class="sep"></span>
+    <span>five-seed protocol</span>
+    <span class="sep"></span>
+    <span class="quiet">no 2026 labels</span>
+  </div>
+</header>
+
+<main class="studio">
+  <aside class="rail">
+    <div class="rail-scroll">
+      <p class="micro">Study 01 <span class="hair"></span> pancakess</p>
+      <h1 id="railTitle">The Ascent<br>of the <em>GAM</em></h1>
+      <p class="lede" id="railLede">A blind search through 2,403 genomes, eleven model families, and eighty generations. One lineage rises above the field.</p>
+
+      <div class="figure-list" id="figureList" aria-label="Key results"></div>
+
+      <nav class="view-nav" id="viewNav" aria-label="Search views">
+        <button class="view-btn active" data-view="blind"><span>01</span> Blind search</button>
+        <button class="view-btn" data-view="c1opt"><span>02</span> C1-seeded</button>
+        <button class="view-btn" data-view="arena"><span>03</span> Arena</button>
+      </nav>
+
+      <section class="rail-controls">
+        <div class="control-line">
+          <span class="control-label">Population</span>
+          <div class="text-toggle" id="modeToggle" role="group" aria-label="Population detail">
+            <button data-mode="curated" class="active">Curated</button>
+            <button data-mode="full">Full</button>
+          </div>
+        </div>
+        <div class="control-line">
+          <span class="control-label">Lineage</span>
+          <button class="text-action" id="btnIsolate" aria-pressed="false">Isolate champion</button>
+        </div>
+        <div class="control-line">
+          <span class="control-label">C1 baseline</span>
+          <button class="text-action" id="btnC1" aria-pressed="true">Shown at the end</button>
+        </div>
+        <div class="control-line search-line">
+          <label class="control-label" for="search">Find</label>
+          <input id="search" type="search" placeholder="model, feature, operation" autocomplete="off">
+          <span class="search-count" id="searchCount"></span>
+        </div>
+      </section>
+
+      <section class="legend-block">
+        <div class="legend-head"><span class="micro">Model families</span><button class="text-action tiny" id="legendAll">all</button></div>
+        <div class="families" id="familyLegend"></div>
+      </section>
+
+      <footer class="rail-foot">
+        <p>Every figure is a 2025 backtest result under time-safe folds. There are no 2026 labels, so no 2026 accuracy is claimed.</p>
+        <p class="quiet">IBM “Before the Breach” · Sheridan Datathon 2026</p>
+        <p class="quiet">Repo submission after the pull: G2 (C1 + Granite), no measurable gain.</p>
+      </footer>
+    </div>
+  </aside>
+
+  <section class="canvas-shell">
+    <div class="canvas-head">
+      <div class="canvas-title">
+        <span class="micro" id="canvasKicker">01 / Blind search</span>
+        <span class="canvas-stats" id="canvasStats">2,403 genomes · 80 generations</span>
+      </div>
+      <div class="canvas-actions">
+        <button class="text-action" id="btnReset">Reset view</button>
+        <button class="text-action" id="btnDossier">Dossier</button>
+      </div>
+    </div>
+
+    <div class="canvas-wrap" id="canvasWrap">
+      <svg id="braid" role="img" aria-labelledby="braidTitle braidDesc"></svg>
+      <div class="tooltip" id="tooltip" role="status" aria-live="polite"></div>
+      <div class="chart-key" aria-hidden="true">
+        <span><i class="key-line"></i> champion lineage</span>
+        <span><i class="key-ring"></i> alternative branch</span>
+        <span><i class="key-dust"></i> population</span>
+        <span><i class="key-dash"></i> C1 baseline</span>
+      </div>
+      <div class="canvas-corner" id="canvasCorner">Drag to pan · scroll to zoom · click a specimen</div>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-meta">
+        <span class="micro">Generation</span>
+        <span class="mono" id="timeLabel">0 — 80</span>
+      </div>
+      <div class="timeline-track">
+        <input id="timeRange" type="range" min="0" max="80" value="80" step="1" aria-label="Reveal generation">
+        <div class="timeline-ticks" id="timelineTicks"></div>
+      </div>
+      <button class="play-btn" id="btnPlay"><span class="play-glyph">▶</span><span id="playText">Run 80 generations</span></button>
+    </div>
+  </section>
+
+  <aside class="dossier" id="dossier" aria-live="polite"></aside>
+</main>
+
+<p id="braidTitle" class="sr-only">pancakess evolution braid</p>
+<p id="braidDesc" class="sr-only">A horizontal ancestry diagram of genomes across generations. The champion lineage is highlighted in gold; the C1 baseline is shown at the end as a comparison branch.</p>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="vendor/d3.v7.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

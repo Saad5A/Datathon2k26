@@ -1,0 +1,18 @@
+{
+  "features": [
+    "assigner24",
+    "signals",
+    "temporal"
+  ],
+  "model": "gam",
+  "params": {
+    "n_knots": 4,
+    "C": 1.0
+  },
+  "postprocess": {
+    "cap": 75,
+    "month_allocation": "none",
+    "flag_quota": 400,
+    "seed_average": 1
+  }
+}

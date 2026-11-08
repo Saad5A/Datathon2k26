@@ -21,7 +21,7 @@ export interface WidgetCardProps {
 
 export function WidgetCard({ title, subtitle, info, menu, actions, className, bodyClassName, children }: WidgetCardProps) {
   return (
-    <section className={cn('flex h-full flex-col rounded-lg border border-line bg-surface', className)}>
+    <section className={cn('flex h-full flex-col rounded-2xl border border-line bg-surface shadow-[0_8px_25px_rgba(70,98,64,0.035)]', className)}>
       <header className="flex items-start gap-2 px-4 pb-2 pt-4">
         <div className="min-w-0 flex-1">
           <div className="flex items-center gap-1.5">

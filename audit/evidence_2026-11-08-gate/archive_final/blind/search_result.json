@@ -1,0 +1,2129 @@
+{
+  "budget": 3000,
+  "evaluated": 2213,
+  "generations": 80,
+  "elapsed_seconds": 1769.9,
+  "seed_c1": false,
+  "c1": {
+    "status": "ok",
+    "per_fold": {
+      "primary": {
+        "top500": 20,
+        "top250": 16,
+        "top243": 16,
+        "top161": 10,
+        "median_rank": 1561.0,
+        "work50": 1487,
+        "n": 35280,
+        "positives": 52,
+        "auc": 0.8615387890751238,
+        "avg_precision": 0.07062949008045796,
+        "fold": "primary",
+        "features_used": [
+          "signals",
+          "assigner",
+          "text_tfidf"
+        ],
+        "features_dropped": []
+      },
+      "rolling": {
+        "top500": 12,
+        "top250": 11,
+        "top243": 11,
+        "top161": 8,
+        "median_rank": 1146.0,
+        "work50": 1113,
+        "n": 23367,
+        "positives": 32,
+        "auc": 0.8628615813156204,
+        "avg_precision": 0.08341261345264485,
+        "fold": "rolling",
+        "features_used": [
+          "signals",
+          "assigner",
+          "text_tfidf"
+        ],
+        "features_dropped": []
+      }
+    },
+    "mean": {
+      "top243": 13.5,
+      "top500": 16.0,
+      "top161": 9.0,
+      "auc": 0.8622001851953721,
+      "avg_precision": 0.07702105176655141,
+      "median_rank": 1353.5,
+      "work50": 1300.0,
+      "complexity": 3.056
+    }
+  },
+  "best": {
+    "genome": {
+      "features": [
+        "assigner24",
+        "signals",
+        "temporal"
+      ],
+      "model": "gam",
+      "params": {
+        "n_knots": 4,
+        "C": 1.0
+      },
+      "postprocess": {
+        "cap": 75,
+        "month_allocation": "none",
+        "flag_quota": 400,
+        "seed_average": 1
+      }
+    },
+    "status": "ok",
+    "per_fold": {
+      "primary": {
+        "top500": 22,
+        "top250": 19,
+        "top243": 19,
+        "top161": 16,
+        "median_rank": 1333.5,
+        "work50": 983,
+        "n": 35280,
+        "positives": 52,
+        "auc": 0.8280323344192995,
+        "avg_precision": 0.12060315308502262,
+        "fold": "primary",
+        "features_used": [
+          "assigner24",
+          "signals",
+          "temporal"
+        ],
+        "features_dropped": []
+      },
+      "rolling": {
+        "top500": 18,
+        "top250": 17,
+        "top243": 17,
+        "top161": 12,
+        "median_rank": 240.5,
+        "work50": 238,
+        "n": 23367,
+        "positives": 32,
+        "auc": 0.7940017677308764,
+        "avg_precision": 0.144041181683857,
+        "fold": "rolling",
+        "features_used": [
+          "assigner24",
+          "signals",
+          "temporal"
+        ],
+        "features_dropped": []
+      }
+    },
+    "mean": {
+      "top243": 18.0,
+      "top500": 20.0,
+      "top161": 14.0,
+      "auc": 0.8110170510750879,
+      "avg_precision": 0.1323221673844398,
+      "median_rank": 787.0,
+      "work50": 610.5,
+      "complexity": 3.158
+    },
+    "_fitness": 29.067443347688794,
+    "generation": 18,
+    "operation": "crossover",
+    "parent_a": "e8f662d6732c4ca9",
+    "parent_b": "f1483399049e85bf"
+  },
+  "best_nocontrol": {
+    "genome": {
+      "features": [
+        "assigner24",
+        "signals",
+        "temporal"
+      ],
+      "model": "gam",
+      "params": {
+        "n_knots": 4,
+        "C": 1.0
+      },
+      "postprocess": {
+        "cap": 75,
+        "month_allocation": "none",
+        "flag_quota": 400,
+        "seed_average": 1
+      }
+    },
+    "status": "ok",
+    "per_fold": {
+      "primary": {
+        "top500": 22,
+        "top250": 19,
+        "top243": 19,
+        "top161": 16,
+        "median_rank": 1333.5,
+        "work50": 983,
+        "n": 35280,
+        "positives": 52,
+        "auc": 0.8280323344192995,
+        "avg_precision": 0.12060315308502262,
+        "fold": "primary",
+        "features_used": [
+          "assigner24",
+          "signals",
+          "temporal"
+        ],
+        "features_dropped": []
+      },
+      "rolling": {
+        "top500": 18,
+        "top250": 17,
+        "top243": 17,
+        "top161": 12,
+        "median_rank": 240.5,
+        "work50": 238,
+        "n": 23367,
+        "positives": 32,
+        "auc": 0.7940017677308764,
+        "avg_precision": 0.144041181683857,
+        "fold": "rolling",
+        "features_used": [
+          "assigner24",
+          "signals",
+          "temporal"
+        ],
+        "features_dropped": []
+      }
+    },
+    "mean": {
+      "top243": 18.0,
+      "top500": 20.0,
+      "top161": 14.0,
+      "auc": 0.8110170510750879,
+      "avg_precision": 0.1323221673844398,
+      "median_rank": 787.0,
+      "work50": 610.5,
+      "complexity": 3.158
+    },
+    "_fitness": 29.067443347688794,
+    "generation": 18,
+    "operation": "crossover",
+    "parent_a": "e8f662d6732c4ca9",
+    "parent_b": "f1483399049e85bf"
+  },
+  "c1_like": [
+    {
+      "genome": {
+        "features": [
+          "assigner",
+          "assigner24",
+          "signals",
+          "text_tfidf"
+        ],
+        "model": "hgb",
+        "params": {
+          "max_depth": 2,
+          "learning_rate": 0.1,
+          "max_iter": 100,
+          "min_samples_leaf": 60,
+          "l2_regularization": 5.0
+        },
+        "postprocess": {
+          "cap": 50,
+          "month_allocation": "none",
+          "flag_quota": null,
+          "seed_average": 1
+        }
+      },
+      "generation": 58,
+      "operation": "crossover+mutate",
+      "mean": {
+        "top243": 13.5,
+        "top500": 15.5,
+        "top161": 10.5,
+        "auc": 0.8712753022679842,
+        "avg_precision": 0.08968676648029358,
+        "median_rank": 1511.0,
+        "work50": 1404.5,
+        "complexity": 3.204
+      },
+      "exact_c1": false
+    },
+    {
+      "genome": {
+        "features": [
+          "assigner",
+          "assigner24",
+          "signals",
+          "text_tfidf"
+        ],
+        "model": "hgb",
+        "params": {
+          "max_depth": 2,
+          "learning_rate": 0.1,
+          "max_iter": 100,
+          "min_samples_leaf": 60,
+          "l2_regularization": 5.0
+        },
+        "postprocess": {
+          "cap": 50,
+          "month_allocation": "none",
+          "flag_quota": 350,
+          "seed_average": 1
+        }
+      },
+      "generation": 60,
+      "operation": "copy+mutate",
+      "mean": {
+        "top243": 13.5,
+        "top500": 15.5,
+        "top161": 10.5,
+        "auc": 0.8712753022679842,
+        "avg_precision": 0.08968676648029358,
+        "median_rank": 1511.0,
+        "work50": 1404.5,
+        "complexity": 3.204
+      },
+      "exact_c1": false
+    },
+    {
+      "genome": {
+        "features": [
+          "assigner",
+          "assigner24",
+          "signals",
+          "text_tfidf"
+        ],
+        "model": "xgboost",
+        "params": {
+          "max_depth": 2,
+          "learning_rate": 0.03,
+          "n_estimators": 150,
+          "min_child_weight": 1,
+          "reg_lambda": 1.0
+        },
+        "postprocess": {
+          "cap": 50,
+          "month_allocation": "none",
+          "flag_quota": 400,
+          "seed_average": 1
+        }
+      },
+      "generation": 57,
+      "operation": "crossover",
+      "mean": {
+        "top243": 13.0,
+        "top500": 15.0,
+        "top161": 10.0,
+        "auc": 0.860692800119502,
+        "avg_precision": 0.10126900983855569,
+        "median_rank": 1555.75,
+        "work50": 1520.5,
+        "complexity": 3.604
+      },
+      "exact_c1": false
+    },
+    {
+      "genome": {
+        "features": [
+          "assigner",
+          "signals",
+          "text_tfidf"
+        ],
+        "model": "xgboost",
+        "params": {
+          "max_depth": 2,
+          "learning_rate": 0.03,
+          "n_estimators": 150,
+          "min_child_weight": 1,
+          "reg_lambda": 1.0
+        },
+        "postprocess": {
+          "cap": 50,
+          "month_allocation": "none",
+          "flag_quota": 350,
+          "seed_average": 1
+        }
+      },
+      "generation": 60,
+      "operation": "crossover",
+      "mean": {
+        "top243": 12.0,
+        "top500": 15.0,
+        "top161": 9.5,
+        "auc": 0.8614022871067045,
+        "avg_precision": 0.09720682432616036,
+        "median_rank": 1549.75,
+        "work50": 1492.0,
+        "complexity": 3.354
+      },
+      "exact_c1": false
+    },
+    {
+      "genome": {
+        "features": [
+          "assigner",
+          "assigner24",
+          "signals",
+          "temporal",
+          "text_tfidf"
+        ],
+        "model": "xgboost",
+        "params": {
+          "max_depth": 4,
+          "learning_rate": 0.1,
+          "n_estimators": 300,
+          "min_child_weight": 1,
+          "reg_lambda": 1.0
+        },
+        "postprocess": {
+          "cap": 50,
+          "month_allocation": "none",
+          "flag_quota": 400,
+          "seed_average": 1
+        }
+      },
+      "generation": 51,
+      "operation": "crossover+mutate",
+      "mean": {
+        "top243": 11.5,
+        "top500": 13.0,
+        "top161": 10.5,
+        "auc": 0.8298366348248316,
+        "avg_precision": 0.05190569130653133,
+        "median_rank": 1360.5,
+        "work50": 1137.5,
+        "complexity": 4.158
+      },
+      "exact_c1": false
+    },
+    {
+      "genome": {
+        "features": [
+          "assigner",
+          "assigner24",
+          "signals",
+          "temporal",
+          "text_tfidf"
+        ],
+        "model": "catboost",
+        "params": {
+          "depth": 3,
+          "learning_rate": 0.1,
+          "iterations": 300,
+          "l2_leaf_reg": 20.0
+        },
+        "postprocess": {
+          "cap": 50,
+          "month_allocation": "none",
+          "flag_quota": 400,
+          "seed_average": 1
+        }
+      },
+      "generation": 56,
+      "operation": "copy+mutate",
+      "mean": {
+        "top243": 10.0,
+        "top500": 13.5,
+        "top161": 8.0,
+        "auc": 0.8965682645007992,
+        "avg_precision": 0.059613707896648424,
+        "median_rank": 1301.0,
+        "work50": 1140.5,
+        "complexity": 4.156
+      },
+      "exact_c1": false
+    },
+    {
+      "genome": {
+        "features": [
+          "assigner",
+          "assigner24",
+          "signals",
+          "text_tfidf"
+        ],
+        "model": "catboost",
+        "params": {
+          "depth": 4,
+          "learning_rate": 0.1,
+          "iterations": 500,
+          "l2_leaf_reg": 5.0
+        },
+        "postprocess": {
+          "cap": 50,
+          "month_allocation": "none",
+          "flag_quota": 350,
+          "seed_average": 1
+        }
+      },
+      "generation": 56,
+      "operation": "crossover+mutate",
+      "mean": {
+        "top243": 10.0,
+        "top500": 13.0,
+        "top161": 8.0,
+        "auc": 0.8295836161745718,
+        "avg_precision": 0.044264271220428184,
+        "median_rank": 2583.5,
+        "work50": 2439.5,
+        "complexity": 4.308
+      },
+      "exact_c1": false
+    },
+    {
+      "genome": {
+        "features": [
+          "assigner",
+          "signals",
+          "text_tfidf"
+        ],
+        "model": "hgb",
+        "params": {
+          "max_depth": 4,
+          "learning_rate": 0.03,
+          "max_iter": 150,
+          "min_samples_leaf": 20,
+          "l2_regularization": 5.0
+        },
+        "postprocess": {
+          "cap": 50,
+          "month_allocation": "none",
+          "flag_quota": 400,
+          "seed_average": 1
+        }
+      },
+      "generation": 58,
+      "operation": "crossover+mutate",
+      "mean": {
+        "top243": 9.5,
+        "top500": 15.0,
+        "top161": 7.0,
+        "auc": 0.8638136527663474,
+        "avg_precision": 0.0706098434338259,
+        "median_rank": 1498.25,
+        "work50": 1271.0,
+        "complexity": 3.058
+      },
+      "exact_c1": false
+    },
+    {
+      "genome": {
+        "features": [
+          "assigner",
+          "signals",
+          "temporal",
+          "text_tfidf"
+        ],
+        "model": "lightgbm",
+        "params": {
+          "num_leaves": 15,
+          "learning_rate": 0.1,
+          "n_estimators": 300,
+          "min_child_samples": 60,
+          "reg_lambda": 0.0
+        },
+        "postprocess": {
+          "cap": 50,
+          "month_allocation": "none",
+          "flag_quota": 400,
+          "seed_average": 1
+        }
+      },
+      "generation": 9,
+      "operation": "copy+mutate",
+      "mean": {
+        "top243": 9.5,
+        "top500": 12.0,
+        "top161": 9.0,
+        "auc": 0.7291119391273752,
+        "avg_precision": 0.05207168162127785,
+        "median_rank": 4233.0,
+        "work50": 4162.5,
+        "complexity": 3.83
+      },
+      "exact_c1": false
+    },
+    {
+      "genome": {
+        "features": [
+          "signals",
+          "text_tfidf",
+          "assigner",
+          "assigner24"
+        ],
+        "model": "lightgbm",
+        "params": {
+          "num_leaves": 7,
+          "learning_rate": 0.03,
+          "n_estimators": 500,
+          "min_child_samples": 60,
+          "reg_lambda": 0.0
+        },
+        "postprocess": {
+          "cap": 50,
+          "month_allocation": "none",
+          "flag_quota": null,
+          "seed_average": 1
+        }
+      },
+      "generation": 0,
+      "operation": "init",
+      "mean": {
+        "top243": 8.5,
+        "top500": 12.0,
+        "top161": 8.0,
+        "auc": 0.7892560454661274,
+        "avg_precision": 0.04295435871169767,
+        "median_rank": 3587.25,
+        "work50": 3375.0,
+        "complexity": 4.214
+      },
+      "exact_c1": false
+    }
+  ],
+  "top20": [
+    {
+      "genome": {
+        "features": [
+          "assigner24",
+          "signals",
+          "temporal"
+        ],
+        "model": "gam",
+        "params": {
+          "n_knots": 4,
+          "C": 1.0
+        },
+        "postprocess": {
+          "cap": 75,
+          "month_allocation": "none",
+          "flag_quota": 400,
+          "seed_average": 1
+        }
+      },
+      "status": "ok",
+      "per_fold": {
+        "primary": {
+          "top500": 22,
+          "top250": 19,
+          "top243": 19,
+          "top161": 16,
+          "median_rank": 1333.5,
+          "work50": 983,
+          "n": 35280,
+          "positives": 52,
+          "auc": 0.8280323344192995,
+          "avg_precision": 0.12060315308502262,
+          "fold": "primary",
+          "features_used": [
+            "assigner24",
+            "signals",
+            "temporal"
+          ],
+          "features_dropped": []
+        },
+        "rolling": {
+          "top500": 18,
+          "top250": 17,
+          "top243": 17,
+          "top161": 12,
+          "median_rank": 240.5,
+          "work50": 238,
+          "n": 23367,
+          "positives": 32,
+          "auc": 0.7940017677308764,
+          "avg_precision": 0.144041181683857,
+          "fold": "rolling",
+          "features_used": [
+            "assigner24",
+            "signals",
+            "temporal"
+          ],
+          "features_dropped": []
+        }
+      },
+      "mean": {
+        "top243": 18.0,
+        "top500": 20.0,
+        "top161": 14.0,
+        "auc": 0.8110170510750879,
+        "avg_precision": 0.1323221673844398,
+        "median_rank": 787.0,
+        "work50": 610.5,
+        "complexity": 3.158
+      },
+      "_fitness": 29.067443347688794,
+      "generation": 18,
+      "operation": "crossover",
+      "parent_a": "e8f662d6732c4ca9",
+      "parent_b": "f1483399049e85bf"
+    },
+    {
+      "genome": {
+        "features": [
+          "assigner24",
+          "signals",
+          "temporal"
+        ],
+        "model": "gam",
+        "params": {
+          "n_knots": 4,
+          "C": 1.0
+        },
+        "postprocess": {
+          "cap": 100,
+          "month_allocation": "none",
+          "flag_quota": 400,
+          "seed_average": 1
+        }
+      },
+      "status": "ok",
+      "per_fold": {
+        "primary": {
+          "top500": 22,
+          "top250": 19,
+          "top243": 19,
+          "top161": 16,
+          "median_rank": 1333.5,
+          "work50": 983,
+          "n": 35280,
+          "positives": 52,
+          "auc": 0.8280301508415508,
+          "avg_precision": 0.12057197160295831,
+          "fold": "primary",
+          "features_used": [
+            "assigner24",
+            "signals",
+            "temporal"
+          ],
+          "features_dropped": []
+        },
+        "rolling": {
+          "top500": 18,
+          "top250": 17,
+          "top243": 17,
+          "top161": 12,
+          "median_rank": 240.5,
+          "work50": 238,
+          "n": 23367,
+          "positives": 32,
+          "auc": 0.79396828797943,
+          "avg_precision": 0.14396270615984974,
+          "fold": "rolling",
+          "features_used": [
+            "assigner24",
+            "signals",
+            "temporal"
+          ],
+          "features_dropped": []
+        }
+      },
+      "mean": {
+        "top243": 18.0,
+        "top500": 20.0,
+        "top161": 14.0,
+        "auc": 0.8109992194104905,
+        "avg_precision": 0.13226733888140402,
+        "median_rank": 787.0,
+        "work50": 610.5,
+        "complexity": 3.158
+      },
+      "_fitness": 29.06634677762808,
+      "generation": 18,
+      "operation": "crossover",
+      "parent_a": "8f265198d0277aaa",
+      "parent_b": "24bf4ad99b38d206"
+    },
+    {
+      "genome": {
+        "features": [
+          "assigner24",
+          "signals",
+          "temporal"
+        ],
+        "model": "gam",
+        "params": {
+          "n_knots": 4,
+          "C": 1.0
+        },
+        "postprocess": {
+          "cap": 100,
+          "month_allocation": "none",
+          "flag_quota": 350,
+          "seed_average": 1
+        }
+      },
+      "status": "ok",
+      "per_fold": {
+        "primary": {
+          "top500": 22,
+          "top250": 19,
+          "top243": 19,
+          "top161": 16,
+          "median_rank": 1333.5,
+          "work50": 983,
+          "n": 35280,
+          "positives": 52,
+          "auc": 0.8280301508415508,
+          "avg_precision": 0.12057197160295831,
+          "fold": "primary",
+          "features_used": [
+            "assigner24",
+            "signals",
+            "temporal"
+          ],
+          "features_dropped": []
+        },
+        "rolling": {
+          "top500": 18,
+          "top250": 17,
+          "top243": 17,
+          "top161": 12,
+          "median_rank": 240.5,
+          "work50": 238,
+          "n": 23367,
+          "positives": 32,
+          "auc": 0.79396828797943,
+          "avg_precision": 0.14396270615984974,
+          "fold": "rolling",
+          "features_used": [
+            "assigner24",
+            "signals",
+            "temporal"
+          ],
+          "features_dropped": []
+        }
+      },
+      "mean": {
+        "top243": 18.0,
+        "top500": 20.0,
+        "top161": 14.0,
+        "auc": 0.8109992194104905,
+        "avg_precision": 0.13226733888140402,
+        "median_rank": 787.0,
+        "work50": 610.5,
+        "complexity": 3.158
+      },
+      "_fitness": 29.06634677762808,
+      "generation": 19,
+      "operation": "crossover+mutate",
+      "parent_a": "73f1a4754328445e",
+      "parent_b": "2dc0f299284488e3"
+    },
+    {
+      "genome": {
+        "features": [
+          "assigner24",
+          "signals",
+          "temporal"
+        ],
+        "model": "gam",
+        "params": {
+          "n_knots": 4,
+          "C": 1.0
+        },
+        "postprocess": {
+          "cap": 100,
+          "month_allocation": "none",
+          "flag_quota": 350,
+          "seed_average": 1
+        }
+      },
+      "status": "ok",
+      "per_fold": {
+        "primary": {
+          "top500": 22,
+          "top250": 19,
+          "top243": 19,
+          "top161": 16,
+          "median_rank": 1333.5,
+          "work50": 983,
+          "n": 35280,
+          "positives": 52,
+          "auc": 0.8280301508415508,
+          "avg_precision": 0.12057197160295831,
+          "fold": "primary",
+          "features_used": [
+            "assigner24",
+            "signals",
+            "temporal"
+          ],
+          "features_dropped": []
+        },
+        "rolling": {
+          "top500": 18,
+          "top250": 17,
+          "top243": 17,
+          "top161": 12,
+          "median_rank": 240.5,
+          "work50": 238,
+          "n": 23367,
+          "positives": 32,
+          "auc": 0.79396828797943,
+          "avg_precision": 0.14396270615984974,
+          "fold": "rolling",
+          "features_used": [
+            "assigner24",
+            "signals",
+            "temporal"
+          ],
+          "features_dropped": []
+        }
+      },
+      "mean": {
+        "top243": 18.0,
+        "top500": 20.0,
+        "top161": 14.0,
+        "auc": 0.8109992194104905,
+        "avg_precision": 0.13226733888140402,
+        "median_rank": 787.0,
+        "work50": 610.5,
+        "complexity": 3.158
+      },
+      "_fitness": 29.06634677762808,
+      "generation": 19,
+      "operation": "crossover+mutate",
+      "parent_a": "73f1a4754328445e",
+      "parent_b": "2dc0f299284488e3"
+    },
+    {
+      "genome": {
+        "features": [
+          "assigner24",
+          "signals",
+          "temporal"
+        ],
+        "model": "gam",
+        "params": {
+          "n_knots": 4,
+          "C": 1.0
+        },
+        "postprocess": {
+          "cap": 100,
+          "month_allocation": "none",
+          "flag_quota": null,
+          "seed_average": 1
+        }
+      },
+      "status": "ok",
+      "per_fold": {
+        "primary": {
+          "top500": 22,
+          "top250": 19,
+          "top243": 19,
+          "top161": 16,
+          "median_rank": 1333.5,
+          "work50": 983,
+          "n": 35280,
+          "positives": 52,
+          "auc": 0.8280301508415508,
+          "avg_precision": 0.12057197160295831,
+          "fold": "primary",
+          "features_used": [
+            "assigner24",
+            "signals",
+            "temporal"
+          ],
+          "features_dropped": []
+        },
+        "rolling": {
+          "top500": 18,
+          "top250": 17,
+          "top243": 17,
+          "top161": 12,
+          "median_rank": 240.5,
+          "work50": 238,
+          "n": 23367,
+          "positives": 32,
+          "auc": 0.79396828797943,
+          "avg_precision": 0.14396270615984974,
+          "fold": "rolling",
+          "features_used": [
+            "assigner24",
+            "signals",
+            "temporal"
+          ],
+          "features_dropped": []
+        }
+      },
+      "mean": {
+        "top243": 18.0,
+        "top500": 20.0,
+        "top161": 14.0,
+        "auc": 0.8109992194104905,
+        "avg_precision": 0.13226733888140402,
+        "median_rank": 787.0,
+        "work50": 610.5,
+        "complexity": 3.158
+      },
+      "_fitness": 29.06634677762808,
+      "generation": 19,
+      "operation": "crossover",
+      "parent_a": "f306fb6b74447e13",
+      "parent_b": "2dc0f299284488e3"
+    },
+    {
+      "genome": {
+        "features": [
+          "assigner24",
+          "signals",
+          "temporal"
+        ],
+        "model": "gam",
+        "params": {
+          "n_knots": 4,
+          "C": 1.0
+        },
+        "postprocess": {
+          "cap": 75,
+          "month_allocation": "none",
+          "flag_quota": null,
+          "seed_average": 1
+        }
+      },
+      "status": "ok",
+      "per_fold": {
+        "primary": {
+          "top500": 22,
+          "top250": 19,
+          "top243": 19,
+          "top161": 16,
+          "median_rank": 1333.5,
+          "work50": 983,
+          "n": 35280,
+          "positives": 52,
+          "auc": 0.8280323344192995,
+          "avg_precision": 0.12060315308502262,
+          "fold": "primary",
+          "features_used": [
+            "assigner24",
+            "signals",
+            "temporal"
+          ],
+          "features_dropped": []
+        },
+        "rolling": {
+          "top500": 18,
+          "top250": 17,
+          "top243": 17,
+          "top161": 12,
+          "median_rank": 240.5,
+          "work50": 238,
+          "n": 23367,
+          "positives": 32,
+          "auc": 0.7940017677308764,
+          "avg_precision": 0.144041181683857,
+          "fold": "rolling",
+          "features_used": [
+            "assigner24",
+            "signals",
+            "temporal"
+          ],
+          "features_dropped": []
+        }
+      },
+      "mean": {
+        "top243": 18.0,
+        "top500": 20.0,
+        "top161": 14.0,
+        "auc": 0.8110170510750879,
+        "avg_precision": 0.1323221673844398,
+        "median_rank": 787.0,
+        "work50": 610.5,
+        "complexity": 3.158
+      },
+      "_fitness": 29.067443347688794,
+      "generation": 20,
+      "operation": "crossover+mutate",
+      "parent_a": "af029cd4e6a358fe",
+      "parent_b": "079c3e07b10f92f5"
+    },
+    {
+      "genome": {
+        "features": [
+          "assigner24",
+          "signals",
+          "temporal"
+        ],
+        "model": "gam",
+        "params": {
+          "n_knots": 4,
+          "C": 1.0
+        },
+        "postprocess": {
+          "cap": 75,
+          "month_allocation": "none",
+          "flag_quota": 350,
+          "seed_average": 1
+        }
+      },
+      "status": "ok",
+      "per_fold": {
+        "primary": {
+          "top500": 22,
+          "top250": 19,
+          "top243": 19,
+          "top161": 16,
+          "median_rank": 1333.5,
+          "work50": 983,
+          "n": 35280,
+          "positives": 52,
+          "auc": 0.8280323344192995,
+          "avg_precision": 0.12060315308502262,
+          "fold": "primary",
+          "features_used": [
+            "assigner24",
+            "signals",
+            "temporal"
+          ],
+          "features_dropped": []
+        },
+        "rolling": {
+          "top500": 18,
+          "top250": 17,
+          "top243": 17,
+          "top161": 12,
+          "median_rank": 240.5,
+          "work50": 238,
+          "n": 23367,
+          "positives": 32,
+          "auc": 0.7940017677308764,
+          "avg_precision": 0.144041181683857,
+          "fold": "rolling",
+          "features_used": [
+            "assigner24",
+            "signals",
+            "temporal"
+          ],
+          "features_dropped": []
+        }
+      },
+      "mean": {
+        "top243": 18.0,
+        "top500": 20.0,
+        "top161": 14.0,
+        "auc": 0.8110170510750879,
+        "avg_precision": 0.1323221673844398,
+        "median_rank": 787.0,
+        "work50": 610.5,
+        "complexity": 3.158
+      },
+      "_fitness": 29.067443347688794,
+      "generation": 21,
+      "operation": "crossover",
+      "parent_a": "d57ac48a93c49e19",
+      "parent_b": "c11e546c8bf30496"
+    },
+    {
+      "genome": {
+        "features": [
+          "signals",
+          "temporal",
+          "assigner24"
+        ],
+        "model": "gam",
+        "params": {
+          "n_knots": 4,
+          "C": 1.0
+        },
+        "postprocess": {
+          "cap": 75,
+          "month_allocation": "none",
+          "flag_quota": 400,
+          "seed_average": 1
+        }
+      },
+      "status": "ok",
+      "per_fold": {
+        "primary": {
+          "top500": 22,
+          "top250": 19,
+          "top243": 19,
+          "top161": 16,
+          "median_rank": 1333.5,
+          "work50": 983,
+          "n": 35280,
+          "positives": 52,
+          "auc": 0.8280323344192995,
+          "avg_precision": 0.12060315308502262,
+          "fold": "primary",
+          "features_used": [
+            "signals",
+            "temporal",
+            "assigner24"
+          ],
+          "features_dropped": []
+        },
+        "rolling": {
+          "top500": 18,
+          "top250": 17,
+          "top243": 17,
+          "top161": 12,
+          "median_rank": 240.5,
+          "work50": 238,
+          "n": 23367,
+          "positives": 32,
+          "auc": 0.7940017677308764,
+          "avg_precision": 0.144041181683857,
+          "fold": "rolling",
+          "features_used": [
+            "signals",
+            "temporal",
+            "assigner24"
+          ],
+          "features_dropped": []
+        }
+      },
+      "mean": {
+        "top243": 18.0,
+        "top500": 20.0,
+        "top161": 14.0,
+        "auc": 0.8110170510750879,
+        "avg_precision": 0.1323221673844398,
+        "median_rank": 787.0,
+        "work50": 610.5,
+        "complexity": 3.158
+      },
+      "_fitness": 29.067443347688794,
+      "generation": 29,
+      "operation": "copy+mutate",
+      "parent_a": "d57ac48a93c49e19",
+      "parent_b": null
+    },
+    {
+      "genome": {
+        "features": [
+          "signals",
+          "temporal",
+          "assigner24"
+        ],
+        "model": "gam",
+        "params": {
+          "n_knots": 4,
+          "C": 1.0
+        },
+        "postprocess": {
+          "cap": 75,
+          "month_allocation": "none",
+          "flag_quota": null,
+          "seed_average": 1
+        }
+      },
+      "status": "ok",
+      "per_fold": {
+        "primary": {
+          "top500": 22,
+          "top250": 19,
+          "top243": 19,
+          "top161": 16,
+          "median_rank": 1333.5,
+          "work50": 983,
+          "n": 35280,
+          "positives": 52,
+          "auc": 0.8280323344192995,
+          "avg_precision": 0.12060315308502262,
+          "fold": "primary",
+          "features_used": [
+            "signals",
+            "temporal",
+            "assigner24"
+          ],
+          "features_dropped": []
+        },
+        "rolling": {
+          "top500": 18,
+          "top250": 17,
+          "top243": 17,
+          "top161": 12,
+          "median_rank": 240.5,
+          "work50": 238,
+          "n": 23367,
+          "positives": 32,
+          "auc": 0.7940017677308764,
+          "avg_precision": 0.144041181683857,
+          "fold": "rolling",
+          "features_used": [
+            "signals",
+            "temporal",
+            "assigner24"
+          ],
+          "features_dropped": []
+        }
+      },
+      "mean": {
+        "top243": 18.0,
+        "top500": 20.0,
+        "top161": 14.0,
+        "auc": 0.8110170510750879,
+        "avg_precision": 0.1323221673844398,
+        "median_rank": 787.0,
+        "work50": 610.5,
+        "complexity": 3.158
+      },
+      "_fitness": 29.067443347688794,
+      "generation": 36,
+      "operation": "crossover+mutate",
+      "parent_a": "1fdf823f818edca5",
+      "parent_b": "050919cb75f9ccb1"
+    },
+    {
+      "genome": {
+        "features": [
+          "assigner24",
+          "signals",
+          "temporal"
+        ],
+        "model": "gam",
+        "params": {
+          "n_knots": 4,
+          "C": 1.0
+        },
+        "postprocess": {
+          "cap": null,
+          "month_allocation": "none",
+          "flag_quota": null,
+          "seed_average": 1
+        }
+      },
+      "status": "ok",
+      "per_fold": {
+        "primary": {
+          "top500": 22,
+          "top250": 19,
+          "top243": 19,
+          "top161": 16,
+          "median_rank": 1333.5,
+          "work50": 983,
+          "n": 35280,
+          "positives": 52,
+          "auc": 0.8280334262081736,
+          "avg_precision": 0.12057271780711114,
+          "fold": "primary",
+          "features_used": [
+            "assigner24",
+            "signals",
+            "temporal"
+          ],
+          "features_dropped": []
+        },
+        "rolling": {
+          "top500": 17,
+          "top250": 17,
+          "top243": 17,
+          "top161": 12,
+          "median_rank": 240.5,
+          "work50": 238,
+          "n": 23367,
+          "positives": 32,
+          "auc": 0.7938129419327191,
+          "avg_precision": 0.14369159028430128,
+          "fold": "rolling",
+          "features_used": [
+            "assigner24",
+            "signals",
+            "temporal"
+          ],
+          "features_dropped": []
+        }
+      },
+      "mean": {
+        "top243": 18.0,
+        "top500": 19.5,
+        "top161": 14.0,
+        "auc": 0.8109231840704463,
+        "avg_precision": 0.13213215404570622,
+        "median_rank": 787.0,
+        "work50": 610.5,
+        "complexity": 3.158
+      },
+      "_fitness": 28.813643080914122,
+      "generation": 18,
+      "operation": "crossover",
+      "parent_a": "24bf4ad99b38d206",
+      "parent_b": "8f265198d0277aaa"
+    },
+    {
+      "genome": {
+        "features": [
+          "assigner24",
+          "signals",
+          "temporal"
+        ],
+        "model": "gam",
+        "params": {
+          "n_knots": 4,
+          "C": 1.0
+        },
+        "postprocess": {
+          "cap": null,
+          "month_allocation": "none",
+          "flag_quota": 350,
+          "seed_average": 1
+        }
+      },
+      "status": "ok",
+      "per_fold": {
+        "primary": {
+          "top500": 22,
+          "top250": 19,
+          "top243": 19,
+          "top161": 16,
+          "median_rank": 1333.5,
+          "work50": 983,
+          "n": 35280,
+          "positives": 52,
+          "auc": 0.8280334262081736,
+          "avg_precision": 0.12057271780711114,
+          "fold": "primary",
+          "features_used": [
+            "assigner24",
+            "signals",
+            "temporal"
+          ],
+          "features_dropped": []
+        },
+        "rolling": {
+          "top500": 17,
+          "top250": 17,
+          "top243": 17,
+          "top161": 12,
+          "median_rank": 240.5,
+          "work50": 238,
+          "n": 23367,
+          "positives": 32,
+          "auc": 0.7938129419327191,
+          "avg_precision": 0.14369159028430128,
+          "fold": "rolling",
+          "features_used": [
+            "assigner24",
+            "signals",
+            "temporal"
+          ],
+          "features_dropped": []
+        }
+      },
+      "mean": {
+        "top243": 18.0,
+        "top500": 19.5,
+        "top161": 14.0,
+        "auc": 0.8109231840704463,
+        "avg_precision": 0.13213215404570622,
+        "median_rank": 787.0,
+        "work50": 610.5,
+        "complexity": 3.158
+      },
+      "_fitness": 28.813643080914122,
+      "generation": 19,
+      "operation": "crossover+mutate",
+      "parent_a": "88c431c8d32c7017",
+      "parent_b": "73f1a4754328445e"
+    },
+    {
+      "genome": {
+        "features": [
+          "assigner24",
+          "signals",
+          "temporal"
+        ],
+        "model": "gam",
+        "params": {
+          "n_knots": 4,
+          "C": 1.0
+        },
+        "postprocess": {
+          "cap": null,
+          "month_allocation": "none",
+          "flag_quota": 400,
+          "seed_average": 1
+        }
+      },
+      "status": "ok",
+      "per_fold": {
+        "primary": {
+          "top500": 22,
+          "top250": 19,
+          "top243": 19,
+          "top161": 16,
+          "median_rank": 1333.5,
+          "work50": 983,
+          "n": 35280,
+          "positives": 52,
+          "auc": 0.8280334262081736,
+          "avg_precision": 0.12057271780711114,
+          "fold": "primary",
+          "features_used": [
+            "assigner24",
+            "signals",
+            "temporal"
+          ],
+          "features_dropped": []
+        },
+        "rolling": {
+          "top500": 17,
+          "top250": 17,
+          "top243": 17,
+          "top161": 12,
+          "median_rank": 240.5,
+          "work50": 238,
+          "n": 23367,
+          "positives": 32,
+          "auc": 0.7938129419327191,
+          "avg_precision": 0.14369159028430128,
+          "fold": "rolling",
+          "features_used": [
+            "assigner24",
+            "signals",
+            "temporal"
+          ],
+          "features_dropped": []
+        }
+      },
+      "mean": {
+        "top243": 18.0,
+        "top500": 19.5,
+        "top161": 14.0,
+        "auc": 0.8109231840704463,
+        "avg_precision": 0.13213215404570622,
+        "median_rank": 787.0,
+        "work50": 610.5,
+        "complexity": 3.158
+      },
+      "_fitness": 28.813643080914122,
+      "generation": 37,
+      "operation": "crossover",
+      "parent_a": "747013025e68bfa6",
+      "parent_b": "b4b1419d2dbad9da"
+    },
+    {
+      "genome": {
+        "features": [
+          "assigner24",
+          "signals",
+          "temporal",
+          "text_tfidf"
+        ],
+        "model": "gam",
+        "params": {
+          "n_knots": 4,
+          "C": 0.1
+        },
+        "postprocess": {
+          "cap": 100,
+          "month_allocation": "none",
+          "flag_quota": 350,
+          "seed_average": 1
+        }
+      },
+      "status": "ok",
+      "per_fold": {
+        "primary": {
+          "top500": 22,
+          "top250": 20,
+          "top243": 20,
+          "top161": 17,
+          "median_rank": 1520.0,
+          "work50": 1367,
+          "n": 35280,
+          "positives": 52,
+          "auc": 0.8292649640583103,
+          "avg_precision": 0.11147852064930538,
+          "fold": "primary",
+          "features_used": [
+            "assigner24",
+            "signals",
+            "temporal",
+            "text_tfidf"
+          ],
+          "features_dropped": []
+        },
+        "rolling": {
+          "top500": 17,
+          "top250": 16,
+          "top243": 16,
+          "top161": 14,
+          "median_rank": 256.5,
+          "work50": 225,
+          "n": 23367,
+          "positives": 32,
+          "auc": 0.8152466788086564,
+          "avg_precision": 0.16635244919987366,
+          "fold": "rolling",
+          "features_used": [
+            "assigner24",
+            "signals",
+            "temporal",
+            "text_tfidf"
+          ],
+          "features_dropped": []
+        }
+      },
+      "mean": {
+        "top243": 18.0,
+        "top500": 19.5,
+        "top161": 15.5,
+        "auc": 0.8222558214334834,
+        "avg_precision": 0.13891548492458952,
+        "median_rank": 888.25,
+        "work50": 796.0,
+        "complexity": 3.408
+      },
+      "_fitness": 28.82430969849179,
+      "generation": 6,
+      "operation": "crossover+mutate",
+      "parent_a": "2c60173ace3a3a71",
+      "parent_b": "5cdbbdcc72b94783"
+    },
+    {
+      "genome": {
+        "features": [
+          "assigner24",
+          "signals",
+          "temporal",
+          "text_tfidf"
+        ],
+        "model": "gam",
+        "params": {
+          "n_knots": 4,
+          "C": 0.1
+        },
+        "postprocess": {
+          "cap": 100,
+          "month_allocation": "none",
+          "flag_quota": null,
+          "seed_average": 1
+        }
+      },
+      "status": "ok",
+      "per_fold": {
+        "primary": {
+          "top500": 22,
+          "top250": 20,
+          "top243": 20,
+          "top161": 17,
+          "median_rank": 1520.0,
+          "work50": 1367,
+          "n": 35280,
+          "positives": 52,
+          "auc": 0.8292649640583103,
+          "avg_precision": 0.11147852064930538,
+          "fold": "primary",
+          "features_used": [
+            "assigner24",
+            "signals",
+            "temporal",
+            "text_tfidf"
+          ],
+          "features_dropped": []
+        },
+        "rolling": {
+          "top500": 17,
+          "top250": 16,
+          "top243": 16,
+          "top161": 14,
+          "median_rank": 256.5,
+          "work50": 225,
+          "n": 23367,
+          "positives": 32,
+          "auc": 0.8152466788086564,
+          "avg_precision": 0.16635244919987366,
+          "fold": "rolling",
+          "features_used": [
+            "assigner24",
+            "signals",
+            "temporal",
+            "text_tfidf"
+          ],
+          "features_dropped": []
+        }
+      },
+      "mean": {
+        "top243": 18.0,
+        "top500": 19.5,
+        "top161": 15.5,
+        "auc": 0.8222558214334834,
+        "avg_precision": 0.13891548492458952,
+        "median_rank": 888.25,
+        "work50": 796.0,
+        "complexity": 3.408
+      },
+      "_fitness": 28.82430969849179,
+      "generation": 7,
+      "operation": "crossover+mutate",
+      "parent_a": "6e8a224c482b1261",
+      "parent_b": "6e8a224c482b1261"
+    },
+    {
+      "genome": {
+        "features": [
+          "assigner24",
+          "signals",
+          "temporal",
+          "text_tfidf"
+        ],
+        "model": "gam",
+        "params": {
+          "n_knots": 4,
+          "C": 0.1
+        },
+        "postprocess": {
+          "cap": null,
+          "month_allocation": "none",
+          "flag_quota": 400,
+          "seed_average": 1
+        }
+      },
+      "status": "ok",
+      "per_fold": {
+        "primary": {
+          "top500": 22,
+          "top250": 20,
+          "top243": 20,
+          "top161": 17,
+          "median_rank": 1520.0,
+          "work50": 1367,
+          "n": 35280,
+          "positives": 52,
+          "auc": 0.8292649640583103,
+          "avg_precision": 0.11147852064930538,
+          "fold": "primary",
+          "features_used": [
+            "assigner24",
+            "signals",
+            "temporal",
+            "text_tfidf"
+          ],
+          "features_dropped": []
+        },
+        "rolling": {
+          "top500": 17,
+          "top250": 16,
+          "top243": 16,
+          "top161": 14,
+          "median_rank": 256.5,
+          "work50": 225,
+          "n": 23367,
+          "positives": 32,
+          "auc": 0.8152466788086564,
+          "avg_precision": 0.16635244919987366,
+          "fold": "rolling",
+          "features_used": [
+            "assigner24",
+            "signals",
+            "temporal",
+            "text_tfidf"
+          ],
+          "features_dropped": []
+        }
+      },
+      "mean": {
+        "top243": 18.0,
+        "top500": 19.5,
+        "top161": 15.5,
+        "auc": 0.8222558214334834,
+        "avg_precision": 0.13891548492458952,
+        "median_rank": 888.25,
+        "work50": 796.0,
+        "complexity": 3.408
+      },
+      "_fitness": 28.82430969849179,
+      "generation": 7,
+      "operation": "crossover",
+      "parent_a": "7715fcbad25a4caf",
+      "parent_b": "805143e874ffd216"
+    },
+    {
+      "genome": {
+        "features": [
+          "assigner24",
+          "signals",
+          "temporal",
+          "text_tfidf"
+        ],
+        "model": "gam",
+        "params": {
+          "n_knots": 4,
+          "C": 0.1
+        },
+        "postprocess": {
+          "cap": null,
+          "month_allocation": "none",
+          "flag_quota": null,
+          "seed_average": 1
+        }
+      },
+      "status": "ok",
+      "per_fold": {
+        "primary": {
+          "top500": 22,
+          "top250": 20,
+          "top243": 20,
+          "top161": 17,
+          "median_rank": 1520.0,
+          "work50": 1367,
+          "n": 35280,
+          "positives": 52,
+          "auc": 0.8292649640583103,
+          "avg_precision": 0.11147852064930538,
+          "fold": "primary",
+          "features_used": [
+            "assigner24",
+            "signals",
+            "temporal",
+            "text_tfidf"
+          ],
+          "features_dropped": []
+        },
+        "rolling": {
+          "top500": 17,
+          "top250": 16,
+          "top243": 16,
+          "top161": 14,
+          "median_rank": 256.5,
+          "work50": 225,
+          "n": 23367,
+          "positives": 32,
+          "auc": 0.8152466788086564,
+          "avg_precision": 0.16635244919987366,
+          "fold": "rolling",
+          "features_used": [
+            "assigner24",
+            "signals",
+            "temporal",
+            "text_tfidf"
+          ],
+          "features_dropped": []
+        }
+      },
+      "mean": {
+        "top243": 18.0,
+        "top500": 19.5,
+        "top161": 15.5,
+        "auc": 0.8222558214334834,
+        "avg_precision": 0.13891548492458952,
+        "median_rank": 888.25,
+        "work50": 796.0,
+        "complexity": 3.408
+      },
+      "_fitness": 28.82430969849179,
+      "generation": 8,
+      "operation": "copy+mutate",
+      "parent_a": "6e8a224c482b1261",
+      "parent_b": null
+    },
+    {
+      "genome": {
+        "features": [
+          "assigner24",
+          "signals",
+          "temporal",
+          "text_tfidf"
+        ],
+        "model": "gam",
+        "params": {
+          "n_knots": 4,
+          "C": 0.1
+        },
+        "postprocess": {
+          "cap": 100,
+          "month_allocation": "none",
+          "flag_quota": 400,
+          "seed_average": 1
+        }
+      },
+      "status": "ok",
+      "per_fold": {
+        "primary": {
+          "top500": 22,
+          "top250": 20,
+          "top243": 20,
+          "top161": 17,
+          "median_rank": 1520.0,
+          "work50": 1367,
+          "n": 35280,
+          "positives": 52,
+          "auc": 0.8292649640583103,
+          "avg_precision": 0.11147852064930538,
+          "fold": "primary",
+          "features_used": [
+            "assigner24",
+            "signals",
+            "temporal",
+            "text_tfidf"
+          ],
+          "features_dropped": []
+        },
+        "rolling": {
+          "top500": 17,
+          "top250": 16,
+          "top243": 16,
+          "top161": 14,
+          "median_rank": 256.5,
+          "work50": 225,
+          "n": 23367,
+          "positives": 32,
+          "auc": 0.8152466788086564,
+          "avg_precision": 0.16635244919987366,
+          "fold": "rolling",
+          "features_used": [
+            "assigner24",
+            "signals",
+            "temporal",
+            "text_tfidf"
+          ],
+          "features_dropped": []
+        }
+      },
+      "mean": {
+        "top243": 18.0,
+        "top500": 19.5,
+        "top161": 15.5,
+        "auc": 0.8222558214334834,
+        "avg_precision": 0.13891548492458952,
+        "median_rank": 888.25,
+        "work50": 796.0,
+        "complexity": 3.408
+      },
+      "_fitness": 28.82430969849179,
+      "generation": 13,
+      "operation": "crossover",
+      "parent_a": "713f8e386e7b85d9",
+      "parent_b": "2dc0f299284488e3"
+    },
+    {
+      "genome": {
+        "features": [
+          "assigner24",
+          "signals",
+          "temporal",
+          "text_tfidf"
+        ],
+        "model": "gam",
+        "params": {
+          "n_knots": 4,
+          "C": 0.1
+        },
+        "postprocess": {
+          "cap": null,
+          "month_allocation": "none",
+          "flag_quota": 350,
+          "seed_average": 1
+        }
+      },
+      "status": "ok",
+      "per_fold": {
+        "primary": {
+          "top500": 22,
+          "top250": 20,
+          "top243": 20,
+          "top161": 17,
+          "median_rank": 1520.0,
+          "work50": 1367,
+          "n": 35280,
+          "positives": 52,
+          "auc": 0.8292649640583103,
+          "avg_precision": 0.11147852064930538,
+          "fold": "primary",
+          "features_used": [
+            "assigner24",
+            "signals",
+            "temporal",
+            "text_tfidf"
+          ],
+          "features_dropped": []
+        },
+        "rolling": {
+          "top500": 17,
+          "top250": 16,
+          "top243": 16,
+          "top161": 14,
+          "median_rank": 256.5,
+          "work50": 225,
+          "n": 23367,
+          "positives": 32,
+          "auc": 0.8152466788086564,
+          "avg_precision": 0.16635244919987366,
+          "fold": "rolling",
+          "features_used": [
+            "assigner24",
+            "signals",
+            "temporal",
+            "text_tfidf"
+          ],
+          "features_dropped": []
+        }
+      },
+      "mean": {
+        "top243": 18.0,
+        "top500": 19.5,
+        "top161": 15.5,
+        "auc": 0.8222558214334834,
+        "avg_precision": 0.13891548492458952,
+        "median_rank": 888.25,
+        "work50": 796.0,
+        "complexity": 3.408
+      },
+      "_fitness": 28.82430969849179,
+      "generation": 25,
+      "operation": "copy+mutate",
+      "parent_a": "685fd21d4e3be86d",
+      "parent_b": null
+    },
+    {
+      "genome": {
+        "features": [
+          "signals",
+          "text_tfidf",
+          "assigner24",
+          "temporal"
+        ],
+        "model": "gam",
+        "params": {
+          "n_knots": 4,
+          "C": 0.1
+        },
+        "postprocess": {
+          "cap": null,
+          "month_allocation": "none",
+          "flag_quota": 400,
+          "seed_average": 1
+        }
+      },
+      "status": "ok",
+      "per_fold": {
+        "primary": {
+          "top500": 22,
+          "top250": 20,
+          "top243": 20,
+          "top161": 17,
+          "median_rank": 1520.0,
+          "work50": 1367,
+          "n": 35280,
+          "positives": 52,
+          "auc": 0.8292649640583103,
+          "avg_precision": 0.11147852064930538,
+          "fold": "primary",
+          "features_used": [
+            "signals",
+            "text_tfidf",
+            "assigner24",
+            "temporal"
+          ],
+          "features_dropped": []
+        },
+        "rolling": {
+          "top500": 17,
+          "top250": 16,
+          "top243": 16,
+          "top161": 14,
+          "median_rank": 256.5,
+          "work50": 225,
+          "n": 23367,
+          "positives": 32,
+          "auc": 0.8152466788086564,
+          "avg_precision": 0.16635244919987366,
+          "fold": "rolling",
+          "features_used": [
+            "signals",
+            "text_tfidf",
+            "assigner24",
+            "temporal"
+          ],
+          "features_dropped": []
+        }
+      },
+      "mean": {
+        "top243": 18.0,
+        "top500": 19.5,
+        "top161": 15.5,
+        "auc": 0.8222558214334834,
+        "avg_precision": 0.13891548492458952,
+        "median_rank": 888.25,
+        "work50": 796.0,
+        "complexity": 3.408
+      },
+      "_fitness": 28.82430969849179,
+      "generation": 36,
+      "operation": "crossover+mutate",
+      "parent_a": "1fdf823f818edca5",
+      "parent_b": "37903d376124dc4e"
+    },
+    {
+      "genome": {
+        "features": [
+          "assigner24",
+          "signals",
+          "temporal",
+          "text_tfidf"
+        ],
+        "model": "gam",
+        "params": {
+          "n_knots": 4,
+          "C": 0.1
+        },
+        "postprocess": {
+          "cap": 75,
+          "month_allocation": "none",
+          "flag_quota": 400,
+          "seed_average": 1
+        }
+      },
+      "status": "ok",
+      "per_fold": {
+        "primary": {
+          "top500": 22,
+          "top250": 20,
+          "top243": 20,
+          "top161": 17,
+          "median_rank": 1520.0,
+          "work50": 1367,
+          "n": 35280,
+          "positives": 52,
+          "auc": 0.8292649640583103,
+          "avg_precision": 0.11147852064930538,
+          "fold": "primary",
+          "features_used": [
+            "assigner24",
+            "signals",
+            "temporal",
+            "text_tfidf"
+          ],
+          "features_dropped": []
+        },
+        "rolling": {
+          "top500": 16,
+          "top250": 16,
+          "top243": 16,
+          "top161": 14,
+          "median_rank": 374.0,
+          "work50": 225,
+          "n": 23367,
+          "positives": 32,
+          "auc": 0.814931969145061,
+          "avg_precision": 0.16552360552290318,
+          "fold": "rolling",
+          "features_used": [
+            "assigner24",
+            "signals",
+            "temporal",
+            "text_tfidf"
+          ],
+          "features_dropped": []
+        }
+      },
+      "mean": {
+        "top243": 18.0,
+        "top500": 19.0,
+        "top161": 15.5,
+        "auc": 0.8220984666016857,
+        "avg_precision": 0.13850106308610427,
+        "median_rank": 947.0,
+        "work50": 796.0,
+        "complexity": 3.408
+      },
+      "_fitness": 28.566021261722085,
+      "generation": 19,
+      "operation": "crossover+mutate",
+      "parent_a": "87bb770e0069d4dd",
+      "parent_b": "0468efab52c7214e"
+    }
+  ],
+  "pareto_size": 77
+}
