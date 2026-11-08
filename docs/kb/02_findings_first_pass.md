@@ -25,6 +25,29 @@ Structured CVSS/CWE rows and the LEAKY n_affected_cpes row: reproduced but UNCHE
 **What holds:** the gain in ranking quality (AUC, CVEs to fix to catch 50%) over every baseline, in both folds and with time-safe labels. **What does not hold:** a top-500 win over exploit-then-EPSS (reverses in fold 2). CVSS3 top500 depends on tie order (see range).
 Early stopping: HGB uses scikit-learn default early stopping (on above 10,000 rows), so "150 iterations" is a maximum; actual per seed: 150, 138, 55.
 
+## Verified findings, Phase 3 to final (feat/model-ranking) [VERIFIED; generated from results/claims*.json, audits in audit/2026-11-07-*.md]
+Do not quote the first-pass table below; quote these. Wording rules are in LOG.md on feat/model-ranking.
+
+**1. Hidden leak in today's NVD fields** (2025 test pool). All 52 later-exploited CVEs had NVD status Analyzed, a product row, CVSS3 and CWE (exact 95% lower bound on each share 0.932); among non-exploited CVEs: Analyzed 50.1%, product row 64.9%. Solo AUC (EPSS 0.707): n_affected_cpes 0.767, ref Exploit tag 0.690, nvd_status 0.675, news/threat links 0.652 (lower bound), n_references 0.643. None is used by the model. Full table: results/leakage_table.csv.
+
+**2. Honest backtest (time-safe train labels, pre-registered selection, 5 seed sets, seed medians).** Selection rule picked C1 (mean AUC C1 0.870, C2 0.848, C3 0.836).
+
+| Fold | Method | top500 | AUC | CVEs to catch 50% |
+|---|---|---|---|---|
+| 1 (test 2025-01..09) | C1 (seed range 15..22) | 22 | 0.860 | 1,226 |
+| 1 | exploit then EPSS | 18 | 0.768 | 2,253 |
+| 2 (test 2025-04..09) | C1 (seed range 11..12) | 11 | 0.880 | 1,240 |
+| 2 | exploit then EPSS | 15 | 0.809 | 510 |
+
+Paired difference C1 minus exploit-then-EPSS (seed median): AUC +0.092 / +0.071; expected top-500 +3.6 / -3.6. Seed set 0 AUC interval includes 0 in both folds. So: better overall ordering, NO robust top-500 advantage; never claim we beat the baselines on top-500.
+
+**3. What carries the model (ablations, seed medians, fold 1 / fold 2).** Drop text: top500 9 / 8, AUC 0.836 / 0.788. Drop exploit/EPSS signals: top500 11 / 4. Drop assigner history: AUC 0.861 / 0.867 (assigner history is NOT shown to help). Unmasked text: AUC 0.869 / 0.865 (masking costs nothing measurable). Masked text alone: solo AUC 0.823.
+
+**4. 2026 shift** (2025 test pool vs 2026 scoreboard). GitHub advisories 5.6% -> 15.0%; VulnCheck 1.1% -> 9.3%; no product row 35.0% -> 49.6% (Aug/Sep 2026: 66.5% / 68.0%); assigner with no prior KEV row 36.2% -> 23.8% (2026 is an upper bound). Full: results/drift_summary.json.
+
+**5. Final 2026 ranking** (results/top500.csv, verified submission-valid). C1 refit on 75,148 rows / 117 positives, mean of 5 seed sets, at most 50 top-500 slots per assigner (cap is neutral in the backtest, not an improvement). Top 500: 71.2% have a public exploit flag, 4.8% have EPSS > 0.1, 15.8% come from assigners with no prior KEV row. No 2026 accuracy claim exists or may be made.
+
+**Not yet verified (do not quote):** reverse-time check (results/reverse_time.json, not time-safe), Granite comparison (pending embeddings), IBM input summary.
 ## SUPERSEDED: first-pass results table (old run, 7 of 12 rows differ at printed precision; do not quote)
 | Approach | top500 | top1000 | AUC | Avg precision | Median rank of positives |
 |---|---|---|---|---|---|
@@ -63,6 +86,7 @@ analyzed status .675, n_affected_cpes .767, n_references .643, cvss3 score .732,
 - Any public exploit flag: 2.26% in the 2026 scoreboard (1,645 CVEs) vs 2.15% in 2025 test. EPSS blank: 2% vs 10%. EPSS above 0.1: 66 CVEs in the 2026 scoreboard.
 
 ## Changelog
+- 2026-11-07 (feat/model-ranking): added "Verified findings, Phase 3 to final" generated from verified claims (leak, honest backtest, ablations, 2026 shift, final ranking).
 - 2026-11-07 (feat/model-ranking): added the VERIFIED results table generated from results/claims_model.json; old table marked SUPERSEDED; fixed "150 iterations"; added the time-safe assigner caveat result.
 - 2026-11-07: created.
 - 2026-11-07: corrected 2025 missing-data ranges after re-checking the monthly table.
