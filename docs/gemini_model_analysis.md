@@ -5,6 +5,18 @@ Standalone evaluation notes for the Gemini triage / remediation path from
 embedding + narrative stack. **Does not modify** audited baselines
 (`JUDGE_QA.md`, `docs/writeup_model.md`, `results/top500.csv`, `results/scores_2026.csv`).
 
+## Division of labor
+
+| Layer | Owner | Output |
+|-------|-------|--------|
+| Technical risk | **IBM Granite** (watsonx embeddings + rationale) | `results/granite_explanations_top100.json` |
+| Executive synthesis & triage | **Gemini agent** | `results/gemini_explanations_top100.json` (linked 1:1 to Granite CVEs) |
+
+Each Gemini record includes `granite_technical_rationale`, `gemini_executive_summary`,
+and `gemini_triage_playbook.{containment,remediation,verification}`, built by
+`scripts/build_gemini_from_granite.py` so the dashboard can show a two-tier briefing
+per CVE without inventing patch URLs.
+
 ## Methodology
 
 1. **Ranking stays ML-owned.** Priority tiers (P0/P1/P2) and ranks come from the

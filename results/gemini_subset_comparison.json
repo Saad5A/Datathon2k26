@@ -19,7 +19,7 @@
       ]
     },
     "gemini": {
-      "role": "long-context generative remediation / triage playbooks",
+      "role": "executive synthesis + triage playbooks from Granite technical rationales",
       "model_id": "gemini-2.5-flash",
       "provider": "google-genai",
       "n_playbooks_evaluated": 5,
@@ -29,7 +29,7 @@
       "priority_preservation_rate": 100.0,
       "overall_pass_rate": 100.0,
       "avg_latency_seconds": null,
-      "n_explanations": 5,
+      "n_explanations": 30,
       "strengths": [
         "Structured JSON playbooks (summary, mitigation, patch guidance)",
         "Zero measured patch-URL hallucination on smoke suite",
@@ -49,14 +49,14 @@
       "gemini": null
     },
     "explanation_style": {
-      "granite": "Dense signal-grounded priority rationale tied to ranking reasons JSON",
-      "gemini": "Long-context operational playbook: executive summary + mitigation + patch guidance"
+      "granite": "Technical risk rationale (signals, ranking features)",
+      "gemini": "Executive brief + containment/remediation/verification playbook grounded in Granite text"
     },
     "qualitative_depth": {
       "granite_avg_explanation_chars": 374,
       "gemini_avg_explanation_chars": 143
     },
-    "coverage_note": "Granite explanations cover ranked production CVEs; Gemini smoke playbooks use synthetic judge-sample CVE IDs (CVE-2026-10001..). Dual modal shows whichever provider has text for the selected CVE."
+    "coverage_note": "Gemini executive records are linked 1:1 to Granite explanation CVEs via scripts/build_gemini_from_granite.py."
   },
   "sources": [
     "results/granite_subset_comparison.json",
