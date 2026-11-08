@@ -37,13 +37,6 @@ function fmtInt(n: number | null | undefined) {
   return Math.round(n).toLocaleString()
 }
 
-function fmtDeltaAuc(delta: number | null | undefined) {
-  if (delta == null || Number.isNaN(delta)) return '—'
-  const pts = delta * 100
-  const sign = pts > 0 ? '+' : ''
-  return `${sign}${pts.toFixed(2)} pt ΔAUC`
-}
-
 function toStackCve(item: RankingItem): StackCve {
   const reasons = Array.isArray(item.reasons) ? item.reasons : []
   const lead = reasons[0] as { signal?: string } | undefined
@@ -253,10 +246,8 @@ export function PancakeSecDashboard() {
             </div>
             <div className="h-6 w-px bg-[#E8DFC8]" />
             <div className="text-xs">
-              <div className="font-medium text-[#8A7968]">Granite Lift vs TF-IDF</div>
-              <div className="mono font-bold text-emerald-700">
-                {fmtDeltaAuc(summary?.comparison?.mean_delta_auc_granite_minus_tfidf)}
-              </div>
+              <div className="font-medium text-[#8A7968]">Submitted Model</div>
+              <div className="mono font-bold text-emerald-700">G2 · IBM tie-break</div>
             </div>
             <div className="h-6 w-px bg-[#E8DFC8]" />
             <div className="text-xs">
