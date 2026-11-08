@@ -1,13 +1,4 @@
 import type { Priority } from '@/theme/tokens'
-<<<<<<< HEAD
-import type { ScoreRow } from './types'
-
-/**
- * Server-style query layer. The table never touches the full row array:
- * it asks for one page at a time with sort + filter applied here, exactly as
- * it would against a REST endpoint (`GET /scores?page=…&sort=…&q=…`).
- * Swap the body of `queryScores` for a fetch() when a real API exists.
-=======
 import { LIVE_API, fetchRankingPage, rankingItemToScoreRow } from './backend'
 import type { ScoreRow } from './types'
 
@@ -15,7 +6,6 @@ import type { ScoreRow } from './types'
  * Server-style query layer. When VITE_API_URL points at the FastAPI backend,
  * pages come from GET /ranking/cves. Otherwise the in-memory demo/upload rows
  * are filtered locally (same contract as before).
->>>>>>> origin/feat/dashboard-backend
  */
 export interface ScoreQuery {
   pageIndex: number
@@ -31,10 +21,7 @@ export interface ScorePage {
   total: number
   pageCount: number
   tookMs: number
-<<<<<<< HEAD
-=======
   source?: 'api' | 'local'
->>>>>>> origin/feat/dashboard-backend
 }
 
 const LATENCY_MS = 120
@@ -54,11 +41,7 @@ export function filterRows(all: ScoreRow[], q: Pick<ScoreQuery, 'q' | 'prioritie
   )
 }
 
-<<<<<<< HEAD
-export async function queryScores(all: ScoreRow[], q: ScoreQuery, signal?: AbortSignal): Promise<ScorePage> {
-=======
 async function queryScoresLocal(all: ScoreRow[], q: ScoreQuery, signal?: AbortSignal): Promise<ScorePage> {
->>>>>>> origin/feat/dashboard-backend
   const t0 = performance.now()
   await new Promise<void>((resolve, reject) => {
     const t = setTimeout(resolve, LATENCY_MS)
@@ -77,22 +60,14 @@ async function queryScoresLocal(all: ScoreRow[], q: ScoreQuery, signal?: AbortSi
       const av = a[id]
       const bv = b[id]
       if (av == null && bv == null) return a.rank - b.rank
-<<<<<<< HEAD
-      if (av == null) return 1 // nulls last regardless of direction
-=======
       if (av == null) return 1
->>>>>>> origin/feat/dashboard-backend
       if (bv == null) return -1
       if (av < bv) return -dir
       if (av > bv) return dir
       return a.rank - b.rank
     })
   } else if (q.sort?.desc) {
-<<<<<<< HEAD
-    rows = [...rows].reverse() // source is already rank-ascending
-=======
     rows = [...rows].reverse()
->>>>>>> origin/feat/dashboard-backend
   }
 
   const total = rows.length
@@ -102,10 +77,6 @@ async function queryScoresLocal(all: ScoreRow[], q: ScoreQuery, signal?: AbortSi
     total,
     pageCount: Math.max(1, Math.ceil(total / q.pageSize)),
     tookMs: Math.round(performance.now() - t0),
-<<<<<<< HEAD
-  }
-}
-=======
     source: 'local',
   }
 }
@@ -151,4 +122,3 @@ export async function queryScores(all: ScoreRow[], q: ScoreQuery, signal?: Abort
   }
   return queryScoresLocal(all, q, signal)
 }
->>>>>>> origin/feat/dashboard-backend
