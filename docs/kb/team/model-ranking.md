@@ -3,10 +3,10 @@ Only the agent for this area edits THIS file. Read the other three with `python 
 
 <!-- STATUS-START -->
 STATUS: on track
-PHASE: Granite adopted by rule; audit of new final files running
-LAST_UPDATED: 2026-11-08T05:16Z
-BLOCKED_ON: teammate running Granite embeddings (data_cache/granite_embeddings.parquet via shared drive)
-NEXT: Audit Granite test + new final files; then docs/ibm.md and write-up IBM section
+PHASE: Final files verified (with Granite); updating IBM docs
+LAST_UPDATED: 2026-11-08T05:23Z
+BLOCKED_ON: none
+NEXT: docs/ibm.md and write-up IBM section; then shared packaging
 ASKS: Saad / any agent working on feat/model-ranking: please push to your own branch (e.g. feat/ibm-granite) and do NOT edit JUDGE_QA.md, docs/writeup_model.md, results/top500.csv or results/scores_2026.csv; do not claim Granite gains until audited; ui + triage: handle empty reasons, sort by rank
 <!-- STATUS-END -->
 
@@ -18,15 +18,15 @@ Owned paths (edit only these; shared files change via small PRs): `src/model/`, 
 ## 2. Deliverables
 | Item | Path | Status | Consumers |
 |---|---|---|---|
-| scores_2026.csv (all 72,670 scoreboard CVEs: cve_id, published, snapshot_month, assigner, score, rank, in_top500, priority, epss, any_public_exploit, reasons) | results/scores_2026.csv | VERIFIED (audit/2026-11-07-final.md); TF-IDF text; may be regenerated if Granite qualifies | triage, ui, data |
-| top500.csv (cve_id only; the judged file) | results/top500.csv | VERIFIED, submission-valid | judges, ui, triage |
+| scores_2026.csv (all 72,670 scoreboard CVEs: cve_id, published, snapshot_month, assigner, score, rank, in_top500, priority, epss, any_public_exploit, reasons) | results/scores_2026.csv | VERIFIED FINAL (audit/2026-11-08-granite-final.md; G2 = TF-IDF + Granite text) | triage, ui, data |
+| top500.csv (cve_id only; the judged file) | results/top500.csv | VERIFIED FINAL, submission-valid (G2) | judges, ui, triage |
 | signal vocabulary for reasons | results/signal_vocabulary.json | VERIFIED | triage, ui |
 | backtest summary (ours vs CVSS vs EPSS vs exploit-then-EPSS, with intervals) | results/backtest_summary.json | delivered (values from verified claims where claim_ids present) | ui |
 | drift summary (2025 vs 2026 volume, assigner mix, missing data) | results/drift_summary.json | delivered and VERIFIED (audit/2026-11-07-leakage-drift.md; claims in results/claims_model_drift.json) | ui |
 | leakage table (column, used?, solo AUC, reason) | results/leakage_table.csv | delivered and VERIFIED (text-score row to be added after the Phase 3 audit) | ui, write-up |
 | claims ledger | results/claims_model.json | exists, all unverified | everyone (check_claims) |
 | IBM tech documentation | docs/ibm.md | draft (cloud step prepared, not run) | write-up, Devpost |
-| Granite embeddings (cloud step) | data_cache/granite_embeddings.parquet | not started | model |
+| Granite embeddings | data_cache/granite_embeddings.parquet | done (147,818 x 768, local open weights; watsonx.ai subset 1,966 identical) | model |
 
 ## 3. What I need from others
 | Need | From | Status |
@@ -47,6 +47,7 @@ Owned paths (edit only these; shared files change via small PRs): `src/model/`, 
 - (none yet)
 
 ## 7. Changelog (append-only, newest first; format: YYYY-MM-DDTHH:MMZ | what changed | files | DECISION/ASK tag if any)
+- 2026-11-08T05:23Z | FINAL: top500.csv and scores_2026.csv (G2: TF-IDF + IBM Granite text) VERIFIED. ui + triage: switch to these now (git checkout origin/feat/model-ranking -- results/). Granite adopted by pre-registered rule, no measurable gain: do not say it improves accuracy | results/top500.csv
 - 2026-11-08T05:16Z | Granite test (pre-registered): G2 (TF-IDF + Granite text) adopted, no measurable gain over C1. top500.csv and scores_2026.csv REGENERATED with Granite (445/500 same) and are UNVERIFIED until the audit finishes: ui + triage, do not switch yet | results/granite_comparison.json, results/top500.csv
 - 2026-11-08T04:49Z | Granite: real watsonx.ai embeddings of 1,966 CVEs (teammate) kept; account's Lite token quota is now exhausted. Full 147,818-row Granite embedding running locally on open weights. Teammate files moved: template explanations/dummy playbooks -> docs/examples/, toy baseline -> experiments/, his WRITEUP/JUDGE_QA versions -> docs/drafts/ (audited JUDGE_QA.md restored) | LOG.md
 - 2026-11-08T02:35Z | All model-branch claims audited: 1,087 verified (25 deliberately unverified: tie-order and median-of-bounds; reverse-time check unaudited). Ablations: text + exploit/EPSS signals carry the model; issuer history not shown to help | audit/2026-11-07-remaining.md
