@@ -1,10 +1,8 @@
 # Deployment — pancakess.work
 
-The production stack runs on `64.177.59.101`. Until DNS/SSL is cut over, use the IP as the hostname (HTTP):
-
-```text
-http://64.177.59.101/
-```
+Production is **https://pancakess.work/** (Let's Encrypt, auto-renew enabled). The origin server is
+`64.177.59.101`; SSH and deployment commands still use that address. `www.pancakess.work` and plain HTTP
+redirect to the canonical domain.
 
 The production stack:
 
@@ -68,29 +66,34 @@ change the ranking or any audited metric. See [`docs/RETRIEVAL.md`](RETRIEVAL.md
 
 ## DNS
 
-At **Porkbun** (authoritative nameservers `*.ns.porkbun.com`), set:
+At **Porkbun** (authoritative nameservers `*.ns.porkbun.com`), the records are:
 
 | Name | Type | Value |
 |---|---|---|
 | `@` | A | `64.177.59.101` |
 | `www` | CNAME | `pancakess.work` |
 
-Remove the existing Vercel A/CNAME records. TTL 300–600 seconds.
-
-Current status (checked 2026-11-08): `pancakess.work` still points to Vercel (`216.198.79.1`), so the domain/SSL cutover requires this DNS change. The IP endpoint is fully live in the meantime; it is HTTP only until DNS is switched and Certbot runs.
+Status (2026-11-08): DNS resolves to `64.177.59.101`; Vercel records were removed. `www` and HTTP redirect
+to `https://pancakess.work/`.
 
 ## SSL
 
-After DNS resolves to `64.177.59.101`:
+Certificate issued by Let's Encrypt on 2026-11-08 for `pancakess.work` and `www.pancakess.work`; it expires
+2027-02-06 and renews automatically through the Certbot systemd timer.
 
 ```bash
-certbot --nginx -d pancakess.work -d www.pancakess.work --redirect --agree-tos -m admin@pancakess.work
+certbot certificates
 certbot renew --dry-run
 ```
 
-Certbot installs a timer for renewal. Enable UFW:
+Nginx is managed by Certbot: it added the TLS server block and the HTTP→HTTPS redirect to
+`/etc/nginx/sites-available/pancakess`. The repo copy `deploy/nginx-pancakess.conf` documents the pre-TLS
+routing; do not overwrite the live file with it after Certbot has run.
+
+UFW allows SSH, HTTP and HTTPS:
 
 ```bash
+ufw status
 ufw allow 80/tcp
 ufw allow 443/tcp
 ```
@@ -106,13 +109,9 @@ curl -X POST https://pancakess.work/api/predict \
   --data '{"rows":[{"cve_id":"CVE-2099-90001","assigner":"microsoft","epss":0.4}]}'
 ```
 
-Upload `pancakess_test_upload.csv` through the dashboard. It contains 8 real scoreboard CVEs and 2 unknown `CVE-2099-*` rows so both the G2 lookup and the `api-heuristic-v1` fallback are exercised.
+The fixture `https://pancakess.work/pancakess_test_upload.csv` contains 8 real scoreboard CVEs and 2
+unknown `CVE-2099-*` rows, so both the G2 lookup and the `api-heuristic-v1` fallback can be exercised through
+`POST /api/predict`.
 
-Until DNS is switched, the same stack is reachable at:
-
-```text
-http://64.177.59.101/
-http://64.177.59.101/api/health
-http://64.177.59.101/api/ranking/similar/CVE-2026-10523?top_k=5
-http://64.177.59.101/evolve/
-```
+Canonical host: `https://pancakess.work/`. The origin IP is for SSH only; the public certificate is issued
+for the domain, not for the IP.

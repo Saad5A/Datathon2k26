@@ -73,7 +73,7 @@ rsync -az data_cache/granite_embeddings_retrieval.parquet \
   data_cache/granite_embeddings_retrieval.meta.json \
   root@64.177.59.101:/opt/pancakess/data_cache/
 systemctl restart pancakess-api
-curl -s http://64.177.59.101/api/ranking/similar/CVE-2026-10523?top_k=5
+curl -s https://pancakess.work/api/ranking/similar/CVE-2026-10523?top_k=5
 ```
 
 `GET /api/health` reports `similarity_rows` and `similarity_model`.

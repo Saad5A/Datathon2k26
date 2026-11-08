@@ -23,6 +23,7 @@ import {
   type StatsSummary,
 } from '@/lib/backend'
 import { PancakeScene, type StackCve } from './PancakeScene'
+import { SimilarCves } from '@/components/dashboard/SimilarCves'
 import './pancakesec.css'
 
 type ViewMode = '3d' | 'table'
@@ -508,6 +509,14 @@ export function PancakeSecDashboard() {
                       )}
                     </div>
                   </div>
+
+                  {selectedId && (
+                    <SimilarCves
+                      key={selectedId}
+                      cveId={selectedId}
+                      className="rounded-2xl border-[#E8DFC8] bg-white/80 p-4"
+                    />
+                  )}
 
                   <div className="rounded-2xl border border-[#E8DFC8] bg-white/80 p-3.5">
                     <div className="mb-2 flex items-center justify-between text-[11px] font-bold uppercase tracking-wider text-[#7A6B5D]">

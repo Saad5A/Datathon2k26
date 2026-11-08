@@ -19,18 +19,19 @@ We rank the 72,670 CVEs on the 2026 scoreboard by how likely each is to be added
 | `audit/` | Independent audit reports and evidence. |
 | `docs/` | Model notes, IBM details, interfaces and this project’s supporting documentation. |
 
-## Production URL (temporary)
+## Production URL
 
-The server deployment currently uses the IP as its hostname because DNS/SSL cutover is pending:
+The production deployment is live on the domain with HTTPS (Let's Encrypt, auto-renew enabled):
 
 ```text
-http://64.177.59.101/
-http://64.177.59.101/api/health
-http://64.177.59.101/evolve/
-http://64.177.59.101/pancakess_test_upload.csv
+https://pancakess.work/
+https://pancakess.work/results
+https://pancakess.work/api/health
+https://pancakess.work/evolve/
+https://pancakess.work/pancakess_test_upload.csv
 ```
 
-The `pancakess.work` domain is still on Vercel. Once its Porkbun A/CNAME records point to `64.177.59.101`, run the Certbot command in [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md).
+`www.pancakess.work` and HTTP requests redirect to `https://pancakess.work/`. The origin server is `64.177.59.101`; SSH and deployment commands still use that address. Certificate renewal is handled by the Certbot systemd timer (`certbot renew --dry-run` to test).
 
 ## Run the dashboard locally
 
