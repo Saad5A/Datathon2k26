@@ -55,25 +55,18 @@ export default function KitchenScene(props: Props) {
     add(new THREE.CylinderGeometry(1.48, 1.35, .1, 96), porcelain, scene, 2.65, .4, .45)
     torus(1.35, .032, material('#c4d0b9', .25), scene, 2.65, .47, .45)
 
-    const canvas = document.createElement('canvas'); canvas.width = 512; canvas.height = 512
-    const ctx = canvas.getContext('2d')!
-    const gradient = ctx.createRadialGradient(256, 256, 15, 256, 256, 256)
-    gradient.addColorStop(0, '#bf7b32'); gradient.addColorStop(.7, '#d69b4f'); gradient.addColorStop(1, '#efca83')
-    ctx.fillStyle = gradient; ctx.fillRect(0, 0, 512, 512)
     let seed = 91; const random = () => { seed = seed * 16807 % 2147483647; return seed / 2147483647 }
-    for (let i = 0; i < 14000; i++) { ctx.fillStyle = i % 3 ? 'rgba(105,53,12,.12)' : 'rgba(255,239,183,.4)'; ctx.beginPath(); ctx.arc(random() * 512, random() * 512, random() * 3 + .5, 0, Math.PI * 2); ctx.fill() }
-    const texture = new THREE.CanvasTexture(canvas); texture.colorSpace = THREE.SRGBColorSpace
-    const toasted = new THREE.MeshStandardMaterial({ map: texture, roughness: .88, transparent: true, opacity: 0, depthWrite: false })
-    const batterTop = material('#f4dba6', 0, .37)
+    // Fully golden pancake — no brown toast overlay
+    const batter = material('#f4dba6', 0, .42)
+    const batterTop = material('#f7e2b4', 0, .37)
     const pancake = new THREE.Group(); scene.add(pancake)
-    add(new THREE.CylinderGeometry(1.1, 1.12, .09, 96), [cream, batterTop, cream], pancake)
-    const toastedSurface = add(new THREE.CircleGeometry(1.1, 96), toasted, pancake, 0, .046, 0); toastedSurface.rotation.x = -Math.PI / 2
+    add(new THREE.CylinderGeometry(1.1, 1.12, .09, 96), [batter, batterTop, batter], pancake)
     const butter = add(new THREE.BoxGeometry(.25, .055, .22), material('#ffe29b'), pancake, .1, .09, .05); butter.rotation.y = .3
     const syrup = add(new THREE.CylinderGeometry(.55, .55, .008, 48), new THREE.MeshPhysicalMaterial({ color: '#9e5a21', transparent: true, opacity: .58, roughness: .18 }), pancake, 0, .05, 0); syrup.scale.z = .8
     const bubbles: THREE.Mesh[] = []
     for (let i = 0; i < 28; i++) {
       const angle = random() * Math.PI * 2, r = Math.sqrt(random()) * .94
-      const bubble = add(new THREE.SphereGeometry(.018 + random() * .035, 8, 6), material('#e1bc7a'), pancake, Math.cos(angle) * r, .045, Math.sin(angle) * r)
+      const bubble = add(new THREE.SphereGeometry(.018 + random() * .035, 8, 6), material('#e8c98a'), pancake, Math.cos(angle) * r, .045, Math.sin(angle) * r)
       bubble.scale.y = .5; bubbles.push(bubble)
     }
     // Open glass jug: visible batter surface, rounded lip, handle and actual spout.
@@ -158,13 +151,12 @@ export default function KitchenScene(props: Props) {
       const scale = pouring ? .06 + spread * .94 : 1
       const settle = step === 'plating' && !media.matches ? Math.sin(elapsed * 20) * Math.exp(-elapsed * 8) * .045 : 0
       pancake.scale.set(scale * (1 + settle), 1 - settle, scale * (1 + settle))
-      const brown = cooking ? smooth(elapsed / cookingDuration.cooking) : flipping || plated ? 1 : 0
-      // Blend warm batter into a toasted surface without a material swap pop.
-      batterTop.color.lerpColors(new THREE.Color('#f4dba6'), new THREE.Color('#c78c42'), brown)
-      toasted.opacity = brown
+      const cook = cooking ? smooth(elapsed / cookingDuration.cooking) : flipping || plated ? 1 : 0
+      // Stay golden throughout — no caramelized brown pass
+      batterTop.color.set('#f7e2b4')
       butter.visible = plated; syrup.visible = plated
       butter.scale.setScalar(step === 'plating' ? smooth(elapsed / .3) : 1)
-      bubbles.forEach((bubble, i) => { bubble.visible = cooking && brown > i / bubbles.length * .7; const pulse = smooth((elapsed - i * .025) / .3); bubble.scale.y = pulse * .5 })
+      bubbles.forEach((bubble, i) => { bubble.visible = cooking && cook > i / bubbles.length * .7; const pulse = smooth((elapsed - i * .025) / .3); bubble.scale.y = pulse * .5 })
       stream.visible = pouring && p > .29 && p < .79 && !media.matches
       if (stream.visible) {
         jug.updateMatrixWorld(true); nozzle.set(.9, 1.18, 0).applyMatrix4(jug.matrixWorld)
@@ -191,10 +183,9 @@ export default function KitchenScene(props: Props) {
     return () => {
       cancelAnimationFrame(frame); observer.disconnect(); controls.dispose()
       renderer.domElement.removeEventListener('pointerdown', down); renderer.domElement.removeEventListener('pointerup', up); renderer.domElement.removeEventListener('pointermove',move); renderer.domElement.removeEventListener('keydown',key); renderer.domElement.removeEventListener('webglcontextlost', lost); labelTexture.dispose()
-      // Includes materials temporarily replaced while cooking.
-      const materials = new Set<THREE.Material>([batterTop, toasted, cream])
+      const materials = new Set<THREE.Material>([batterTop, batter, cream])
       scene.traverse(object => { if (object instanceof THREE.Mesh) { object.geometry.dispose(); (Array.isArray(object.material) ? object.material : [object.material]).forEach(mat => materials.add(mat)) } })
-      materials.forEach(mat => mat.dispose()); texture.dispose(); sun.shadow.dispose(); renderer.dispose(); renderer.domElement.remove()
+      materials.forEach(mat => mat.dispose()); sun.shadow.dispose(); renderer.dispose(); renderer.domElement.remove()
     }
   }, [])
   return <div className="station-render" ref={host} role="group" aria-label="3D kitchen with batter jug, skillet and serving plate">
