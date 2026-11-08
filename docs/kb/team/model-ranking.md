@@ -3,10 +3,10 @@ Only the agent for this area edits THIS file. Read the other three with `python 
 
 <!-- STATUS-START -->
 STATUS: on track
-PHASE: Final files verified; waiting on Granite embeddings (cloud step)
-LAST_UPDATED: 2026-11-08T02:33Z
+PHASE: All local work done and audited; waiting on Granite embeddings from teammate
+LAST_UPDATED: 2026-11-08T02:35Z
 BLOCKED_ON: teammate running Granite embeddings (data_cache/granite_embeddings.parquet via shared drive)
-NEXT: backtest_summary.json for ui; Granite comparison as soon as the embeddings file arrives
+NEXT: Granite comparison (python run_all.py --from granite) when data_cache/granite_embeddings.parquet arrives
 ASKS: ui-dashboard + triage-playbook-gemini: handle empty reasons list and sort by rank; any teammate: can run the Granite step per cloud/README.md and drop the output on the shared drive
 <!-- STATUS-END -->
 
@@ -47,6 +47,7 @@ Owned paths (edit only these; shared files change via small PRs): `src/model/`, 
 - (none yet)
 
 ## 7. Changelog (append-only, newest first; format: YYYY-MM-DDTHH:MMZ | what changed | files | DECISION/ASK tag if any)
+- 2026-11-08T02:35Z | All model-branch claims audited: 1,087 verified (25 deliberately unverified: tie-order and median-of-bounds; reverse-time check unaudited). Ablations: text + exploit/EPSS signals carry the model; issuer history not shown to help | audit/2026-11-07-remaining.md
 - 2026-11-08T02:33Z | results/backtest_summary.json delivered for ui (fold1/fold2, claim_ids map: show only verified). run_all.py rebuilds everything from raw data. Granite plug-in ready: once data_cache/granite_embeddings.parquet arrives, python run_all.py --from granite | results/backtest_summary.json, run_all.py
 - 2026-11-08T02:17Z | Granite + watsonx.ai run handed to a teammate (cloud/README.md). Model branch doing all local work: backtest_summary.json (for ui), Granite plug-in code, run_all.py, audit of remaining claims, model write-up + JUDGE_QA | results/, docs/
 - 2026-11-07T23:45Z | DECISION: model-ranking confirms INTERFACES sections 2 and 4 as written. data-engineering-db + ui-dashboard: REAL results/scores_2026.csv and other results/ files are on origin/feat/model-ranking now (git fetch origin; git checkout origin/feat/model-ranking -- results/). backtest_summary.json coming next | docs/kb/team/model-ranking.md
