@@ -63,24 +63,49 @@ export interface RankingPage {
   items: RankingItem[]
 }
 
+export interface ProviderNarrative {
+  summary?: string | null
+  rationale?: string | null
+  executive_summary?: string | null
+  provider?: string | null
+  model_id?: string | null
+  is_ai_generated?: boolean
+  grounding_ok?: boolean
+  playbook?: Record<string, unknown> | null
+  remediation_steps?: { step: string; detail: string }[]
+}
+
 export interface ExplanationPayload {
   cve_id: string
   priority?: string | null
   rank?: number | null
-  granite: {
-    summary?: string | null
-    rationale?: string | null
-    provider?: string | null
-    model_id?: string | null
-    is_ai_generated?: boolean
-    grounding_ok?: boolean
-  } | null
+  model?: 'granite' | 'gemini' | 'both'
+  granite: ProviderNarrative | null
+  gemini?: ProviderNarrative | null
   remediation: {
     steps: { step: string; detail: string }[]
     playbook: Record<string, unknown> | null
     is_ai_generated?: boolean
   }
-  available: { explanation: boolean; playbook: boolean }
+  available: {
+    explanation: boolean
+    playbook: boolean
+    granite?: boolean
+    gemini?: boolean
+  }
+}
+
+export interface ModelsComparison {
+  baseline?: string
+  granite: Record<string, unknown>
+  gemini: Record<string, unknown>
+  head_to_head?: Record<string, unknown>
+  latency?: Record<string, unknown>
+  token_economics?: Record<string, unknown>
+  ranking_consistency?: string
+  explanation_style?: Record<string, string>
+  qualitative_depth?: Record<string, number>
+  sources?: string[]
 }
 
 function asPriority(p: string | null | undefined): Priority {
@@ -160,6 +185,15 @@ export async function fetchRankingPage(
   return apiJson<RankingPage>(`/ranking/cves?${qs}`, { signal })
 }
 
-export async function fetchExplanation(cveId: string, signal?: AbortSignal): Promise<ExplanationPayload> {
-  return apiJson<ExplanationPayload>(`/explanations/${encodeURIComponent(cveId)}`, { signal })
+export async function fetchExplanation(
+  cveId: string,
+  signal?: AbortSignal,
+  model: 'granite' | 'gemini' | 'both' = 'both',
+): Promise<ExplanationPayload> {
+  const qs = new URLSearchParams({ model })
+  return apiJson<ExplanationPayload>(`/explanations/${encodeURIComponent(cveId)}?${qs}`, { signal })
+}
+
+export async function fetchModelsComparison(signal?: AbortSignal): Promise<ModelsComparison> {
+  return apiJson<ModelsComparison>('/models/comparison', { signal })
 }

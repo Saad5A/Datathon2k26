@@ -32,6 +32,10 @@ class DataService:
         self.embed_meta: dict[str, Any] = {}
         self.explanations: dict[str, Any] = {}
         self.playbooks: dict[str, Any] = {}
+        self.gemini_explanations: dict[str, Any] = {}
+        self.gemini_playbooks: dict[str, Any] = {}
+        self.gemini_comparison: dict[str, Any] = {}
+        self.gemini_eval: dict[str, Any] = {}
         self.embed_ids: np.ndarray = np.array([], dtype=object)
         self.embed_matrix: np.ndarray | None = None  # (n, 768) float32, L2-normalised when present
 
@@ -43,12 +47,17 @@ class DataService:
         self._load_json(CACHE / "granite_embeddings_watsonx_subset.meta.json", "embed_meta")
         self._load_explanations()
         self._load_playbooks()
+        self._load_gemini_explanations()
+        self._load_gemini_playbooks()
+        self._load_json(RESULTS / "gemini_subset_comparison.json", "gemini_comparison")
+        self._load_json(RESULTS / "agent_eval_report.json", "gemini_eval")
         self._load_embeddings()
         log.info(
-            "DataService ready: ranking=%s scores=%s explanations=%s playbooks=%s embeds=%s errors=%s",
+            "DataService ready: ranking=%s scores=%s granite_expl=%s gemini_expl=%s playbooks=%s embeds=%s errors=%s",
             len(self.ranking),
             len(self.scores),
             len(self.explanations),
+            len(self.gemini_explanations),
             len(self.playbooks),
             0 if self.embed_matrix is None else len(self.embed_ids),
             len(self.load_errors),
@@ -147,23 +156,47 @@ class DataService:
             self.playbooks = {}
             return
         try:
-            raw = json.loads(path.read_text(encoding="utf-8"))
-            if isinstance(raw, dict):
-                # either keyed by cve_id or a single wrapper
-                if all(isinstance(v, dict) for v in raw.values()):
-                    self.playbooks = {str(k): v for k, v in raw.items()}
-                else:
-                    cid = raw.get("cve_id")
-                    self.playbooks = {str(cid): raw} if cid else {}
-            elif isinstance(raw, list):
-                self.playbooks = {
-                    str(item["cve_id"]): item for item in raw if isinstance(item, dict) and item.get("cve_id")
-                }
-            else:
-                self.playbooks = {}
+            self.playbooks = self._as_cve_map(json.loads(path.read_text(encoding="utf-8")))
         except Exception as exc:  # noqa: BLE001
             self._note(path, exc)
             self.playbooks = {}
+
+    def _load_gemini_explanations(self) -> None:
+        path = RESULTS / "gemini_explanations_top100.json"
+        if not path.is_file():
+            self._note(path, "missing")
+            self.gemini_explanations = {}
+            return
+        try:
+            self.gemini_explanations = self._as_cve_map(json.loads(path.read_text(encoding="utf-8")))
+        except Exception as exc:  # noqa: BLE001
+            self._note(path, exc)
+            self.gemini_explanations = {}
+
+    def _load_gemini_playbooks(self) -> None:
+        path = RESULTS / "cached_playbooks.json"
+        if not path.is_file():
+            self._note(path, "missing")
+            self.gemini_playbooks = {}
+            return
+        try:
+            self.gemini_playbooks = self._as_cve_map(json.loads(path.read_text(encoding="utf-8")))
+        except Exception as exc:  # noqa: BLE001
+            self._note(path, exc)
+            self.gemini_playbooks = {}
+
+    @staticmethod
+    def _as_cve_map(raw: Any) -> dict[str, Any]:
+        if isinstance(raw, dict):
+            if all(isinstance(v, dict) for v in raw.values()):
+                return {str(k): v for k, v in raw.items()}
+            cid = raw.get("cve_id")
+            return {str(cid): raw} if cid else {}
+        if isinstance(raw, list):
+            return {
+                str(item["cve_id"]): item for item in raw if isinstance(item, dict) and item.get("cve_id")
+            }
+        return {}
 
     def _load_embeddings(self) -> None:
         path = CACHE / "granite_embeddings_watsonx_subset.parquet"

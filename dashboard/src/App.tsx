@@ -6,6 +6,7 @@ import { DonutWidget } from '@/components/dashboard/DonutWidget'
 import { ExplanationModal } from '@/components/dashboard/ExplanationModal'
 import { JudgeUploadModal } from '@/components/dashboard/JudgeUploadModal'
 import { KpiTile } from '@/components/dashboard/KpiTile'
+import { ModelComparisonCard } from '@/components/dashboard/ModelComparisonCard'
 import { RankedTable, type TableFilters } from '@/components/dashboard/RankedTable'
 import { TrendWidget } from '@/components/dashboard/TrendWidget'
 import { WidgetCard } from '@/components/dashboard/WidgetCard'
@@ -313,6 +314,14 @@ export default function App() {
               />
             </GridItem>
           </DashboardGrid>
+
+          {live && (
+            <DashboardGrid>
+              <GridItem span={12}>
+                <ModelComparisonCard />
+              </GridItem>
+            </DashboardGrid>
+          )}
 
           <DashboardGrid>
             <GridItem span={12} lg={8}>

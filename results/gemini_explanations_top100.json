@@ -1,0 +1,72 @@
+{
+  "CVE-2026-10001": {
+    "cve_id": "CVE-2026-10001",
+    "priority": "P0",
+    "rank": null,
+    "explanation": "Rank 1 with Priority Score 0.97 due to signals: epss=0.81, has_public_exploit=1, attack_vector_network=1, desc_has_rce=1. Priority tier remains P0.",
+    "executive_summary": "CVE-2026-10001: based on the provided description, an attacker may exploit Improper Control of Generation of Code ('Code Injection') against acme gateway;acme gateway appliance.",
+    "immediate_mitigation": "Restrict external access with perimeter firewall rules, isolate the affected service segment, and disable unused management/diagnostic interfaces until patched.",
+    "patch_guidance": "Follow vendor remediation using only these verified references: https://acme.example/security/advisory/AG-2026-01; https://acme.example/patches/gateway-hotfix; https://exploit-db.example/exploits/52001",
+    "is_ai_generated": true,
+    "provider": "GEMINI",
+    "model_id": "gemini-2.5-flash",
+    "grounding_ok": true,
+    "source": "results/cached_playbooks.json"
+  },
+  "CVE-2026-10002": {
+    "cve_id": "CVE-2026-10002",
+    "priority": "P0",
+    "rank": null,
+    "explanation": "Rank 2 with Priority Score 0.91 due to signals: epss=0.66, has_public_exploit=1, privileges_required_none=1, ref_has_exploit_tag=1. Priority tier remains P0.",
+    "executive_summary": "CVE-2026-10002: based on the provided description, an attacker may exploit Deserialization of Untrusted Data against blueriver message broker.",
+    "immediate_mitigation": "Restrict external access with perimeter firewall rules, isolate the affected service segment, and disable unused management/diagnostic interfaces until patched.",
+    "patch_guidance": "Follow vendor remediation using only these verified references: https://blueriver.example/advisories/BR-2026-44; https://blueriver.example/download/patch-notes",
+    "is_ai_generated": true,
+    "provider": "GEMINI",
+    "model_id": "gemini-2.5-flash",
+    "grounding_ok": true,
+    "source": "results/cached_playbooks.json"
+  },
+  "CVE-2026-10003": {
+    "cve_id": "CVE-2026-10003",
+    "priority": "P1",
+    "rank": null,
+    "explanation": "Rank 3 with Priority Score 0.84 due to signals: epss=0.41, n_products=12, desc_has_auth_bypass=1, cvss3_score=9.1. Priority tier remains P1.",
+    "executive_summary": "CVE-2026-10003: based on the provided description, an attacker may exploit Improper Authentication against contoso identity proxy.",
+    "immediate_mitigation": "Restrict external access with perimeter firewall rules, isolate the affected service segment, and disable unused management/diagnostic interfaces until patched.",
+    "patch_guidance": "Follow vendor remediation using only these verified references: https://msrc.example/update-guide/vulnerability/CVE-2026-10003",
+    "is_ai_generated": true,
+    "provider": "GEMINI",
+    "model_id": "gemini-2.5-flash",
+    "grounding_ok": true,
+    "source": "results/cached_playbooks.json"
+  },
+  "CVE-2026-10004": {
+    "cve_id": "CVE-2026-10004",
+    "priority": "P1",
+    "rank": null,
+    "explanation": "Rank 4 with Priority Score 0.72 due to signals: epss=0.28, has_public_exploit=0, attack_complexity_low=1, n_vendors=3. Priority tier remains P1.",
+    "executive_summary": "CVE-2026-10004: based on the provided description, an attacker may exploit Improper Access Control against delta soft.",
+    "immediate_mitigation": "Restrict external access with perimeter firewall rules, isolate the affected service segment, and disable unused management/diagnostic interfaces until patched.",
+    "patch_guidance": "Follow vendor remediation using only these verified references: https://deltasoft.example/support/advisory/DS-VPN-2026",
+    "is_ai_generated": true,
+    "provider": "GEMINI",
+    "model_id": "gemini-2.5-flash",
+    "grounding_ok": true,
+    "source": "results/cached_playbooks.json"
+  },
+  "CVE-2026-10005": {
+    "cve_id": "CVE-2026-10005",
+    "priority": "P2",
+    "rank": null,
+    "explanation": "Rank 5 with Priority Score 0.61 due to signals: epss=0.12, user_interaction_required=1, cvss3_score=7.5. Priority tier remains P2.",
+    "executive_summary": "CVE-2026-10005: based on the provided description, an attacker may exploit Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') against echo.",
+    "immediate_mitigation": "Restrict external access with perimeter firewall rules, isolate the affected service segment, and disable unused management/diagnostic interfaces until patched.",
+    "patch_guidance": "No verified vendor patch URL identified in advisory references — rely on interim mitigations.",
+    "is_ai_generated": true,
+    "provider": "GEMINI",
+    "model_id": "gemini-2.5-flash",
+    "grounding_ok": true,
+    "source": "results/cached_playbooks.json"
+  }
+}

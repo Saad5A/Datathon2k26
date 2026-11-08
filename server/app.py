@@ -11,7 +11,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from server.routes import explanations, overview, ranking
+from server.routes import explanations, models, overview, ranking
 from server.services.data_service import store
 
 
@@ -40,6 +40,7 @@ app.add_middleware(
 app.include_router(overview.router)
 app.include_router(ranking.router)
 app.include_router(explanations.router)
+app.include_router(models.router)
 
 
 @app.get("/api/health")
@@ -48,6 +49,23 @@ def health() -> dict:
         "status": "ok",
         "provider": "watsonx.ai",
         "model": "ibm-granite",
+        "artifacts_loaded": {
+            "ranking_rows": len(store.ranking),
+            "scores_rows": len(store.scores),
+            "explanations": len(store.explanations),
+            "playbooks": len(store.playbooks),
+            "embeddings": 0 if store.embed_matrix is None else int(store.embed_matrix.shape[0]),
+        },
+        "load_errors": list(store.load_errors),
+    }
+
+
+@app.post("/api/reload")
+def reload_artifacts() -> dict:
+    """Re-read results/ and data_cache/ from disk (dev/demo hot reload). Never writes files."""
+    store.load()
+    return {
+        "status": "reloaded",
         "artifacts_loaded": {
             "ranking_rows": len(store.ranking),
             "scores_rows": len(store.scores),

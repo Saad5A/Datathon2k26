@@ -84,6 +84,17 @@ def stats_summary() -> dict:
             "embed_meta": "data_cache/granite_embeddings_watsonx_subset.meta.json",
             "comparison": "results/granite_subset_comparison.json",
             "ranking": "results/top500.csv + results/scores_2026.csv",
+            "gemini_comparison": "results/gemini_subset_comparison.json",
+            "gemini_eval": "results/agent_eval_report.json",
+        },
+        "multi_model": {
+            "granite_explanations": len(store.explanations),
+            "gemini_explanations": len(store.gemini_explanations),
+            "gemini_playbooks": len(store.gemini_playbooks),
+            "gemini_eval_pass_rate": (store.gemini_eval or {}).get("overall_pass_rate"),
+            "gemini_hallucination_rate": (store.gemini_eval or {}).get("patch_url_hallucination_rate"),
+            "gemini_avg_latency_seconds": (store.gemini_eval or {}).get("avg_latency_seconds"),
+            "granite_embedding_tokens": tokens_i,
         },
         "load_errors": list(store.load_errors),
     }

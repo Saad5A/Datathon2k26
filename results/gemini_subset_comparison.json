@@ -1,0 +1,69 @@
+{
+  "title": "Granite vs Gemini head-to-head (additive dual-provider note)",
+  "baseline": "LightGBM/TF-IDF ranking scores_2026 (audited; not modified by this comparison)",
+  "providers": {
+    "granite": {
+      "role": "embedding + optional instruct narrative",
+      "model_id": "ibm/granite-embedding-278m-multilingual",
+      "provider": "WATSONX",
+      "n_rows_embedded": 1500,
+      "estimated_tokens": 233097,
+      "dimension": 768,
+      "n_explanations": 30,
+      "mean_delta_auc_vs_tfidf": 0.03280789030789044,
+      "prefer": "granite_text_lr",
+      "strengths": [
+        "Fixed 768-d multilingual embedding space for retrieval/similarity",
+        "Token-governed Lite subset with truncate_tokens=512",
+        "Grounded ranking-signal narratives (no invented patch URLs)"
+      ]
+    },
+    "gemini": {
+      "role": "long-context generative remediation / triage playbooks",
+      "model_id": "gemini-2.5-flash",
+      "provider": "google-genai",
+      "n_playbooks_evaluated": 5,
+      "schema_conformance_rate": 100.0,
+      "patch_url_hallucination_rate": 0.0,
+      "vendor_grounding_pass_rate": 100.0,
+      "priority_preservation_rate": 100.0,
+      "overall_pass_rate": 100.0,
+      "avg_latency_seconds": null,
+      "n_explanations": 5,
+      "strengths": [
+        "Structured JSON playbooks (summary, mitigation, patch guidance)",
+        "Zero measured patch-URL hallucination on smoke suite",
+        "Priority tiers preserved from upstream ML ranking"
+      ]
+    }
+  },
+  "head_to_head": {
+    "ranking_consistency": "Both providers consume ML priority tiers; neither re-ranks the audited top500/scores.",
+    "token_economics": {
+      "granite_embedding_tokens_est": 233097,
+      "gemini_eval_playbooks": 5,
+      "note": "Granite Lite embedding tokens are metered on watsonx; Gemini smoke suite size is small (5) with null avg latency in report."
+    },
+    "latency": {
+      "granite": "batch embedding; instruct narratives offline/template on Lite when instruct ID unavailable",
+      "gemini": null
+    },
+    "explanation_style": {
+      "granite": "Dense signal-grounded priority rationale tied to ranking reasons JSON",
+      "gemini": "Long-context operational playbook: executive summary + mitigation + patch guidance"
+    },
+    "qualitative_depth": {
+      "granite_avg_explanation_chars": 374,
+      "gemini_avg_explanation_chars": 143
+    },
+    "coverage_note": "Granite explanations cover ranked production CVEs; Gemini smoke playbooks use synthetic judge-sample CVE IDs (CVE-2026-10001..). Dual modal shows whichever provider has text for the selected CVE."
+  },
+  "sources": [
+    "results/granite_subset_comparison.json",
+    "data_cache/granite_embeddings_watsonx_subset.meta.json",
+    "results/granite_explanations_top100.json",
+    "results/agent_eval_report.json",
+    "results/cached_playbooks.json",
+    "results/gemini_explanations_top100.json"
+  ]
+}
