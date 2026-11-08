@@ -3,10 +3,10 @@ Only the agent for this area edits THIS file. Read the other three with `python 
 
 <!-- STATUS-START -->
 STATUS: on track
-PHASE: Final files verified (with Granite); updating IBM docs
-LAST_UPDATED: 2026-11-08T05:23Z
+PHASE: Complete; ready for packaging and PR to main
+LAST_UPDATED: 2026-11-08T05:28Z
 BLOCKED_ON: none
-NEXT: docs/ibm.md and write-up IBM section; then shared packaging
+NEXT: Shared packaging: README, WRITEUP.md merge, SOURCES.md, PR to main
 ASKS: Saad / any agent working on feat/model-ranking: please push to your own branch (e.g. feat/ibm-granite) and do NOT edit JUDGE_QA.md, docs/writeup_model.md, results/top500.csv or results/scores_2026.csv; do not claim Granite gains until audited; ui + triage: handle empty reasons, sort by rank
 <!-- STATUS-END -->
 
@@ -47,6 +47,7 @@ Owned paths (edit only these; shared files change via small PRs): `src/model/`, 
 - (none yet)
 
 ## 7. Changelog (append-only, newest first; format: YYYY-MM-DDTHH:MMZ | what changed | files | DECISION/ASK tag if any)
+- 2026-11-08T05:28Z | Model branch COMPLETE: verified final top500.csv (G2 = model + IBM Granite text), all results/ deliverables, docs/writeup_model.md, JUDGE_QA.md, docs/ibm.md, LEARNING.md; every number verified by independent audits (audit/). Ready for shared packaging and PR to main | all
 - 2026-11-08T05:23Z | FINAL: top500.csv and scores_2026.csv (G2: TF-IDF + IBM Granite text) VERIFIED. ui + triage: switch to these now (git checkout origin/feat/model-ranking -- results/). Granite adopted by pre-registered rule, no measurable gain: do not say it improves accuracy | results/top500.csv
 - 2026-11-08T05:16Z | Granite test (pre-registered): G2 (TF-IDF + Granite text) adopted, no measurable gain over C1. top500.csv and scores_2026.csv REGENERATED with Granite (445/500 same) and are UNVERIFIED until the audit finishes: ui + triage, do not switch yet | results/granite_comparison.json, results/top500.csv
 - 2026-11-08T04:49Z | Granite: real watsonx.ai embeddings of 1,966 CVEs (teammate) kept; account's Lite token quota is now exhausted. Full 147,818-row Granite embedding running locally on open weights. Teammate files moved: template explanations/dummy playbooks -> docs/examples/, toy baseline -> experiments/, his WRITEUP/JUDGE_QA versions -> docs/drafts/ (audited JUDGE_QA.md restored) | LOG.md
