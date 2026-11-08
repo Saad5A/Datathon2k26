@@ -232,6 +232,43 @@ export async function fetchModelsComparison(signal?: AbortSignal): Promise<Model
 }
 
 /* ------------------------------------------------------------------ */
+/* Retrieval neighbours (description similarity, not a prediction)    */
+/* ------------------------------------------------------------------ */
+
+export interface SimilarCve {
+  cve_id: string
+  similarity: number
+  score?: number | null
+  rank?: number | null
+  published?: string | null
+  scope?: string
+}
+
+export interface SimilarCvesResponse {
+  cve_id: string
+  top_k: number
+  similar: SimilarCve[]
+  index?: {
+    model_id?: string | null
+    dimension?: number | null
+    rows?: number | null
+    purpose?: string | null
+  }
+  note?: string
+}
+
+export function fetchSimilarCves(
+  cveId: string,
+  topK = 5,
+  signal?: AbortSignal,
+): Promise<SimilarCvesResponse> {
+  return apiJson<SimilarCvesResponse>(
+    `/ranking/similar/${encodeURIComponent(cveId)}?top_k=${topK}`,
+    { signal },
+  )
+}
+
+/* ------------------------------------------------------------------ */
 /* Kitchen bridge aliases (used by the pancake upload/results flow)   */
 /* ------------------------------------------------------------------ */
 

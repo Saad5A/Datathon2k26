@@ -1,0 +1,19 @@
+{
+  "model_id": "ibm-granite/granite-embedding-small-english-r2",
+  "provider": "LOCAL_HF",
+  "dimension": 384,
+  "n_rows": 2000,
+  "n_historical": 1500,
+  "n_top2026": 500,
+  "missing_descriptions": 0,
+  "l2_normalised": true,
+  "purpose": "retrieval-only (CVE drawer neighbours); never used for scoring or ranking",
+  "ranking_embedding_model": "ibm/granite-embedding-278m-multilingual (watsonx subset, unchanged)",
+  "sources": [
+    "data_cache/granite_embeddings_watsonx_subset.parquet (ids)",
+    "results/top500.csv (ids)",
+    "data_cache/backtest_pool.parquet (descriptions)",
+    "data/vulnerabilities.csv (descriptions)"
+  ],
+  "created_utc": "2026-11-08T11:34:24+00:00"
+}

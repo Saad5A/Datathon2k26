@@ -65,7 +65,19 @@ def similar_cves(cve_id: str, top_k: int = Query(5, ge=1, le=25)) -> dict:
         # try uppercase variant
         result = store.similar_cves(cid, top_k=top_k)
     if result is None:
-        if store.embed_matrix is None:
-            raise HTTPException(status_code=503, detail="Granite embedding subset not loaded")
-        raise HTTPException(status_code=404, detail=f"CVE not in embedding subset: {cve_id}")
-    return {"cve_id": cve_id, "top_k": top_k, "similar": result}
+        if store.similar_matrix is None:
+            raise HTTPException(status_code=503, detail="Similarity index not loaded")
+        raise HTTPException(status_code=404, detail=f"CVE not in the retrieval index: {cve_id}")
+    meta = store.similar_meta or {}
+    return {
+        "cve_id": cve_id,
+        "top_k": top_k,
+        "similar": result,
+        "index": {
+            "model_id": meta.get("model_id"),
+            "dimension": meta.get("dimension"),
+            "rows": int(len(store.similar_ids)),
+            "purpose": meta.get("purpose") or "retrieval only; not used for scoring",
+        },
+        "note": "Description-similarity neighbours. Retrieval evidence only, not a probability of exploitation.",
+    }

@@ -27,12 +27,14 @@ VITE_API_URL=http://localhost:8000/api
 | `GET` | `/api/health` (alias `/health`) | artifact counts, capabilities, load warnings |
 | `GET` | `/api/stats/summary` | rank counts, risk bands, Granite/Gemini availability |
 | `GET` | `/api/ranking/cves` | paginated/searchable ranking |
-| `GET` | `/api/ranking/similar/{cve_id}` | Granite embedding neighbours |
+| `GET` | `/api/ranking/similar/{cve_id}` | Granite retrieval neighbours (description similarity; not a prediction) |
 | `GET` | `/api/explanations/{cve_id}` | Granite technical + Gemini executive payload |
 | `GET` | `/api/models/comparison` | Granite vs Gemini telemetry |
 | `GET` | `/api/results` | audited backtest metrics for the `/results` proof page, with claim ids and status |
 | `GET` | `/api/docs` | OpenAPI UI |
 | `POST` | `/api/predict` | score uploaded CVE rows |
+
+Retrieval neighbours come from `data_cache/granite_embeddings_retrieval.parquet` (IBM Granite small, 384-d, local). They are display evidence only and never used for scoring; see [`docs/RETRIEVAL.md`](../docs/RETRIEVAL.md).
 
 ### `POST /api/predict`
 

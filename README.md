@@ -10,7 +10,7 @@ We rank the 72,670 CVEs on the 2026 scoreboard by how likely each is to be added
 
 | Area | What it does |
 |---|---|
-| `dashboard/` | React/Vite pancake dashboard. Upload a CSV/JSON of CVEs, score locally or through the API, inspect the ranking, export it. `/results` is the evidence sheet for the submitted model. |
+| `dashboard/` | React/Vite pancake dashboard. Upload a CSV/JSON of CVEs, score locally or through the API, inspect the ranking, export it. `/results` is the evidence sheet; the CVE drawer shows Granite retrieval neighbours. |
 | `server/` | FastAPI bridge: ranking artifacts, Granite/Gemini explanations, upload scoring. |
 | `src/model/` | The audited ranking model: time-safe features, backtests, G2/Granite test, final files. |
 | `cloud/` | IBM Granite embedding and explanation scripts (watsonx.ai + local Hugging Face/Ollama). |
@@ -120,6 +120,9 @@ Copy `.env.example` → `.env` for Granite/Gemini regeneration. `.env`, `.env.lo
 # Regenerate the /results snapshot from the audited artifacts
 .venv/bin/python -m server.services.results_service
 
+# Rebuild the Granite retrieval index (drawer neighbours; not used for ranking)
+.venv/bin/python cloud/build_retrieval_index.py
+
 # Dashboard production build + tests
 cd dashboard
 npm run build
@@ -145,6 +148,7 @@ The production dashboard is `dashboard/dist/`. The API serves only read-only art
 - [`dashboard/README.md`](dashboard/README.md) — dashboard setup, engines, upload
 - [`evolution/README.md`](evolution/README.md) — evolutionary search observatory
 - [`docs/RESULTS.md`](docs/RESULTS.md) — consolidated metrics and evidence map
+- [`docs/RETRIEVAL.md`](docs/RETRIEVAL.md) — Granite retrieval neighbours, index and limits
 - [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md) — server, DNS, SSL and production checks
 - [`docs/INTERFACES.md`](docs/INTERFACES.md) — data contracts
 - [`audit/`](audit/) — independent audits

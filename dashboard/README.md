@@ -7,11 +7,11 @@ The upload-first dashboard for **Before the Breach**. It turns a CVE dataset int
 ```bash
 cd dashboard
 npm install
-printf 'VITE_API_URL=http://localhost:8000/api\n' > .env.local
+printf 'VITE_API_URL=/api\n' > .env.local
 npm run dev -- --host 0.0.0.0 --port 5173
 ```
 
-Open <http://localhost:5173/>.
+Open <http://localhost:5173/>. Vite proxies `/api` to `http://127.0.0.1:8000`.
 
 No backend? Run `VITE_API_URL=demo npm run dev -- --host 0.0.0.0 --port 5173`; uploads are scored in the browser and nothing leaves the machine.
 
@@ -26,6 +26,7 @@ No backend? Run `VITE_API_URL=demo npm run dev -- --host 0.0.0.0 --port 5173`; u
 - The built-in **Try a sample batch** uses `public/sample_judge_input.csv`.
 - `public/pancakess_test_upload.csv` is a 10-row test file (8 real scoreboard CVEs + 2 unknown IDs) for exercising both API paths.
 - Results include search/filter, priority bands, public-exploit filter, expandable signal reasons, CSV export, and a clickable **Signal rationale** panel.
+- The CVE drawer shows **Nearest neighbours** from the Granite retrieval index. This is description similarity for analyst context, not a probability or a ranking input (see [`docs/RETRIEVAL.md`](../docs/RETRIEVAL.md)).
 
 ## API contract
 

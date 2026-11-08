@@ -58,6 +58,8 @@ def health() -> dict:
             "explanations": len(store.explanations),
             "playbooks": len(store.playbooks),
             "embeddings": 0 if store.embed_matrix is None else int(store.embed_matrix.shape[0]),
+            "similarity_rows": 0 if store.similar_matrix is None else int(store.similar_matrix.shape[0]),
+            "similarity_model": (store.similar_meta or {}).get("model_id"),
         },
         "capabilities": {
             "ranking": bool(len(store.ranking) or len(store.scores)),
@@ -86,6 +88,8 @@ def reload_artifacts() -> dict:
             "explanations": len(store.explanations),
             "playbooks": len(store.playbooks),
             "embeddings": 0 if store.embed_matrix is None else int(store.embed_matrix.shape[0]),
+            "similarity_rows": 0 if store.similar_matrix is None else int(store.similar_matrix.shape[0]),
+            "similarity_model": (store.similar_meta or {}).get("model_id"),
         },
         "load_errors": list(store.load_errors),
     }

@@ -53,6 +53,9 @@ class DataService:
         self.gemini_refine_cache: dict[str, Any] = {}
         self.embed_ids: np.ndarray = np.array([], dtype=object)
         self.embed_matrix: np.ndarray | None = None  # (n, 768) float32, L2-normalised when present
+        self.similar_ids: np.ndarray = np.array([], dtype=object)
+        self.similar_matrix: np.ndarray | None = None  # retrieval index (never used for scoring)
+        self.similar_meta: dict[str, Any] = {}
         self.scores_by_id: dict[str, dict[str, Any]] = {}
         self.assigner_prior: dict[str, float] = {}
         self.global_prior: float = 0.005
@@ -72,14 +75,16 @@ class DataService:
         self._load_json(RESULTS / "agent_eval_report.json", "gemini_eval")
         self._load_gemini_refine_cache()
         self._load_embeddings()
+        self._load_similarity_index()
         log.info(
-            "DataService ready: ranking=%s scores=%s granite_expl=%s gemini_expl=%s playbooks=%s embeds=%s errors=%s",
+            "DataService ready: ranking=%s scores=%s granite_expl=%s gemini_expl=%s playbooks=%s embeds=%s similar=%s errors=%s",
             len(self.ranking),
             len(self.scores),
             len(self.explanations),
             len(self.gemini_explanations),
             len(self.playbooks),
             0 if self.embed_matrix is None else len(self.embed_ids),
+            0 if self.similar_matrix is None else len(self.similar_ids),
             len(self.load_errors),
         )
 
@@ -258,6 +263,39 @@ class DataService:
             self.embed_ids = np.array([], dtype=object)
             self.embed_matrix = None
 
+    def _load_similarity_index(self) -> None:
+        """Retrieval-only neighbours for the CVE drawer.
+
+        Prefers the local Granite small index (historical pool + 2026 top 500).
+        Falls back to the watsonx subset so the endpoint keeps working if the
+        new file is not deployed. Never contributes to the ranking score.
+        """
+        path = CACHE / "granite_embeddings_retrieval.parquet"
+        meta_path = CACHE / "granite_embeddings_retrieval.meta.json"
+        self.similar_meta = {}
+        if not path.is_file():
+            self.similar_ids = self.embed_ids
+            self.similar_matrix = self.embed_matrix
+            if self.embed_matrix is not None:
+                self.similar_meta = {"model_id": "ibm/granite-embedding-278m-multilingual", "fallback": True}
+            return
+        try:
+            df = pd.read_parquet(path, columns=["cve_id", "vector"])
+            ids = df["cve_id"].astype(str).to_numpy()
+            mat = np.stack([np.asarray(v, dtype=np.float32) for v in df["vector"]])
+            norms = np.linalg.norm(mat, axis=1, keepdims=True).clip(1e-12)
+            self.similar_ids = ids
+            self.similar_matrix = mat / norms
+            if meta_path.is_file():
+                self.similar_meta = json.loads(meta_path.read_text(encoding="utf-8"))
+            else:
+                self.similar_meta = {"model_id": "ibm-granite/granite-embedding-small-english-r2"}
+        except Exception as exc:  # noqa: BLE001
+            self._note(path, exc)
+            self.similar_ids = self.embed_ids
+            self.similar_matrix = self.embed_matrix
+            self.similar_meta = {}
+
     def _build_scoring_index(self) -> None:
         """Index known scoreboard rows and assigner priors for uploaded rows."""
         self.scores_by_id = {}
@@ -432,15 +470,15 @@ class DataService:
         }
 
     def similar_cves(self, cve_id: str, top_k: int = 5) -> list[dict[str, Any]] | None:
-        """Return top_k similar CVEs, or None if embeddings unavailable / id missing."""
-        if self.embed_matrix is None or len(self.embed_ids) == 0:
+        """Return top_k similar CVEs, or None if the retrieval index misses the id."""
+        if self.similar_matrix is None or len(self.similar_ids) == 0:
             return None
-        matches = np.where(self.embed_ids == cve_id)[0]
+        matches = np.where(self.similar_ids == cve_id)[0]
         if len(matches) == 0:
             return None
         idx = int(matches[0])
-        q = self.embed_matrix[idx]
-        sims = self.embed_matrix @ q
+        q = self.similar_matrix[idx]
+        sims = self.similar_matrix @ q
         sims[idx] = -1.0  # exclude self
         k = min(top_k, len(sims) - 1)
         if k <= 0:
@@ -453,15 +491,21 @@ class DataService:
         rank_lookup = {}
         if not self.scores.empty and "rank" in self.scores.columns:
             rank_lookup = self.scores.set_index("cve_id")["rank"].to_dict()
+        published_lookup = {}
+        if not self.scores.empty and "published" in self.scores.columns:
+            published_lookup = self.scores.set_index("cve_id")["published"].to_dict()
         out = []
         for i in top:
-            cid = str(self.embed_ids[i])
+            cid = str(self.similar_ids[i])
             out.append(
                 {
                     "cve_id": cid,
                     "similarity": float(sims[i]),
                     "score": _num(score_lookup.get(cid)),
                     "rank": _num(rank_lookup.get(cid)),
+                    "published": _str_or_none(published_lookup.get(cid)),
+                    # A retrieved historical CVE has no 2026 score; say so explicitly.
+                    "scope": "2026 queue" if cid in score_lookup else "historical pool",
                 }
             )
         return out

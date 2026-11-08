@@ -6,3 +6,10 @@
 1,484
 
 8000
+
+# Retrieval/index documentation constants (model dimension, example CVE ids, host IP)
+384
+278
+10523
+44228
+64.177

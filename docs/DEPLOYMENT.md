@@ -24,7 +24,7 @@ Browser
 | `/opt/pancakess/evolution/` | standalone evolution observatory |
 | `/opt/pancakess/server/` | FastAPI source |
 | `/opt/pancakess/results/` | ranking, explanations and claims |
-| `/opt/pancakess/data_cache/` | Granite embedding subset |
+| `/opt/pancakess/data_cache/` | Granite embedding subsets + retrieval index |
 | `/opt/pancakess/.env` | IBM/Gemini credentials, mode `600` |
 | `/opt/pancakess/.venv/` | Python 3.10 runtime for FastAPI |
 | `/etc/systemd/system/pancakess-api.service` | API service |
@@ -48,6 +48,23 @@ systemctl restart pancakess-api
 journalctl -u pancakess-api -f
 curl http://127.0.0.1:8000/api/health
 ```
+
+### Retrieval index
+
+The CVE drawer's neighbour index is a generated artifact (`data_cache/*.parquet` is gitignored). Rebuild it
+locally, then sync it before restarting:
+
+```bash
+.venv/bin/python cloud/build_retrieval_index.py
+rsync -az data_cache/granite_embeddings_retrieval.parquet \
+  data_cache/granite_embeddings_retrieval.meta.json \
+  root@64.177.59.101:/opt/pancakess/data_cache/
+systemctl restart pancakess-api
+curl -s 'http://127.0.0.1:8000/api/ranking/similar/CVE-2026-10523?top_k=5'
+```
+
+`/api/health` should report `similarity_rows` greater than zero. This index is retrieval-only; it does not
+change the ranking or any audited metric. See [`docs/RETRIEVAL.md`](RETRIEVAL.md).
 
 ## DNS
 
@@ -83,6 +100,7 @@ ufw allow 443/tcp
 ```bash
 curl -I https://pancakess.work/
 curl https://pancakess.work/api/health
+curl 'https://pancakess.work/api/ranking/similar/CVE-2026-10523?top_k=5'
 curl -X POST https://pancakess.work/api/predict \
   -H 'Content-Type: application/json' \
   --data '{"rows":[{"cve_id":"CVE-2099-90001","assigner":"microsoft","epss":0.4}]}'
@@ -95,5 +113,6 @@ Until DNS is switched, the same stack is reachable at:
 ```text
 http://64.177.59.101/
 http://64.177.59.101/api/health
+http://64.177.59.101/api/ranking/similar/CVE-2026-10523?top_k=5
 http://64.177.59.101/evolve/
 ```
