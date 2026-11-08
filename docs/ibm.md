@@ -1,59 +1,80 @@
 # IBM technology in this project
 
-Status (2026-11-07): Granite embeddings PREPARED, NOT YET RUN. No watsonx.ai call has been made and nothing has been
-embedded. No result from Granite exists yet; when it does, it is compared with TF-IDF on the held-out fold and reported
-honestly, including if it does not help.
+Status (2026-11-08): Granite embeddings RUN, tested under a rule we wrote down before seeing results, and audited.
+Granite is part of the final ranking, but it gave **no measurable gain**. It is used because the track requires
+IBM technology, and the pre-set test showed it did not hurt by more than 0.01 AUC.
 
-## What we use, and for what
-| Technology | Use | Status |
+## What actually ran
+| Technology | What ran | Evidence |
 |---|---|---|
-| IBM Granite embedding model `granite-embedding-278m-multilingual` | Turn each CVE description (exploitation wording masked, same text as the TF-IDF model) into a 768-number vector; a small logistic regression on the vectors becomes an alternative text signal, compared with TF-IDF on the held-out fold | prepared, not yet run |
-| watsonx.ai (IBM Cloud, Toronto `ca-tor`) via the `ibm-watsonx-ai` Python SDK | Hosted inference for the embedding model (provider `WATSONX`) | prepared, not yet run; SDK not installed (awaiting approval) |
-| Hugging Face `ibm-granite` open weights via `sentence-transformers` | Same model run locally / on Colab (provider `LOCAL`) | prepared, not yet run |
+| watsonx.ai (IBM Cloud, Toronto `ca-tor`), SDK `ibm-watsonx-ai` 1.9.1, model `ibm/granite-embedding-278m-multilingual` | A teammate embedded 1,966 masked CVE descriptions in two runs: 1,500 rows (`--limit 1500`) and 466 rows (`--ids`, an evaluation slice) | `data_cache/granite_embeddings_watsonx_subset.meta.json`, `data_cache/granite_embeddings_watsonx_evalslice.meta.json`; claim `p6.granite_subset.n_vectors` = 1966, verified in `audit/2026-11-07-granite-subset.md` |
+| Same model, open weights from Hugging Face (`ibm-granite/granite-embedding-278m-multilingual`, revision `a9cb533`), via `sentence-transformers` on an Apple GPU (`mps`) | All 147,818 descriptions (75,148 backtest pool + 72,670 scoreboard 2026), 768 numbers each | `data_cache/granite_embeddings.meta.json`; integrity checks in `audit/2026-11-08-granite-final.md` section 3 |
 
-Code: `cloud/make_embed_input.py` (input file), `cloud/embed_granite.py` (provider switch, batching, truncation,
-retry, disk cache keyed by sha256(model_id + text), token budget guard), `cloud/README.md` (steps for the human).
-The ranking model itself stays in scikit-learn.
+- **Free quota.** After those two runs the account's Lite token quota was used up: a later 20-text dry run returned
+  `token_quota_reached`. The coordinator reported this; no log file in the repo records it (UNVERIFIED by a file).
+  This is why the full set ran on the open weights instead of watsonx.ai.
+- **Same input for both providers.** Both used the same input file (sha256 `2fc1cd5f...e276`, in every meta).
+  Exploitation wording was masked exactly as in the TF-IDF text model.
+- **watsonx.ai and local vectors agree.** On the 1,500 CVEs both providers embedded, the minimum cosine similarity
+  is 0.999982 and the mean is 0.999988. A shuffled-pair control gives 0.636.
+  - This is verified in `audit/2026-11-08-granite-final.md` section 3, as audit text, not as a ledger entry.
+  - That the watsonx vectors really came from watsonx.ai rests on the teammate's meta files (UNCHECKED by the audit).
+- **Code.** `cloud/make_embed_input.py` (input), `cloud/embed_granite.py` (provider switch WATSONX/LOCAL, batching,
+  truncation to 512 tokens, retry, disk cache, token budget guard), `cloud/README.md` (steps).
+
+## How Granite is used in the model (pre-registered test, LOG.md "PRE-REGISTRATION, Granite text ...")
+- G1 = our base model C1 with a Granite text score instead of the TF-IDF text score. G2 = C1 with both text scores.
+- Rule, fixed before results: adopt the better of G1 and G2 if its mean AUC over the two held-out folds is at least
+  C1's minus 0.01.
+- Result (`results/claims_model_granite.json`, all 87 `p6.granite.*` claims verified in
+  `audit/2026-11-08-granite-final.md`):
+
+  | Model | Mean AUC over the two folds |
+  |---|---|
+  | C1 | 0.870 |
+  | G1 | 0.837 |
+  | G2 | 0.871 |
+
+- **G2 adopted, no measurable gain.** The 0.0013 difference from C1 is far smaller than the seed-to-seed spread
+  (about 0.03).
+  - Top 500, G2 vs C1: fold 1 is 20 vs 22, fold 2 is 11 vs 11.
+  - Granite alone (G1) is worse.
+- **Final files use G2.** `results/top500.csv` and `results/scores_2026.csv` come from G2. The 19 `p7.*` claims in
+  `results/claims_model_final.json` are verified, and an independent refit reproduces both files exactly.
+- **Wording rule for the write-up.** Say "adopted by the pre-set IBM tie-break, no measurable gain". Never say Granite
+  "improves" accuracy, AUC or hits.
+
+## Not used / not done
+- Granite instruct model explanations: no instruct model was run. `docs/examples/explanations_top30_OFFLINE_TEMPLATE_not_granite.json`
+  is a template draft, not Granite output and not AI-generated. `cloud/explain_granite_top100.py` exists but has not been run.
+- watsonx AutoAI, watsonx Orchestrate, vLLM / Red Hat AI Inference Server, Granite TimeSeries: not used.
 
 ## Model IDs (looked up 2026-11-07, not guessed)
 | Where | Exact ID | Dimension | Max input tokens | Source |
 |---|---|---|---|---|
-| watsonx.ai, `ca-tor` and `us-south` | `ibm/granite-embedding-278m-multilingual` | 768 | 512 | live model list `GET https://ca-tor.ml.cloud.ibm.com/ml/v1/foundation_model_specs?version=2024-07-25&filters=function_embedding` (public, no credentials; lifecycle "available" since 2025-01-09 in ca-tor) and the docs table [1] |
-| Hugging Face (LOCAL) | `ibm-granite/granite-embedding-278m-multilingual`, pinned revision `a9cb5338491faf32b73dd17b714a31821c021bbf` | 768 (`hidden_size`) | 512 (`sentence_bert_config.json`) | [4]; modules: Transformer, CLS pooling, Normalize; license Apache-2.0 |
+| watsonx.ai `ca-tor` and `us-south` | `ibm/granite-embedding-278m-multilingual` | 768 | 512 | live list `GET https://ca-tor.ml.cloud.ibm.com/ml/v1/foundation_model_specs?version=2024-07-25&filters=function_embedding` (public; "available" since 2025-01-09 in ca-tor) and docs [1] |
+| Hugging Face | `ibm-granite/granite-embedding-278m-multilingual`, revision `a9cb5338491faf32b73dd17b714a31821c021bbf` | 768 | 512 | [4]; CLS pooling + normalise; Apache-2.0 |
 
-Other embedding models on watsonx.ai `ca-tor` (same live list): `ibm/slate-125m-english-rtrvr-v2` (768, deprecated
-2026-05-05, withdrawn 2027-01-12), `ibm/slate-30m-english-rtrvr-v2` (384, deprecated), `intfloat/multilingual-e5-large`
-(1024, not IBM). Granite is the only non-deprecated IBM embedding model there. `ibm/granite-embedding-107m-multilingual`
-appears in older docs but is NOT in the current ca-tor or us-south list. Newer Granite English R2 models
-(`ibm-granite/granite-embedding-english-r2`, 768-dim, 8192 tokens) exist on Hugging Face but are not on the watsonx.ai
-list, so we use the 278m model to keep both providers on the same model.
-UNKNOWN: whether the watsonx.ai deployment uses exactly the same weights as the Hugging Face revision above, and
-whether watsonx.ai vectors come back L2-normalised (the script normalises both).
+Other embedding models listed in `ca-tor`: `ibm/slate-125m-english-rtrvr-v2` and `ibm/slate-30m-english-rtrvr-v2`
+(both deprecated 2026-05-05) and `intfloat/multilingual-e5-large` (not IBM). `ibm/granite-embedding-107m-multilingual`
+appears only in older docs.
+UNKNOWN: whether watsonx.ai serves exactly the Hugging Face revision above. The near-1.0 cosine agreement suggests
+the same model, but it does not prove the same revision.
 
-## SDK (ibm-watsonx-ai 1.9.1, docs [2], [3])
-- `Credentials(url=..., api_key=...)`; Toronto URL `https://ca-tor.ml.cloud.ibm.com` [3].
-- `ibm_watsonx_ai.foundation_models.Embeddings(model_id=, credentials=, project_id=, params=, batch_size=1000 default,
-  concurrency_limit=5 default (max 10), max_retries=10 default, retry on 429/503/504/520)`; `embed_documents(texts)`
-  returns `list[list[float]]` [2].
-- `ibm_watsonx_ai.metanames.EmbedTextParamsMetaNames.TRUNCATE_INPUT_TOKENS` truncates long inputs [2].
-  UNVERIFIED: whether 512 counts the special tokens (if the API rejects 512, lower it in `embed_granite.py`).
-- Our code was written against these docs but NOT executed (SDK not installed).
-
-## Plan limits (docs [5])
-- watsonx.ai Runtime Lite (free) plan: foundation-model inferencing 300,000 tokens per month (1,000 tokens = 1 RU),
-  rate limit 2 inference requests per second. Essentials/Standard: billed per token, 8 requests per second.
-- Price for this model: $0.0001 per 1,000 tokens (class C1) [1].
-- UNKNOWN: whether the organiser's "free trial" sign-up gives Lite-plan limits or something larger; the human must
-  check the plan page in their account.
-- Our estimate (characters / 4): about 16.8 million tokens for all 147,818 descriptions (`results/embed_input_summary.json`),
-  about 56 times the Lite monthly allowance. So on Lite, watsonx.ai can embed only about 2,000 descriptions per month;
-  the full set runs on the same Granite model via Hugging Face (Colab GPU or laptop).
+## SDK and limits
+- SDK [2][3]: `Credentials(url=, api_key=)`, `foundation_models.Embeddings(model_id=, credentials=, project_id=, params=)`,
+  `embed_documents(texts)`. Truncation uses `EmbedTextParamsMetaNames.TRUNCATE_INPUT_TOKENS` (we set 512; the two watsonx
+  runs completed with it).
+- Lite (free) plan [5]: 300,000 foundation-model tokens per month and 2 inference requests per second. The full set
+  is an estimated 16.8 million tokens (characters / 4; `results/embed_input_summary.json`, claim unverified).
+- Price [1]: $0.0001 per 1,000 tokens.
+- UNKNOWN: whether the organiser's trial sign-up has exactly Lite limits.
 
 ## Doc URLs
-1. Supported encoder foundation models (watsonx.ai, Toronto docs): https://ca-tor.dai.cloud.ibm.com/docs/content/wsj/analyze-data/fm-models-embed.html?context=wx (same content at https://dataplatform.cloud.ibm.com/docs/content/wsj/analyze-data/fm-models-embed.html?context=wx)
+1. Supported encoder models: https://ca-tor.dai.cloud.ibm.com/docs/content/wsj/analyze-data/fm-models-embed.html?context=wx
 2. SDK Embeddings: https://ibm.github.io/watsonx-ai-python-sdk/v1.9.1/fm_embeddings.html
-3. SDK setup for IBM Cloud (regional URLs, Credentials): https://ibm.github.io/watsonx-ai-python-sdk/v1.9.1/setup_cloud.html
-4. Hugging Face model card: https://huggingface.co/ibm-granite/granite-embedding-278m-multilingual
-5. watsonx.ai Runtime service plans: https://ca-tor.dai.cloud.ibm.com/docs/content/wsj/getting-started/wml-plans.html?context=wx
-6. PyPI: https://pypi.org/project/ibm-watsonx-ai/ (1.9.1, released 2026-11-05; source/samples https://github.com/IBM/watsonx-ai-samples)
-7. sentence-transformers API (v6.2): https://sbert.net/docs/package_reference/sentence_transformer/SentenceTransformer.html
+3. SDK setup (regional URLs): https://ibm.github.io/watsonx-ai-python-sdk/v1.9.1/setup_cloud.html
+4. Model card: https://huggingface.co/ibm-granite/granite-embedding-278m-multilingual
+5. watsonx.ai Runtime plans: https://ca-tor.dai.cloud.ibm.com/docs/content/wsj/getting-started/wml-plans.html?context=wx
+6. PyPI: https://pypi.org/project/ibm-watsonx-ai/ (1.9.1, 2026-11-05)
+7. sentence-transformers API: https://sbert.net/docs/package_reference/sentence_transformer/SentenceTransformer.html
