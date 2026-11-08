@@ -16,6 +16,7 @@ import {
   askProjectChat,
   fetchExplanation,
   fetchRankingPage,
+  fetchRankingSample,
   fetchStatsSummary,
   type ExplanationPayload,
   type RankingItem,
@@ -31,6 +32,15 @@ type ViewMode = '3d' | 'table'
 type TierFilter = 'ALL' | 'P0' | 'P1' | 'P2'
 
 const STACK_N = 6
+const STACK_TIERS = ['P0', 'P1', 'P2'] as const
+const PER_TIER = STACK_N / STACK_TIERS.length
+
+/** Deterministic pseudo-random key for a CVE under this page load's seed (FNV-1a). */
+function sampleKey(id: string, seed: number) {
+  let h = 2166136261 ^ Math.floor(seed * 4294967295)
+  for (let i = 0; i < id.length; i++) h = Math.imul(h ^ id.charCodeAt(i), 16777619)
+  return h >>> 0
+}
 
 function fmtInt(n: number | null | undefined) {
   if (n == null || Number.isNaN(n)) return '—'
@@ -83,6 +93,9 @@ export function PancakeSecDashboard() {
   const [tier, setTier] = useState<TierFilter>('ALL')
   const [summary, setSummary] = useState<StatsSummary | null>(null)
   const [rows, setRows] = useState<RankingItem[]>([])
+  // P2 rows sit outside the 500-row ranking: sampled server-side from scores_2026.csv.
+  const [p2Sample, setP2Sample] = useState<RankingItem[]>([])
+  const [stackSeed] = useState(() => Math.random())
   const [baselineRows, setBaselineRows] = useState<RankingItem[]>([])
   const [uploadLabel, setUploadLabel] = useState<string | null>(null)
   const [uploadOpen, setUploadOpen] = useState(false)
@@ -116,11 +129,13 @@ export function PancakeSecDashboard() {
     ;(async () => {
       try {
         setLoading(true)
-        const [stats, page] = await Promise.all([
+        const [stats, page, p2] = await Promise.all([
           fetchStatsSummary(ac.signal),
           fetchRankingPage({ page: 1, limit: 500, sort: 'rank', order: 'asc' }, ac.signal),
+          fetchRankingSample('P2', PER_TIER, ac.signal).catch(() => ({ items: [] as RankingItem[] })),
         ])
         setSummary(stats)
+        setP2Sample(p2.items)
         setBaselineRows(page.items)
         setRows(page.items)
         setUploadLabel(null)
@@ -136,7 +151,17 @@ export function PancakeSecDashboard() {
     return () => ac.abort()
   }, [])
 
-  const stack = useMemo(() => rows.slice(0, STACK_N).map(toStackCve), [rows])
+  // A random sample by tier (PER_TIER each of P0/P1/P2), redrawn on each page load, shown in rank order.
+  const stack = useMemo(() => {
+    const picked = STACK_TIERS.flatMap((t) => {
+      const local = rows.filter((r) => (r.priority || 'P2') === t)
+      const pool = local.length || uploadLabel ? local : t === 'P2' ? p2Sample : []
+      return [...pool]
+        .sort((a, b) => sampleKey(a.cve_id, stackSeed) - sampleKey(b.cve_id, stackSeed))
+        .slice(0, PER_TIER)
+    })
+    return picked.sort((a, b) => (a.rank ?? Infinity) - (b.rank ?? Infinity)).map(toStackCve)
+  }, [rows, p2Sample, uploadLabel, stackSeed])
   const selectedStack = useMemo(
     () => stack.find((c) => c.id === selectedId) || rows.map(toStackCve).find((c) => c.id === selectedId) || null,
     [stack, rows, selectedId],
@@ -417,7 +442,9 @@ export function PancakeSecDashboard() {
           <div className="grid flex-1 grid-cols-1 gap-6 lg:grid-cols-12">
             <div className="glass-card relative flex flex-col self-start overflow-hidden rounded-3xl border border-[#E8DFC8] p-5 lg:col-span-7">
               <div className="absolute left-6 top-6 z-10 flex flex-wrap items-center gap-2">
-                <div className="mr-2 text-xs font-bold uppercase tracking-wider text-[#7A6B5D]">Filter Tiers:</div>
+                <div className="mr-2 text-xs font-bold uppercase tracking-wider text-[#7A6B5D]">
+                  A random sample by tier · Filter:
+                </div>
                 {(['ALL', 'P0', 'P1', 'P2'] as const).map((t) => (
                   <button
                     key={t}

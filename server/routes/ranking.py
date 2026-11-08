@@ -53,6 +53,30 @@ def list_cves(
     }
 
 
+@router.get("/api/ranking/sample")
+def sample_cves(
+    priority: str = Query(..., pattern="^P[0-3]$"),
+    n: int = Query(2, ge=1, le=20),
+) -> dict:
+    """Random sample of scored CVEs with one priority, read-only from scores_2026.csv.
+
+    Used for the 3D stack's per-tier sample (P2 rows sit outside the 500-row ranking).
+    Rank, priority, score and reasons are the scores file's own values.
+    """
+    df = store.scores
+    if df.empty or "priority" not in df.columns:
+        return {"priority": priority, "n": 0, "items": [], "warning": "no scores loaded"}
+    pool = df[df["priority"].astype(str) == priority]
+    chunk = pool.sample(n=min(n, len(pool))) if len(pool) else pool
+    return {
+        "priority": priority,
+        "n": len(chunk),
+        "pool_size": int(len(pool)),
+        "source": "results/scores_2026.csv",
+        "items": [store.cve_record(row) for _, row in chunk.iterrows()],
+    }
+
+
 @router.get("/api/ranking/similar/{cve_id}")
 def similar_cves(cve_id: str, top_k: int = Query(5, ge=1, le=25)) -> dict:
     cid = cve_id.strip().upper()

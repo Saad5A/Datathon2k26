@@ -204,6 +204,12 @@ export async function fetchStatsSummary(signal?: AbortSignal): Promise<StatsSumm
   return apiJson<StatsSummary>('/stats/summary', { signal })
 }
 
+/** Random sample of scored CVEs with one priority (server reads scores_2026.csv). */
+export function fetchRankingSample(priority: 'P0' | 'P1' | 'P2', n: number, signal?: AbortSignal) {
+  const qs = new URLSearchParams({ priority, n: String(n) })
+  return apiJson<{ priority: string; n: number; items: RankingItem[] }>(`/ranking/sample?${qs}`, { signal })
+}
+
 export async function fetchRankingPage(
   opts: {
     page?: number
