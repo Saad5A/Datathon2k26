@@ -169,3 +169,33 @@ Every number maps to a verified claim: 0.932; 50.1/64.9; solo AUCs .767/.690/.67
 - Recommended (not blocking): W4 (say "with its own code, apart from two comparison-only checks"); W7 (make the IBM wording match); W8 (add the unseen-assigner weakness once its baseline value is registered, plus the EPSS Jan-Feb 2025 gaps and the survivor effect to Limits); the 2021+ window caveat next to 2026 assigner counts; label the 3 first-pass structured rows leaky in the ledger; re-text or drop the 8 median-of-bounds claims.
 
 UNCHECKED: whether earlier unlogged runs preceded any pre-registration; `final.py` HEAD reproducibility; run_all.py; `rev.*` claims (concurrent audit).
+
+## Re-review of required fixes (commits 5f669cc, 10672d1, 4f7b201 on feat/model-ranking; 21e0a86 on knowledge-base)
+
+I read the new text in docs/writeup_model.md, JUDGE_QA.md, LEARNING.md, KB 02 and backtest_summary.json. `check_claims.py` gives 0 unsupported numbers for the writeup and JUDGE_QA. LEARNING has 4 unsupported numbers, all in the invented toy examples outside the phase section (these predate the fixes). The excluded `cvss2_*`, `cvss3_*`, `cvss4_*`, `last_modified` and `cwe_ids` columns exist in vulnerabilities.csv.
+
+| Fix | Result |
+|---|---|
+| W1 exact columns (writeup, Q2) | PASS |
+| W2 snapshot-month exception | PASS |
+| W3 / Q7 first-pass reuse disclosed (writeup, Q7, LEARNING, KB) | PASS. KB says "about 12 variants". 12 is not a ledger claim, so make it "about a dozen" as in the other docs (minor) |
+| W5 "higher AUC ... intervals overlap" (writeup, Q3, LEARNING) | PASS |
+| W6 "inflated by" | PASS |
+| Q3 README attribution, "later KEV-listed" | PASS |
+| Q5 borderline | PASS |
+| Q6 / Q15 attribution | PASS |
+| Q8 / LEARNING permutation wording | PASS |
+| Q9 / LEARNING wording pattern, "strongest single input" | PASS |
+| L1 | PASS |
+| L2 "2 of 5" | PASS (removed) |
+| K1 | PASS |
+| S1 | PASS (backtest_summary note 3 now says seed set 0) |
+| P1 LOG times | PASS: correction entry 4f7b201, with system-clock time and commit list. See new overclaim N1 |
+| P2 dirty metas | skipped on the coordinator's instruction (in progress) |
+| W4 / W7 / W8 (recommended) | PASS: "apart from two comparison-only checks"; Granite wording consistent; EPSS gaps, survivor effect and unseen-assigner weakness added to Limits. See N2 |
+| 2021+ window caveat for assigner counts (Q12, LEARNING) | PASS |
+
+New overclaims introduced by the edits:
+- **N1 (minor).** LOG 4f7b201: "In every case the rule was committed before the results it governs." This is true for commit order. For reverse-time, though, the run was 108 s after the pre-registration commit, from a dirty tree, so earlier unlogged runs cannot be excluded. Add: "commit order only; earlier unlogged runs cannot be ruled out".
+- **N2 (minor, needs registration).** Writeup Limits: "On test CVEs from assigners with no earlier KEV entry, the model did worse than the simple baseline in fold 1." This is supported only by audit/2026-11-07-phase3.md (AUC .737 vs .920, 9 positives). The baseline value is not in the ledger. Register `p3.fold1.unseen_assigner.exploit_then_epss.auc`, and reword to "ranked them worse by AUC (only 9 such positives)".
+- Cosmetic: LEARNING has "Ours is in LOG.md under "PRE-REGISTRATION, Phase 3", The auditor found ..." (the comma should be a full stop).

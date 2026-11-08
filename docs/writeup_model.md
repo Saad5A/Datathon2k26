@@ -36,4 +36,4 @@ IBM Granite embeddings of the masked descriptions run via watsonx.ai and/or the 
 - EPSS is often blank in the January-February 2025 test rows.
 - CVEs rejected later are absent from today's file (a survivor effect).
 - Assigner history counts only KEV CVEs published 2021+.
-- On test CVEs from assigners with no earlier KEV entry, the model did worse than the simple baseline in fold 1.
+- We have not shown the model handles CVEs from assigners with no earlier KEV entry well: in fold 1 it looked weaker there than the simple baseline, but there were very few such exploited CVEs.
