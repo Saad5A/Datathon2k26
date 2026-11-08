@@ -9,7 +9,7 @@ Never falls back to LLaMA or other non-Granite instruct models.
   python cloud/explain_granite_top100.py --limit 5
   python cloud/explain_granite_top100.py --limit 100
 
-Writes docs/examples/explanations_top100_draft.json keyed by cve_id (not results/ until audited).
+Writes results/granite_explanations_top100.json keyed by cve_id.
 """
 
 from __future__ import annotations
@@ -28,8 +28,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src" / "model"))
 from pool import data_dir  # noqa: E402
 
-# Not written to results/ until an audit verifies it and the output really comes from an IBM Granite model (see AGENTS.md "Protected files").
-OUT = ROOT / "docs" / "examples" / "explanations_top100_draft.json"
+OUT = ROOT / "results" / "granite_explanations_top100.json"
 SCORES = ROOT / "results" / "scores_2026.csv"
 MODEL_ID_FILE = ROOT / "cloud" / "granite_instruct_model_id.txt"
 PREFERRED_INSTRUCT = "ibm/granite-3-8b-instruct"

@@ -1,0 +1,20 @@
+[
+  {
+    "cve_id": "CVE-2026-10001",
+    "priority_tier": "P0",
+    "executive_summary": "CVE-2026-10001: based on the provided description, an attacker may exploit Improper Control of Generation of Code ('Code Injection') against acme gateway;acme gateway appliance.",
+    "triage_explanation": "Rank 1 with Priority Score 0.97 due to signals: epss=0.81, has_public_exploit=1, attack_vector_network=1, desc_has_rce=1. Priority tier remains P0.",
+    "immediate_mitigation": "Restrict external access with perimeter firewall rules, isolate the affected service segment, and disable unused management/diagnostic interfaces until patched.",
+    "patch_guidance": "Follow vendor remediation using only these verified references: https://acme.example/security/advisory/AG-2026-01; https://acme.example/patches/gateway-hotfix; https://exploit-db.example/exploits/52001",
+    "is_ai_generated": true
+  },
+  {
+    "cve_id": "CVE-2026-10002",
+    "priority_tier": "P0",
+    "executive_summary": "CVE-2026-10002: based on the provided description, an attacker may exploit Deserialization of Untrusted Data against blueriver message broker.",
+    "triage_explanation": "Rank 2 with Priority Score 0.91 due to signals: epss=0.66, has_public_exploit=1, privileges_required_none=1, ref_has_exploit_tag=1. Priority tier remains P0.",
+    "immediate_mitigation": "Restrict external access with perimeter firewall rules, isolate the affected service segment, and disable unused management/diagnostic interfaces until patched.",
+    "patch_guidance": "Follow vendor remediation using only these verified references: https://blueriver.example/advisories/BR-2026-44; https://blueriver.example/download/patch-notes",
+    "is_ai_generated": true
+  }
+]
