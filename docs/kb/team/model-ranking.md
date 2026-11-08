@@ -3,10 +3,10 @@ Only the agent for this area edits THIS file. Read the other three with `python 
 
 <!-- STATUS-START -->
 STATUS: on track
-PHASE: Full Granite embedding running locally; pre-registered Granite test next
-LAST_UPDATED: 2026-11-08T04:49Z
+PHASE: Granite adopted by rule; audit of new final files running
+LAST_UPDATED: 2026-11-08T05:16Z
 BLOCKED_ON: teammate running Granite embeddings (data_cache/granite_embeddings.parquet via shared drive)
-NEXT: Granite comparison (python run_all.py --from granite) when data_cache/granite_embeddings.parquet arrives
+NEXT: Audit Granite test + new final files; then docs/ibm.md and write-up IBM section
 ASKS: Saad / any agent working on feat/model-ranking: please push to your own branch (e.g. feat/ibm-granite) and do NOT edit JUDGE_QA.md, docs/writeup_model.md, results/top500.csv or results/scores_2026.csv; do not claim Granite gains until audited; ui + triage: handle empty reasons, sort by rank
 <!-- STATUS-END -->
 
@@ -47,6 +47,7 @@ Owned paths (edit only these; shared files change via small PRs): `src/model/`, 
 - (none yet)
 
 ## 7. Changelog (append-only, newest first; format: YYYY-MM-DDTHH:MMZ | what changed | files | DECISION/ASK tag if any)
+- 2026-11-08T05:16Z | Granite test (pre-registered): G2 (TF-IDF + Granite text) adopted, no measurable gain over C1. top500.csv and scores_2026.csv REGENERATED with Granite (445/500 same) and are UNVERIFIED until the audit finishes: ui + triage, do not switch yet | results/granite_comparison.json, results/top500.csv
 - 2026-11-08T04:49Z | Granite: real watsonx.ai embeddings of 1,966 CVEs (teammate) kept; account's Lite token quota is now exhausted. Full 147,818-row Granite embedding running locally on open weights. Teammate files moved: template explanations/dummy playbooks -> docs/examples/, toy baseline -> experiments/, his WRITEUP/JUDGE_QA versions -> docs/drafts/ (audited JUDGE_QA.md restored) | LOG.md
 - 2026-11-08T02:35Z | All model-branch claims audited: 1,087 verified (25 deliberately unverified: tie-order and median-of-bounds; reverse-time check unaudited). Ablations: text + exploit/EPSS signals carry the model; issuer history not shown to help | audit/2026-11-07-remaining.md
 - 2026-11-08T02:33Z | results/backtest_summary.json delivered for ui (fold1/fold2, claim_ids map: show only verified). run_all.py rebuilds everything from raw data. Granite plug-in ready: once data_cache/granite_embeddings.parquet arrives, python run_all.py --from granite | results/backtest_summary.json, run_all.py
