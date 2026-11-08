@@ -1,32 +1,8 @@
 import { useEffect, useState } from 'react'
 import { RankedTable, type TableFilters } from '@/components/dashboard/RankedTable'
 import { WidgetCard } from '@/components/dashboard/WidgetCard'
-import { LIVE_API, fetchBackendSummary, fetchExplanation, type BackendSummary, type ExplanationPayload } from '@/lib/backend'
+import { LIVE_API, fetchExplanation, type ExplanationPayload } from '@/lib/backend'
 import type { Dataset, ScoreRow } from '@/lib/types'
-
-function BackendSnapshot() {
-  const [data, setData] = useState<BackendSummary | null>(null)
-  const [error, setError] = useState<string | null>(null)
-
-  useEffect(() => {
-    if (!LIVE_API) return
-    const ac = new AbortController()
-    fetchBackendSummary(ac.signal).then(setData).catch((reason) => {
-      if ((reason as Error).name !== 'AbortError') setError((reason as Error).message)
-    })
-    return () => ac.abort()
-  }, [])
-
-  if (!LIVE_API) return <p className="backend-note">Connect the FastAPI backend to see its ranking summary and Gemini briefs.</p>
-  if (error) return <p className="backend-note" role="status">Backend summary unavailable: {error}</p>
-  if (!data) return <p className="backend-note" role="status">Loading backend summary…</p>
-
-  return <div className="backend-snapshot" aria-label="Backend ranking summary">
-    <div><span>Reference ranking</span><strong>{data.ranking_rows > 0 ? 'Connected' : 'Not loaded'}</strong></div>
-    <div><span>Upload scoring</span><strong>{LIVE_API ? 'Model API · enabled' : 'Local demo'}</strong></div>
-    <div><span>Granite notes</span><strong>{(data.multi_model?.granite_explanations ?? 0) > 0 ? `${data.multi_model?.granite_explanations} available` : 'None loaded'}</strong></div>
-  </div>
-}
 
 function SignalPanel({ row }: { row: ScoreRow | null }) {
   if (!row) {
@@ -72,7 +48,6 @@ export function KitchenResults({ dataset, warnings }: { dataset: Dataset; warnin
   const [selectedCve, setSelectedCve] = useState<string | null>(null)
 
   return <>
-    <BackendSnapshot />
     {warnings.length > 0 && <ul className="batch-warnings" aria-label="Upload warnings">{warnings.map((warning, i) => <li key={i}>{warning}</li>)}</ul>}
     <div className="results-columns">
       <div className="scroll-mt-20"><WidgetCard title="Review queue" subtitle="Ranked rows from this batch · expand a row for its supplied signals" bodyClassName="px-0">
