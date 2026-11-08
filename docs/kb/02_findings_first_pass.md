@@ -45,9 +45,11 @@ Paired difference C1 minus exploit-then-EPSS (seed median): AUC +0.092 / +0.071;
 
 **4. 2026 shift** (2025 test pool vs 2026 scoreboard). GitHub advisories 5.6% -> 15.0%; VulnCheck 1.1% -> 9.3%; no product row 35.0% -> 49.6% (Aug/Sep 2026: 66.5% / 68.0%); assigner with no prior KEV row 36.2% -> 23.8% (2026 is an upper bound). Full: results/drift_summary.json.
 
-**5. Final 2026 ranking** (results/top500.csv, verified submission-valid). C1 refit on 75,148 rows / 117 positives, mean of 5 seed sets, at most 50 top-500 slots per assigner (cap is neutral in the backtest, not an improvement). Top 500: 71.2% have a public exploit flag, 4.8% have EPSS > 0.1, 15.8% come from assigners with no prior KEV row. No 2026 accuracy claim exists or may be made.
+**5. Final 2026 ranking** (results/top500.csv, verified submission-valid; model G2 = C1 + Granite text score, see 6). Refit on 75,148 rows / 117 positives, mean of 5 seed sets, at most 50 top-500 slots per assigner (cap is neutral in the backtest). Top 500: 74.6% have a public exploit flag, 4.8% have EPSS > 0.1, 17.0% come from assigners with no prior KEV row. No 2026 accuracy claim exists or may be made.
 
-**Not yet verified (do not quote):** reverse-time check (results/reverse_time.json, not time-safe), Granite comparison (pending embeddings), IBM input summary.
+**6. IBM Granite text (pre-registered G1/G2 vs C1; audit/2026-11-08-granite-final.md).** Granite embeddings of every masked description (same model on watsonx.ai for a subset; vectors match). Mean AUC over folds: C1 0.870, G1 (Granite instead of TF-IDF) 0.837, G2 (both) 0.871. Per fold G2 vs C1: AUC 0.874 vs 0.860, 0.868 vs 0.880; top-500 20 vs 22, 11 vs 11. G2 adopted by the declared IBM tie-break (within 0.01 of C1); NO measurable gain; never say Granite improves accuracy.
+
+**Not yet verified (do not quote):** reverse-time check (results/reverse_time.json, not time-safe), IBM input summary.
 ## SUPERSEDED: first-pass results table (old run, 7 of 12 rows differ at printed precision; do not quote)
 | Approach | top500 | top1000 | AUC | Avg precision | Median rank of positives |
 |---|---|---|---|---|---|
@@ -86,6 +88,7 @@ analyzed status .675, n_affected_cpes .767, n_references .643, cvss3 score .732,
 - Any public exploit flag: 2.26% in the 2026 scoreboard (1,645 CVEs) vs 2.15% in 2025 test. EPSS blank: 2% vs 10%. EPSS above 0.1: 66 CVEs in the 2026 scoreboard.
 
 ## Changelog
+- 2026-11-08 (feat/model-ranking): added finding 6 (Granite, pre-registered test) and updated finding 5 to the final G2 ranking, generated from verified claims.
 - 2026-11-07 (feat/model-ranking): added "Verified findings, Phase 3 to final" generated from verified claims (leak, honest backtest, ablations, 2026 shift, final ranking).
 - 2026-11-07 (feat/model-ranking): added the VERIFIED results table generated from results/claims_model.json; old table marked SUPERSEDED; fixed "150 iterations"; added the time-safe assigner caveat result.
 - 2026-11-07: created.
