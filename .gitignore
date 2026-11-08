@@ -52,3 +52,16 @@ outputs/
 !results/*.csv
 !results/*.json
 !docs/*.csv
+#Skills
+.claude/
+.impeccable/
+# Dashboard (Node)
+node_modules/
+*.tsbuildinfo
+dashboard/.env.local
+
+# Small contract fixtures are tracked despite the *.csv rule above
+!dashboard/public/*.csv
+
+# dashboard source dir named "data" (mock generator) must not be caught by the data/ rule above
+!dashboard/src/data/

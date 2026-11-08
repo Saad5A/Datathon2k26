@@ -1,3 +1,5 @@
+> **Note (2026-11-08, feat/model-ranking):** `main` had replaced this file with the dashboard contract, now kept unchanged as [`INTERFACES_dashboard.md`](INTERFACES_dashboard.md). The two disagree on the scores file (location `results/` vs `outputs/`; 11 vs 17 columns; `reasons` fields and signal names). The model branch delivers the contract below, which is verified. Team to reconcile; until then the dashboard must map the delivered `results/scores_2026.csv`.
+
 # Branch ownership and interfaces (model <-> Gemini sections LOCKED 2026-11-07 15:30; data and UI teammates still to confirm)
 
 | Branch | Owner area | Owns (only edit these) | Produces |

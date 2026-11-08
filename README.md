@@ -62,7 +62,7 @@ The Granite step runs only if `data_cache/granite_embeddings.parquet` exists. Th
 
 ## Team branches
 - `feat/model-ranking`: this branch. The ranking model, backtest, leakage and drift analysis, Granite test, and audits.
-- `feat/ui-dashboard`: a web dashboard (`dashboard/`), merged into `main` through pull requests.
+- `feat/ui-dashboard`: a web dashboard (`dashboard/`, setup and deploy in [`dashboard/README.md`](dashboard/README.md)), merged into `main` through pull requests. Its data contract is [`docs/INTERFACES_dashboard.md`](docs/INTERFACES_dashboard.md); it differs from the delivered scores file (see the note at the top of [`docs/INTERFACES.md`](docs/INTERFACES.md)).
 - `feat/triage-playbook-gemini`: a Gemini triage-playbook pipeline and a Streamlit presentation app.
 - `feat/ibm-granite`: a teammate's Granite and watsonx.ai work (Colab embedding path and Granite explanations).
 - `feat/data-engineering-db`: listed in `docs/INTERFACES.md`. We found no such branch on the remote.
