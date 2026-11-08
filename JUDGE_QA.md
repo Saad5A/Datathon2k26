@@ -1,50 +1,48 @@
-# Judge Q&A (model, leakage, backtest, 2026, IBM Granite)
+# Judge Q&A (model, leakage, backtest, 2026, IBM)
 
-Numbers below are taken from committed `results/*.json` / `data_cache/*.meta.json` and verified ranking claims where noted. Granite subset metrics are **embedding-covered slices only** (`results/granite_subset_comparison.json` note).
+Every number here comes from a verified entry in `results/claims*.json`. Audit reports are in `audit/`.
 
----
+**1. What exactly does your model predict?**
+For each 2026 scoreboard CVE, it predicts how likely the CVE is to be added to CISA's KEV list (Known Exploited Vulnerabilities) after its snapshot month, using only what was known at the end of that month. The output is a ranking score. It is not a probability, so we never say "X% chance of attack". KEV is a proxy for "exploited": a CVE that is not on KEV may still have been attacked.
 
-## IBM Granite / watsonx
+**2. Which columns did you use, and which did you leave out?**
+Used: `epss`, `exploitdb`, `metasploit`, `nuclei` and `poc_github` at the snapshot month, from `exploit_signals_2024.csv`/`exploit_signals_2025.csv` and `scoreboard_2026.csv`. From `vulnerabilities.csv` we used `assigner`, `description` (exploitation wording masked) and `published` (CVEs published 2021+ for assigner history). From `known_exploited.csv` we used `date_added`, counting only rows before the snapshot month for features. `in_kev` serves only to drop CVEs already on KEV. Nothing else. Left out: `nvd_status`, `n_affected_cpes`, `n_references`, `last_modified`, `cwe_ids`, every `cvss2_*`, `cvss3_*` and `cvss4_*` column, `attack_vector` through `availability_impact` (so no blank-score patterns), and all of `references.csv`, `affected_products.csv` and `weakness_types.csv`. The description and assigner are today's values, not snapshot-month values. An independent refit by our auditor reproduced every 2026 score exactly from the allowed columns alone.
 
-**Q. Why IBM Granite 278M multilingual instead of pure keyword / BM25-style text?**  
-**A.** Keyword/TF-IDF counts surface terms; Granite `ibm/granite-embedding-278m-multilingual` maps masked descriptions to **768-d dense semantic vectors** (watsonx Toronto, L2-normalised). On the embedding-covered backtest slices, a logistic regression on Granite text beat TF-IDF text on AUC in both folds: fold1 **0.6981 vs 0.6794** (Δ **+0.0187**), fold2 **0.6392 vs 0.5923** (Δ **+0.0469**); mean Δ AUC **+0.0328**. Top-50 / top-100 hits also rose (e.g. fold1 top-100: **16 → 22**). We still keep structured signals (EPSS, exploit flags, assigner history) for ranking; Granite is the alternate **text** channel.
+**3. What is the "hidden leak" you found?**
+In our 2025 backtest, every one of the 52 later KEV-listed CVEs had NIST status "Analyzed", a product list, and a filled CVSS3 score and CWE. Among the other test CVEs, only 50.1% were "Analyzed" and 64.9% had a product list. The organisers' README explains why: NIST reviews attacked CVEs first, so these columns can partly record that an attack was already noticed. In this backtest, the affected-product count alone scores a higher AUC than EPSS (0.767 vs 0.707; the intervals overlap).
 
-**Q. How do you handle cold-start CVEs with little exploit telemetry?**  
-**A.** New CVEs often lack public exploit flags or strong EPSS. Dense embeddings place their descriptions near semantically similar past CVEs in latent space, so the text LR can still score them from wording alone. On covered fold1, Granite text Recall@500 was **0.9231** (48/52 positives in the top 500 of that covered pool) vs TF-IDF **0.8846**. Structured features remain available when present; embeddings do not invent KEV labels.
+**4. Is 52 out of 52 really "all"? That is a small sample.**
+Yes, it is small. With 52 cases, the lower end of the confidence interval for the true share is about 93%, not 100%. The finding also comes from 2025 data only. We cannot measure the size of the leak for 2026 because we have no 2026 labels.
 
-**Q. Token economics—how does 1,500 scale to the full corpus?**  
-**A.** Subset meta: **1,500** rows, **233,097** estimated tokens this run, under the Lite **300,000**/month foundation-model budget. Eval slice added **~46,051** estimated tokens (466 rows). Full masked corpus estimate is ~**16.8M** tokens—about **56×** Lite monthly allowance—so full watsonx embedding needs a paid plan or **LOCAL/Colab** Hugging Face Granite (`cloud/README.md`). We cache to disk; reruns skip embedded texts.
+**5. Does your model beat the standard baselines?**
+On AUC, our estimate is higher, but the gain is borderline. AUC is the chance that a random exploited CVE is ranked above a random non-exploited one. Our model's AUC is higher than "exploit code first, then EPSS" in both folds and every seed set (0.860 vs 0.768, and 0.880 vs 0.809). For seed set 0, though, the paired bootstrap interval on the gain includes zero in both folds. On top-500 hits it roughly ties in fold 1 (22 vs 18, with seeds ranging 15-22) and loses in fold 2 (11 vs 15). We do not claim to beat the baselines at the judges' metric.
 
-**Q. Can teammates use the results without cloud credentials?**  
-**A.** Yes. Commit/share `data_cache/granite_embeddings_watsonx_subset.parquet` (+ evalslice) and `results/granite_subset_comparison.json`. Evaluation reads local parquet only (`src/model/granite_subset_eval.py`). Explanations/playbooks are JSON under `results/`. No `WATSONX_*` env vars are required to **consume** artifacts—only to **extend** embeddings.
+**6. Your first pass showed 25 vs 18-19 in the top 500. Where did that go?**
+Two things inflated it. First, its training labels used KEV additions from the test period itself: keeping only labels known before testing cuts the training positives from 65 to 40 and the top-500 count to 21. Second, 25 was the best of 10 seed sets (range 21-25). Our own sensitivity checks found both, and the independent audit confirmed them. We publish the corrected result.
 
-**Q. Where is the IBM technology in the demo?**  
-**A.** Hybrid pipeline: local data prep → watsonx.ai `ca-tor` embeddings with Granite 278M multilingual → local ranking/eval. Artifacts: subset parquet (**1,500×768**), comparison JSON (**1,966** vectors combined), explanations in `results/granite_explanations_top100.json` (**30** committed rationales with `grounding_ok`), sample playbooks in `results/sample_playbooks.json`.
+**7. Why did you pick the model on AUC rather than top-500 hits?**
+With 32-52 exploited CVEs per fold, top-500 hits move by several hits from the random seed alone, and the ranking of methods flipped between folds. AUC uses the whole list, so it is steadier. We fixed this rule, and the three candidates, in LOG.md before running Phase 3 (the 2025 data had already been used in our first pass, where we compared about a dozen variants and C1 reuses the winner's inputs). The rule picked C1 (mean AUC 0.870, against 0.848 and 0.836).
 
----
+**8. How do you know your model is not leaking too?**
+Apart from the description text and the assigner field itself (both today's values), every input is built only from data dated before the end of the snapshot month. When we shuffle the training labels, test AUC drops to about chance (fold 1 mean 0.532, fold 2 mean 0.506). That shows no path from the test labels into the model bypasses training. The auditor checked the time safety of each feature separately, with its own code. The one residual risk is the description text, covered next.
 
-## Ranking model & leakage
+**9. Isn't the description text itself a leak?**
+Partly, possibly. The description is today's text, and 6 of the 52 positives already contained exploitation wording such as "actively exploited", "exploited in the wild", "CISA" or "KEV". We mask that wording before the text model sees it. The masked text score alone reaches AUC 0.8225, so text is our strongest single input; dropping it, or dropping the exploit/EPSS signals, clearly hurts. Later edits that we cannot detect would affect it.
 
-**1. What exactly does your model predict?**  
-For each 2026 scoreboard CVE, a **ranking / Priority Score** for later KEV addition using snapshot-month information only—not a probability (“X% chance”). KEV is a proxy for exploitation.
+**10. How many hits do you expect in 2026?**
+We do not know, and we make no 2026 accuracy claim. Our KEV file ends with 2025, and only the judges can count 2026 hits. We can say how 2026 differs from 2025 and what our model ranked. For reference, the organisers report that standard rankings found 6 to 8 in the 2026 top 500.
 
-**2. Which columns did you use / leave out?**  
-Used (as-of): EPSS and public exploit flags; assigner KEV history before snapshot; masked description text (TF-IDF and/or Granite on covered IDs). Left out leaky NIST completeness fields: `nvd_status`, `n_affected_cpes`, `n_references`, blank-score patterns, news/threat reference links, etc. (see leakage table / audits).
+**11. How is 2026 different from your test data?**
+There are about twice as many rows as in the same 2025 months (72,670 vs 35,280). GitHub advisories make up 15.0% of rows (from 5.6%) and VulnCheck 9.3% (from 1.1%). In August-September, 66-68% of CVEs have no product list. That matters for anyone who uses product lists, even though we do not. Assigners with no prior KEV entry make up 23.8% of rows, down from 36.2%, and the 2026 figure is an upper bound.
 
-**3. What is the “hidden leak” you found?**  
-In the 2025 backtest, all **52** later-KEV positives were NIST “Analyzed” with products/CVSS/CWE filled, while much of the negative pool was not—NIST reviews attacked CVEs first. Product-count solo AUC can exceed EPSS; we therefore exclude those columns.
+**12. Why cap each assigner at 50 of the top 500? Does it help?**
+In the backtest it is neutral, not an improvement: fold 1 drops from 22 to 20 hits, and fold 2 rises from 11 to 12. Our pre-set rule was to take the strictest cap within one hit of the best. We chose that rule because the 2026 assigner mix shifted and we did not want one issuer to fill the list. In the final top 500, three assigners (VulnCheck, Apache, Oracle) reach the cap of 50. These counts depend on our assigner-history window (CVEs published 2021+).
 
-**4. Does your full model beat standard baselines?**  
-On the primary fold AUC, our selected ranking recipe is higher than exploit-then-EPSS; top-500 hits are noisy with 32–52 positives and can flip across folds/seeds. We report intervals and do not over-claim the judges’ top-500 metric. Granite’s lift above is **text-only on a Lite subset**, separate from the full structured C1 ranking story.
+**13. What are the "reasons" next to each CVE?**
+For each CVE we reset one signal at a time to a neutral value and measure how much the score moves. The up to three biggest moves are listed as reasons, each marked "up" or "down". They explain our model's score. They are not evidence that the CVE is being attacked. One row has an empty list because no signal changes its score.
 
-**5. How many hits do you expect in 2026?**  
-**None claimed.** No 2026 labels for self-scoring. Organisers’ baseline reference ranks found on the order of 6–8 in a 2026 top 500.
+**14. Where is the IBM technology?**
+IBM Granite embeddings of the masked descriptions run via watsonx.ai and/or the same open Granite model on Colab. We will test them against our TF-IDF text signal. TF-IDF is word-count text scoring. A teammate is running this now, and results are pending. The test rule is pre-registered in LOG.md, and we will report the result whether or not Granite helps.
 
-**6. Why cap each assigner at 50 of the top 500?**  
-Limits one CNA flooding the list after 2026 assigner-mix shift. Cap rule was pre-registered; several assigners hit 50 in the final top 500.
-
-**7. What are the “reasons” next to each CVE?**  
-Occlusion of signal groups (EPSS, public exploit, assigner history, description text): up to three largest score moves as JSON—explanations of the **model score**, not proof of active exploitation.
-
-**8. Why should we trust the numbers?**  
-Ranking claims are audited in `audit/` and ledgers under `results/claims_*.json`. Granite subset figures are taken verbatim from `granite_subset_comparison.json` / `claims_model_granite.json` and carry the **partial-coverage** caveat—do not treat them as a full-corpus adoption result until embeddings cover the whole pool.
+**15. Why should we trust any of your numbers?**
+Every published number is registered in a claims ledger with the script that produced it. A separate auditor, working in a fresh context, re-derived each one with different code before marking it verified, apart from two comparison-only checks. The auditor confirmed the problems behind our first-pass result, and we kept those corrections. With 52 test positives, one hit is about 2%, so we always show ranges.
