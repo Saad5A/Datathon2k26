@@ -26,3 +26,4 @@
 .granite-note-heading strong{font:600 9px ui-monospace,monospace;letter-spacing:.1em;text-transform:uppercase;color:#426b54}
 .granite-note-heading span{font-size:8px;color:#6b7d6e}
 .granite-note p{font-size:10px;line-height:1.75;color:#4e6457}
+.story-header-link{margin-left:auto;flex-shrink:0;font:600 10px 'IBM Plex Mono',ui-monospace,monospace;letter-spacing:.1em;text-transform:uppercase;color:#31563f;padding-bottom:3px;border-bottom:1px solid #b9cbb4}.story-header-link span{color:#7d947f}.story-header>button{margin-left:6px}@media(max-width:700px){.story-header-link{font-size:8px;letter-spacing:.06em;margin-left:0}.story-header{gap:10px}}

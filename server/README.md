@@ -30,6 +30,8 @@ VITE_API_URL=http://localhost:8000/api
 | `GET` | `/api/ranking/similar/{cve_id}` | Granite embedding neighbours |
 | `GET` | `/api/explanations/{cve_id}` | Granite technical + Gemini executive payload |
 | `GET` | `/api/models/comparison` | Granite vs Gemini telemetry |
+| `GET` | `/api/results` | audited backtest metrics for the `/results` proof page, with claim ids and status |
+| `GET` | `/api/docs` | OpenAPI UI |
 | `POST` | `/api/predict` | score uploaded CVE rows |
 
 ### `POST /api/predict`

@@ -10,7 +10,7 @@ We rank the 72,670 CVEs on the 2026 scoreboard by how likely each is to be added
 
 | Area | What it does |
 |---|---|
-| `dashboard/` | React/Vite pancake dashboard. Upload a CSV/JSON of CVEs, score locally or through the API, inspect the ranking, export it. |
+| `dashboard/` | React/Vite pancake dashboard. Upload a CSV/JSON of CVEs, score locally or through the API, inspect the ranking, export it. `/results` is the evidence sheet for the submitted model. |
 | `server/` | FastAPI bridge: ranking artifacts, Granite/Gemini explanations, upload scoring. |
 | `src/model/` | The audited ranking model: time-safe features, backtests, G2/Granite test, final files. |
 | `cloud/` | IBM Granite embedding and explanation scripts (watsonx.ai + local Hugging Face/Ollama). |
@@ -48,11 +48,11 @@ Check: <http://localhost:8000/api/health>
 ```bash
 cd dashboard
 npm install
-printf 'VITE_API_URL=http://localhost:8000/api\n' > .env.local
+printf 'VITE_API_URL=/api\n' > .env.local
 npm run dev -- --host 0.0.0.0 --port 5173
 ```
 
-Open <http://localhost:5173/>.
+Open <http://localhost:5173/>. Vite proxies `/api` to `http://127.0.0.1:8000`, so the same relative base works in development and production. The evidence sheet is at <http://localhost:5173/results>.
 
 The default upload engine is **Model API** when `VITE_API_URL` is configured. It sends rows to `POST /api/predict`; known scoreboard CVEs use the audited **G2** score, unknown CVEs use a transparent fallback labelled `api-heuristic-v1`. If the API is unavailable, use **Local demo** in *Processing options*; no file leaves the browser.
 
@@ -116,6 +116,9 @@ Copy `.env.example` → `.env` for Granite/Gemini regeneration. `.env`, `.env.lo
 
 # API
 .venv/bin/uvicorn server.app:app --host 0.0.0.0 --port 8000
+
+# Regenerate the /results snapshot from the audited artifacts
+.venv/bin/python -m server.services.results_service
 
 # Dashboard production build + tests
 cd dashboard

@@ -11,7 +11,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from server.routes import explanations, models, overview, predict, ranking
+from server.routes import explanations, models, overview, predict, ranking, results
 from server.services.data_service import store
 
 
@@ -26,6 +26,9 @@ app = FastAPI(
     description="Ranking, Granite/Gemini explanations, and transparent upload scoring over the published artifacts.",
     version="0.1.0",
     lifespan=lifespan,
+    docs_url="/api/docs",
+    openapi_url="/api/openapi.json",
+    redoc_url=None,
 )
 
 # Wildcard origin + credentials is rejected by browsers; local Vite needs * without credentials.
@@ -42,6 +45,7 @@ app.include_router(ranking.router)
 app.include_router(predict.router)
 app.include_router(explanations.router)
 app.include_router(models.router)
+app.include_router(results.router)
 
 
 @app.get("/api/health")

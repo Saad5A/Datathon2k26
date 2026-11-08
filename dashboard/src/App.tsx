@@ -47,6 +47,7 @@ export default function App() {
 
   return <TooltipProvider><div className="story-app">
     <header className="story-header"><a href="#" onClick={event => { event.preventDefault(); setView('kitchen') }} className="story-brand"><img src="/pancakess-mark.svg" alt=""/><span><strong>pancakess</strong><small>Predictive Analytics Network for Cybersecurity Assessment,<br/>Knowledge, and Exploitation Software System</small></span></a>
+      <a className="story-header-link" href="/results">Evidence &amp; results <span aria-hidden="true">↗</span></a>
       {view !== 'kitchen' && <button onClick={() => setView('kitchen')}><ArrowLeft size={14}/> Back to kitchen</button>}
     </header>
     <main>
