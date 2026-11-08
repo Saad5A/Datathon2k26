@@ -42,6 +42,11 @@ export interface RankedTableProps {
   onFiltersChange: (f: TableFilters) => void
   /** Bumps when the dataset changes so pagination resets. */
   datasetKey: string
+<<<<<<< HEAD
+=======
+  /** Open Granite explanation modal for a CVE (live API). */
+  onSelectCve?: (cveId: string) => void
+>>>>>>> origin/feat/dashboard-backend
 }
 
 const PAGE_SIZES = [10, 25, 50, 100]
@@ -121,7 +126,11 @@ function ReasonsPanel({ row }: { row: ScoreRow }) {
   )
 }
 
+<<<<<<< HEAD
 export function RankedTable({ rows, filters, onFiltersChange, datasetKey }: RankedTableProps) {
+=======
+export function RankedTable({ rows, filters, onFiltersChange, datasetKey, onSelectCve }: RankedTableProps) {
+>>>>>>> origin/feat/dashboard-backend
   const [sorting, setSorting] = useState<SortingState>([{ id: 'rank', desc: false }])
   const [pagination, setPagination] = useState<PaginationState>({ pageIndex: 0, pageSize: 25 })
   const [expanded, setExpanded] = useState<Record<string, boolean>>({})
@@ -209,14 +218,27 @@ export function RankedTable({ rows, filters, onFiltersChange, datasetKey }: Rank
         header: 'CVE',
         size: 150,
         cell: ({ row }) => (
+<<<<<<< HEAD
           <span className="font-mono font-medium text-fg">
+=======
+          <button
+            type="button"
+            onClick={() => onSelectCve?.(row.original.cve_id)}
+            className="text-left font-mono font-medium text-fg underline-offset-2 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sev-p0/50"
+            title="Open Granite risk explanation"
+          >
+>>>>>>> origin/feat/dashboard-backend
             {row.original.cve_id}
             {row.original.in_top500 === 1 && (
               <Tooltip content="Inside the top-500 review queue">
                 <span className="ml-1.5 align-middle text-[10px] font-semibold text-sevfg-p0">TOP</span>
               </Tooltip>
             )}
+<<<<<<< HEAD
           </span>
+=======
+          </button>
+>>>>>>> origin/feat/dashboard-backend
         ),
       },
       {
@@ -299,7 +321,11 @@ export function RankedTable({ rows, filters, onFiltersChange, datasetKey }: Rank
         cell: ({ getValue }) => <span className="tabular font-mono text-xs text-fg-muted">{getValue<string>() || '—'}</span>,
       },
     ],
+<<<<<<< HEAD
     [],
+=======
+    [onSelectCve],
+>>>>>>> origin/feat/dashboard-backend
   )
 
   const table = useReactTable({

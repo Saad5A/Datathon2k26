@@ -62,7 +62,11 @@ export const EXPLOIT_FLAG_LABEL: Record<ExploitFlag, string> = {
 export interface Dataset {
   id: string
   name: string
+<<<<<<< HEAD
   source: 'sample' | 'upload-client' | 'upload-api'
+=======
+  source: 'sample' | 'upload-client' | 'upload-api' | 'api'
+>>>>>>> origin/feat/dashboard-backend
   rows: ScoreRow[]
   loadedAt: Date
 }

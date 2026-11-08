@@ -1,4 +1,5 @@
 import type { Priority } from '@/theme/tokens'
+<<<<<<< HEAD
 import type { ScoreRow } from './types'
 
 /**
@@ -6,6 +7,15 @@ import type { ScoreRow } from './types'
  * it asks for one page at a time with sort + filter applied here, exactly as
  * it would against a REST endpoint (`GET /scores?page=…&sort=…&q=…`).
  * Swap the body of `queryScores` for a fetch() when a real API exists.
+=======
+import { LIVE_API, fetchRankingPage, rankingItemToScoreRow } from './backend'
+import type { ScoreRow } from './types'
+
+/**
+ * Server-style query layer. When VITE_API_URL points at the FastAPI backend,
+ * pages come from GET /ranking/cves. Otherwise the in-memory demo/upload rows
+ * are filtered locally (same contract as before).
+>>>>>>> origin/feat/dashboard-backend
  */
 export interface ScoreQuery {
   pageIndex: number
@@ -21,6 +31,10 @@ export interface ScorePage {
   total: number
   pageCount: number
   tookMs: number
+<<<<<<< HEAD
+=======
+  source?: 'api' | 'local'
+>>>>>>> origin/feat/dashboard-backend
 }
 
 const LATENCY_MS = 120
@@ -40,7 +54,11 @@ export function filterRows(all: ScoreRow[], q: Pick<ScoreQuery, 'q' | 'prioritie
   )
 }
 
+<<<<<<< HEAD
 export async function queryScores(all: ScoreRow[], q: ScoreQuery, signal?: AbortSignal): Promise<ScorePage> {
+=======
+async function queryScoresLocal(all: ScoreRow[], q: ScoreQuery, signal?: AbortSignal): Promise<ScorePage> {
+>>>>>>> origin/feat/dashboard-backend
   const t0 = performance.now()
   await new Promise<void>((resolve, reject) => {
     const t = setTimeout(resolve, LATENCY_MS)
@@ -59,14 +77,22 @@ export async function queryScores(all: ScoreRow[], q: ScoreQuery, signal?: Abort
       const av = a[id]
       const bv = b[id]
       if (av == null && bv == null) return a.rank - b.rank
+<<<<<<< HEAD
       if (av == null) return 1 // nulls last regardless of direction
+=======
+      if (av == null) return 1
+>>>>>>> origin/feat/dashboard-backend
       if (bv == null) return -1
       if (av < bv) return -dir
       if (av > bv) return dir
       return a.rank - b.rank
     })
   } else if (q.sort?.desc) {
+<<<<<<< HEAD
     rows = [...rows].reverse() // source is already rank-ascending
+=======
+    rows = [...rows].reverse()
+>>>>>>> origin/feat/dashboard-backend
   }
 
   const total = rows.length
@@ -76,5 +102,53 @@ export async function queryScores(all: ScoreRow[], q: ScoreQuery, signal?: Abort
     total,
     pageCount: Math.max(1, Math.ceil(total / q.pageSize)),
     tookMs: Math.round(performance.now() - t0),
+<<<<<<< HEAD
   }
 }
+=======
+    source: 'local',
+  }
+}
+
+async function queryScoresApi(q: ScoreQuery, signal?: AbortSignal): Promise<ScorePage> {
+  const t0 = performance.now()
+  const sortId = q.sort?.id
+  const sort =
+    sortId === 'score' || sortId === 'cve_id' || sortId === 'rank' ? String(sortId) : 'rank'
+  const page = await fetchRankingPage(
+    {
+      page: q.pageIndex + 1,
+      limit: q.pageSize,
+      search: q.q || undefined,
+      sort,
+      order: q.sort?.desc ? 'desc' : 'asc',
+    },
+    signal,
+  )
+  let rows = page.items.map((item) => rankingItemToScoreRow(item, page.total || 500))
+  // Priority / exploit filters still applied client-side (API ranking page is CVE search + score).
+  if (q.priorities.length || q.exploitOnly) {
+    rows = filterRows(rows, { q: '', priorities: q.priorities, exploitOnly: q.exploitOnly })
+  }
+  return {
+    rows,
+    total: page.total,
+    pageCount: Math.max(1, page.pages ?? Math.ceil(page.total / q.pageSize)),
+    tookMs: Math.round(performance.now() - t0),
+    source: 'api',
+  }
+}
+
+export async function queryScores(all: ScoreRow[], q: ScoreQuery, signal?: AbortSignal): Promise<ScorePage> {
+  // Live API mode never falls back to synthetic/mock rows — fail empty instead.
+  if (LIVE_API) {
+    try {
+      return await queryScoresApi(q, signal)
+    } catch (e) {
+      if ((e as Error).name === 'AbortError') throw e
+      return { rows: [], total: 0, pageCount: 1, tookMs: 0, source: 'api' }
+    }
+  }
+  return queryScoresLocal(all, q, signal)
+}
+>>>>>>> origin/feat/dashboard-backend

@@ -60,12 +60,24 @@ Deep links and refreshes work on both hosts. Paths other than `/` render the in-
 
 ## Backend contract
 
+<<<<<<< HEAD
 Full schema in [`../docs/INTERFACES.md`](../docs/INTERFACES.md). The dashboard calls two endpoints on `VITE_API_URL`:
+=======
+Set `VITE_API_URL=http://localhost:8000/api` against this repo's FastAPI app (`server/app.py`).
+Full ranking schema in [`../docs/INTERFACES.md`](../docs/INTERFACES.md). Paths below are relative to that base:
+>>>>>>> origin/feat/dashboard-backend
 
 | Endpoint | Used for | Timeout | Notes |
 |---|---|---|---|
 | `GET /health` | Footer "API status" dot (on load, every 60 s, on click) | 5 s | Any `2xx` = online; body ignored |
+<<<<<<< HEAD
 | `POST /predict` | "Model API" scoring in the upload modal | 60 s | JSON `{ "rows": [...] }` in, array or `{ "rows": [...] }` out; each row needs `score` |
+=======
+| `GET /stats/summary` | KPI tiles (CVEs analyzed, risk bands, watsonx token usage) | 15 s | Reads Granite meta + comparison JSON |
+| `GET /ranking/cves` | Ranked table pages (`page`, `limit`, `search`, `sort`) | 15 s | Joins top500 + scores in memory |
+| `GET /explanations/{cve_id}` | Granite rationale + remediation modal on CVE click | 15 s | 404 if neither explanation nor playbook exists |
+| `POST /predict` | Optional "Model API" scoring in the upload modal | 60 s | Not required for the live ranking dashboard |
+>>>>>>> origin/feat/dashboard-backend
 
 If the backend is unreachable the dashboard keeps working: the headline data is the built-in **demo data** (labelled `demo data` in the header), the footer shows **API unreachable**, and a failed upload offers **Retry** and **Score in browser instead**.
 
