@@ -4,7 +4,7 @@ Only the agent for this area edits THIS file. Read the other three with `python 
 <!-- STATUS-START -->
 STATUS: on track
 PHASE: Final files verified; waiting on Granite embeddings (cloud step)
-LAST_UPDATED: 2026-11-08T02:17Z
+LAST_UPDATED: 2026-11-08T02:33Z
 BLOCKED_ON: teammate running Granite embeddings (data_cache/granite_embeddings.parquet via shared drive)
 NEXT: backtest_summary.json for ui; Granite comparison as soon as the embeddings file arrives
 ASKS: ui-dashboard + triage-playbook-gemini: handle empty reasons list and sort by rank; any teammate: can run the Granite step per cloud/README.md and drop the output on the shared drive
@@ -21,7 +21,7 @@ Owned paths (edit only these; shared files change via small PRs): `src/model/`, 
 | scores_2026.csv (all 72,670 scoreboard CVEs: cve_id, published, snapshot_month, assigner, score, rank, in_top500, priority, epss, any_public_exploit, reasons) | results/scores_2026.csv | VERIFIED (audit/2026-11-07-final.md); TF-IDF text; may be regenerated if Granite qualifies | triage, ui, data |
 | top500.csv (cve_id only; the judged file) | results/top500.csv | VERIFIED, submission-valid | judges, ui, triage |
 | signal vocabulary for reasons | results/signal_vocabulary.json | VERIFIED | triage, ui |
-| backtest summary (ours vs CVSS vs EPSS vs exploit-then-EPSS, with intervals) | results/backtest_summary.json | not started | ui |
+| backtest summary (ours vs CVSS vs EPSS vs exploit-then-EPSS, with intervals) | results/backtest_summary.json | delivered (values from verified claims where claim_ids present) | ui |
 | drift summary (2025 vs 2026 volume, assigner mix, missing data) | results/drift_summary.json | delivered and VERIFIED (audit/2026-11-07-leakage-drift.md; claims in results/claims_model_drift.json) | ui |
 | leakage table (column, used?, solo AUC, reason) | results/leakage_table.csv | delivered and VERIFIED (text-score row to be added after the Phase 3 audit) | ui, write-up |
 | claims ledger | results/claims_model.json | exists, all unverified | everyone (check_claims) |
@@ -47,6 +47,7 @@ Owned paths (edit only these; shared files change via small PRs): `src/model/`, 
 - (none yet)
 
 ## 7. Changelog (append-only, newest first; format: YYYY-MM-DDTHH:MMZ | what changed | files | DECISION/ASK tag if any)
+- 2026-11-08T02:33Z | results/backtest_summary.json delivered for ui (fold1/fold2, claim_ids map: show only verified). run_all.py rebuilds everything from raw data. Granite plug-in ready: once data_cache/granite_embeddings.parquet arrives, python run_all.py --from granite | results/backtest_summary.json, run_all.py
 - 2026-11-08T02:17Z | Granite + watsonx.ai run handed to a teammate (cloud/README.md). Model branch doing all local work: backtest_summary.json (for ui), Granite plug-in code, run_all.py, audit of remaining claims, model write-up + JUDGE_QA | results/, docs/
 - 2026-11-07T23:45Z | DECISION: model-ranking confirms INTERFACES sections 2 and 4 as written. data-engineering-db + ui-dashboard: REAL results/scores_2026.csv and other results/ files are on origin/feat/model-ranking now (git fetch origin; git checkout origin/feat/model-ranking -- results/). backtest_summary.json coming next | docs/kb/team/model-ranking.md
 - 2026-11-07T23:32Z | scores_2026.csv / top500.csv / signal_vocabulary.json VERIFIED (independent refit identical). ui + triage: sort by rank; one row has reasons [] (handle it); description is today's text with exploitation wording masked. Granite run instructions for any teammate: cloud/README.md (top section) | results/, cloud/README.md
