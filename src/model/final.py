@@ -10,6 +10,7 @@ list; the rest follow by score; ties by cve_id. `score` is a ranking score, not 
 Reasons: occlusion. Each signal group is set to a neutral value (training-set median; flags 0), the seed-averaged
 score is recomputed, and the up to 3 groups with the largest absolute change are listed.
 """
+import argparse
 import json
 import math
 import time
@@ -46,16 +47,33 @@ DIRECTION = {"up": "this signal's actual value raises the CVE's priority score c
              "down": "this signal's actual value lowers the CVE's priority score compared with the neutral value"}
 
 
-def fit_all(pool, sb):
-    """Per seed set: C1 on all pool rows, predicted on the actual rows and on one occluded copy per signal group."""
+def fit_all(pool, sb, text="tfidf", emb=None):
+    """Per seed set: C1 on all pool rows, predicted on the actual rows and on one occluded copy per signal group.
+    text: "tfidf" (default, C1), "G1" (Granite text score instead of TF-IDF) or "G2" (both, Granite as txt_g)."""
     kind, cols = C.CANDIDATES[cap.MODEL]
     Xtr, Xte = R.text_vectors(C.masked(pool), C.masked(sb))
     st = R.text_test_score(Xtr, pool.y, Xte)
+    if text != "tfidf":
+        import granite
+        E = granite.Embeddings(emb)
+        Etr, Ete = E.rows(pool.cve_id), E.rows(sb.cve_id)
+        g_st = R.text_test_score(Etr, pool.y, Ete)
+        if text == "G2":
+            cols = cols + ["txt_g"]
+            SIGNALS["description_text"]["cols"] = ["txt", "txt_g"]
     actual, occluded, neutral = [], {g: [] for g in SIGNALS}, []
     for seed in C.SEEDS:
         oof = R.text_oof(Xtr, pool.y, fold_seed=seed)
-        tr = C.frame(pool, cols, oof, kind)
-        te = C.frame(sb, cols, st, kind)
+        if text == "tfidf":
+            tr, te = C.frame(pool, cols, oof, kind), C.frame(sb, cols, st, kind)
+        else:
+            g_oof = R.text_oof(Etr, pool.y.to_numpy(), fold_seed=seed)
+            if text == "G1":
+                tr, te = C.frame(pool, cols, g_oof, kind), C.frame(sb, cols, g_st, kind)
+            else:
+                base = [c for c in cols if c != "txt_g"]
+                tr = C.frame(pool, base, oof, kind).assign(txt_g=g_oof)
+                te = C.frame(sb, base, st, kind).assign(txt_g=g_st)
         neu = {c: (0.0 if c in FLAGS + ["anyx", "nx"] else float(tr[c].median())) for c in cols}
         copies = [te] + [te.assign(**{c: neu[c] for c in SIGNALS[g]["cols"]}) for g in SIGNALS]
         p = C.fit_score(kind, tr, pool.y, pd.concat(copies, ignore_index=True), seed).reshape(len(copies), len(te))
@@ -63,7 +81,7 @@ def fit_all(pool, sb):
         for i, g in enumerate(SIGNALS, 1):
             occluded[g].append(p[i])
         neutral.append(neu)
-    return np.array(actual), {g: np.mean(v, axis=0) for g, v in occluded.items()}, neutral, st
+    return np.array(actual), {g: np.mean(v, axis=0) for g, v in occluded.items()}, neutral, (g_st if text == "G1" else st)
 
 
 def rank_rows(score, assigner, ids):
@@ -128,6 +146,8 @@ def write_claims(res):
                             "output_file": "results/scores_2026.csv", "status": "unverified", "verified_by": None}
 
     where = "Final 2026 ranking (C1, mean of seed sets 0-4, k=50 assigner cap)"
+    if res.get("text_source", "tfidf") != "tfidf":
+        where = where.replace("C1,", f"C1 with Granite text {res['text_source']},")
     add("train_rows", f"{where}: training rows (pool 2024-01..2025-09)", res["train_rows"], "count")
     add("train_positives", f"{where}: training positives (KEV additions to 2025-12-31)", res["train_positives"], "count")
     add("rows_scored", f"{where}: scoreboard rows scored", res["rows_scored"], "count")
@@ -149,13 +169,19 @@ def write_claims(res):
 
 
 def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--text", choices=["tfidf", "G1", "G2"], default="tfidf",
+                    help="text score source; G1/G2 only if granite.py's pre-registered rule adopted it")
+    ap.add_argument("--emb", default=str(ROOT / "data_cache" / "granite_embeddings.parquet"))
+    a = ap.parse_args()
     t0 = time.time()
     tick = lambda msg: print(f"[{time.time() - t0:5.0f}s] {msg}", flush=True)
     pool = load_pool()
     sb, ref = cap.score_2026(pool)  # the preview path, per seed set
     tick("scoreboard rows built (cap.score_2026)")
-    actual, occluded, neutral, st = fit_all(pool, sb)
-    assert np.array_equal(actual, np.array(ref)), "refit differs from cap.score_2026"
+    actual, occluded, neutral, st = fit_all(pool, sb, a.text, a.emb)
+    if a.text == "tfidf":  # the preview path is TF-IDF only
+        assert np.array_equal(actual, np.array(ref)), "refit differs from cap.score_2026"
     score = actual.mean(axis=0)
     delta = {g: score - occluded[g] for g in SIGNALS}
     tick("fits and occlusion done")
@@ -190,6 +216,11 @@ def main():
                     "neutral_rule": "0 for every flag" if g == "public_exploit_code" else "median over the training rows",
                     "model_columns_set_to_neutral": s["cols"],
                     "neutral_values_per_column_seed_set_0": {c: neutral[0][c] for c in s["cols"]}}
+    if a.text != "tfidf":
+        vocab["description_text"]["value_meaning"] += (
+            " (Granite embedding text model)" if a.text == "G1" else
+            " (TF-IDF text model; the Granite text score txt_g is occluded together with it)")
+        vocab["_text_source"] = a.text
     (RESULTS / "signal_vocabulary.json").write_text(json.dumps(vocab, indent=2) + "\n")
 
     t = scores[scores.in_top500 == 1].merge(sb[["cve_id", "asg_kev"]], on="cve_id")
@@ -198,12 +229,16 @@ def main():
            "share_any_public_exploit": float(t.any_public_exploit.mean()), "share_epss_gt_0_1": float((t.epss > 0.1).mean()),
            "share_unseen_assigner": float((t.asg_kev == 0).mean()),
            "tier_counts": scores.priority.value_counts().sort_index().to_dict()}
+    if a.text != "tfidf":
+        res["text_source"] = a.text
     C.write_meta(script=SCRIPT_REL, out="scores_2026.meta.json")
     mp = RESULTS / "scores_2026.meta.json"
     meta = json.loads(mp.read_text()) | {"model": cap.MODEL, "seed_sets": list(C.SEEDS), "score": "mean of the 5 seed-set scores",
                                          "assigner_cap_k": K, "tie_break": "cve_id ascending", "train_rows": res["train_rows"],
                                          "train_positives": res["train_positives"], "train_label_cap": "2025-12-31",
                                          "rows_scored": res["rows_scored"], "summary": res}
+    if a.text != "tfidf":
+        meta |= {"text_source": a.text, "granite_embeddings": a.emb}
     mp.write_text(json.dumps(meta, indent=2, default=lambda x: x.item()) + "\n")
     tick(f"wrote vocabulary, meta and {write_claims(res)} p7 claims")
     print(json.dumps(res, indent=1, default=lambda x: x.item()))
