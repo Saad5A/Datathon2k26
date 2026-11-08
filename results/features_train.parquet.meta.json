@@ -1,0 +1,24 @@
+{
+  "rows": 1000,
+  "feature_cols": [
+    "epss",
+    "epss_missing",
+    "attack_network",
+    "attack_local",
+    "flag_rce",
+    "flag_priv_esc",
+    "flag_unauth",
+    "flag_auth_bypass",
+    "flag_sqli",
+    "flag_xss",
+    "assigner_cve_count",
+    "assigner_kev_rate",
+    "any_public_exploit",
+    "n_public_exploit_flags"
+  ],
+  "splits": {
+    "train_labelled": 550,
+    "scoreboard_2026": 450
+  },
+  "path": "C:\\Users\\user\\Desktop\\Datathon_2k26\\Datathon2k26\\results\\features_train.parquet"
+}

@@ -1,0 +1,31 @@
+{
+  "n_train": 412,
+  "n_val": 138,
+  "n_positives_train": 171,
+  "n_positives_val": 57,
+  "val_roc_auc": 0.8586744639376217,
+  "val_pr_auc": 0.8280732724138824,
+  "val_recall_at_50": 0.6666666666666666,
+  "val_recall_at_500": 1.0,
+  "feature_importances": {
+    "epss": 603.0,
+    "assigner_kev_rate": 392.0,
+    "flag_rce": 44.0,
+    "n_public_exploit_flags": 43.0,
+    "attack_network": 37.0,
+    "flag_unauth": 31.0,
+    "attack_local": 17.0,
+    "flag_auth_bypass": 14.0,
+    "flag_xss": 14.0,
+    "flag_priv_esc": 7.0,
+    "any_public_exploit": 1.0,
+    "epss_missing": 0.0,
+    "flag_sqli": 0.0,
+    "assigner_cve_count": 0.0
+  },
+  "elapsed_seconds": 1.031,
+  "n_scored": 450,
+  "scores_path": "C:\\Users\\user\\Desktop\\Datathon_2k26\\Datathon2k26\\results\\scores_2026.csv",
+  "top500_path": "C:\\Users\\user\\Desktop\\Datathon_2k26\\Datathon2k26\\results\\top500.csv",
+  "schema_ok": true
+}

@@ -1,0 +1,19 @@
+{
+  "model_id": "ibm/granite-embedding-278m-multilingual",
+  "provider": "WATSONX",
+  "dimension": 768,
+  "n_rows": 466,
+  "n_unique_texts": 462,
+  "n_embedded_this_run": 462,
+  "estimated_tokens_this_run": 46051,
+  "truncate_tokens": 512,
+  "l2_normalised": true,
+  "subset": true,
+  "limit": null,
+  "ids_file": "data_cache\\granite_eval_ids.csv",
+  "input_file": "C:\\Users\\user\\Desktop\\Datathon_2k26\\Datathon2k26\\data_cache\\descriptions_to_embed.parquet",
+  "input_sha256": "2fc1cd5f6e9b4c893c924c3e1fa2933ff2a6a550b85589a59cb03a80e674e276",
+  "created_utc": "2026-11-08T03:49:59+00:00",
+  "sdk": "ibm-watsonx-ai",
+  "concurrency": 1
+}
