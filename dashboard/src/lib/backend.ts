@@ -28,14 +28,15 @@ export interface StatsSummary {
     n_vectors?: number | null
     embeddings_files?: string[]
     folds_present?: string[]
-    fold1_delta_auc_granite_minus_tfidf?: number | null
-    fold2_delta_auc_granite_minus_tfidf?: number | null
-    mean_delta_auc_granite_minus_tfidf?: number | null
-    prefer?: string | null
-    rule?: string | null
     note?: string | null
   }
   granite_subset?: Record<string, unknown>
+  /** Verified claim p6.granite_subset.n_vectors, read by the server at request time; null unless verified. */
+  watsonx_subset?: { id: string; value: number; verified_by?: string | null } | null
+  multi_model?: {
+    gemini_explanations?: number
+    granite_summary_coverage?: { current_top100_with_summary?: number; current_top100?: number; note?: string }
+  }
   sources?: Record<string, string>
   load_errors?: string[]
 }
@@ -67,6 +68,12 @@ export interface ProviderNarrative {
   summary?: string | null
   rationale?: string | null
   executive_summary?: string | null
+  why_this_rank?: string | null
+  suggested_action?: string | null
+  /** "granite" = Granite instruct output; "template" = deterministic fallback, not AI-generated. */
+  source?: string | null
+  label?: string | null
+  audited?: boolean
   provider?: string | null
   model_id?: string | null
   is_ai_generated?: boolean
@@ -84,8 +91,6 @@ export interface ExplanationPayload {
   any_public_exploit?: number | null
   reasons?: unknown
   model?: 'granite' | 'gemini' | 'both'
-  granite_technical_rationale?: string | null
-  gemini_technical_summary?: string | null
   gemini_executive_summary?: string | null
   gemini_triage_playbook?: {
     containment?: string | null
@@ -93,7 +98,7 @@ export interface ExplanationPayload {
     verification?: string | null
   } | null
   granite: ProviderNarrative | null
-  gemini?: (ProviderNarrative & { technical_summary?: string | null }) | null
+  gemini?: ProviderNarrative | null
   remediation: {
     steps: { step: string; detail: string }[]
     playbook: Record<string, unknown> | null
@@ -121,6 +126,8 @@ export interface RefineActionResponse {
   cached: boolean
   source: string
   provider: string
+  is_ai_generated?: boolean
+  label?: string
   role: string
   grounding: string
 }
@@ -272,9 +279,7 @@ export function fetchSimilarCves(
 /* Kitchen bridge aliases (used by the pancake upload/results flow)   */
 /* ------------------------------------------------------------------ */
 
-export interface BackendSummary extends StatsSummary {
-  multi_model?: { gemini_explanations?: number; granite_explanations?: number }
-}
+export type BackendSummary = StatsSummary
 
 export interface BackendCapabilities {
   upload_scoring?: boolean
@@ -324,7 +329,6 @@ export async function refineGeminiAction(
   body: {
     cve_id: string
     action_type: RefineActionType
-    granite_rationale?: string
     user_context?: string
   },
   signal?: AbortSignal,

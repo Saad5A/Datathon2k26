@@ -735,6 +735,19 @@
   color: #607668;
 }
 
+.rp-check ul {
+  margin: 8px 0 7px;
+  font: 500 12px/1.6 'IBM Plex Mono', ui-monospace, monospace;
+  color: #274536;
+}
+
+.rp-unverified {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #8a5a12;
+}
+
 /* ------------------------------------------------------------------ limits */
 
 .rp-limit-grid {

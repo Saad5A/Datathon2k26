@@ -21,7 +21,7 @@ The existing in-memory index in `server/services/data_service.py` is the right t
 | Provider | Local Hugging Face cache (`LOCAL_HF`), no API key, no token quota |
 | Output | `data_cache/granite_embeddings_retrieval.parquet` + `.meta.json` |
 
-The **ranking** model still uses `ibm/granite-embedding-278m-multilingual` via watsonx (`data_cache/granite_embeddings_watsonx_subset.parquet`). The retrieval index is a separate embedding space on purpose: the account's watsonx Lite quota was exhausted, and mixing 278m ranking vectors with 384d retrieval vectors in one matrix would be invalid.
+The **ranking** model uses the full set of local open-weights embeddings from the same Granite multilingual model (`data_cache/granite_embeddings.parquet`, every masked description); the watsonx.ai subset vectors match those local vectors where both were run (audit/2026-11-08-granite-final.md section 3). The retrieval index is a separate embedding space on purpose: the account's watsonx Lite quota was exhausted, and mixing 278m ranking vectors with 384d retrieval vectors in one matrix would be invalid.
 
 ## API
 

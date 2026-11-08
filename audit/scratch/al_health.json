@@ -1,0 +1,1 @@
+{"status":"ok","artifacts_loaded":{"ranking_rows":500,"scores_rows":72670,"explanations":100,"playbooks":0,"embeddings":1500,"similarity_rows":1500,"similarity_model":"ibm/granite-embedding-278m-multilingual"},"capabilities":{"ranking":true,"gemini_explanations":false,"upload_scoring":true},"load_errors":[]}

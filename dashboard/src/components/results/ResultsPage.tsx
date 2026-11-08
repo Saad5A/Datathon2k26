@@ -33,8 +33,36 @@ const GRID = '#e3e9df'
 
 const fmtInt = (v: number | null | undefined) => (v == null ? '—' : Math.round(v).toLocaleString('en-US'))
 const fmt3 = (v: number | null | undefined) => (v == null ? '—' : v.toFixed(3))
-const fmtPct = (v: number | null | undefined) => (v == null ? '—' : `${(v * 100).toFixed(1)}%`)
-const signed3 = (v: number) => `${v > 0 ? '+' : '−'}${Math.abs(v).toFixed(3)}`
+const signed3 = (v: number | null | undefined) => (v == null ? '—' : `${v > 0 ? '+' : '−'}${Math.abs(v).toFixed(3)}`)
+
+/** One line per fold; numbers appear only when every value in the block is a verified claim. */
+function PairedLines({
+  rows,
+  metric,
+}: {
+  rows: ResultsPayload['significance']['paired_bootstrap_vs_exploit_then_epss']
+  metric: 'auc' | 'top500_expected'
+}) {
+  return (
+    <ul>
+      {rows.map((row) => {
+        const b = row[metric]
+        return (
+          <li key={row.fold} title={Object.values(b.claims).join(', ')}>
+            {row.fold}:{' '}
+            {b.verified ? (
+              <>
+                {signed3(b.diff)} (95% CI {signed3(b.ci95[0])} to {signed3(b.ci95[1])})
+              </>
+            ) : (
+              <span className="rp-unverified">unverified</span>
+            )}
+          </li>
+        )
+      })}
+    </ul>
+  )
+}
 
 function MetricValue({ cell: value, format }: { cell: MetricCell; format: (v: number) => string }) {
   if (value.value == null) {
@@ -618,8 +646,8 @@ export function ResultsPage() {
                   Δ AUC {deltaText(assignerDrop, 0)} / {deltaText(assignerDrop, 1)}
                 </strong>
                 <small>
-                  Small and mixed. It is kept as a prior, and the unseen-assigner test below shows the model still
-                  generalises when it has no history to use.
+                  Small and mixed. It is kept as a prior; the unseen-assigner test below covers assigners with no
+                  earlier KEV entry, which remain a known weak spot.
                 </small>
               </article>
             </div>
@@ -630,7 +658,7 @@ export function ResultsPage() {
           <div className="rp-unseen">
             <div>
               <span className="rp-eyebrow">Unseen-assigner stress test · fold 1</span>
-              <h3>No history? The model still ranks.</h3>
+              <h3>No KEV history? Ranked on exploit signals and text; this is a known weak spot.</h3>
               <p>
                 {fmtInt(unseen.rows)} test rows came from assigners with zero prior KEV rows — {fmtInt(unseen.positives)}{' '}
                 of them exploited. Within that subset the model reaches AUC {fmt3(unseen.auc)} and places{' '}
@@ -662,20 +690,16 @@ export function ResultsPage() {
               </p>
             </article>
             <article className="rp-check">
-              <span className="rp-check-label">Paired bootstrap · AUC vs exploit→EPSS</span>
-              <strong>{signed3(bootstrap.auc.diff)}</strong>
-              <p>
-                95% CI {signed3(bootstrap.auc.ci95[0])} to {signed3(bootstrap.auc.ci95[1])};{' '}
-                {fmtPct(bootstrap.auc.share_resamples_diff_gt_0)} of resamples favour the model. Suggestive, not
-                conclusive — the interval touches zero.
-              </p>
+              <span className="rp-check-label">Paired bootstrap · AUC vs exploit→EPSS · seed set 0</span>
+              <PairedLines rows={bootstrap} metric="auc" />
+              <p>Model minus exploit→EPSS. Suggestive, not conclusive: the interval includes zero.</p>
             </article>
             <article className="rp-check">
-              <span className="rp-check-label">Paired bootstrap · top-500</span>
-              <strong>{signed3(bootstrap.top500_expected.diff)}</strong>
+              <span className="rp-check-label">Paired bootstrap · top-500 · seed set 0</span>
+              <PairedLines rows={bootstrap} metric="top500_expected" />
               <p>
-                95% CI {signed3(bootstrap.top500_expected.ci95[0])} to {signed3(bootstrap.top500_expected.ci95[1])}.
-                The top-500 advantage is the least stable result on this page. We do not sell it as a win.
+                Expected top-500 hits, model minus exploit→EPSS. This is the least stable result on this page and the
+                interval includes zero. We do not sell it as a win.
               </p>
             </article>
             <article className="rp-check">
@@ -811,7 +835,7 @@ export function ResultsPage() {
                 <code>{`.venv/bin/python -m server.services.results_service
 .venv/bin/python run_all.py
 .venv/bin/python tools/check_claims.py docs/RESULTS.md
-curl -s http://64.177.59.101/api/results | head`}</code>
+curl -s https://pancakess.work/api/results | head`}</code>
               </pre>
               <div className="rp-links">
                 <a href="/api/docs">

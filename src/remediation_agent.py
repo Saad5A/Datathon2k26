@@ -492,7 +492,8 @@ def main() -> None:
             print("validation_flags:", pb["_validation_flags"])
         print("---")
 
-    sample_path = out.parent / "sample_playbooks.json"
+    # Smoke output only, not a result: keep it out of results/.
+    sample_path = ROOT / "docs" / "examples" / "sample_playbooks_DUMMY.json"
     sample_path.parent.mkdir(parents=True, exist_ok=True)
     with sample_path.open("w", encoding="utf-8") as fh:
         json.dump([clean_playbook_for_ui(pb) for pb in playbooks], fh, indent=2)

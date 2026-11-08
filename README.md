@@ -86,8 +86,7 @@ This is a separate D3 research UI; it is not part of the pancake app. Add `?ui=1
 |---|---|---|
 | **IBM Granite embeddings** `ibm/granite-embedding-278m-multilingual` (768-d, 512 tokens) | Text score for the ranking model. The pre-registered G1/G2 test adopted G2 (C1 + Granite text) with no measurable gain over C1. | `cloud/embed_granite.py`, `src/model/granite.py`, `docs/ibm.md`, `results/granite_comparison.json` |
 | **IBM watsonx.ai** (`ca-tor`) + `ibm-watsonx-ai` 1.9.1 | Provider for a 1,966-description Granite embedding subset. | `data_cache/granite_embeddings_watsonx_subset.meta.json`; audit `audit/2026-11-08-granite-final.md` |
-| **IBM Granite instruct** `ibm/granite-3-8b-instruct` | Grounded explanations for the top-ranked CVEs via `cloud/explain_granite_top100.py` (optional). | `results/granite_explanations_top100.json`, `cloud/granite_instruct_model_id.txt` |
-| **IBM Granite 4.2 3B** via Ollama | Separate top-100 grounded summaries; does not change the ranking. | `cloud/explain_granite_ollama.py`, `results/granite_summaries_top100.json` |
+| **IBM Granite instruct** `granite4.2:3b` (IBM Granite 4.2 3B), run locally via Ollama | Plain-language summaries for the top 100 of an earlier version of the ranking (89 of the current top 100 have one); AI-generated and unaudited, with some template fallbacks. Does not change the ranking. | `cloud/explain_granite_ollama.py`, `results/granite_summaries_top100.json` |
 
 Gemini is used only as an optional executive-synthesis layer (`src/remediation_agent.py`); it is **not** IBM technology and never re-ranks CVEs. The dashboard’s upload results use the ranking’s supplied signals, not a live Gemini call.
 

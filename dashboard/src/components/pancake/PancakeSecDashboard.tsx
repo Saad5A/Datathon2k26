@@ -132,8 +132,8 @@ export function PancakeSecDashboard() {
     return () => ac.abort()
   }, [selectedId])
 
-  const graniteText =
-    brief?.granite_technical_rationale || brief?.granite?.summary || brief?.granite?.rationale || null
+  const graniteText = brief?.granite?.summary || null
+  const graniteIsAi = brief?.granite?.is_ai_generated === true
   const geminiExec =
     brief?.gemini_executive_summary || brief?.gemini?.executive_summary || brief?.gemini?.summary || null
   const playbook = brief?.gemini_triage_playbook || brief?.gemini?.playbook || null
@@ -143,16 +143,15 @@ export function PancakeSecDashboard() {
       if (!selectedId) return
       setActionBusy(true)
       setActionOpen(true)
-      setActionTitle(title || '✨ Gemini synthesizing Granite vector context…')
-      setActionBody('Gemini synthesizing Granite vector context…')
+      setActionTitle(title || 'Filling template…')
+      setActionBody('Filling template…')
       try {
         const res = await refineGeminiAction({
           cve_id: selectedId,
           action_type: kind,
-          granite_rationale: graniteText || undefined,
           user_context: userContext,
         })
-        setActionTitle(title || `✨ Gemini · ${kind}`)
+        setActionTitle(`${title || kind} · template, not AI-generated`)
         setActionBody(res.content)
       } catch (e) {
         setActionBody((e as Error).message)
@@ -160,7 +159,7 @@ export function PancakeSecDashboard() {
         setActionBusy(false)
       }
     },
-    [selectedId, graniteText],
+    [selectedId],
   )
 
   const filteredTable = useMemo(() => {
@@ -199,10 +198,12 @@ export function PancakeSecDashboard() {
     e.preventDefault()
     const q = followUp.trim()
     if (!q) return
-    void runRefine('custom_refinement', q, `✨ Gemini Analysis: "${q}"`)
+    void runRefine('custom_refinement', q, `Template answer: "${q}"`)
     setFollowUp('')
   }
 
+  const hasGemini = (summary?.multi_model?.gemini_explanations ?? 0) > 0
+  const coverage = summary?.multi_model?.granite_summary_coverage
   const p0Count = summary?.risk_bands.critical ?? null
   const rankingRows = summary?.ranking_rows ?? rows.length
 
@@ -228,23 +229,17 @@ export function PancakeSecDashboard() {
           </div>
 
           <div className="hidden items-center space-x-6 rounded-2xl border border-[#E8DFC8] bg-white/80 px-5 py-2 shadow-sm xl:flex">
-            <div className="flex items-center space-x-2.5">
-              <div className="h-2 w-2 animate-ping rounded-full bg-emerald-500" />
-              <div className="text-xs">
-                <div className="font-medium text-[#8A7968]">Audit Corpus</div>
-                <div className="mono font-bold text-[#1E1611]">
-                  {fmtInt(summary?.total_analyzed_cves ?? summary?.scores_rows)} CVEs
+            {summary?.watsonx_subset && (
+              <>
+                <div className="text-xs" title={`claim ${summary.watsonx_subset.id}`}>
+                  <div className="font-medium text-[#8A7968]">
+                    CVE descriptions embedded on IBM watsonx.ai (exploratory subset)
+                  </div>
+                  <div className="mono font-bold text-[#0F62FE]">{fmtInt(summary.watsonx_subset.value)}</div>
                 </div>
-              </div>
-            </div>
-            <div className="h-6 w-px bg-[#E8DFC8]" />
-            <div className="text-xs">
-              <div className="font-medium text-[#8A7968]">Watsonx Embeddings</div>
-              <div className="mono font-bold text-[#0F62FE]">
-                {fmtInt(summary?.token_usage.estimated_tokens_consumed)} tokens
-              </div>
-            </div>
-            <div className="h-6 w-px bg-[#E8DFC8]" />
+                <div className="h-6 w-px bg-[#E8DFC8]" />
+              </>
+            )}
             <div className="text-xs">
               <div className="font-medium text-[#8A7968]">Submitted Model</div>
               <div className="mono font-bold text-emerald-700">G2 · IBM tie-break</div>
@@ -311,7 +306,7 @@ export function PancakeSecDashboard() {
             <div>
               <h2 className="text-sm font-bold text-[#1E1611]">The Biggest Risks Rise to the Top</h2>
               <p className="text-xs text-[#7A6B5D]">
-                Interactive CVE stack from live `/api/ranking/cves` · Granite technical → Gemini triage
+                Interactive CVE stack from live `/api/ranking/cves` · ranking model + Granite summaries (AI-generated)
               </p>
             </div>
           </div>
@@ -320,17 +315,19 @@ export function PancakeSecDashboard() {
               <div className="h-2.5 w-2.5 rounded-full bg-[#0F62FE]" />
               <div className="text-xs">
                 <span className="font-bold text-[#0F62FE]">IBM Granite</span>
-                <span className="ml-1 hidden text-[#5B6B82] sm:inline">· Vector Prioritization</span>
+                <span className="ml-1 hidden text-[#5B6B82] sm:inline">· Text embeddings + summaries</span>
               </div>
             </div>
+            {hasGemini && (<>
             <span className="text-xs font-bold text-[#A89886]">→</span>
             <div className="flex flex-1 items-center space-x-2.5 rounded-xl border border-[#6929C4]/20 bg-[#6929C4]/10 px-3 py-1.5 md:flex-initial">
               <div className="h-2.5 w-2.5 rounded-full bg-[#6929C4]" />
               <div className="text-xs">
                 <span className="font-bold text-[#6929C4]">Google Gemini</span>
-                <span className="ml-1 hidden text-[#6D5D80] sm:inline">· Triage & Playbooks</span>
+                <span className="ml-1 hidden text-[#6D5D80] sm:inline">· Executive brief (AI-generated)</span>
               </div>
             </div>
+            </>)}
           </div>
         </section>
 
@@ -409,7 +406,7 @@ export function PancakeSecDashboard() {
                       </span>
                       {selectedStack?.publicExploit && (
                         <span className="rounded-full bg-emerald-100 px-2 py-0.5 text-[11px] font-medium text-emerald-800">
-                          Public Exploit Active
+                          Public exploit code
                         </span>
                       )}
                     </div>
@@ -418,7 +415,7 @@ export function PancakeSecDashboard() {
                     </h3>
                   </div>
                   <div className="text-right">
-                    <div className="text-[10px] font-bold uppercase text-[#8A7968]">Exploit Score</div>
+                    <div className="text-[10px] font-bold uppercase text-[#8A7968]">Priority score</div>
                     <div className="mono text-xl font-extrabold text-[#8B3A0F]">
                       {selectedStack?.score != null ? selectedStack.score.toFixed(3) : '—'}
                     </div>
@@ -426,7 +423,7 @@ export function PancakeSecDashboard() {
                 </div>
 
                 <div className="custom-scroll flex flex-1 flex-col gap-4 overflow-y-auto py-4 pr-1">
-                  {briefLoading && <p className="text-xs text-[#7A6B5D]">Loading Granite + Gemini briefing…</p>}
+                  {briefLoading && <p className="text-xs text-[#7A6B5D]">Loading briefing…</p>}
                   {briefError && !briefLoading && (
                     <p className="rounded-xl border border-amber-200 bg-amber-50 px-3 py-2 text-xs text-amber-900">
                       {briefError}
@@ -439,17 +436,29 @@ export function PancakeSecDashboard() {
                         <div className="flex h-3 w-3 items-center justify-center rounded bg-[#0F62FE] text-[8px] font-bold text-white">
                           G
                         </div>
-                        <span className="text-xs font-bold text-[#0F62FE]">IBM Granite Core (watsonx.ai)</span>
+                        <span className="text-xs font-bold text-[#0F62FE]">
+                          {graniteIsAi ? 'IBM Granite (AI-generated summary)' : 'Template (no AI)'}
+                        </span>
                       </div>
                       <span className="mono rounded-md border border-[#D0E2FF] bg-white px-2 py-0.5 text-[10px] text-[#587399]">
-                        granite-embedding-278m
+                        {graniteIsAi ? brief?.granite?.model_id || 'granite' : 'template'}
                       </span>
                     </div>
                     <div className="text-xs leading-relaxed text-[#243552]">
-                      {graniteText || 'No Granite technical rationale for this CVE yet.'}
+                      {graniteText || 'No Granite summary for this CVE.'}
                     </div>
+                    {graniteText && (
+                      <p className="mt-2 text-[10px] text-[#587399]">
+                        Written for an earlier version of the ranking; rank and reasons shown here come from the
+                        current model.
+                        {coverage?.current_top100
+                          ? ` Covers ${coverage.current_top100_with_summary ?? 0} of the current top ${coverage.current_top100}.`
+                          : ''}
+                      </p>
+                    )}
                   </div>
 
+                  {hasGemini && (
                   <div className="relative rounded-2xl border border-[#E8D9FF] bg-[#FAF5FF] p-4">
                     <div className="mb-2 flex items-center justify-between">
                       <div className="flex items-center space-x-2">
@@ -457,13 +466,13 @@ export function PancakeSecDashboard() {
                           ✨
                         </div>
                         <span className="text-xs font-bold text-[#6929C4]">
-                          Google Gemini · Executive Synthesis
+                          Google Gemini · Executive Brief (AI-generated)
                         </span>
                       </div>
                     </div>
                     <div className="mb-3 text-xs font-medium leading-relaxed text-[#3E275C]">
                       <strong>Executive Brief:</strong>{' '}
-                      {geminiExec || 'No Gemini executive synthesis for this CVE yet.'}
+                      {geminiExec || 'No live Gemini brief is loaded for this CVE.'}
                     </div>
                     <div className="mb-2 text-[10px] font-bold uppercase tracking-wide text-[#512F7A]">
                       Automated Triage Playbook
@@ -500,6 +509,7 @@ export function PancakeSecDashboard() {
                       )}
                     </div>
                   </div>
+                  )}
 
                   {selectedId && (
                     <SimilarCves
@@ -511,8 +521,8 @@ export function PancakeSecDashboard() {
 
                   <div className="rounded-2xl border border-[#E8DFC8] bg-white/80 p-3.5">
                     <div className="mb-2 flex items-center justify-between text-[11px] font-bold uppercase tracking-wider text-[#7A6B5D]">
-                      <span>⚡ Interactive Gemini Actions</span>
-                      <span className="font-normal text-[#A89886]">Live refine-action</span>
+                      <span>Triage templates</span>
+                      <span className="font-normal text-[#A89886]">Not AI-generated · no model called</span>
                     </div>
                     <div className="grid grid-cols-3 gap-2">
                       <button
@@ -547,13 +557,13 @@ export function PancakeSecDashboard() {
                         type="button"
                         disabled={actionBusy || !selectedId}
                         onClick={() =>
-                          void runRefine('granite_divergence', undefined, '🥊 Why Granite Overruled CVSS')
+                          void runRefine('granite_divergence', undefined, 'Explain this rank')
                         }
                         className="group rounded-xl border border-[#E8DFC8] p-2 text-left transition hover:border-[#8B3A0F] hover:bg-[#FAF4EB] disabled:opacity-50"
                       >
                         <div className="flex items-center space-x-1 text-xs font-bold text-[#451A03]">
                           <GitCommit className="h-3.5 w-3.5 text-purple-700" />
-                          <span>Why Granite?</span>
+                          <span>Explain this rank</span>
                         </div>
                         <div className="mt-0.5 text-[10px] text-[#8A7968]">Model vs CVSS</div>
                       </button>
@@ -562,7 +572,7 @@ export function PancakeSecDashboard() {
                     {actionOpen && (
                       <div className="relative mt-3 rounded-xl bg-[#241A14] p-3 font-mono text-xs text-white">
                         <div className="mb-1.5 flex items-center justify-between border-b border-[#3D2C22] pb-1 text-[11px] text-[#C4A482]">
-                          <span>{actionBusy ? 'Gemini synthesizing Granite vector context…' : actionTitle}</span>
+                          <span>{actionBusy ? 'Filling template…' : actionTitle}</span>
                           <button
                             type="button"
                             className="flex items-center space-x-1 text-[#F5A623] hover:underline"
@@ -581,7 +591,7 @@ export function PancakeSecDashboard() {
                     <input
                       value={followUp}
                       onChange={(e) => setFollowUp(e.target.value)}
-                      placeholder="Ask Gemini follow-up (e.g. 'What if we can't patch before Monday?')…"
+                      placeholder="Follow-up, template answer (e.g. 'What if we can't patch before Monday?')…"
                       className="flex-1 rounded-xl border border-[#E8DFC8] bg-white px-3.5 py-2.5 text-xs transition focus:border-[#8B3A0F] focus:outline-none"
                     />
                     <button
@@ -632,8 +642,8 @@ export function PancakeSecDashboard() {
                     <th className="px-3 py-3">Rank</th>
                     <th className="px-3 py-3">CVE ID</th>
                     <th className="px-3 py-3">Priority</th>
-                    <th className="px-3 py-3">Exploit Score</th>
-                    <th className="px-3 py-3">Public Weaponization</th>
+                    <th className="px-3 py-3">Priority score</th>
+                    <th className="px-3 py-3">Public exploit code</th>
                     <th className="px-3 py-3">Primary Vector</th>
                     <th className="px-3 py-3 text-right">Action</th>
                   </tr>
@@ -674,7 +684,7 @@ export function PancakeSecDashboard() {
                                 : 'bg-slate-100 text-slate-500'
                             }`}
                           >
-                            {row.publicExploit ? 'Weaponized' : 'None Detected'}
+                            {row.publicExploit ? 'Public exploit code' : 'None recorded'}
                           </span>
                         </td>
                         <td className="px-3 py-3 text-[#5A4B40]">{row.vector}</td>

@@ -203,9 +203,23 @@ def build_results() -> dict[str, Any]:
         )
 
     selection = granite.get("selection") or {}
-    paired = ((candidates.get("paired_bootstrap_vs_exploit_then_epss") or {}).get("fold1") or {}).get(
-        "seed_median"
-    ) or {}
+    # Seed set 0 only: its CI bounds are verified claims; the seed-median bounds are not.
+    paired_src = candidates.get("paired_bootstrap_vs_exploit_then_epss") or {}
+    paired = []
+    for fold_key in ("fold1", "fold2"):
+        seed0 = (paired_src.get(fold_key) or {}).get("seed_set_0") or {}
+        block: dict[str, Any] = {"fold": fold_key, "seed_set": 0}
+        for metric in ("auc", "top500_expected"):
+            m = seed0.get(metric) or {}
+            ci = m.get("ci95") or [None, None]
+            ids = {k: f"p3.{fold_key}.paired.{metric}.{k}.seed0" for k in ("diff", "ci95_lo", "ci95_hi")}
+            block[metric] = {
+                "diff": m.get("diff"),
+                "ci95": [ci[0], ci[1]],
+                "claims": ids,
+                "verified": all(claims.get(i) == "verified" for i in ids.values()),
+            }
+        paired.append(block)
     permutation = (candidates.get("permutation") or {}).get("fold1") or {}
     unseen = ((candidates.get("unseen_assigner") or {}).get("fold1") or {}).get("seed_median") or {}
 
@@ -222,10 +236,7 @@ def build_results() -> dict[str, Any]:
         "folds": folds,
         "ablations": ablations,
         "significance": {
-            "paired_bootstrap_vs_exploit_then_epss": {
-                "fold": "fold1",
-                **paired,
-            },
+            "paired_bootstrap_vs_exploit_then_epss": paired,
             "permutation": {
                 "fold": "fold1",
                 "mean": permutation.get("mean"),

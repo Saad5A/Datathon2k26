@@ -44,10 +44,11 @@ export interface AblationRow {
 }
 
 export interface BootstrapBlock {
-  diff: number
-  ci95: [number, number]
-  share_resamples_diff_gt_0: number
-  share_resamples_diff_lt_0: number
+  diff: number | null
+  ci95: [number | null, number | null]
+  claims: Record<'diff' | 'ci95_lo' | 'ci95_hi', string>
+  /** True only when diff and both CI bounds are verified claims (read from the ledger at build/serve time). */
+  verified: boolean
 }
 
 export interface ResultsPayload {
@@ -63,11 +64,13 @@ export interface ResultsPayload {
   folds: FoldRow[]
   ablations: AblationRow[]
   significance: {
+    /** Seed set 0, one entry per fold. */
     paired_bootstrap_vs_exploit_then_epss: {
       fold: string
+      seed_set: number
       auc: BootstrapBlock
       top500_expected: BootstrapBlock
-    }
+    }[]
     permutation: {
       fold: string
       mean: number | null

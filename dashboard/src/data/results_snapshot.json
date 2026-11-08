@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-08T10:30:04+00:00",
+  "generated_at": "2026-11-08T15:16:30+00:00",
   "submitted": {
     "model": "G2",
     "base": "C1",
@@ -465,27 +465,68 @@
     }
   ],
   "significance": {
-    "paired_bootstrap_vs_exploit_then_epss": {
-      "fold": "fold1",
-      "auc": {
-        "diff": 0.09207956302242115,
-        "ci95": [
-          -0.003362561998443969,
-          0.18914242991578106
-        ],
-        "share_resamples_diff_gt_0": 0.971,
-        "share_resamples_diff_lt_0": 0.029
+    "paired_bootstrap_vs_exploit_then_epss": [
+      {
+        "fold": "fold1",
+        "seed_set": 0,
+        "auc": {
+          "diff": 0.0839173493986427,
+          "ci95": [
+            -0.014963181979774207,
+            0.1814056488743325
+          ],
+          "claims": {
+            "diff": "p3.fold1.paired.auc.diff.seed0",
+            "ci95_lo": "p3.fold1.paired.auc.ci95_lo.seed0",
+            "ci95_hi": "p3.fold1.paired.auc.ci95_hi.seed0"
+          },
+          "verified": true
+        },
+        "top500_expected": {
+          "diff": -0.3580246913580254,
+          "ci95": [
+            -8.086176284083702,
+            6.0
+          ],
+          "claims": {
+            "diff": "p3.fold1.paired.top500_expected.diff.seed0",
+            "ci95_lo": "p3.fold1.paired.top500_expected.ci95_lo.seed0",
+            "ci95_hi": "p3.fold1.paired.top500_expected.ci95_hi.seed0"
+          },
+          "verified": true
+        }
       },
-      "top500_expected": {
-        "diff": 3.6419753086419746,
-        "ci95": [
-          -3.3008698453608236,
-          10.424188311688306
-        ],
-        "share_resamples_diff_gt_0": 0.822,
-        "share_resamples_diff_lt_0": 0.153
+      {
+        "fold": "fold2",
+        "seed_set": 0,
+        "auc": {
+          "diff": 0.08228787229483592,
+          "ci95": [
+            -0.02707690586209237,
+            0.19972759875751703
+          ],
+          "claims": {
+            "diff": "p3.fold2.paired.auc.diff.seed0",
+            "ci95_lo": "p3.fold2.paired.auc.ci95_lo.seed0",
+            "ci95_hi": "p3.fold2.paired.auc.ci95_hi.seed0"
+          },
+          "verified": true
+        },
+        "top500_expected": {
+          "diff": -3.5999999999999996,
+          "ci95": [
+            -8.83392857142857,
+            1.0
+          ],
+          "claims": {
+            "diff": "p3.fold2.paired.top500_expected.diff.seed0",
+            "ci95_lo": "p3.fold2.paired.top500_expected.ci95_lo.seed0",
+            "ci95_hi": "p3.fold2.paired.top500_expected.ci95_hi.seed0"
+          },
+          "verified": true
+        }
       }
-    },
+    ],
     "permutation": {
       "fold": "fold1",
       "mean": 0.5319070658392362,

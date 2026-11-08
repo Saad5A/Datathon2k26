@@ -9,6 +9,7 @@ from __future__ import annotations
 import json
 import logging
 import math
+import re
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -22,12 +23,19 @@ ROOT = Path(__file__).resolve().parents[2]
 RESULTS = ROOT / "results"
 CACHE = ROOT / "data_cache"
 
+_RANK_WORDS = re.compile(r"\b(rank|priority|P[0-3])\b", re.IGNORECASE)
+
 PRIORITY_BAND = {"P0": "critical", "P1": "high", "P2": "med", "P3": "low"}
 
 
 def is_live_gemini_record(record: Any) -> bool:
-    """Accept only records carrying explicit live-provider provenance."""
-    if not isinstance(record, dict):
+    """Accept only records carrying explicit live-provider provenance.
+
+    Records with ``source_granite`` come from scripts/build_gemini_from_granite.py,
+    a Python string template fed by the offline template file (no Gemini call), so
+    they are rejected even though they carry ``generation_mode: "live"``.
+    """
+    if not isinstance(record, dict) or record.get("source_granite"):
         return False
     return (
         str(record.get("provider") or "").strip().lower() == "gemini"
@@ -44,13 +52,14 @@ class DataService:
         self.ranking: pd.DataFrame = pd.DataFrame()
         self.comparison: dict[str, Any] = {}
         self.embed_meta: dict[str, Any] = {}
+        self.ranking_embed_meta: dict[str, Any] = {}  # full-corpus embeddings behind the G2 text score
+        self.explanations_meta: dict[str, Any] = {}
+        self.explanations_coverage: dict[str, Any] = {}
         self.explanations: dict[str, Any] = {}
-        self.playbooks: dict[str, Any] = {}
         self.gemini_explanations: dict[str, Any] = {}
         self.gemini_playbooks: dict[str, Any] = {}
         self.gemini_comparison: dict[str, Any] = {}
         self.gemini_eval: dict[str, Any] = {}
-        self.gemini_refine_cache: dict[str, Any] = {}
         self.embed_ids: np.ndarray = np.array([], dtype=object)
         self.embed_matrix: np.ndarray | None = None  # (n, 768) float32, L2-normalised when present
         self.similar_ids: np.ndarray = np.array([], dtype=object)
@@ -67,13 +76,12 @@ class DataService:
         self._load_ranking()
         self._load_json(RESULTS / "granite_subset_comparison.json", "comparison")
         self._load_json(CACHE / "granite_embeddings_watsonx_subset.meta.json", "embed_meta")
+        self._load_json(CACHE / "granite_embeddings.meta.json", "ranking_embed_meta")
         self._load_explanations()
-        self._load_playbooks()
         self._load_gemini_explanations()
         self._load_gemini_playbooks()
         self._load_json(RESULTS / "gemini_subset_comparison.json", "gemini_comparison")
         self._load_json(RESULTS / "agent_eval_report.json", "gemini_eval")
-        self._load_gemini_refine_cache()
         self._load_embeddings()
         self._load_similarity_index()
         log.info(
@@ -82,7 +90,7 @@ class DataService:
             len(self.scores),
             len(self.explanations),
             len(self.gemini_explanations),
-            len(self.playbooks),
+            len(self.gemini_playbooks),
             0 if self.embed_matrix is None else len(self.embed_ids),
             0 if self.similar_matrix is None else len(self.similar_ids),
             len(self.load_errors),
@@ -155,36 +163,59 @@ class DataService:
             self.ranking = pd.DataFrame()
 
     def _load_explanations(self) -> None:
-        path = RESULTS / "granite_explanations_top100.json"
+        """Granite instruct summaries (results/granite_summaries_top100.json).
+
+        That file was built on an earlier (pre-G2) ranking, so only the text is served:
+        ``summary`` and a ``suggested_action`` that names no rank/priority. Rank, priority
+        and reasons always come from scores_2026.csv. Rows whose ``summary_source`` is not
+        "granite" are template fallbacks (``is_ai_generated: False``).
+        """
+        path = RESULTS / "granite_summaries_top100.json"
+        self.explanations = {}
+        self.explanations_meta = {}
+        self.explanations_coverage = {}
         if not path.is_file():
             self._note(path, "missing")
-            self.explanations = {}
             return
         try:
             raw = json.loads(path.read_text(encoding="utf-8"))
-            if isinstance(raw, dict):
-                self.explanations = raw
-            elif isinstance(raw, list):
-                self.explanations = {
-                    str(item.get("cve_id")): item for item in raw if isinstance(item, dict) and item.get("cve_id")
+            meta = raw.get("meta") or {}
+            self.explanations_meta = meta
+            for row in raw.get("results") or []:
+                if not isinstance(row, dict) or not row.get("cve_id"):
+                    continue
+                is_granite = row.get("summary_source") == "granite"
+                action = row.get("suggested_action")
+                if action and _RANK_WORDS.search(str(action)):
+                    action = None
+                self.explanations[str(row["cve_id"])] = {
+                    "cve_id": row["cve_id"],
+                    "explanation": row.get("summary"),
+                    "suggested_action": action,
+                    "source": "granite" if is_granite else "template",
+                    "provider": "granite" if is_granite else "template",
+                    "model_id": (row.get("model_id") or meta.get("model_id")) if is_granite else None,
+                    "is_ai_generated": is_granite,
+                    "audited": False,
+                    "label": ("AI-generated (IBM Granite instruct, run locally), unaudited"
+                              if is_granite else "Template (no AI): Granite output failed validation")
+                    + "; written for an earlier version of the ranking",
+                    "generated_at": row.get("generated_at"),
                 }
-            else:
-                self.explanations = {}
+            top100: set[str] = set()
+            if not self.ranking.empty and "cve_id" in self.ranking.columns:
+                r = self.ranking.sort_values("rank") if "rank" in self.ranking.columns else self.ranking
+                top100 = set(r["cve_id"].astype(str).head(100))
+            covered = len(top100 & set(self.explanations))
+            self.explanations_coverage = {
+                "current_top100_with_summary": covered,
+                "current_top100": len(top100),
+                "summaries_total": len(self.explanations),
+                "note": "Summaries were written for an earlier version of the ranking.",
+            }
         except Exception as exc:  # noqa: BLE001
             self._note(path, exc)
             self.explanations = {}
-
-    def _load_playbooks(self) -> None:
-        path = RESULTS / "sample_playbooks.json"
-        if not path.is_file():
-            self._note(path, "missing")
-            self.playbooks = {}
-            return
-        try:
-            self.playbooks = self._as_cve_map(json.loads(path.read_text(encoding="utf-8")))
-        except Exception as exc:  # noqa: BLE001
-            self._note(path, exc)
-            self.playbooks = {}
 
     def _load_gemini_explanations(self) -> None:
         path = RESULTS / "gemini_explanations_top100.json"
@@ -215,19 +246,6 @@ class DataService:
         except Exception as exc:  # noqa: BLE001
             self._note(path, exc)
             self.gemini_playbooks = {}
-
-    def _load_gemini_refine_cache(self) -> None:
-        path = RESULTS / "gemini_refine_cache.json"
-        if not path.is_file():
-            self._note(path, "missing")
-            self.gemini_refine_cache = {}
-            return
-        try:
-            raw = json.loads(path.read_text(encoding="utf-8"))
-            self.gemini_refine_cache = raw if isinstance(raw, dict) else {}
-        except Exception as exc:  # noqa: BLE001
-            self._note(path, exc)
-            self.gemini_refine_cache = {}
 
     @staticmethod
     def _as_cve_map(raw: Any) -> dict[str, Any]:

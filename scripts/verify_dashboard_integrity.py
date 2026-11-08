@@ -41,7 +41,8 @@ def row(label: str, file_v, api_v, ui_bind: str, ok: bool) -> None:
 def main() -> int:
     meta = json.loads((ROOT / "data_cache" / "granite_embeddings_watsonx_subset.meta.json").read_text(encoding="utf-8"))
     comparison = json.loads((ROOT / "results" / "granite_subset_comparison.json").read_text(encoding="utf-8"))
-    explanations = json.loads((ROOT / "results" / "granite_explanations_top100.json").read_text(encoding="utf-8"))
+    summaries = json.loads((ROOT / "results" / "granite_summaries_top100.json").read_text(encoding="utf-8"))
+    explanations = {str(r["cve_id"]): r for r in summaries.get("results") or [] if r.get("cve_id")}
     top = pd.read_csv(ROOT / "results" / "top500.csv")
     scores = pd.read_csv(ROOT / "results" / "scores_2026.csv")
     merged = top.merge(scores, on="cve_id", how="left").sort_values("rank")
@@ -57,23 +58,23 @@ def main() -> int:
         "total_analyzed_cves",
         meta["n_rows"],
         summary["total_analyzed_cves"],
-        "KpiTile 'CVEs analyzed' ← summary.total_analyzed_cves",
+        "not shown in the UI (watsonx subset row count)",
         summary["total_analyzed_cves"] == meta["n_rows"],
     )
     row(
         "estimated_tokens_consumed",
         meta["estimated_tokens_this_run"],
         summary["token_usage"]["estimated_tokens_consumed"],
-        "KpiTile 'Watsonx tokens used' ← summary.token_usage.estimated_tokens_consumed (exact int)",
+        "not shown in the UI (no claim for it)",
         summary["token_usage"]["estimated_tokens_consumed"] == meta["estimated_tokens_this_run"],
     )
     mean = comparison["selection_hint"]["mean_delta_auc_granite_minus_tfidf"]
     row(
-        "mean_delta_auc_granite_minus_tfidf",
-        mean,
+        "mean_delta_auc_granite_minus_tfidf withheld",
+        f"{mean} (exploratory subset, unverified; audit/2026-11-07-granite-subset.md)",
         summary["comparison"]["mean_delta_auc_granite_minus_tfidf"],
-        "KpiTile 'Granite ΔAUC vs TF-IDF' ← summary.comparison.mean_delta_auc…",
-        abs(float(summary["comparison"]["mean_delta_auc_granite_minus_tfidf"]) - float(mean)) < 1e-12,
+        "not shown in the UI; API must return null",
+        summary["comparison"]["mean_delta_auc_granite_minus_tfidf"] is None,
     )
     p0_file = int((merged["priority"] == "P0").sum())
     row(
@@ -103,14 +104,23 @@ def main() -> int:
             ok,
         )
 
-    file_text = explanations[first_expl_id].get("explanation")
+    file_text = explanations[first_expl_id].get("summary")
     api_text = (expl.get("granite") or {}).get("summary")
     row(
         f"explanation {first_expl_id}",
         (file_text or "")[:120] + ("…" if file_text and len(file_text) > 120 else ""),
         (api_text or "")[:120] + ("…" if api_text and len(api_text) > 120 else ""),
-        "ExplanationModal granite.summary ← results/granite_explanations_top100.json",
+        "CVE panel granite.summary ← results/granite_summaries_top100.json (summary text only)",
         file_text == api_text,
+    )
+    # Summaries were written for an earlier ranking: rank must come from scores_2026.csv, not the summary file.
+    score_rank = scores.loc[scores["cve_id"] == first_expl_id, "rank"]
+    row(
+        f"explanation {first_expl_id} rank source",
+        f"scores_2026.csv rank={int(score_rank.iloc[0]) if len(score_rank) else None}",
+        f"api rank={expl.get('rank')}",
+        "rank/priority/reasons ← scores_2026.csv only",
+        len(score_rank) > 0 and expl.get("rank") == int(score_rank.iloc[0]),
     )
 
     # Hardcoded smell checks on API payload

@@ -1,19 +1,26 @@
 """High-level summary metrics and token stats — values come only from loaded files."""
 from __future__ import annotations
 
-from typing import Any
+import json
 
 from fastapi import APIRouter
 
-from server.services.data_service import store
+from server.services.data_service import RESULTS, store
 
 router = APIRouter(tags=["overview"])
 
+CLAIMS_GRANITE_SUBSET = RESULTS / "claims_model_granite_subset.json"
 
-def _fold_delta(folds: dict[str, Any], fold: str) -> float | None:
-    models = ((folds.get(fold) or {}).get("models") or {})
-    delta = models.get("delta_auc_granite_minus_tfidf")
-    return float(delta) if isinstance(delta, (int, float)) else None
+
+def _verified_claim(claim_id: str) -> dict | None:
+    """Claim value read at request time; None unless its ledger status is verified."""
+    try:
+        claim = json.loads(CLAIMS_GRANITE_SUBSET.read_text(encoding="utf-8")).get(claim_id) or {}
+    except (OSError, ValueError):
+        return None
+    if claim.get("status") != "verified":
+        return None
+    return {"id": claim_id, "value": claim.get("value"), "verified_by": claim.get("verified_by")}
 
 
 @router.get("/api/stats/summary")
@@ -24,7 +31,6 @@ def stats_summary() -> dict:
     scores = store.scores
     has_live_gemini = bool(store.gemini_explanations or store.gemini_playbooks)
     folds = comparison.get("folds") or {}
-    hint = comparison.get("selection_hint") or {}
 
     # Prefer embedding subset row count from meta; else comparison n_vectors; else ranking/scores lengths.
     analyzed = None
@@ -39,14 +45,6 @@ def stats_summary() -> dict:
 
     tokens = meta.get("estimated_tokens_this_run")
     tokens_i = int(tokens) if tokens is not None else None
-
-    fold1_delta = _fold_delta(folds, "fold1")
-    fold2_delta = _fold_delta(folds, "fold2")
-    mean_delta = hint.get("mean_delta_auc_granite_minus_tfidf")
-    if mean_delta is None and fold1_delta is not None and fold2_delta is not None:
-        mean_delta = (fold1_delta + fold2_delta) / 2.0
-    elif mean_delta is not None:
-        mean_delta = float(mean_delta)
 
     return {
         "total_analyzed_cves": analyzed,
@@ -68,12 +66,12 @@ def stats_summary() -> dict:
             "n_vectors": comparison.get("n_vectors"),
             "embeddings_files": comparison.get("embeddings_files"),
             "folds_present": sorted(folds.keys()),
-            "fold1_delta_auc_granite_minus_tfidf": fold1_delta,
-            "fold2_delta_auc_granite_minus_tfidf": fold2_delta,
-            "mean_delta_auc_granite_minus_tfidf": mean_delta,
-            "prefer": hint.get("prefer"),
-            "rule": hint.get("rule"),
-            "note": comparison.get("note"),
+            # Subset deltas withheld: label-selected subset, not comparable (audit/2026-11-07-granite-subset.md).
+            "fold1_delta_auc_granite_minus_tfidf": None,
+            "fold2_delta_auc_granite_minus_tfidf": None,
+            "mean_delta_auc_granite_minus_tfidf": None,
+            "note": "Exploratory subset, not comparable; see audit/2026-11-07-granite-subset.md. "
+            "Granite text was adopted by a pre-registered rule with no measurable gain.",
         },
         # Back-compat alias used by older UI bindings
         "granite_subset": {
@@ -89,7 +87,12 @@ def stats_summary() -> dict:
             "gemini_eval": "results/agent_eval_report.json",
         },
         "multi_model": {
-            "granite_explanations": len(store.explanations),
+            # Plain file counts, unaudited; summaries were written for an earlier ranking version.
+            "granite_explanations_unaudited": sum(1 for e in store.explanations.values() if e.get("source") == "granite"),
+            "granite_template_fallbacks_unaudited": sum(
+                1 for e in store.explanations.values() if e.get("source") == "template"
+            ),
+            "granite_summary_coverage": store.explanations_coverage,
             "gemini_explanations": len(store.gemini_explanations),
             "gemini_playbooks": len(store.gemini_playbooks),
             "gemini_eval_pass_rate": (store.gemini_eval or {}).get("overall_pass_rate") if has_live_gemini else None,
@@ -97,5 +100,6 @@ def stats_summary() -> dict:
             "gemini_avg_latency_seconds": (store.gemini_eval or {}).get("avg_latency_seconds") if has_live_gemini else None,
             "granite_embedding_tokens": tokens_i,
         },
+        "watsonx_subset": _verified_claim("p6.granite_subset.n_vectors"),
         "load_errors": list(store.load_errors),
     }

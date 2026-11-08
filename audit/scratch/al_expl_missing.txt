@@ -1,0 +1,1 @@
+{"detail":"No explanation or playbook for CVE-2026-99999999"} HTTP404

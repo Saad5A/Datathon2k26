@@ -237,7 +237,7 @@ export function RankedTable({ rows, filters, onFiltersChange, datasetKey, onSele
       },
       {
         accessorKey: 'score',
-        header: 'Exploit score',
+        header: 'Priority score',
         size: 160,
         cell: ({ row }) => {
           const r = row.original

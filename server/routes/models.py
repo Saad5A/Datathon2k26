@@ -7,6 +7,9 @@ from server.services.data_service import store
 
 router = APIRouter(tags=["models"])
 
+# Documented in docs/ibm.md; used when the untracked data_cache meta file is absent (fresh clone/deploy).
+DOCUMENTED_EMBEDDING_MODEL_ID = "ibm-granite/granite-embedding-278m-multilingual"
+
 
 @router.get("/api/models/comparison")
 def models_comparison() -> dict:
@@ -16,10 +19,9 @@ def models_comparison() -> dict:
     has_live_gemini = bool(store.gemini_explanations or store.gemini_playbooks)
     gcomp = (store.gemini_comparison or {}) if has_live_gemini else {}
     geval = (store.gemini_eval or {}) if has_live_gemini else {}
-    granite = store.comparison or {}
-    meta = store.embed_meta or {}
-    hint = granite.get("selection_hint") or {}
-    providers = gcomp.get("providers") or {}
+    rmeta = store.ranking_embed_meta or {}
+    emeta = store.explanations_meta or {}
+    expl = list(store.explanations.values())
     h2h = gcomp.get("head_to_head") or {}
     live_records = list(store.gemini_explanations.values()) + list(store.gemini_playbooks.values())
     live_model_ids = {str(row.get("model_id")) for row in live_records if row.get("model_id")}
@@ -30,12 +32,23 @@ def models_comparison() -> dict:
         "baseline": gcomp.get("baseline")
         or "LightGBM/TF-IDF ranking (results/scores_2026.csv — audited, read-only)",
         "granite": {
-            **(providers.get("granite") or {}),
-            "n_explanations_loaded": len(store.explanations),
-            "embedding_tokens": meta.get("estimated_tokens_this_run"),
-            "n_rows_embedded": meta.get("n_rows"),
-            "mean_delta_auc_vs_tfidf": hint.get("mean_delta_auc_granite_minus_tfidf"),
-            "model_id": meta.get("model_id") or (providers.get("granite") or {}).get("model_id"),
+            "embedding_model_id": rmeta.get("model_id") or DOCUMENTED_EMBEDDING_MODEL_ID,
+            "embedding_model_id_source": "data_cache/granite_embeddings.meta.json"
+            if rmeta.get("model_id")
+            else "docs/ibm.md (embedding meta file not present on this server)",
+            "embedding_role": "Description embeddings feed the ranking model's text score (submitted model G2).",
+            "adoption_note": "Granite text was adopted by a pre-registered rule; no measurable gain over TF-IDF.",
+            "instruct_model_id": emeta.get("model_id"),
+            "instruct_role": "Granite instruct, run locally, wrote plain-language summaries for an earlier "
+            "version of the ranking. AI-generated, unaudited.",
+            "summary_coverage": store.explanations_coverage,
+            "unaudited_file_counts": {
+                "granite_summaries": sum(1 for e in expl if e.get("source") == "granite"),
+                "template_fallbacks": sum(1 for e in expl if e.get("source") == "template"),
+            },
+            "model_id": rmeta.get("model_id") or DOCUMENTED_EMBEDDING_MODEL_ID,
+            "mean_delta_auc_vs_tfidf": None,
+            "subset_comparison_note": "Exploratory subset, not comparable; see audit/2026-11-07-granite-subset.md.",
         },
         "gemini": {
             "provider": live_provider,
@@ -62,8 +75,8 @@ def models_comparison() -> dict:
         or [
             "results/gemini_subset_comparison.json",
             "results/agent_eval_report.json",
-            "results/granite_subset_comparison.json",
-            "data_cache/granite_embeddings_watsonx_subset.meta.json",
+            "results/granite_summaries_top100.json",
+            "data_cache/granite_embeddings.meta.json",
         ],
         "load_errors": list(store.load_errors),
     }

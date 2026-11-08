@@ -14,35 +14,29 @@ export interface ExplanationModalProps {
 
 /** Unified payload may include top-level linked fields from the dual-provider API. */
 type UnifiedExplanation = ExplanationPayload & {
-  granite_technical_rationale?: string | null
-  gemini_technical_summary?: string | null
   gemini_executive_summary?: string | null
   gemini_triage_playbook?: {
     containment?: string | null
     remediation?: string | null
     verification?: string | null
   } | null
-  gemini?: ExplanationPayload['gemini'] & { technical_summary?: string | null }
 }
 
 export function ExplanationModal({ cveId, open, onOpenChange }: ExplanationModalProps) {
   const [data, setData] = useState<UnifiedExplanation | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
-  const [showRawGranite, setShowRawGranite] = useState(false)
 
   useEffect(() => {
     if (!open || !cveId) {
       setData(null)
       setError(null)
-      setShowRawGranite(false)
       return
     }
     const ac = new AbortController()
     setLoading(true)
     setError(null)
     setData(null)
-    setShowRawGranite(false)
     fetchExplanation(cveId, ac.signal, 'both')
       .then((payload) => {
         setData(payload as UnifiedExplanation)
@@ -52,7 +46,7 @@ export function ExplanationModal({ cveId, open, onOpenChange }: ExplanationModal
         if ((e as Error).name === 'AbortError') return
         const msg =
           e instanceof ApiError && e.status === 404
-            ? `No Granite/Gemini synthesis for ${cveId} yet.`
+            ? `No summary for ${cveId} yet.`
             : (e as Error).message
         setError(msg)
         setLoading(false)
@@ -60,10 +54,8 @@ export function ExplanationModal({ cveId, open, onOpenChange }: ExplanationModal
     return () => ac.abort()
   }, [open, cveId])
 
-  const rawTech =
-    data?.granite_technical_rationale || data?.granite?.summary || data?.granite?.rationale || null
-  const techSummary =
-    data?.gemini_technical_summary || data?.gemini?.technical_summary || null
+  const rawTech = data?.granite?.summary || null
+  const graniteIsAi = data?.granite?.is_ai_generated === true
   const executive =
     data?.gemini_executive_summary || data?.gemini?.executive_summary || data?.gemini?.summary || null
   const playbook = data?.gemini_triage_playbook || data?.gemini?.playbook || null
@@ -84,7 +76,7 @@ export function ExplanationModal({ cveId, open, onOpenChange }: ExplanationModal
             <div className="min-w-0 flex-1">
               <DialogTitle className="font-mono text-base">{cveId ?? 'CVE'}</DialogTitle>
               <DialogDescription>
-                Granite technical risk → Gemini technical summary + executive triage
+                Granite instruct summary (AI-generated, unaudited) and any Gemini executive brief
               </DialogDescription>
             </div>
             {data?.priority && <Badge className="shrink-0">{data.priority}</Badge>}
@@ -92,7 +84,7 @@ export function ExplanationModal({ cveId, open, onOpenChange }: ExplanationModal
 
           {loading && (
             <p className="flex items-center gap-2 text-sm text-fg-muted">
-              <Loader2 className="size-4 animate-spin" aria-hidden /> Loading dual-provider briefing…
+              <Loader2 className="size-4 animate-spin" aria-hidden /> Loading briefing…
             </p>
           )}
 
@@ -106,56 +98,28 @@ export function ExplanationModal({ cveId, open, onOpenChange }: ExplanationModal
                 <p className="text-xs text-fg-subtle">Rank #{fmtInt(data.rank)}</p>
               )}
 
-              {/* Tier 1 — Granite + Gemini technical summary */}
               <section className="rounded-md border border-line bg-surface p-3">
                 <h3 className="mb-1.5 text-[11px] font-semibold uppercase tracking-wider text-fg-muted">
-                  Tier 1 · IBM Granite technical risk analysis
+                  {graniteIsAi ? 'IBM Granite (AI-generated summary)' : 'Template (no AI)'}
                 </h3>
-                <p className="mb-2 text-[11px] text-fg-subtle">
-                  Gemini summarizes Granite&apos;s watsonx signal-grounded rationale for operators.
-                </p>
-
-                {techSummary ? (
-                  <div className="mb-3">
-                    <h4 className="mb-1 text-[11px] font-semibold uppercase tracking-wider text-sevfg-p1">
-                      Gemini technical summary
-                    </h4>
-                    <p className="leading-relaxed text-fg">{techSummary}</p>
-                  </div>
+                {rawTech ? (
+                  <>
+                    <p className="mb-1 leading-relaxed text-fg">{rawTech}</p>
+                    <p className="text-[11px] text-fg-subtle">{data.granite?.label}</p>
+                  </>
                 ) : (
-                  <p className="mb-3 text-fg-subtle">No Gemini technical summary for this CVE yet.</p>
-                )}
-
-                {rawTech && (
-                  <div>
-                    <button
-                      type="button"
-                      className="text-[11px] font-medium text-fg-muted underline-offset-2 hover:text-fg hover:underline"
-                      onClick={() => setShowRawGranite((v) => !v)}
-                      aria-expanded={showRawGranite}
-                    >
-                      {showRawGranite ? 'Hide' : 'Show'} raw Granite rationale
-                    </button>
-                    {showRawGranite && (
-                      <p className="mt-2 rounded border border-line bg-raised/40 p-2 font-mono text-[11px] leading-relaxed text-fg-muted">
-                        {rawTech}
-                      </p>
-                    )}
-                  </div>
-                )}
-                {!rawTech && !techSummary && (
-                  <p className="text-fg-subtle">No Granite technical rationale for this CVE.</p>
+                  <p className="text-fg-subtle">No Granite summary for this CVE.</p>
                 )}
               </section>
 
               {/* Tier 2 — Gemini executive */}
               <section className="rounded-md border border-line bg-surface p-3">
                 <h3 className="mb-1.5 text-[11px] font-semibold uppercase tracking-wider text-fg-muted">
-                  Tier 2 · Gemini executive synthesis & triage
+                  Gemini executive brief (AI-generated)
                 </h3>
                 <p className="mb-2 text-[11px] text-fg-subtle">
-                  Business-facing brief and containment / remediation / verification steps (no invented
-                  patch URLs).
+                  Written from the CVE description and the ranking model&apos;s reasons. AI-generated,
+                  unaudited.
                 </p>
                 {executive ? (
                   <p className="mb-3 leading-relaxed text-fg">{executive}</p>

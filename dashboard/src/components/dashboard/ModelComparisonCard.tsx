@@ -23,13 +23,14 @@ export function ModelComparisonCard() {
 
   const granite = data?.granite ?? {}
   const gemini = data?.gemini ?? {}
-  const geminiEval = (gemini.eval as Record<string, unknown> | undefined) ?? {}
+  const coverage = (granite.summary_coverage ?? {}) as Record<string, number | undefined>
+  const counts = (granite.unaudited_file_counts ?? {}) as Record<string, number | undefined>
 
   return (
     <WidgetCard
-      title="Division of labor · Granite → Gemini"
-      subtitle="Technical prioritization & embeddings vs executive synthesis & triage automation"
-      info="Granite owns dense risk representation and technical rationale. Gemini ingests that output to produce executive briefs and containment playbooks. Audited ranking files stay read-only."
+      title="Where IBM Granite is used"
+      subtitle="Embeddings in the ranking model; instruct summaries (AI-generated, unaudited)"
+      info="Granite embeddings feed the ranking model's text score (submitted model G2), adopted by a pre-registered rule with no measurable gain. Granite instruct, run locally, wrote summaries for an earlier version of the ranking; some are template fallbacks. AI-generated text is unaudited."
     >
       {error && <p className="px-1 text-sm text-sevfg-p0">{error}</p>}
       {!data && !error && <p className="px-1 text-sm text-fg-subtle">Loading model comparison…</p>}
@@ -37,39 +38,40 @@ export function ModelComparisonCard() {
         <div className="grid gap-4 text-sm md:grid-cols-2">
           <div className="rounded-md border border-line p-3">
             <h3 className="text-[11px] font-semibold uppercase tracking-wider text-fg-muted">
-              IBM Granite · technical layer
+              IBM Granite
             </h3>
-            <p className="mt-1 font-mono text-xs text-fg-subtle">{String(granite.model_id ?? 'ibm/granite-embedding…')}</p>
             <ul className="mt-2 space-y-1 text-fg">
-              <li>Role: embeddings + technical risk rationale</li>
-              <li>Explanations: {fmtInt(Number(granite.n_explanations_loaded ?? 0))}</li>
-              <li>Embedding tokens: {granite.embedding_tokens != null ? fmtInt(Number(granite.embedding_tokens)) : '—'}</li>
               <li>
-                ΔAUC vs TF-IDF:{' '}
-                {granite.mean_delta_auc_vs_tfidf != null
-                  ? `${(Number(granite.mean_delta_auc_vs_tfidf) * 100).toFixed(2)} pt`
-                  : '—'}
+                Embeddings (ranking text score):{' '}
+                <span className="font-mono text-xs">{String(granite.embedding_model_id ?? '—')}</span>
               </li>
+              <li>
+                Instruct summaries:{' '}
+                <span className="font-mono text-xs">{String(granite.instruct_model_id ?? '—')}</span> · covers{' '}
+                {fmtInt(Number(coverage.current_top100_with_summary ?? 0))} of the current top{' '}
+                {fmtInt(Number(coverage.current_top100 ?? 0))} (written for an earlier ranking version; file counts
+                unaudited: {fmtInt(Number(counts.granite_summaries ?? 0))} AI-generated,{' '}
+                {fmtInt(Number(counts.template_fallbacks ?? 0))} template)
+              </li>
+              <li className="text-xs text-fg-subtle">{String(granite.adoption_note ?? '')}</li>
             </ul>
           </div>
           <div className="rounded-md border border-line p-3">
             <h3 className="text-[11px] font-semibold uppercase tracking-wider text-fg-muted">
-              Gemini · executive synthesis
+              Gemini · executive brief
             </h3>
-            <p className="mt-1 font-mono text-xs text-fg-subtle">{String(gemini.model_id ?? 'gemini-2.5-flash')}</p>
-            <ul className="mt-2 space-y-1 text-fg">
-              <li>Role: executive brief + triage playbooks from Granite</li>
-              <li>Linked syntheses: {fmtInt(Number(gemini.n_explanations_loaded ?? 0))}</li>
-              <li>Eval pass rate: {geminiEval.overall_pass_rate != null ? `${geminiEval.overall_pass_rate}%` : '—'}</li>
-              <li>
-                Patch URL hallucination:{' '}
-                {geminiEval.patch_url_hallucination_rate != null ? `${geminiEval.patch_url_hallucination_rate}%` : '—'}
-              </li>
-            </ul>
+            {gemini.model_id ? (
+              <ul className="mt-2 space-y-1 text-fg">
+                <li className="font-mono text-xs text-fg-subtle">{String(gemini.model_id)}</li>
+                <li>Role: executive brief from the CVE description and the ranking model&apos;s reasons</li>
+                <li>Briefs loaded: {fmtInt(Number(gemini.n_explanations_loaded ?? 0))}</li>
+              </ul>
+            ) : (
+              <p className="mt-2 text-fg-subtle">No live Gemini output is loaded.</p>
+            )}
           </div>
           <p className="md:col-span-2 text-xs text-fg-subtle">
-            {data.ranking_consistency ||
-              'Both layers consume ML priority tiers; neither rewrites audited top500/scores baselines.'}
+            Neither model rewrites the audited top500 / scores files.
           </p>
         </div>
       )}
