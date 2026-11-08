@@ -28,10 +28,11 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
+# Wildcard origin + credentials is rejected by browsers; local Vite needs * without credentials.
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
-    allow_credentials=True,
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
