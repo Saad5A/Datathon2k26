@@ -1,0 +1,10 @@
+{
+  "script": "results/backtest_summary.json built from results/model_candidates.json + results/first_pass_repro.json",
+  "sources": [
+    "results/model_candidates.json",
+    "results/first_pass_repro.json",
+    "audit/2026-11-07-phase3.md",
+    "audit/2026-11-07-harness.md"
+  ],
+  "note": "No repo code changed; ranking files untouched."
+}

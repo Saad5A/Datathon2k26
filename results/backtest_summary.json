@@ -1,0 +1,561 @@
+{
+  "generated_for": "docs/INTERFACES.md section 1 backtest_summary.json",
+  "protocol": {
+    "folds": {
+      "fold1": {
+        "train_months": "2024-01..2024-12",
+        "train_label_cap": "2024-12-31",
+        "test_months": "2025-01..2025-09",
+        "train_rows": 39868,
+        "train_positives_capped": 40,
+        "test_rows": 35280,
+        "test_positives": 52
+      },
+      "fold2": {
+        "train_months": "2024-07..2025-03",
+        "train_label_cap": "2025-03-31",
+        "test_months": "2025-04..2025-09",
+        "train_rows": 31440,
+        "train_positives_capped": 38,
+        "test_rows": 23367,
+        "test_positives": 32
+      }
+    },
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "aggregation": "seed median; tie-break cve_id ascending; bootstrap CIs are seed set 0",
+    "label": "KEV date_added after snapshot month end, within 365 days; training labels capped at the train end; test labels capped 2025-12-31",
+    "no_2026_labels": true,
+    "rate_matched_2026_cut": "H@243 (500/72,670 = 243/35,281)"
+  },
+  "fold1": {
+    "methods": {
+      "cvss3": {
+        "top500": 5,
+        "top250": 5,
+        "top500_expected": 5.9479,
+        "top250_expected": 5.1632,
+        "auc": 0.732151,
+        "avg_precision": 0.00635,
+        "median_rank": 7960.0,
+        "work_saved_50pct": 7952.0,
+        "ci95_seed0": {
+          "top500": [
+            1.0,
+            10.0
+          ],
+          "top250": [
+            1.0,
+            10.0
+          ],
+          "auc": [
+            0.661602,
+            0.797215
+          ]
+        },
+        "seed_range": {
+          "top500": [
+            5,
+            5
+          ],
+          "top250": [
+            5,
+            5
+          ],
+          "auc": [
+            0.732151,
+            0.732151
+          ],
+          "median_rank": [
+            7960.0,
+            7960.0
+          ]
+        }
+      },
+      "epss": {
+        "top500": 8,
+        "top250": 8,
+        "top500_expected": 8.0,
+        "top250_expected": 8.0,
+        "auc": 0.707256,
+        "avg_precision": 0.030922,
+        "median_rank": 3379.0,
+        "work_saved_50pct": 3273.0,
+        "ci95_seed0": {
+          "top500": [
+            3.0,
+            14.0
+          ],
+          "top250": [
+            3.0,
+            14.0
+          ],
+          "auc": [
+            0.613565,
+            0.797065
+          ]
+        },
+        "seed_range": {
+          "top500": [
+            8,
+            8
+          ],
+          "top250": [
+            8,
+            8
+          ],
+          "auc": [
+            0.707256,
+            0.707256
+          ],
+          "median_rank": [
+            3379.0,
+            3379.0
+          ]
+        }
+      },
+      "exploit_then_epss": {
+        "top500": 18,
+        "top250": 15,
+        "top500_expected": 18.358,
+        "top250_expected": 15.0,
+        "auc": 0.76803,
+        "avg_precision": 0.047119,
+        "median_rank": 2498.5,
+        "work_saved_50pct": 2253.0,
+        "ci95_seed0": {
+          "top500": [
+            10.0,
+            26.0
+          ],
+          "top250": [
+            7.0,
+            22.0
+          ],
+          "auc": [
+            0.681232,
+            0.850572
+          ]
+        },
+        "seed_range": {
+          "top500": [
+            18,
+            18
+          ],
+          "top250": [
+            15,
+            15
+          ],
+          "auc": [
+            0.76803,
+            0.76803
+          ],
+          "median_rank": [
+            2498.5,
+            2498.5
+          ]
+        }
+      },
+      "ours": {
+        "top500": 22,
+        "top250": 14,
+        "top500_expected": 22.0,
+        "top250_expected": 14.0,
+        "auc": 0.860109,
+        "avg_precision": 0.075882,
+        "median_rank": 1249.0,
+        "work_saved_50pct": 1226.0,
+        "ci95_seed0": {
+          "top500": [
+            9.0,
+            25.0
+          ],
+          "top250": [
+            7.0,
+            21.0
+          ],
+          "auc": [
+            0.78931,
+            0.908833
+          ]
+        },
+        "seed_range": {
+          "top500": [
+            15,
+            22
+          ],
+          "top250": [
+            11,
+            17
+          ],
+          "auc": [
+            0.850472,
+            0.884706
+          ],
+          "median_rank": [
+            1047.5,
+            1366.0
+          ]
+        }
+      }
+    }
+  },
+  "fold2": {
+    "methods": {
+      "cvss3": {
+        "top500": 5,
+        "top250": 4,
+        "top500_expected": 4.7355,
+        "top250_expected": 4.2086,
+        "auc": 0.714113,
+        "avg_precision": 0.008254,
+        "median_rank": 5048.0,
+        "work_saved_50pct": 4080.0,
+        "ci95_seed0": {
+          "top500": [
+            1.0,
+            10.0
+          ],
+          "top250": [
+            1.0,
+            8.0
+          ],
+          "auc": [
+            0.6148,
+            0.804703
+          ]
+        },
+        "seed_range": {
+          "top500": [
+            5,
+            5
+          ],
+          "top250": [
+            4,
+            4
+          ],
+          "auc": [
+            0.714113,
+            0.714113
+          ],
+          "median_rank": [
+            5048.0,
+            5048.0
+          ]
+        }
+      },
+      "epss": {
+        "top500": 6,
+        "top250": 6,
+        "top500_expected": 6.0,
+        "top250_expected": 6.0,
+        "auc": 0.712736,
+        "avg_precision": 0.02992,
+        "median_rank": 1867.0,
+        "work_saved_50pct": 1767.0,
+        "ci95_seed0": {
+          "top500": [
+            2.0,
+            12.0
+          ],
+          "top250": [
+            2.0,
+            11.0
+          ],
+          "auc": [
+            0.583405,
+            0.837398
+          ]
+        },
+        "seed_range": {
+          "top500": [
+            6,
+            6
+          ],
+          "top250": [
+            6,
+            6
+          ],
+          "auc": [
+            0.712736,
+            0.712736
+          ],
+          "median_rank": [
+            1867.0,
+            1867.0
+          ]
+        }
+      },
+      "exploit_then_epss": {
+        "top500": 15,
+        "top250": 13,
+        "top500_expected": 14.6,
+        "top250_expected": 13.0,
+        "auc": 0.808865,
+        "avg_precision": 0.05229,
+        "median_rank": 524.0,
+        "work_saved_50pct": 510.0,
+        "ci95_seed0": {
+          "top500": [
+            8.0,
+            23.0
+          ],
+          "top250": [
+            6.0,
+            21.0
+          ],
+          "auc": [
+            0.691874,
+            0.912268
+          ]
+        },
+        "seed_range": {
+          "top500": [
+            15,
+            15
+          ],
+          "top250": [
+            13,
+            13
+          ],
+          "auc": [
+            0.808865,
+            0.808865
+          ],
+          "median_rank": [
+            524.0,
+            524.0
+          ]
+        }
+      },
+      "ours": {
+        "top500": 11,
+        "top250": 10,
+        "top500_expected": 11.0,
+        "top250_expected": 10.0,
+        "auc": 0.879625,
+        "avg_precision": 0.063729,
+        "median_rank": 1347.5,
+        "work_saved_50pct": 1240.0,
+        "ci95_seed0": {
+          "top500": [
+            5.0,
+            18.0
+          ],
+          "top250": [
+            4.0,
+            17.0
+          ],
+          "auc": [
+            0.830047,
+            0.942207
+          ]
+        },
+        "seed_range": {
+          "top500": [
+            11,
+            12
+          ],
+          "top250": [
+            9,
+            10
+          ],
+          "auc": [
+            0.854226,
+            0.891153
+          ],
+          "median_rank": [
+            1189.0,
+            1508.0
+          ]
+        }
+      }
+    }
+  },
+  "honest_label_cap": {
+    "description": "First-pass C1 with 2024 training labels capped at 2024-12-31; the honest analogue of the 2026 setting",
+    "train_positives": 40,
+    "top500": 21,
+    "top250": 13,
+    "auc": 0.870602,
+    "avg_precision": 0.074983,
+    "median_rank": 1288.0,
+    "work_saved_50pct": 971.0,
+    "ci95": {
+      "top500": [
+        12.0,
+        30.0
+      ],
+      "top250": [
+        7.0,
+        21.0
+      ],
+      "auc": [
+        0.814574,
+        0.919386
+      ]
+    }
+  },
+  "first_pass_optimistic": {
+    "note": "Uses 2024 training labels through 2025-12-31, overlapping the 2025 test period; optimistic, not the headline",
+    "methods": {
+      "cvss3": {
+        "top500": 5,
+        "top250": 5,
+        "top1000": 8,
+        "auc": 0.732151,
+        "avg_precision": 0.00635,
+        "median_rank": 7960.0,
+        "work_saved_50pct": 7952.0,
+        "ci95": {
+          "top500": [
+            1.0,
+            10.0
+          ],
+          "top250": [
+            1.0,
+            10.0
+          ],
+          "auc": [
+            0.661602,
+            0.797215
+          ]
+        }
+      },
+      "epss": {
+        "top500": 8,
+        "top250": 8,
+        "top1000": 13,
+        "auc": 0.707256,
+        "avg_precision": 0.030922,
+        "median_rank": 3379.0,
+        "work_saved_50pct": 3273.0,
+        "ci95": {
+          "top500": [
+            3.0,
+            14.0
+          ],
+          "top250": [
+            3.0,
+            14.0
+          ],
+          "auc": [
+            0.613565,
+            0.797065
+          ]
+        }
+      },
+      "exploit_then_epss": {
+        "top500": 18,
+        "top250": 15,
+        "top1000": 22,
+        "auc": 0.76803,
+        "avg_precision": 0.047119,
+        "median_rank": 2498.5,
+        "work_saved_50pct": 2253.0,
+        "ci95": {
+          "top500": [
+            10.0,
+            26.0
+          ],
+          "top250": [
+            7.0,
+            22.0
+          ],
+          "auc": [
+            0.681232,
+            0.850572
+          ]
+        }
+      },
+      "assigner_only": {
+        "top500": 13,
+        "top250": 8,
+        "top1000": 15,
+        "auc": 0.74633,
+        "avg_precision": 0.01089,
+        "median_rank": 6053.5,
+        "work_saved_50pct": 6011.0,
+        "ci95": {
+          "top500": [
+            6.0,
+            19.0
+          ],
+          "top250": [
+            3.0,
+            14.0
+          ],
+          "auc": [
+            0.666003,
+            0.818836
+          ]
+        }
+      },
+      "hgb_signals_assigner_text": {
+        "top500": 25,
+        "top250": 16,
+        "top1000": 28,
+        "auc": 0.888021,
+        "avg_precision": 0.105682,
+        "median_rank": 778.5,
+        "work_saved_50pct": 686.0,
+        "ci95": {
+          "top500": [
+            15.0,
+            35.0
+          ],
+          "top250": [
+            9.0,
+            24.0
+          ],
+          "auc": [
+            0.838955,
+            0.930902
+          ]
+        }
+      },
+      "leaky_ncpe": {
+        "top500": 26,
+        "top250": 21,
+        "top1000": 29,
+        "auc": 0.913317,
+        "avg_precision": 0.131224,
+        "median_rank": 430.0,
+        "work_saved_50pct": 352.0,
+        "ci95": {
+          "top500": [
+            17.0,
+            36.0
+          ],
+          "top250": [
+            12.0,
+            30.0
+          ],
+          "auc": [
+            0.873506,
+            0.946282
+          ]
+        }
+      }
+    }
+  },
+  "notes": [
+    "fold1/fold2 are the audited Phase 3 protocol with training labels capped at the train end.",
+    "first_pass_optimistic is the earlier protocol and is optimistic because 25/65 train positives are 2025 KEV additions.",
+    "The honest-label cap estimate is the closer analogue of the 2026 setting.",
+    "H@500 on the 2025 test is a 1.42% rate; the 2026 scoreboard asks for a 0.688% rate, so H@243 is the rate-matched cut.",
+    "C1 does not beat exploit-then-EPSS on top-500; the AUC/median-rank/work-saved gain is the defensible claim.",
+    "No 2026 accuracy is claimed: there are no 2026 labels."
+  ],
+  "sources": [
+    "results/model_candidates.json",
+    "results/first_pass_repro.json",
+    "audit/2026-11-07-phase3.md",
+    "audit/2026-11-07-harness.md"
+  ]
+}
