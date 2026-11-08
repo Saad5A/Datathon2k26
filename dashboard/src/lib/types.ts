@@ -64,7 +64,7 @@ export interface Dataset {
   isSample?: boolean
   id: string
   name: string
-  source: 'sample' | 'upload-client' | 'upload-api'
+  source: 'sample' | 'upload-client' | 'upload-api' | 'api'
   rows: ScoreRow[]
   loadedAt: Date
 }

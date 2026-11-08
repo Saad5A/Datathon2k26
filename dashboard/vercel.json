@@ -5,10 +5,6 @@
   "outputDirectory": "dist",
   "rewrites": [
     {
-      "source": "/evolve",
-      "destination": "/evolve/index.html"
-    },
-    {
       "source": "/(.*)",
       "destination": "/index.html"
     }

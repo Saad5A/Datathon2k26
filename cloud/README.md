@@ -21,7 +21,7 @@ and `.venv\Scripts\python` instead of `.venv/bin/python`.
    ```
    git clone https://github.com/Saad5A/Datathon2k26.git
    cd Datathon2k26
-   git checkout feat/model-ranking
+   git checkout feat/ibm-granite
    ```
 2. Make a Python environment with the exact versions we used:
    ```
@@ -47,18 +47,30 @@ asking: it is paid above the free quota.
 If something fails, copy the last 20 lines of output (they contain no secrets) and send them to the model-ranking owner.
 
 ## Option A: Colab GPU (recommended for the full set; free, about 10-25 min on a T4, estimate)
-1. Open https://colab.research.google.com, New notebook. Runtime > Change runtime type > T4 GPU.
-2. In the Files pane (left), upload `cloud/embed_granite.py` and `data_cache/descriptions_to_embed.parquet` to `/content`.
+Full set = **147,818** rows in `data_cache/descriptions_to_embed.parquet`. Model
+`ibm-granite/granite-embedding-278m-multilingual` truncates each text at **512 tokens**
+(`max_seq_length`); the wrapper picks batch size for T4 (256) or A100 (512) so you stay
+under GPU memory without raising the token cap.
+1. Open https://colab.research.google.com, New notebook. Runtime > Change runtime type > T4 GPU
+   (or A100 if available).
+2. In the Files pane (left), upload to `/content`:
+   - `cloud/embed_granite.py`
+   - `cloud/colab_embed_local.py`
+   - `data_cache/descriptions_to_embed.parquet` (must show 147,818 rows when previewed)
 3. Run in a cell:
    ```
-   !pip install -q -U sentence-transformers
-   !python /content/embed_granite.py --provider LOCAL --limit 200 --in /content/descriptions_to_embed.parquet --out /content/test.parquet
-   !python /content/embed_granite.py --provider LOCAL --in /content/descriptions_to_embed.parquet --out /content/granite_embeddings.parquet
+   !pip install -q -U "sentence-transformers>=3.0" pyarrow pandas numpy
+   !python /content/colab_embed_local.py --smoke
+   !python /content/colab_embed_local.py
    ```
-   The first line downloads the model (about 1 GB). The second is a speed test; it prints texts/second.
-   If the session disconnects, files in `/content` are lost: upload again and rerun (the run is short).
-4. Download `granite_embeddings.parquet` and `granite_embeddings.meta.json` (Files pane, right-click > Download) and
-   put both in `data_cache/` of the repo.
+   `--smoke` embeds 200 rows and prints texts/second. The full command resumes via
+   `embed_cache/` if the session drops mid-run (re-upload scripts + parquet + cache if
+   `/content` was wiped). Equivalent direct call:
+   ```
+   !python /content/embed_granite.py --provider LOCAL --in /content/descriptions_to_embed.parquet --out /content/granite_embeddings.parquet --batch 256
+   ```
+4. Download `granite_embeddings.parquet` and `granite_embeddings.meta.json` (Files pane,
+   right-click > Download) into `data_cache/`. Do **not** commit the ~450 MB parquet.
 
 ## Option B: watsonx.ai (IBM cloud API; Lite plan quota allows only about 2,000 descriptions per month)
 The free Lite plan allows 300,000 tokens per month; the full set is about 16.8 million (estimate), so a full run

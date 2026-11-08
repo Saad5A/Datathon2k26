@@ -1,0 +1,62 @@
+{
+  "total_playbooks_evaluated": 5,
+  "schema_conformance_rate": 100.0,
+  "patch_url_hallucination_rate": 0.0,
+  "vendor_grounding_pass_rate": 100.0,
+  "priority_preservation_rate": 100.0,
+  "overall_pass_rate": 100.0,
+  "avg_latency_seconds": null,
+  "missing_enriched_rows": 0,
+  "per_cve": [
+    {
+      "cve_id": "CVE-2026-10001",
+      "schema_ok": true,
+      "priority_ok": true,
+      "patch_url_ok": true,
+      "vendor_grounding_ok": true,
+      "passed": true,
+      "failures": [],
+      "latency_seconds": null
+    },
+    {
+      "cve_id": "CVE-2026-10002",
+      "schema_ok": true,
+      "priority_ok": true,
+      "patch_url_ok": true,
+      "vendor_grounding_ok": true,
+      "passed": true,
+      "failures": [],
+      "latency_seconds": null
+    },
+    {
+      "cve_id": "CVE-2026-10003",
+      "schema_ok": true,
+      "priority_ok": true,
+      "patch_url_ok": true,
+      "vendor_grounding_ok": true,
+      "passed": true,
+      "failures": [],
+      "latency_seconds": null
+    },
+    {
+      "cve_id": "CVE-2026-10004",
+      "schema_ok": true,
+      "priority_ok": true,
+      "patch_url_ok": true,
+      "vendor_grounding_ok": true,
+      "passed": true,
+      "failures": [],
+      "latency_seconds": null
+    },
+    {
+      "cve_id": "CVE-2026-10005",
+      "schema_ok": true,
+      "priority_ok": true,
+      "patch_url_ok": true,
+      "vendor_grounding_ok": true,
+      "passed": true,
+      "failures": [],
+      "latency_seconds": null
+    }
+  ]
+}
