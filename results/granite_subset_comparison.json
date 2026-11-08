@@ -1,0 +1,83 @@
+{
+  "embeddings_files": [
+    "data_cache\\granite_embeddings_watsonx_subset.parquet",
+    "data_cache\\granite_embeddings_watsonx_evalslice.parquet"
+  ],
+  "n_vectors": 1966,
+  "folds": {
+    "fold1": {
+      "train_covered": 1248,
+      "train_pos_covered": 40,
+      "test_covered": 718,
+      "test_pos_covered": 52,
+      "test_pos_total": 52,
+      "models": {
+        "tfidf_text_lr": {
+          "n": 718,
+          "n_pos": 52,
+          "auc": 0.6794294294294293,
+          "avg_precision": 0.13236164607357884,
+          "top50_hits": 8,
+          "top100_hits": 16,
+          "top500_hits": 46,
+          "recall_at_50": 0.15384615384615385,
+          "recall_at_100": 0.3076923076923077,
+          "recall_at_500": 0.8846153846153846
+        },
+        "granite_text_lr": {
+          "n": 718,
+          "n_pos": 52,
+          "auc": 0.6981404481404482,
+          "avg_precision": 0.21481212657423027,
+          "top50_hits": 11,
+          "top100_hits": 22,
+          "top500_hits": 48,
+          "recall_at_50": 0.21153846153846154,
+          "recall_at_100": 0.4230769230769231,
+          "recall_at_500": 0.9230769230769231
+        },
+        "delta_auc_granite_minus_tfidf": 0.01871101871101888
+      }
+    },
+    "fold2": {
+      "train_covered": 547,
+      "train_pos_covered": 38,
+      "test_covered": 557,
+      "test_pos_covered": 32,
+      "test_pos_total": 32,
+      "models": {
+        "tfidf_text_lr": {
+          "n": 557,
+          "n_pos": 32,
+          "auc": 0.5923214285714286,
+          "avg_precision": 0.07593661503954208,
+          "top50_hits": 4,
+          "top100_hits": 7,
+          "top500_hits": 30,
+          "recall_at_50": 0.125,
+          "recall_at_100": 0.21875,
+          "recall_at_500": 0.9375
+        },
+        "granite_text_lr": {
+          "n": 557,
+          "n_pos": 32,
+          "auc": 0.6392261904761906,
+          "avg_precision": 0.11936478830325985,
+          "top50_hits": 6,
+          "top100_hits": 8,
+          "top500_hits": 31,
+          "recall_at_50": 0.1875,
+          "recall_at_100": 0.25,
+          "recall_at_500": 0.96875
+        },
+        "delta_auc_granite_minus_tfidf": 0.046904761904762005
+      }
+    }
+  },
+  "note": "Partial watsonx Lite slice: metrics are only on CVEs with embeddings. This is not the full pre-registered granite.py adoption test.",
+  "selection_hint": {
+    "mean_delta_auc_granite_minus_tfidf": 0.03280789030789044,
+    "prefer": "granite_text_lr",
+    "rule": "Prefer Granite text LR if mean AUC delta >= -0.01 vs TF-IDF on covered folds; else keep TF-IDF."
+  }
+}

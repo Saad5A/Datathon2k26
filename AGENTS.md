@@ -19,6 +19,14 @@ Run `python tools/kb.py show` at the start of every session, before any task tha
 8. **Say "I don't know"** and mark things `unverified` rather than guessing. Do not invent library functions, model IDs, columns or statistics: check docs/data first.
 9. **Secrets:** never commit or print API keys; `.env` is gitignored.
 
+## Protected files (any agent, any tool: read before editing)
+These are audited. Do NOT edit, overwrite, regenerate or delete them unless the human owner of `feat/model-ranking` asks you to in this session:
+`results/top500.csv`, `results/scores_2026.csv`, `results/signal_vocabulary.json`, `results/backtest_summary.json`, `results/leakage_table.csv`, `results/drift_summary.json`, every `results/claims*.json` (only the auditor may change `status`/`verified_by`), everything under `audit/`, `JUDGE_QA.md`, `docs/writeup_model.md`, `LEARNING.md`, `LOG.md` (append only).
+- Work on your OWN branch (e.g. `feat/ibm-granite`) and open a PR into `feat/model-ranking`; do not push directly to `feat/model-ranking`.
+- New results go in NEW files and are registered as `unverified` claims. Never call a number "verified", a "gain" or an "improvement" until an audit report in `audit/` says so.
+- Never call output "Granite" or "AI-generated" unless an IBM Granite model actually produced it (check the `provider`/`model_id` fields).
+- Granite adoption is decided ONLY by the pre-registered test in `src/model/granite.py` (LOG.md "PRE-REGISTRATION, Granite text and per-assigner cap"), on all rows. Subset comparisons are exploratory.
+
 ## Claims ledger
 `results/claims*.json` (each branch writes its own file, e.g. `results/claims_model.json`): `{ "<id>": {"text": "...", "value": <number>, "unit": "count|fraction|percent|ratio", "source_script": "src/...", "output_file": "results/...", "status": "unverified|verified", "verified_by": "audit/<report>.md"} }`
 Scripts write their outputs to `results/`, and the producing agent registers claims as `unverified`. Only the `auditor` flips status to `verified`.

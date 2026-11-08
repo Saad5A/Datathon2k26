@@ -1,0 +1,24 @@
+pool labels == raw-KEV labels: True base rate 0.00156
+embed text == own-masked pool description: 1.0
+residual exploitation wording in embed text: 0
+reconstructed evalslice ids: 466 (meta n_rows 466)
+covered ids: 1966 subset 1500 unique: 1500 subset in pool: 1500
+subset id range: CVE-2002-20002 CVE-2021-47571 | pool sorted by cve_id: False
+
+fold1: train 1248 pos 40 | test 718 pos 52 of 52 | test rows from first-1500 subset 301 | id overlap 0 | train rows capped-0 but pool-positive 9 | full-fold train 39868 pos 40
+  covered positive rate train 0.032 test 0.072  vs full test 0.0015
+  TF-IDF(subset-fit) vocab 2098 AUC 0.6794294294 top50 8 top100 16 top500 46
+  bootstrap 95% CI TF-IDF AUC 0.602-0.750
+  permuted-label TF-IDF AUC [0.454 0.559 0.554 0.453 0.553]
+  TF-IDF(full-train fit) vocab 24879 AUC on covered test 0.7430
+  covered test without first-1500 rows: n 417 pos 52 TF-IDF(subset) AUC 0.7758 full-fit 0.8358
+
+fold2: train 547 pos 38 | test 557 pos 32 of 32 | test rows from first-1500 subset 232 | id overlap 0 | train rows capped-0 but pool-positive 10 | full-fold train 31440 pos 38
+  covered positive rate train 0.069 test 0.057  vs full test 0.0014
+  TF-IDF(subset-fit) vocab 523 AUC 0.5923214286 top50 4 top100 7 top500 30
+  bootstrap 95% CI TF-IDF AUC 0.497-0.675
+  permuted-label TF-IDF AUC [0.458 0.38  0.526 0.434 0.445]
+  TF-IDF(full-train fit) vocab 19950 AUC on covered test 0.7306
+  covered test without first-1500 rows: n 325 pos 32 TF-IDF(subset) AUC 0.6943 full-fit 0.8243
+
+mean TF-IDF AUC check: {'fold1': np.float64(0.6794294294294294), 'fold2': np.float64(0.5923214285714286)}

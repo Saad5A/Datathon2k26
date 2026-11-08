@@ -19,8 +19,11 @@ def _git(*args):
 def write_meta(output_file, script, extra=None):
     """results/<name>.meta.json next to `output_file`: script, commit, dirty flag, UTC date, code hash."""
     out = ROOT / output_file
+    # git_dirty: any tracked or untracked change under src/model/ (the code), as in candidates.write_meta. Untracked
+    # audit scratch files and the outputs themselves do not count.
+    changed = _git("status", "--porcelain", "--", "src/model").splitlines()
     meta = {"script": script, "output_file": output_file, "git_commit": _git("rev-parse", "HEAD"),
-            "git_dirty": bool(_git("status", "--porcelain")),
+            "git_dirty": bool(changed), "git_dirty_files": changed,
             "date_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
             "code_sha256": {p: hashlib.sha256((ROOT / p).read_bytes()).hexdigest()
                             for p in (script, "src/model/sidecar.py", "src/model/pool.py", "src/model/metrics.py")},

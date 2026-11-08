@@ -1,0 +1,2 @@
+# Fast baseline (exploratory, NOT our model)
+A separate quick model from the feat/model-ranking branch history (commit da52836): 1,000-row sample, 412 training rows with 171 positives (not the real class balance), and it uses `attack_vector`, an NVD analysis field excluded from our model. Its metrics are not comparable to our backtest and must not be quoted. The producing script is not in the repo. If it was run on a machine, it may have overwritten that machine's results/scores_2026.csv and results/top500.csv: use the verified files from GitHub instead.

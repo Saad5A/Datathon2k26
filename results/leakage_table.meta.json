@@ -1,12 +1,13 @@
 {
   "script": "src/model/leakage.py",
   "output_file": "results/leakage_table.csv",
-  "git_commit": "7a8443c1c22f256f982c5500086a7b981ecaba35",
-  "git_dirty": true,
-  "date_utc": "2026-11-07T22:09:29+00:00",
+  "git_commit": "106386210e290f3896b362c5ad2df192087ec345",
+  "git_dirty": false,
+  "git_dirty_files": [],
+  "date_utc": "2026-11-08T03:10:12+00:00",
   "code_sha256": {
-    "src/model/leakage.py": "2e1dede661f7fdb67990bd86ddf02b859c0ff611a2c391692228cf0dc5e1982d",
-    "src/model/sidecar.py": "691592e4e621891793353197e51271cefdab66c50abadc7975b8dd3cc5776c06",
+    "src/model/leakage.py": "8a9825d50d186393a06f429c94b8802054087ce35ded7821c285e54a5f2d8bea",
+    "src/model/sidecar.py": "6f6921fd27bbd5114d8bb42f48f9a44719fe8e43d2278120ef67db4b2b32ce71",
     "src/model/pool.py": "f71136c9932544913ef8a48fb31aba65b1bc5fc8b7f2096bff9e6801dd545b27",
     "src/model/metrics.py": "6678ffb0cb4ac6fb75445e1e6d2223c328eae99657e30578b994d7652714a0fe"
   },

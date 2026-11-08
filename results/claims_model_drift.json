@@ -269,6 +269,42 @@
     "status": "verified",
     "verified_by": "audit/2026-11-07-leakage-drift.md"
   },
+  "leakage.negatives.cvss3_present.share": {
+    "text": "Share of the 35,228 non-exploited 2025 test CVEs that have a non-blank CVSS3 score",
+    "value": 0.962303,
+    "unit": "fraction",
+    "source_script": "src/model/leakage.py",
+    "output_file": "results/leakage_table.csv",
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
+  },
+  "leakage.negatives.cwe_present.share": {
+    "text": "Share of the 35,228 non-exploited 2025 test CVEs that have non-blank cwe_ids",
+    "value": 0.956881,
+    "unit": "fraction",
+    "source_script": "src/model/leakage.py",
+    "output_file": "results/leakage_table.csv",
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
+  },
+  "leakage.negatives.has_affected_product.share": {
+    "text": "Share of the 35,228 non-exploited 2025 test CVEs that have an affected_products.csv row",
+    "value": 0.649427,
+    "unit": "fraction",
+    "source_script": "src/model/leakage.py",
+    "output_file": "results/leakage_table.csv",
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
+  },
+  "leakage.negatives.nvd_status_Analyzed.share": {
+    "text": "Share of the 35,228 non-exploited 2025 test CVEs that have NVD status Analyzed",
+    "value": 0.500681,
+    "unit": "fraction",
+    "source_script": "src/model/leakage.py",
+    "output_file": "results/leakage_table.csv",
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-leakage-drift.md"
+  },
   "leakage.positives.cvss3_present.count": {
     "text": "2025 test positives with cvss3_present (of 52)",
     "value": 52,

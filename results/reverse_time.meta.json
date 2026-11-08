@@ -1,0 +1,16 @@
+{
+  "script": "src/model/reverse_time.py",
+  "output_file": "results/reverse_time.json",
+  "git_commit": "106386210e290f3896b362c5ad2df192087ec345",
+  "git_dirty": false,
+  "git_dirty_files": [],
+  "date_utc": "2026-11-08T03:10:53+00:00",
+  "code_sha256": {
+    "src/model/reverse_time.py": "93c5b80facc0b1a22309587669f766bec2605378ad05b50cf5b0dfd5cf6e4f6f",
+    "src/model/sidecar.py": "6f6921fd27bbd5114d8bb42f48f9a44719fe8e43d2278120ef67db4b2b32ce71",
+    "src/model/pool.py": "f71136c9932544913ef8a48fb31aba65b1bc5fc8b7f2096bff9e6801dd545b27",
+    "src/model/metrics.py": "6678ffb0cb4ac6fb75445e1e6d2223c328eae99657e30578b994d7652714a0fe"
+  },
+  "python": "3.12.15",
+  "label": "Reverse-time check: trained on the future of the test data. NOT time-safe and NOT an accuracy estimate; measures signal stability and optimism from training on the future."
+}

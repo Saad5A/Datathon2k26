@@ -1,0 +1,129 @@
+rev.train_rows                                             mine=35280                  claimed=35280                  OK
+rev.train_positives                                        mine=52                     claimed=52                     OK
+rev.test_rows                                              mine=39868                  claimed=39868                  OK
+rev.test_positives                                         mine=65                     claimed=65                     OK
+rev.C1.top500_cve_id.median                                mine=15.0                   claimed=15                     OK
+rev.exploit_then_epss.top500_cve_id                        mine=17                     claimed=17                     OK
+rev.epss.top500_cve_id                                     mine=10                     claimed=10                     OK
+rev.cvss3.top500_cve_id                                    mine=0                      claimed=0                      OK
+rev.assigner_only.top500_cve_id                            mine=7                      claimed=7                      OK
+rev.C1.top500_best.median                                  mine=15.0                   claimed=15                     OK
+rev.exploit_then_epss.top500_best                          mine=17                     claimed=17                     OK
+rev.epss.top500_best                                       mine=10                     claimed=10                     OK
+rev.cvss3.top500_best                                      mine=29                     claimed=29                     OK
+rev.assigner_only.top500_best                              mine=7                      claimed=7                      OK
+rev.C1.top500_worst.median                                 mine=15.0                   claimed=15                     OK
+rev.exploit_then_epss.top500_worst                         mine=17                     claimed=17                     OK
+rev.epss.top500_worst                                      mine=10                     claimed=10                     OK
+rev.cvss3.top500_worst                                     mine=0                      claimed=0                      OK
+rev.assigner_only.top500_worst                             mine=7                      claimed=7                      OK
+rev.C1.top250_cve_id.median                                mine=12.0                   claimed=12                     OK
+rev.exploit_then_epss.top250_cve_id                        mine=12                     claimed=12                     OK
+rev.epss.top250_cve_id                                     mine=9                      claimed=9                      OK
+rev.cvss3.top250_cve_id                                    mine=0                      claimed=0                      OK
+rev.assigner_only.top250_cve_id                            mine=7                      claimed=7                      OK
+rev.C1.auc.median                                          mine=0.8221823248730769     claimed=0.8221823248730767     OK
+rev.exploit_then_epss.auc                                  mine=0.6443994364553116     claimed=0.6443994364553116     OK
+rev.epss.auc                                               mine=0.5783966805749083     claimed=0.5783966805749083     OK
+rev.cvss3.auc                                              mine=0.7779036756023415     claimed=0.7779036756023417     OK
+rev.assigner_only.auc                                      mine=0.7926132355697967     claimed=0.7926132355697967     OK
+rev.C1.avg_precision.median                                mine=0.08508433350716577    claimed=0.08508433350716577    OK
+rev.exploit_then_epss.avg_precision                        mine=0.06671171409750178    claimed=0.06671171409750176    OK
+rev.epss.avg_precision                                     mine=0.05462112642255005    claimed=0.054621126422550056   OK
+rev.cvss3.avg_precision                                    mine=0.005241783422958949   claimed=0.005241783422958949   OK
+rev.assigner_only.avg_precision                            mine=0.009763996360410431   claimed=0.009763996360410431   OK
+rev.C1.median_rank_cve_id.median                           mine=2659.0                 claimed=2659                   OK
+rev.exploit_then_epss.median_rank_cve_id                   mine=10709.0                claimed=10709                  OK
+rev.epss.median_rank_cve_id                                mine=19569.0                claimed=19569                  OK
+rev.cvss3.median_rank_cve_id                               mine=4703.0                 claimed=4703                   OK
+rev.assigner_only.median_rank_cve_id                       mine=3378.0                 claimed=3378                   OK
+rev.C1.work50_cve_id.median                                mine=2659.0                 claimed=2659                   OK
+rev.exploit_then_epss.work50_cve_id                        mine=10709                  claimed=10709                  OK
+rev.epss.work50_cve_id                                     mine=19569                  claimed=19569                  OK
+rev.cvss3.work50_cve_id                                    mine=4703                   claimed=4703                   OK
+rev.assigner_only.work50_cve_id                            mine=3378                   claimed=3378                   OK
+rev.C1.auc.min                                             mine=0.8089444359624999     claimed=0.8089444359625        OK
+rev.C1.auc.max                                             mine=0.8353481279918986     claimed=0.8353481279918985     OK
+rev.C1.top500_cve_id.min                                   mine=14                     claimed=14                     OK
+rev.C1.top500_cve_id.max                                   mine=17                     claimed=17                     OK
+rev.C1.ci95_lo.top500_cve_id                               mine=7.0                    claimed=7                      OK
+rev.C1.ci95_hi.top500_cve_id                               mine=22.0                   claimed=22                     OK
+rev.C1.ci95_lo.top500_expected                             mine=7.0                    claimed=7                      OK
+rev.C1.ci95_hi.top500_expected                             mine=22.0                   claimed=22                     OK
+rev.C1.ci95_lo.auc                                         mine=0.7622998112443028     claimed=0.7622998112443029     OK
+rev.C1.ci95_hi.auc                                         mine=0.8754364986897409     claimed=0.8754364986897408     OK
+rev.exploit_then_epss.ci95_lo.top500_cve_id                mine=9.0                    claimed=9                      OK
+rev.exploit_then_epss.ci95_hi.top500_cve_id                mine=24.0                   claimed=24                     OK
+rev.exploit_then_epss.ci95_lo.top500_expected              mine=8.878689655172415      claimed=8                      MISMATCH
+rev.exploit_then_epss.ci95_hi.top500_expected              mine=24.118988247084545     claimed=24                     MISMATCH
+rev.exploit_then_epss.ci95_lo.auc                          mine=0.565550064052589      claimed=0.565550064052589      OK
+rev.exploit_then_epss.ci95_hi.auc                          mine=0.7274571003919271     claimed=0.7274571003919272     OK
+rev.epss.ci95_lo.top500_cve_id                             mine=4.0                    claimed=4                      OK
+rev.epss.ci95_hi.top500_cve_id                             mine=17.0                   claimed=17                     OK
+rev.epss.ci95_lo.top500_expected                           mine=4.0                    claimed=4                      OK
+rev.epss.ci95_hi.top500_expected                           mine=17.0                   claimed=17                     OK
+rev.epss.ci95_lo.auc                                       mine=0.5031957281336331     claimed=0.5031957281336331     OK
+rev.epss.ci95_hi.auc                                       mine=0.6588224280590453     claimed=0.6588224280590455     OK
+rev.cvss3.ci95_lo.top500_cve_id                            mine=0.0                    claimed=0                      OK
+rev.cvss3.ci95_hi.top500_cve_id                            mine=0.0                    claimed=0                      OK
+rev.cvss3.ci95_lo.top500_expected                          mine=1.3004618651891464     claimed=1                      MISMATCH
+rev.cvss3.ci95_hi.top500_expected                          mine=2.759298839803446      claimed=2                      MISMATCH
+rev.cvss3.ci95_lo.auc                                      mine=0.7260925373912951     claimed=0.7260925373912951     OK
+rev.cvss3.ci95_hi.auc                                      mine=0.8272814144698745     claimed=0.8272814144698745     OK
+rev.assigner_only.ci95_lo.top500_cve_id                    mine=3.0                    claimed=3                      OK
+rev.assigner_only.ci95_hi.top500_cve_id                    mine=13.0                   claimed=13                     OK
+rev.assigner_only.ci95_lo.top500_expected                  mine=3.0                    claimed=3                      OK
+rev.assigner_only.ci95_hi.top500_expected                  mine=13.0                   claimed=13                     OK
+rev.assigner_only.ci95_lo.auc                              mine=0.732285818489247      claimed=0.732285818489247      OK
+rev.assigner_only.ci95_hi.auc                              mine=0.848343709861865      claimed=0.848343709861865      OK
+rev.indicator.positives_whose_assigner_has_kev_additions_dated_2025 mine=60                     claimed=58                     MISMATCH
+rev.indicator.positives_own_kev_date_in_2025               mine=25                     claimed=25                     OK
+PASS 75 FAIL ['rev.exploit_then_epss.ci95_lo.top500_expected', 'rev.exploit_then_epss.ci95_hi.top500_expected', 'rev.cvss3.ci95_lo.top500_expected', 'rev.cvss3.ci95_hi.top500_expected', 'rev.indicator.positives_whose_assigner_has_kev_additions_dated_2025']
+{"assigner_has_2025_kev": 60, "own_kev_2025": 25, "own_kev_before_2025-09-01_(enters_some_train_row_asg_kev)": 65, "own_kev_before_2025-01-01_(enters_every_train_row_asg_kev)": 40, "neg_assigner_has_2025_kev_share": 0.589829912318167, "n_assigners_with_2025_kev": 57}
+         rows  pos  epss_blank   anyx  epss_med
+month                                          
+2024-01  2585    4       0.047  0.024     0.001
+2024-02  2773    5       0.022  0.028     0.000
+2024-03  3305    3       0.019  0.027     0.000
+2024-04  3612    1       0.020  0.016     0.000
+2024-05  4991    4       0.101  0.019     0.000
+2024-06  3075    9       0.034  0.018     0.000
+2024-07  3105    3       0.082  0.019     0.000
+2024-08  2885    8       0.010  0.019     0.000
+2024-09  2508    7       0.027  0.031     0.000
+2024-10  3554    6       0.017  0.022     0.000
+2024-11  4048    8       0.007  0.025     0.000
+2024-12  3427    7       0.029  0.016     0.000
+2025-01  4267    7       0.447  0.016     0.000
+2025-02  3664    6       0.233  0.018     0.000
+2025-03  3982    7       0.083  0.021     0.000
+2025-04  4024    5       0.024  0.020     0.000
+2025-05  3967    6       0.005  0.022     0.000
+2025-06  3674    8       0.013  0.020     0.000
+2025-07  3768    2       0.020  0.028     0.000
+2025-08  3621    5       0.007  0.025     0.000
+2025-09  4313    6       0.024  0.023     0.000
+      epss_blank    anyx
+yr                      
+2024      0.0369  0.0217
+2025      0.0981  0.0215
+pos epss blank {'sum': {'2024': 3, '2025': 5}, 'size': {'2024': 65, '2025': 52}}
+pos anyx {'sum': {'2024': 21.0, '2025': 22.0}, 'size': {'2024': 65, '2025': 52}}
+{'epss_auc_2024_all_blank_as_-1': 0.5783966805749083, 'epss_auc_2024_nonblank_only': 0.5903840085494179, 'epss_auc_2025_all_blank_as_-1': 0.7072561926264946, 'epss_auc_2025_nonblank_only': 0.7530607748717465}
+('p3.fold1.C1.top500_cve_id.median', 22.0, 22.0, 'verified', True)
+('p3.fold1.C1.top500_cve_id.min', 15, 15, 'verified', True)
+('p3.fold1.C1.top500_cve_id.max', 22, 22, 'verified', True)
+('p3.fold1.C1.auc.median', 0.8601090915443136, 0.8601090915443136, 'verified', True)
+('p3.fold1.C1.auc.min', 0.8504721440986628, 0.8504721440986628, 'verified', True)
+('p3.fold1.C1.auc.max', 0.8847060030919461, 0.8847060030919461, 'verified', True)
+('p3.fold1.C1.work50_cve_id.median', 1226.0, 1226.0, 'verified', True)
+('p3.fold1.train_rows', 39868, 39868, 'verified', True)
+('p3.fold1.test_rows', 35280, 35280, 'verified', True)
+('p3.fold1.test_positives', 52, 52, 'verified', True)
+('p3.fold1.train_positives', 40, 40, 'verified', True)
+missing ['assigner_only']
+paired AUC diff C1-minus {'exploit_then_epss': [0.09279872999758694, 0.1770084569071554, 0.26252124707509294], 'epss': [0.1513769585602419, 0.24340045112414604, 0.33352587079104945], 'cvss3': [-0.022295994523544624, 0.04445703414268698, 0.10660873747143457], 'assigner_only': [-0.033582179519319334, 0.0271235943388779, 0.09386148287228853]}
+label window days {'2024-01': 365, '2024-02': 365, '2024-03': 365, '2024-04': 365, '2024-05': 365, '2024-06': 365, '2024-07': 365, '2024-08': 365, '2024-09': 365, '2024-10': 365, '2024-11': 365, '2024-12': 365, '2025-01': 334, '2025-02': 306, '2025-03': 275, '2025-04': 245, '2025-05': 214, '2025-06': 184, '2025-07': 153, '2025-08': 122, '2025-09': 92}
+train pos by month {'2025-01': 7, '2025-02': 6, '2025-03': 7, '2025-04': 5, '2025-05': 6, '2025-06': 8, '2025-07': 2, '2025-08': 5, '2025-09': 6}
+test pos by month {'2024-01': 4, '2024-02': 5, '2024-03': 3, '2024-04': 1, '2024-05': 4, '2024-06': 9, '2024-07': 3, '2024-08': 8, '2024-09': 7, '2024-10': 6, '2024-11': 8, '2024-12': 7}
+per seed [(14, 0.8222, 3008), (14, 0.8089, 3437), (16, 0.8339, 2650), (15, 0.8353, 2538), (17, 0.8192, 2659)]
