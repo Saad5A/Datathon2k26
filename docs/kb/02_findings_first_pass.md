@@ -39,7 +39,7 @@ Do not quote the first-pass table below; quote these. Wording rules are in LOG.m
 | 2 (test 2025-04..09) | C1 (seed range 11..12) | 11 | 0.880 | 1,240 |
 | 2 | exploit then EPSS | 15 | 0.809 | 510 |
 
-Paired difference C1 minus exploit-then-EPSS (seed median): AUC +0.092 / +0.071; expected top-500 +3.6 / -3.6. Seed set 0 AUC interval includes 0 in both folds. So: higher AUC but borderline (seed set 0 interval includes 0), NO robust top-500 advantage; never claim we beat the baselines on top-500. Note: the 2025-01..09 period was already used by the first pass to compare about 12 variants, and C1 reuses the winner's inputs.
+Paired difference C1 minus exploit-then-EPSS (seed median): AUC +0.092 / +0.071; expected top-500 +3.6 / -3.6. Seed set 0 AUC interval includes 0 in both folds. So: higher AUC but borderline (seed set 0 interval includes 0), NO robust top-500 advantage; never claim we beat the baselines on top-500. Note: the 2025-01..09 period was already used by the first pass to compare about a dozen variants, and C1 reuses the winner's inputs.
 
 **3. What carries the model (ablations, seed medians, fold 1 / fold 2).** Drop text: top500 9 / 8, AUC 0.836 / 0.788. Drop exploit/EPSS signals: top500 11 / 4. Drop assigner history: AUC 0.861 / 0.867 (assigner history is NOT shown to help). Unmasked text: AUC 0.869 / 0.865 (masking costs nothing measurable). Masked text alone: solo AUC 0.823.
 
