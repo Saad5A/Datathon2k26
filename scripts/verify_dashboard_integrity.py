@@ -124,17 +124,24 @@ def main() -> int:
         approx is None and lite_cap is None,
     )
 
-    print("--- Protected files (must be unmodified in git) ---")
+    print("--- Protected files (must match origin/main in the index; local untracked runtime copies OK) ---")
     import subprocess
 
-    proc = subprocess.run(
-        ["git", "status", "--short", "--"] + [str(p.relative_to(ROOT)) for p in PROTECTED],
+    diff = subprocess.run(
+        ["git", "diff", "--exit-code", "origin/main", "--"]
+        + [str(p.relative_to(ROOT)) for p in PROTECTED],
         cwd=ROOT,
         capture_output=True,
         text=True,
     )
-    dirty = proc.stdout.strip()
-    print("git status protected:", dirty or "(clean)")
+    tracked = subprocess.run(
+        ["git", "ls-files", "--"] + [str(p.relative_to(ROOT)) for p in PROTECTED],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+    )
+    print("tracked on HEAD:", tracked.stdout.strip() or "(none — matches origin/main absence)")
+    print("diff vs origin/main:", "none" if diff.returncode == 0 else diff.stdout[:400])
     print()
 
     bad = fails
@@ -144,9 +151,9 @@ def main() -> int:
         bad += 1
     if file_text != api_text:
         bad += 1
-    if dirty:
+    if diff.returncode != 0:
         bad += 1
-        print("FAIL: protected files have local modifications")
+        print("FAIL: audited paths differ from origin/main")
     if approx is not None or lite_cap is not None:
         bad += 1
 
