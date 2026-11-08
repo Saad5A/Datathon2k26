@@ -111,13 +111,13 @@ async function queryScoresApi(q: ScoreQuery, signal?: AbortSignal): Promise<Scor
 }
 
 export async function queryScores(all: ScoreRow[], q: ScoreQuery, signal?: AbortSignal): Promise<ScorePage> {
-  // Prefer live ranking API whenever configured; fall back to local rows on failure / demo.
+  // Live API mode never falls back to synthetic/mock rows — fail empty instead.
   if (LIVE_API) {
     try {
       return await queryScoresApi(q, signal)
     } catch (e) {
       if ((e as Error).name === 'AbortError') throw e
-      // fall through to local sample/upload data so the UI stays usable offline
+      return { rows: [], total: 0, pageCount: 1, tookMs: 0, source: 'api' }
     }
   }
   return queryScoresLocal(all, q, signal)

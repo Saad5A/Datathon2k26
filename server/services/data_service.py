@@ -212,6 +212,7 @@ class DataService:
             "risk_band": PRIORITY_BAND.get(str(row.get("priority") or ""), None),
             "published": _str_or_none(row.get("published")),
             "snapshot_month": _str_or_none(row.get("snapshot_month")),
+            "assigner": _str_or_none(row.get("assigner")),
             "epss": _num(row.get("epss")),
             "any_public_exploit": _num(row.get("any_public_exploit")),
             "in_top500": _num(row.get("in_top500")),

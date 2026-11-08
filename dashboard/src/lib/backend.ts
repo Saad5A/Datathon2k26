@@ -9,19 +9,34 @@ import type { Priority } from '@/theme/tokens'
 export const LIVE_API = Boolean(API_BASE) && !DEMO_MODE
 
 export interface StatsSummary {
-  total_analyzed_cves: number
+  total_analyzed_cves: number | null
   ranking_rows: number
   scores_rows: number
   risk_bands: { critical: number; high: number; med: number; low: number }
   token_usage: {
     estimated_tokens_consumed: number | null
-    estimated_tokens_consumed_approx: string | null
-    truncate_tokens?: number
-    lite_plan_monthly_cap?: number
-    provider?: string
-    model_id?: string
+    truncate_tokens?: number | null
+    provider?: string | null
+    model_id?: string | null
+    subset?: boolean | null
+    n_embedded_this_run?: number | null
+    n_unique_texts?: number | null
+    dimension?: number | null
+    created_utc?: string | null
+  }
+  comparison?: {
+    n_vectors?: number | null
+    embeddings_files?: string[]
+    folds_present?: string[]
+    fold1_delta_auc_granite_minus_tfidf?: number | null
+    fold2_delta_auc_granite_minus_tfidf?: number | null
+    mean_delta_auc_granite_minus_tfidf?: number | null
+    prefer?: string | null
+    rule?: string | null
+    note?: string | null
   }
   granite_subset?: Record<string, unknown>
+  sources?: Record<string, string>
   load_errors?: string[]
 }
 
@@ -33,6 +48,7 @@ export interface RankingItem {
   risk_band?: string | null
   published?: string | null
   snapshot_month?: string | null
+  assigner?: string | null
   epss?: number | null
   any_public_exploit?: number | null
   in_top500?: number | null
@@ -69,7 +85,6 @@ export interface ExplanationPayload {
 
 function asPriority(p: string | null | undefined): Priority {
   if (p === 'P0' || p === 'P1' || p === 'P2') return p
-  // Backend may emit P3/low; collapse into P2 for the dashboard Priority union.
   return 'P2'
 }
 
@@ -103,7 +118,7 @@ export function rankingItemToScoreRow(item: RankingItem, totalHint = 500): Score
     cve_id: item.cve_id,
     published: item.published ?? '',
     snapshot_month: item.snapshot_month ?? '',
-    assigner: '',
+    assigner: item.assigner ?? '',
     score,
     rank,
     percentile,
@@ -116,7 +131,7 @@ export function rankingItemToScoreRow(item: RankingItem, totalHint = 500): Score
     poc_github: 0,
     any_public_exploit: item.any_public_exploit === 1 ? 1 : 0,
     reasons: mapReasons(item.reasons),
-    model_version: 'ibm-granite+ranking',
+    model_version: 'results/scores_2026.csv',
   }
 }
 

@@ -32,6 +32,15 @@ const sampleDataset = (): Dataset => ({
   loadedAt: new Date(),
 })
 
+/** Empty placeholder while live API loads — never seeds mock numbers into KPI tiles. */
+const pendingApiDataset = (): Dataset => ({
+  id: 'api-pending',
+  name: 'api/ranking/cves',
+  source: 'api',
+  rows: [],
+  loadedAt: new Date(),
+})
+
 const SOURCE_LABEL: Record<Dataset['source'], string> = {
   sample: 'Synthetic sample',
   'upload-client': 'Upload · in-browser scoring',
@@ -46,13 +55,21 @@ function momDelta(xs: number[]) {
   return a ? ((b - a) / a) * 100 : null
 }
 
+function fmtDeltaAuc(delta: number | null | undefined): string {
+  if (delta == null || Number.isNaN(delta)) return '—'
+  const pts = delta * 100
+  const sign = pts > 0 ? '+' : ''
+  return `${sign}${pts.toFixed(2)} pt`
+}
+
 export default function App() {
   const { mode, toggle, palette } = useThemeContext()
-  const [dataset, setDataset] = useState<Dataset>(sampleDataset)
+  const [dataset, setDataset] = useState<Dataset>(() => (LIVE_API ? pendingApiDataset() : sampleDataset()))
   const [uploadOpen, setUploadOpen] = useState(false)
   const [donutScope, setDonutScope] = useState<'top' | 'all'>('top')
   const [filters, setFilters] = useState<TableFilters>({ q: '', priorities: [], exploitOnly: false })
   const [apiSummary, setApiSummary] = useState<StatsSummary | null>(null)
+  const [apiError, setApiError] = useState<string | null>(null)
   const [explainCve, setExplainCve] = useState<string | null>(null)
   const tableRef = useRef<HTMLDivElement>(null)
 
@@ -61,36 +78,46 @@ export default function App() {
     const ac = new AbortController()
     ;(async () => {
       try {
-        const [summary, page] = await Promise.all([
-          fetchStatsSummary(ac.signal),
-          fetchRankingPage({ page: 1, limit: 100, sort: 'rank', order: 'asc' }, ac.signal),
-        ])
+        const summary = await fetchStatsSummary(ac.signal)
+        const limit = Math.max(summary.ranking_rows || 500, 1)
+        const page = await fetchRankingPage(
+          { page: 1, limit, sort: 'rank', order: 'asc' },
+          ac.signal,
+        )
         setApiSummary(summary)
+        setApiError(null)
         setDataset({
           id: 'api-ranking',
-          name: 'api/ranking/cves',
+          name: 'results/top500.csv ∩ scores_2026.csv',
           source: 'api',
-          rows: page.items.map((item) => rankingItemToScoreRow(item, page.total || 500)),
+          rows: page.items.map((item) => rankingItemToScoreRow(item, page.total || limit)),
           loadedAt: new Date(),
         })
         setFilters({ q: '', priorities: [], exploitOnly: false })
-      } catch {
-        // Keep sample dataset; ApiStatus footer will show offline.
+      } catch (e) {
+        setApiError((e as Error).message)
+        // Do not inject mock rows when the live API is configured.
+        setDataset(pendingApiDataset())
+        setApiSummary(null)
       }
     })()
     return () => ac.abort()
   }, [])
 
   const s = useMemo(() => summarize(dataset.rows), [dataset])
-  const models = useMemo(() => [...new Set(dataset.rows.map((r) => r.model_version))].join(', '), [dataset])
-  const cvesAnalyzed = apiSummary?.total_analyzed_cves ?? s.total
-  const tokensConsumed = apiSummary?.token_usage?.estimated_tokens_consumed
-  const tokensLabel =
-    tokensConsumed != null
-      ? tokensConsumed >= 1000
-        ? `${(tokensConsumed / 1000).toFixed(tokensConsumed >= 100_000 ? 0 : 1)}k`
-        : fmtInt(tokensConsumed)
-      : apiSummary?.token_usage?.estimated_tokens_consumed_approx ?? '—'
+  const models = useMemo(
+    () =>
+      apiSummary?.token_usage.model_id ||
+      [...new Set(dataset.rows.map((r) => r.model_version))].join(', ') ||
+      '—',
+    [apiSummary, dataset],
+  )
+
+  const live = dataset.source === 'api' && apiSummary != null
+  const cvesAnalyzed = live ? (apiSummary.total_analyzed_cves ?? 0) : s.total
+  const tokensExact = live ? apiSummary.token_usage.estimated_tokens_consumed : null
+  const meanDelta = live ? apiSummary.comparison?.mean_delta_auc_granite_minus_tfidf : null
+  const p0Count = live ? apiSummary.risk_bands.critical : s.priorityAll.P0
 
   const focusTable = useCallback((next: Partial<TableFilters>) => {
     setFilters((f) => ({ ...f, ...next }))
@@ -99,6 +126,7 @@ export default function App() {
 
   const loadDataset = (ds: Dataset) => {
     setDataset(ds)
+    if (ds.source !== 'api') setApiSummary(null)
     setFilters({ q: '', priorities: [], exploitOnly: false })
   }
 
@@ -113,19 +141,28 @@ export default function App() {
   }
 
   const monthly = s.months
-  const prioritySrc = donutScope === 'top' ? s.priorityTop : s.priorityAll
-  const donutData = (['P0', 'P1', 'P2'] as Priority[]).map((p) => ({
-    key: p,
-    label: `${p} · ${priorityLabel[p]}`,
-    value: prioritySrc[p],
-    color: priorityColor[p],
-  }))
+  const donutData = useMemo(() => {
+    if (live) {
+      const bands = apiSummary.risk_bands
+      return [
+        { key: 'P0' as Priority, label: `P0 · ${priorityLabel.P0}`, value: bands.critical, color: priorityColor.P0 },
+        { key: 'P1' as Priority, label: `P1 · ${priorityLabel.P1}`, value: bands.high, color: priorityColor.P1 },
+        { key: 'P2' as Priority, label: `P2 · ${priorityLabel.P2}`, value: bands.med + bands.low, color: priorityColor.P2 },
+      ]
+    }
+    const prioritySrc = donutScope === 'top' ? s.priorityTop : s.priorityAll
+    return (['P0', 'P1', 'P2'] as Priority[]).map((p) => ({
+      key: p,
+      label: `${p} · ${priorityLabel[p]}`,
+      value: prioritySrc[p],
+      color: priorityColor[p],
+    }))
+  }, [live, apiSummary, donutScope, s])
   const latestMonth = monthly[monthly.length - 1]?.month
 
   return (
     <TooltipProvider>
       <div className="mx-auto flex min-h-screen max-w-[1600px] flex-col px-4 pb-12 sm:px-6 lg:px-8">
-        {/* Header */}
         <header className="sticky top-0 z-30 -mx-4 mb-6 flex flex-wrap items-center gap-x-6 gap-y-3 border-b border-line bg-bg/90 px-4 py-3 backdrop-blur sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
           <div className="flex items-center gap-3">
             <span className="flex size-8 items-center justify-center rounded-md bg-sev-p0 text-white">
@@ -144,6 +181,12 @@ export default function App() {
                   {SOURCE_LABEL[dataset.source]} · loaded {dataset.loadedAt.toLocaleTimeString()}
                   <br />
                   Model: <span className="font-mono">{models}</span>
+                  {apiError ? (
+                    <>
+                      <br />
+                      API error: {apiError}
+                    </>
+                  ) : null}
                 </span>
               }
             >
@@ -153,12 +196,14 @@ export default function App() {
                 <span className="tabular shrink-0 font-mono text-fg-subtle">{fmtInt(dataset.rows.length)} rows</span>
                 {dataset.source === 'sample' ? (
                   <Badge className="border-sev-p2/60 text-sevfg-p2">demo data</Badge>
+                ) : dataset.source === 'api' ? (
+                  <Badge className="border-sev-low/50 text-sevfg-low">results/</Badge>
                 ) : (
                   <Badge className="border-sev-low/50 text-sevfg-low">judge</Badge>
                 )}
               </span>
             </Tooltip>
-            {dataset.source !== 'sample' && (
+            {!LIVE_API && dataset.source !== 'sample' && (
               <Button variant="ghost" size="sm" onClick={() => loadDataset(sampleDataset())}>
                 <RotateCcw /> Sample
               </Button>
@@ -166,12 +211,14 @@ export default function App() {
           </div>
 
           <div className="flex items-center gap-2">
-            <Button variant="outline" size="sm" onClick={exportCsv}>
+            <Button variant="outline" size="sm" onClick={exportCsv} disabled={dataset.rows.length === 0}>
               <Download /> Export CSV
             </Button>
-            <Button variant="danger" size="sm" onClick={() => setUploadOpen(true)}>
-              <Upload /> Evaluate dataset
-            </Button>
+            {!LIVE_API && (
+              <Button variant="danger" size="sm" onClick={() => setUploadOpen(true)}>
+                <Upload /> Evaluate dataset
+              </Button>
+            )}
             <Button
               variant="ghost"
               size="icon"
@@ -184,83 +231,101 @@ export default function App() {
         </header>
 
         <main className="flex flex-col gap-4">
-          {/* KPIs */}
           <DashboardGrid>
             <GridItem span={12} sm={6} xl={3}>
               <KpiTile
-                label={apiSummary ? 'CVEs analyzed (API)' : 'CVEs scored'}
-                value={fmtInt(cvesAnalyzed)}
+                label={live ? 'CVEs analyzed' : 'CVEs scored'}
+                value={live && apiSummary.total_analyzed_cves == null ? '—' : fmtInt(cvesAnalyzed)}
                 accent={palette.neutral}
-                spark={monthly.map((m) => m.published)}
-                delta={momDelta(monthly.map((m) => m.published))}
+                spark={live ? undefined : monthly.map((m) => m.published)}
+                delta={live ? null : momDelta(monthly.map((m) => m.published))}
                 upIsBad={false}
                 hint={
-                  apiSummary
-                    ? `Ranking rows ${fmtInt(apiSummary.ranking_rows)} · scores ${fmtInt(apiSummary.scores_rows)}`
+                  live
+                    ? `ranking_rows=${fmtInt(apiSummary.ranking_rows)} · scores_rows=${fmtInt(apiSummary.scores_rows)}`
                     : latestMonth
                       ? `Through ${latestMonth}`
                       : undefined
                 }
                 info={
-                  apiSummary
-                    ? 'From GET /api/stats/summary (Granite embedding subset + ranking coverage).'
-                    : 'Every CVE in the active dataset, ranked once. Trend shows publications per snapshot month.'
+                  live
+                    ? 'Bound to summary.total_analyzed_cves ← data_cache/granite_embeddings_watsonx_subset.meta.json n_rows'
+                    : 'Every CVE in the active dataset, ranked once.'
                 }
               />
             </GridItem>
             <GridItem span={12} sm={6} xl={3}>
               <KpiTile
                 label="P0 · Critical"
-                value={fmtInt(apiSummary?.risk_bands.critical ?? s.priorityAll.P0)}
+                value={fmtInt(p0Count)}
                 accent={severity.critical}
-                spark={monthly.map((m) => m.p0)}
-                delta={momDelta(monthly.map((m) => m.p0))}
-                hint={`Percentile ≥ ${P0_MIN_PERCENTILE}; patch first`}
-                info={`P0 = percentile ≥ ${P0_MIN_PERCENTILE}. P1 = percentile ≥ ${P1_MIN_PERCENTILE}. P2 = everything else.`}
+                spark={live ? undefined : monthly.map((m) => m.p0)}
+                delta={live ? null : momDelta(monthly.map((m) => m.p0))}
+                hint={live ? `risk_bands.critical from top500 priorities` : `Percentile ≥ ${P0_MIN_PERCENTILE}; patch first`}
+                info={
+                  live
+                    ? 'Bound to summary.risk_bands.critical ← results/top500.csv ⨝ scores_2026.csv priority=P0'
+                    : `P0 = percentile ≥ ${P0_MIN_PERCENTILE}. P1 = percentile ≥ ${P1_MIN_PERCENTILE}.`
+                }
               />
             </GridItem>
             <GridItem span={12} sm={6} xl={3}>
               <KpiTile
-                label={`Top ${TOP_K} · public exploit`}
-                value={fmtPct(s.top500ExploitShare)}
+                label={live ? 'Granite ΔAUC vs TF-IDF' : `Top ${TOP_K} · public exploit`}
+                value={live ? fmtDeltaAuc(meanDelta) : fmtPct(s.top500ExploitShare)}
                 accent={severity.high}
-                spark={monthly.map((m) => m.exploit)}
-                hint={`vs ${fmtPct(s.overallExploitShare)} across all CVEs`}
-                info="Share of the top-500 review queue with any public exploit code (Exploit-DB, Metasploit, Nuclei or GitHub PoC)."
+                spark={live ? undefined : monthly.map((m) => m.exploit)}
+                hint={
+                  live
+                    ? `prefer ${apiSummary.comparison?.prefer ?? '—'} · folds ${(apiSummary.comparison?.folds_present ?? []).join(',')}`
+                    : `vs ${fmtPct(s.overallExploitShare)} across all CVEs`
+                }
+                info={
+                  live
+                    ? 'Bound to summary.comparison.mean_delta_auc_granite_minus_tfidf ← results/granite_subset_comparison.json'
+                    : 'Share of the top-500 review queue with any public exploit code.'
+                }
               />
             </GridItem>
             <GridItem span={12} sm={6} xl={3}>
               <KpiTile
-                label={apiSummary ? 'Watsonx tokens used' : `Top ${TOP_K} · median EPSS`}
-                value={apiSummary ? tokensLabel : s.top500MedianEpss == null ? '—' : s.top500MedianEpss.toFixed(3)}
+                label={live ? 'Watsonx tokens used' : `Top ${TOP_K} · median EPSS`}
+                value={
+                  live
+                    ? tokensExact == null
+                      ? '—'
+                      : fmtInt(tokensExact)
+                    : s.top500MedianEpss == null
+                      ? '—'
+                      : s.top500MedianEpss.toFixed(3)
+                }
                 accent={severity.medium}
                 hint={
-                  apiSummary
-                    ? `${apiSummary.token_usage.provider ?? 'WATSONX'} · cap ${fmtInt(apiSummary.token_usage.lite_plan_monthly_cap ?? 300_000)}/mo`
+                  live
+                    ? `${apiSummary.token_usage.provider ?? '—'} · ${apiSummary.token_usage.model_id ?? '—'}`
                     : 'EPSS is an input signal, not the target'
                 }
                 info={
-                  apiSummary
-                    ? 'Estimated tokens from granite_embeddings_watsonx_subset.meta.json via GET /api/stats/summary (~233k on the Lite subset run).'
-                    : 'Median EPSS probability among top-500 CVEs that have an EPSS score. Rows without EPSS are excluded.'
+                  live
+                    ? 'Bound to summary.token_usage.estimated_tokens_consumed ← meta.estimated_tokens_this_run (exact integer)'
+                    : 'Median EPSS among top-500 CVEs with an EPSS score.'
                 }
               />
             </GridItem>
           </DashboardGrid>
 
-          {/* Trend + priority mix */}
           <DashboardGrid>
             <GridItem span={12} lg={8}>
               <WidgetCard
                 title="Publication rate vs. review queue"
-                subtitle="Per snapshot month · select a series"
-                info="Series sit on very different scales, so each is charted on its own axis. The dataset schema has no KEV-added date; top-500 entries are the model's forecast of KEV-bound CVEs."
+                subtitle={live ? 'Derived from live ranking rows (results/scores_2026.csv fields)' : 'Per snapshot month · select a series'}
+                info="Series sit on very different scales, so each is charted on its own axis."
               >
                 <TrendWidget
                   data={monthly}
                   series={[
                     { key: 'published', label: 'Published', color: palette.neutral, description: 'New CVEs published per month.' },
-                    { key: 'flagged', label: `In top ${TOP_K}`, color: severity.critical, description: `CVEs from each month that land in the top-${TOP_K} review queue (forecast KEV additions).` },
+                    { key: 'flagged', label: `In top ${TOP_K}`, color: severity.critical, description: `CVEs from each month in the top-${TOP_K} review queue.` },
                     { key: 'p0', label: 'P0 critical', color: severity.critical, description: 'P0 CVEs per publication month.' },
                     { key: 'exploit', label: 'Public exploit', color: severity.high, description: 'CVEs per month with any public exploit evidence.' },
                   ]}
@@ -270,31 +335,38 @@ export default function App() {
             <GridItem span={12} lg={4}>
               <WidgetCard
                 title="Priority mix"
-                subtitle={donutScope === 'top' ? `Top ${fmtInt(TOP_K)} review queue` : `All ${fmtInt(s.total)} CVEs`}
+                subtitle={
+                  live
+                    ? `Top ${fmtInt(apiSummary.ranking_rows)} from API risk_bands`
+                    : donutScope === 'top'
+                      ? `Top ${fmtInt(TOP_K)} review queue`
+                      : `All ${fmtInt(s.total)} CVEs`
+                }
                 info="Click a slice or row to filter the ranked table."
                 menu={
-                  <>
-                    <DropdownMenuLabel>Scope</DropdownMenuLabel>
-                    <DropdownMenuRadioGroup value={donutScope} onValueChange={(v) => setDonutScope(v as 'top' | 'all')}>
-                      <DropdownMenuRadioItem value="top">Top {TOP_K}</DropdownMenuRadioItem>
-                      <DropdownMenuRadioItem value="all">All CVEs</DropdownMenuRadioItem>
-                    </DropdownMenuRadioGroup>
-                  </>
+                  live ? undefined : (
+                    <>
+                      <DropdownMenuLabel>Scope</DropdownMenuLabel>
+                      <DropdownMenuRadioGroup value={donutScope} onValueChange={(v) => setDonutScope(v as 'top' | 'all')}>
+                        <DropdownMenuRadioItem value="top">Top {TOP_K}</DropdownMenuRadioItem>
+                        <DropdownMenuRadioItem value="all">All CVEs</DropdownMenuRadioItem>
+                      </DropdownMenuRadioGroup>
+                    </>
+                  )
                 }
               >
                 <DonutWidget
                   data={donutData}
-                  centerLabel={donutScope === 'top' ? `top ${TOP_K}` : 'CVEs'}
+                  centerLabel={live ? `top ${apiSummary.ranking_rows}` : donutScope === 'top' ? `top ${TOP_K}` : 'CVEs'}
                   onSelect={(k) => focusTable({ priorities: [k as Priority] })}
                 />
               </WidgetCard>
             </GridItem>
           </DashboardGrid>
 
-          {/* Breakdown bars */}
           <DashboardGrid>
             <GridItem span={12} md={6} xl={4}>
-              <WidgetCard title="Top assigners" subtitle={`CVEs in the top ${TOP_K}`} info="Click a bar to search the table for that assigner.">
+              <WidgetCard title="Top assigners" subtitle={`CVEs in the top ${TOP_K}`} info="From loaded ranking rows (assigner may be empty if not joined).">
                 <BarWidget
                   data={s.topAssigners.map((a) => ({ name: a.name, value: a.count, note: `${fmtPct(a.share * 100)} of top ${TOP_K}` }))}
                   valueLabel={`In top ${TOP_K}`}
@@ -303,7 +375,7 @@ export default function App() {
               </WidgetCard>
             </GridItem>
             <GridItem span={12} md={6} xl={4}>
-              <WidgetCard title="Driving signals" subtitle={`Lead reason across the top ${TOP_K}`} info="The highest-impact entry in each row's `reasons` array.">
+              <WidgetCard title="Driving signals" subtitle={`Lead reason across the top ${TOP_K}`} info="Highest-impact entry in each row's reasons array from scores_2026.csv.">
                 <BarWidget
                   data={s.topSignals.map((x) => ({ name: x.name, value: x.count }))}
                   color={severity.low}
@@ -315,17 +387,29 @@ export default function App() {
               </WidgetCard>
             </GridItem>
             <GridItem span={12} md={12} xl={4}>
-              <WidgetCard title="Exploit evidence" subtitle={`Sources present in the top ${TOP_K}`} info="A CVE can appear in several sources.">
-                <BarWidget data={s.exploitFlagsTop.map((x) => ({ name: x.name, value: x.count }))} color={severity.high} valueLabel="CVEs" />
+              <WidgetCard title="Exploit evidence" subtitle={`any_public_exploit in top ${TOP_K}`} info="From scores_2026.csv any_public_exploit flag on ranking rows.">
+                <BarWidget
+                  data={[
+                    {
+                      name: 'any_public_exploit',
+                      value: dataset.rows.filter((r) => r.any_public_exploit === 1).length,
+                    },
+                    {
+                      name: 'none',
+                      value: dataset.rows.filter((r) => r.any_public_exploit !== 1).length,
+                    },
+                  ]}
+                  color={severity.high}
+                  valueLabel="CVEs"
+                />
               </WidgetCard>
             </GridItem>
           </DashboardGrid>
 
-          {/* Ranked table */}
           <div ref={tableRef} className="scroll-mt-20">
             <WidgetCard
               title="Ranked CVEs"
-              subtitle="Sorted by model rank · click a CVE for Granite rationale · expand a row for signal reasons"
+              subtitle="GET /api/ranking/cves · click a CVE for Granite text from results/granite_explanations_top100.json"
               bodyClassName="px-0"
             >
               <RankedTable
@@ -340,12 +424,12 @@ export default function App() {
         </main>
 
         <footer className="mt-10 flex flex-wrap items-center justify-between gap-x-6 gap-y-2 border-t border-line pt-4 text-xs text-fg-subtle">
-          <p>Before the Breach · Sheridan Datathon 2026 · Scores rank CVEs; they are not calibrated probabilities.</p>
+          <p>Before the Breach · Sheridan Datathon 2026 · Live numbers from results/ and data_cache/ only.</p>
           <ApiStatus />
         </footer>
       </div>
 
-      <JudgeUploadModal open={uploadOpen} onOpenChange={setUploadOpen} onApply={loadDataset} />
+      {!LIVE_API && <JudgeUploadModal open={uploadOpen} onOpenChange={setUploadOpen} onApply={loadDataset} />}
       <ExplanationModal
         cveId={explainCve}
         open={explainCve != null}
