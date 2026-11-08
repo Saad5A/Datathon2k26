@@ -39,9 +39,9 @@ export function JudgeUploadModal({ open, onOpenChange, controller }: JudgeUpload
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
         <div className="border-b border-line px-6 py-4 pr-12">
-          <DialogTitle>Evaluate a dataset</DialogTitle>
+          <DialogTitle>Upload CVE batter</DialogTitle>
           <DialogDescription>
-            Upload CSV or JSON. Cooking follows processing; completed results appear automatically. Close this panel to watch the kitchen.
+            Import CSV or JSON into the PancakeSec kitchen. Scoring cooks the batch in-browser or via the model API; results overlay the live stack without touching audited baselines.
           </DialogDescription>
         </div>
 

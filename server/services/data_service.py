@@ -26,15 +26,47 @@ PRIORITY_BAND = {"P0": "critical", "P1": "high", "P2": "med", "P3": "low"}
 
 
 def is_live_gemini_record(record: Any) -> bool:
-    """Accept only records carrying explicit live-provider provenance."""
+    """Accept Gemini records with explicit provider provenance.
+
+    Allows:
+    - live API generations (``generation_mode == "live"``)
+    - Granite-grounded synthesis artifacts (``from_granite`` / ``synthesis``)
+    - provenance-tagged synthesis files that omit ``generation_mode`` but carry
+      executive brief / triage playbook fields (results/gemini_explanations_top100.json)
+
+    Rejects unattributed sample stubs so they are never presented as Gemini.
+    """
     if not isinstance(record, dict):
         return False
-    return (
-        str(record.get("provider") or "").strip().lower() == "gemini"
-        and bool(record.get("model_id"))
-        and record.get("is_ai_generated") is True
-        and record.get("generation_mode") == "live"
+    provider = str(record.get("provider") or "").strip().lower()
+    if provider != "gemini":
+        return False
+    if not record.get("model_id"):
+        return False
+    if record.get("is_ai_generated") is not True:
+        return False
+
+    mode = record.get("generation_mode")
+    if mode is not None and str(mode).strip().lower() not in {
+        "live",
+        "synthesis",
+        "from_granite",
+    }:
+        return False
+
+    has_brief = bool(
+        record.get("gemini_executive_summary")
+        or record.get("executive_summary")
+        or record.get("explanation")
     )
+    has_playbook = bool(
+        record.get("gemini_triage_playbook")
+        or record.get("immediate_mitigation")
+        or record.get("patch_guidance")
+    )
+    if mode is None and not (has_brief or has_playbook):
+        return False
+    return True
 
 
 class DataService:

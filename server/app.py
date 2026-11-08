@@ -11,7 +11,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from server.routes import explanations, models, overview, predict, ranking, results
+from server.routes import chat, explanations, models, overview, predict, ranking, results
 from server.services.data_service import store
 
 
@@ -46,6 +46,7 @@ app.include_router(predict.router)
 app.include_router(explanations.router)
 app.include_router(models.router)
 app.include_router(results.router)
+app.include_router(chat.router)
 
 
 @app.get("/api/health")

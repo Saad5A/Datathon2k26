@@ -89,12 +89,33 @@ def _synthesize_refine(
             f"features (public exploit, description_text, KEV history) outweigh static severity. "
             f"Granite: {snippet}"
         )
-    # custom_refinement
-    follow = (user_context or "").strip() or "Provide residual-risk guidance until a verified patch exists."
+    # custom_refinement — answer the ask directly; never echo "Judge:" / Q:/A: labels
+    follow = (user_context or "").strip()
+    if not follow:
+        return (
+            f"Keep compensating controls on {cve_id} until a verified vendor advisory exists; "
+            f"do not invent patch URLs. Granite: {snippet}"
+        )
+    fl = follow.lower()
+    if any(k in fl for k in ("monday", "delay", "can't patch", "cannot patch", "defer", "weekend")):
+        return (
+            f"If {cve_id} cannot be patched immediately, hold WAF/isolation compensating controls, "
+            f"freeze nonessential exposure, and schedule the vendor fix in the next controlled window. "
+            f"Granite pressure: {snippet}"
+        )
+    if any(k in fl for k in ("monitor", "detect", "alert", "siem")):
+        return (
+            f"Raise detection for {cve_id} exploit patterns, watch the isolated segment, "
+            f"and keep alerts hot until patched versions are confirmed. Granite: {snippet}"
+        )
+    if any(k in fl for k in ("risk", "downtime", "blast", "business")):
+        return (
+            f"{cve_id} remains operationally hot (rank={rank}, EPSS={epss}, exploit={exploit}). "
+            f"Contain now; treat residual risk as open until advisory-backed remediation. {snippet}"
+        )
     return (
-        f"Gemini follow-up for {cve_id} (grounded in Granite): Q: {follow} "
-        f"A: Keep compensating controls active, verify inventory for {cve_id}, and do not invent "
-        f"patch URLs. Granite signal context: {snippet}"
+        f"For {cve_id}: apply the minimal safe control implied by the ask, keep inventory verified, "
+        f"and wait on a confirmed vendor advisory — no invented patch URLs. Granite: {snippet}"
     )
 
 
@@ -250,17 +271,13 @@ def refine_action(body: RefineActionRequest) -> dict[str, Any]:
     content: str | None = None
     source = "synthesized"
 
-    if isinstance(cached, dict) and cached.get(action):
+    # Custom follow-ups must be synthesized dynamically — never return a canned cache
+    # blob and never echo the question with "Judge:" / "Answer:" labels.
+    if action == "custom_refinement" and (body.user_context or "").strip():
+        content = None
+    elif isinstance(cached, dict) and cached.get(action):
         content = str(cached[action])
         source = "cache"
-        # Custom follow-ups: append user context onto the cached base answer.
-        if action == "custom_refinement" and (body.user_context or "").strip():
-            content = (
-                f"{content}\n\nJudge follow-up: {(body.user_context or '').strip()}\n"
-                f"Answer (still Granite-grounded): Maintain compensating controls for {cve_id}, "
-                f"verify exposure inventory, and schedule a change-controlled fix only from a "
-                f"confirmed vendor advisory — no invented patch URLs."
-            )
 
     if not content:
         granite = _lookup(store.explanations, cve_id)

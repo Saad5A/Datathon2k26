@@ -190,16 +190,29 @@ def build_prompt(row: dict[str, Any]) -> str:
     rank = row.get("rank", "n/a")
     ref_block = "\n".join(f"- {u}" for u in refs) if refs else "- (none provided)"
 
-    return f"""You are a security triage assistant generating a remediation playbook.
+    return f"""You are a terse incident commander. Summarize this CVE risk in telegraphic, punchy, minimal prose.
 
-STRICT RULES:
-1. Ground impact ONLY on the DESCRIPTION and WEAKNESS below. Do not invent products, vendors, or behaviors.
-2. Priority tier is FIXED at {priority}. Do NOT change, upgrade, or downgrade it. Only explain it using REASONS.
-3. Explain why this CVE ranked highly using REASONS (model signals). Label the ML value as "Priority Score" or "Rank" only. NEVER say "X% chance of exploit" or similar probability language.
-4. Immediate mitigation: only standard safe stopgaps (perimeter firewall rules, disable unneeded services, network isolation, least privilege). No speculative product-specific hacks.
-5. Patch guidance: ONLY cite URLs from REFERENCE URLS below. NEVER invent software versions (e.g. "upgrade to v1.2.3") or URLs. If no patch/advisory URL is listed, set patch_guidance exactly to:
-   "{NO_PATCH_MSG}"
-6. Return JSON matching the schema. Set is_ai_generated to true. Set priority_tier to {priority}. Set cve_id to {row.get("cve_id")}.
+HARD LENGTH LIMITS:
+- Executive Brief (executive_summary): Exactly 1 sentence. Maximum 18 words. Focus solely on business threat and required posture.
+- Containment (immediate_mitigation): Maximum 8 words.
+- Hotfix (patch_guidance): Maximum 8 words.
+- Verification / triage_explanation: Maximum 8 words.
+- Total of those four strings MUST be under 50 words.
+- NEVER repeat keys inside values (e.g., do not say "Containment: Contain by...").
+- Keep exact JSON field keys required by the schema (do not rename keys).
+
+CONTENT RULES:
+1. Ground impact ONLY on DESCRIPTION and WEAKNESS. Do not invent products, vendors, or behaviors.
+2. Priority tier is FIXED at {priority}. Do NOT change it.
+3. Label ML values as "Priority Score" or "Rank" only. NEVER say "X% chance of exploit".
+4. patch_guidance may ONLY cite URLs from REFERENCE URLS. NEVER invent versions/URLs. If none: set exactly to "{NO_PATCH_MSG}".
+5. Set is_ai_generated to true. Set priority_tier to {priority}. Set cve_id to {row.get("cve_id")}.
+
+FORMAT MAPPING:
+executive_summary ← Executive Brief
+immediate_mitigation ← Containment
+patch_guidance ← Hotfix
+triage_explanation ← Verification
 
 CVE_ID: {row.get("cve_id")}
 PRIORITY_TIER (immutable): {priority}
@@ -314,18 +327,23 @@ def clean_playbook_for_ui(playbook: dict[str, Any]) -> dict[str, Any]:
     return {k: playbook.get(k) for k in UI_KEYS}
 
 
+def _clip_words(text: str, max_words: int) -> str:
+    words = str(text).split()
+    if len(words) <= max_words:
+        return str(text).strip()
+    return " ".join(words[:max_words]).rstrip(".,;:") + "."
+
+
 def _offline_playbook(row: dict[str, Any]) -> dict[str, Any]:
-    """Deterministic schema-valid playbook when Gemini is unavailable."""
+    """Deterministic telegraphic playbook when Gemini is unavailable (<50 words)."""
     refs = _parse_reference_urls(row.get("reference_urls"))
-    reasons = _parse_reasons(row.get("reasons"))
-    reason_bits = ", ".join(f"{k}={v}" for k, v in list(reasons.items())[:4]) or "model signals"
-    weakness = row.get("weakness") or row.get("cwe_name") or "Unassigned"
-    summary = (
-        f"{row.get('cve_id')}: based on the provided description, an attacker may exploit "
-        f"{weakness} against {row.get('affected_products') or row.get('vendor') or 'the affected component'}."
+    weakness = row.get("weakness") or row.get("cwe_name") or "weakness"
+    summary = _clip_words(
+        f"{row.get('cve_id')} #{row.get('rank')}: {weakness} risks downtime — contain and patch now.",
+        18,
     )
     patch = (
-        "Follow vendor remediation using only these verified references: " + "; ".join(refs)
+        _clip_words("Apply vendor fix via verified references.", 8)
         if refs
         else NO_PATCH_MSG
     )
@@ -333,14 +351,8 @@ def _offline_playbook(row: dict[str, Any]) -> dict[str, Any]:
         "cve_id": str(row.get("cve_id")),
         "priority_tier": str(row.get("priority", "P2")),
         "executive_summary": summary,
-        "triage_explanation": (
-            f"Rank {row.get('rank')} with Priority Score {row.get('priority_score')} "
-            f"due to signals: {reason_bits}. Priority tier remains {row.get('priority')}."
-        ),
-        "immediate_mitigation": (
-            "Restrict external access with perimeter firewall rules, isolate the affected "
-            "service segment, and disable unused management/diagnostic interfaces until patched."
-        ),
+        "triage_explanation": _clip_words("Re-scan CVE; watch detections 72h.", 8),
+        "immediate_mitigation": _clip_words("WAF restrict; isolate segment; cut admin.", 8),
         "patch_guidance": patch,
         "is_ai_generated": True,
     }

@@ -243,22 +243,22 @@ function createTaperedDrip(
 }
 
 function createDarkMapleMaterial() {
-  // Dark golden maple — amber honey with soft specular glide
+  // Dark maple — glossy viscous syrup matching pool + drips
   return new THREE.MeshPhysicalMaterial({
-    color: 0xb86a12,
-    emissive: 0x5c3008,
-    emissiveIntensity: 0.2,
-    roughness: 0.12,
-    metalness: 0.03,
+    color: 0x2a0e03,
+    emissive: 0x100502,
+    emissiveIntensity: 0.28,
+    roughness: 0.05,
+    metalness: 0.02,
     clearcoat: 1.0,
-    clearcoatRoughness: 0.12,
-    transmission: 0.58,
-    ior: 1.48,
-    thickness: 1.15,
+    clearcoatRoughness: 0.04,
+    transmission: 0.55,
+    ior: 1.492,
+    thickness: 1.2,
     transparent: true,
-    opacity: 0.96,
-    attenuationColor: new THREE.Color(0x8a4a0e),
-    attenuationDistance: 0.7,
+    opacity: 0.97,
+    attenuationColor: new THREE.Color(0x3b1608),
+    attenuationDistance: 0.65,
   })
 }
 
@@ -318,7 +318,9 @@ export function PancakeScene({ stack, selectedId, filterTier, onSelect }: Props)
     scene.fog = new THREE.FogExp2(0xfaf7f2, 0.035)
 
     const camera = new THREE.PerspectiveCamera(38, mount.clientWidth / Math.max(mount.clientHeight, 1), 0.1, 100)
-    camera.position.set(0, 3.2, 7.2)
+    // Framed to show full stack + griddle plate (not clipped mid-stack)
+    camera.position.set(0, 2.6, 6.2)
+    camera.lookAt(0, -0.15, 0)
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
     renderer.setSize(mount.clientWidth, mount.clientHeight)
@@ -348,7 +350,10 @@ export function PancakeScene({ stack, selectedId, filterTier, onSelect }: Props)
     let isLandingAnimationActive = !prefersReducedMotion
     let pourAge = 0
     let cameraShake = 0
-    const camBase = { x: 0, y: 3.2, z: 7.2 }
+    const camOrbitRadius = 6.2
+    const camOrbitY = 2.6
+    const camLookAt = new THREE.Vector3(0, -0.15, 0)
+    const camBase = { x: 0, y: camOrbitY, z: camOrbitRadius }
     const textureCache: THREE.Texture[] = []
     const materialCache: THREE.Material[] = []
 
@@ -468,9 +473,14 @@ export function PancakeScene({ stack, selectedId, filterTier, onSelect }: Props)
       }
       syrupTendrilMeshes.forEach((t) => {
         t.root.scale.set(1, 1, 1)
-        t.tip.scale.set(1.05, 1.2, 1.05)
+        t.tip.scale.set(1, 1.4, 1)
         t.tip.visible = true
         t.tip.position.set(t.tipLocalX, t.tipLocalY, t.tipLocalZ)
+        const puddle = t.root.userData.puddle as THREE.Mesh | undefined
+        if (puddle) {
+          puddle.scale.set(1, 1, 1)
+          puddle.visible = true
+        }
       })
       fallingBeads.forEach((b, i) => {
         b.mesh.visible = !prefersReducedMotion
@@ -514,6 +524,11 @@ export function PancakeScene({ stack, selectedId, filterTier, onSelect }: Props)
         t.tip.scale.set(0.001, 0.001, 0.001)
         t.tip.visible = false
         t.tip.position.set(t.tipLocalX, t.tipLocalY, t.tipLocalZ)
+        const puddle = t.root.userData.puddle as THREE.Mesh | undefined
+        if (puddle) {
+          puddle.scale.set(0.01, 1, 0.01)
+          puddle.visible = false
+        }
       })
       fallingBeads.forEach((b) => {
         b.mesh.visible = false
@@ -534,7 +549,8 @@ export function PancakeScene({ stack, selectedId, filterTier, onSelect }: Props)
 
       const num = items.length
       const height = 0.28
-      let targetY = -0.92
+      // Seat bottom pancake on plate top (~-1.02): center ≈ plateTop + halfHeight
+      let targetY = -0.85
       const built: THREE.Mesh[] = new Array(num)
 
       for (let i = num - 1; i >= 0; i--) {
@@ -624,59 +640,127 @@ export function PancakeScene({ stack, selectedId, filterTier, onSelect }: Props)
       syrupCapMesh.receiveShadow = true
       syrupGroup.add(syrupCapMesh)
 
-      // Prominent front drools (camera +Z) + light side accents — continuous from cap lip
-      const dripConfigs = [
-        // Front-center — flows 2–3 layers
-        { x: 0.15, z: 1.35, len: 2.15, r0: 0.095, r1: 0.034, r2: 0.07, speed: 1.38, front: true, fall: true },
-        // Front-left slow creep
-        { x: -0.65, z: 1.25, len: 1.55, r0: 0.078, r1: 0.028, r2: 0.055, speed: 1.08, front: true, fall: false },
-        // Front-right heavy drool near plate
-        { x: 0.75, z: 1.15, len: 2.55, r0: 0.1, r1: 0.036, r2: 0.074, speed: 1.42, front: true, fall: true },
-        // Extra front-left-center
-        { x: -0.25, z: 1.38, len: 1.95, r0: 0.086, r1: 0.031, r2: 0.062, speed: 1.28, front: true, fall: true },
-        // Soft side accents (not rim blobs)
-        { x: -1.25, z: 0.35, len: 1.2, r0: 0.05, r1: 0.02, r2: 0.038, speed: 0.95, front: false, fall: false },
-        { x: 1.2, z: -0.45, len: 1.1, r0: 0.048, r1: 0.019, r2: 0.036, speed: 0.92, front: false, fall: false },
+      // Contoured clinging streams — reach plate surface so bulbs + puddles finish seated
+      const topCapY = topY
+      const plateSurfaceY = -1.0
+      const contouredDrips = [
+        // Right front-facing main drool
+        {
+          points: [
+            new THREE.Vector3(1.22, topCapY + 0.02, 0.45),
+            new THREE.Vector3(1.34, topCapY - 0.25, 0.48),
+            new THREE.Vector3(1.3, topCapY - 0.65, 0.46),
+            new THREE.Vector3(1.26, (topCapY + plateSurfaceY) * 0.45, 0.44),
+            new THREE.Vector3(1.24, plateSurfaceY + 0.02, 0.42),
+          ],
+          r0: 0.065,
+          r1: 0.035,
+          r2: 0.055,
+          speed: 1.35,
+          front: true,
+          fall: true,
+          hasPuddle: true,
+          puddleRadius: 0.16,
+        },
+        // Right flank secondary drip
+        {
+          points: [
+            new THREE.Vector3(1.1, topCapY + 0.02, 0.72),
+            new THREE.Vector3(1.24, topCapY - 0.3, 0.75),
+            new THREE.Vector3(1.2, topCapY - 0.55, 0.72),
+            new THREE.Vector3(1.18, plateSurfaceY + 0.12, 0.7),
+          ],
+          r0: 0.055,
+          r1: 0.03,
+          r2: 0.048,
+          speed: 1.15,
+          front: true,
+          fall: false,
+          hasPuddle: false,
+          puddleRadius: 0.12,
+        },
+        // Right back clinging drip
+        {
+          points: [
+            new THREE.Vector3(1.28, topCapY + 0.02, 0.15),
+            new THREE.Vector3(1.38, topCapY - 0.35, 0.18),
+            new THREE.Vector3(1.34, topCapY - 0.7, 0.17),
+            new THREE.Vector3(1.33, (topCapY + plateSurfaceY) * 0.42, 0.16),
+            new THREE.Vector3(1.32, plateSurfaceY + 0.02, 0.16),
+          ],
+          r0: 0.058,
+          r1: 0.032,
+          r2: 0.05,
+          speed: 1.22,
+          front: false,
+          fall: true,
+          hasPuddle: true,
+          puddleRadius: 0.12,
+        },
+        // Front-center drool toward camera
+        {
+          points: [
+            new THREE.Vector3(0.12, topCapY + 0.02, 1.18),
+            new THREE.Vector3(0.14, topCapY - 0.28, 1.32),
+            new THREE.Vector3(0.13, topCapY - 0.7, 1.28),
+            new THREE.Vector3(0.12, (topCapY + plateSurfaceY) * 0.4, 1.22),
+            new THREE.Vector3(0.12, plateSurfaceY + 0.02, 1.2),
+          ],
+          r0: 0.072,
+          r1: 0.036,
+          r2: 0.06,
+          speed: 1.4,
+          front: true,
+          fall: true,
+          hasPuddle: true,
+          puddleRadius: 0.18,
+        },
+        // Front-left creep
+        {
+          points: [
+            new THREE.Vector3(-0.55, topCapY + 0.02, 1.12),
+            new THREE.Vector3(-0.62, topCapY - 0.32, 1.26),
+            new THREE.Vector3(-0.58, topCapY - 0.72, 1.2),
+            new THREE.Vector3(-0.54, plateSurfaceY + 0.14, 1.1),
+          ],
+          r0: 0.06,
+          r1: 0.03,
+          r2: 0.048,
+          speed: 1.12,
+          front: true,
+          fall: false,
+          hasPuddle: false,
+          puddleRadius: 0.12,
+        },
       ]
 
       fallingBeads = []
-      dripConfigs.forEach((cfg, idx) => {
-        const rimR = Math.hypot(cfg.x, cfg.z)
-        const ox = cfg.x / (rimR + 1e-6)
-        const oz = cfg.z / (rimR + 1e-6)
-        // Tuck root just inside the cap so the meniscus merges with the pool
-        const rootR = Math.min(rimR, capRadius * 0.88)
-        const tipY = -cfg.len
-        const outward = cfg.front ? 0.38 : 0.16
-        // Bow outward around pancake layer bulges (surface tension cling)
-        const curve = new THREE.CatmullRomCurve3([
-          new THREE.Vector3(-ox * 0.22, 0.05, -oz * 0.22),
-          new THREE.Vector3(ox * 0.06, -0.01, oz * 0.06),
-          new THREE.Vector3(ox * outward * 0.35, tipY * 0.22, oz * outward * 0.35),
-          new THREE.Vector3(ox * outward * 0.72, tipY * 0.48, oz * outward * 0.72),
-          new THREE.Vector3(ox * outward * 0.95, tipY * 0.74, oz * outward * 0.95),
-          new THREE.Vector3(ox * outward, tipY, oz * outward),
-        ])
+      contouredDrips.forEach((cfg, idx) => {
+        const anchor = cfg.points[0]
+        const tipWorld = cfg.points[cfg.points.length - 1]
+        // Local curve relative to meniscus anchor so growth scales along the strand
+        const localPts = cfg.points.map((p) => new THREE.Vector3(p.x - anchor.x, p.y - anchor.y, p.z - anchor.z))
+        const curve = new THREE.CatmullRomCurve3(localPts)
+        const tipLocal = localPts[localPts.length - 1]
 
         const root = new THREE.Group()
-        root.position.set(ox * rootR, topY, oz * rootR)
+        root.position.copy(anchor)
         root.userData.front = cfg.front
         root.userData.dripSpeed = cfg.speed
-        root.userData.dripDelay = cfg.front ? 0.35 + idx * 0.06 : 0.55 + idx * 0.05
+        root.userData.dripDelay = cfg.front ? 0.32 + idx * 0.07 : 0.48 + idx * 0.06
         root.scale.set(1, prefersReducedMotion ? 1 : 0.001, 1)
 
         const drip = new THREE.Mesh(createTaperedDrip(curve, 48, 12, cfg.r0, cfg.r1, cfg.r2), mapleMat)
         drip.castShadow = true
         root.add(drip)
 
-        const tipLocalX = ox * outward
-        const tipLocalZ = oz * outward
-        const tip = new THREE.Mesh(new THREE.SphereGeometry(cfg.r2 * 1.2, 18, 18), mapleMat)
-        tip.position.set(tipLocalX, tipY, tipLocalZ)
+        // Bulbous teardrop tip
+        const tip = new THREE.Mesh(new THREE.SphereGeometry(cfg.r2 * 1.45, 18, 18), mapleMat)
+        tip.position.copy(tipLocal)
         tip.scale.set(
-          prefersReducedMotion ? 1.05 : 0.001,
-          prefersReducedMotion ? 1.25 : 0.001,
-          prefersReducedMotion ? 1.05 : 0.001,
+          prefersReducedMotion ? 1 : 0.001,
+          prefersReducedMotion ? 1.4 : 0.001,
+          prefersReducedMotion ? 1 : 0.001,
         )
         tip.castShadow = true
         tip.visible = prefersReducedMotion
@@ -686,16 +770,31 @@ export function PancakeScene({ stack, selectedId, filterTier, onSelect }: Props)
         const tendril: Tendril = {
           root,
           tip,
-          tipLocalX,
-          tipLocalY: tipY,
-          tipLocalZ,
+          tipLocalX: tipLocal.x,
+          tipLocalY: tipLocal.y,
+          tipLocalZ: tipLocal.z,
           speed: cfg.speed,
           hasFallingBead: cfg.fall,
         }
         syrupTendrilMeshes.push(tendril)
 
+        // Settled puddle on the griddle under the strand tip
+        if (cfg.hasPuddle) {
+          const puddle = new THREE.Mesh(
+            new THREE.CylinderGeometry(cfg.puddleRadius, cfg.puddleRadius * 1.05, 0.015, 24),
+            mapleMat,
+          )
+          puddle.position.set(tipWorld.x, plateSurfaceY + 0.005, tipWorld.z)
+          puddle.receiveShadow = true
+          puddle.scale.set(prefersReducedMotion ? 1 : 0.01, 1, prefersReducedMotion ? 1 : 0.01)
+          puddle.userData.isPuddle = true
+          puddle.userData.dripDelay = (root.userData.dripDelay as number) + 0.55
+          syrupGroup!.add(puddle)
+          root.userData.puddle = puddle
+        }
+
         if (cfg.fall && !prefersReducedMotion) {
-          const bead = new THREE.Mesh(new THREE.SphereGeometry(cfg.r2 * 0.95, 14, 14), mapleMat)
+          const bead = new THREE.Mesh(new THREE.SphereGeometry(cfg.r2 * 1.1, 14, 14), mapleMat)
           bead.castShadow = true
           bead.visible = false
           bead.scale.set(0.75, 1.35, 0.75)
@@ -830,7 +929,9 @@ export function PancakeScene({ stack, selectedId, filterTier, onSelect }: Props)
         }
       } else if (animPhase === 'POURING') {
         pourAge += dt
-        const t = Math.min(1, pourAge / 2.4)
+        // Long enough for slowest drip + puddle expand to finish before READY snap
+        const pourDuration = 3.05
+        const t = Math.min(1, pourAge / pourDuration)
 
         // Stream pours down, then pinches off
         if (pourStreamMesh) {
@@ -852,16 +953,25 @@ export function PancakeScene({ stack, selectedId, filterTier, onSelect }: Props)
           syrupCapMesh.scale.set(s, 0.35 + capT * 0.65, s)
         }
 
-        // Continuous side drips grow from the cap; tip beads only after strand clears the rim
+        // Contoured drips grow along strand; tip beads + plate puddles settle after
         syrupTendrilMeshes.forEach((tendril) => {
           const delay = (tendril.root.userData.dripDelay as number) ?? 0.45
           const speed = tendril.speed
-          const local = Math.min(1, Math.max(0, (pourAge - delay) / (0.85 / speed)))
+          const local = Math.min(1, Math.max(0, (pourAge - delay) / (1.15 / speed)))
           const e = easeOutCubic(local)
           tendril.root.scale.set(1, Math.max(0.001, e), 1)
-          tendril.tip.visible = local > 0.62
-          const tipS = Math.max(0.001, THREE.MathUtils.lerp(0.4, 1.15, Math.max(0, (local - 0.62) / 0.38)))
-          tendril.tip.scale.set(tipS, tipS * 1.15, tipS)
+          tendril.tip.visible = local > 0.55
+          const tipS = Math.max(0.001, THREE.MathUtils.lerp(0.35, 1, Math.max(0, (local - 0.55) / 0.45)))
+          tendril.tip.scale.set(tipS, tipS * 1.4, tipS)
+
+          const puddle = tendril.root.userData.puddle as THREE.Mesh | undefined
+          if (puddle) {
+            const pDelay = (puddle.userData.dripDelay as number) ?? delay + 0.55
+            const pT = easeOutCubic(Math.min(1, Math.max(0, (pourAge - pDelay) / 0.55)))
+            const ps = Math.max(0.01, pT)
+            puddle.scale.set(ps, 1, ps)
+            puddle.visible = pT > 0.02
+          }
         })
 
         // Butter emerges once syrup has pooled
@@ -873,11 +983,26 @@ export function PancakeScene({ stack, selectedId, filterTier, onSelect }: Props)
         }
 
         if (t >= 1) {
+          // Force finished resting state — streams, bulbs, puddles fully expanded
           animPhase = 'READY'
           isLandingAnimationActive = false
-          if (pourStreamMesh) pourStreamMesh.visible = false
+          if (pourStreamMesh) {
+            pourStreamMesh.visible = false
+            pourStreamMesh.scale.set(0.001, 0.001, 0.001)
+          }
           if (syrupCapMesh) syrupCapMesh.scale.set(1, 1, 1)
           if (butterGroup) butterGroup.scale.set(1, 1, 1)
+          syrupTendrilMeshes.forEach((tendril) => {
+            tendril.root.scale.set(1, 1, 1)
+            tendril.tip.visible = true
+            tendril.tip.scale.set(1, 1.4, 1)
+            tendril.tip.position.set(tendril.tipLocalX, tendril.tipLocalY, tendril.tipLocalZ)
+            const puddle = tendril.root.userData.puddle as THREE.Mesh | undefined
+            if (puddle) {
+              puddle.scale.set(1, 1, 1)
+              puddle.visible = true
+            }
+          })
           fallingBeads.forEach((b, i) => {
             b.mesh.visible = true
             b.age = -i * 0.55
@@ -915,11 +1040,11 @@ export function PancakeScene({ stack, selectedId, filterTier, onSelect }: Props)
           syrupTendrilMeshes.forEach((t, idx) => {
             const dripPulse = Math.sin(time * 2.0 + idx * 1.15) * 0.015
             t.tip.position.set(t.tipLocalX, t.tipLocalY - dripPulse, t.tipLocalZ)
-            t.tip.scale.set(1 + dripPulse * 2, 1.2 - dripPulse * 2, 1 + dripPulse * 2)
+            t.tip.scale.set(1 + dripPulse * 2, 1.4 - dripPulse * 2, 1 + dripPulse * 2)
           })
 
           // Continuous falling beads: stretch off tip → gravity → plate → loop
-          const plateYLocal = -1.02 - dy
+          const plateYLocal = -1.0 - dy
           fallingBeads.forEach((bead) => {
             bead.age += dt
             if (bead.age < 0) {
@@ -1076,16 +1201,16 @@ export function PancakeScene({ stack, selectedId, filterTier, onSelect }: Props)
       if (isLandingAnimationActive) {
         const holdX = -0.45
         const holdY = -0.35
-        camBase.x += (Math.sin(holdX) * 7.2 - camBase.x) * 0.1
-        camBase.y += (3.2 + Math.sin(holdY) * 1.5 - camBase.y) * 0.1
-        camBase.z += (Math.cos(holdX) * 7.2 - camBase.z) * 0.1
+        camBase.x += (Math.sin(holdX) * camOrbitRadius - camBase.x) * 0.1
+        camBase.y += (camOrbitY + Math.sin(holdY) * 1.15 - camBase.y) * 0.1
+        camBase.z += (Math.cos(holdX) * camOrbitRadius - camBase.z) * 0.1
       } else {
-        camBase.x += (Math.sin(targetRotationY) * 7.2 - camBase.x) * 0.05
-        camBase.y += (3.2 + Math.sin(targetRotationX) * 1.5 - camBase.y) * 0.05
-        camBase.z += (Math.cos(targetRotationY) * 7.2 - camBase.z) * 0.05
+        camBase.x += (Math.sin(targetRotationY) * camOrbitRadius - camBase.x) * 0.05
+        camBase.y += (camOrbitY + Math.sin(targetRotationX) * 1.15 - camBase.y) * 0.05
+        camBase.z += (Math.cos(targetRotationY) * camOrbitRadius - camBase.z) * 0.05
       }
       camera.position.set(camBase.x + shakeX, camBase.y + shakeY, camBase.z)
-      camera.lookAt(0, 0.1, 0)
+      camera.lookAt(camLookAt)
       renderer.render(scene, camera)
     }
 
