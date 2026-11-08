@@ -41,6 +41,8 @@ README_QUOTE = ("README 'Keep it fair': \"For 2026 vulnerabilities, `nvd_status`
                 "blank severity scores, and links to news or threat reports in `references.csv` can give part of the "
                 "answer away, because NIST reviews attacked vulnerabilities first.\" DATA_DICTIONARY.md: \"can give "
                 "much of the answer away\". The 2026 leak size cannot be measured (no 2026 labels).")
+FACT_TEXT = {"nvd_status_Analyzed": "have NVD status Analyzed", "has_affected_product": "have an affected_products.csv row",
+             "cvss3_present": "have a non-blank CVSS3 score", "cwe_present": "have non-blank cwe_ids"}
 AV_ORDER = {"NETWORK": 3, "ADJACENT_NETWORK": 2, "LOCAL": 1, "PHYSICAL": 0}
 
 
@@ -189,6 +191,9 @@ def main():
         claims[f"leakage.positives.{name}.cp95_lower"] = claim(
             f"Clopper-Pearson 95% lower bound on the share of 2025 test positives with {name}",
             f["cp95_lower_share"], "fraction", SCRIPT, OUT)
+        claims[f"leakage.negatives.{name}.share"] = claim(
+            f"Share of the {int((~pos).sum()):,} non-exploited 2025 test CVEs that {FACT_TEXT[name]}",
+            f["negatives_share_with_value"], "fraction", SCRIPT, OUT)
     n = merge_claims(claims)
     print(json.dumps(positive_facts, indent=1))
     print(df.drop(columns="reason").to_string(index=False))
