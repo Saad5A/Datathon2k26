@@ -81,7 +81,7 @@ def main():
         "Few positives: fold 1 has 52 exploited CVEs in its test pool and fold 2 has 32, so one hit is about 2% (fold 1) to "
         "3% (fold 2) of all positives. Read every number with its interval.",
         "The top-500 difference between 'ours' and 'exploit_then_epss' is not robust: it changes sign between folds and "
-        "seed sets, and its paired bootstrap interval includes 0. 'ours' ranks better on AUC in both folds, but that "
+        "seed sets, and its paired bootstrap interval (seed set 0) includes 0. 'ours' ranks better on AUC in both folds, but that "
         "interval also includes 0 for seed set 0.",
         "'ours' = C1 (HGB on exploit signals + assigner KEV history + masked description text score), trained with "
         "time-safe labels (KEV additions only up to the train end). Values are medians over 5 seed sets; "
