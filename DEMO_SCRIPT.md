@@ -1,60 +1,158 @@
-# Demo video script (2:30)
+# PancakeSec — 3-minute demo script
 
-Target length 2:30 (limit 2 to 3 minutes), read at a calm pace. Record the live app at https://pancakess.work/ (home) and https://pancakess.work/results (evidence page). Screen names below match `dashboard/src` at the time of writing; another teammate is still editing the dashboard, so re-check every label right before recording.
+**Target:** 3:00 (hard limit 3:00). Calm pace.
+**Record:** full HD or better, 16:9, cursor visible, clean browser window.
+**Live app:** <https://pancakess.work/> · **Evidence page:** <https://pancakess.work/results>
 
-Recording rules:
-- The score column is labelled "Priority score". Call it a ranking score, never a chance or percentage of attack.
-- Do not show or mention Gemini. No Gemini output exists in this build. Keep the "Google Gemini" pill in the home banner and the "Google Gemini · Executive Brief" card in the side panel out of frame (crop or scroll past them).
-- Do not click "Explain this rank" on camera; it returns a template answer.
-- Do not film section 03 of /results. Its "Paired bootstrap · AUC vs exploit→EPSS" card shows a seed-median interval, which is not a verified claim; the narration uses the verified seed-set-0 interval instead.
-- Every number spoken below is a verified claim. Do not add or round any.
+> Every number in the narration is a verified claim. Do not ad-lib a new number, average, or percentage.
+> The score is a **ranking score**, never a probability or an accuracy.
 
-Slides marked [SLIDE] are not in the app; make them as plain title cards with exactly the text given.
+## Before you record
+
+- Open these tabs in order: **Home**, **/results**, **/evolve/**, **GitHub repo**.
+- On Home: keep **3D Stack** for the opening; switch to **Table (500)** for the demo.
+- Pre-select the CVE you will click. **CVE-2026-10523** is the safe demo row.
+- Test the Judge Q&A with **“What does KEV stand for?”** before recording. Do not ask it for metrics; live answers are not audited claims.
+- Check that the side panel shows the Granite brief and **Nearest neighbours**. The Gemini card may be empty in this build; do not promise it on camera.
+- Record two takes. Keep the cursor still while narrating.
+
+## Shot list
+
+| Time | Visual | Purpose |
+|---|---|---|
+| 0:00–0:10 | 3D stack, slow rotate; overlay “72,670 CVEs” | Hook |
+| 0:10–0:32 | Slide: NIST fields crossed out; quick cut to /results limits | The hidden leak |
+| 0:32–1:00 | Animated stack diagram over Home | Technical model |
+| 1:00–1:25 | /results hero, AUC chart, top-500 tile | Honest result |
+| 1:25–2:05 | Home → Table (500) → P0 → CVE → neighbours → Judge Q&A | Live product |
+| 2:05–2:30 | /results checks + /api/docs + /evolve + GitHub | Engineering and audit |
+| 2:30–2:50 | /results “What we refuse to claim” | Limits |
+| 2:50–3:00 | End card with URLs | Close |
 
 ---
 
-## 0:00-0:10 · Hook
-**On screen:** [SLIDE] "Which of the 72,670 vulnerabilities on the 2026 scoreboard will attackers use? PancakeSec · IBM Before the Breach"
+## 0:00–0:10 · Hook
+
+**Visual:** Home, 3D pancake stack rotating. Overlay, large:
+
+> **72,670 CVEs. Which ones will attackers actually use?**
 
 **Narration:**
-"Which of the 72,670 vulnerabilities on the 2026 scoreboard will attackers actually use? First, a trap that standard backtests can fall into."
+“There are 72,670 vulnerabilities on the 2026 scoreboard. A scanner tells you what is missing a patch. It cannot tell you what attackers will actually use. We built PancakeSec to rank that queue — then tried to prove ourselves wrong.”
 
-## 0:10-0:40 · The hidden leak
-**On screen:** [SLIDE] Two lines of text:
-- "2025 test: CVEs later added to KEV with NIST status 'Analyzed': 52 of 52"
-- "All other test CVEs with status 'Analyzed': 50.1%"
+---
 
-Then add one line: "Product count alone, AUC 0.767 · EPSS, AUC 0.707 (intervals overlap)"
+## 0:10–0:32 · The trap we found
 
-**Narration:**
-"In our 2025 backtest, all 52 vulnerabilities later added to CISA's Known Exploited Vulnerabilities list, KEV, had NIST status 'Analyzed'. Of the rest, only 50.1% did. The organisers' README notes that NIST reviews attacked vulnerabilities first, so these fields partly record that an attack was already noticed. The product count alone scores a higher AUC, a measure of how well a list puts exploited above non-exploited, than EPSS, the usual exploitation score: 0.767 against 0.707, though the intervals overlap."
+**Visual:** Slide, then a quick cut to the limits cards on `/results`.
 
-## 0:40-1:00 · Why it matters
-**On screen:** [SLIDE] "Excluded: nvd_status, n_affected_cpes, n_references, CVSS and CWE fields, blank-score patterns, references.csv, affected_products.csv" and below it "2026, August-September: 66-68% of CVEs have no product list"
+On-screen text:
+
+> **The leak:** `nvd_status` · product count · reference count · CVSS/CWE blank patterns  
+> **All 52 KEV positives were “Analyzed.” About half of the negatives were.**
 
 **Narration:**
-"Why it matters: such a model looks great in a backtest but reads NIST's reaction to attacks, which new vulnerabilities lack. In August and September 2026, 66 to 68% have no product list. So we left those fields out and used only what was known at each snapshot month, apart from today's description text."
+“Our first backtest looked too good. Every KEV-positive CVE in the test had NIST status ‘Analyzed’; only about half of the negatives did. NIST reviews attacked CVEs first, so that column was recording the answer. We excluded it, plus product counts, reference counts, and the CVSS/CWE blank-score fields.”
 
-## 1:00-1:30 · The honest backtest
-**On screen:** https://pancakess.work/results. Start on the hero "The queue is not a guess. It is a measured ordering." and the KPI tile "Top-500 hits · fold 1". Scroll to section 01 "Head-to-head" and hold on the chart "ROC AUC by method" (do not scroll into section 03).
+---
 
-**Narration:**
-"Then we tried to break our own result. Our first pass found 25 top-500 hits, against 18 to 19 for 'exploit code first, then EPSS'. It was inflated by training labels overlapping the test period, and by seed luck. With time-safe labels, the submitted model gets 20 against 18 in one fold, and 11 against 15 in the other. Its AUC is higher, but for our base model's first seed set, the paired interval on that gain includes zero. Borderline."
+## 0:32–1:00 · Inside the model
 
-## 1:30-1:40 · Discipline
-**On screen:** quick cut to https://pancakess.work/evolve/ (the evolution observatory).
+**Visual:** Animated stack diagram over a dimmed Home screen. Four boxes light up in sequence:
 
-**Narration:**
-"An automated search over many variants found none that passed the gate we wrote down in advance, so the submitted model stayed."
-
-## 1:40-2:05 · What we built
-**On screen:** https://pancakess.work/ home. Show the "3D Stack" view, then click "Table (72,670)" to show "Audited CVE Exploitation Ranking". Set "Filter Tiers" to P0. Point at the "Priority score" and "Public exploit code" / "None recorded" columns. Click one P0 row ("Triage →"), which opens the 3D view with that CVE selected. In its side panel, the summary card is headed "IBM Granite (AI-generated summary)" or "Template (no AI)" with the model ID badge; scroll past the Gemini card to "Nearest neighbours · IBM Granite". End by pointing at the "top500.csv" button in the header.
+> **1. Exploit signals** — EPSS + 4 public-exploit flags, at the snapshot month  
+> **2. Assigner history** — prior KEV rate and count, strictly before the month  
+> **3. Two text scores** — TF-IDF words + IBM Granite meaning, out-of-fold  
+> **4. Gradient-boosted trees** — depth 3, 150 trees, 5 seeds
 
 **Narration:**
-"This is the 2026 queue: the top 100 are tier P0, the next 400 P1. Each carries up to three reasons, the signals that moved its score most; the table shows the strongest. Select one to see similar vulnerabilities, found with a separate, smaller IBM Granite model that does not affect the ranking. No assigner fills more than 50 of the top 500. One click downloads our submitted file."
+“What remains is time-safe. At each snapshot month: EPSS and four exploit flags; the assigner’s prior KEV rate; and the masked description. Two text models read it: TF-IDF for words, and IBM Granite for meaning. Each becomes an out-of-fold score, so the trees never see a row’s own label. Gradient-boosted trees — depth three, 150 trees, five seeds — combine them into one ranking score.”
 
-## 2:05-2:30 · IBM technology, limits, close
-**On screen:** /results section 04 "What we refuse to claim" (cards "No 2026 accuracy", "Top-500 is noisy", "KEV is a proxy"), then an end card [SLIDE] "github.com/Saad5A/Datathon2k26 · pancakess.work".
+**Technical overlay (optional, 3 s):**
+> “Granite vectors → logistic score → trees. No raw embedding vectors fed to the trees.”
+
+---
+
+## 1:00–1:25 · The honest result
+
+**Visual:** `/results` hero. Then section 01 “Head-to-head”, hold on the AUC chart and the Top-500 tile.
 
 **Narration:**
-"IBM Granite embeddings of every masked description, some also run through watsonx.ai, are in the final model, adopted by a tie-break we declared in advance, with no measurable gain. Limits: KEV lists only confirmed attacks, one test hit is about 2% of 52 positives, and we have no 2026 labels. Descriptions are today's text, and our first pass had already used the 2025 period."
+“On the 2025 backtest, G2 has a mean AUC of 0.871, against 0.732 for CVSS and 0.707 for EPSS. The typical exploited CVE sits around rank 1,288 instead of 7,960. But top-500 is noisy: 20 of 52, then 11 of 32. And G2 is not an improvement over its base model: 0.871 versus 0.870. Granite was adopted by a tie-break declared in advance — with no measurable gain.”
+
+**On-screen:** “AUC = chance a random exploited CVE ranks above a random non-exploited one.”
+
+---
+
+## 1:25–2:05 · Live product demo
+
+**Visual:** Home. Hold the 3D stack, then click **Table (500)**.
+
+**Narration:**
+“This is the live queue. The 3D stack samples the tiers; the table shows all 500. Filter to P0 — the top 100. Each row carries its strongest reasons.”
+
+**Visual:** Click a P0 row (**CVE-2026-10523**). The side panel opens.
+
+**Narration:**
+“Select one: the Granite brief, and nearest neighbours from a separate Granite index. Retrieval only — it never changes the score.”
+
+**Visual:** Scroll to **Nearest neighbours · IBM Granite**, then click **Judge Q&A**.
+
+**Narration:**
+“The Judge Q&A is live Gemini, with the active CVE in context.”
+
+**Visual:** Ask **“What does KEV stand for?”** Hold on the answer for two seconds.
+
+**Narration:**
+“Upload your own CSV: known rows reuse the audited score; unknown rows get a transparent fallback. Export downloads the top 500.”
+
+---
+
+## 2:05–2:30 · Engineering and audit
+
+**Visual:** `/results` section 03 “The checks that could have killed it”, then quick cuts to `/api/docs`, `/evolve/`, GitHub.
+
+**Narration:**
+“FastAPI serves the audited files; React and Three.js render the queue. The rules were pre-registered; an independent auditor re-derived the numbers, and a claims ledger marks what is verified. The evolution search found no variant that passed the gate, so the model stayed.”
+
+**On-screen:** “Claims ledger · independent audit · pre-registered rules.”
+
+---
+
+## 2:30–2:50 · Limits
+
+**Visual:** `/results` section 04 “What we refuse to claim”. Hold on the cards **No 2026 accuracy**, **Top-500 is noisy**, **KEV is a proxy**.
+
+**Narration:**
+“No 2026 accuracy — there are no labels. KEV is a proxy; one hit is about 2% of the 52-positive test. Top-500 is noisy. Descriptions are today’s text, and the test period was used for model selection.”
+
+---
+
+## 2:50–3:00 · Close
+
+**Visual:** End card with logo and URLs:
+
+> **pancakess.work**  
+> **github.com/Saad5A/Datathon2k26**  
+> “A measured ranking. An honest audit.”
+
+**Narration:**
+“PancakeSec: a measured ranking, an honest audit, and a queue your team can work. Code and evidence at pancakess.work.”
+
+---
+
+## Do not say on camera
+
+- “The score is a probability of attack.” → Say **ranking score**.
+- “Granite improves accuracy.” → Say **adopted by the pre-registered tie-break, no measurable gain**.
+- “We catch 20 out of 52, so we are 38% accurate.” → Say **20 of 52 exploited CVEs reached the top 500**.
+- “We beat the baselines on top-500.” → Say **the top-500 count is noisy; AUC and median rank are the steadier result**.
+- “This is RAG.” → The neighbour panel is **retrieval-only**; the Judge Q&A is a separate live Gemini chat.
+- “We know the 2026 accuracy.” → **No 2026 labels; no 2026 accuracy claim.**
+- Any live Gemini answer as a metric or fact. Label it **AI-generated**.
+
+## If you need to cut 15 seconds
+
+Drop the upload/export sentence in 1:25–2:05 and shorten the engineering section to:
+
+> “FastAPI serves the audited files; React and Three.js render the queue. The rules were pre-registered, and an independent auditor re-derived the numbers.”
