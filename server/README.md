@@ -30,6 +30,7 @@ VITE_API_URL=http://localhost:8000/api
 | `GET` | `/api/ranking/similar/{cve_id}` | Granite retrieval neighbours (description similarity; not a prediction) |
 | `GET` | `/api/explanations/{cve_id}` | Granite technical + Gemini executive payload |
 | `GET` | `/api/models/comparison` | Granite vs Gemini telemetry |
+| `POST` | `/api/gemini/chat` (alias `/api/chat`) | live Gemini 2.5 Flash Q&A for the Judge drawer; requires `GEMINI_API_KEY` and `google-genai` |
 | `GET` | `/api/results` | audited backtest metrics for the `/results` proof page, with claim ids and status |
 | `GET` | `/api/docs` | OpenAPI UI |
 | `POST` | `/api/predict` | score uploaded CVE rows |

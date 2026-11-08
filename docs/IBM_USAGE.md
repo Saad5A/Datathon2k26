@@ -59,7 +59,7 @@ Gemini (`gemini-2.5-flash`) is a separate, optional executive-synthesis layer in
 | `WATSONX_URL` | only to regenerate | `https://ca-tor.ml.cloud.ibm.com` |
 | `WATSONX_PROJECT_ID` | only to regenerate | watsonx.ai project ID |
 | `GRANITE_INSTRUCT_MODEL` | optional | defaults to `ibm/granite-3-8b-instruct` |
-| `GEMINI_API_KEY` | optional | live Gemini playbooks; not needed for ranking/upload |
+| `GEMINI_API_KEY` | optional | live Gemini Judge Q&A (`/api/gemini/chat`) and playbooks; not needed for ranking/upload |
 | `VITE_API_URL` | dashboard only | API origin, not a secret |
 
 Nothing above is needed to run `uvicorn server.app:app`, `npm run dev`, upload a CSV/JSON, use the sample batch, or run local Ollama.

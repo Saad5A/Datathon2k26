@@ -103,7 +103,7 @@ No key is needed for the dashboard, the backend, uploads, the sample batch, or l
 | `WATSONX_URL` | watsonx.ai | e.g. `https://ca-tor.ml.cloud.ibm.com` |
 | `WATSONX_PROJECT_ID` | watsonx.ai | project ID, not a secret |
 | `GRANITE_INSTRUCT_MODEL` | Granite instruct explanations | optional; default `ibm/granite-3-8b-instruct` |
-| `GEMINI_API_KEY` | optional live Gemini remediation playbooks | not required for the dashboard or uploads |
+| `GEMINI_API_KEY` | live Gemini Judge Q&A (`/api/gemini/chat`) and optional playbooks | not required for ranking or uploads; never commit |
 | `VITE_API_URL` | dashboard → API | `http://localhost:8000/api`; not a secret |
 | `IBM_DATA_DIR` | rebuilding the model from raw IBM data | optional; folder containing `known_exploited.csv` |
 
