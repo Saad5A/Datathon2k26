@@ -178,7 +178,7 @@ export function PancakeSecDashboard() {
       setPanelChat((prev) => [
         ...prev,
         { role: 'user', content: userContext },
-        { role: 'assistant', content: 'Analyzing project data...' },
+        { role: 'assistant', content: 'Asking Gemini…' },
       ])
       try {
         const history = panelChat.map((m) => ({ role: m.role, content: m.content }))
@@ -604,7 +604,7 @@ export function PancakeSecDashboard() {
                               }`}
                             >
                               <div className="mb-0.5 text-[9px] font-bold uppercase tracking-wider opacity-60">
-                                {msg.role === 'user' ? 'User' : 'Gemini 2.5 Flash · AI-generated, unaudited'}
+                                {msg.role === 'user' ? 'User' : (msg.content === 'Asking Gemini…' || msg.content.startsWith('Error:') ? 'Status (not AI)' : 'Gemini 2.5 Flash · AI-generated, unaudited')}
                               </div>
                               <div className="whitespace-pre-wrap leading-relaxed">{msg.content}</div>
                             </div>

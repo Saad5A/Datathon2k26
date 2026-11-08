@@ -41,7 +41,7 @@ export function JudgeQaDrawer({ open, onClose, cveId }: Props) {
     setBusy(true)
 
     // 2. Typing placeholder
-    setChatMessages((prev) => [...prev, { role: 'assistant', content: 'Analyzing project data...' }])
+    setChatMessages((prev) => [...prev, { role: 'assistant', content: 'Asking Gemini…' }])
 
     try {
       // history omits the temporary placeholder (and we rebuild from state snapshot)
@@ -114,7 +114,7 @@ export function JudgeQaDrawer({ open, onClose, cveId }: Props) {
                   }`}
                 >
                   <div className="mb-0.5 text-[9px] font-bold uppercase tracking-wider opacity-60">
-                    {msg.role === 'user' ? 'User' : 'Gemini 2.5 Flash · AI-generated'}
+                    {msg.role === 'user' ? 'User' : (msg.content === 'Asking Gemini…' || msg.content.startsWith('Error:') ? 'Status (not AI)' : 'Gemini 2.5 Flash · AI-generated')}
                   </div>
                   <div className="whitespace-pre-wrap leading-relaxed">{msg.content}</div>
                 </div>

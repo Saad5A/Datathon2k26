@@ -83,3 +83,29 @@ Still wrong:
 4. Fix scripts/verify_dashboard_integrity.py, README.md:89 and docs/IBM_USAGE.md:27. Commit data_cache/granite_embeddings.meta.json or tolerate its absence in the UI.
 
 Claims status: no claims*.json status changed. Nothing here verifies granite_explanations.* (defect 1d).
+
+## Post-merge check (63be0f7 merge of origin/main, 4bda95e UI fixes)
+
+Static review only: I read the code and ran greps. No server was started.
+
+1. Honesty fixes survive the merge: PASS.
+   - I grepped dashboard/src, server and src for "Weaponiz", "Exploit Score", "Gemini synthes", "233,097", "233097" and "Audit Corpus". There are 0 matches.
+   - "watsonx" appears only in the header tile "CVE descriptions embedded on IBM watsonx.ai (exploratory subset)". That tile renders only when claim p6.granite_subset.n_vectors has status verified (overview.py `_verified_claim`; the value is 1966 and the status is verified). It is not next to the Granite summaries.
+   - "lift" appears only in 3D hover variables (PancakeScene.tsx and KitchenScene.tsx) and in the ablation prose at ResultsPage.tsx:591. That prose has no number.
+   - I copied `is_live_gemini_record` verbatim and ran it on the files. 0 of 30 records in results/gemini_explanations_top100.json pass, and 0 of 5 in cached_playbooks.json.
+   - get_explanation also re-checks the filter. It fills rank, priority and reasons from `_ranking_meta` (top500 order joined to scores_2026.csv). The summaries loader keeps only the text and drops a suggested_action that mentions rank words.
+   - The refine-action defect from section 2 is fixed. The response is labelled `source/provider: template`, `is_ai_generated: false`, "Template (no AI)", and the hard-coded "Granite summary (AI-generated)" string is gone.
+2. Judge Q&A: PASS (minor wording).
+   - server/routes/chat.py calls live gemini-2.5-flash and returns `is_ai_generated: true` with label "AI-generated (Google Gemini), unaudited". If the key is missing it returns HTTP 500. There is no canned fallback.
+   - The system prompt says Gemini cannot see project data and must not guess statistics. The prompt sends only the CVE ID.
+   - JudgeQaDrawer.tsx (lines 10, 90, 117) and the in-panel chat (PancakeSecDashboard.tsx:~608) label answers "Gemini 2.5 Flash · AI-generated, unaudited" and point users to the Evidence page for numbers.
+   - Minor: the placeholder "Analyzing project data..." (JudgeQaDrawer.tsx:44, PancakeSecDashboard.tsx:181) implies Gemini reads project data. Change it to "Asking Gemini...".
+   - Minor: error messages are shown under the Gemini AI label.
+   - Out of scope, pre-existing: `src/remediation_agent.py::_offline_playbook` sets `is_ai_generated: True` on deterministic text. The server does not serve it (0 live records load), but it should be set to False.
+3. Protected files: PASS. `git diff origin/main --stat -- results/top500.csv results/scores_2026.csv 'results/claims*.json' JUDGE_QA.md docs/writeup_model.md LEARNING.md AGENTS.md` printed nothing.
+4. Table, 500 rows in rank order: PASS.
+   - PancakeSecDashboard.tsx:121 calls fetchRankingPage with page 1, limit 500, sort rank, ascending. server/routes/ranking.py allows limit up to 500 (`le=500`) and uses a stable mergesort.
+   - filteredTable (line 212) filters by tier and search, then sorts by rank ascending. It has no slice. It renders at line 679.
+   - The CSV export also requests 500 rows by rank.
+
+Claims status: unchanged.
