@@ -119,7 +119,7 @@ Two traps:
 
 ## Embeddings
 
-An **embedding** turns a whole text into a list of numbers that captures its meaning, so texts with similar meanings get similar lists. We plan to get ours from an IBM Granite embedding model.
+An **embedding** turns a whole text into a list of numbers that captures its meaning, so texts with similar meanings get similar lists. Ours come from an IBM Granite embedding model (see the Granite phase below).
 
 **Toy example (invented numbers, and real lists are much longer):**
 
@@ -129,7 +129,7 @@ An **embedding** turns a whole text into a list of numbers that captures its mea
 | Remote code execution, no authentication needed | [0.8, 0.2, 0.2] |
 | Wrong button colour on the settings page | [0.1, 0.9, 0.1] |
 
-The first two lists are close even though the sentences share few words. TF-IDF treats "without logging in" and "no authentication" as unrelated words. That is the appeal of embeddings. Whether they beat TF-IDF on our held-out data is still an open question, and we will only know after testing.
+The first two lists are close even though the sentences share few words. TF-IDF treats "without logging in" and "no authentication" as unrelated words. That is the appeal of embeddings. On our held-out data they did not beat TF-IDF: Granite alone scored lower, and adding it to TF-IDF made no measurable difference (see the Granite phase below).
 
 ## How we score a ranking
 
@@ -309,11 +309,31 @@ Our KEV file stops at 2025-12-31, so we hold no labels for CVEs in 2026. Only th
 - **No prior KEV history:** 36.2% of 2025 rows come from assigners with no earlier KEV entry, against 23.8% in 2026. The 2026 figure is an upper bound, because our KEV file ends with 2025.
 - **EPSS blanks:** 9.8% of 2025 rows have no EPSS, against 2.0% in 2026. Most of the 2025 blanks are in January and February, so keep that note next to the number.
 
-### Final model and the per-assigner cap (results/scores_2026.csv, results/top500.csv; audited: audit/2026-11-07-final.md)
-- **Refit:** we took the C1 recipe unchanged and trained it on all labelled data: 75,148 rows, 117 exploited, with labels up to the end of 2025. This is the "refit on all labelled data" step explained above. The honest quality estimate is still the frozen Phase 3 backtest.
+### Granite phase: IBM embeddings as a second text signal (audited: audit/2026-11-08-granite-final.md)
+- **What an embedding is (recap):** a model reads the whole description and turns it into a list of numbers that captures its meaning. Descriptions that mean similar things get similar lists, even when they use different words. TF-IDF, by contrast, only counts which words appear.
+- **What we ran:** IBM's Granite multilingual embedding model (exact ID in `docs/ibm.md`), on the same masked descriptions the TF-IDF model sees. We embedded every description with the open weights on our own machine. A subset of 1,966 also went through IBM watsonx.ai, and the auditor found those vectors match the local ones. A small logistic regression turns the vectors into one "Granite text score" per CVE.
+- **What we tested (pre-registered in LOG.md before any embeddings existed):**
+  - **G1:** C1 with the Granite text score *instead of* TF-IDF.
+  - **G2:** C1 with *both* text scores.
+  - Same folds, labels, masking, tree settings and five seed sets as Phase 3.
+  - The rule: take the better of G1 and G2 by mean AUC. Adopt it if it comes within a pre-set 0.01 of C1, a deliberate tie-break in favour of IBM technology, because the track requires it.
+- **Result:**
+
+| | Fold 1 | Fold 2 | Mean |
+|---|---|---|---|
+| AUC: C1 / G1 / G2 | 0.860 / 0.857 / 0.874 | 0.880 / 0.817 / 0.868 | 0.870 / 0.837 / 0.871 |
+| Top-500 hits: C1 / G1 / G2 | 22 / 12 / 20 | 11 / 8 / 11 | |
+
+- **How to read it:** G2 was adopted, and it has **no measurable gain**. The difference in mean AUC is tiny next to the seed-to-seed spread, the per-fold order flips, and top-500 is equal or slightly worse. Granite alone (G1) is clearly lower.
+- **Why "adopted, but no gain" is an honest outcome:** we wrote the rule before seeing results, followed it, and report what happened. A rule that keeps IBM technology when it does no harm is a stated preference, not a hidden tweak. Claiming Granite "improved" the model would be false, so we do not.
+- An exploratory subset check also exists, but it is not comparable; see the audit.
+
+### Final model and the per-assigner cap (results/scores_2026.csv, results/top500.csv; audited: audit/2026-11-08-granite-final.md)
+- **Final model:** G2, which is C1 plus the Granite text score.
+- **Refit:** we took that recipe unchanged and trained it on all labelled data: 75,148 rows, 117 exploited, with labels up to the end of 2025. This is the "refit on all labelled data" step explained above. The honest quality estimate is still the frozen Phase 3 backtest.
 - **Seed averaging:** the final score is the average of the five pre-registered seed sets. This removes seed luck instead of picking a lucky seed.
 - **Per-assigner cap:** we walk down the ranking and skip a CVE once its assigner already has 50 places in the top 500, so no single issuer can take more than 10% of the list. The pre-set rule was to take the strictest cap within one hit of the best. In the backtest the cap was **neutral, not an improvement**: fold 1 went from 22 to 20 hits, and fold 2 from 11 to 12. We kept it because 2026's assigner mix shifted.
-- **What the top 500 looks like:** VulnCheck, Apache and Oracle each hit the cap of 50. GitHub advisories has 41 and Adobe 26. Four assigners tie at 12, so "9th" and "10th" are an arbitrary order within that tie. These counts depend on the assigner-history window (CVEs published 2021+). 71.2% of the top 500 have public exploit code, 4.8% have EPSS above 0.1, and 15.8% come from assigners with no earlier KEV entry.
+- **What the top 500 looks like:** VulnCheck and Apache each hit the cap of 50, GitHub advisories has 49 and Oracle 47. MITRE and Microsoft tie at 16, and Adobe's 11 is one of three assigners tied at 11, so the order inside those ties is arbitrary. These counts depend on the assigner-history window (CVEs published 2021+). 74.6% of the top 500 have public exploit code, 4.8% have EPSS above 0.1, and 17.0% come from assigners with no earlier KEV entry.
 - **Tiers:** P0 is ranks 1-100, P1 is the remaining 400 of the top 500, and P2 is everything else (72,170 rows).
 - **Still true:** the score is a ranking, not a probability, and we make no claim about how many 2026 hits it will get.
 
@@ -321,4 +341,4 @@ Our KEV file stops at 2025-12-31, so we hold no labels for CVEs in 2026. Only th
 - Each CVE in `scores_2026.csv` lists up to three reasons. Each reason names a signal (for example EPSS, public exploit code, the assigner's KEV history or the description text), gives its value, and says whether it pushed the score "up" or "down".
 - **How we compute them (occlusion):** for one CVE, we set one signal to a neutral value, such as the training median or "no exploit flags", and re-score it. The size of the score change shows how much that signal mattered. We keep the up to three biggest changes.
 - **Toy example (invented numbers):** a CVE scores 9 points. With its exploit flags set to 0 it scores 3, and with its EPSS set to the median it scores 8. "Public exploit code, up" is therefore the top reason.
-- **What reasons are not:** they explain our model's score. They are not evidence that the CVE was attacked. One row has an empty list because no single signal changes its score, so any display has to handle that. Any AI-written explanation built from these reasons must be labelled AI-generated and may only restate facts in that CVE's record.
+- **What reasons are not:** they explain our model's score. They are not evidence that the CVE was attacked. In the final model, the description reason shows the TF-IDF text score, and the Granite text score is reset together with it. A display should still handle an empty list, which the earlier model produced for one row. Any AI-written explanation built from these reasons must be labelled AI-generated and may only restate facts in that CVE's record.

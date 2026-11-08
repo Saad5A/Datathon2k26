@@ -10,6 +10,7 @@ We rank the 72,670 CVEs on the 2026 scoreboard by how likely each is to be added
 - `epss`, `exploitdb`, `metasploit`, `nuclei` and `poc_github` at the snapshot month, from `exploit_signals_2024.csv`/`exploit_signals_2025.csv` (rows matched on `month`) and from `scoreboard_2026.csv` (at `snapshot_month`).
 - `assigner`, `description` and `published` from `vulnerabilities.csv`. Assigner history counts CVEs published 2021+. In `description`, exploitation wording ("actively exploited", "exploited in the wild", "CISA", "KEV" and similar) is masked out.
 - `date_added` from `known_exploited.csv`. For features we count only rows dated before the snapshot month; for training labels, additions up to the end of each training period.
+- The same masked `description`, turned into IBM Granite embeddings (see IBM technology).
 - `in_kev`, only to drop CVEs already on KEV at their snapshot. Nothing else.
 
 **Excluded:**
@@ -25,10 +26,22 @@ We trained on older CVEs and ranked later ones, using only KEV labels known at t
 3. **2026 is shifted.** There are about twice as many rows as in the same 2025 months (72,670 vs 35,280). GitHub advisories rise from 5.6% to 15.0% of rows and VulnCheck from 1.1% to 9.3%. In August-September, 66-68% of CVEs lack a product list. Assigners with no prior KEV make up 36.2% of 2025 rows and 23.8% of 2026 rows (an upper bound).
 
 ## Final ranking
-Model C1, chosen by the pre-registered rule: boosted trees on signals, assigner history and the masked text score. It is refit on 75,148 rows (117 later KEV-listed) and averaged over five seed sets. Each assigner is capped at 50 of the top 500; the cap was neutral in the backtest, not an improvement. Each CVE lists up to three "reasons": the signals that moved its score most.
+The final model is G2: C1 (boosted trees on signals, assigner history and the masked TF-IDF text score) plus a Granite text score. It is refit on 75,148 rows (117 later KEV-listed) and averaged over five seed sets. Each assigner is capped at 50 of the top 500; the cap was neutral in the backtest, not an improvement. In the top 500:
+- 74.6% have a public exploit flag and 4.8% have EPSS above 0.1.
+- 17.0% come from assigners with no earlier KEV entry.
+- VulnCheck and Apache reach the cap of 50.
+
+The top 100 form tier P0 and the next 400 form tier P1. Each CVE lists up to three "reasons": the signals that moved its score most.
 
 ## IBM technology
-IBM Granite embeddings of the masked descriptions run via watsonx.ai and/or the same open Granite model on Colab. A teammate is running them now, and results are pending.
+We used IBM's Granite multilingual embedding model (exact ID in `docs/ibm.md`). It turns each masked description into a list of numbers that captures its meaning:
+- **How we ran it:** we embedded every masked description with the open weights, run locally. A subset of 1,966 descriptions also went through IBM watsonx.ai, and the auditor found those vectors match the local ones.
+- **The pre-registered test:** G1 uses Granite text instead of TF-IDF, and G2 uses both. Each was compared with C1.
+- **The rule:** it adopts the better of G1 and G2 if its mean AUC is within a pre-set 0.01 of C1's. That margin was a declared tie-break in favour of IBM technology.
+- **Result:** G2 was adopted, with no measurable gain. Its mean AUC is 0.871 against C1's 0.870 (fold 1: 0.874 vs 0.860; fold 2: 0.868 vs 0.880). Its top-500 hits are 20 vs 22 in fold 1 and 11 vs 11 in fold 2.
+- **Granite alone (G1) was clearly lower:** mean AUC 0.837.
+
+An exploratory subset check also exists, but it is not comparable; see the audit.
 
 ## Limits
 - There are 52 test positives, so one hit is about 2%. We have no 2026 labels and make no 2026 accuracy claim.
