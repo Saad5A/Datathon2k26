@@ -7,7 +7,7 @@ on covered rows. Suitable for the Lite-plan ~1.5k–2.5k vector cache.
   python src/model/granite_subset_eval.py
 
 Writes results/granite_subset_comparison.json and merges claims into
-results/claims_model_granite.json (prefix p6.granite_subset.).
+results/claims_model_granite_subset.json (prefix p6.granite_subset.).
 """
 
 from __future__ import annotations
@@ -28,7 +28,7 @@ from pool import ROOT, load_kev, load_pool
 
 SCRIPT = "src/model/granite_subset_eval.py"
 OUT = ROOT / "results" / "granite_subset_comparison.json"
-CLAIMS = ROOT / "results" / "claims_model_granite.json"
+CLAIMS = ROOT / "results" / "claims_model_granite_subset.json"
 EMB_PATHS = [
     ROOT / "data_cache" / "granite_embeddings_watsonx_subset.parquet",
     ROOT / "data_cache" / "granite_embeddings_watsonx_evalslice.parquet",
