@@ -27,7 +27,10 @@ SCRIPT_REL = "src/model/final.py"
 RESULTS = ROOT / "results"
 K = 50
 TOP = 500
-TIERS = ((100, "P0"), (500, "P1"))  # rank <= limit; everything else P2
+TIERS = ((100, "P0"), (500, "P1"))
+COLUMNS = ["cve_id", "published", "snapshot_month", "assigner", "score", "rank", "percentile", "in_top500", "priority", "epss",
+           "exploitdb", "metasploit", "nuclei", "poc_github", "any_public_exploit", "reasons", "model_version"]
+MODEL_VERSION = {"tfidf": "C1", "G1": "G1", "G2": "G2"}  # rank <= limit; everything else P2
 ZERO = 1e-9  # a score change at or below this is "essentially 0" (HGB returns exactly the same value)
 SIGNALS = {
     "epss": {"label": "EPSS score at the snapshot month",
@@ -102,18 +105,23 @@ def reasons(sb, delta, st):
             "description_text": [round(float(x), 4) for x in st]}
     names = list(SIGNALS)
     D = np.column_stack([delta[g] for g in names])
+    total = np.abs(D).sum(axis=1)  # over ALL signal groups, listed or not
     out = []
     for i in range(len(sb)):
         idx = [j for j in np.argsort(-np.abs(D[i]), kind="stable")[:3] if abs(D[i, j]) > ZERO]
-        out.append(json.dumps([{"signal": names[j], "value": vals[names[j]][i], "direction": "up" if D[i, j] > 0 else "down"}
-                               for j in idx]))
+        out.append(json.dumps([{"signal": names[j], "value": vals[names[j]][i],
+                                "impact": round(float(abs(D[i, j]) / total[i]), 3) if total[i] > 0 else 0.0,
+                                "direction": "up" if D[i, j] > 0 else "down"} for j in idx]))
     return out
 
 
 def validate(scores, top500, sb_raw):
     n = len(sb_raw)
-    assert list(scores.columns) == ["cve_id", "published", "snapshot_month", "assigner", "score", "rank", "in_top500",
-                                    "priority", "epss", "any_public_exploit", "reasons"]
+    assert list(scores.columns) == COLUMNS
+    assert (scores.percentile == (100 * (1 - (scores["rank"] - 1) / n)).round(1)).all()
+    assert all(scores[f].isin([0, 1]).all() for f in FLAGS)
+    assert (scores.any_public_exploit == scores[FLAGS].max(axis=1)).all()
+    assert scores.model_version.nunique() == 1 and scores.model_version.iloc[0] in MODEL_VERSION.values()
     assert len(scores) == n == 72670 and scores.cve_id.is_unique and set(scores.cve_id) == set(sb_raw.cve_id)
     assert sorted(scores["rank"]) == list(range(1, n + 1))
     assert (scores.in_top500 == (scores["rank"] <= TOP).astype(int)).all()
@@ -131,6 +139,7 @@ def validate(scores, top500, sb_raw):
     for r in scores.reasons:
         lst = json.loads(r)
         assert len(lst) <= 3 and all(x["signal"] in SIGNALS and x["direction"] in ("up", "down") for x in lst)
+        assert all(0 <= x["impact"] <= 1 for x in lst) and sum(x["impact"] for x in lst) <= 1.003  # 3 roundings
     # top500.csv: one column, 500 unique ids, all in the scoreboard, equal to ranks 1-500.
     assert list(top500.columns) == ["cve_id"] and len(top500) == TOP and top500.cve_id.is_unique
     assert top500.cve_id.isin(sb_raw.cve_id).all()
@@ -193,6 +202,10 @@ def main():
                            "assigner": sb.assigner, "score": score, "rank": rank, "in_top500": (rank <= TOP).astype(int),
                            "priority": priority, "epss": sb.epss, "any_public_exploit": sb.anyx.astype(int),
                            "reasons": reasons(sb, delta, st)}).sort_values("rank").reset_index(drop=True)
+    # Dashboard contract (docs/INTERFACES_dashboard.md sections 1 and 3): extra columns, nothing above changes.
+    flags = sb.set_index("cve_id").loc[scores.cve_id, FLAGS].astype(int).reset_index(drop=True)
+    scores = scores.assign(percentile=(100 * (1 - (scores["rank"] - 1) / len(scores))).round(1), **flags,
+                           model_version=MODEL_VERSION[a.text])[COLUMNS]
     top500 = scores.loc[scores["rank"] <= TOP, ["cve_id"]]
     sb_raw = pd.read_csv(data_dir() / "scoreboard_2026.csv", usecols=["cve_id"], dtype={"cve_id": str})
     validate(scores, top500, sb_raw)
@@ -209,7 +222,11 @@ def main():
     vocab = {"_note": ("Reasons come from occlusion: each signal is set to its neutral value and the change in the CVE's "
                        "priority score (mean over 5 seed sets) is measured; the up to 3 largest changes are listed. The score "
                        "ranks CVEs; it is not a probability of exploitation."),
-             "_direction": DIRECTION}
+             "_direction": DIRECTION,
+             "_impact": ("share of the CVE's total occlusion effect: |score change for this signal| divided by the sum of "
+                         "|score change| over all four signals for that CVE, 0-1, rounded to 3 decimals (0 if every change "
+                         "is 0). A relative share for this CVE only, not a probability and not comparable across CVEs as "
+                         "an absolute size.")}
     for g, s in SIGNALS.items():
         vocab[g] = {"label": s["label"], "value_meaning": s["value"], "direction_meaning": DIRECTION,
                     "neutral_value": neutral_value[g],
