@@ -5,8 +5,8 @@
     "unit": "fraction",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.C1.auc.median": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, C1: auc, median over seed sets 0-4",
@@ -14,8 +14,8 @@
     "unit": "fraction",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.C1.auc.min": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, C1: auc, lowest of seed sets 0-4",
@@ -23,8 +23,8 @@
     "unit": "fraction",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.C1.avg_precision.median": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, C1: avg_precision, median over seed sets 0-4",
@@ -32,8 +32,8 @@
     "unit": "fraction",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.C1.ci95_hi.auc": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, C1: bootstrap 95% CI upper bound, auc (seed set 0)",
@@ -41,8 +41,8 @@
     "unit": "fraction",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.C1.ci95_hi.top500_cve_id": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, C1: bootstrap 95% CI upper bound, top500_cve_id (seed set 0)",
@@ -50,8 +50,8 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.C1.ci95_hi.top500_expected": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, C1: bootstrap 95% CI upper bound, top500_expected (seed set 0)",
@@ -59,8 +59,8 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.C1.ci95_lo.auc": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, C1: bootstrap 95% CI lower bound, auc (seed set 0)",
@@ -68,8 +68,8 @@
     "unit": "fraction",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.C1.ci95_lo.top500_cve_id": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, C1: bootstrap 95% CI lower bound, top500_cve_id (seed set 0)",
@@ -77,8 +77,8 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.C1.ci95_lo.top500_expected": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, C1: bootstrap 95% CI lower bound, top500_expected (seed set 0)",
@@ -86,8 +86,8 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.C1.median_rank_cve_id.median": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, C1: median_rank_cve_id, median over seed sets 0-4",
@@ -95,8 +95,8 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.C1.top250_cve_id.median": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, C1: top250_cve_id, median over seed sets 0-4",
@@ -104,8 +104,8 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.C1.top500_best.median": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, C1: top500_best, median over seed sets 0-4",
@@ -113,8 +113,8 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.C1.top500_cve_id.max": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, C1: top500_cve_id, highest of seed sets 0-4",
@@ -122,8 +122,8 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.C1.top500_cve_id.median": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, C1: top500_cve_id, median over seed sets 0-4",
@@ -131,8 +131,8 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.C1.top500_cve_id.min": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, C1: top500_cve_id, lowest of seed sets 0-4",
@@ -140,8 +140,8 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.C1.top500_worst.median": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, C1: top500_worst, median over seed sets 0-4",
@@ -149,8 +149,8 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.C1.work50_cve_id.median": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, C1: work50_cve_id, median over seed sets 0-4",
@@ -158,8 +158,8 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.assigner_only.auc": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, baseline assigner_only: auc (deterministic)",
@@ -167,8 +167,8 @@
     "unit": "fraction",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.assigner_only.avg_precision": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, baseline assigner_only: avg_precision (deterministic)",
@@ -176,8 +176,8 @@
     "unit": "fraction",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.assigner_only.ci95_hi.auc": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, assigner_only: bootstrap 95% CI upper bound, auc (deterministic baseline)",
@@ -185,8 +185,8 @@
     "unit": "fraction",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.assigner_only.ci95_hi.top500_cve_id": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, assigner_only: bootstrap 95% CI upper bound, top500_cve_id (deterministic baseline)",
@@ -194,8 +194,8 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.assigner_only.ci95_hi.top500_expected": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, assigner_only: bootstrap 95% CI upper bound, top500_expected (deterministic baseline)",
@@ -203,8 +203,8 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.assigner_only.ci95_lo.auc": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, assigner_only: bootstrap 95% CI lower bound, auc (deterministic baseline)",
@@ -212,8 +212,8 @@
     "unit": "fraction",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.assigner_only.ci95_lo.top500_cve_id": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, assigner_only: bootstrap 95% CI lower bound, top500_cve_id (deterministic baseline)",
@@ -221,8 +221,8 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.assigner_only.ci95_lo.top500_expected": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, assigner_only: bootstrap 95% CI lower bound, top500_expected (deterministic baseline)",
@@ -230,8 +230,8 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.assigner_only.median_rank_cve_id": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, baseline assigner_only: median_rank_cve_id (deterministic)",
@@ -239,8 +239,8 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.assigner_only.top250_cve_id": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, baseline assigner_only: top250_cve_id (deterministic)",
@@ -248,8 +248,8 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.assigner_only.top500_best": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, baseline assigner_only: top500_best (deterministic)",
@@ -257,8 +257,8 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.assigner_only.top500_cve_id": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, baseline assigner_only: top500_cve_id (deterministic)",
@@ -266,8 +266,8 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.assigner_only.top500_worst": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, baseline assigner_only: top500_worst (deterministic)",
@@ -275,8 +275,8 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.assigner_only.work50_cve_id": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, baseline assigner_only: work50_cve_id (deterministic)",
@@ -284,8 +284,8 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.cvss3.auc": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, baseline cvss3: auc (deterministic)",
@@ -293,8 +293,8 @@
     "unit": "fraction",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.cvss3.avg_precision": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, baseline cvss3: avg_precision (deterministic)",
@@ -302,8 +302,8 @@
     "unit": "fraction",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.cvss3.ci95_hi.auc": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, cvss3: bootstrap 95% CI upper bound, auc (deterministic baseline)",
@@ -311,8 +311,8 @@
     "unit": "fraction",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.cvss3.ci95_hi.top500_cve_id": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, cvss3: bootstrap 95% CI upper bound, top500_cve_id (deterministic baseline)",
@@ -320,8 +320,8 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.cvss3.ci95_hi.top500_expected": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, cvss3: bootstrap 95% CI upper bound, top500_expected (deterministic baseline)",
@@ -338,8 +338,8 @@
     "unit": "fraction",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.cvss3.ci95_lo.top500_cve_id": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, cvss3: bootstrap 95% CI lower bound, top500_cve_id (deterministic baseline)",
@@ -347,8 +347,8 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.cvss3.ci95_lo.top500_expected": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, cvss3: bootstrap 95% CI lower bound, top500_expected (deterministic baseline)",
@@ -365,8 +365,8 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.cvss3.top250_cve_id": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, baseline cvss3: top250_cve_id (deterministic)",
@@ -374,8 +374,8 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.cvss3.top500_best": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, baseline cvss3: top500_best (deterministic)",
@@ -383,8 +383,8 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.cvss3.top500_cve_id": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, baseline cvss3: top500_cve_id (deterministic)",
@@ -392,8 +392,8 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.cvss3.top500_worst": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, baseline cvss3: top500_worst (deterministic)",
@@ -401,8 +401,8 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.cvss3.work50_cve_id": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, baseline cvss3: work50_cve_id (deterministic)",
@@ -410,8 +410,8 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.epss.auc": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, baseline epss: auc (deterministic)",
@@ -419,8 +419,8 @@
     "unit": "fraction",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.epss.avg_precision": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, baseline epss: avg_precision (deterministic)",
@@ -428,8 +428,8 @@
     "unit": "fraction",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.epss.ci95_hi.auc": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, epss: bootstrap 95% CI upper bound, auc (deterministic baseline)",
@@ -437,8 +437,8 @@
     "unit": "fraction",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.epss.ci95_hi.top500_cve_id": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, epss: bootstrap 95% CI upper bound, top500_cve_id (deterministic baseline)",
@@ -446,8 +446,8 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.epss.ci95_hi.top500_expected": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, epss: bootstrap 95% CI upper bound, top500_expected (deterministic baseline)",
@@ -455,8 +455,8 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.epss.ci95_lo.auc": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, epss: bootstrap 95% CI lower bound, auc (deterministic baseline)",
@@ -464,8 +464,8 @@
     "unit": "fraction",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.epss.ci95_lo.top500_cve_id": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, epss: bootstrap 95% CI lower bound, top500_cve_id (deterministic baseline)",
@@ -473,8 +473,8 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.epss.ci95_lo.top500_expected": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, epss: bootstrap 95% CI lower bound, top500_expected (deterministic baseline)",
@@ -482,8 +482,8 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.epss.median_rank_cve_id": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, baseline epss: median_rank_cve_id (deterministic)",
@@ -491,8 +491,8 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.epss.top250_cve_id": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, baseline epss: top250_cve_id (deterministic)",
@@ -500,8 +500,8 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.epss.top500_best": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, baseline epss: top500_best (deterministic)",
@@ -509,8 +509,8 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.epss.top500_cve_id": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, baseline epss: top500_cve_id (deterministic)",
@@ -518,8 +518,8 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.epss.top500_worst": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, baseline epss: top500_worst (deterministic)",
@@ -527,8 +527,8 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.epss.work50_cve_id": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, baseline epss: work50_cve_id (deterministic)",
@@ -536,8 +536,8 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.exploit_then_epss.auc": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, baseline exploit_then_epss: auc (deterministic)",
@@ -545,8 +545,8 @@
     "unit": "fraction",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.exploit_then_epss.avg_precision": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, baseline exploit_then_epss: avg_precision (deterministic)",
@@ -554,8 +554,8 @@
     "unit": "fraction",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.exploit_then_epss.ci95_hi.auc": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, exploit_then_epss: bootstrap 95% CI upper bound, auc (deterministic baseline)",
@@ -563,8 +563,8 @@
     "unit": "fraction",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.exploit_then_epss.ci95_hi.top500_cve_id": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, exploit_then_epss: bootstrap 95% CI upper bound, top500_cve_id (deterministic baseline)",
@@ -572,8 +572,8 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.exploit_then_epss.ci95_hi.top500_expected": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, exploit_then_epss: bootstrap 95% CI upper bound, top500_expected (deterministic baseline)",
@@ -590,8 +590,8 @@
     "unit": "fraction",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.exploit_then_epss.ci95_lo.top500_cve_id": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, exploit_then_epss: bootstrap 95% CI lower bound, top500_cve_id (deterministic baseline)",
@@ -599,8 +599,8 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.exploit_then_epss.ci95_lo.top500_expected": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, exploit_then_epss: bootstrap 95% CI lower bound, top500_expected (deterministic baseline)",
@@ -617,8 +617,8 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.exploit_then_epss.top250_cve_id": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, baseline exploit_then_epss: top250_cve_id (deterministic)",
@@ -626,8 +626,8 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.exploit_then_epss.top500_best": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, baseline exploit_then_epss: top500_best (deterministic)",
@@ -635,8 +635,8 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.exploit_then_epss.top500_cve_id": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, baseline exploit_then_epss: top500_cve_id (deterministic)",
@@ -644,8 +644,8 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.exploit_then_epss.top500_worst": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, baseline exploit_then_epss: top500_worst (deterministic)",
@@ -653,8 +653,8 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.exploit_then_epss.work50_cve_id": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, baseline exploit_then_epss: work50_cve_id (deterministic)",
@@ -662,8 +662,8 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.indicator.positives_own_kev_date_in_2025": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots: 2024 test positives own kev date in 2025",
@@ -671,8 +671,8 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.indicator.positives_whose_assigner_has_kev_additions_dated_2025": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots: 2024 test positives whose assigner has kev additions dated 2025",
@@ -689,8 +689,8 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.test_rows": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots: test rows",
@@ -698,8 +698,8 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.train_positives": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots: train positives",
@@ -707,8 +707,8 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.train_rows": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots: train rows",
@@ -716,7 +716,7 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   }
 }
