@@ -24,6 +24,7 @@ No backend? Run `VITE_API_URL=demo npm run dev -- --host 0.0.0.0 --port 5173`; u
   - unknown CVEs use a transparent API fallback labelled `api-heuristic-v1`.
 - **Local demo** uses the in-browser logistic stand-in; pre-scored files keep their scores unless you tick *Re-score*.
 - The built-in **Try a sample batch** uses `public/sample_judge_input.csv`.
+- `public/pancakess_test_upload.csv` is a 10-row test file (8 real scoreboard CVEs + 2 unknown IDs) for exercising both API paths.
 - Results include search/filter, priority bands, public-exploit filter, expandable signal reasons, CSV export, and a clickable **Signal rationale** panel.
 
 ## API contract

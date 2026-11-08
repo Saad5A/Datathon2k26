@@ -1,0 +1,16 @@
+[Unit]
+Description=pancakess FastAPI backend
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/pancakess
+EnvironmentFile=-/opt/pancakess/.env
+ExecStart=/opt/pancakess/.venv/bin/uvicorn server.app:app --host 127.0.0.1 --port 8000
+Restart=always
+RestartSec=3
+TimeoutStartSec=180
+
+[Install]
+WantedBy=multi-user.target

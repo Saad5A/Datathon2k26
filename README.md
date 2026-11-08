@@ -128,6 +128,7 @@ The production dashboard is `dashboard/dist/`. The API serves only read-only art
 - [`server/README.md`](server/README.md) — API endpoints and upload contract
 - [`dashboard/README.md`](dashboard/README.md) — dashboard setup, engines, upload
 - [`evolution/README.md`](evolution/README.md) — evolutionary search observatory
+- [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md) — server, DNS, SSL and production checks
 - [`docs/INTERFACES.md`](docs/INTERFACES.md) — data contracts
 - [`audit/`](audit/) — independent audits
 - [`JUDGE_QA.md`](JUDGE_QA.md) — likely judge questions

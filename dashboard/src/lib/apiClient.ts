@@ -27,6 +27,10 @@ export const DEMO_MODE = raw.toLowerCase() === 'demo'
 function resolveBase(): { base: string | null; error: string | null } {
   if (!raw) return { base: null, error: 'VITE_API_URL is not set.' }
   if (DEMO_MODE) return { base: null, error: null }
+  // Same-origin production deployments can use a relative base such as /api.
+  if (raw.startsWith('/')) {
+    return { base: raw.replace(/\/+$/, ''), error: null }
+  }
   try {
     const u = new URL(raw)
     if (u.protocol !== 'http:' && u.protocol !== 'https:') throw new Error('protocol')
