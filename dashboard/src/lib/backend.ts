@@ -79,9 +79,21 @@ export interface ExplanationPayload {
   cve_id: string
   priority?: string | null
   rank?: number | null
+  score?: number | null
+  epss?: number | null
+  any_public_exploit?: number | null
+  reasons?: unknown
   model?: 'granite' | 'gemini' | 'both'
+  granite_technical_rationale?: string | null
+  gemini_technical_summary?: string | null
+  gemini_executive_summary?: string | null
+  gemini_triage_playbook?: {
+    containment?: string | null
+    remediation?: string | null
+    verification?: string | null
+  } | null
   granite: ProviderNarrative | null
-  gemini?: ProviderNarrative | null
+  gemini?: (ProviderNarrative & { technical_summary?: string | null }) | null
   remediation: {
     steps: { step: string; detail: string }[]
     playbook: Record<string, unknown> | null
@@ -94,6 +106,27 @@ export interface ExplanationPayload {
     gemini?: boolean
   }
 }
+
+export type RefineActionType =
+  | 'bash_script'
+  | 'business_risk'
+  | 'granite_divergence'
+  | 'custom_refinement'
+
+export interface RefineActionResponse {
+  cve_id: string
+  action_type: RefineActionType
+  content: string
+  format: 'bash' | 'prose'
+  cached: boolean
+  source: string
+  provider: string
+  role: string
+  grounding: string
+}
+
+/** Rank-1 featured demo CVE (audited top500). Smoke ID CVE-2026-10001 is refine-cache only. */
+export const FEATURED_DEMO_CVE = 'CVE-2026-10523'
 
 export interface ModelsComparison {
   baseline?: string
@@ -248,4 +281,21 @@ export function fetchBackendCapabilities(signal?: AbortSignal): Promise<{ capabi
 export function fetchGeminiBrief(cveId: string, signal?: AbortSignal): Promise<GeminiBrief> {
   const query = new URLSearchParams({ model: 'gemini' })
   return apiJson<GeminiBrief>(`/explanations/${encodeURIComponent(cveId)}?${query}`, { signal })
+}
+
+export async function refineGeminiAction(
+  body: {
+    cve_id: string
+    action_type: RefineActionType
+    granite_rationale?: string
+    user_context?: string
+  },
+  signal?: AbortSignal,
+): Promise<RefineActionResponse> {
+  return apiJson<RefineActionResponse>('/gemini/refine-action', {
+    method: 'POST',
+    body: JSON.stringify(body),
+    signal,
+    timeoutMs: 20_000,
+  })
 }

@@ -4,6 +4,7 @@
     "priority": "P0",
     "rank": 1,
     "granite_technical_rationale": "CVE-2026-10523 is Priority P0 (rank 1). Based only on the provided description, defenders should treat the described weakness as higher priority because the ranking model cited: [{\"signal\": \"description_text\", \"value\": 0.7298, \"direction\": \"up\"}, {\"signal\": \"public_exploit_code\", \"value\": 1, \"direction\": \"up\"}, {\"signal\": \"assigner_kev_history\", \"value\": 0.0569, \"direction\": \"up\"}].",
+    "gemini_technical_summary": "Gemini technical summary of Granite for CVE-2026-10523: Priority P0, rank 1. Granite's watsonx-backed rationale attributes elevated risk primarily to description_text, public_exploit_code, assigner_kev_history. Public exploit code is present in the ranking features, so weaponization risk is non-theoretical. EPSS=0.519 supports the severity ordering. In short: defenders should treat the weakness as high-priority based on Granite's signal-grounded technical narrative, without inventing products, versions, or patch URLs.",
     "gemini_executive_summary": "Executive risk brief for CVE-2026-10523: Priority P0 (rank 1). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks; elevated EPSS (0.519) implies above-average exploitation pressure; description semantics flagged by the ranking model as high-risk. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "gemini_triage_playbook": {
       "containment": "Immediate containment: restrict external exposure of the affected service (perimeter allow-lists / WAF), isolate the impacted segment, disable non-essential management interfaces, and increase monitoring for exploit-pattern indicators cited in the Granite rationale.",
@@ -17,16 +18,17 @@
     "triage_explanation": "Executive risk brief for CVE-2026-10523: Priority P0 (rank 1). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks; elevated EPSS (0.519) implies above-average exploitation pressure; description semantics flagged by the ranking model as high-risk. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "is_ai_generated": true,
     "provider": "GEMINI",
-    "model_id": "gemini-2.5-flash (executive-synthesis-from-granite)",
+    "model_id": "gemini-2.5-flash (technical+executive-synthesis-from-granite)",
     "grounding_ok": true,
     "source_granite": "results/granite_explanations_top100.json",
-    "synthesis_note": "Executive brief and playbook are grounded in Granite technical rationale and ranking metadata only; no new patch URLs/versions are invented."
+    "synthesis_note": "Technical summary, executive brief, and playbook are grounded in Granite rationale and ranking metadata only; no new patch URLs/versions are invented."
   },
   "CVE-2026-2699": {
     "cve_id": "CVE-2026-2699",
     "priority": "P0",
     "rank": 2,
     "granite_technical_rationale": "CVE-2026-2699 is Priority P0 (rank 2). Based only on the provided description, defenders should treat the described weakness as higher priority because the ranking model cited: [{\"signal\": \"public_exploit_code\", \"value\": 2, \"direction\": \"up\"}, {\"signal\": \"description_text\", \"value\": 0.0606, \"direction\": \"up\"}, {\"signal\": \"assigner_kev_history\", \"value\": 0.0289, \"direction\": \"up\"}].",
+    "gemini_technical_summary": "Gemini technical summary of Granite for CVE-2026-2699: Priority P0, rank 2. Granite's watsonx-backed rationale attributes elevated risk primarily to public_exploit_code, description_text, assigner_kev_history. Public exploit code is present in the ranking features, so weaponization risk is non-theoretical. EPSS=0.238 supports the severity ordering. In short: defenders should treat the weakness as high-priority based on Granite's signal-grounded technical narrative, without inventing products, versions, or patch URLs.",
     "gemini_executive_summary": "Executive risk brief for CVE-2026-2699: Priority P0 (rank 2). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks; description semantics flagged by the ranking model as high-risk. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "gemini_triage_playbook": {
       "containment": "Immediate containment: restrict external exposure of the affected service (perimeter allow-lists / WAF), isolate the impacted segment, disable non-essential management interfaces, and increase monitoring for exploit-pattern indicators cited in the Granite rationale.",
@@ -40,16 +42,17 @@
     "triage_explanation": "Executive risk brief for CVE-2026-2699: Priority P0 (rank 2). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks; description semantics flagged by the ranking model as high-risk. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "is_ai_generated": true,
     "provider": "GEMINI",
-    "model_id": "gemini-2.5-flash (executive-synthesis-from-granite)",
+    "model_id": "gemini-2.5-flash (technical+executive-synthesis-from-granite)",
     "grounding_ok": true,
     "source_granite": "results/granite_explanations_top100.json",
-    "synthesis_note": "Executive brief and playbook are grounded in Granite technical rationale and ranking metadata only; no new patch URLs/versions are invented."
+    "synthesis_note": "Technical summary, executive brief, and playbook are grounded in Granite rationale and ranking metadata only; no new patch URLs/versions are invented."
   },
   "CVE-2026-8037": {
     "cve_id": "CVE-2026-8037",
     "priority": "P0",
     "rank": 3,
     "granite_technical_rationale": "CVE-2026-8037 is Priority P0 (rank 3). Based only on the provided description, defenders should treat the described weakness as higher priority because the ranking model cited: [{\"signal\": \"public_exploit_code\", \"value\": 2, \"direction\": \"up\"}, {\"signal\": \"description_text\", \"value\": 0.0382, \"direction\": \"up\"}, {\"signal\": \"assigner_kev_history\", \"value\": 0.0251, \"direction\": \"up\"}].",
+    "gemini_technical_summary": "Gemini technical summary of Granite for CVE-2026-8037: Priority P0, rank 3. Granite's watsonx-backed rationale attributes elevated risk primarily to public_exploit_code, description_text, assigner_kev_history. Public exploit code is present in the ranking features, so weaponization risk is non-theoretical. EPSS=0.848 supports the severity ordering. In short: defenders should treat the weakness as high-priority based on Granite's signal-grounded technical narrative, without inventing products, versions, or patch URLs.",
     "gemini_executive_summary": "Executive risk brief for CVE-2026-8037: Priority P0 (rank 3). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks; elevated EPSS (0.848) implies above-average exploitation pressure; description semantics flagged by the ranking model as high-risk. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "gemini_triage_playbook": {
       "containment": "Immediate containment: restrict external exposure of the affected service (perimeter allow-lists / WAF), isolate the impacted segment, disable non-essential management interfaces, and increase monitoring for exploit-pattern indicators cited in the Granite rationale.",
@@ -63,16 +66,17 @@
     "triage_explanation": "Executive risk brief for CVE-2026-8037: Priority P0 (rank 3). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks; elevated EPSS (0.848) implies above-average exploitation pressure; description semantics flagged by the ranking model as high-risk. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "is_ai_generated": true,
     "provider": "GEMINI",
-    "model_id": "gemini-2.5-flash (executive-synthesis-from-granite)",
+    "model_id": "gemini-2.5-flash (technical+executive-synthesis-from-granite)",
     "grounding_ok": true,
     "source_granite": "results/granite_explanations_top100.json",
-    "synthesis_note": "Executive brief and playbook are grounded in Granite technical rationale and ranking metadata only; no new patch URLs/versions are invented."
+    "synthesis_note": "Technical summary, executive brief, and playbook are grounded in Granite rationale and ranking metadata only; no new patch URLs/versions are invented."
   },
   "CVE-2026-65694": {
     "cve_id": "CVE-2026-65694",
     "priority": "P0",
     "rank": 4,
     "granite_technical_rationale": "CVE-2026-65694 is Priority P0 (rank 4). Based only on the provided description, defenders should treat the described weakness as higher priority because the ranking model cited: [{\"signal\": \"public_exploit_code\", \"value\": 2, \"direction\": \"up\"}, {\"signal\": \"description_text\", \"value\": 0.1757, \"direction\": \"up\"}, {\"signal\": \"epss\", \"value\": 0.02456, \"direction\": \"up\"}].",
+    "gemini_technical_summary": "Gemini technical summary of Granite for CVE-2026-65694: Priority P0, rank 4. Granite's watsonx-backed rationale attributes elevated risk primarily to public_exploit_code, description_text, epss. Public exploit code is present in the ranking features, so weaponization risk is non-theoretical. EPSS=0.025 supports the severity ordering. In short: defenders should treat the weakness as high-priority based on Granite's signal-grounded technical narrative, without inventing products, versions, or patch URLs.",
     "gemini_executive_summary": "Executive risk brief for CVE-2026-65694: Priority P0 (rank 4). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks; description semantics flagged by the ranking model as high-risk. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "gemini_triage_playbook": {
       "containment": "Immediate containment: restrict external exposure of the affected service (perimeter allow-lists / WAF), isolate the impacted segment, disable non-essential management interfaces, and increase monitoring for exploit-pattern indicators cited in the Granite rationale.",
@@ -86,16 +90,17 @@
     "triage_explanation": "Executive risk brief for CVE-2026-65694: Priority P0 (rank 4). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks; description semantics flagged by the ranking model as high-risk. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "is_ai_generated": true,
     "provider": "GEMINI",
-    "model_id": "gemini-2.5-flash (executive-synthesis-from-granite)",
+    "model_id": "gemini-2.5-flash (technical+executive-synthesis-from-granite)",
     "grounding_ok": true,
     "source_granite": "results/granite_explanations_top100.json",
-    "synthesis_note": "Executive brief and playbook are grounded in Granite technical rationale and ranking metadata only; no new patch URLs/versions are invented."
+    "synthesis_note": "Technical summary, executive brief, and playbook are grounded in Granite rationale and ranking metadata only; no new patch URLs/versions are invented."
   },
   "CVE-2026-71362": {
     "cve_id": "CVE-2026-71362",
     "priority": "P0",
     "rank": 5,
     "granite_technical_rationale": "CVE-2026-71362 is Priority P0 (rank 5). Based only on the provided description, defenders should treat the described weakness as higher priority because the ranking model cited: [{\"signal\": \"public_exploit_code\", \"value\": 2, \"direction\": \"up\"}, {\"signal\": \"description_text\", \"value\": 0.1381, \"direction\": \"up\"}, {\"signal\": \"epss\", \"value\": 0.25136, \"direction\": \"up\"}].",
+    "gemini_technical_summary": "Gemini technical summary of Granite for CVE-2026-71362: Priority P0, rank 5. Granite's watsonx-backed rationale attributes elevated risk primarily to public_exploit_code, description_text, epss. Public exploit code is present in the ranking features, so weaponization risk is non-theoretical. EPSS=0.251 supports the severity ordering. In short: defenders should treat the weakness as high-priority based on Granite's signal-grounded technical narrative, without inventing products, versions, or patch URLs.",
     "gemini_executive_summary": "Executive risk brief for CVE-2026-71362: Priority P0 (rank 5). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks; description semantics flagged by the ranking model as high-risk. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "gemini_triage_playbook": {
       "containment": "Immediate containment: restrict external exposure of the affected service (perimeter allow-lists / WAF), isolate the impacted segment, disable non-essential management interfaces, and increase monitoring for exploit-pattern indicators cited in the Granite rationale.",
@@ -109,16 +114,17 @@
     "triage_explanation": "Executive risk brief for CVE-2026-71362: Priority P0 (rank 5). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks; description semantics flagged by the ranking model as high-risk. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "is_ai_generated": true,
     "provider": "GEMINI",
-    "model_id": "gemini-2.5-flash (executive-synthesis-from-granite)",
+    "model_id": "gemini-2.5-flash (technical+executive-synthesis-from-granite)",
     "grounding_ok": true,
     "source_granite": "results/granite_explanations_top100.json",
-    "synthesis_note": "Executive brief and playbook are grounded in Granite technical rationale and ranking metadata only; no new patch URLs/versions are invented."
+    "synthesis_note": "Technical summary, executive brief, and playbook are grounded in Granite rationale and ranking metadata only; no new patch URLs/versions are invented."
   },
   "CVE-2026-26221": {
     "cve_id": "CVE-2026-26221",
     "priority": "P0",
     "rank": 6,
     "granite_technical_rationale": "CVE-2026-26221 is Priority P0 (rank 6). Based only on the provided description, defenders should treat the described weakness as higher priority because the ranking model cited: [{\"signal\": \"description_text\", \"value\": 0.7306, \"direction\": \"up\"}, {\"signal\": \"public_exploit_code\", \"value\": 1, \"direction\": \"up\"}, {\"signal\": \"epss\", \"value\": 0.00615, \"direction\": \"up\"}].",
+    "gemini_technical_summary": "Gemini technical summary of Granite for CVE-2026-26221: Priority P0, rank 6. Granite's watsonx-backed rationale attributes elevated risk primarily to description_text, public_exploit_code, epss. Public exploit code is present in the ranking features, so weaponization risk is non-theoretical. EPSS=0.006 supports the severity ordering. In short: defenders should treat the weakness as high-priority based on Granite's signal-grounded technical narrative, without inventing products, versions, or patch URLs.",
     "gemini_executive_summary": "Executive risk brief for CVE-2026-26221: Priority P0 (rank 6). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks; description semantics flagged by the ranking model as high-risk. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "gemini_triage_playbook": {
       "containment": "Immediate containment: restrict external exposure of the affected service (perimeter allow-lists / WAF), isolate the impacted segment, disable non-essential management interfaces, and increase monitoring for exploit-pattern indicators cited in the Granite rationale.",
@@ -132,16 +138,17 @@
     "triage_explanation": "Executive risk brief for CVE-2026-26221: Priority P0 (rank 6). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks; description semantics flagged by the ranking model as high-risk. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "is_ai_generated": true,
     "provider": "GEMINI",
-    "model_id": "gemini-2.5-flash (executive-synthesis-from-granite)",
+    "model_id": "gemini-2.5-flash (technical+executive-synthesis-from-granite)",
     "grounding_ok": true,
     "source_granite": "results/granite_explanations_top100.json",
-    "synthesis_note": "Executive brief and playbook are grounded in Granite technical rationale and ranking metadata only; no new patch URLs/versions are invented."
+    "synthesis_note": "Technical summary, executive brief, and playbook are grounded in Granite rationale and ranking metadata only; no new patch URLs/versions are invented."
   },
   "CVE-2026-1603": {
     "cve_id": "CVE-2026-1603",
     "priority": "P0",
     "rank": 7,
     "granite_technical_rationale": "CVE-2026-1603 is Priority P0 (rank 7). Based only on the provided description, defenders should treat the described weakness as higher priority because the ranking model cited: [{\"signal\": \"description_text\", \"value\": 0.6967, \"direction\": \"up\"}, {\"signal\": \"public_exploit_code\", \"value\": 1, \"direction\": \"up\"}, {\"signal\": \"epss\", \"value\": 0.11742, \"direction\": \"up\"}].",
+    "gemini_technical_summary": "Gemini technical summary of Granite for CVE-2026-1603: Priority P0, rank 7. Granite's watsonx-backed rationale attributes elevated risk primarily to description_text, public_exploit_code, epss. Public exploit code is present in the ranking features, so weaponization risk is non-theoretical. EPSS=0.117 supports the severity ordering. In short: defenders should treat the weakness as high-priority based on Granite's signal-grounded technical narrative, without inventing products, versions, or patch URLs.",
     "gemini_executive_summary": "Executive risk brief for CVE-2026-1603: Priority P0 (rank 7). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks; description semantics flagged by the ranking model as high-risk. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "gemini_triage_playbook": {
       "containment": "Immediate containment: restrict external exposure of the affected service (perimeter allow-lists / WAF), isolate the impacted segment, disable non-essential management interfaces, and increase monitoring for exploit-pattern indicators cited in the Granite rationale.",
@@ -155,16 +162,17 @@
     "triage_explanation": "Executive risk brief for CVE-2026-1603: Priority P0 (rank 7). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks; description semantics flagged by the ranking model as high-risk. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "is_ai_generated": true,
     "provider": "GEMINI",
-    "model_id": "gemini-2.5-flash (executive-synthesis-from-granite)",
+    "model_id": "gemini-2.5-flash (technical+executive-synthesis-from-granite)",
     "grounding_ok": true,
     "source_granite": "results/granite_explanations_top100.json",
-    "synthesis_note": "Executive brief and playbook are grounded in Granite technical rationale and ranking metadata only; no new patch URLs/versions are invented."
+    "synthesis_note": "Technical summary, executive brief, and playbook are grounded in Granite rationale and ranking metadata only; no new patch URLs/versions are invented."
   },
   "CVE-2026-26335": {
     "cve_id": "CVE-2026-26335",
     "priority": "P0",
     "rank": 8,
     "granite_technical_rationale": "CVE-2026-26335 is Priority P0 (rank 8). Based only on the provided description, defenders should treat the described weakness as higher priority because the ranking model cited: [{\"signal\": \"description_text\", \"value\": 0.7992, \"direction\": \"up\"}, {\"signal\": \"public_exploit_code\", \"value\": 1, \"direction\": \"up\"}, {\"signal\": \"epss\", \"value\": 0.00114, \"direction\": \"up\"}].",
+    "gemini_technical_summary": "Gemini technical summary of Granite for CVE-2026-26335: Priority P0, rank 8. Granite's watsonx-backed rationale attributes elevated risk primarily to description_text, public_exploit_code, epss. Public exploit code is present in the ranking features, so weaponization risk is non-theoretical. EPSS=0.001 supports the severity ordering. In short: defenders should treat the weakness as high-priority based on Granite's signal-grounded technical narrative, without inventing products, versions, or patch URLs.",
     "gemini_executive_summary": "Executive risk brief for CVE-2026-26335: Priority P0 (rank 8). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks; description semantics flagged by the ranking model as high-risk. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "gemini_triage_playbook": {
       "containment": "Immediate containment: restrict external exposure of the affected service (perimeter allow-lists / WAF), isolate the impacted segment, disable non-essential management interfaces, and increase monitoring for exploit-pattern indicators cited in the Granite rationale.",
@@ -178,16 +186,17 @@
     "triage_explanation": "Executive risk brief for CVE-2026-26335: Priority P0 (rank 8). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks; description semantics flagged by the ranking model as high-risk. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "is_ai_generated": true,
     "provider": "GEMINI",
-    "model_id": "gemini-2.5-flash (executive-synthesis-from-granite)",
+    "model_id": "gemini-2.5-flash (technical+executive-synthesis-from-granite)",
     "grounding_ok": true,
     "source_granite": "results/granite_explanations_top100.json",
-    "synthesis_note": "Executive brief and playbook are grounded in Granite technical rationale and ranking metadata only; no new patch URLs/versions are invented."
+    "synthesis_note": "Technical summary, executive brief, and playbook are grounded in Granite rationale and ranking metadata only; no new patch URLs/versions are invented."
   },
   "CVE-2025-71257": {
     "cve_id": "CVE-2025-71257",
     "priority": "P0",
     "rank": 9,
     "granite_technical_rationale": "CVE-2025-71257 is Priority P0 (rank 9). Based only on the provided description, defenders should treat the described weakness as higher priority because the ranking model cited: [{\"signal\": \"public_exploit_code\", \"value\": 2, \"direction\": \"up\"}, {\"signal\": \"description_text\", \"value\": 0.0599, \"direction\": \"up\"}, {\"signal\": \"epss\", \"value\": 0.0344, \"direction\": \"up\"}].",
+    "gemini_technical_summary": "Gemini technical summary of Granite for CVE-2025-71257: Priority P0, rank 9. Granite's watsonx-backed rationale attributes elevated risk primarily to public_exploit_code, description_text, epss. Public exploit code is present in the ranking features, so weaponization risk is non-theoretical. EPSS=0.034 supports the severity ordering. In short: defenders should treat the weakness as high-priority based on Granite's signal-grounded technical narrative, without inventing products, versions, or patch URLs.",
     "gemini_executive_summary": "Executive risk brief for CVE-2025-71257: Priority P0 (rank 9). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks; description semantics flagged by the ranking model as high-risk. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "gemini_triage_playbook": {
       "containment": "Immediate containment: restrict external exposure of the affected service (perimeter allow-lists / WAF), isolate the impacted segment, disable non-essential management interfaces, and increase monitoring for exploit-pattern indicators cited in the Granite rationale.",
@@ -201,16 +210,17 @@
     "triage_explanation": "Executive risk brief for CVE-2025-71257: Priority P0 (rank 9). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks; description semantics flagged by the ranking model as high-risk. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "is_ai_generated": true,
     "provider": "GEMINI",
-    "model_id": "gemini-2.5-flash (executive-synthesis-from-granite)",
+    "model_id": "gemini-2.5-flash (technical+executive-synthesis-from-granite)",
     "grounding_ok": true,
     "source_granite": "results/granite_explanations_top100.json",
-    "synthesis_note": "Executive brief and playbook are grounded in Granite technical rationale and ranking metadata only; no new patch URLs/versions are invented."
+    "synthesis_note": "Technical summary, executive brief, and playbook are grounded in Granite rationale and ranking metadata only; no new patch URLs/versions are invented."
   },
   "CVE-2026-44825": {
     "cve_id": "CVE-2026-44825",
     "priority": "P0",
     "rank": 10,
     "granite_technical_rationale": "CVE-2026-44825 is Priority P0 (rank 10). Based only on the provided description, defenders should treat the described weakness as higher priority because the ranking model cited: [{\"signal\": \"public_exploit_code\", \"value\": 2, \"direction\": \"up\"}, {\"signal\": \"description_text\", \"value\": 0.0467, \"direction\": \"up\"}, {\"signal\": \"assigner_kev_history\", \"value\": 0.0118, \"direction\": \"up\"}].",
+    "gemini_technical_summary": "Gemini technical summary of Granite for CVE-2026-44825: Priority P0, rank 10. Granite's watsonx-backed rationale attributes elevated risk primarily to public_exploit_code, description_text, assigner_kev_history. Public exploit code is present in the ranking features, so weaponization risk is non-theoretical. EPSS=0.022 supports the severity ordering. In short: defenders should treat the weakness as high-priority based on Granite's signal-grounded technical narrative, without inventing products, versions, or patch URLs.",
     "gemini_executive_summary": "Executive risk brief for CVE-2026-44825: Priority P0 (rank 10). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks; description semantics flagged by the ranking model as high-risk. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "gemini_triage_playbook": {
       "containment": "Immediate containment: restrict external exposure of the affected service (perimeter allow-lists / WAF), isolate the impacted segment, disable non-essential management interfaces, and increase monitoring for exploit-pattern indicators cited in the Granite rationale.",
@@ -224,16 +234,17 @@
     "triage_explanation": "Executive risk brief for CVE-2026-44825: Priority P0 (rank 10). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks; description semantics flagged by the ranking model as high-risk. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "is_ai_generated": true,
     "provider": "GEMINI",
-    "model_id": "gemini-2.5-flash (executive-synthesis-from-granite)",
+    "model_id": "gemini-2.5-flash (technical+executive-synthesis-from-granite)",
     "grounding_ok": true,
     "source_granite": "results/granite_explanations_top100.json",
-    "synthesis_note": "Executive brief and playbook are grounded in Granite technical rationale and ranking metadata only; no new patch URLs/versions are invented."
+    "synthesis_note": "Technical summary, executive brief, and playbook are grounded in Granite rationale and ranking metadata only; no new patch URLs/versions are invented."
   },
   "CVE-2026-33439": {
     "cve_id": "CVE-2026-33439",
     "priority": "P0",
     "rank": 11,
     "granite_technical_rationale": "CVE-2026-33439 is Priority P0 (rank 11). Based only on the provided description, defenders should treat the described weakness as higher priority because the ranking model cited: [{\"signal\": \"public_exploit_code\", \"value\": 2, \"direction\": \"up\"}, {\"signal\": \"description_text\", \"value\": 0.2358, \"direction\": \"up\"}, {\"signal\": \"epss\", \"value\": 0.07004, \"direction\": \"up\"}].",
+    "gemini_technical_summary": "Gemini technical summary of Granite for CVE-2026-33439: Priority P0, rank 11. Granite's watsonx-backed rationale attributes elevated risk primarily to public_exploit_code, description_text, epss. Public exploit code is present in the ranking features, so weaponization risk is non-theoretical. EPSS=0.070 supports the severity ordering. In short: defenders should treat the weakness as high-priority based on Granite's signal-grounded technical narrative, without inventing products, versions, or patch URLs.",
     "gemini_executive_summary": "Executive risk brief for CVE-2026-33439: Priority P0 (rank 11). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks; description semantics flagged by the ranking model as high-risk. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "gemini_triage_playbook": {
       "containment": "Immediate containment: restrict external exposure of the affected service (perimeter allow-lists / WAF), isolate the impacted segment, disable non-essential management interfaces, and increase monitoring for exploit-pattern indicators cited in the Granite rationale.",
@@ -247,16 +258,17 @@
     "triage_explanation": "Executive risk brief for CVE-2026-33439: Priority P0 (rank 11). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks; description semantics flagged by the ranking model as high-risk. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "is_ai_generated": true,
     "provider": "GEMINI",
-    "model_id": "gemini-2.5-flash (executive-synthesis-from-granite)",
+    "model_id": "gemini-2.5-flash (technical+executive-synthesis-from-granite)",
     "grounding_ok": true,
     "source_granite": "results/granite_explanations_top100.json",
-    "synthesis_note": "Executive brief and playbook are grounded in Granite technical rationale and ranking metadata only; no new patch URLs/versions are invented."
+    "synthesis_note": "Technical summary, executive brief, and playbook are grounded in Granite rationale and ranking metadata only; no new patch URLs/versions are invented."
   },
   "CVE-2026-16348": {
     "cve_id": "CVE-2026-16348",
     "priority": "P0",
     "rank": 12,
     "granite_technical_rationale": "CVE-2026-16348 is Priority P0 (rank 12). Based only on the provided description, defenders should treat the described weakness as higher priority because the ranking model cited: [{\"signal\": \"description_text\", \"value\": 0.3631, \"direction\": \"up\"}, {\"signal\": \"public_exploit_code\", \"value\": 1, \"direction\": \"up\"}, {\"signal\": \"epss\", \"value\": 0.00907, \"direction\": \"up\"}].",
+    "gemini_technical_summary": "Gemini technical summary of Granite for CVE-2026-16348: Priority P0, rank 12. Granite's watsonx-backed rationale attributes elevated risk primarily to description_text, public_exploit_code, epss. Public exploit code is present in the ranking features, so weaponization risk is non-theoretical. EPSS=0.009 supports the severity ordering. In short: defenders should treat the weakness as high-priority based on Granite's signal-grounded technical narrative, without inventing products, versions, or patch URLs.",
     "gemini_executive_summary": "Executive risk brief for CVE-2026-16348: Priority P0 (rank 12). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks; description semantics flagged by the ranking model as high-risk. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "gemini_triage_playbook": {
       "containment": "Immediate containment: restrict external exposure of the affected service (perimeter allow-lists / WAF), isolate the impacted segment, disable non-essential management interfaces, and increase monitoring for exploit-pattern indicators cited in the Granite rationale.",
@@ -270,16 +282,17 @@
     "triage_explanation": "Executive risk brief for CVE-2026-16348: Priority P0 (rank 12). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks; description semantics flagged by the ranking model as high-risk. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "is_ai_generated": true,
     "provider": "GEMINI",
-    "model_id": "gemini-2.5-flash (executive-synthesis-from-granite)",
+    "model_id": "gemini-2.5-flash (technical+executive-synthesis-from-granite)",
     "grounding_ok": true,
     "source_granite": "results/granite_explanations_top100.json",
-    "synthesis_note": "Executive brief and playbook are grounded in Granite technical rationale and ranking metadata only; no new patch URLs/versions are invented."
+    "synthesis_note": "Technical summary, executive brief, and playbook are grounded in Granite rationale and ranking metadata only; no new patch URLs/versions are invented."
   },
   "CVE-2026-63077": {
     "cve_id": "CVE-2026-63077",
     "priority": "P0",
     "rank": 13,
     "granite_technical_rationale": "CVE-2026-63077 is Priority P0 (rank 13). Based only on the provided description, defenders should treat the described weakness as higher priority because the ranking model cited: [{\"signal\": \"description_text\", \"value\": 0.3538, \"direction\": \"up\"}, {\"signal\": \"public_exploit_code\", \"value\": 1, \"direction\": \"up\"}, {\"signal\": \"epss\", \"value\": 0.00649, \"direction\": \"up\"}].",
+    "gemini_technical_summary": "Gemini technical summary of Granite for CVE-2026-63077: Priority P0, rank 13. Granite's watsonx-backed rationale attributes elevated risk primarily to description_text, public_exploit_code, epss. Public exploit code is present in the ranking features, so weaponization risk is non-theoretical. EPSS=0.006 supports the severity ordering. In short: defenders should treat the weakness as high-priority based on Granite's signal-grounded technical narrative, without inventing products, versions, or patch URLs.",
     "gemini_executive_summary": "Executive risk brief for CVE-2026-63077: Priority P0 (rank 13). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks; description semantics flagged by the ranking model as high-risk. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "gemini_triage_playbook": {
       "containment": "Immediate containment: restrict external exposure of the affected service (perimeter allow-lists / WAF), isolate the impacted segment, disable non-essential management interfaces, and increase monitoring for exploit-pattern indicators cited in the Granite rationale.",
@@ -293,16 +306,17 @@
     "triage_explanation": "Executive risk brief for CVE-2026-63077: Priority P0 (rank 13). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks; description semantics flagged by the ranking model as high-risk. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "is_ai_generated": true,
     "provider": "GEMINI",
-    "model_id": "gemini-2.5-flash (executive-synthesis-from-granite)",
+    "model_id": "gemini-2.5-flash (technical+executive-synthesis-from-granite)",
     "grounding_ok": true,
     "source_granite": "results/granite_explanations_top100.json",
-    "synthesis_note": "Executive brief and playbook are grounded in Granite technical rationale and ranking metadata only; no new patch URLs/versions are invented."
+    "synthesis_note": "Technical summary, executive brief, and playbook are grounded in Granite rationale and ranking metadata only; no new patch URLs/versions are invented."
   },
   "CVE-2026-73034": {
     "cve_id": "CVE-2026-73034",
     "priority": "P0",
     "rank": 14,
     "granite_technical_rationale": "CVE-2026-73034 is Priority P0 (rank 14). Based only on the provided description, defenders should treat the described weakness as higher priority because the ranking model cited: [{\"signal\": \"public_exploit_code\", \"value\": 2, \"direction\": \"up\"}, {\"signal\": \"description_text\", \"value\": 0.1135, \"direction\": \"up\"}, {\"signal\": \"epss\", \"value\": 0.01509, \"direction\": \"up\"}].",
+    "gemini_technical_summary": "Gemini technical summary of Granite for CVE-2026-73034: Priority P0, rank 14. Granite's watsonx-backed rationale attributes elevated risk primarily to public_exploit_code, description_text, epss. Public exploit code is present in the ranking features, so weaponization risk is non-theoretical. EPSS=0.015 supports the severity ordering. In short: defenders should treat the weakness as high-priority based on Granite's signal-grounded technical narrative, without inventing products, versions, or patch URLs.",
     "gemini_executive_summary": "Executive risk brief for CVE-2026-73034: Priority P0 (rank 14). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks; description semantics flagged by the ranking model as high-risk. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "gemini_triage_playbook": {
       "containment": "Immediate containment: restrict external exposure of the affected service (perimeter allow-lists / WAF), isolate the impacted segment, disable non-essential management interfaces, and increase monitoring for exploit-pattern indicators cited in the Granite rationale.",
@@ -316,16 +330,17 @@
     "triage_explanation": "Executive risk brief for CVE-2026-73034: Priority P0 (rank 14). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks; description semantics flagged by the ranking model as high-risk. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "is_ai_generated": true,
     "provider": "GEMINI",
-    "model_id": "gemini-2.5-flash (executive-synthesis-from-granite)",
+    "model_id": "gemini-2.5-flash (technical+executive-synthesis-from-granite)",
     "grounding_ok": true,
     "source_granite": "results/granite_explanations_top100.json",
-    "synthesis_note": "Executive brief and playbook are grounded in Granite technical rationale and ranking metadata only; no new patch URLs/versions are invented."
+    "synthesis_note": "Technical summary, executive brief, and playbook are grounded in Granite rationale and ranking metadata only; no new patch URLs/versions are invented."
   },
   "CVE-2025-52694": {
     "cve_id": "CVE-2025-52694",
     "priority": "P0",
     "rank": 15,
     "granite_technical_rationale": "CVE-2025-52694 is Priority P0 (rank 15). Based only on the provided description, defenders should treat the described weakness as higher priority because the ranking model cited: [{\"signal\": \"description_text\", \"value\": 0.4246, \"direction\": \"up\"}, {\"signal\": \"public_exploit_code\", \"value\": 2, \"direction\": \"up\"}, {\"signal\": \"epss\", \"value\": 0.08999, \"direction\": \"up\"}].",
+    "gemini_technical_summary": "Gemini technical summary of Granite for CVE-2025-52694: Priority P0, rank 15. Granite's watsonx-backed rationale attributes elevated risk primarily to description_text, public_exploit_code, epss. Public exploit code is present in the ranking features, so weaponization risk is non-theoretical. EPSS=0.090 supports the severity ordering. In short: defenders should treat the weakness as high-priority based on Granite's signal-grounded technical narrative, without inventing products, versions, or patch URLs.",
     "gemini_executive_summary": "Executive risk brief for CVE-2025-52694: Priority P0 (rank 15). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks; description semantics flagged by the ranking model as high-risk. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "gemini_triage_playbook": {
       "containment": "Immediate containment: restrict external exposure of the affected service (perimeter allow-lists / WAF), isolate the impacted segment, disable non-essential management interfaces, and increase monitoring for exploit-pattern indicators cited in the Granite rationale.",
@@ -339,16 +354,17 @@
     "triage_explanation": "Executive risk brief for CVE-2025-52694: Priority P0 (rank 15). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks; description semantics flagged by the ranking model as high-risk. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "is_ai_generated": true,
     "provider": "GEMINI",
-    "model_id": "gemini-2.5-flash (executive-synthesis-from-granite)",
+    "model_id": "gemini-2.5-flash (technical+executive-synthesis-from-granite)",
     "grounding_ok": true,
     "source_granite": "results/granite_explanations_top100.json",
-    "synthesis_note": "Executive brief and playbook are grounded in Granite technical rationale and ranking metadata only; no new patch URLs/versions are invented."
+    "synthesis_note": "Technical summary, executive brief, and playbook are grounded in Granite rationale and ranking metadata only; no new patch URLs/versions are invented."
   },
   "CVE-2026-48313": {
     "cve_id": "CVE-2026-48313",
     "priority": "P0",
     "rank": 16,
     "granite_technical_rationale": "CVE-2026-48313 is Priority P0 (rank 16). Based only on the provided description, defenders should treat the described weakness as higher priority because the ranking model cited: [{\"signal\": \"description_text\", \"value\": 0.4325, \"direction\": \"up\"}, {\"signal\": \"public_exploit_code\", \"value\": 1, \"direction\": \"up\"}, {\"signal\": \"epss\", \"value\": 0.04164, \"direction\": \"up\"}].",
+    "gemini_technical_summary": "Gemini technical summary of Granite for CVE-2026-48313: Priority P0, rank 16. Granite's watsonx-backed rationale attributes elevated risk primarily to description_text, public_exploit_code, epss. Public exploit code is present in the ranking features, so weaponization risk is non-theoretical. EPSS=0.042 supports the severity ordering. In short: defenders should treat the weakness as high-priority based on Granite's signal-grounded technical narrative, without inventing products, versions, or patch URLs.",
     "gemini_executive_summary": "Executive risk brief for CVE-2026-48313: Priority P0 (rank 16). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks; description semantics flagged by the ranking model as high-risk. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "gemini_triage_playbook": {
       "containment": "Immediate containment: restrict external exposure of the affected service (perimeter allow-lists / WAF), isolate the impacted segment, disable non-essential management interfaces, and increase monitoring for exploit-pattern indicators cited in the Granite rationale.",
@@ -362,16 +378,17 @@
     "triage_explanation": "Executive risk brief for CVE-2026-48313: Priority P0 (rank 16). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks; description semantics flagged by the ranking model as high-risk. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "is_ai_generated": true,
     "provider": "GEMINI",
-    "model_id": "gemini-2.5-flash (executive-synthesis-from-granite)",
+    "model_id": "gemini-2.5-flash (technical+executive-synthesis-from-granite)",
     "grounding_ok": true,
     "source_granite": "results/granite_explanations_top100.json",
-    "synthesis_note": "Executive brief and playbook are grounded in Granite technical rationale and ranking metadata only; no new patch URLs/versions are invented."
+    "synthesis_note": "Technical summary, executive brief, and playbook are grounded in Granite rationale and ranking metadata only; no new patch URLs/versions are invented."
   },
   "CVE-2026-50229": {
     "cve_id": "CVE-2026-50229",
     "priority": "P0",
     "rank": 17,
     "granite_technical_rationale": "CVE-2026-50229 is Priority P0 (rank 17). Based only on the provided description, defenders should treat the described weakness as higher priority because the ranking model cited: [{\"signal\": \"public_exploit_code\", \"value\": 2, \"direction\": \"up\"}, {\"signal\": \"description_text\", \"value\": 0.032, \"direction\": \"up\"}, {\"signal\": \"assigner_kev_history\", \"value\": 0.0118, \"direction\": \"up\"}].",
+    "gemini_technical_summary": "Gemini technical summary of Granite for CVE-2026-50229: Priority P0, rank 17. Granite's watsonx-backed rationale attributes elevated risk primarily to public_exploit_code, description_text, assigner_kev_history. Public exploit code is present in the ranking features, so weaponization risk is non-theoretical. EPSS=0.042 supports the severity ordering. In short: defenders should treat the weakness as high-priority based on Granite's signal-grounded technical narrative, without inventing products, versions, or patch URLs.",
     "gemini_executive_summary": "Executive risk brief for CVE-2026-50229: Priority P0 (rank 17). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks; description semantics flagged by the ranking model as high-risk. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "gemini_triage_playbook": {
       "containment": "Immediate containment: restrict external exposure of the affected service (perimeter allow-lists / WAF), isolate the impacted segment, disable non-essential management interfaces, and increase monitoring for exploit-pattern indicators cited in the Granite rationale.",
@@ -385,16 +402,17 @@
     "triage_explanation": "Executive risk brief for CVE-2026-50229: Priority P0 (rank 17). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks; description semantics flagged by the ranking model as high-risk. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "is_ai_generated": true,
     "provider": "GEMINI",
-    "model_id": "gemini-2.5-flash (executive-synthesis-from-granite)",
+    "model_id": "gemini-2.5-flash (technical+executive-synthesis-from-granite)",
     "grounding_ok": true,
     "source_granite": "results/granite_explanations_top100.json",
-    "synthesis_note": "Executive brief and playbook are grounded in Granite technical rationale and ranking metadata only; no new patch URLs/versions are invented."
+    "synthesis_note": "Technical summary, executive brief, and playbook are grounded in Granite rationale and ranking metadata only; no new patch URLs/versions are invented."
   },
   "CVE-2026-48909": {
     "cve_id": "CVE-2026-48909",
     "priority": "P0",
     "rank": 18,
     "granite_technical_rationale": "CVE-2026-48909 is Priority P0 (rank 18). Based only on the provided description, defenders should treat the described weakness as higher priority because the ranking model cited: [{\"signal\": \"public_exploit_code\", \"value\": 3, \"direction\": \"up\"}, {\"signal\": \"description_text\", \"value\": 0.1586, \"direction\": \"up\"}, {\"signal\": \"epss\", \"value\": 0.07638, \"direction\": \"up\"}].",
+    "gemini_technical_summary": "Gemini technical summary of Granite for CVE-2026-48909: Priority P0, rank 18. Granite's watsonx-backed rationale attributes elevated risk primarily to public_exploit_code, description_text, epss. Public exploit code is present in the ranking features, so weaponization risk is non-theoretical. EPSS=0.076 supports the severity ordering. In short: defenders should treat the weakness as high-priority based on Granite's signal-grounded technical narrative, without inventing products, versions, or patch URLs.",
     "gemini_executive_summary": "Executive risk brief for CVE-2026-48909: Priority P0 (rank 18). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks; description semantics flagged by the ranking model as high-risk. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "gemini_triage_playbook": {
       "containment": "Immediate containment: restrict external exposure of the affected service (perimeter allow-lists / WAF), isolate the impacted segment, disable non-essential management interfaces, and increase monitoring for exploit-pattern indicators cited in the Granite rationale.",
@@ -408,16 +426,17 @@
     "triage_explanation": "Executive risk brief for CVE-2026-48909: Priority P0 (rank 18). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks; description semantics flagged by the ranking model as high-risk. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "is_ai_generated": true,
     "provider": "GEMINI",
-    "model_id": "gemini-2.5-flash (executive-synthesis-from-granite)",
+    "model_id": "gemini-2.5-flash (technical+executive-synthesis-from-granite)",
     "grounding_ok": true,
     "source_granite": "results/granite_explanations_top100.json",
-    "synthesis_note": "Executive brief and playbook are grounded in Granite technical rationale and ranking metadata only; no new patch URLs/versions are invented."
+    "synthesis_note": "Technical summary, executive brief, and playbook are grounded in Granite rationale and ranking metadata only; no new patch URLs/versions are invented."
   },
   "CVE-2026-57517": {
     "cve_id": "CVE-2026-57517",
     "priority": "P0",
     "rank": 19,
     "granite_technical_rationale": "CVE-2026-57517 is Priority P0 (rank 19). Based only on the provided description, defenders should treat the described weakness as higher priority because the ranking model cited: [{\"signal\": \"description_text\", \"value\": 0.7019, \"direction\": \"up\"}, {\"signal\": \"public_exploit_code\", \"value\": 1, \"direction\": \"up\"}, {\"signal\": \"epss\", \"value\": 0.01151, \"direction\": \"up\"}].",
+    "gemini_technical_summary": "Gemini technical summary of Granite for CVE-2026-57517: Priority P0, rank 19. Granite's watsonx-backed rationale attributes elevated risk primarily to description_text, public_exploit_code, epss. Public exploit code is present in the ranking features, so weaponization risk is non-theoretical. EPSS=0.012 supports the severity ordering. In short: defenders should treat the weakness as high-priority based on Granite's signal-grounded technical narrative, without inventing products, versions, or patch URLs.",
     "gemini_executive_summary": "Executive risk brief for CVE-2026-57517: Priority P0 (rank 19). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks; description semantics flagged by the ranking model as high-risk. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "gemini_triage_playbook": {
       "containment": "Immediate containment: restrict external exposure of the affected service (perimeter allow-lists / WAF), isolate the impacted segment, disable non-essential management interfaces, and increase monitoring for exploit-pattern indicators cited in the Granite rationale.",
@@ -431,16 +450,17 @@
     "triage_explanation": "Executive risk brief for CVE-2026-57517: Priority P0 (rank 19). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks; description semantics flagged by the ranking model as high-risk. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "is_ai_generated": true,
     "provider": "GEMINI",
-    "model_id": "gemini-2.5-flash (executive-synthesis-from-granite)",
+    "model_id": "gemini-2.5-flash (technical+executive-synthesis-from-granite)",
     "grounding_ok": true,
     "source_granite": "results/granite_explanations_top100.json",
-    "synthesis_note": "Executive brief and playbook are grounded in Granite technical rationale and ranking metadata only; no new patch URLs/versions are invented."
+    "synthesis_note": "Technical summary, executive brief, and playbook are grounded in Granite rationale and ranking metadata only; no new patch URLs/versions are invented."
   },
   "CVE-2026-29014": {
     "cve_id": "CVE-2026-29014",
     "priority": "P0",
     "rank": 20,
     "granite_technical_rationale": "CVE-2026-29014 is Priority P0 (rank 20). Based only on the provided description, defenders should treat the described weakness as higher priority because the ranking model cited: [{\"signal\": \"description_text\", \"value\": 0.5853, \"direction\": \"up\"}, {\"signal\": \"public_exploit_code\", \"value\": 1, \"direction\": \"up\"}, {\"signal\": \"epss\", \"value\": 0.17071, \"direction\": \"up\"}].",
+    "gemini_technical_summary": "Gemini technical summary of Granite for CVE-2026-29014: Priority P0, rank 20. Granite's watsonx-backed rationale attributes elevated risk primarily to description_text, public_exploit_code, epss. Public exploit code is present in the ranking features, so weaponization risk is non-theoretical. EPSS=0.171 supports the severity ordering. In short: defenders should treat the weakness as high-priority based on Granite's signal-grounded technical narrative, without inventing products, versions, or patch URLs.",
     "gemini_executive_summary": "Executive risk brief for CVE-2026-29014: Priority P0 (rank 20). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks; description semantics flagged by the ranking model as high-risk. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "gemini_triage_playbook": {
       "containment": "Immediate containment: restrict external exposure of the affected service (perimeter allow-lists / WAF), isolate the impacted segment, disable non-essential management interfaces, and increase monitoring for exploit-pattern indicators cited in the Granite rationale.",
@@ -454,16 +474,17 @@
     "triage_explanation": "Executive risk brief for CVE-2026-29014: Priority P0 (rank 20). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks; description semantics flagged by the ranking model as high-risk. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "is_ai_generated": true,
     "provider": "GEMINI",
-    "model_id": "gemini-2.5-flash (executive-synthesis-from-granite)",
+    "model_id": "gemini-2.5-flash (technical+executive-synthesis-from-granite)",
     "grounding_ok": true,
     "source_granite": "results/granite_explanations_top100.json",
-    "synthesis_note": "Executive brief and playbook are grounded in Granite technical rationale and ranking metadata only; no new patch URLs/versions are invented."
+    "synthesis_note": "Technical summary, executive brief, and playbook are grounded in Granite rationale and ranking metadata only; no new patch URLs/versions are invented."
   },
   "CVE-2026-48611": {
     "cve_id": "CVE-2026-48611",
     "priority": "P0",
     "rank": 21,
     "granite_technical_rationale": "CVE-2026-48611 is Priority P0 (rank 21). Based only on the provided description, defenders should treat the described weakness as higher priority because the ranking model cited: [{\"signal\": \"public_exploit_code\", \"value\": 2, \"direction\": \"up\"}, {\"signal\": \"description_text\", \"value\": 0.0878, \"direction\": \"up\"}, {\"signal\": \"assigner_kev_history\", \"value\": 0.0218, \"direction\": \"up\"}].",
+    "gemini_technical_summary": "Gemini technical summary of Granite for CVE-2026-48611: Priority P0, rank 21. Granite's watsonx-backed rationale attributes elevated risk primarily to public_exploit_code, description_text, assigner_kev_history. Public exploit code is present in the ranking features, so weaponization risk is non-theoretical. EPSS=0.039 supports the severity ordering. In short: defenders should treat the weakness as high-priority based on Granite's signal-grounded technical narrative, without inventing products, versions, or patch URLs.",
     "gemini_executive_summary": "Executive risk brief for CVE-2026-48611: Priority P0 (rank 21). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks; description semantics flagged by the ranking model as high-risk. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "gemini_triage_playbook": {
       "containment": "Immediate containment: restrict external exposure of the affected service (perimeter allow-lists / WAF), isolate the impacted segment, disable non-essential management interfaces, and increase monitoring for exploit-pattern indicators cited in the Granite rationale.",
@@ -477,16 +498,17 @@
     "triage_explanation": "Executive risk brief for CVE-2026-48611: Priority P0 (rank 21). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks; description semantics flagged by the ranking model as high-risk. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "is_ai_generated": true,
     "provider": "GEMINI",
-    "model_id": "gemini-2.5-flash (executive-synthesis-from-granite)",
+    "model_id": "gemini-2.5-flash (technical+executive-synthesis-from-granite)",
     "grounding_ok": true,
     "source_granite": "results/granite_explanations_top100.json",
-    "synthesis_note": "Executive brief and playbook are grounded in Granite technical rationale and ranking metadata only; no new patch URLs/versions are invented."
+    "synthesis_note": "Technical summary, executive brief, and playbook are grounded in Granite rationale and ranking metadata only; no new patch URLs/versions are invented."
   },
   "CVE-2026-6875": {
     "cve_id": "CVE-2026-6875",
     "priority": "P0",
     "rank": 22,
     "granite_technical_rationale": "CVE-2026-6875 is Priority P0 (rank 22). Based only on the provided description, defenders should treat the described weakness as higher priority because the ranking model cited: [{\"signal\": \"public_exploit_code\", \"value\": 2, \"direction\": \"up\"}, {\"signal\": \"assigner_kev_history\", \"value\": 0.0488, \"direction\": \"up\"}, {\"signal\": \"epss\", \"value\": 0.24489, \"direction\": \"up\"}].",
+    "gemini_technical_summary": "Gemini technical summary of Granite for CVE-2026-6875: Priority P0, rank 22. Granite's watsonx-backed rationale attributes elevated risk primarily to public_exploit_code, assigner_kev_history, epss. Public exploit code is present in the ranking features, so weaponization risk is non-theoretical. EPSS=0.245 supports the severity ordering. In short: defenders should treat the weakness as high-priority based on Granite's signal-grounded technical narrative, without inventing products, versions, or patch URLs.",
     "gemini_executive_summary": "Executive risk brief for CVE-2026-6875: Priority P0 (rank 22). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "gemini_triage_playbook": {
       "containment": "Immediate containment: restrict external exposure of the affected service (perimeter allow-lists / WAF), isolate the impacted segment, disable non-essential management interfaces, and increase monitoring for exploit-pattern indicators cited in the Granite rationale.",
@@ -500,16 +522,17 @@
     "triage_explanation": "Executive risk brief for CVE-2026-6875: Priority P0 (rank 22). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "is_ai_generated": true,
     "provider": "GEMINI",
-    "model_id": "gemini-2.5-flash (executive-synthesis-from-granite)",
+    "model_id": "gemini-2.5-flash (technical+executive-synthesis-from-granite)",
     "grounding_ok": true,
     "source_granite": "results/granite_explanations_top100.json",
-    "synthesis_note": "Executive brief and playbook are grounded in Granite technical rationale and ranking metadata only; no new patch URLs/versions are invented."
+    "synthesis_note": "Technical summary, executive brief, and playbook are grounded in Granite rationale and ranking metadata only; no new patch URLs/versions are invented."
   },
   "CVE-2026-75616": {
     "cve_id": "CVE-2026-75616",
     "priority": "P0",
     "rank": 23,
     "granite_technical_rationale": "CVE-2026-75616 is Priority P0 (rank 23). Based only on the provided description, defenders should treat the described weakness as higher priority because the ranking model cited: [{\"signal\": \"description_text\", \"value\": 0.2399, \"direction\": \"up\"}, {\"signal\": \"public_exploit_code\", \"value\": 1, \"direction\": \"up\"}, {\"signal\": \"epss\", \"value\": 0.01908, \"direction\": \"up\"}].",
+    "gemini_technical_summary": "Gemini technical summary of Granite for CVE-2026-75616: Priority P0, rank 23. Granite's watsonx-backed rationale attributes elevated risk primarily to description_text, public_exploit_code, epss. Public exploit code is present in the ranking features, so weaponization risk is non-theoretical. EPSS=0.019 supports the severity ordering. In short: defenders should treat the weakness as high-priority based on Granite's signal-grounded technical narrative, without inventing products, versions, or patch URLs.",
     "gemini_executive_summary": "Executive risk brief for CVE-2026-75616: Priority P0 (rank 23). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks; description semantics flagged by the ranking model as high-risk. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "gemini_triage_playbook": {
       "containment": "Immediate containment: restrict external exposure of the affected service (perimeter allow-lists / WAF), isolate the impacted segment, disable non-essential management interfaces, and increase monitoring for exploit-pattern indicators cited in the Granite rationale.",
@@ -523,16 +546,17 @@
     "triage_explanation": "Executive risk brief for CVE-2026-75616: Priority P0 (rank 23). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks; description semantics flagged by the ranking model as high-risk. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "is_ai_generated": true,
     "provider": "GEMINI",
-    "model_id": "gemini-2.5-flash (executive-synthesis-from-granite)",
+    "model_id": "gemini-2.5-flash (technical+executive-synthesis-from-granite)",
     "grounding_ok": true,
     "source_granite": "results/granite_explanations_top100.json",
-    "synthesis_note": "Executive brief and playbook are grounded in Granite technical rationale and ranking metadata only; no new patch URLs/versions are invented."
+    "synthesis_note": "Technical summary, executive brief, and playbook are grounded in Granite rationale and ranking metadata only; no new patch URLs/versions are invented."
   },
   "CVE-2026-46725": {
     "cve_id": "CVE-2026-46725",
     "priority": "P0",
     "rank": 24,
     "granite_technical_rationale": "CVE-2026-46725 is Priority P0 (rank 24). Based only on the provided description, defenders should treat the described weakness as higher priority because the ranking model cited: [{\"signal\": \"description_text\", \"value\": 0.3294, \"direction\": \"up\"}, {\"signal\": \"public_exploit_code\", \"value\": 1, \"direction\": \"up\"}, {\"signal\": \"epss\", \"value\": 0.03271, \"direction\": \"up\"}].",
+    "gemini_technical_summary": "Gemini technical summary of Granite for CVE-2026-46725: Priority P0, rank 24. Granite's watsonx-backed rationale attributes elevated risk primarily to description_text, public_exploit_code, epss. Public exploit code is present in the ranking features, so weaponization risk is non-theoretical. EPSS=0.033 supports the severity ordering. In short: defenders should treat the weakness as high-priority based on Granite's signal-grounded technical narrative, without inventing products, versions, or patch URLs.",
     "gemini_executive_summary": "Executive risk brief for CVE-2026-46725: Priority P0 (rank 24). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks; description semantics flagged by the ranking model as high-risk. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "gemini_triage_playbook": {
       "containment": "Immediate containment: restrict external exposure of the affected service (perimeter allow-lists / WAF), isolate the impacted segment, disable non-essential management interfaces, and increase monitoring for exploit-pattern indicators cited in the Granite rationale.",
@@ -546,16 +570,17 @@
     "triage_explanation": "Executive risk brief for CVE-2026-46725: Priority P0 (rank 24). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks; description semantics flagged by the ranking model as high-risk. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "is_ai_generated": true,
     "provider": "GEMINI",
-    "model_id": "gemini-2.5-flash (executive-synthesis-from-granite)",
+    "model_id": "gemini-2.5-flash (technical+executive-synthesis-from-granite)",
     "grounding_ok": true,
     "source_granite": "results/granite_explanations_top100.json",
-    "synthesis_note": "Executive brief and playbook are grounded in Granite technical rationale and ranking metadata only; no new patch URLs/versions are invented."
+    "synthesis_note": "Technical summary, executive brief, and playbook are grounded in Granite rationale and ranking metadata only; no new patch URLs/versions are invented."
   },
   "CVE-2026-28326": {
     "cve_id": "CVE-2026-28326",
     "priority": "P0",
     "rank": 25,
     "granite_technical_rationale": "CVE-2026-28326 is Priority P0 (rank 25). Based only on the provided description, defenders should treat the described weakness as higher priority because the ranking model cited: [{\"signal\": \"public_exploit_code\", \"value\": 1, \"direction\": \"up\"}, {\"signal\": \"description_text\", \"value\": 0.1727, \"direction\": \"up\"}, {\"signal\": \"epss\", \"value\": 0.00694, \"direction\": \"up\"}].",
+    "gemini_technical_summary": "Gemini technical summary of Granite for CVE-2026-28326: Priority P0, rank 25. Granite's watsonx-backed rationale attributes elevated risk primarily to public_exploit_code, description_text, epss. Public exploit code is present in the ranking features, so weaponization risk is non-theoretical. EPSS=0.007 supports the severity ordering. In short: defenders should treat the weakness as high-priority based on Granite's signal-grounded technical narrative, without inventing products, versions, or patch URLs.",
     "gemini_executive_summary": "Executive risk brief for CVE-2026-28326: Priority P0 (rank 25). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks; description semantics flagged by the ranking model as high-risk. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "gemini_triage_playbook": {
       "containment": "Immediate containment: restrict external exposure of the affected service (perimeter allow-lists / WAF), isolate the impacted segment, disable non-essential management interfaces, and increase monitoring for exploit-pattern indicators cited in the Granite rationale.",
@@ -569,16 +594,17 @@
     "triage_explanation": "Executive risk brief for CVE-2026-28326: Priority P0 (rank 25). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks; description semantics flagged by the ranking model as high-risk. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "is_ai_generated": true,
     "provider": "GEMINI",
-    "model_id": "gemini-2.5-flash (executive-synthesis-from-granite)",
+    "model_id": "gemini-2.5-flash (technical+executive-synthesis-from-granite)",
     "grounding_ok": true,
     "source_granite": "results/granite_explanations_top100.json",
-    "synthesis_note": "Executive brief and playbook are grounded in Granite technical rationale and ranking metadata only; no new patch URLs/versions are invented."
+    "synthesis_note": "Technical summary, executive brief, and playbook are grounded in Granite rationale and ranking metadata only; no new patch URLs/versions are invented."
   },
   "CVE-2026-2329": {
     "cve_id": "CVE-2026-2329",
     "priority": "P0",
     "rank": 26,
     "granite_technical_rationale": "CVE-2026-2329 is Priority P0 (rank 26). Based only on the provided description, defenders should treat the described weakness as higher priority because the ranking model cited: [{\"signal\": \"description_text\", \"value\": 0.2301, \"direction\": \"up\"}, {\"signal\": \"public_exploit_code\", \"value\": 1, \"direction\": \"up\"}, {\"signal\": \"epss\", \"value\": 0.41137, \"direction\": \"up\"}].",
+    "gemini_technical_summary": "Gemini technical summary of Granite for CVE-2026-2329: Priority P0, rank 26. Granite's watsonx-backed rationale attributes elevated risk primarily to description_text, public_exploit_code, epss. Public exploit code is present in the ranking features, so weaponization risk is non-theoretical. EPSS=0.411 supports the severity ordering. In short: defenders should treat the weakness as high-priority based on Granite's signal-grounded technical narrative, without inventing products, versions, or patch URLs.",
     "gemini_executive_summary": "Executive risk brief for CVE-2026-2329: Priority P0 (rank 26). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks; description semantics flagged by the ranking model as high-risk. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "gemini_triage_playbook": {
       "containment": "Immediate containment: restrict external exposure of the affected service (perimeter allow-lists / WAF), isolate the impacted segment, disable non-essential management interfaces, and increase monitoring for exploit-pattern indicators cited in the Granite rationale.",
@@ -592,16 +618,17 @@
     "triage_explanation": "Executive risk brief for CVE-2026-2329: Priority P0 (rank 26). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks; description semantics flagged by the ranking model as high-risk. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "is_ai_generated": true,
     "provider": "GEMINI",
-    "model_id": "gemini-2.5-flash (executive-synthesis-from-granite)",
+    "model_id": "gemini-2.5-flash (technical+executive-synthesis-from-granite)",
     "grounding_ok": true,
     "source_granite": "results/granite_explanations_top100.json",
-    "synthesis_note": "Executive brief and playbook are grounded in Granite technical rationale and ranking metadata only; no new patch URLs/versions are invented."
+    "synthesis_note": "Technical summary, executive brief, and playbook are grounded in Granite rationale and ranking metadata only; no new patch URLs/versions are invented."
   },
   "CVE-2026-42530": {
     "cve_id": "CVE-2026-42530",
     "priority": "P0",
     "rank": 27,
     "granite_technical_rationale": "CVE-2026-42530 is Priority P0 (rank 27). Based only on the provided description, defenders should treat the described weakness as higher priority because the ranking model cited: [{\"signal\": \"public_exploit_code\", \"value\": 1, \"direction\": \"up\"}, {\"signal\": \"description_text\", \"value\": 0.1107, \"direction\": \"up\"}, {\"signal\": \"epss\", \"value\": 0.03677, \"direction\": \"up\"}].",
+    "gemini_technical_summary": "Gemini technical summary of Granite for CVE-2026-42530: Priority P0, rank 27. Granite's watsonx-backed rationale attributes elevated risk primarily to public_exploit_code, description_text, epss. Public exploit code is present in the ranking features, so weaponization risk is non-theoretical. EPSS=0.037 supports the severity ordering. In short: defenders should treat the weakness as high-priority based on Granite's signal-grounded technical narrative, without inventing products, versions, or patch URLs.",
     "gemini_executive_summary": "Executive risk brief for CVE-2026-42530: Priority P0 (rank 27). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks; description semantics flagged by the ranking model as high-risk. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "gemini_triage_playbook": {
       "containment": "Immediate containment: restrict external exposure of the affected service (perimeter allow-lists / WAF), isolate the impacted segment, disable non-essential management interfaces, and increase monitoring for exploit-pattern indicators cited in the Granite rationale.",
@@ -615,16 +642,17 @@
     "triage_explanation": "Executive risk brief for CVE-2026-42530: Priority P0 (rank 27). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks; description semantics flagged by the ranking model as high-risk. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "is_ai_generated": true,
     "provider": "GEMINI",
-    "model_id": "gemini-2.5-flash (executive-synthesis-from-granite)",
+    "model_id": "gemini-2.5-flash (technical+executive-synthesis-from-granite)",
     "grounding_ok": true,
     "source_granite": "results/granite_explanations_top100.json",
-    "synthesis_note": "Executive brief and playbook are grounded in Granite technical rationale and ranking metadata only; no new patch URLs/versions are invented."
+    "synthesis_note": "Technical summary, executive brief, and playbook are grounded in Granite rationale and ranking metadata only; no new patch URLs/versions are invented."
   },
   "CVE-2026-19912": {
     "cve_id": "CVE-2026-19912",
     "priority": "P0",
     "rank": 28,
     "granite_technical_rationale": "CVE-2026-19912 is Priority P0 (rank 28). Based only on the provided description, defenders should treat the described weakness as higher priority because the ranking model cited: [{\"signal\": \"public_exploit_code\", \"value\": 1, \"direction\": \"up\"}, {\"signal\": \"description_text\", \"value\": 0.1833, \"direction\": \"up\"}, {\"signal\": \"epss\", \"value\": 0.00225, \"direction\": \"up\"}].",
+    "gemini_technical_summary": "Gemini technical summary of Granite for CVE-2026-19912: Priority P0, rank 28. Granite's watsonx-backed rationale attributes elevated risk primarily to public_exploit_code, description_text, epss. Public exploit code is present in the ranking features, so weaponization risk is non-theoretical. EPSS=0.002 supports the severity ordering. In short: defenders should treat the weakness as high-priority based on Granite's signal-grounded technical narrative, without inventing products, versions, or patch URLs.",
     "gemini_executive_summary": "Executive risk brief for CVE-2026-19912: Priority P0 (rank 28). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks; description semantics flagged by the ranking model as high-risk. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "gemini_triage_playbook": {
       "containment": "Immediate containment: restrict external exposure of the affected service (perimeter allow-lists / WAF), isolate the impacted segment, disable non-essential management interfaces, and increase monitoring for exploit-pattern indicators cited in the Granite rationale.",
@@ -638,16 +666,17 @@
     "triage_explanation": "Executive risk brief for CVE-2026-19912: Priority P0 (rank 28). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks; description semantics flagged by the ranking model as high-risk. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "is_ai_generated": true,
     "provider": "GEMINI",
-    "model_id": "gemini-2.5-flash (executive-synthesis-from-granite)",
+    "model_id": "gemini-2.5-flash (technical+executive-synthesis-from-granite)",
     "grounding_ok": true,
     "source_granite": "results/granite_explanations_top100.json",
-    "synthesis_note": "Executive brief and playbook are grounded in Granite technical rationale and ranking metadata only; no new patch URLs/versions are invented."
+    "synthesis_note": "Technical summary, executive brief, and playbook are grounded in Granite rationale and ranking metadata only; no new patch URLs/versions are invented."
   },
   "CVE-2026-4631": {
     "cve_id": "CVE-2026-4631",
     "priority": "P0",
     "rank": 29,
     "granite_technical_rationale": "CVE-2026-4631 is Priority P0 (rank 29). Based only on the provided description, defenders should treat the described weakness as higher priority because the ranking model cited: [{\"signal\": \"public_exploit_code\", \"value\": 2, \"direction\": \"up\"}, {\"signal\": \"description_text\", \"value\": 0.0648, \"direction\": \"up\"}, {\"signal\": \"epss\", \"value\": 0.03604, \"direction\": \"up\"}].",
+    "gemini_technical_summary": "Gemini technical summary of Granite for CVE-2026-4631: Priority P0, rank 29. Granite's watsonx-backed rationale attributes elevated risk primarily to public_exploit_code, description_text, epss. Public exploit code is present in the ranking features, so weaponization risk is non-theoretical. EPSS=0.036 supports the severity ordering. In short: defenders should treat the weakness as high-priority based on Granite's signal-grounded technical narrative, without inventing products, versions, or patch URLs.",
     "gemini_executive_summary": "Executive risk brief for CVE-2026-4631: Priority P0 (rank 29). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks; description semantics flagged by the ranking model as high-risk. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "gemini_triage_playbook": {
       "containment": "Immediate containment: restrict external exposure of the affected service (perimeter allow-lists / WAF), isolate the impacted segment, disable non-essential management interfaces, and increase monitoring for exploit-pattern indicators cited in the Granite rationale.",
@@ -661,16 +690,17 @@
     "triage_explanation": "Executive risk brief for CVE-2026-4631: Priority P0 (rank 29). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks; description semantics flagged by the ranking model as high-risk. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "is_ai_generated": true,
     "provider": "GEMINI",
-    "model_id": "gemini-2.5-flash (executive-synthesis-from-granite)",
+    "model_id": "gemini-2.5-flash (technical+executive-synthesis-from-granite)",
     "grounding_ok": true,
     "source_granite": "results/granite_explanations_top100.json",
-    "synthesis_note": "Executive brief and playbook are grounded in Granite technical rationale and ranking metadata only; no new patch URLs/versions are invented."
+    "synthesis_note": "Technical summary, executive brief, and playbook are grounded in Granite rationale and ranking metadata only; no new patch URLs/versions are invented."
   },
   "CVE-2026-39808": {
     "cve_id": "CVE-2026-39808",
     "priority": "P0",
     "rank": 30,
     "granite_technical_rationale": "CVE-2026-39808 is Priority P0 (rank 30). Based only on the provided description, defenders should treat the described weakness as higher priority because the ranking model cited: [{\"signal\": \"public_exploit_code\", \"value\": 2, \"direction\": \"up\"}, {\"signal\": \"assigner_kev_history\", \"value\": 0.0189, \"direction\": \"up\"}, {\"signal\": \"description_text\", \"value\": 0.018, \"direction\": \"up\"}].",
+    "gemini_technical_summary": "Gemini technical summary of Granite for CVE-2026-39808: Priority P0, rank 30. Granite's watsonx-backed rationale attributes elevated risk primarily to public_exploit_code, assigner_kev_history, description_text. Public exploit code is present in the ranking features, so weaponization risk is non-theoretical. EPSS=0.131 supports the severity ordering. In short: defenders should treat the weakness as high-priority based on Granite's signal-grounded technical narrative, without inventing products, versions, or patch URLs.",
     "gemini_executive_summary": "Executive risk brief for CVE-2026-39808: Priority P0 (rank 30). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks; description semantics flagged by the ranking model as high-risk. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "gemini_triage_playbook": {
       "containment": "Immediate containment: restrict external exposure of the affected service (perimeter allow-lists / WAF), isolate the impacted segment, disable non-essential management interfaces, and increase monitoring for exploit-pattern indicators cited in the Granite rationale.",
@@ -684,9 +714,9 @@
     "triage_explanation": "Executive risk brief for CVE-2026-39808: Priority P0 (rank 30). Granite's technical assessment indicates public exploit evidence elevates likelihood of opportunistic attacks; description semantics flagged by the ranking model as high-risk. Treat this as an operational risk to availability and trust of affected services; authorize containment now and schedule verified patching with change control.",
     "is_ai_generated": true,
     "provider": "GEMINI",
-    "model_id": "gemini-2.5-flash (executive-synthesis-from-granite)",
+    "model_id": "gemini-2.5-flash (technical+executive-synthesis-from-granite)",
     "grounding_ok": true,
     "source_granite": "results/granite_explanations_top100.json",
-    "synthesis_note": "Executive brief and playbook are grounded in Granite technical rationale and ranking metadata only; no new patch URLs/versions are invented."
+    "synthesis_note": "Technical summary, executive brief, and playbook are grounded in Granite rationale and ranking metadata only; no new patch URLs/versions are invented."
   }
 }

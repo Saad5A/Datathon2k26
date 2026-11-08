@@ -50,6 +50,7 @@ class DataService:
         self.gemini_playbooks: dict[str, Any] = {}
         self.gemini_comparison: dict[str, Any] = {}
         self.gemini_eval: dict[str, Any] = {}
+        self.gemini_refine_cache: dict[str, Any] = {}
         self.embed_ids: np.ndarray = np.array([], dtype=object)
         self.embed_matrix: np.ndarray | None = None  # (n, 768) float32, L2-normalised when present
         self.scores_by_id: dict[str, dict[str, Any]] = {}
@@ -69,6 +70,7 @@ class DataService:
         self._load_gemini_playbooks()
         self._load_json(RESULTS / "gemini_subset_comparison.json", "gemini_comparison")
         self._load_json(RESULTS / "agent_eval_report.json", "gemini_eval")
+        self._load_gemini_refine_cache()
         self._load_embeddings()
         log.info(
             "DataService ready: ranking=%s scores=%s granite_expl=%s gemini_expl=%s playbooks=%s embeds=%s errors=%s",
@@ -208,6 +210,19 @@ class DataService:
         except Exception as exc:  # noqa: BLE001
             self._note(path, exc)
             self.gemini_playbooks = {}
+
+    def _load_gemini_refine_cache(self) -> None:
+        path = RESULTS / "gemini_refine_cache.json"
+        if not path.is_file():
+            self._note(path, "missing")
+            self.gemini_refine_cache = {}
+            return
+        try:
+            raw = json.loads(path.read_text(encoding="utf-8"))
+            self.gemini_refine_cache = raw if isinstance(raw, dict) else {}
+        except Exception as exc:  # noqa: BLE001
+            self._note(path, exc)
+            self.gemini_refine_cache = {}
 
     @staticmethod
     def _as_cve_map(raw: Any) -> dict[str, Any]:

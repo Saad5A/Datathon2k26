@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { RankedTable, type TableFilters } from '@/components/dashboard/RankedTable'
+import { CveInspectionDrawer } from '@/components/dashboard/CveInspectionDrawer'
 import { WidgetCard } from '@/components/dashboard/WidgetCard'
 import { LIVE_API, fetchExplanation, type ExplanationPayload } from '@/lib/backend'
 import type { Dataset, ScoreRow } from '@/lib/types'
@@ -46,6 +47,7 @@ function GraniteNote({ cveId }: { cveId: string | null }) {
 export function KitchenResults({ dataset, warnings }: { dataset: Dataset; warnings: string[] }) {
   const [filters, setFilters] = useState<TableFilters>({ q: '', priorities: [], exploitOnly: false })
   const [selectedCve, setSelectedCve] = useState<string | null>(null)
+  const [inspectOpen, setInspectOpen] = useState(false)
 
   return <>
     {warnings.length > 0 && <ul className="batch-warnings" aria-label="Upload warnings">{warnings.map((warning, i) => <li key={i}>{warning}</li>)}</ul>}
@@ -56,7 +58,9 @@ export function KitchenResults({ dataset, warnings }: { dataset: Dataset; warnin
       <WidgetCard title="Signal rationale" subtitle="Why this row sits where it does">
         <SignalPanel row={dataset.rows.find((row) => row.cve_id === selectedCve) ?? null}/>
         <GraniteNote cveId={selectedCve}/>
+        {selectedCve && <button type="button" className="mt-3 text-left text-[10px] font-semibold uppercase tracking-wider text-[#426b54] underline underline-offset-4" onClick={() => setInspectOpen(true)}>Inspect full brief →</button>}
       </WidgetCard>
     </div>
+    <CveInspectionDrawer cveId={selectedCve} open={inspectOpen} onOpenChange={setInspectOpen}/>
   </>
 }
