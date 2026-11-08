@@ -74,3 +74,17 @@ No claim text, note, meta or vocabulary string in results/ says Granite "improve
 2. `JUDGE_QA.md` line 45 still says the Granite test result is "pending". `docs/kb/team/model-ranking.md` lists the Granite embeddings as "not started". Both are stale (the owners update them; JUDGE_QA is protected, so only with the human's permission).
 3. If the assigner list is quoted, say "tied" for #6/#7 and for #10 (one of three at 11).
 4. Every number in docs that described the earlier TF-IDF final files (any-exploit share .712, unseen .158, github 41, adobe 26, ...) is now obsolete. A grep found none in the published docs, but they must not be reused.
+
+## Dashboard columns (follow-up: c35f0ea + 1fd5083 vs the verified 5a78fcc): PASS
+Checked by `audit/scratch/gf_dash.py` (plain csv/pandas, no `src/`), with output in `gf_dash_result.json`. The `scores_2026.csv` blob in 5a78fcc is byte-identical to the bf11016 file verified above.
+
+| Check | Result |
+|---|---|
+| (1) The 11 original columns are unchanged; `top500.csv` is unchanged | **PASS.** Same 72,670 rows in the same order. 0 string mismatches in published, snapshot_month, assigner, score, rank, in_top500, priority, epss and any_public_exploit. With `impact` removed, the reasons equal the old ones on every row (signal, value, direction and list order). `top500.csv` is byte-identical to 5a78fcc. The only other changes in results/ are an added `_impact` note in `signal_vocabulary.json` and new commit/date/hash fields in the meta |
+| (2) percentile = round(100*(1-(rank-1)/72670), 1) | **PASS.** 0 mismatches. Rank 1 is 100.0 and rank 72,670 is 0.0 |
+| (3) The four flags equal `scoreboard_2026.csv`; any_public_exploit = their OR | **PASS.** 0 mismatches per flag. The scoreboard flags are only "0"/"1", with no blanks. 0 OR mismatches |
+| (4) impact = \|occlusion change\| / sum over all 4 groups, in [0,1] | **PASS.** I recomputed it from my own G2 refit (`gf_final_scores.npz`): 20 random rows match, and so does every reason on all 72,670 rows (0 mismatches at 3 decimals). 0 values fall outside [0,1]. The vocabulary's `_impact` text describes exactly this, and calls it a within-CVE share that should not be compared across CVEs |
+| (5) Column order = docs/INTERFACES_dashboard.md section 1 | **PASS.** The header equals the contract's code block exactly, 17 columns ending in `model_version`. `model_version` = "G2" on every row |
+| (6) `dashboard/src/lib/parse.ts` treats the file as fully pre-ranked | **PASS (emulated, not executed).** papaparse is not installed and I installed nothing, so I re-implemented `hasScores` and the `fullyRanked` test (numeric `score`, `rank` and `percentile`; priority P0/P1/P2; unique ranks) over an RFC 4180 parse. Both are true for every row, so `finishIngest` sorts by rank and skips `assignRanks`, keeping our ranks and priorities. All scores are in [4.5e-5, .371], so the [0,1] clamp changes nothing. All reason values are number/string/null |
+
+No claim is affected: the 19 `p7.*` values come from the unchanged columns and stay verified. A cosmetic nit in `final.py`: the comment "rank <= limit; everything else P2" now sits on the `MODEL_VERSION` line instead of on `TIERS`.

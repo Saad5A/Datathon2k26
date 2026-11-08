@@ -1,0 +1,74 @@
+{
+ "old_blob_eq_verified_bf11016": true,
+ "top500_identical_to_5a78fcc": true,
+ "rows_old_new": [
+  72670,
+  72670
+ ],
+ "same_row_order": true,
+ "col_mismatch_counts": {
+  "published": 0,
+  "snapshot_month": 0,
+  "assigner": 0,
+  "score": 0,
+  "rank": 0,
+  "in_top500": 0,
+  "priority": 0,
+  "epss": 0,
+  "any_public_exploit": 0
+ },
+ "reasons_mismatch_ignoring_impact": 0,
+ "reasons_key_order_new": [
+  [
+   "signal",
+   "value",
+   "impact",
+   "direction"
+  ]
+ ],
+ "column_order_matches_contract": true,
+ "percentile_mismatch": 0,
+ "percentile_rank1_last": [
+  "100.0",
+  "0.0"
+ ],
+ "scoreboard_flag_values": {
+  "exploitdb": [
+   "0",
+   "1"
+  ],
+  "metasploit": [
+   "0",
+   "1"
+  ],
+  "nuclei": [
+   "0",
+   "1"
+  ],
+  "poc_github": [
+   "0",
+   "1"
+  ]
+ },
+ "flag_mismatch": {
+  "exploitdb": 0,
+  "metasploit": 0,
+  "nuclei": 0,
+  "poc_github": 0
+ },
+ "any_or_mismatch": 0,
+ "model_version_values": [
+  "G2"
+ ],
+ "impact_mismatch_all_rows": 0,
+ "impact_out_of_range": 0,
+ "impact_spot_mismatch": 0,
+ "parse_preScored": true,
+ "parse_fullyRanked": true,
+ "score_range": [
+  4.465139652398876e-05,
+  0.3712886063450481
+ ],
+ "any_reason_value_not_num_str_null": 0
+}
+[['CVE-2026-55052', 'assigner_kev_history', 0.756, 0.756], ['CVE-2026-55052', 'description_text', 0.24, 0.24], ['CVE-2026-55052', 'epss', 0.004, 0.004], ['CVE-2026-53561', 'description_text', 0.715, 0.715], ['CVE-2026-53561', 'assigner_kev_history', 0.173, 0.173], ['CVE-2026-53561', 'epss', 0.112, 0.112], ['CVE-2026-71191', 'description_text', 0.629, 0.629], ['CVE-2026-71191', 'epss', 0.315, 0.315]]
