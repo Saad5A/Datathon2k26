@@ -4,6 +4,7 @@
     "up": "this signal's actual value raises the CVE's priority score compared with the neutral value",
     "down": "this signal's actual value lowers the CVE's priority score compared with the neutral value"
   },
+  "_impact": "share of the CVE's total occlusion effect: |score change for this signal| divided by the sum of |score change| over all four signals for that CVE, 0-1, rounded to 3 decimals (0 if every change is 0). A relative share for this CVE only, not a probability and not comparable across CVEs as an absolute size.",
   "epss": {
     "label": "EPSS score at the snapshot month",
     "value_meaning": "the CVE's EPSS score in its snapshot month (null if EPSS was blank)",
