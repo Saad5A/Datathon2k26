@@ -1,34 +1,34 @@
 import {
   CheckCircle2,
-  Copy,
   Download,
-  GitCommit,
   Layers,
-  MousePointerClick,
+  MessageCircle,
   Send,
   ShieldAlert,
   Table2,
-  Terminal,
-  TrendingDown,
+  UploadCloud,
   Wrench,
 } from 'lucide-react'
 import { useCallback, useEffect, useMemo, useState, type FormEvent } from 'react'
+import { JudgeUploadModal } from '@/components/dashboard/JudgeUploadModal'
+import { useKitchenUpload } from '@/hooks/useKitchenUpload'
 import {
+  askProjectChat,
   fetchExplanation,
   fetchRankingPage,
   fetchStatsSummary,
-  refineGeminiAction,
   type ExplanationPayload,
   type RankingItem,
   type StatsSummary,
 } from '@/lib/backend'
+import type { Dataset, ScoreRow } from '@/lib/types'
+import { JudgeQaDrawer } from './JudgeQaDrawer'
 import { PancakeScene, type StackCve } from './PancakeScene'
 import { SimilarCves } from '@/components/dashboard/SimilarCves'
 import './pancakesec.css'
 
 type ViewMode = '3d' | 'table'
 type TierFilter = 'ALL' | 'P0' | 'P1' | 'P2'
-type RefineKind = 'bash_script' | 'business_risk' | 'granite_divergence' | 'custom_refinement'
 
 const STACK_N = 6
 
@@ -61,11 +61,32 @@ function priorityBadgeClass(p: string) {
   return 'bg-slate-100 text-slate-700 border border-slate-200'
 }
 
+/** Map upload ScoreRow → RankingItem for the live stack/table (session overlay only). */
+function scoreRowsToRanking(rows: ScoreRow[]): RankingItem[] {
+  return rows.map((r) => ({
+    cve_id: r.cve_id,
+    rank: r.rank,
+    score: r.score,
+    priority: r.priority,
+    published: r.published,
+    snapshot_month: r.snapshot_month,
+    assigner: r.assigner,
+    epss: r.epss,
+    any_public_exploit: r.any_public_exploit,
+    in_top500: r.in_top500,
+    reasons: r.reasons,
+  }))
+}
+
 export function PancakeSecDashboard() {
   const [view, setView] = useState<ViewMode>('3d')
   const [tier, setTier] = useState<TierFilter>('ALL')
   const [summary, setSummary] = useState<StatsSummary | null>(null)
   const [rows, setRows] = useState<RankingItem[]>([])
+  const [baselineRows, setBaselineRows] = useState<RankingItem[]>([])
+  const [uploadLabel, setUploadLabel] = useState<string | null>(null)
+  const [uploadOpen, setUploadOpen] = useState(false)
+  const [qaOpen, setQaOpen] = useState(false)
   const [loadError, setLoadError] = useState<string | null>(null)
   const [loading, setLoading] = useState(true)
   const [selectedId, setSelectedId] = useState<string | null>(null)
@@ -75,10 +96,20 @@ export function PancakeSecDashboard() {
   const [tableQ, setTableQ] = useState('')
   const [tablePri, setTablePri] = useState<TierFilter | 'ALL'>('ALL')
   const [actionBusy, setActionBusy] = useState(false)
-  const [actionTitle, setActionTitle] = useState('')
-  const [actionBody, setActionBody] = useState('')
-  const [actionOpen, setActionOpen] = useState(false)
   const [followUp, setFollowUp] = useState('')
+  const [panelChat, setPanelChat] = useState<{ role: 'user' | 'assistant'; content: string }[]>([])
+
+  const onUploadApply = useCallback((dataset: Dataset) => {
+    // Session-only overlay — never writes JUDGE_QA / writeup / top500 / scores_2026
+    const mapped = scoreRowsToRanking(dataset.rows)
+    setRows(mapped)
+    setUploadLabel(dataset.name)
+    setSelectedId(mapped[0]?.cve_id ?? null)
+    setView('table')
+    setUploadOpen(false)
+  }, [])
+
+  const uploadController = useKitchenUpload(onUploadApply)
 
   useEffect(() => {
     const ac = new AbortController()
@@ -90,7 +121,9 @@ export function PancakeSecDashboard() {
           fetchRankingPage({ page: 1, limit: 50, sort: 'rank', order: 'asc' }, ac.signal),
         ])
         setSummary(stats)
+        setBaselineRows(page.items)
         setRows(page.items)
+        setUploadLabel(null)
         setLoadError(null)
         if (page.items[0]?.cve_id) setSelectedId(page.items[0].cve_id)
       } catch (e) {
@@ -117,7 +150,7 @@ export function PancakeSecDashboard() {
     const ac = new AbortController()
     setBriefLoading(true)
     setBriefError(null)
-    setActionOpen(false)
+    setPanelChat([])
     fetchExplanation(selectedId, ac.signal, 'both')
       .then((p) => {
         setBrief(p)
@@ -138,28 +171,42 @@ export function PancakeSecDashboard() {
     brief?.gemini_executive_summary || brief?.gemini?.executive_summary || brief?.gemini?.summary || null
   const playbook = brief?.gemini_triage_playbook || brief?.gemini?.playbook || null
 
-  const runRefine = useCallback(
-    async (kind: RefineKind, userContext?: string, title?: string) => {
+  const runFollowUp = useCallback(
+    async (userContext: string) => {
       if (!selectedId) return
       setActionBusy(true)
-      setActionOpen(true)
-      setActionTitle(title || 'Filling template…')
-      setActionBody('Filling template…')
+      setPanelChat((prev) => [
+        ...prev,
+        { role: 'user', content: userContext },
+        { role: 'assistant', content: 'Analyzing project data...' },
+      ])
       try {
-        const res = await refineGeminiAction({
-          cve_id: selectedId,
-          action_type: kind,
-          user_context: userContext,
+        const history = panelChat.map((m) => ({ role: m.role, content: m.content }))
+        const res = await askProjectChat({
+          question: userContext,
+          active_cve: selectedId,
+          history,
         })
-        setActionTitle(`${title || kind} · template, not AI-generated`)
-        setActionBody(res.content)
+        const answer = (res.answer || res.reply || '').trim()
+        setPanelChat((prev) => {
+          const next = [...prev]
+          next[next.length - 1] = { role: 'assistant', content: answer }
+          return next
+        })
       } catch (e) {
-        setActionBody((e as Error).message)
+        setPanelChat((prev) => {
+          const next = [...prev]
+          next[next.length - 1] = {
+            role: 'assistant',
+            content: (e as Error).message || 'Unable to reach /api/gemini/chat',
+          }
+          return next
+        })
       } finally {
         setActionBusy(false)
       }
     },
-    [selectedId],
+    [selectedId, panelChat],
   )
 
   const filteredTable = useMemo(() => {
@@ -198,7 +245,7 @@ export function PancakeSecDashboard() {
     e.preventDefault()
     const q = followUp.trim()
     if (!q) return
-    void runRefine('custom_refinement', q, `Template answer: "${q}"`)
+    void runFollowUp(q)
     setFollowUp('')
   }
 
@@ -216,14 +263,28 @@ export function PancakeSecDashboard() {
               🥞
             </div>
             <div>
-              <div className="flex flex-wrap items-center gap-2">
-                <h1 className="text-lg font-extrabold tracking-tight text-[#1E1611]">PancakeSec</h1>
-                <span className="rounded-full border border-[#8B3A0F]/20 bg-[#8B3A0F]/10 px-2 py-0.5 text-xs font-semibold text-[#8B3A0F]">
-                  The Vulnerability Stack
-                </span>
-              </div>
-              <p className="text-xs font-medium text-[#7A6B5D]">
-                CVE Exploitation Prioritization · Sheridan Datathon 2026
+              <h1 className="text-lg font-extrabold tracking-tight text-[#1E1611]">PANCAKESS</h1>
+              <p
+                className="mt-1 font-medium leading-[1.2] text-[#8B3A0F]"
+                style={{ fontSize: '10px' }}
+                aria-label="Predictive Analytics Network for Cybersecurity Assessment, Knowledge, and Exploitation Software System"
+              >
+                {[
+                  ['P', 'redictive'],
+                  ['A', 'nalytics'],
+                  ['N', 'etwork for'],
+                  ['C', 'ybersecurity'],
+                  ['A', 'ssessment,'],
+                  ['K', 'nowledge, and'],
+                  ['E', 'xploitation'],
+                  ['S', 'oftware'],
+                  ['S', 'ystem'],
+                ].map(([letter, rest], i) => (
+                  <span key={`${letter}${rest}${i}`} className="block">
+                    <span className="font-extrabold">{letter}</span>
+                    <span className="font-semibold text-[#7A6B5D]">{rest}</span>
+                  </span>
+                ))}
               </p>
             </div>
           </div>
@@ -273,63 +334,82 @@ export function PancakeSecDashboard() {
                 }`}
               >
                 <Table2 className="h-3.5 w-3.5" />
-                <span>Table ({fmtInt(rankingRows)})</span>
+                <span>Table ({fmtInt(uploadLabel ? rows.length : rankingRows)})</span>
               </button>
             </div>
-            <a
-              href="/results"
-              className="rounded-xl border border-[#E8DFC8] bg-white px-3 py-2 text-xs font-semibold text-[#451A03] shadow-sm transition hover:bg-[#F7EFE2]"
-            >
-              Evidence
-            </a>
-            <button
-              type="button"
-              onClick={() => void downloadTop500()}
-              className="flex items-center space-x-1.5 rounded-xl border border-[#E8DFC8] bg-white px-3 py-2 text-xs font-semibold text-[#451A03] shadow-sm transition hover:bg-[#F7EFE2]"
-            >
-              <Download className="h-3.5 w-3.5" />
-              <span>top500.csv</span>
-            </button>
+            <div className="flex rounded-xl bg-[#EFE7D8] p-1 text-xs font-semibold">
+              <a
+                href="/results"
+                className="flex items-center rounded-lg bg-white px-3 py-1.5 text-[#1E1611] shadow-sm transition hover:bg-[#FAF7F2]"
+              >
+                Evidence
+              </a>
+            </div>
+            <div className="flex rounded-xl bg-[#EFE7D8] p-1 text-xs font-semibold">
+              <button
+                type="button"
+                onClick={() => setQaOpen(true)}
+                className="flex items-center space-x-1.5 rounded-lg bg-white px-3 py-1.5 text-[#1E1611] shadow-sm transition hover:bg-[#FAF7F2]"
+              >
+                <MessageCircle className="h-3.5 w-3.5 text-[#8B3A0F]" />
+                <span>Judge Q&A</span>
+              </button>
+            </div>
+            <div className="flex rounded-xl bg-[#EFE7D8] p-1 text-xs font-semibold">
+              <button
+                type="button"
+                onClick={() => {
+                  uploadController.reset()
+                  setUploadOpen(true)
+                }}
+                className="flex items-center space-x-1.5 rounded-lg bg-[#451A03] px-3 py-1.5 text-white shadow-sm transition hover:bg-[#2D1204]"
+              >
+                <UploadCloud className="h-3.5 w-3.5" />
+                <span>Upload CVE Data</span>
+              </button>
+            </div>
+            <div className="flex rounded-xl bg-[#EFE7D8] p-1 text-xs font-semibold">
+              <button
+                type="button"
+                onClick={() => void downloadTop500()}
+                className="flex items-center space-x-1.5 rounded-lg bg-white px-3 py-1.5 text-[#1E1611] shadow-sm transition hover:bg-[#FAF7F2]"
+              >
+                <Download className="h-3.5 w-3.5" />
+                <span>Export CSV</span>
+              </button>
+            </div>
           </div>
         </div>
       </header>
+
+      <JudgeUploadModal open={uploadOpen} onOpenChange={setUploadOpen} controller={uploadController} />
+      <JudgeQaDrawer open={qaOpen} onClose={() => setQaOpen(false)} cveId={selectedId} />
 
       <main className="mx-auto flex w-full max-w-[1700px] flex-1 flex-col gap-6 p-6">
         {loadError && (
           <div className="rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">{loadError}</div>
         )}
         {loading && <div className="text-sm text-[#7A6B5D]">Loading live ranking from FastAPI…</div>}
-
-        <section className="glass-card flex flex-col items-center justify-between gap-4 rounded-2xl border border-[#E8DFC8] p-4 md:flex-row">
-          <div className="flex items-center space-x-3">
-            <span className="text-2xl">🥞</span>
-            <div>
-              <h2 className="text-sm font-bold text-[#1E1611]">The Biggest Risks Rise to the Top</h2>
-              <p className="text-xs text-[#7A6B5D]">
-                Interactive CVE stack from live `/api/ranking/cves` · ranking model + Granite summaries (AI-generated)
-              </p>
-            </div>
+        {uploadLabel && (
+          <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-[#D4A574]/50 bg-[#FFF8EE] px-4 py-3 text-sm text-[#451A03]">
+            <span>
+              Session batch: <span className="font-semibold">{uploadLabel}</span>
+              <span className="text-[#8A7968]"> — overlay only; audited baselines untouched</span>
+            </span>
+            <button
+              type="button"
+              className="rounded-lg border border-[#E8DFC8] bg-white px-3 py-1.5 text-xs font-semibold text-[#451A03] shadow-sm transition hover:bg-[#F7EFE2]"
+              onClick={() => {
+                setRows(baselineRows)
+                setUploadLabel(null)
+                setSelectedId(baselineRows[0]?.cve_id ?? null)
+                uploadController.reset()
+              }}
+            >
+              Restore audited ranking
+            </button>
           </div>
-          <div className="flex w-full items-center gap-3 md:w-auto">
-            <div className="flex flex-1 items-center space-x-2.5 rounded-xl border border-[#0F62FE]/20 bg-[#0F62FE]/10 px-3 py-1.5 md:flex-initial">
-              <div className="h-2.5 w-2.5 rounded-full bg-[#0F62FE]" />
-              <div className="text-xs">
-                <span className="font-bold text-[#0F62FE]">IBM Granite</span>
-                <span className="ml-1 hidden text-[#5B6B82] sm:inline">· Text embeddings + summaries</span>
-              </div>
-            </div>
-            {hasGemini && (<>
-            <span className="text-xs font-bold text-[#A89886]">→</span>
-            <div className="flex flex-1 items-center space-x-2.5 rounded-xl border border-[#6929C4]/20 bg-[#6929C4]/10 px-3 py-1.5 md:flex-initial">
-              <div className="h-2.5 w-2.5 rounded-full bg-[#6929C4]" />
-              <div className="text-xs">
-                <span className="font-bold text-[#6929C4]">Google Gemini</span>
-                <span className="ml-1 hidden text-[#6D5D80] sm:inline">· Executive brief (AI-generated)</span>
-              </div>
-            </div>
-            </>)}
-          </div>
-        </section>
+        )}
 
         {view === '3d' ? (
           <div className="grid min-h-[700px] flex-1 grid-cols-1 gap-6 lg:grid-cols-12">
@@ -351,13 +431,6 @@ export function PancakeSecDashboard() {
                   </button>
                 ))}
               </div>
-              <div className="absolute right-6 top-6 z-10 text-right">
-                <div className="flex items-center space-x-1.5 rounded-full border border-[#E8DFC8] bg-[#FAF4EB] px-2.5 py-1 text-[11px] font-semibold text-[#8B3A0F]">
-                  <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#8B3A0F]" />
-                  <span>Real-time Viscous Maple Syrup Simulation</span>
-                </div>
-              </div>
-
               <div className="mt-12 flex-1">
                 {stack.length > 0 ? (
                   <PancakeScene
@@ -373,15 +446,6 @@ export function PancakeSecDashboard() {
                 )}
               </div>
 
-              <div className="mt-3 flex items-center justify-between border-t border-[#E8DFC8]/60 pt-3 text-xs text-[#7A6B5D]">
-                <div className="flex items-center space-x-2">
-                  <MousePointerClick className="h-3.5 w-3.5 text-[#8B3A0F]" />
-                  <span>
-                    Move cursor to tilt. Hover to lift. <strong>Click to triage.</strong>
-                  </span>
-                </div>
-                <div className="mono text-[11px] text-[#A89886]">Grade A Dark Maple Viscosity · IOR 1.49</div>
-              </div>
             </div>
 
             <div className="flex flex-col gap-5 lg:col-span-5">
@@ -519,79 +583,40 @@ export function PancakeSecDashboard() {
                     />
                   )}
 
-                  <div className="rounded-2xl border border-[#E8DFC8] bg-white/80 p-3.5">
-                    <div className="mb-2 flex items-center justify-between text-[11px] font-bold uppercase tracking-wider text-[#7A6B5D]">
-                      <span>Triage templates</span>
-                      <span className="font-normal text-[#A89886]">Not AI-generated · no model called</span>
-                    </div>
-                    <div className="grid grid-cols-3 gap-2">
-                      <button
-                        type="button"
-                        disabled={actionBusy || !selectedId}
-                        onClick={() =>
-                          void runRefine('bash_script', undefined, `🛠️ Bash Containment (${selectedId})`)
-                        }
-                        className="group rounded-xl border border-[#E8DFC8] p-2 text-left transition hover:border-[#8B3A0F] hover:bg-[#FAF4EB] disabled:opacity-50"
-                      >
-                        <div className="flex items-center space-x-1 text-xs font-bold text-[#451A03]">
-                          <Terminal className="h-3.5 w-3.5 text-[#8B3A0F]" />
-                          <span>Bash Script</span>
-                        </div>
-                        <div className="mt-0.5 text-[10px] text-[#8A7968]">Instant mitigation</div>
-                      </button>
-                      <button
-                        type="button"
-                        disabled={actionBusy || !selectedId}
-                        onClick={() =>
-                          void runRefine('business_risk', undefined, '💸 Business Impact & Downtime')
-                        }
-                        className="group rounded-xl border border-[#E8DFC8] p-2 text-left transition hover:border-[#8B3A0F] hover:bg-[#FAF4EB] disabled:opacity-50"
-                      >
-                        <div className="flex items-center space-x-1 text-xs font-bold text-[#451A03]">
-                          <TrendingDown className="h-3.5 w-3.5 text-amber-700" />
-                          <span>Risk Impact</span>
-                        </div>
-                        <div className="mt-0.5 text-[10px] text-[#8A7968]">Downtime & blast radius</div>
-                      </button>
-                      <button
-                        type="button"
-                        disabled={actionBusy || !selectedId}
-                        onClick={() =>
-                          void runRefine('granite_divergence', undefined, 'Explain this rank')
-                        }
-                        className="group rounded-xl border border-[#E8DFC8] p-2 text-left transition hover:border-[#8B3A0F] hover:bg-[#FAF4EB] disabled:opacity-50"
-                      >
-                        <div className="flex items-center space-x-1 text-xs font-bold text-[#451A03]">
-                          <GitCommit className="h-3.5 w-3.5 text-purple-700" />
-                          <span>Explain this rank</span>
-                        </div>
-                        <div className="mt-0.5 text-[10px] text-[#8A7968]">Model vs CVSS</div>
-                      </button>
-                    </div>
-
-                    {actionOpen && (
-                      <div className="relative mt-3 rounded-xl bg-[#241A14] p-3 font-mono text-xs text-white">
-                        <div className="mb-1.5 flex items-center justify-between border-b border-[#3D2C22] pb-1 text-[11px] text-[#C4A482]">
-                          <span>{actionBusy ? 'Filling template…' : actionTitle}</span>
-                          <button
-                            type="button"
-                            className="flex items-center space-x-1 text-[#F5A623] hover:underline"
-                            onClick={() => void navigator.clipboard.writeText(actionBody)}
+                  {panelChat.length > 0 && (
+                    <div
+                      id="gemini-interactive-output"
+                      className="max-h-56 overflow-y-auto rounded-xl bg-[#241A14] p-3 text-xs"
+                    >
+                      <div id="output-action-body">
+                        {panelChat.map((msg, i) => (
+                          <div
+                            key={`${msg.role}-${i}-${msg.content.slice(0, 16)}`}
+                            className={`mb-3 ${msg.role === 'user' ? 'text-right' : 'text-left'}`}
                           >
-                            <Copy className="h-3 w-3" />
-                            <span>Copy</span>
-                          </button>
-                        </div>
-                        <pre className="whitespace-pre-wrap leading-relaxed text-[#F0E6D8]">{actionBody}</pre>
+                            <div
+                              className={`inline-block max-w-[85%] rounded-xl px-3.5 py-2 text-left ${
+                                msg.role === 'user'
+                                  ? 'bg-[#8B3A0F] font-medium text-white'
+                                  : 'border border-[#451A03] bg-[#2A160C] text-[#F5ECE5]'
+                              }`}
+                            >
+                              <div className="mb-0.5 text-[9px] font-bold uppercase tracking-wider opacity-60">
+                                {msg.role === 'user' ? 'User' : 'Gemini 2.5 Flash · AI-generated, unaudited'}
+                              </div>
+                              <div className="whitespace-pre-wrap leading-relaxed">{msg.content}</div>
+                            </div>
+                          </div>
+                        ))}
                       </div>
-                    )}
-                  </div>
-
+                    </div>
+                  )}
                   <form onSubmit={onFollowUp} className="flex items-center space-x-2 pt-1">
                     <input
+                      id="gemini-custom-input"
                       value={followUp}
                       onChange={(e) => setFollowUp(e.target.value)}
-                      placeholder="Follow-up, template answer (e.g. 'What if we can't patch before Monday?')…"
+                      placeholder="Ask Gemini follow-up (e.g. 'What if we can't patch before Monday?')…"
                       className="flex-1 rounded-xl border border-[#E8DFC8] bg-white px-3.5 py-2.5 text-xs transition focus:border-[#8B3A0F] focus:outline-none"
                     />
                     <button

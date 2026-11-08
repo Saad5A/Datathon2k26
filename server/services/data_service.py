@@ -33,7 +33,8 @@ def is_live_gemini_record(record: Any) -> bool:
 
     Records with ``source_granite`` come from scripts/build_gemini_from_granite.py,
     a Python string template fed by the offline template file (no Gemini call), so
-    they are rejected even though they carry ``generation_mode: "live"``.
+    they are rejected even though they carry ``generation_mode: "live"`` or ``"from_granite"``.
+    Only ``generation_mode == "live"`` records are accepted.
     """
     if not isinstance(record, dict) or record.get("source_granite"):
         return False

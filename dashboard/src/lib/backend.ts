@@ -340,3 +340,38 @@ export async function refineGeminiAction(
     timeoutMs: 20_000,
   })
 }
+
+export type ProjectChatResponse = {
+  answer: string
+  reply: string
+  provider: string
+  source: string
+  cached?: boolean
+}
+
+/** Judge / project Q&A — live Gemini chat, no Judge: echo or canned fluff. */
+export async function askProjectChat(
+  body: {
+    question?: string
+    message?: string
+    active_cve?: string | null
+    cve_id?: string | null
+    history?: { role: string; content: string }[]
+  },
+  signal?: AbortSignal,
+): Promise<ProjectChatResponse> {
+  const question = (body.question || body.message || '').trim()
+  const payload = {
+    question,
+    message: question,
+    active_cve: body.active_cve || body.cve_id || undefined,
+    cve_id: body.cve_id || body.active_cve || undefined,
+    history: body.history,
+  }
+  return apiJson<ProjectChatResponse>('/gemini/chat', {
+    method: 'POST',
+    body: JSON.stringify(payload),
+    signal,
+    timeoutMs: 45_000,
+  })
+}

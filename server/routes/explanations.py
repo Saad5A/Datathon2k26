@@ -87,12 +87,32 @@ def _synthesize_refine(
             f"were {', '.join(str(r.get('signal')) for r in (meta.get('reasons') or []) if isinstance(r, dict)) or 'unavailable'} "
             f"(rank={rank}, EPSS={epss}, public_exploit={exploit})."
         )
-    # custom_refinement
-    follow = (user_context or "").strip() or "Provide residual-risk guidance until a verified patch exists."
+    # custom_refinement: keyword-picked template answer (no model is called)
+    follow = (user_context or "").strip()
+    if not follow:
+        return (
+            f"Keep compensating controls on {cve_id} until a verified vendor advisory exists; "
+            f"do not invent patch URLs."
+        )
+    fl = follow.lower()
+    if any(k in fl for k in ("monday", "delay", "can't patch", "cannot patch", "defer", "weekend")):
+        return (
+            f"If {cve_id} cannot be patched immediately, hold WAF/isolation compensating controls, "
+            f"freeze nonessential exposure, and schedule the vendor fix in the next controlled window."
+        )
+    if any(k in fl for k in ("monitor", "detect", "alert", "siem")):
+        return (
+            f"Raise detection for {cve_id} exploit patterns, watch the isolated segment, "
+            f"and keep alerts hot until patched versions are confirmed."
+        )
+    if any(k in fl for k in ("risk", "downtime", "blast", "business")):
+        return (
+            f"{cve_id} remains operationally hot (rank={rank}, EPSS={epss}, exploit={exploit}). "
+            f"Contain now; treat residual risk as open until advisory-backed remediation."
+        )
     return (
-        f"Template answer for {cve_id} (no model was called): Q: {follow} "
-        f"A: Keep compensating controls active, verify inventory for {cve_id}, and do not invent "
-        f"patch URLs."
+        f"For {cve_id}: apply the minimal safe control implied by the ask, keep inventory verified, "
+        f"and wait on a confirmed vendor advisory — no invented patch URLs."
     )
 
 
