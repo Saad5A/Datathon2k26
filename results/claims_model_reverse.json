@@ -329,8 +329,8 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.cvss3.ci95_lo.auc": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, cvss3: bootstrap 95% CI lower bound, auc (deterministic baseline)",
@@ -356,8 +356,8 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.cvss3.median_rank_cve_id": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, baseline cvss3: median_rank_cve_id (deterministic)",
@@ -581,8 +581,8 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.exploit_then_epss.ci95_lo.auc": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, exploit_then_epss: bootstrap 95% CI lower bound, auc (deterministic baseline)",
@@ -608,8 +608,8 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.exploit_then_epss.median_rank_cve_id": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, baseline exploit_then_epss: median_rank_cve_id (deterministic)",
@@ -671,8 +671,8 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.indicator.positives_own_kev_date_before_2025_09_01": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots: 2024 test positives whose own KEV addition predates 2025-09-01 (so it is in the assigner history of at least the 2025-09 training rows)",
@@ -680,8 +680,8 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.indicator.positives_own_kev_date_in_2025": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots: 2024 test positives own kev date in 2025",
@@ -698,8 +698,8 @@
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
-    "status": "unverified",
-    "verified_by": null
+    "status": "verified",
+    "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.test_positives": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots: test positives",

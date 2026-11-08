@@ -99,3 +99,24 @@ UNCHECKED:
 - the `results/reverse_time.meta.json` provenance;
 - the CI bounds for metrics that are not registered as claims (only the registered keys were compared);
 - whether other documents already quote the RESULT-line interpretation (another auditor is reviewing documents).
+
+## Re-audit (2026-11-07, after producer commit 42e7b9b)
+
+Scope: the 7 unverified claims after the fix (the 4 re-stored bootstrap bounds, the re-texted indicator, 2 new direct-measure claims) and the new `interpretation` field in results/reverse_time.json. Script: `audit/scratch/r_reaudit.py`, output `r_reaudit_out.txt`. The bounds come from my own bootstrap in `r_result.json`. The indicators are recounted from raw vulnerabilities.csv and known_exploited.csv, and the own-KEV dates are looked up from the raw KEV file, not the pool column.
+
+| Claim | Mine | Claimed | Result |
+|---|---|---|---|
+| rev.exploit_then_epss.ci95_lo.top500_expected | 8.878689655172415 | 8.878689655172415 | PASS |
+| rev.exploit_then_epss.ci95_hi.top500_expected | 24.118988247084545 | 24.118988247084545 | PASS |
+| rev.cvss3.ci95_lo.top500_expected | 1.3004618651891464 | 1.3004618651891464 | PASS |
+| rev.cvss3.ci95_hi.top500_expected | 2.759298839803446 | 2.759298839803446 | PASS |
+| rev.indicator.positives_whose_assigner_has_kev_additions_dated_2025 (text now states "KEV CVEs published 2021+ only") | 58 | 58 | PASS |
+| rev.indicator.positives_own_kev_date_before_2025_09_01 | 65 (of 65; none has a null assigner, so each one is in its assigner's history) | 65 | PASS |
+| rev.indicator.positives_own_kev_date_before_2025_01_01 | 40 | 40 | PASS |
+
+- **Unchanged claims:** the 75 claims verified earlier have the same text, value and status as at 588d5db. The only new keys are the 2 direct-measure claims (82 claims in total).
+- **Status-carrying code:** the producer's new code keeps an auditor's verdict only when text and value are unchanged. That is acceptable.
+- **Interpretation:** the new field reads "Not a fair accuracy test. Test sets differ in difficulty and intervals overlap; C1's AUC is clearly above only the EPSS-based baselines here." PASS. It matches section 4: the paired AUC differences exclude 0 for exploit_then_epss and epss, and include 0 for cvss3 and assigner_only. It has no numbers and makes no claim about optimism or 2026.
+- **Remaining nit (not blocking):** the 4 bounds are expected counts stored as floats under unit "count". Round them to whole hits before quoting.
+- **Ledger:** all 7 are marked `verified`, so 82/82 rev.* claims are now verified.
+- **Still UNCHECKED:** reverse_time.meta.json provenance, and whether LOG.md or the documents now use the same wording (another auditor's scope).
