@@ -199,3 +199,26 @@ New overclaims introduced by the edits:
 - **N1 (minor).** LOG 4f7b201: "In every case the rule was committed before the results it governs." This is true for commit order. For reverse-time, though, the run was 108 s after the pre-registration commit, from a dirty tree, so earlier unlogged runs cannot be excluded. Add: "commit order only; earlier unlogged runs cannot be ruled out".
 - **N2 (minor, needs registration).** Writeup Limits: "On test CVEs from assigners with no earlier KEV entry, the model did worse than the simple baseline in fold 1." This is supported only by audit/2026-11-07-phase3.md (AUC .737 vs .920, 9 positives). The baseline value is not in the ledger. Register `p3.fold1.unseen_assigner.exploit_then_epss.auc`, and reword to "ranked them worse by AUC (only 9 such positives)".
 - Cosmetic: LEARNING has "Ours is in LOG.md under "PRE-REGISTRATION, Phase 3", The auditor found ..." (the comma should be a full stop).
+
+## Re-review 2: Granite and final-ranking wording (feat/model-ranking @ 80ffbe5, 2026-11-08)
+
+Scope: the Granite and final-ranking sentences in docs/writeup_model.md, JUDGE_QA.md, LEARNING.md and docs/ibm.md. I checked them against the verified `p6.granite.*` (87), `p6.granite_subset.n_vectors` and `p7.*` claims, against audit/2026-11-08-granite-final.md, and against audit/2026-11-07-granite-subset.md.
+
+| # | Item | Result |
+|---|---|---|
+| 1a | G2/G1/C1 numbers: mean AUC .871/.837/.870; per fold .874/.857/.860 and .868/.817/.880; top-500 20/12/22 and 11/8/11; Q5 "20 vs 18 ... 11 vs 15" | PASS (all match verified p6 medians and the p3 baselines) |
+| 1b | No "improves"/"beats"/gain wording; adoption described as the declared tie-break; G1 reported as lower | PASS in writeup, JUDGE_QA Q14, LEARNING Granite phase, ibm.md |
+| 1c | Final-ranking facts: 75,148/117; 74.6%, 4.8%, 17.0%; VulnCheck and Apache at 50; GitHub 49, Oracle 47; ties at 16 and 11; P2 72,170 | PASS (match p7 and the audit's tie note) |
+| 1d | "A subset of 1,966 descriptions also went through IBM watsonx.ai, and the auditor found those vectors match the local ones" (writeup IBM section, JUDGE_QA Q14, LEARNING Granite phase) | **FAIL.** The audit compared only the 1,500 vectors that both providers embedded. The other 466 (evalslice) are not in the repo, and that file is missing locally per the subset audit. Also, that the vectors truly came from watsonx.ai rests on the teammate's meta files (UNCHECKED). ibm.md states both points correctly |
+| 1e | Cap "neutral in the backtest" with "22 to 20, 11 to 12" (writeup final ranking, JUDGE_QA Q12, LEARNING final section), now under a G2 final model | **FAIL (minor).** The cap was tested only with C1 (p5.cap.*). It was not re-run for G2 |
+| 1f | ibm.md: "the pre-set test showed it did not hurt by more than 0.01 AUC"; LEARNING: "keeps IBM technology when it does no harm" | **FAIL (minor).** The rule tests the mean only. In fold 2, G2 is 0.012 below C1 (.868 vs .880), and fold-1 top-500 is 20 vs 22 |
+| 2 | No "pending" and no old TF-IDF final-file numbers (.712, .158, GitHub 41, Adobe 26, Oracle at cap, "three assigners") | PASS (grep over all four docs). LEARNING keeps a correctly scoped note that the earlier model had one empty-reasons row |
+| 3 | ibm.md marks unverified items | PASS: quota exhaustion "UNVERIFIED by a file"; watsonx provenance UNCHECKED; HF revision equality UNKNOWN; Lite limits for the trial UNKNOWN; 16.8M tokens "claim unverified"; cosine stated as audit text, not a ledger entry. Minor: "two held-out folds" conflicts with the W3 disclosure (not fully held out) |
+| 4 | `python3 tools/check_claims.py docs/writeup_model.md JUDGE_QA.md` | PASS (0 unsupported, exit 0) |
+
+Exact fixes:
+- **1d** (writeup, Q14, LEARNING): "...and the auditor found those vectors match the local ones" -> "...; on the 1,500 of them that we also embedded locally, the auditor found the vectors match (cosine at least 0.99998). That they came from watsonx.ai rests on our run logs." Register the cosine in the ledger before quoting the number, or keep it unquantified.
+- **1e** (writeup, Q12, LEARNING): after "neutral in the backtest", add "(tested with C1, before Granite was added; not re-tested with G2)".
+- **1f** (ibm.md): "the pre-set test showed it did not hurt by more than 0.01 AUC" -> "its mean AUC over the two folds was within the pre-set 0.01 of C1's (fold 2 alone: 0.868 vs 0.880)". In LEARNING, "when it does no harm" -> "when it costs no more than the pre-set 0.01 of mean AUC".
+- ibm.md "two held-out folds" -> "two backtest folds".
+- LEARNING "pre-registered in LOG.md before any embeddings existed": true for the rule (c603758, 17:08). The settings CLARIFICATION (81b3cd5, 21:33) may postdate the teammate's subset embeddings (granite-final audit: UNCHECKED). Add "(the settings clarification came later, before the full embeddings)".

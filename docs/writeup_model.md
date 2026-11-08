@@ -26,7 +26,7 @@ We trained on older CVEs and ranked later ones, using only KEV labels known at t
 3. **2026 is shifted.** There are about twice as many rows as in the same 2025 months (72,670 vs 35,280). GitHub advisories rise from 5.6% to 15.0% of rows and VulnCheck from 1.1% to 9.3%. In August-September, 66-68% of CVEs lack a product list. Assigners with no prior KEV make up 36.2% of 2025 rows and 23.8% of 2026 rows (an upper bound).
 
 ## Final ranking
-The final model is G2: C1 (boosted trees on signals, assigner history and the masked TF-IDF text score) plus a Granite text score. It is refit on 75,148 rows (117 later KEV-listed) and averaged over five seed sets. Each assigner is capped at 50 of the top 500; the cap was neutral in the backtest, not an improvement. In the top 500:
+The final model is G2: C1 (boosted trees on signals, assigner history and the masked TF-IDF text score) plus a Granite text score. It is refit on 75,148 rows (117 later KEV-listed) and averaged over five seed sets. Each assigner is capped at 50 of the top 500; the cap was neutral in the backtest, not an improvement (tested with C1; not re-tested with G2). In the top 500:
 - 74.6% have a public exploit flag and 4.8% have EPSS above 0.1.
 - 17.0% come from assigners with no earlier KEV entry.
 - VulnCheck and Apache reach the cap of 50.
@@ -35,9 +35,9 @@ The top 100 form tier P0 and the next 400 form tier P1. Each CVE lists up to thr
 
 ## IBM technology
 We used IBM's Granite multilingual embedding model (exact ID in `docs/ibm.md`). It turns each masked description into a list of numbers that captures its meaning:
-- **How we ran it:** we embedded every masked description with the open weights, run locally. A subset of 1,966 descriptions also went through IBM watsonx.ai, and the auditor found those vectors match the local ones.
+- **How we ran it:** we embedded every masked description with the open weights, run locally. A subset of 1,966 descriptions also went through IBM watsonx.ai; on the 1,500 descriptions also embedded locally, the auditor found the vectors match. That they came from watsonx.ai rests on the run metadata.
 - **The pre-registered test:** G1 uses Granite text instead of TF-IDF, and G2 uses both. Each was compared with C1.
-- **The rule:** it adopts the better of G1 and G2 if its mean AUC is within a pre-set 0.01 of C1's. That margin was a declared tie-break in favour of IBM technology.
+- **The rule:** it adopts the better of G1 and G2 if its mean AUC is within the pre-set 0.01 of C1's. G2's was (fold 2 alone: 0.868 vs 0.880). That margin was a declared tie-break in favour of IBM technology.
 - **Result:** G2 was adopted, with no measurable gain. Its mean AUC is 0.871 against C1's 0.870 (fold 1: 0.874 vs 0.860; fold 2: 0.868 vs 0.880). Its top-500 hits are 20 vs 22 in fold 1 and 11 vs 11 in fold 2.
 - **Granite alone (G1) was clearly lower:** mean AUC 0.837.
 

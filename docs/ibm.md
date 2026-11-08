@@ -2,7 +2,7 @@
 
 Status (2026-11-08): Granite embeddings RUN, tested under a rule we wrote down before seeing results, and audited.
 Granite is part of the final ranking, but it gave **no measurable gain**. It is used because the track requires
-IBM technology, and the pre-set test showed it did not hurt by more than 0.01 AUC.
+IBM technology, and its mean AUC was within the pre-set 0.01 of C1's (fold 2 alone: 0.868 vs 0.880).
 
 ## What actually ran
 | Technology | What ran | Evidence |
@@ -24,7 +24,7 @@ IBM technology, and the pre-set test showed it did not hurt by more than 0.01 AU
 
 ## How Granite is used in the model (pre-registered test, LOG.md "PRE-REGISTRATION, Granite text ...")
 - G1 = our base model C1 with a Granite text score instead of the TF-IDF text score. G2 = C1 with both text scores.
-- Rule, fixed before results: adopt the better of G1 and G2 if its mean AUC over the two held-out folds is at least
+- Rule, fixed before results: adopt the better of G1 and G2 if its mean AUC over the two backtest folds is at least
   C1's minus 0.01.
 - Result (`results/claims_model_granite.json`, all 87 `p6.granite.*` claims verified in
   `audit/2026-11-08-granite-final.md`):
