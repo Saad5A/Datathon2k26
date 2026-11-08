@@ -109,3 +109,16 @@ Scope: the 14 claims in `results/claims_model_drift.json` that are new or change
 - **Still open (minor, not a claim):** the table still has no row for the masked description-text score `txt`. The selected Phase-3 candidate C1 uses it (`src/model/candidates.py` line 43: signals + asg_rate/asg_kev + txt). Add a row (`yes`, with its AUC or "n/a: model output") so the table lists every model input. asg_kev = yes is consistent with C1.
 
 Result: all 14 re-audited claims PASS and are marked verified. The ledger now has 55 of 55 verified.
+
+## Re-audit 2 (commit de10050)
+
+Scope: the 4 new `leakage.negatives.*.share` claims. I re-derived them with `audit/scratch/ld_8_reaudit.py`, which uses raw vulnerabilities.csv and affected_products.csv over my pool's 35,228 test negatives (35,280 rows minus 52 positives, asserted).
+
+| claim | mine | claimed | verdict |
+|---|---|---|---|
+| leakage.negatives.nvd_status_Analyzed.share (strictly "Analyzed") | 0.500681 | 0.500681 | PASS |
+| leakage.negatives.has_affected_product.share | 0.649427 | 0.649427 | PASS |
+| leakage.negatives.cvss3_present.share | 0.962303 | 0.962303 | PASS |
+| leakage.negatives.cwe_present.share | 0.956881 | 0.956881 | PASS |
+
+No existing claim's text or value changed since f64fccf. Two other new claims (`leakage.solo_auc.asg_rate_24m`, `leakage.solo_auc.txt_masked_tfidf`) were verified by `audit/2026-11-07-phase3-fixes-cap.md`. They are outside this audit and I did not check them. Note that the "52/52 vs 50% of negatives" contrast holds in the 2025 backtest only.
