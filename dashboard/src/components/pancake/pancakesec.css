@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+.pancakesec-root {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: #faf7f2;
+  color: #1f242f;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+.pancakesec-root .mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.pancakesec-root .glass-card {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(226, 218, 206, 0.9);
+  box-shadow: 0 10px 30px -10px rgba(120, 60, 15, 0.07);
+}
+
+.pancakesec-root .custom-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.pancakesec-root .custom-scroll::-webkit-scrollbar-track {
+  background: #f3ece2;
+  border-radius: 4px;
+}
+.pancakesec-root .custom-scroll::-webkit-scrollbar-thumb {
+  background: #d6c7b2;
+  border-radius: 4px;
+}
+
+.pancakesec-root .canvas-mount {
+  width: 100%;
+  flex: 1;
+  min-height: 520px;
+  height: 520px;
+  border-radius: 1rem;
+  cursor: grab;
+  position: relative;
+}
+.pancakesec-root .canvas-mount:active {
+  cursor: grabbing;
+}
+.pancakesec-root .canvas-mount canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 1rem;
+}
