@@ -244,3 +244,65 @@ Exact fixes:
 - **1e:** add to Limits: "Our first pass had already compared about a dozen variants on the 2025 test period, so it is not fully held out."
 - **2c:** "Without it, the pipeline keeps the TF-IDF-only files." -> "Without it, `run_all.py` writes the TF-IDF-only (C1) final files, which overwrite the submitted G2 `top500.csv`; to reproduce the submission, first create the embeddings (see `cloud/README.md`)."
 - Optional: in 1c add "a tie-break declared in advance in favour of IBM technology". In 2b add "so that `data/known_exploited.csv` exists".
+
+## Re-review 4 (submission docs): WRITEUP.md, DEVPOST.md, DEMO_SCRIPT.md (working tree, branch fix/granite-labels-and-submission-docs, uncommitted, 2026-11-08)
+
+`python3 tools/check_claims.py WRITEUP.md DEVPOST.md DEMO_SCRIPT.md` reports 0 unsupported numbers (exit 0). The checker matches values, not meanings, so I checked each number's meaning by hand.
+
+### (1) Numbers and their meaning: PASS
+- 72,670 = p7.rows_scored. 52 / 32 = the test positives of each fold.
+- 50.1% and 64.9% = leakage.negatives shares (share of non-exploited test CVEs).
+- 0.767 / 0.707 = solo AUCs.
+- 25 vs 18-19 and 21-25 = the first-pass claims (primary, d.*).
+- 22 vs 18 and 11 vs 15 = C1 seed medians against p3 exploit-then-EPSS. WRITEUP and DEVPOST correctly say "base model".
+- DEMO's "the submitted model gets 20 against 18 ... 11 against 15" = G2 medians (p6.granite.fold*.G2.top500_cve_id.median = 20 / 11) against the same baselines. This is correct, and it matches the /results KPI tile, which reads G2.
+- 0.860/0.768 and 0.880/0.809 = C1. 0.871 / 0.870 and 20 vs 22, 11 vs 11 = p6.
+- 1,966 = p6.granite_subset.n_vectors (watsonx vectors). 75,148 / 117 = p7.train_rows / p7.train_positives.
+- 72,670 vs 35,280, 5.6->15.0%, 1.1->9.3% and 66-68% = drift claims.
+- 6 of 52 = h.test.positives_with_wording (the whole wording pattern). DEVPOST says "exploitation wording", which is correct.
+- 100 / 400 and 50 = the tiers and the cap. "one hit is about 2%" = 1/52.
+- No Granite-summary counts (94/6 are in docs/IBM_USAGE.md, unverified) and no Gemini or gate numbers appear.
+- Demo timing: the segments add up to exactly 2:30. Narration is 371 words in 150 s (148 wpm). The fastest segment is 0:40-1:00 (54 words in 20 s, about 162 wpm): tight but readable.
+
+### (2) Overclaims
+| ID | Doc / sentence | Verdict and fix |
+|---|---|---|
+| R1 | WRITEUP Problem: "using only what was known by the end of each one's snapshot month" (no exception); DEMO 0:40: "used only what was known at each snapshot month" | FAIL (minor; W2 again). WRITEUP: add ", apart from today's description and assigner fields" (+7 words; trim elsewhere to stay at or under 600). DEMO: "...used only what was known at each snapshot month, apart from today's description text." DEVPOST passes: its Limits says "Descriptions and assigner are today's values" |
+| R2 | "NIST reviews attacked CVEs first, so these fields partly record..." (WRITEUP leak section, DEVPOST "What it does", DEMO 0:10) | FAIL (minor; Q3 again). Attribute it: "The organisers' README notes that NIST reviews attacked CVEs first, so..." |
+| R3 | DEMO 0:00: "First, what we found that most rankings miss." | FAIL (minor; "most rankings" is unsupported). Fix: "First, a trap that standard backtests can fall into." |
+| R4 | DEVPOST Inspiration: "most rank them by severity score (CVSS)" | FAIL (minor; unsupported). Fix: "many rank them by severity score (CVSS)" |
+| R5 | DEMO 1:00: "for our base model the paired interval on that gain includes zero" | FAIL (minor; same rule as S1). Fix: "for our base model's first seed set, the paired interval on that gain includes zero" |
+| R6 | WRITEUP Approach: "an independent auditor re-derived every number" | FAIL (minor; W4). Fix: "...every number, apart from two comparison-only checks" (DEVPOST already says this) |
+| R7 | DEMO 1:40 and DEVPOST: "similar vulnerabilities, found with IBM Granite embeddings" | PASS in DEVPOST, which says separate, smaller model, retrieval only, not used for ranking. DEMO: say "found with a separate, smaller IBM Granite model; this does not affect the ranking". Retrieval is unaudited (docs/RETRIEVAL.md) |
+| R8 | Gate/search: "An automated search over many variants found none passing our pre-registered gate, so the submitted model stayed" (all three docs) | PASS. audit/2026-11-08-gate-alignment.md: the blind champion and the 4 repair candidates are all `eligible=false`, and the gate config predates the search (mtime evidence only). No numbers are quoted. The gate outcome is not a ledger claim; the audit marks it "unregistered" |
+| R9 | Granite (all three) | PASS: "a pre-registered tie-break favouring IBM technology", "no measurable gain", mean AUC 0.871 vs 0.870, top-500 equal or lower; Granite-alone is lower (WRITEUP); 1,966 watsonx vectors, with "matching vectors where both ran" (precise). The instruct summaries are labelled "AI-generated, unaudited, some template fallbacks", with no counts |
+| R10 | 2026 accuracy | PASS. None claimed. "What's next: score against 2026 KEV once public" is fine |
+| R11 | Cap | PASS. Stated as a rule ("at most 50"), with no benefit claimed |
+
+### (3) Required disclosures
+| Item | WRITEUP | DEVPOST | DEMO |
+|---|---|---|---|
+| Columns used/excluded | PASS (exact) | PASS (exact) | short list on slide (acceptable for a video) |
+| KEV proxy | PASS | PASS | PASS |
+| ~52 positives / one hit about 2% | PASS | PASS | PASS |
+| Today's description text | PASS | PASS | **missing** |
+| First-pass reuse of the 2025 period | PASS | PASS | **missing** |
+| AI-generated labels (Gemini, Granite summaries) | PASS | PASS | PASS (Gemini buttons are not clicked; no summaries shown) |
+
+Fix (DEMO 2:05 limits): add "descriptions are today's text, and our first pass had already looked at the 2025 period" (about 15 words; drop "Code and audits are in our repo" if time is short).
+
+### (4) Links
+- DEPLOYMENT.md supports `https://pancakess.work/` (`/`, `/api/`, `/evolve/`). SOURCES.md and the organisers' README support the Hugging Face and watsonx links.
+- **FAIL:** `https://pancakess.work/results` (DEVPOST "Evidence page"; DEMO lines 3 and 1:00) does not appear in docs/DEPLOYMENT.md, SOURCES.md or the organisers' README.
+- **FAIL:** `https://github.com/Saad5A/Datathon2k26` (DEVPOST, DEMO end card) does not appear in those three files either. It equals `git remote origin`, so it is real but unsourced under the rule.
+- Fix: add both URLs to docs/DEPLOYMENT.md (the route table and the repository), then keep them as they are. UNCHECKED: whether /results is live.
+
+### (5) Demo on-screen labels that depend on dashboard copy being changed now (re-check right before recording)
+- Recording rule: "even though the table column is labelled 'Exploit Score'". The label is being changed. Reword to "whatever the score column is called".
+- 1:40: the table rows show "Weaponized" / "None Detected" (`PancakeSecDashboard.tsx:677`). The label is being changed, so do not hold the camera on that column until the new copy lands.
+- 1:40: "Nearest neighbours · IBM Granite" (`SimilarCves.tsx:53`). This Granite label is being changed. Update the script line to the new label.
+- 1:00 /results: hero "It is a measured ordering.", KPI "Top-500 hits · fold 1", sections "01 Head-to-head", "03 Could it be luck, or leakage?", and the card "Paired bootstrap · AUC vs exploit→EPSS" (ResultsPage.tsx). A /results card is being changed. UNCHECKED: whether that card's values are the verified seed-0 paired claims (p3.*.paired.*.seed0) rather than the 8 unverified median-of-bounds claims. Check before showing it.
+- 1:40 home labels that exist now and are not reported as changing: "3D Stack", "Table (72,670)", "Filter Tiers", "Triage →". "Audited CVE Exploitation Ranking" and the header "top500.csv" button: not found by my grep in `dashboard/src` (UNCHECKED; may be built from parts or renamed). Verify on screen.
+- 2:05: section "04 What we refuse to claim" exists. I did not find the card titles "No 2026 accuracy", "Top-500 is noisy" and "KEV is a proxy" by grep (UNCHECKED).
+
+Outside the scope of this review, but wrong: docs/RETRIEVAL.md line 24 says the ranking model uses the watsonx subset parquet. The ranking used the full local open-weights embeddings (audit/2026-11-08-granite-final.md section 3).

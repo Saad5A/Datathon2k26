@@ -22,10 +22,10 @@ The pre-registered rule (written before results) is in `LOG.md` and `src/model/g
 
 | Item | Value |
 |---|---|
-| Model | `ibm/granite-3-8b-instruct` (watsonx.ai) |
-| Code | `cloud/explain_granite_top100.py` |
-| Output | `results/granite_explanations_top100.json` |
-| Scope | Top-ranked CVEs; facts are grounded in the CVE record + model reasons |
+| Model | Granite instruct `granite4.2:3b`, run locally (section 3). The optional watsonx path `cloud/explain_granite_top100.py` produced no Granite output |
+| Code | `cloud/explain_granite_ollama.py` |
+| Output | `results/granite_summaries_top100.json`; AI-generated, unaudited. The old `results/granite_explanations_top100.json` was an offline template, now `docs/examples/explanations_top30_OFFLINE_TEMPLATE_not_granite.json` |
+| Scope | Top 100 of an earlier version of the ranking; facts are grounded in the CVE record |
 | Key | `WATSONX_APIKEY`, `WATSONX_URL`, `WATSONX_PROJECT_ID` |
 
 ## 3. Granite 4.2 3B via Ollama — separate summary layer
@@ -36,8 +36,8 @@ The pre-registered rule (written before results) is in `LOG.md` and `src/model/g
 | Code | `cloud/explain_granite_ollama.py` |
 | Output | `results/granite_summaries_top100.json` |
 | Key | none (local CPU) |
-| Scope | Top-100 summaries only; does not change the ranking |
-| Grounding | 94 summaries passed grounding, 6 deterministic-template fallbacks; fallbacks are not labelled AI-generated |
+| Scope | Top 100 of an earlier (pre-G2) version of the ranking; 89 of the current top 100 have a summary. Does not change the ranking |
+| Grounding | Per the file (unaudited): 94 summaries passed grounding, 6 deterministic-template fallbacks; fallbacks are not labelled AI-generated |
 
 ## 4. IBM watsonx.ai
 

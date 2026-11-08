@@ -25,16 +25,44 @@ import './results.css'
 
 const MODEL_KEYS = ['cvss3', 'epss', 'exploit_then_epss', 'C1', 'G2'] as const
 
-const GREEN = '#2f5d45'
-const GREEN_SOFT = '#7d9c86'
-const NEUTRAL = '#a7b3a5'
-const INK = '#233934'
-const GRID = '#e3e9df'
+const ACCENT = '#8b3a0f'
+const ACCENT_SOFT = '#d4a574'
+const NEUTRAL = '#d6c7b2'
+const INK = '#4a3b30'
+const GRID = '#e8dfc8'
 
 const fmtInt = (v: number | null | undefined) => (v == null ? '—' : Math.round(v).toLocaleString('en-US'))
 const fmt3 = (v: number | null | undefined) => (v == null ? '—' : v.toFixed(3))
-const fmtPct = (v: number | null | undefined) => (v == null ? '—' : `${(v * 100).toFixed(1)}%`)
-const signed3 = (v: number) => `${v > 0 ? '+' : '−'}${Math.abs(v).toFixed(3)}`
+const signed3 = (v: number | null | undefined) => (v == null ? '—' : `${v > 0 ? '+' : '−'}${Math.abs(v).toFixed(3)}`)
+
+/** One line per fold; numbers appear only when every value in the block is a verified claim. */
+function PairedLines({
+  rows,
+  metric,
+}: {
+  rows: ResultsPayload['significance']['paired_bootstrap_vs_exploit_then_epss']
+  metric: 'auc' | 'top500_expected'
+}) {
+  return (
+    <ul>
+      {rows.map((row) => {
+        const b = row[metric]
+        return (
+          <li key={row.fold} title={Object.values(b.claims).join(', ')}>
+            {row.fold}:{' '}
+            {b.verified ? (
+              <>
+                {signed3(b.diff)} (95% CI {signed3(b.ci95[0])} to {signed3(b.ci95[1])})
+              </>
+            ) : (
+              <span className="rp-unverified">unverified</span>
+            )}
+          </li>
+        )
+      })}
+    </ul>
+  )
+}
 
 function MetricValue({ cell: value, format }: { cell: MetricCell; format: (v: number) => string }) {
   if (value.value == null) {
@@ -75,16 +103,16 @@ function AucChart({ fold1, fold2 }: { fold1: FoldRow; fold2: FoldRow }) {
       <ResponsiveContainer width="100%" height="100%">
         <BarChart data={data} margin={{ top: 12, right: 8, bottom: 4, left: -14 }} barGap={4}>
           <CartesianGrid stroke={GRID} vertical={false} />
-          <XAxis dataKey="name" tickLine={false} axisLine={{ stroke: GRID }} tick={{ fill: '#5e7463', fontSize: 11 }} interval={0} />
+          <XAxis dataKey="name" tickLine={false} axisLine={{ stroke: GRID }} tick={{ fill: '#7a6b5d', fontSize: 11 }} interval={0} />
           <YAxis
             domain={[0.6, 0.92]}
             ticks={[0.6, 0.7, 0.8, 0.9]}
             tickLine={false}
             axisLine={false}
-            tick={{ fill: '#5e7463', fontSize: 10, fontFamily: 'IBM Plex Mono, monospace' }}
+            tick={{ fill: '#7a6b5d', fontSize: 10, fontFamily: 'JetBrains Mono, monospace' }}
           />
           <Tooltip
-            cursor={{ fill: '#eef3e7', opacity: 0.7 }}
+            cursor={{ fill: '#f7efe2', opacity: 0.7 }}
             content={({ active, payload }) => {
               if (!active || !payload?.length) return null
               const row = payload[0].payload as { name: string; fold1: number | null; fold2: number | null }
@@ -92,20 +120,20 @@ function AucChart({ fold1, fold2 }: { fold1: FoldRow; fold2: FoldRow }) {
                 <ChartTooltipBox
                   title={row.name}
                   rows={[
-                    { label: 'Fold 1 AUC', value: fmt3(row.fold1), color: GREEN_SOFT },
-                    { label: 'Fold 2 AUC', value: fmt3(row.fold2), color: GREEN },
+                    { label: 'Fold 1 AUC', value: fmt3(row.fold1), color: ACCENT_SOFT },
+                    { label: 'Fold 2 AUC', value: fmt3(row.fold2), color: ACCENT },
                   ]}
                 />
               )
             }}
           />
-          <Bar dataKey="fold1" fill={GREEN_SOFT} radius={[3, 3, 0, 0]} isAnimationActive={false} />
-          <Bar dataKey="fold2" fill={GREEN} radius={[3, 3, 0, 0]} isAnimationActive={false}>
+          <Bar dataKey="fold1" fill={ACCENT_SOFT} radius={[3, 3, 0, 0]} isAnimationActive={false} />
+          <Bar dataKey="fold2" fill={ACCENT} radius={[3, 3, 0, 0]} isAnimationActive={false}>
             <LabelList
               dataKey="fold2"
               position="top"
               formatter={(v: number) => (v ? v.toFixed(3) : '')}
-              style={{ fill: INK, fontSize: 9, fontFamily: 'IBM Plex Mono, monospace' }}
+              style={{ fill: INK, fontSize: 9, fontFamily: 'JetBrains Mono, monospace' }}
             />
           </Bar>
         </BarChart>
@@ -121,7 +149,7 @@ function RankChart({ fold }: { fold: FoldRow }) {
       key,
       name: row?.short ?? key,
       rank: row?.metrics.median_rank.value ?? null,
-      color: key === 'G2' ? GREEN : key === 'C1' ? '#4c8c73' : key === 'exploit_then_epss' ? '#8aa38c' : NEUTRAL,
+      color: key === 'G2' ? ACCENT : key === 'C1' ? '#d4a574' : key === 'exploit_then_epss' ? '#c4a482' : NEUTRAL,
     }
   })
   return (
@@ -135,7 +163,7 @@ function RankChart({ fold }: { fold: FoldRow }) {
             ticks={[500, 1000, 2000, 4000, 8000]}
             tickLine={false}
             axisLine={false}
-            tick={{ fill: '#5e7463', fontSize: 10, fontFamily: 'IBM Plex Mono, monospace' }}
+            tick={{ fill: '#7a6b5d', fontSize: 10, fontFamily: 'JetBrains Mono, monospace' }}
             tickFormatter={(v: number) => fmtInt(v)}
           />
           <YAxis
@@ -144,11 +172,11 @@ function RankChart({ fold }: { fold: FoldRow }) {
             width={104}
             tickLine={false}
             axisLine={false}
-            tick={{ fill: '#42584c', fontSize: 11 }}
+            tick={{ fill: '#4a3b30', fontSize: 11 }}
             interval={0}
           />
           <Tooltip
-            cursor={{ fill: '#eef3e7', opacity: 0.7 }}
+            cursor={{ fill: '#f7efe2', opacity: 0.7 }}
             content={({ active, payload }) => {
               if (!active || !payload?.length) return null
               const row = payload[0].payload as { name: string; rank: number | null }
@@ -163,7 +191,7 @@ function RankChart({ fold }: { fold: FoldRow }) {
               dataKey="rank"
               position="right"
               formatter={(v: number) => fmtInt(v)}
-              style={{ fill: INK, fontSize: 10, fontFamily: 'IBM Plex Mono, monospace' }}
+              style={{ fill: INK, fontSize: 10, fontFamily: 'JetBrains Mono, monospace' }}
             />
           </Bar>
         </BarChart>
@@ -194,16 +222,16 @@ function AblationChart({ folds, baseline }: { folds: ResultsPayload['ablations']
       <ResponsiveContainer width="100%" height="100%">
         <BarChart data={data} margin={{ top: 10, right: 8, bottom: 4, left: -14 }} barGap={4}>
           <CartesianGrid stroke={GRID} vertical={false} />
-          <XAxis dataKey="name" tickLine={false} axisLine={{ stroke: GRID }} tick={{ fill: '#5e7463', fontSize: 9.5 }} interval={0} />
+          <XAxis dataKey="name" tickLine={false} axisLine={{ stroke: GRID }} tick={{ fill: '#7a6b5d', fontSize: 9.5 }} interval={0} />
           <YAxis
             domain={[0.75, 0.9]}
             ticks={[0.75, 0.8, 0.85, 0.9]}
             tickLine={false}
             axisLine={false}
-            tick={{ fill: '#5e7463', fontSize: 10, fontFamily: 'IBM Plex Mono, monospace' }}
+            tick={{ fill: '#7a6b5d', fontSize: 10, fontFamily: 'JetBrains Mono, monospace' }}
           />
           <Tooltip
-            cursor={{ fill: '#eef3e7', opacity: 0.7 }}
+            cursor={{ fill: '#f7efe2', opacity: 0.7 }}
             content={({ active, payload }) => {
               if (!active || !payload?.length) return null
               const row = payload[0].payload as { name: string; fold1: number | null; fold2: number | null }
@@ -211,15 +239,15 @@ function AblationChart({ folds, baseline }: { folds: ResultsPayload['ablations']
                 <ChartTooltipBox
                   title={row.name}
                   rows={[
-                    { label: 'Fold 1 AUC', value: fmt3(row.fold1), color: GREEN_SOFT },
-                    { label: 'Fold 2 AUC', value: fmt3(row.fold2), color: GREEN },
+                    { label: 'Fold 1 AUC', value: fmt3(row.fold1), color: ACCENT_SOFT },
+                    { label: 'Fold 2 AUC', value: fmt3(row.fold2), color: ACCENT },
                   ]}
                 />
               )
             }}
           />
-          <Bar dataKey="fold1" fill={GREEN_SOFT} radius={[3, 3, 0, 0]} isAnimationActive={false} />
-          <Bar dataKey="fold2" fill={GREEN} radius={[3, 3, 0, 0]} isAnimationActive={false} />
+          <Bar dataKey="fold1" fill={ACCENT_SOFT} radius={[3, 3, 0, 0]} isAnimationActive={false} />
+          <Bar dataKey="fold2" fill={ACCENT} radius={[3, 3, 0, 0]} isAnimationActive={false} />
         </BarChart>
       </ResponsiveContainer>
     </div>
@@ -516,8 +544,8 @@ export function ResultsPage() {
               <div className="rp-card-head">
                 <h3>ROC AUC by method</h3>
                 <span className="rp-legend">
-                  <span><i style={{ background: GREEN_SOFT }} /> Fold 1</span>
-                  <span><i style={{ background: GREEN }} /> Fold 2</span>
+                  <span><i style={{ background: ACCENT_SOFT }} /> Fold 1</span>
+                  <span><i style={{ background: ACCENT }} /> Fold 2</span>
                 </span>
               </div>
               <AucChart fold1={fold1} fold2={fold2} />
@@ -569,8 +597,8 @@ export function ResultsPage() {
               <div className="rp-card-head">
                 <h3>AUC after removing one signal family</h3>
                 <span className="rp-legend">
-                  <span><i style={{ background: GREEN_SOFT }} /> Fold 1</span>
-                  <span><i style={{ background: GREEN }} /> Fold 2</span>
+                  <span><i style={{ background: ACCENT_SOFT }} /> Fold 1</span>
+                  <span><i style={{ background: ACCENT }} /> Fold 2</span>
                 </span>
               </div>
               <AblationChart folds={data.ablations} baseline={data.folds} />
@@ -618,8 +646,8 @@ export function ResultsPage() {
                   Δ AUC {deltaText(assignerDrop, 0)} / {deltaText(assignerDrop, 1)}
                 </strong>
                 <small>
-                  Small and mixed. It is kept as a prior, and the unseen-assigner test below shows the model still
-                  generalises when it has no history to use.
+                  Small and mixed. It is kept as a prior; the unseen-assigner test below covers assigners with no
+                  earlier KEV entry, which remain a known weak spot.
                 </small>
               </article>
             </div>
@@ -630,7 +658,7 @@ export function ResultsPage() {
           <div className="rp-unseen">
             <div>
               <span className="rp-eyebrow">Unseen-assigner stress test · fold 1</span>
-              <h3>No history? The model still ranks.</h3>
+              <h3>No KEV history? Ranked on exploit signals and text; this is a known weak spot.</h3>
               <p>
                 {fmtInt(unseen.rows)} test rows came from assigners with zero prior KEV rows — {fmtInt(unseen.positives)}{' '}
                 of them exploited. Within that subset the model reaches AUC {fmt3(unseen.auc)} and places{' '}
@@ -662,20 +690,16 @@ export function ResultsPage() {
               </p>
             </article>
             <article className="rp-check">
-              <span className="rp-check-label">Paired bootstrap · AUC vs exploit→EPSS</span>
-              <strong>{signed3(bootstrap.auc.diff)}</strong>
-              <p>
-                95% CI {signed3(bootstrap.auc.ci95[0])} to {signed3(bootstrap.auc.ci95[1])};{' '}
-                {fmtPct(bootstrap.auc.share_resamples_diff_gt_0)} of resamples favour the model. Suggestive, not
-                conclusive — the interval touches zero.
-              </p>
+              <span className="rp-check-label">Paired bootstrap · AUC vs exploit→EPSS · seed set 0</span>
+              <PairedLines rows={bootstrap} metric="auc" />
+              <p>Model minus exploit→EPSS. Suggestive, not conclusive: the interval includes zero.</p>
             </article>
             <article className="rp-check">
-              <span className="rp-check-label">Paired bootstrap · top-500</span>
-              <strong>{signed3(bootstrap.top500_expected.diff)}</strong>
+              <span className="rp-check-label">Paired bootstrap · top-500 · seed set 0</span>
+              <PairedLines rows={bootstrap} metric="top500_expected" />
               <p>
-                95% CI {signed3(bootstrap.top500_expected.ci95[0])} to {signed3(bootstrap.top500_expected.ci95[1])}.
-                The top-500 advantage is the least stable result on this page. We do not sell it as a win.
+                Expected top-500 hits, model minus exploit→EPSS. This is the least stable result on this page and the
+                interval includes zero. We do not sell it as a win.
               </p>
             </article>
             <article className="rp-check">
@@ -811,7 +835,7 @@ export function ResultsPage() {
                 <code>{`.venv/bin/python -m server.services.results_service
 .venv/bin/python run_all.py
 .venv/bin/python tools/check_claims.py docs/RESULTS.md
-curl -s http://64.177.59.101/api/results | head`}</code>
+curl -s https://pancakess.work/api/results | head`}</code>
               </pre>
               <div className="rp-links">
                 <a href="/api/docs">

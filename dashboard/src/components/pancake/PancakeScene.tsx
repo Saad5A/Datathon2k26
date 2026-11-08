@@ -243,22 +243,23 @@ function createTaperedDrip(
 }
 
 function createDarkMapleMaterial() {
-  // Dark maple — glossy viscous syrup matching pool + drips
+  // Maple syrup: translucent golden-amber, glossy. Attenuation darkens thick parts toward
+  // medium brown while thin edges stay golden (base ~#9E5616 because ACES tone mapping lifts it toward #B8661B on screen; thick ~#8A4A12).
   return new THREE.MeshPhysicalMaterial({
-    color: 0x2a0e03,
-    emissive: 0x100502,
-    emissiveIntensity: 0.28,
+    color: 0x9e5616,
+    emissive: 0x3a1a05,
+    emissiveIntensity: 0.12,
     roughness: 0.05,
     metalness: 0.02,
     clearcoat: 1.0,
     clearcoatRoughness: 0.04,
-    transmission: 0.55,
+    transmission: 0.45,
     ior: 1.492,
-    thickness: 1.2,
+    thickness: 0.6,
     transparent: true,
-    opacity: 0.97,
-    attenuationColor: new THREE.Color(0x3b1608),
-    attenuationDistance: 0.65,
+    opacity: 0.93,
+    attenuationColor: new THREE.Color(0x8a4a12),
+    attenuationDistance: 1.6,
   })
 }
 

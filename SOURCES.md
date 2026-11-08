@@ -1,5 +1,10 @@
 # Sources
 
+## Project links
+- Code repository (git `origin`): https://github.com/Saad5A/Datathon2k26
+- Live app: https://pancakess.work/ (see `docs/DEPLOYMENT.md`)
+- Evidence page of the live app: https://pancakess.work/results (route `/results`, `dashboard/src/main.tsx`)
+
 ## Data
 We used only the data files provided by the organisers. No outside data beyond them went into the model.
 

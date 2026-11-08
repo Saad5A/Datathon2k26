@@ -55,7 +55,7 @@ const QUICK_ACTIONS: {
   },
   {
     id: 'granite_divergence',
-    label: 'Why Granite Overruled CVSS',
+    label: 'Explain this rank',
     icon: TrendingUp,
     accent: 'hover:border-sev-p0/60 hover:bg-sev-p0/10',
   },
@@ -67,7 +67,7 @@ function CopyBlock({ content, format }: { content: string; format: 'bash' | 'pro
     <div className="relative mt-3 overflow-hidden rounded-md border border-line bg-raised/50">
       <div className="flex items-center justify-between border-b border-line px-3 py-1.5">
         <span className="text-[10px] font-semibold uppercase tracking-wider text-fg-subtle">
-          {format === 'bash' ? 'Terminal · copy-ready' : 'Gemini response'}
+          {format === 'bash' ? 'Template script · review before use' : 'Template text · not AI-generated'}
         </span>
         <button
           type="button"
@@ -102,7 +102,6 @@ export function CveInspectionDrawer({ cveId, open, onOpenChange }: CveInspection
   const [data, setData] = useState<UnifiedExplanation | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
-  const [showRawGranite, setShowRawGranite] = useState(false)
   const [refineLoading, setRefineLoading] = useState<RefineActionType | null>(null)
   const [refineResult, setRefineResult] = useState<RefineActionResponse | null>(null)
   const [refineError, setRefineError] = useState<string | null>(null)
@@ -112,7 +111,6 @@ export function CveInspectionDrawer({ cveId, open, onOpenChange }: CveInspection
     if (!open || !cveId) {
       setData(null)
       setError(null)
-      setShowRawGranite(false)
       setRefineResult(null)
       setRefineError(null)
       setFollowUp('')
@@ -123,7 +121,6 @@ export function CveInspectionDrawer({ cveId, open, onOpenChange }: CveInspection
     setLoading(true)
     setError(null)
     setData(null)
-    setShowRawGranite(false)
     setRefineResult(null)
     setRefineError(null)
     setFollowUp('')
@@ -136,7 +133,7 @@ export function CveInspectionDrawer({ cveId, open, onOpenChange }: CveInspection
         if ((e as Error).name === 'AbortError') return
         const msg =
           e instanceof ApiError && e.status === 404
-            ? `No Granite/Gemini synthesis for ${cveId} yet.`
+            ? `No summary for ${cveId} yet.`
             : (e as Error).message
         setError(msg)
         setLoading(false)
@@ -153,9 +150,8 @@ export function CveInspectionDrawer({ cveId, open, onOpenChange }: CveInspection
     return () => window.removeEventListener('keydown', onKey)
   }, [open, onOpenChange])
 
-  const rawTech =
-    data?.granite_technical_rationale || data?.granite?.summary || data?.granite?.rationale || null
-  const techSummary = data?.gemini_technical_summary || data?.gemini?.technical_summary || null
+  const rawTech = data?.granite?.summary || null
+  const graniteIsAi = data?.granite?.is_ai_generated === true
   const executive =
     data?.gemini_executive_summary || data?.gemini?.executive_summary || data?.gemini?.summary || null
   const playbook = data?.gemini_triage_playbook || data?.gemini?.playbook || null
@@ -187,7 +183,6 @@ export function CveInspectionDrawer({ cveId, open, onOpenChange }: CveInspection
       const res = await refineGeminiAction({
         cve_id: cveId,
         action_type: action,
-        granite_rationale: rawTech ?? undefined,
         user_context: userContext,
       })
       setRefineResult(res)
@@ -240,7 +235,7 @@ export function CveInspectionDrawer({ cveId, open, onOpenChange }: CveInspection
               )}
             </div>
             <p className="mt-0.5 text-xs text-fg-subtle">
-              CVE Triage Workstation · Granite technical core → Gemini executive orchestration
+              CVE triage · ranking-model reasons and a Granite instruct summary (AI-generated, unaudited)
             </p>
             {data?.rank != null && (
               <p className="mt-1 font-mono text-[11px] text-fg-muted">
@@ -259,7 +254,7 @@ export function CveInspectionDrawer({ cveId, open, onOpenChange }: CveInspection
         <div className="flex-1 space-y-4 overflow-y-auto px-4 py-4">
           {loading && (
             <p className="flex items-center gap-2 text-sm text-fg-muted">
-              <Loader2 className="size-4 animate-spin" aria-hidden /> Loading dual-provider briefing…
+              <Loader2 className="size-4 animate-spin" aria-hidden /> Loading briefing…
             </p>
           )}
           {error && !loading && (
@@ -278,12 +273,12 @@ export function CveInspectionDrawer({ cveId, open, onOpenChange }: CveInspection
                   <div className="mb-2 flex items-center gap-2">
                     <Cpu className="size-3.5 text-sevfg-low" aria-hidden />
                     <h3 className="text-[11px] font-semibold uppercase tracking-wider text-fg-muted">
-                      IBM Granite · watsonx
+                      {graniteIsAi ? 'IBM Granite (AI-generated summary)' : 'Template (no AI)'}
                     </h3>
                   </div>
                   <dl className="mb-2 grid grid-cols-2 gap-2 text-[11px]">
                     <div className="rounded border border-line px-2 py-1.5">
-                      <dt className="text-fg-subtle">Exploit score</dt>
+                      <dt className="text-fg-subtle">Priority score</dt>
                       <dd className="font-mono text-fg">{data.score != null ? fmtScore(data.score) : '—'}</dd>
                     </div>
                     <div className="rounded border border-line px-2 py-1.5">
@@ -294,7 +289,7 @@ export function CveInspectionDrawer({ cveId, open, onOpenChange }: CveInspection
                   {reasons.length > 0 && (
                     <div className="mb-2">
                       <p className="mb-1 text-[10px] font-semibold uppercase tracking-wider text-fg-subtle">
-                        Latent attribution
+                        Ranking-model reasons
                       </p>
                       <ul className="space-y-1">
                         {reasons.slice(0, 4).map((r) => (
@@ -306,27 +301,16 @@ export function CveInspectionDrawer({ cveId, open, onOpenChange }: CveInspection
                       </ul>
                     </div>
                   )}
-                  {techSummary && (
-                    <p className="mb-2 text-xs leading-relaxed text-fg">{techSummary}</p>
-                  )}
                   {rawTech ? (
-                    <div>
-                      <button
-                        type="button"
-                        className="text-[11px] font-medium text-fg-muted underline-offset-2 hover:text-fg hover:underline"
-                        onClick={() => setShowRawGranite((v) => !v)}
-                        aria-expanded={showRawGranite}
-                      >
-                        {showRawGranite ? 'Hide' : 'Show'} raw Granite rationale
-                      </button>
-                      {showRawGranite && (
-                        <p className="mt-2 rounded border border-line bg-raised/40 p-2 font-mono text-[10px] leading-relaxed text-fg-muted">
-                          {rawTech}
-                        </p>
-                      )}
-                    </div>
+                    <>
+                      <p className="mb-1 text-xs leading-relaxed text-fg">{rawTech}</p>
+                      <p className="text-[10px] text-fg-subtle">
+                        {data?.granite?.label ?? (graniteIsAi ? 'AI-generated, unaudited' : 'Template text')}
+                        {graniteIsAi && data?.granite?.model_id ? ` · ${data.granite.model_id}` : ''}
+                      </p>
+                    </>
                   ) : (
-                    !techSummary && <p className="text-xs text-fg-subtle">No Granite rationale for this CVE.</p>
+                    <p className="text-xs text-fg-subtle">No Granite summary for this CVE.</p>
                   )}
                 </section>
 
@@ -335,7 +319,7 @@ export function CveInspectionDrawer({ cveId, open, onOpenChange }: CveInspection
                   <div className="mb-2 flex items-center gap-2">
                     <Shield className="size-3.5 text-sevfg-p1" aria-hidden />
                     <h3 className="text-[11px] font-semibold uppercase tracking-wider text-fg-muted">
-                      Gemini · executive synthesis
+                      Gemini · executive brief (AI-generated)
                     </h3>
                   </div>
                   {executive ? (
@@ -364,11 +348,11 @@ export function CveInspectionDrawer({ cveId, open, onOpenChange }: CveInspection
               {/* Quick-action engine */}
               <section className="rounded-md border border-line bg-bg/40 p-3">
                 <h3 className="mb-1 text-[11px] font-semibold uppercase tracking-wider text-fg-muted">
-                  Interactive Gemini quick-actions
+                  Triage templates
                 </h3>
                 <p className="mb-3 text-[11px] text-fg-subtle">
-                  Contextual Triage Orchestrator — refinements grounded in Granite vectors (cached for demo
-                  latency).
+                  Deterministic templates filled from the ranking model&apos;s reasons and the CVE record. No
+                  model is called; not AI-generated.
                 </p>
                 <div className="grid gap-2 sm:grid-cols-3">
                   {QUICK_ACTIONS.map((a) => {
@@ -388,7 +372,7 @@ export function CveInspectionDrawer({ cveId, open, onOpenChange }: CveInspection
                       >
                         <Icon className="size-4 text-fg-muted transition-colors group-hover:text-fg" />
                         <span className="text-[11px] font-medium leading-snug text-fg">
-                          {busy ? 'Synthesizing…' : a.label}
+                          {busy ? 'Filling template…' : a.label}
                         </span>
                       </button>
                     )
@@ -398,7 +382,7 @@ export function CveInspectionDrawer({ cveId, open, onOpenChange }: CveInspection
                 {refineLoading && (
                   <p className="mt-3 flex items-center gap-2 text-xs text-fg-muted animate-pulse-soft">
                     <Loader2 className="size-3.5 animate-spin" aria-hidden />
-                    Gemini synthesizing Granite vector context…
+                    Filling template…
                   </p>
                 )}
                 {refineError && (
@@ -412,18 +396,15 @@ export function CveInspectionDrawer({ cveId, open, onOpenChange }: CveInspection
                     format={refineResult.format === 'bash' ? 'bash' : 'prose'}
                   />
                 )}
-                {refineResult?.cached && (
-                  <p className="mt-1.5 text-[10px] text-fg-subtle">Served from refine cache · 0 ms demo path</p>
-                )}
 
                 <form onSubmit={onFollowUp} className="mt-4 flex gap-2">
                   <label className="relative min-w-0 flex-1">
-                    <span className="sr-only">Ask Gemini follow-up</span>
+                    <span className="sr-only">Ask a follow-up (template answer)</span>
                     <MessageSquare className="pointer-events-none absolute left-2.5 top-1/2 size-3.5 -translate-y-1/2 text-fg-subtle" />
                     <input
                       value={followUp}
                       onChange={(e) => setFollowUp(e.target.value)}
-                      placeholder="Ask Gemini follow-up… e.g. What if we can’t patch before Monday?"
+                      placeholder="Follow-up (template answer, no model called)… e.g. What if we can’t patch before Monday?"
                       className="h-9 w-full rounded-md border border-line-strong bg-bg pl-8 pr-2 text-xs text-fg placeholder:text-fg-subtle"
                     />
                   </label>

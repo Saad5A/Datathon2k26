@@ -7,7 +7,7 @@ type Turn = { role: 'user' | 'assistant'; content: string }
 const BOOT: Turn = {
   role: 'assistant',
   content:
-    'PancakeSec Project Assistant initialized. Ask me any technical question about our IBM Granite embeddings, Gemini triage logic, or model evaluation.',
+    'Gemini 2.5 Flash, answering live. It cannot see this project\'s results files, so its answers are AI-generated and unaudited; check numbers on the Evidence page.',
 }
 
 type Props = {
@@ -41,14 +41,12 @@ export function JudgeQaDrawer({ open, onClose, cveId }: Props) {
     setBusy(true)
 
     // 2. Typing placeholder
-    setChatMessages((prev) => [...prev, { role: 'assistant', content: 'Analyzing project data...' }])
+    setChatMessages((prev) => [...prev, { role: 'assistant', content: 'Asking Gemini…' }])
 
     try {
       // history omits the temporary placeholder (and we rebuild from state snapshot)
       const historySnapshot = [...chatMessages, { role: 'user' as const, content: query }].filter(
-        (m) =>
-          !m.content.toLowerCase().startsWith('analyzing project data') &&
-          !m.content.toLowerCase().includes('project assistant initialized'),
+        (m) => m !== BOOT && !m.content.toLowerCase().startsWith('analyzing project data'),
       )
       const res = await askProjectChat({
         question: query,
@@ -89,7 +87,7 @@ export function JudgeQaDrawer({ open, onClose, cveId }: Props) {
               <MessageCircle className="h-4 w-4 text-[#8B3A0F]" />
               Judge Q&A
             </div>
-            <p className="text-[11px] text-[#7A6B5D]">Gemini 2.5 Flash · live project dialogue</p>
+            <p className="text-[11px] text-[#7A6B5D]">Gemini 2.5 Flash · AI-generated answers, unaudited</p>
           </div>
           <button
             type="button"
@@ -116,7 +114,7 @@ export function JudgeQaDrawer({ open, onClose, cveId }: Props) {
                   }`}
                 >
                   <div className="mb-0.5 text-[9px] font-bold uppercase tracking-wider opacity-60">
-                    {msg.role === 'user' ? 'User' : 'Gemini 2.5 Flash'}
+                    {msg.role === 'user' ? 'User' : (msg.content === 'Asking Gemini…' || msg.content.startsWith('Error:') ? 'Status (not AI)' : 'Gemini 2.5 Flash · AI-generated')}
                   </div>
                   <div className="whitespace-pre-wrap leading-relaxed">{msg.content}</div>
                 </div>

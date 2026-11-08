@@ -48,12 +48,12 @@ Check: <http://localhost:8000/api/health>
 
 ```bash
 cd dashboard
-npm install
-printf 'VITE_API_URL=/api\n' > .env.local
+npm ci
+cp .env.example .env.local   # sets VITE_API_URL=http://localhost:8000/api
 npm run dev -- --host 0.0.0.0 --port 5173
 ```
 
-Open <http://localhost:5173/>. Vite proxies `/api` to `http://127.0.0.1:8000`, so the same relative base works in development and production. The evidence sheet is at <http://localhost:5173/results>.
+Open <http://localhost:5173/>. The dashboard calls the API at `VITE_API_URL` (read at build/dev start), so the API from step 1 must be running; without `VITE_API_URL` it shows a configuration error. To run with no backend, set `VITE_API_URL=demo` in `.env.local` (sample data and in-browser scoring; live ranking disabled). The evidence sheet is at <http://localhost:5173/results>.
 
 The default upload engine is **Model API** when `VITE_API_URL` is configured. It sends rows to `POST /api/predict`; known scoreboard CVEs use the audited **G2** score, unknown CVEs use a transparent fallback labelled `api-heuristic-v1`. If the API is unavailable, use **Local demo** in *Processing options*; no file leaves the browser.
 
@@ -86,8 +86,7 @@ This is a separate D3 research UI; it is not part of the pancake app. Add `?ui=1
 |---|---|---|
 | **IBM Granite embeddings** `ibm/granite-embedding-278m-multilingual` (768-d, 512 tokens) | Text score for the ranking model. The pre-registered G1/G2 test adopted G2 (C1 + Granite text) with no measurable gain over C1. | `cloud/embed_granite.py`, `src/model/granite.py`, `docs/ibm.md`, `results/granite_comparison.json` |
 | **IBM watsonx.ai** (`ca-tor`) + `ibm-watsonx-ai` 1.9.1 | Provider for a 1,966-description Granite embedding subset. | `data_cache/granite_embeddings_watsonx_subset.meta.json`; audit `audit/2026-11-08-granite-final.md` |
-| **IBM Granite instruct** `ibm/granite-3-8b-instruct` | Grounded explanations for the top-ranked CVEs via `cloud/explain_granite_top100.py` (optional). | `results/granite_explanations_top100.json`, `cloud/granite_instruct_model_id.txt` |
-| **IBM Granite 4.2 3B** via Ollama | Separate top-100 grounded summaries; does not change the ranking. | `cloud/explain_granite_ollama.py`, `results/granite_summaries_top100.json` |
+| **IBM Granite instruct** `granite4.2:3b` (IBM Granite 4.2 3B), run locally via Ollama | Plain-language summaries for the top 100 of an earlier version of the ranking (89 of the current top 100 have one); AI-generated and unaudited, with some template fallbacks. Does not change the ranking. | `cloud/explain_granite_ollama.py`, `results/granite_summaries_top100.json` |
 
 Gemini is used only as an optional executive-synthesis layer (`src/remediation_agent.py`); it is **not** IBM technology and never re-ranks CVEs. The dashboard’s upload results use the ranking’s supplied signals, not a live Gemini call.
 

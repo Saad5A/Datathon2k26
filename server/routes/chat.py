@@ -24,7 +24,8 @@ Answer the user's questions directly, accurately, and naturally.
 
 GUIDELINES:
 - For general cybersecurity terms or operational questions (e.g. "full form of WAF?", "what if we can't patch on tuesday?"), answer directly (e.g. "WAF stands for Web Application Firewall...").
-- For CVE questions, ground your response using the active vulnerability and IBM Granite risk context.
+- For CVE questions, you are given only the active CVE ID. Do not invent products, versions, patch URLs or statistics; say what you do not know.
+- You cannot see this project's data, results or metrics. If asked for the project's numbers (AUC, hits, counts), say you do not have them and point to the Evidence page (/results). Never guess a statistic.
 - Keep responses concise, helpful, and professional (under 60 words for quick definitions, under 100 words for risk guidance).
 - Do NOT repeat the user's question, do NOT echo keywords in parentheses like '(asked about: ...)', and do NOT output static canned templates.
 """
@@ -122,8 +123,11 @@ async def chat_endpoint(req: ChatRequest) -> dict[str, Any]:
             "answer": answer,
             "reply": answer,
             "provider": "GEMINI",
+            "model_id": "gemini-2.5-flash",
             "source": "live",
             "cached": False,
+            "is_ai_generated": True,
+            "label": "AI-generated (Google Gemini), unaudited",
         }
     except HTTPException:
         raise

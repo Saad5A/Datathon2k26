@@ -1,4 +1,5 @@
-"""Unified Granite technical + Gemini executive synthesis explanations."""
+"""CVE explanations: Granite instruct summaries (AI-generated, unaudited) plus any
+provenance-qualified live Gemini brief. Template text is labelled as template."""
 from __future__ import annotations
 
 from typing import Any, Literal
@@ -17,7 +18,7 @@ ActionType = Literal["bash_script", "business_risk", "granite_divergence", "cust
 class RefineActionRequest(BaseModel):
     cve_id: str = Field(..., min_length=3)
     action_type: ActionType
-    granite_rationale: str = ""
+    granite_rationale: str = ""  # accepted for old clients; ignored (server-side data only)
     user_context: str | None = None
 
 
@@ -56,16 +57,13 @@ def _ranking_meta(cve_id: str) -> dict[str, Any]:
 def _synthesize_refine(
     cve_id: str,
     action_type: ActionType,
-    granite_rationale: str,
     user_context: str | None,
     meta: dict[str, Any],
 ) -> str:
-    """Deterministic offline synthesizer when cache miss — grounded, no invented patch URLs."""
+    """Deterministic template (no model is called). Grounded in ranking metadata; no invented patch URLs."""
     epss = meta.get("epss")
     exploit = meta.get("any_public_exploit") or 0
     rank = meta.get("rank")
-    rationale = (granite_rationale or "").strip() or "Granite rationale unavailable for this CVE."
-    snippet = rationale if len(rationale) <= 320 else rationale[:317] + "…"
 
     if action_type == "bash_script":
         return (
@@ -81,41 +79,40 @@ def _synthesize_refine(
             f"Business downtime estimate for {cve_id}: public_exploit={exploit}, EPSS={epss}, "
             f"rank={rank}. Illustrative blast radius is limited to services sharing the affected "
             f"component (product not invented). Downtime band if exploited pre-patch: 4–24h. "
-            f"Authorize containment now. Granite context: {snippet}"
+            f"Authorize containment now."
         )
     if action_type == "granite_divergence":
         return (
-            f"Why Granite flagged {cve_id} above a CVSS-only queue: watsonx semantic + ranking "
-            f"features (public exploit, description_text, KEV history) outweigh static severity. "
-            f"Granite: {snippet}"
+            f"Why the ranking model placed {cve_id} above a CVSS-only queue: its cited reasons "
+            f"were {', '.join(str(r.get('signal')) for r in (meta.get('reasons') or []) if isinstance(r, dict)) or 'unavailable'} "
+            f"(rank={rank}, EPSS={epss}, public_exploit={exploit})."
         )
-    # custom_refinement — answer the ask directly; never echo "Judge:" / Q:/A: labels
+    # custom_refinement: keyword-picked template answer (no model is called)
     follow = (user_context or "").strip()
     if not follow:
         return (
             f"Keep compensating controls on {cve_id} until a verified vendor advisory exists; "
-            f"do not invent patch URLs. Granite: {snippet}"
+            f"do not invent patch URLs."
         )
     fl = follow.lower()
     if any(k in fl for k in ("monday", "delay", "can't patch", "cannot patch", "defer", "weekend")):
         return (
             f"If {cve_id} cannot be patched immediately, hold WAF/isolation compensating controls, "
-            f"freeze nonessential exposure, and schedule the vendor fix in the next controlled window. "
-            f"Granite pressure: {snippet}"
+            f"freeze nonessential exposure, and schedule the vendor fix in the next controlled window."
         )
     if any(k in fl for k in ("monitor", "detect", "alert", "siem")):
         return (
             f"Raise detection for {cve_id} exploit patterns, watch the isolated segment, "
-            f"and keep alerts hot until patched versions are confirmed. Granite: {snippet}"
+            f"and keep alerts hot until patched versions are confirmed."
         )
     if any(k in fl for k in ("risk", "downtime", "blast", "business")):
         return (
             f"{cve_id} remains operationally hot (rank={rank}, EPSS={epss}, exploit={exploit}). "
-            f"Contain now; treat residual risk as open until advisory-backed remediation. {snippet}"
+            f"Contain now; treat residual risk as open until advisory-backed remediation."
         )
     return (
         f"For {cve_id}: apply the minimal safe control implied by the ask, keep inventory verified, "
-        f"and wait on a confirmed vendor advisory — no invented patch URLs. Granite: {snippet}"
+        f"and wait on a confirmed vendor advisory — no invented patch URLs."
     )
 
 
@@ -136,18 +133,12 @@ def _playbook_steps(gemini: dict | None) -> list[dict[str, str]]:
 
 
 def _unified_record(cve_id: str, granite: dict | None, gemini: dict | None) -> dict[str, Any]:
-    tech = None
-    if granite:
-        tech = granite.get("explanation")
-    if gemini and gemini.get("granite_technical_rationale"):
-        tech = gemini.get("granite_technical_rationale") or tech
+    tech = (granite or {}).get("explanation")
 
     executive = None
-    tech_summary = None
     triage = None
     if gemini:
         executive = gemini.get("gemini_executive_summary") or gemini.get("executive_summary") or gemini.get("explanation")
-        tech_summary = gemini.get("gemini_technical_summary")
         triage = gemini.get("gemini_triage_playbook")
         if not triage and (gemini.get("immediate_mitigation") or gemini.get("patch_guidance")):
             triage = {
@@ -158,18 +149,19 @@ def _unified_record(cve_id: str, granite: dict | None, gemini: dict | None) -> d
 
     return {
         "cve_id": cve_id,
-        "granite_technical_rationale": tech,
-        "gemini_technical_summary": tech_summary,
         "gemini_executive_summary": executive,
         "gemini_triage_playbook": triage,
-        "priority": (granite or {}).get("priority") or (gemini or {}).get("priority"),
-        "rank": (granite or {}).get("rank") or (gemini or {}).get("rank"),
+        # rank / priority / reasons are filled from scores_2026.csv by _ranking_meta().
         "granite": {
             "summary": tech,
-            "rationale": tech,
+            "note": "Written for an earlier version of the ranking; rank and reasons shown come from the current model.",
+            "suggested_action": (granite or {}).get("suggested_action"),
+            "source": (granite or {}).get("source"),
             "provider": (granite or {}).get("provider"),
             "model_id": (granite or {}).get("model_id"),
             "is_ai_generated": (granite or {}).get("is_ai_generated"),
+            "audited": False,
+            "label": (granite or {}).get("label"),
         }
         if tech
         else None,
@@ -177,7 +169,6 @@ def _unified_record(cve_id: str, granite: dict | None, gemini: dict | None) -> d
             "summary": executive,
             "rationale": executive,
             "executive_summary": executive,
-            "technical_summary": tech_summary,
             "provider": (gemini or {}).get("provider"),
             "model_id": (gemini or {}).get("model_id"),
             "is_ai_generated": (gemini or {}).get("is_ai_generated"),
@@ -240,17 +231,15 @@ def get_explanation(
 
     if model == "granite":
         if not payload["available"]["granite"]:
-            raise HTTPException(status_code=404, detail=f"No Granite technical rationale for {cve_id}")
+            raise HTTPException(status_code=404, detail=f"No Granite summary for {cve_id}")
         payload["gemini"] = None
         payload["gemini_executive_summary"] = None
-        payload["gemini_technical_summary"] = None
         payload["gemini_triage_playbook"] = None
         payload["remediation"] = {"steps": [], "playbook": None, "is_ai_generated": False}
     elif model == "gemini":
         if not payload["available"]["gemini"]:
-            raise HTTPException(status_code=404, detail=f"No Gemini executive synthesis for {cve_id}")
+            raise HTTPException(status_code=404, detail=f"No Gemini executive brief for {cve_id}")
         payload["granite"] = None
-        payload["granite_technical_rationale"] = None
     else:
         if not payload["available"]["granite"] and not payload["available"]["gemini"]:
             raise HTTPException(status_code=404, detail=f"No explanation or playbook for {cve_id}")
@@ -260,46 +249,25 @@ def get_explanation(
 
 @router.post("/api/gemini/refine-action")
 def refine_action(body: RefineActionRequest) -> dict[str, Any]:
-    """Contextual Triage Orchestrator — Gemini refinement grounded in Granite outputs.
+    """Deterministic triage templates (no LLM call), grounded in ranking metadata.
 
-    Prefers ``results/gemini_refine_cache.json`` for 0 ms demo latency on top CVEs
-    (including smoke ID CVE-2026-10001). Falls back to a deterministic synthesizer.
+    The old results/gemini_refine_cache.json was also template output
+    (scripts/build_gemini_refine_cache.py) mislabelled as Gemini, so it is not served.
     """
     cve_id = body.cve_id.strip()
     action = body.action_type
-    cached = _lookup(store.gemini_refine_cache, cve_id)
-    content: str | None = None
-    source = "synthesized"
-
-    # Custom follow-ups must be synthesized dynamically — never return a canned cache
-    # blob and never echo the question with "Judge:" / "Answer:" labels.
-    if action == "custom_refinement" and (body.user_context or "").strip():
-        content = None
-    elif isinstance(cached, dict) and cached.get(action):
-        content = str(cached[action])
-        source = "cache"
-
-    if not content:
-        granite = _lookup(store.explanations, cve_id)
-        gemini = _lookup(store.gemini_explanations, cve_id)
-        rationale = (
-            body.granite_rationale
-            or (gemini or {}).get("granite_technical_rationale")
-            or (granite or {}).get("explanation")
-            or ""
-        )
-        meta = _ranking_meta(cve_id)
-        content = _synthesize_refine(cve_id, action, str(rationale), body.user_context, meta)
-        source = "synthesized"
+    content = _synthesize_refine(cve_id, action, body.user_context, _ranking_meta(cve_id))
 
     return {
         "cve_id": cve_id,
         "action_type": action,
         "content": content,
         "format": "bash" if action == "bash_script" else "prose",
-        "cached": source == "cache",
-        "source": source,
-        "provider": "GEMINI",
+        "cached": False,
+        "source": "template",
+        "provider": "template",
+        "is_ai_generated": False,
+        "label": "Template (no AI)",
         "role": "contextual_triage_orchestrator",
-        "grounding": "granite_rationale+ranking_metadata",
+        "grounding": "ranking_metadata",
     }

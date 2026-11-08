@@ -16,6 +16,7 @@ import {
   askProjectChat,
   fetchExplanation,
   fetchRankingPage,
+  fetchRankingSample,
   fetchStatsSummary,
   type ExplanationPayload,
   type RankingItem,
@@ -31,6 +32,15 @@ type ViewMode = '3d' | 'table'
 type TierFilter = 'ALL' | 'P0' | 'P1' | 'P2'
 
 const STACK_N = 6
+const STACK_TIERS = ['P0', 'P1', 'P2'] as const
+const PER_TIER = STACK_N / STACK_TIERS.length
+
+/** Deterministic pseudo-random key for a CVE under this page load's seed (FNV-1a). */
+function sampleKey(id: string, seed: number) {
+  let h = 2166136261 ^ Math.floor(seed * 4294967295)
+  for (let i = 0; i < id.length; i++) h = Math.imul(h ^ id.charCodeAt(i), 16777619)
+  return h >>> 0
+}
 
 function fmtInt(n: number | null | undefined) {
   if (n == null || Number.isNaN(n)) return '—'
@@ -83,6 +93,9 @@ export function PancakeSecDashboard() {
   const [tier, setTier] = useState<TierFilter>('ALL')
   const [summary, setSummary] = useState<StatsSummary | null>(null)
   const [rows, setRows] = useState<RankingItem[]>([])
+  // P2 rows sit outside the 500-row ranking: sampled server-side from scores_2026.csv.
+  const [p2Sample, setP2Sample] = useState<RankingItem[]>([])
+  const [stackSeed] = useState(() => Math.random())
   const [baselineRows, setBaselineRows] = useState<RankingItem[]>([])
   const [uploadLabel, setUploadLabel] = useState<string | null>(null)
   const [uploadOpen, setUploadOpen] = useState(false)
@@ -116,11 +129,13 @@ export function PancakeSecDashboard() {
     ;(async () => {
       try {
         setLoading(true)
-        const [stats, page] = await Promise.all([
+        const [stats, page, p2] = await Promise.all([
           fetchStatsSummary(ac.signal),
-          fetchRankingPage({ page: 1, limit: 50, sort: 'rank', order: 'asc' }, ac.signal),
+          fetchRankingPage({ page: 1, limit: 500, sort: 'rank', order: 'asc' }, ac.signal),
+          fetchRankingSample('P2', PER_TIER, ac.signal).catch(() => ({ items: [] as RankingItem[] })),
         ])
         setSummary(stats)
+        setP2Sample(p2.items)
         setBaselineRows(page.items)
         setRows(page.items)
         setUploadLabel(null)
@@ -136,7 +151,17 @@ export function PancakeSecDashboard() {
     return () => ac.abort()
   }, [])
 
-  const stack = useMemo(() => rows.slice(0, STACK_N).map(toStackCve), [rows])
+  // A random sample by tier (PER_TIER each of P0/P1/P2), redrawn on each page load, shown in rank order.
+  const stack = useMemo(() => {
+    const picked = STACK_TIERS.flatMap((t) => {
+      const local = rows.filter((r) => (r.priority || 'P2') === t)
+      const pool = local.length || uploadLabel ? local : t === 'P2' ? p2Sample : []
+      return [...pool]
+        .sort((a, b) => sampleKey(a.cve_id, stackSeed) - sampleKey(b.cve_id, stackSeed))
+        .slice(0, PER_TIER)
+    })
+    return picked.sort((a, b) => (a.rank ?? Infinity) - (b.rank ?? Infinity)).map(toStackCve)
+  }, [rows, p2Sample, uploadLabel, stackSeed])
   const selectedStack = useMemo(
     () => stack.find((c) => c.id === selectedId) || rows.map(toStackCve).find((c) => c.id === selectedId) || null,
     [stack, rows, selectedId],
@@ -165,8 +190,8 @@ export function PancakeSecDashboard() {
     return () => ac.abort()
   }, [selectedId])
 
-  const graniteText =
-    brief?.granite_technical_rationale || brief?.granite?.summary || brief?.granite?.rationale || null
+  const graniteText = brief?.granite?.summary || null
+  const graniteIsAi = brief?.granite?.is_ai_generated === true
   const geminiExec =
     brief?.gemini_executive_summary || brief?.gemini?.executive_summary || brief?.gemini?.summary || null
   const playbook = brief?.gemini_triage_playbook || brief?.gemini?.playbook || null
@@ -178,7 +203,7 @@ export function PancakeSecDashboard() {
       setPanelChat((prev) => [
         ...prev,
         { role: 'user', content: userContext },
-        { role: 'assistant', content: 'Analyzing project data...' },
+        { role: 'assistant', content: 'Asking Gemini…' },
       ])
       try {
         const history = panelChat.map((m) => ({ role: m.role, content: m.content }))
@@ -211,13 +236,15 @@ export function PancakeSecDashboard() {
 
   const filteredTable = useMemo(() => {
     const q = tableQ.trim().toLowerCase()
-    return rows.filter((r) => {
-      const pri = r.priority || 'P2'
-      if (tablePri !== 'ALL' && pri !== tablePri) return false
-      if (!q) return true
-      const hay = `${r.cve_id} ${r.assigner || ''}`.toLowerCase()
-      return hay.includes(q)
-    })
+    return rows
+      .filter((r) => {
+        const pri = r.priority || 'P2'
+        if (tablePri !== 'ALL' && pri !== tablePri) return false
+        if (!q) return true
+        const hay = `${r.cve_id} ${r.assigner || ''}`.toLowerCase()
+        return hay.includes(q)
+      })
+      .sort((a, b) => (a.rank ?? Infinity) - (b.rank ?? Infinity))
   }, [rows, tableQ, tablePri])
 
   const downloadTop500 = async () => {
@@ -249,6 +276,8 @@ export function PancakeSecDashboard() {
     setFollowUp('')
   }
 
+  const hasGemini = (summary?.multi_model?.gemini_explanations ?? 0) > 0
+  const coverage = summary?.multi_model?.granite_summary_coverage
   const p0Count = summary?.risk_bands.critical ?? null
   const rankingRows = summary?.ranking_rows ?? rows.length
 
@@ -288,23 +317,17 @@ export function PancakeSecDashboard() {
           </div>
 
           <div className="hidden items-center space-x-6 rounded-2xl border border-[#E8DFC8] bg-white/80 px-5 py-2 shadow-sm xl:flex">
-            <div className="flex items-center space-x-2.5">
-              <div className="h-2 w-2 animate-ping rounded-full bg-emerald-500" />
-              <div className="text-xs">
-                <div className="font-medium text-[#8A7968]">Audit Corpus</div>
-                <div className="mono font-bold text-[#1E1611]">
-                  {fmtInt(summary?.total_analyzed_cves ?? summary?.scores_rows)} CVEs
+            {summary?.watsonx_subset && (
+              <>
+                <div className="text-xs" title={`claim ${summary.watsonx_subset.id}`}>
+                  <div className="font-medium text-[#8A7968]">
+                    CVE descriptions embedded on IBM watsonx.ai (exploratory subset)
+                  </div>
+                  <div className="mono font-bold text-[#0F62FE]">{fmtInt(summary.watsonx_subset.value)}</div>
                 </div>
-              </div>
-            </div>
-            <div className="h-6 w-px bg-[#E8DFC8]" />
-            <div className="text-xs">
-              <div className="font-medium text-[#8A7968]">Watsonx Embeddings</div>
-              <div className="mono font-bold text-[#0F62FE]">
-                {fmtInt(summary?.token_usage.estimated_tokens_consumed)} tokens
-              </div>
-            </div>
-            <div className="h-6 w-px bg-[#E8DFC8]" />
+                <div className="h-6 w-px bg-[#E8DFC8]" />
+              </>
+            )}
             <div className="text-xs">
               <div className="font-medium text-[#8A7968]">Submitted Model</div>
               <div className="mono font-bold text-emerald-700">G2 · IBM tie-break</div>
@@ -416,10 +439,12 @@ export function PancakeSecDashboard() {
         )}
 
         {view === '3d' ? (
-          <div className="grid min-h-[700px] flex-1 grid-cols-1 gap-6 lg:grid-cols-12">
-            <div className="glass-card relative flex flex-col overflow-hidden rounded-3xl border border-[#E8DFC8] p-5 lg:col-span-7">
+          <div className="grid flex-1 grid-cols-1 gap-6 lg:grid-cols-12">
+            <div className="glass-card relative flex flex-col self-start overflow-hidden rounded-3xl border border-[#E8DFC8] p-5 lg:col-span-7">
               <div className="absolute left-6 top-6 z-10 flex flex-wrap items-center gap-2">
-                <div className="mr-2 text-xs font-bold uppercase tracking-wider text-[#7A6B5D]">Filter Tiers:</div>
+                <div className="mr-2 text-xs font-bold uppercase tracking-wider text-[#7A6B5D]">
+                  A random sample by tier · Filter:
+                </div>
                 {(['ALL', 'P0', 'P1', 'P2'] as const).map((t) => (
                   <button
                     key={t}
@@ -431,11 +456,11 @@ export function PancakeSecDashboard() {
                         : 'border border-[#E8DFC8] bg-white/90 text-[#7A6B5D] hover:bg-[#FAF4EB]'
                     }`}
                   >
-                    {t === 'ALL' ? `All Tiers (${stack.length})` : t}
+                    {t === 'ALL' ? 'All Tiers' : t}
                   </button>
                 ))}
               </div>
-              <div className="mt-12 flex-1">
+              <div className="mt-12">
                 {stack.length > 0 ? (
                   <PancakeScene
                     stack={stack}
@@ -474,7 +499,7 @@ export function PancakeSecDashboard() {
                       </span>
                       {selectedStack?.publicExploit && (
                         <span className="rounded-full bg-emerald-100 px-2 py-0.5 text-[11px] font-medium text-emerald-800">
-                          Public Exploit Active
+                          Public exploit code
                         </span>
                       )}
                     </div>
@@ -483,7 +508,7 @@ export function PancakeSecDashboard() {
                     </h3>
                   </div>
                   <div className="text-right">
-                    <div className="text-[10px] font-bold uppercase text-[#8A7968]">Exploit Score</div>
+                    <div className="text-[10px] font-bold uppercase text-[#8A7968]">Priority score</div>
                     <div className="mono text-xl font-extrabold text-[#8B3A0F]">
                       {selectedStack?.score != null ? selectedStack.score.toFixed(3) : '—'}
                     </div>
@@ -491,7 +516,7 @@ export function PancakeSecDashboard() {
                 </div>
 
                 <div className="custom-scroll flex flex-1 flex-col gap-4 overflow-y-auto py-4 pr-1">
-                  {briefLoading && <p className="text-xs text-[#7A6B5D]">Loading Granite + Gemini briefing…</p>}
+                  {briefLoading && <p className="text-xs text-[#7A6B5D]">Loading briefing…</p>}
                   {briefError && !briefLoading && (
                     <p className="rounded-xl border border-amber-200 bg-amber-50 px-3 py-2 text-xs text-amber-900">
                       {briefError}
@@ -504,17 +529,29 @@ export function PancakeSecDashboard() {
                         <div className="flex h-3 w-3 items-center justify-center rounded bg-[#0F62FE] text-[8px] font-bold text-white">
                           G
                         </div>
-                        <span className="text-xs font-bold text-[#0F62FE]">IBM Granite Core (watsonx.ai)</span>
+                        <span className="text-xs font-bold text-[#0F62FE]">
+                          {graniteIsAi ? 'IBM Granite (AI-generated summary)' : 'Template (no AI)'}
+                        </span>
                       </div>
                       <span className="mono rounded-md border border-[#D0E2FF] bg-white px-2 py-0.5 text-[10px] text-[#587399]">
-                        granite-embedding-278m
+                        {graniteIsAi ? brief?.granite?.model_id || 'granite' : 'template'}
                       </span>
                     </div>
                     <div className="text-xs leading-relaxed text-[#243552]">
-                      {graniteText || 'No Granite technical rationale for this CVE yet.'}
+                      {graniteText || 'No Granite summary for this CVE.'}
                     </div>
+                    {graniteText && (
+                      <p className="mt-2 text-[10px] text-[#587399]">
+                        Written for an earlier version of the ranking; rank and reasons shown here come from the
+                        current model.
+                        {coverage?.current_top100
+                          ? ` Covers ${coverage.current_top100_with_summary ?? 0} of the current top ${coverage.current_top100}.`
+                          : ''}
+                      </p>
+                    )}
                   </div>
 
+                  {hasGemini && (
                   <div className="relative rounded-2xl border border-[#E8D9FF] bg-[#FAF5FF] p-4">
                     <div className="mb-2 flex items-center justify-between">
                       <div className="flex items-center space-x-2">
@@ -522,13 +559,13 @@ export function PancakeSecDashboard() {
                           ✨
                         </div>
                         <span className="text-xs font-bold text-[#6929C4]">
-                          Google Gemini · Executive Synthesis
+                          Google Gemini · Executive Brief (AI-generated)
                         </span>
                       </div>
                     </div>
                     <div className="mb-3 text-xs font-medium leading-relaxed text-[#3E275C]">
                       <strong>Executive Brief:</strong>{' '}
-                      {geminiExec || 'No Gemini executive synthesis for this CVE yet.'}
+                      {geminiExec || 'No live Gemini brief is loaded for this CVE.'}
                     </div>
                     <div className="mb-2 text-[10px] font-bold uppercase tracking-wide text-[#512F7A]">
                       Automated Triage Playbook
@@ -565,6 +602,7 @@ export function PancakeSecDashboard() {
                       )}
                     </div>
                   </div>
+                  )}
 
                   {selectedId && (
                     <SimilarCves
@@ -593,7 +631,7 @@ export function PancakeSecDashboard() {
                               }`}
                             >
                               <div className="mb-0.5 text-[9px] font-bold uppercase tracking-wider opacity-60">
-                                {msg.role === 'user' ? 'User' : 'Gemini 2.5 Flash'}
+                                {msg.role === 'user' ? 'User' : (msg.content === 'Asking Gemini…' || msg.content.startsWith('Error:') ? 'Status (not AI)' : 'Gemini 2.5 Flash · AI-generated, unaudited')}
                               </div>
                               <div className="whitespace-pre-wrap leading-relaxed">{msg.content}</div>
                             </div>
@@ -658,8 +696,8 @@ export function PancakeSecDashboard() {
                     <th className="px-3 py-3">Rank</th>
                     <th className="px-3 py-3">CVE ID</th>
                     <th className="px-3 py-3">Priority</th>
-                    <th className="px-3 py-3">Exploit Score</th>
-                    <th className="px-3 py-3">Public Weaponization</th>
+                    <th className="px-3 py-3">Priority score</th>
+                    <th className="px-3 py-3">Public exploit code</th>
                     <th className="px-3 py-3">Primary Vector</th>
                     <th className="px-3 py-3 text-right">Action</th>
                   </tr>
@@ -700,7 +738,7 @@ export function PancakeSecDashboard() {
                                 : 'bg-slate-100 text-slate-500'
                             }`}
                           >
-                            {row.publicExploit ? 'Weaponized' : 'None Detected'}
+                            {row.publicExploit ? 'Public exploit code' : 'None recorded'}
                           </span>
                         </td>
                         <td className="px-3 py-3 text-[#5A4B40]">{row.vector}</td>

@@ -251,7 +251,7 @@ def grounding_validation(playbook: dict[str, Any], row: dict[str, Any]) -> dict[
 
     out["cve_id"] = str(row.get("cve_id"))
     out["priority_tier"] = str(row.get("priority", out.get("priority_tier", "P2")))
-    out["is_ai_generated"] = True
+    out["is_ai_generated"] = bool(playbook.get("is_ai_generated", True))  # offline template drafts stay False
 
     combined = " ".join(
         str(out.get(k, ""))
@@ -354,7 +354,7 @@ def _offline_playbook(row: dict[str, Any]) -> dict[str, Any]:
         "triage_explanation": _clip_words("Re-scan CVE; watch detections 72h.", 8),
         "immediate_mitigation": _clip_words("WAF restrict; isolate segment; cut admin.", 8),
         "patch_guidance": patch,
-        "is_ai_generated": True,
+        "is_ai_generated": False,  # fixed template text, not model output
     }
     return grounding_validation(draft, row)
 
@@ -504,7 +504,8 @@ def main() -> None:
             print("validation_flags:", pb["_validation_flags"])
         print("---")
 
-    sample_path = out.parent / "sample_playbooks.json"
+    # Smoke output only, not a result: keep it out of results/.
+    sample_path = ROOT / "docs" / "examples" / "sample_playbooks_DUMMY.json"
     sample_path.parent.mkdir(parents=True, exist_ok=True)
     with sample_path.open("w", encoding="utf-8") as fh:
         json.dump([clean_playbook_for_ui(pb) for pb in playbooks], fh, indent=2)

@@ -34,11 +34,11 @@ function GraniteNote({ cveId }: { cveId: string | null }) {
   }, [cveId])
   if (!cveId) return null
   if (!LIVE_API) return null
-  if (missing) return <p className="backend-note">No IBM Granite note is available for this CVE.</p>
+  if (missing) return <p className="backend-note">No Granite summary is available for this CVE.</p>
   if (!payload?.granite) return null
   const g = payload.granite
   return <div className="granite-note" aria-live="polite">
-    <div className="granite-note-heading"><strong>IBM Granite technical note</strong><span>{g.provider || 'Granite'} · {g.model_id || 'model id unavailable'}</span></div>
+    <div className="granite-note-heading"><strong>{g.is_ai_generated ? 'IBM Granite (AI-generated summary)' : 'Template (no AI)'}</strong><span>{g.is_ai_generated ? (g.model_id || 'model id unavailable') : 'Granite output failed validation'}</span></div>
     {g.grounding_ok === false && <p className="backend-note">Grounding check reported a warning; use the source record.</p>}
     <p>{g.summary || 'No summary was supplied in the Granite artifact.'}</p>
   </div>
