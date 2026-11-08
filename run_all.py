@@ -32,7 +32,13 @@ def run(name, *args):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--from", dest="start", choices=STEPS + ["granite"], default=STEPS[0])
-    start = ap.parse_args().start
+    ap.add_argument("--tfidf-only", action="store_true", help="allow rebuilding final files without Granite (not the submitted version)")
+    args = ap.parse_args()
+    start = args.start
+    if not EMB.exists() and not args.tfidf_only and start in STEPS and STEPS.index(start) <= STEPS.index("final"):
+        sys.exit(f"{EMB.relative_to(ROOT)} not found. The submitted top500.csv/scores_2026.csv use Granite (G2); without it, "
+                 "'final' would overwrite them with the TF-IDF-only version. Create the embeddings first (cloud/README.md), "
+                 "or pass --tfidf-only to rebuild the TF-IDF version on purpose.")
     t0 = time.time()
     for name in STEPS[STEPS.index(start):] if start in STEPS else []:
         run(name)

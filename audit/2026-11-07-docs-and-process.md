@@ -222,3 +222,25 @@ Exact fixes:
 - **1f** (ibm.md): "the pre-set test showed it did not hurt by more than 0.01 AUC" -> "its mean AUC over the two folds was within the pre-set 0.01 of C1's (fold 2 alone: 0.868 vs 0.880)". In LEARNING, "when it does no harm" -> "when it costs no more than the pre-set 0.01 of mean AUC".
 - ibm.md "two held-out folds" -> "two backtest folds".
 - LEARNING "pre-registered in LOG.md before any embeddings existed": true for the rule (c603758, 17:08). The settings CLARIFICATION (81b3cd5, 21:33) may postdate the teammate's subset embeddings (granite-final audit: UNCHECKED). Add "(the settings clarification came later, before the full embeddings)".
+
+## Re-review 3: README.md and SOURCES.md (feat/model-ranking @ 212cb6c, 2026-11-08)
+
+`python3 tools/check_claims.py README.md SOURCES.md` reports 0 unsupported numbers (exit 0).
+
+| # | Item | Result |
+|---|---|---|
+| 1a | Numbers: 72,670; 52; 50.1% / 64.9%; 25 vs 18-19; 22 vs 18; 11 vs 15; 72,670 vs 35,280; 5.6->15.0%; 1.1->9.3%; 66-68%; 0.871 / 0.870 / 0.837 | PASS (all are verified claims) |
+| 1b | "Its 25 vs 18-19 top-500 result came from training labels that overlapped the test period and from seed luck." | **FAIL (minor).** This reintroduces the causal wording fixed as W6. Time-safe labels still give 21 |
+| 1c | Granite: "adopted with no measurable gain ... within a pre-set margin" | PASS. Minor: it does not say the margin was a tie-break declared in advance in favour of IBM technology |
+| 1d | No "beats" or "improves"; no 2026 accuracy claim; limits list KEV as a proxy, 52 positives and about 2% per hit, today's text, no 2026 labels | PASS. The cap is not mentioned, so no cap claim is made |
+| 1e | First-pass reuse of the 2025 period (W3) | **FAIL (minor).** "a pre-registered test" appears without the disclosure that the 2025 period had already been used in the first pass. Add it to Limits |
+| 2a | venv + `pip install -r src/model/requirements.lock`; `run_all.py` and `--from <step>` | PASS (they match `run_all.py` STEPS and argparse; the lock pins the libraries listed in SOURCES) |
+| 2b | "Unzip ... into `data/`, or ... `IBM_DATA_DIR`" | PASS in substance (`pool.data_dir`: IBM_DATA_DIR, then ./data, then ./.data/data; it needs `known_exploited.csv` directly in that folder). Clarify "so that `data/known_exploited.csv` exists" |
+| 2c | "Without it, the pipeline keeps the TF-IDF-only files." | **FAIL.** Misleading. Without `data_cache/granite_embeddings.parquet`, `run_all.py` re-runs `final` with the default TF-IDF text and **overwrites** the verified G2 `top500.csv` and `scores_2026.csv` with C1 files. To reproduce the submission you need the embeddings (cloud/README.md: `make_embed_input.py`, then `embed_granite.py --provider LOCAL --out data_cache/granite_embeddings.parquet`) |
+| 3 | SOURCES links | PASS. huggingface.co/ibm-granite and ibm.com/watsonx come from ~/Working/datathon/IBM/README.md. The 4 watsonx and SDK URLs, PyPI and sbert come from docs/ibm.md. The data-source list matches the organisers' README line 75. No invented URLs. Library versions equal the lock |
+
+Exact fixes:
+- **1b:** "came from training labels ... and from seed luck" -> "was inflated by training labels that overlapped the test period and by seed luck".
+- **1e:** add to Limits: "Our first pass had already compared about a dozen variants on the 2025 test period, so it is not fully held out."
+- **2c:** "Without it, the pipeline keeps the TF-IDF-only files." -> "Without it, `run_all.py` writes the TF-IDF-only (C1) final files, which overwrite the submitted G2 `top500.csv`; to reproduce the submission, first create the embeddings (see `cloud/README.md`)."
+- Optional: in 1c add "a tie-break declared in advance in favour of IBM technology". In 2b add "so that `data/known_exploited.csv` exists".

@@ -8,7 +8,7 @@ The score orders the list. It is not a probability of attack. The full write-up 
 
 ## What we found
 - **A hidden leak in NIST fields.** All 52 later KEV-listed CVEs in our 2025 test had NIST status "Analyzed", a product list, and a filled CVSS3 score and CWE. Among the other test CVEs, only 50.1% were "Analyzed" and 64.9% had a product list. We do not use these fields.
-- **The first-pass "win" was inflated.** Its 25 vs 18-19 top-500 result came from training labels that overlapped the test period and from seed luck. With time-safe labels and a pre-registered test, our model roughly ties "exploit code first, then EPSS" in fold 1 (22 vs 18) and loses in fold 2 (11 vs 15). Its AUC (how well it orders the whole list) is higher in every fold and seed. The gain is borderline, though: for seed set 0 the paired interval includes zero. We do not claim to beat the baselines at the judges' metric.
+- **The first-pass "win" was inflated.** Its 25 vs 18-19 top-500 result was inflated by training labels that overlapped the test period and by seed luck (time-safe labels still give 21). With time-safe labels and a pre-registered test, our model roughly ties "exploit code first, then EPSS" in fold 1 (22 vs 18) and loses in fold 2 (11 vs 15). Its AUC (how well it orders the whole list) is higher in every fold and seed. The gain is borderline, though: for seed set 0 the paired interval includes zero. We do not claim to beat the baselines at the judges' metric.
 - **2026 looks different.** There are about twice as many rows as in the same 2025 months (72,670 vs 35,280). GitHub advisories rose from 5.6% to 15.0% of rows and VulnCheck from 1.1% to 9.3%. In August-September, 66-68% of CVEs have no product list.
 - **IBM Granite was adopted with no measurable gain.** A pre-registered rule added a Granite text score because its mean AUC was within a pre-set margin of the base model (0.871 vs 0.870). Granite alone scored lower (0.837).
 - **We make no 2026 accuracy claim,** because we have no 2026 labels.
@@ -22,14 +22,14 @@ We use IBM's Granite multilingual embedding model, run on the open weights local
    python3.12 -m venv .venv
    .venv/bin/pip install -r src/model/requirements.lock
    ```
-2. Unzip the IBM datathon data into `data/`, or point the `IBM_DATA_DIR` environment variable at the folder that holds `known_exploited.csv` and the other files.
+2. Unzip the IBM datathon data into `data/`, or point the `IBM_DATA_DIR` environment variable at the folder that holds the CSVs; `known_exploited.csv` must sit directly in that folder (e.g. `data/known_exploited.csv`).
 3. Run the whole pipeline:
    ```
    .venv/bin/python run_all.py
    ```
    This rebuilds every file in `results/`, stopping at the first failure. `python run_all.py --from <step>` resumes from a step.
 
-The Granite step runs only if `data_cache/granite_embeddings.parquet` exists. That file is produced by `cloud/embed_granite.py` (it needs `sentence-transformers` or `ibm-watsonx-ai`); see `cloud/README.md`. Without it, the pipeline keeps the TF-IDF-only files.
+The Granite step runs only if `data_cache/granite_embeddings.parquet` exists. That file is produced by `cloud/embed_granite.py` (it needs `sentence-transformers` or `ibm-watsonx-ai`); see `cloud/README.md`. The submitted `top500.csv` and `scores_2026.csv` use Granite (G2), so create the embeddings first. Without the file, `run_all.py` stops instead of overwriting them with the TF-IDF-only version (pass `--tfidf-only` to rebuild that version on purpose).
 
 ## Repo map
 - `src/model/`: the model code: pool and labels, checks, candidate models, assigner cap, leakage, drift, final scoring and Granite test. `src/model/FEATURES.md` documents every feature.
@@ -68,6 +68,7 @@ The Granite step runs only if `data_cache/granite_embeddings.parquet` exists. Th
 - `feat/data-engineering-db`: listed in `docs/INTERFACES.md`. We found no such branch on the remote.
 
 ## Limits
+- Our first pass had already compared about a dozen variants on the 2025 test period, so that period is not fully held out.
 - KEV is a proxy for "exploited". It lists confirmed attacks only, so a CVE not on KEV may still have been attacked.
 - Our 2025 test has only 52 positives, so one hit is about 2%. We always report ranges.
 - Descriptions are today's text, not the text at the snapshot month. We mask known exploitation wording, but other later edits cannot be checked.
