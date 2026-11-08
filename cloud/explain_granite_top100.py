@@ -6,7 +6,7 @@ Provider: watsonx.ai (default) or a dry offline template with --offline.
   python cloud/explain_granite_top100.py --limit 5
   python cloud/explain_granite_top100.py --limit 100
 
-Writes results/granite_explanations_top100.json keyed by cve_id.
+Writes docs/examples/explanations_top100_draft.json keyed by cve_id (not results/ until audited).
 """
 
 from __future__ import annotations
