@@ -7,10 +7,10 @@ import json, re, sys, pathlib
 root = pathlib.Path(__file__).resolve().parent.parent
 claims = {}
 for f in sorted((root/'results').glob('claims*.json')):
-    claims.update({f'{f.stem}:{k}': v for k, v in json.loads(f.read_text()).items()})
+    claims.update({f'{f.stem}:{k}': v for k, v in json.loads(f.read_text(encoding='utf-8')).items()})
 vals = [float(c['value']) for c in claims.values() if c.get('status') == 'verified' and isinstance(c.get('value'), (int, float))]
 ex = root/'tools'/'claims_exempt.txt'
-exempt = {l.strip() for l in ex.read_text().splitlines() if l.strip() and not l.startswith('#')} if ex.exists() else set()
+exempt = {l.strip() for l in ex.read_text(encoding='utf-8').splitlines() if l.strip() and not l.startswith('#')} if ex.exists() else set()
 pat = re.compile(r'(?<![\w.])(\d[\d,]*(?:\.\d+)?)(\s?%|[kKmM]\b)?')
 def ok(tok, suf):
     raw = tok.replace(',', '')
@@ -30,7 +30,7 @@ bad = 0
 for f in sys.argv[1:]:
     p = pathlib.Path(f)
     if not p.exists(): print(f'SKIP (missing): {f}'); continue
-    for i, line in enumerate(p.read_text().splitlines(), 1):
+    for i, line in enumerate(p.read_text(encoding='utf-8').splitlines(), 1):
         if line.lstrip().startswith(('#', '|---')) and not re.search(r'\d', line): continue
         for m in pat.finditer(line):
             if not ok(m.group(1), m.group(2)):

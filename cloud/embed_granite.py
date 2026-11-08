@@ -41,13 +41,23 @@ RETRIES = 6
 
 
 def load_dotenv():
-    """Minimal .env reader (KEY=VALUE lines). Existing env vars win. Values are never printed."""
+    """Minimal .env reader (KEY=VALUE lines). Values are never printed.
+
+    Existing non-empty env vars win. Empty placeholders are overwritten from .env
+    so a blank WATSONX_APIKEY in the shell cannot block a real key in .env.
+    """
     for p in (ROOT / ".env", Path.cwd() / ".env"):
         if p.is_file():
-            for line in p.read_text().splitlines():
+            # utf-8-sig strips a leading BOM so WATSONX_APIKEY is not mis-named on Windows.
+            for line in p.read_text(encoding="utf-8-sig").splitlines():
                 k, sep, v = line.strip().partition("=")
                 if sep and not k.startswith("#"):
-                    os.environ.setdefault(k.strip(), v.strip().strip('"').strip("'"))
+                    key = k.strip()
+                    val = v.strip().strip('"').strip("'")
+                    if not key:
+                        continue
+                    if not os.environ.get(key):
+                        os.environ[key] = val
 
 
 def est_tokens(texts):
