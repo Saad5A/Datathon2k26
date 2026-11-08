@@ -24,5 +24,3 @@ export function useTheme() {
   const toggle = useCallback(() => setMode((m) => (m === 'dark' ? 'light' : 'dark')), [])
   return { mode, toggle, palette: { ...surfaces[mode], neutral: dataNeutral[mode] } }
 }
-
-export type ChartPalette = ReturnType<typeof useTheme>['palette']

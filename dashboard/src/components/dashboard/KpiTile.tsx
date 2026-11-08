@@ -62,7 +62,7 @@ export function KpiTile({ label, value, accent, hint, delta, deltaLabel = 'vs pr
           <span
             className={cn(
               'tabular inline-flex items-center gap-0.5 font-mono font-medium',
-              dir === 0 ? 'text-fg-subtle' : bad ? 'text-sev-p0' : 'text-emerald-500',
+              dir === 0 ? 'text-fg-subtle' : bad ? 'text-sevfg-p0' : 'text-emerald-500',
             )}
           >
             <Icon className="size-3.5" aria-hidden />

@@ -1,7 +1,7 @@
 import Papa from 'papaparse'
 import type { Priority } from '@/theme/tokens'
 import { assignRanks, dummyScore } from './scoring'
-import type { Reason, ScoreRow } from './types'
+import { CSV_COLUMNS, type Reason, type ScoreRow } from './types'
 
 export type RawRecord = Record<string, unknown>
 
@@ -267,11 +267,7 @@ export function toCsv(rows: ScoreRow[]) {
   return Papa.unparse(
     rows.map((r) => ({ ...r, epss: r.epss ?? '', reasons: JSON.stringify(r.reasons) })),
     {
-      columns: [
-        'cve_id', 'published', 'snapshot_month', 'assigner', 'score', 'rank', 'percentile',
-        'in_top500', 'priority', 'epss', 'exploitdb', 'metasploit', 'nuclei', 'poc_github',
-        'any_public_exploit', 'reasons', 'model_version',
-      ],
+      columns: [...CSV_COLUMNS],
     },
   )
 }

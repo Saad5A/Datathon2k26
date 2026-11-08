@@ -12,7 +12,12 @@
     --border-strong: 212 212 216;
     --fg: 15 23 42;
     --fg-muted: 71 85 105;
-    --fg-subtle: 100 116 139;
+    --fg-subtle: 86 98 117;
+    /* severity colours as TEXT (AA on surfaces); fills keep the brand tokens */
+    --sevfg-p0: 185 28 28;
+    --sevfg-p1: 194 65 12;
+    --sevfg-p2: 180 83 9;
+    --sevfg-low: 37 99 235;
     color-scheme: light;
   }
   .dark {
@@ -23,7 +28,11 @@
     --border-strong: 63 63 70;
     --fg: 241 245 249;
     --fg-muted: 148 163 184;
-    --fg-subtle: 100 116 139;
+    --fg-subtle: 139 154 176;
+    --sevfg-p0: 248 113 113;
+    --sevfg-p1: 251 146 60;
+    --sevfg-p2: 217 119 6;
+    --sevfg-low: 96 165 250;
     color-scheme: dark;
   }
 

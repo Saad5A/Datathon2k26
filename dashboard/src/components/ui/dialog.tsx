@@ -4,8 +4,6 @@ import type { ComponentPropsWithoutRef, ReactNode } from 'react'
 import { cn } from '@/lib/utils'
 
 export const Dialog = D.Root
-export const DialogTrigger = D.Trigger
-export const DialogClose = D.Close
 
 export function DialogContent({
   className,

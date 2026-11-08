@@ -61,7 +61,3 @@ export function DropdownMenuRadioItem({ className, children, ...props }: Compone
     </DM.RadioItem>
   )
 }
-
-export function DropdownMenuSeparator() {
-  return <DM.Separator className="my-1 h-px bg-line" />
-}

@@ -1,9 +1,10 @@
-import { AlertTriangle, CheckCircle2, FileUp, FlaskConical, Loader2, Server, Upload, Cpu } from 'lucide-react'
+import { AlertTriangle, CheckCircle2, Cpu, FileUp, FlaskConical, Loader2, RotateCw, Server, Upload } from 'lucide-react'
 import { useCallback, useEffect, useRef, useState, type DragEvent, type ReactNode } from 'react'
 import { PriorityBadge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from '@/components/ui/dialog'
-import { DEFAULT_PREDICT_URL, predict } from '@/lib/api'
+import { predict } from '@/lib/api'
+import { API_BASE, ApiError } from '@/lib/apiClient'
 import { IngestError, normalizeStreaming, readRecords, type RawRecord } from '@/lib/parse'
 import { TOP_K } from '@/lib/scoring'
 import type { Dataset, ScoreRow } from '@/lib/types'
@@ -29,7 +30,6 @@ export interface JudgeUploadModalProps {
 
 export function JudgeUploadModal({ open, onOpenChange, onApply }: JudgeUploadModalProps) {
   const [engine, setEngine] = useState<Engine>('client')
-  const [endpoint, setEndpoint] = useState(DEFAULT_PREDICT_URL)
   const [rescore, setRescore] = useState(false)
   const [phase, setPhase] = useState<Phase>({ kind: 'idle' })
   const [dragging, setDragging] = useState(false)
@@ -63,7 +63,7 @@ export function JudgeUploadModal({ open, onOpenChange, onApply }: JudgeUploadMod
 
         if (eng === 'api') {
           setPhase({ kind: 'scoring', file, done: 0, total: records.length, leaders: [], engine: eng })
-          const rows = await predict(endpoint, records, ac.signal)
+          const rows = await predict(records, ac.signal)
           // Reveal the server's ranking progressively so the leaderboard animates in.
           for (let i = 1; i <= Math.min(10, rows.length); i++) {
             if (ac.signal.aborted) return
@@ -85,13 +85,13 @@ export function JudgeUploadModal({ open, onOpenChange, onApply }: JudgeUploadMod
         if ((e as Error).name === 'AbortError') return
         setPhase({
           kind: 'error',
-          message: e instanceof IngestError ? e.message : `Unexpected error: ${(e as Error).message}`,
+          message: e instanceof IngestError || e instanceof ApiError ? e.message : `Unexpected error: ${(e as Error).message}`,
           file,
           canFallback: eng === 'api',
         })
       }
     },
-    [engine, endpoint, rescore],
+    [engine, rescore],
   )
 
   const pick = (files: FileList | null) => {
@@ -132,10 +132,10 @@ export function JudgeUploadModal({ open, onOpenChange, onApply }: JudgeUploadMod
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent aria-describedby="judge-desc">
+      <DialogContent>
         <div className="border-b border-line px-6 py-4 pr-12">
           <DialogTitle>Evaluate a dataset</DialogTitle>
-          <DialogDescription id="judge-desc">
+          <DialogDescription>
             Upload CVEs as CSV or JSON. Rows are scored, ranked and loaded into every widget on the dashboard.
           </DialogDescription>
         </div>
@@ -157,19 +157,18 @@ export function JudgeUploadModal({ open, onOpenChange, onApply }: JudgeUploadMod
                 onClick={() => setEngine('api')}
                 icon={<Server />}
                 title="Model API"
-                body="POST rows to the trained model and render its ranking."
+                body={
+                  API_BASE
+                    ? 'POST rows to the trained model and render its ranking.'
+                    : 'Unavailable: this deployment runs in demo mode with no backend.'
+                }
+                disabled={!API_BASE}
               />
             </div>
             {engine === 'api' ? (
-              <label className="mt-3 flex items-center gap-2 text-xs text-fg-muted">
-                Endpoint
-                <input
-                  value={endpoint}
-                  onChange={(e) => setEndpoint(e.target.value)}
-                  className="h-8 flex-1 rounded-md border border-line-strong bg-bg px-2 font-mono text-xs text-fg"
-                  spellCheck={false}
-                />
-              </label>
+              <p className="mt-3 break-all text-xs text-fg-muted">
+                Sends <code className="font-mono text-fg">POST {API_BASE}/predict</code>
+              </p>
             ) : (
               <label className="mt-3 flex items-center gap-2 text-xs text-fg-muted">
                 <input type="checkbox" checked={rescore} onChange={(e) => setRescore(e.target.checked)} className="accent-sev-low" />
@@ -193,7 +192,7 @@ export function JudgeUploadModal({ open, onOpenChange, onApply }: JudgeUploadMod
                   dragging ? 'border-sev-low bg-sev-low/10' : 'border-line-strong',
                 )}
               >
-                <FileUp className={cn('size-8', dragging ? 'text-sev-low' : 'text-fg-subtle')} aria-hidden />
+                <FileUp className={cn('size-8', dragging ? 'text-sevfg-low' : 'text-fg-subtle')} aria-hidden />
                 <div>
                   <p className="font-medium text-fg">Drop a .csv or .json file</p>
                   <p className="mt-1 text-xs text-fg-subtle">
@@ -221,20 +220,27 @@ export function JudgeUploadModal({ open, onOpenChange, onApply }: JudgeUploadMod
               </div>
               {phase.kind === 'error' && (
                 <div role="alert" className="flex gap-3 rounded-md border border-sev-p0/40 bg-sev-p0/10 p-3 text-sm">
-                  <AlertTriangle className="mt-0.5 size-4 shrink-0 text-sev-p0" />
+                  <AlertTriangle className="mt-0.5 size-4 shrink-0 text-sevfg-p0" />
                   <div className="min-w-0 flex-1">
                     <p className="text-fg">{phase.message}</p>
-                    {phase.canFallback && phase.file && (
-                      <Button
-                        className="mt-2"
-                        size="sm"
-                        onClick={() => {
-                          setEngine('client')
-                          void run(phase.file!, 'client')
-                        }}
-                      >
-                        Score in browser instead
-                      </Button>
+                    {phase.file && (
+                      <div className="mt-2 flex flex-wrap gap-2">
+                        <Button size="sm" onClick={() => void run(phase.file!)}>
+                          <RotateCw /> Retry
+                        </Button>
+                        {phase.canFallback && (
+                          <Button
+                            size="sm"
+                            variant="ghost"
+                            onClick={() => {
+                              setEngine('client')
+                              void run(phase.file!, 'client')
+                            }}
+                          >
+                            Score in browser instead
+                          </Button>
+                        )}
+                      </div>
                     )}
                   </div>
                 </div>
@@ -245,13 +251,13 @@ export function JudgeUploadModal({ open, onOpenChange, onApply }: JudgeUploadMod
           )}
         </div>
 
-        <div className="flex items-center justify-between gap-3 border-t border-line px-6 py-3">
-          <p className="text-xs text-fg-subtle">
+        <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-2 border-t border-line px-6 py-3">
+          <p className="basis-full text-xs text-fg-subtle sm:basis-auto">
             {phase.kind === 'done'
               ? `${fmtInt(phase.rows.length)} CVEs ranked in ${Math.round(phase.ms)} ms`
               : 'Files are processed locally unless Model API is selected.'}
           </p>
-          <div className="flex gap-2">
+          <div className="ml-auto flex gap-2">
             {phase.kind === 'done' && (
               <Button variant="ghost" size="sm" onClick={() => setPhase({ kind: 'idle' })}>
                 Upload another
@@ -272,14 +278,29 @@ export function JudgeUploadModal({ open, onOpenChange, onApply }: JudgeUploadMod
   )
 }
 
-function EngineOption({ active, onClick, icon, title, body }: { active: boolean; onClick: () => void; icon: ReactNode; title: string; body: string }) {
+function EngineOption({
+  active,
+  onClick,
+  icon,
+  title,
+  body,
+  disabled,
+}: {
+  active: boolean
+  onClick: () => void
+  icon: ReactNode
+  title: string
+  body: string
+  disabled?: boolean
+}) {
   return (
     <button
       type="button"
       onClick={onClick}
       aria-pressed={active}
+      disabled={disabled}
       className={cn(
-        'flex gap-3 rounded-md border p-3 text-left transition-colors [&>svg]:mt-0.5 [&>svg]:size-4 [&>svg]:shrink-0',
+        'flex gap-3 rounded-md border p-3 text-left transition-colors disabled:cursor-not-allowed disabled:opacity-50 [&>svg]:mt-0.5 [&>svg]:size-4 [&>svg]:shrink-0',
         active ? 'border-fg/60 bg-raised' : 'border-line-strong hover:bg-raised/60',
       )}
     >
@@ -335,7 +356,7 @@ function LiveRanking({ phase }: { phase: Extract<Phase, { kind: 'parsing' | 'sco
       </div>
 
       {counts && (
-        <div className="grid grid-cols-4 gap-2">
+        <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
           {(['P0', 'P1', 'P2'] as const).map((p) => (
             <div key={p} className="rounded-md border border-line px-3 py-2">
               <PriorityBadge priority={p} />
@@ -365,7 +386,7 @@ function LiveRanking({ phase }: { phase: Extract<Phase, { kind: 'parsing' | 'sco
               <span className="tabular w-6 font-mono text-xs text-fg-subtle">{i + 1}</span>
               <span className="flex-1 truncate font-mono text-sm font-medium text-fg">{r.cve_id}</span>
               <span className="hidden truncate text-xs text-fg-muted sm:block sm:max-w-[160px]">{r.assigner}</span>
-              <span className="h-1.5 w-16 overflow-hidden rounded-full bg-raised" aria-hidden>
+              <span className="hidden h-1.5 w-16 overflow-hidden rounded-full bg-raised sm:block" aria-hidden>
                 <span className="block h-full rounded-full" style={{ width: `${r.score * 100}%`, backgroundColor: phase.kind === 'done' ? priorityColor[r.priority] : 'currentColor' }} />
               </span>
               <span className="tabular w-12 text-right font-mono text-xs text-fg">{fmtScore(r.score)}</span>
@@ -381,7 +402,7 @@ function LiveRanking({ phase }: { phase: Extract<Phase, { kind: 'parsing' | 'sco
             <li>• File already contained scores; ranking uses them as-is. Tick “Re-score” to run the in-browser model instead.</li>
           )}
           {phase.warnings.map((w) => (
-            <li key={w} className="text-sev-p2">• {w}</li>
+            <li key={w} className="text-sevfg-p2">• {w}</li>
           ))}
         </ul>
       )}

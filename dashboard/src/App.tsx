@@ -8,6 +8,7 @@ import { KpiTile } from '@/components/dashboard/KpiTile'
 import { RankedTable, type TableFilters } from '@/components/dashboard/RankedTable'
 import { TrendWidget } from '@/components/dashboard/TrendWidget'
 import { WidgetCard } from '@/components/dashboard/WidgetCard'
+import { ApiStatus } from '@/components/ApiStatus'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { DropdownMenuLabel, DropdownMenuRadioGroup, DropdownMenuRadioItem } from '@/components/ui/dropdown-menu'
@@ -98,7 +99,7 @@ export default function App() {
             </div>
           </div>
 
-          <div className="flex min-w-0 flex-1 items-center gap-2">
+          <div className="flex min-w-0 basis-full items-center gap-2 sm:flex-1 sm:basis-0">
             <Tooltip
               content={
                 <span>
@@ -108,11 +109,15 @@ export default function App() {
                 </span>
               }
             >
-              <span className="flex min-w-0 items-center gap-2 rounded-md border border-line px-2.5 py-1.5 text-xs">
+              <span className="flex min-w-0 max-w-full items-center gap-2 rounded-md border border-line px-2.5 py-1.5 text-xs">
                 <Database className="size-3.5 shrink-0 text-fg-subtle" aria-hidden />
                 <span className="truncate font-mono text-fg">{dataset.name}</span>
                 <span className="tabular shrink-0 font-mono text-fg-subtle">{fmtInt(dataset.rows.length)} rows</span>
-                {dataset.source !== 'sample' && <Badge className="border-sev-low/50 text-sev-low">judge</Badge>}
+                {dataset.source === 'sample' ? (
+                  <Badge className="border-sev-p2/60 text-sevfg-p2">demo data</Badge>
+                ) : (
+                  <Badge className="border-sev-low/50 text-sevfg-low">judge</Badge>
+                )}
               </span>
             </Tooltip>
             {dataset.source !== 'sample' && (
@@ -271,6 +276,11 @@ export default function App() {
             </WidgetCard>
           </div>
         </main>
+
+        <footer className="mt-10 flex flex-wrap items-center justify-between gap-x-6 gap-y-2 border-t border-line pt-4 text-xs text-fg-subtle">
+          <p>Before the Breach · Sheridan Datathon 2026 · Scores rank CVEs; they are not calibrated probabilities.</p>
+          <ApiStatus />
+        </footer>
       </div>
 
       <JudgeUploadModal open={uploadOpen} onOpenChange={setUploadOpen} onApply={loadDataset} />

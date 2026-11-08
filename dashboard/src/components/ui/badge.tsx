@@ -1,5 +1,5 @@
 import type { HTMLAttributes } from 'react'
-import { priorityColor, priorityLabel, type Priority } from '@/theme/tokens'
+import { priorityColor, priorityLabel, priorityText, type Priority } from '@/theme/tokens'
 import { cn } from '@/lib/utils'
 
 export function Badge({ className, ...props }: HTMLAttributes<HTMLSpanElement>) {
@@ -18,8 +18,8 @@ export function Badge({ className, ...props }: HTMLAttributes<HTMLSpanElement>) 
 export function PriorityBadge({ priority, showLabel = false }: { priority: Priority; showLabel?: boolean }) {
   return (
     <span
-      className="inline-flex items-center gap-1.5 rounded px-1.5 py-0.5 font-mono text-[11px] font-semibold leading-none text-white"
-      style={{ backgroundColor: priorityColor[priority] }}
+      className="inline-flex items-center gap-1.5 rounded px-1.5 py-0.5 font-mono text-[11px] font-semibold leading-none"
+      style={{ backgroundColor: priorityColor[priority], color: priorityText[priority] }}
       title={priorityLabel[priority]}
     >
       {priority}

@@ -62,9 +62,10 @@ Bands use percentile, not absolute rank, so they still make sense for a small ju
 
 ## 4. `POST /predict`
 
-The dashboard's "Evaluate dataset → Model API" mode calls this endpoint. In
-development, Vite proxies `/predict` to `http://127.0.0.1:8000`; override with
-`PREDICT_PROXY_TARGET`, or set `VITE_PREDICT_URL` at build time.
+The dashboard's "Evaluate dataset → Model API" mode calls this endpoint at
+`${VITE_API_URL}/predict`. The browser calls the backend directly (no proxy), so
+the backend must allow the app's origin via CORS; see `dashboard/README.md`.
+Timeout: 60 s.
 
 **Request** (`Content-Type: application/json`)
 
@@ -79,6 +80,11 @@ Rows are passed through as parsed from the uploaded file, so extra columns may b
 `score` is required on every row. `reasons` may be a JSON string or an array.
 If `rank`, `percentile` and `priority` are present on every row and ranks are
 unique, the dashboard keeps them; otherwise it ranks by `score` within the batch.
+
+## 4a. `GET /health`
+
+Used by the footer "API status" indicator (every 60 s and on click). Any `2xx`
+response means online; the body is ignored. Timeout: 5 s.
 
 ## 5. Judge uploads (CSV / JSON)
 

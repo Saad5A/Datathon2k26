@@ -25,6 +25,13 @@ export const priorityColor: Record<Priority, string> = {
   P2: severity.medium,
 }
 
+/** Text on a solid priority fill. White fails AA on orange/amber, so those use near-black. */
+export const priorityText: Record<Priority, string> = {
+  P0: '#FFFFFF', // 4.83:1
+  P1: '#09090B', // 5.59:1
+  P2: '#09090B', // 6.24:1
+}
+
 export const priorityLabel: Record<Priority, string> = {
   P0: 'Critical',
   P1: 'High',
@@ -51,7 +58,7 @@ export const surfaces: Record<ThemeMode, {
     borderStrong: '#3F3F46', //  zinc-700
     fg: '#F1F5F9', //            slate-100
     fgMuted: '#94A3B8', //       slate-400
-    fgSubtle: '#64748B', //      slate-500
+    fgSubtle: '#8B9AB0', //      4.5:1+ on surface, bg and raised
     grid: '#27272A',
   },
   light: {
@@ -62,7 +69,7 @@ export const surfaces: Record<ThemeMode, {
     borderStrong: '#D4D4D8', //  zinc-300
     fg: '#0F172A', //            slate-900
     fgMuted: '#475569', //       slate-600
-    fgSubtle: '#64748B', //      slate-500
+    fgSubtle: '#566275', //      4.5:1+ on white and zinc-100
     grid: '#E4E4E7',
   },
 }

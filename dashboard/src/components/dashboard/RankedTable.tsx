@@ -28,7 +28,7 @@ import { Tooltip } from '@/components/ui/tooltip'
 import { queryScores, type ScorePage } from '@/lib/server'
 import { EXPLOIT_FLAGS, EXPLOIT_FLAG_LABEL, type Reason, type ScoreRow } from '@/lib/types'
 import { cn, fmtInt, fmtScore, humanizeSignal } from '@/lib/utils'
-import { priorityColor, severity, type Priority } from '@/theme/tokens'
+import { priorityColor, priorityText, severity, type Priority } from '@/theme/tokens'
 
 export interface TableFilters {
   q: string
@@ -213,7 +213,7 @@ export function RankedTable({ rows, filters, onFiltersChange, datasetKey }: Rank
             {row.original.cve_id}
             {row.original.in_top500 === 1 && (
               <Tooltip content="Inside the top-500 review queue">
-                <span className="ml-1.5 align-middle text-[10px] font-semibold text-sev-p0">TOP</span>
+                <span className="ml-1.5 align-middle text-[10px] font-semibold text-sevfg-p0">TOP</span>
               </Tooltip>
             )}
           </span>
@@ -274,10 +274,10 @@ export function RankedTable({ rows, filters, onFiltersChange, datasetKey }: Rank
           if (!r.any_public_exploit) return <span className="text-fg-subtle">none</span>
           return (
             <span className="flex flex-wrap gap-1">
-              {on.length === 0 && <span className="text-xs text-sev-p1">yes</span>}
+              {on.length === 0 && <span className="text-xs text-sevfg-p1">yes</span>}
               {on.map((f) => (
                 <Tooltip key={f} content={EXPLOIT_FLAG_LABEL[f]}>
-                  <span className="rounded border border-sev-p1/50 bg-sev-p1/10 px-1 font-mono text-[10px] font-semibold leading-4 text-sev-p1">
+                  <span className="rounded border border-sev-p1/50 bg-sev-p1/10 px-1 font-mono text-[10px] font-semibold leading-4 text-sevfg-p1">
                     {FLAG_SHORT[f]}
                   </span>
                 </Tooltip>
@@ -365,9 +365,9 @@ export function RankedTable({ rows, filters, onFiltersChange, datasetKey }: Rank
                 onClick={() => togglePriority(p)}
                 className={cn(
                   'flex h-9 items-center gap-1.5 rounded-md border px-2.5 font-mono text-xs font-semibold transition-colors',
-                  on ? 'border-transparent text-white' : 'border-line-strong text-fg-muted hover:bg-raised',
+                  on ? 'border-transparent' : 'border-line-strong text-fg-muted hover:bg-raised',
                 )}
-                style={on ? { backgroundColor: priorityColor[p] } : undefined}
+                style={on ? { backgroundColor: priorityColor[p], color: priorityText[p] } : undefined}
               >
                 {!on && <span className="size-2 rounded-sm" style={{ backgroundColor: priorityColor[p] }} aria-hidden />}
                 {p}
@@ -381,7 +381,7 @@ export function RankedTable({ rows, filters, onFiltersChange, datasetKey }: Rank
           onClick={() => onFiltersChange({ ...filters, exploitOnly: !filters.exploitOnly })}
           className={cn(
             'h-9 rounded-md border px-3 text-xs font-medium transition-colors',
-            filters.exploitOnly ? 'border-sev-p1 bg-sev-p1/15 text-sev-p1' : 'border-line-strong text-fg-muted hover:bg-raised',
+            filters.exploitOnly ? 'border-sev-p1 bg-sev-p1/15 text-sevfg-p1' : 'border-line-strong text-fg-muted hover:bg-raised',
           )}
         >
           Public exploit only

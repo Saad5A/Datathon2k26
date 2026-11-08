@@ -15,6 +15,12 @@ export default {
           low: severity.low,
           neutral: severity.neutral,
         },
+        sevfg: {
+          p0: 'rgb(var(--sevfg-p0) / <alpha-value>)',
+          p1: 'rgb(var(--sevfg-p1) / <alpha-value>)',
+          p2: 'rgb(var(--sevfg-p2) / <alpha-value>)',
+          low: 'rgb(var(--sevfg-low) / <alpha-value>)',
+        },
         // Surfaces resolve through CSS variables so one class works in both themes.
         bg: 'rgb(var(--bg) / <alpha-value>)',
         surface: 'rgb(var(--surface) / <alpha-value>)',
