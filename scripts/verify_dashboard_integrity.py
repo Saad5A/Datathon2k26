@@ -8,6 +8,7 @@ Does not modify any files.
 from __future__ import annotations
 
 import json
+import os
 import sys
 import urllib.request
 from pathlib import Path
@@ -15,7 +16,7 @@ from pathlib import Path
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
-BASE = "http://127.0.0.1:8000"
+BASE = os.environ.get("API_BASE", "http://127.0.0.1:8000")
 PROTECTED = [
     ROOT / "JUDGE_QA.md",
     ROOT / "docs" / "writeup_model.md",

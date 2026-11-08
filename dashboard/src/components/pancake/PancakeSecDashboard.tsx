@@ -118,7 +118,7 @@ export function PancakeSecDashboard() {
         setLoading(true)
         const [stats, page] = await Promise.all([
           fetchStatsSummary(ac.signal),
-          fetchRankingPage({ page: 1, limit: 50, sort: 'rank', order: 'asc' }, ac.signal),
+          fetchRankingPage({ page: 1, limit: 500, sort: 'rank', order: 'asc' }, ac.signal),
         ])
         setSummary(stats)
         setBaselineRows(page.items)
@@ -211,13 +211,15 @@ export function PancakeSecDashboard() {
 
   const filteredTable = useMemo(() => {
     const q = tableQ.trim().toLowerCase()
-    return rows.filter((r) => {
-      const pri = r.priority || 'P2'
-      if (tablePri !== 'ALL' && pri !== tablePri) return false
-      if (!q) return true
-      const hay = `${r.cve_id} ${r.assigner || ''}`.toLowerCase()
-      return hay.includes(q)
-    })
+    return rows
+      .filter((r) => {
+        const pri = r.priority || 'P2'
+        if (tablePri !== 'ALL' && pri !== tablePri) return false
+        if (!q) return true
+        const hay = `${r.cve_id} ${r.assigner || ''}`.toLowerCase()
+        return hay.includes(q)
+      })
+      .sort((a, b) => (a.rank ?? Infinity) - (b.rank ?? Infinity))
   }, [rows, tableQ, tablePri])
 
   const downloadTop500 = async () => {
@@ -412,8 +414,8 @@ export function PancakeSecDashboard() {
         )}
 
         {view === '3d' ? (
-          <div className="grid min-h-[700px] flex-1 grid-cols-1 gap-6 lg:grid-cols-12">
-            <div className="glass-card relative flex flex-col overflow-hidden rounded-3xl border border-[#E8DFC8] p-5 lg:col-span-7">
+          <div className="grid flex-1 grid-cols-1 gap-6 lg:grid-cols-12">
+            <div className="glass-card relative flex flex-col self-start overflow-hidden rounded-3xl border border-[#E8DFC8] p-5 lg:col-span-7">
               <div className="absolute left-6 top-6 z-10 flex flex-wrap items-center gap-2">
                 <div className="mr-2 text-xs font-bold uppercase tracking-wider text-[#7A6B5D]">Filter Tiers:</div>
                 {(['ALL', 'P0', 'P1', 'P2'] as const).map((t) => (
@@ -427,11 +429,11 @@ export function PancakeSecDashboard() {
                         : 'border border-[#E8DFC8] bg-white/90 text-[#7A6B5D] hover:bg-[#FAF4EB]'
                     }`}
                   >
-                    {t === 'ALL' ? `All Tiers (${stack.length})` : t}
+                    {t === 'ALL' ? 'All Tiers' : t}
                   </button>
                 ))}
               </div>
-              <div className="mt-12 flex-1">
+              <div className="mt-12">
                 {stack.length > 0 ? (
                   <PancakeScene
                     stack={stack}

@@ -48,12 +48,12 @@ Check: <http://localhost:8000/api/health>
 
 ```bash
 cd dashboard
-npm install
-printf 'VITE_API_URL=/api\n' > .env.local
+npm ci
+cp .env.example .env.local   # sets VITE_API_URL=http://localhost:8000/api
 npm run dev -- --host 0.0.0.0 --port 5173
 ```
 
-Open <http://localhost:5173/>. Vite proxies `/api` to `http://127.0.0.1:8000`, so the same relative base works in development and production. The evidence sheet is at <http://localhost:5173/results>.
+Open <http://localhost:5173/>. The dashboard calls the API at `VITE_API_URL` (read at build/dev start), so the API from step 1 must be running; without `VITE_API_URL` it shows a configuration error. To run with no backend, set `VITE_API_URL=demo` in `.env.local` (sample data and in-browser scoring; live ranking disabled). The evidence sheet is at <http://localhost:5173/results>.
 
 The default upload engine is **Model API** when `VITE_API_URL` is configured. It sends rows to `POST /api/predict`; known scoreboard CVEs use the audited **G2** score, unknown CVEs use a transparent fallback labelled `api-heuristic-v1`. If the API is unavailable, use **Local demo** in *Processing options*; no file leaves the browser.
 
