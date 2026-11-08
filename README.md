@@ -19,7 +19,20 @@ We rank the 72,670 CVEs on the 2026 scoreboard by how likely each is to be added
 | `audit/` | Independent audit reports and evidence. |
 | `docs/` | Model notes, IBM details, interfaces and this project’s supporting documentation. |
 
-## Run the dashboard
+## Production URL (temporary)
+
+The server deployment currently uses the IP as its hostname because DNS/SSL cutover is pending:
+
+```text
+http://64.177.59.101/
+http://64.177.59.101/api/health
+http://64.177.59.101/evolve/
+http://64.177.59.101/pancakess_test_upload.csv
+```
+
+The `pancakess.work` domain is still on Vercel. Once its Porkbun A/CNAME records point to `64.177.59.101`, run the Certbot command in [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md).
+
+## Run the dashboard locally
 
 ### 1. Start the API
 

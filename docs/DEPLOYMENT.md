@@ -1,6 +1,12 @@
 # Deployment — pancakess.work
 
-The production stack runs on `64.177.59.101`:
+The production stack runs on `64.177.59.101`. Until DNS/SSL is cut over, use the IP as the hostname (HTTP):
+
+```text
+http://64.177.59.101/
+```
+
+The production stack:
 
 ```text
 Browser
@@ -54,7 +60,7 @@ At **Porkbun** (authoritative nameservers `*.ns.porkbun.com`), set:
 
 Remove the existing Vercel A/CNAME records. TTL 300–600 seconds.
 
-Current status (checked 2026-11-08): `pancakess.work` still points to Vercel (`216.198.79.1`), so the domain/SSL cutover requires this DNS change.
+Current status (checked 2026-11-08): `pancakess.work` still points to Vercel (`216.198.79.1`), so the domain/SSL cutover requires this DNS change. The IP endpoint is fully live in the meantime; it is HTTP only until DNS is switched and Certbot runs.
 
 ## SSL
 
