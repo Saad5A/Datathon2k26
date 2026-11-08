@@ -49,7 +49,7 @@ Paired difference C1 minus exploit-then-EPSS (seed median): AUC +0.092 / +0.071;
 
 **6. IBM Granite text (pre-registered G1/G2 vs C1; audit/2026-11-08-granite-final.md).** Granite embeddings of every masked description (same model on watsonx.ai for a subset; vectors match). Mean AUC over folds: C1 0.870, G1 (Granite instead of TF-IDF) 0.837, G2 (both) 0.871. Per fold G2 vs C1: AUC 0.874 vs 0.860, 0.868 vs 0.880; top-500 20 vs 22, 11 vs 11. G2 adopted by the declared IBM tie-break (within 0.01 of C1); NO measurable gain; never say Granite improves accuracy.
 
-**Not yet verified (do not quote):** reverse-time check (results/reverse_time.json, not time-safe), IBM input summary.
+**Not yet verified (do not quote):** IBM input summary (results/embed_input_summary.json). The reverse-time check (results/reverse_time.json) is verified (audit/2026-11-07-reverse-time.md) but is NOT time-safe and NOT evidence of accuracy.
 ## SUPERSEDED: first-pass results table (old run, 7 of 12 rows differ at printed precision; do not quote)
 | Approach | top500 | top1000 | AUC | Avg precision | Median rank of positives |
 |---|---|---|---|---|---|
