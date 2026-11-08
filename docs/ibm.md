@@ -57,3 +57,28 @@ whether watsonx.ai vectors come back L2-normalised (the script normalises both).
 5. watsonx.ai Runtime service plans: https://ca-tor.dai.cloud.ibm.com/docs/content/wsj/getting-started/wml-plans.html?context=wx
 6. PyPI: https://pypi.org/project/ibm-watsonx-ai/ (1.9.1, released 2026-11-05; source/samples https://github.com/IBM/watsonx-ai-samples)
 7. sentence-transformers API (v6.2): https://sbert.net/docs/package_reference/sentence_transformer/SentenceTransformer.html
+
+## Granite explanation layer (RUN 2026-11-08, local CPU)
+
+This is a real IBM Granite call, separate from the ranking. It does **not** change `scores_2026.csv` or `top500.csv`.
+
+| Item | Value |
+|---|---|
+| Model | Ollama tag `granite4.2:3b` (IBM Granite 4.2 3B, Apache 2.0; HF `ibm-granite/granite-4.2-3b`) |
+| Runtime | Local CPU via Ollama; thinking disabled, temperature 0, JSON format |
+| Prompt version | `summary-v1` |
+| Scope | Top 100 CVEs of the verified ranking |
+| Output | `results/granite_summaries_top100.json`; meta `results/granite_summaries_top100.meta.json` |
+| Results | 100 rows, 100 unique IDs; **94 Granite summaries passed grounding**, 6 deterministic template fallbacks; 0 unsupported versions/URLs/CVE IDs/banned claims in the final file |
+| Grounding | no URL, no foreign CVE ID, no number/version absent from the description, no banned exploitation/probability words, content-word overlap >= 65%; fallback to the description's first sentence |
+| Deterministic fields | rank, priority, reasons, suggested action, evidence; a vendor-advisory URL is used only if it exists in `references.csv` |
+| Labels | `ai_generated: true` only for Granite summaries; template fallbacks are labelled `deterministic-template` and must not be shown as AI-generated |
+
+Reproduce:
+
+```bash
+ollama pull granite4.2:3b
+.venv/bin/python cloud/explain_granite_ollama.py --limit 100
+```
+
+Caveat: the 6 template fallbacks are not AI-generated. The descriptions are today's NVD text, so a residual post-snapshot edit risk remains; the validator removes the known exploitation wording and unsupported facts, but cannot prove the absence of all later edits.

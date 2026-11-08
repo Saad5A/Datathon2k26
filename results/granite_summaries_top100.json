@@ -1,0 +1,2233 @@
+{
+  "meta": {
+    "model_id": "granite4.2:3b",
+    "prompt_version": "summary-v1",
+    "rows": 100,
+    "granite_summaries": 94,
+    "template_fallbacks": 6,
+    "elapsed_seconds": 891.1,
+    "generated_at": "2026-11-08T00:35:14Z"
+  },
+  "results": [
+    {
+      "cve_id": "CVE-2026-10523",
+      "rank": 1,
+      "priority": "P0",
+      "summary": "An Authentication Bypass vulnerability allows a remote unauthenticated attacker to create arbitrary administrative accounts and obtain full administrative access.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 1, priority P0; signals: description_text, public_exploit_code, assigner_kev_history.",
+      "suggested_action": "Review the vendor advisory: https://hub.ivanti.com/s/article/Security-Advisory-Ivanti-Sentry-CVE-2026-10520-CVE-2026-10523?language=en_US",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "An Authentication Bypass vulnerability (CWE-288) in Ivanti Sentry before the R10.5.2, R10.6.2 and R10.7.1 versions allows a remote unauthenticated attacker to create arbitrary administrative accounts and obtain full administrative access"
+        }
+      ],
+      "unknowns": [],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:20:30Z"
+    },
+    {
+      "cve_id": "CVE-2026-2699",
+      "rank": 2,
+      "priority": "P0",
+      "summary": "An unauthenticated attacker can access restricted configuration pages of the Customer Managed ShareFile Storage Zones Controller (SZC), leading to system configuration changes and potential remote code execution.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 2, priority P0; signals: public_exploit_code, description_text, assigner_kev_history.",
+      "suggested_action": "Review the vendor advisory: https://docs.sharefile.com/en-us/storage-zones-controller/5-0/security-vulnerability-feb26",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "Customer Managed ShareFile Storage Zones Controller (SZC) allows an unauthenticated attacker to access restricted configuration pages."
+        }
+      ],
+      "unknowns": [],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:20:35Z"
+    },
+    {
+      "cve_id": "CVE-2026-8037",
+      "rank": 3,
+      "priority": "P0",
+      "summary": "An un-authenticated attacker can execute arbitrary commands on the LoadMaster appliance by exploiting unsanitized input in multiple command endpoints.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 3, priority P0; signals: public_exploit_code, description_text, assigner_kev_history.",
+      "suggested_action": "Review the vendor advisory: https://community.progress.com/s/article/LoadMaster-Critical-Security-Bulletin-June-2026-CVE-2026-8037-CVE-2026-33691",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "OS Command Injection Remote Code Execution Vulnerability in API in Progress ADC Products allows an un-authenticated attacker to execute arbitrary commands on the LoadMaster appliance by exploiting unsanitized input in multiple command endpoints"
+        }
+      ],
+      "unknowns": [],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:20:39Z"
+    },
+    {
+      "cve_id": "CVE-2026-65694",
+      "rank": 4,
+      "priority": "P0",
+      "summary": "Microweber CMS through 2.0.20 contains a path traversal vulnerability that allows unauthenticated remote attackers to read arbitrary files by using directory traversal sequences in the path query parameter.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 4, priority P0; signals: public_exploit_code, description_text, epss.",
+      "suggested_action": "No vendor patch reference in the record; apply the vendor's latest update, restrict network exposure, and monitor.",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "Microweber CMS through 2.0.20 contains a path traversal vulnerability in the static file controller that allows unauthenticated remote attackers to read arbitrary files by supplying directory traversal sequences in the path query parameter."
+        }
+      ],
+      "unknowns": [
+        "No vendor patch reference in the record."
+      ],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:20:45Z"
+    },
+    {
+      "cve_id": "CVE-2026-71362",
+      "rank": 5,
+      "priority": "P0",
+      "summary": "An attacker can leverage an Incorrect Authorization vulnerability in Adobe Commerce to gain elevated access to sensitive resources without user interaction.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 5, priority P0; signals: public_exploit_code, description_text, epss.",
+      "suggested_action": "Review the vendor advisory: https://helpx.adobe.com/security/products/magento/apsb26-92.html",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "Adobe Commerce is affected by an Incorrect Authorization vulnerability that could result in privilege escalation."
+        }
+      ],
+      "unknowns": [],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:20:50Z"
+    },
+    {
+      "cve_id": "CVE-2026-26221",
+      "rank": 6,
+      "priority": "P0",
+      "summary": "Hyland OnBase exposes an unauthenticated .NET Remoting service that allows an attacker to send crafted requests to trigger unsafe object unmarshalling, enabling arbitrary file read/write and potentially leading to remote code execution or SMB coercion.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 6, priority P0; signals: description_text, public_exploit_code, epss.",
+      "suggested_action": "No vendor patch reference in the record; apply the vendor's latest update, restrict network exposure, and monitor.",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "Hyland OnBase contains an unauthenticated .NET Remoting exposure in the OnBase Workflow Timer Service (Hyland.Core.Workflow.NTService.exe)."
+        }
+      ],
+      "unknowns": [
+        "No vendor patch reference in the record."
+      ],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:20:58Z"
+    },
+    {
+      "cve_id": "CVE-2026-1603",
+      "rank": 7,
+      "priority": "P0",
+      "summary": "An authentication bypass in Ivanti Endpoint Manager before version 2024 SU5 allows a remote unauthenticated attacker to leak specific stored credential data.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 7, priority P0; signals: description_text, public_exploit_code, epss.",
+      "suggested_action": "Review the vendor advisory: https://hub.ivanti.com/s/article/Security-Advisory-EPM-February-2026-for-EPM-2024?language=en_US",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "An authentication bypass in Ivanti Endpoint Manager before version 2024 SU5 allows a remote unauthenticated attacker to leak specific stored credential data."
+        }
+      ],
+      "unknowns": [],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:21:04Z"
+    },
+    {
+      "cve_id": "CVE-2026-26335",
+      "rank": 8,
+      "priority": "P0",
+      "summary": "Calero VeraSMART versions prior to 2022 R1 use static ASP.NET/IIS machineKey values in web.config that an attacker can exploit to craft a valid ViewState payload, leading to server-side deserialization and remote code execution.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 8, priority P0; signals: description_text, public_exploit_code, epss.",
+      "suggested_action": "No vendor patch reference in the record; apply the vendor's latest update, restrict network exposure, and monitor.",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "Calero VeraSMART versions prior to 2022 R1 use static ASP.NET/IIS machineKey values configured for the VeraSMART web application and stored in C:\\\\Program Files (x86)\\\\Veramark\\\\VeraSMART\\\\WebRoot\\\\web.config."
+        }
+      ],
+      "unknowns": [
+        "No vendor patch reference in the record."
+      ],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:21:12Z"
+    },
+    {
+      "cve_id": "CVE-2025-71257",
+      "rank": 9,
+      "priority": "P0",
+      "summary": "BMC FootPrints ITSM versions 20.20.02 through 20.24.01.001 have an authentication bypass vulnerability where unauthenticated remote attackers can bypass access controls on restricted REST API endpoints and servlets, allowing them to gain unauthorized access to application data and modify system resources.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 9, priority P0; signals: public_exploit_code, description_text, epss.",
+      "suggested_action": "Review the vendor advisory: https://docs.bmc.com/xwiki/bin/view/More-Products/Footprints/FootPrints/fp2024/Release-notes/2024-Release-01-Patch-2/",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "BMC FootPrints ITSM versions 20.20.02 through 20.24.01.001 contain an authentication bypass vulnerability due to improper enforcement of security filters on restricted REST API endpoints and servlets."
+        }
+      ],
+      "unknowns": [],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:21:23Z"
+    },
+    {
+      "cve_id": "CVE-2026-44825",
+      "rank": 10,
+      "priority": "P0",
+      "summary": "Hardcoded credentials in the Basic Authentication setup tool allow a remote attacker to gain full administrative access to the cluster using publicly known default credentials.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 10, priority P0; signals: public_exploit_code, description_text, assigner_kev_history.",
+      "suggested_action": "Review the vendor advisory: https://lists.apache.org/thread/5xg6xr99glocp3zsg9ht2zlbwlrst7ch",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "Hardcoded credentials in the Basic Authentication setup tool (bin/solr auth enable) in Apache Solr versions 9.4.0 through 9.10.1 and 10.0.0 allows a remote attacker to gain full administrative access to the cluster via publicly known default credentials installed silently alongside the user-specified account."
+        }
+      ],
+      "unknowns": [],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:21:29Z"
+    },
+    {
+      "cve_id": "CVE-2026-33439",
+      "rank": 11,
+      "priority": "P0",
+      "summary": "Prior to 16.0.6, OpenAM is vulnerable to pre-authentication Remote Code Execution via unsafe Java deserialization of the jato.clientSession HTTP parameter, allowing an unauthenticated attacker to execute arbitrary commands on the server by sending a crafted serialized Java object to a JATO ViewBean endpoint.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 11, priority P0; signals: public_exploit_code, description_text, epss.",
+      "suggested_action": "Review the vendor advisory: https://github.com/OpenIdentityPlatform/OpenAM/security/advisories/GHSA-2cqq-rpvq-g5qj",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "Open Access Management (OpenAM) is an access management solution."
+        }
+      ],
+      "unknowns": [],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:21:41Z"
+    },
+    {
+      "cve_id": "CVE-2026-16348",
+      "rank": 12,
+      "priority": "P0",
+      "summary": "An authenticated command injection vulnerability in TP-Link Archer BE800 V1 allows an attacker with administrative access to execute arbitrary system commands with root privileges by injecting shell metacharacters via a VPN connection.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 12, priority P0; signals: description_text, public_exploit_code, epss.",
+      "suggested_action": "No vendor patch reference in the record; apply the vendor's latest update, restrict network exposure, and monitor.",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "An authenticated command injection vulnerability in TP-Link Archer BE800 V1 allows an attacker with administrative access to execute arbitrary system commands with root privileges by injecting shell metacharacters via a VPN connection."
+        }
+      ],
+      "unknowns": [
+        "No vendor patch reference in the record."
+      ],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:21:49Z"
+    },
+    {
+      "cve_id": "CVE-2026-63077",
+      "rank": 13,
+      "priority": "P0",
+      "summary": "In JetBrains TeamCity before 2026.1.3 and 2025.11.7, unauthenticated remote code execution was possible via the agent polling protocol.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 13, priority P0; signals: description_text, public_exploit_code, epss.",
+      "suggested_action": "Review the vendor advisory: https://www.jetbrains.com/privacy-security/issues-fixed/",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "In JetBrains TeamCity before 2026.1.3, 2025.11.7 unauthenticated remote code execution was possible via the agent polling protocol"
+        }
+      ],
+      "unknowns": [],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:21:55Z"
+    },
+    {
+      "cve_id": "CVE-2026-73034",
+      "rank": 14,
+      "priority": "P0",
+      "summary": "DB-GPT v0.8.1 contains an unauthenticated path traversal vulnerability that allows remote attackers to write arbitrary files to any location on the server by injecting directory traversal sequences into the user_id HTTP header of the Python file-upload endpoint.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 14, priority P0; signals: public_exploit_code, description_text, epss.",
+      "suggested_action": "No vendor patch reference in the record; apply the vendor's latest update, restrict network exposure, and monitor.",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "DB-GPT v0.8.1 contains an unauthenticated path traversal vulnerability that allows remote attackers to write arbitrary files to any location on the server by injecting directory traversal sequences into the user_id HTTP header of the Python file-upload endpoint."
+        }
+      ],
+      "unknowns": [
+        "No vendor patch reference in the record."
+      ],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:22:04Z"
+    },
+    {
+      "cve_id": "CVE-2025-52694",
+      "rank": 15,
+      "priority": "P0",
+      "summary": "Successful exploitation of the SQL injection vulnerability could allow an unauthenticated remote attacker to execute arbitrary SQL commands on the vulnerable service when it is exposed to the Internet, potentially affecting data confidentiality, integrity, and availability.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 15, priority P0; signals: description_text, public_exploit_code, epss.",
+      "suggested_action": "No vendor patch reference in the record; apply the vendor's latest update, restrict network exposure, and monitor.",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "Successful exploitation of the SQL injection vulnerability could allow an unauthenticated remote attacker to execute arbitrary SQL commands on the vulnerable service when it is exposed to the Internet, potentially affecting data confidentiality, integrity, and availability."
+        }
+      ],
+      "unknowns": [
+        "No vendor patch reference in the record."
+      ],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:22:11Z"
+    },
+    {
+      "cve_id": "CVE-2026-48313",
+      "rank": 16,
+      "priority": "P0",
+      "summary": "ColdFusion versions 2025.9, 2023.20 and earlier are affected by an Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal') vulnerability that could lead to arbitrary file system read and limited write access, allowing an attacker to access sensitive files and directories outside the intended access scope without user interaction.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 16, priority P0; signals: description_text, public_exploit_code, epss.",
+      "suggested_action": "Review the vendor advisory: https://helpx.adobe.com/security/products/coldfusion/apsb26-68.html",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "ColdFusion versions 2025.9, 2023.20 and earlier are affected by an Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal') vulnerability that could lead to arbitrary file system read and limited write access."
+        }
+      ],
+      "unknowns": [],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:22:23Z"
+    },
+    {
+      "cve_id": "CVE-2026-50229",
+      "rank": 17,
+      "priority": "P0",
+      "summary": "Improper Neutralization of Script-Related HTML Tags in a Web Page (Basic XSS) vulnerability in the number guess example for Apache Tomcat.",
+      "summary_source": "template",
+      "why_this_rank": "Rank 17, priority P0; signals: public_exploit_code, description_text, assigner_kev_history.",
+      "suggested_action": "Review the vendor advisory: https://lists.apache.org/thread/wlt2no8bw45zl1w8byop4zfqphldf5j0",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "Improper Neutralization of Script-Related HTML Tags in a Web Page (Basic XSS) vulnerability in the number guess example for Apache Tomcat."
+        }
+      ],
+      "unknowns": [],
+      "ai_generated": false,
+      "model_id": "deterministic-template",
+      "prompt_version": "summary-v1",
+      "validation_errors": [
+        "low content-word overlap 10/16"
+      ],
+      "generated_at": "2026-11-08T00:22:30Z"
+    },
+    {
+      "cve_id": "CVE-2026-48909",
+      "rank": 18,
+      "priority": "P0",
+      "summary": "SP LMS (com_splms) < 4.1.4 deserializes user-controlled cookie data without validation, allowing an unauthenticated remote attacker to execute arbitrary code on the server.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 18, priority P0; signals: public_exploit_code, description_text, epss.",
+      "suggested_action": "No vendor patch reference in the record; apply the vendor's latest update, restrict network exposure, and monitor.",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "SP LMS (com_splms) < 4.1.4 by JoomShaper deserializes user-controlled cookie data without validation, enabling an unauthenticated remote attacker to execute arbitrary code on the server."
+        }
+      ],
+      "unknowns": [
+        "No vendor patch reference in the record."
+      ],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:22:38Z"
+    },
+    {
+      "cve_id": "CVE-2026-57517",
+      "rank": 19,
+      "priority": "P0",
+      "summary": "Control Web Panel before 0.9.8.1225 contains a blind SQL injection vulnerability that allows unauthenticated remote attackers to execute arbitrary SQL queries by submitting unsanitized input through the userRes POST parameter at the user endpoint, which can lead to remote code execution by writing arbitrary files using INTO DUMPFILE.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 19, priority P0; signals: description_text, public_exploit_code, epss.",
+      "suggested_action": "No vendor patch reference in the record; apply the vendor's latest update, restrict network exposure, and monitor.",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "Control Web Panel before 0.9.8.1225 contains a blind SQL injection vulnerability that allows unauthenticated remote attackers to execute arbitrary SQL queries by submitting unsanitized input through the userRes POST parameter at the user endpoint."
+        }
+      ],
+      "unknowns": [
+        "No vendor patch reference in the record."
+      ],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:22:49Z"
+    },
+    {
+      "cve_id": "CVE-2026-29014",
+      "rank": 20,
+      "priority": "P0",
+      "summary": "MetInfo CMS versions 7.9, 8.0, and 8.1 have an unauthenticated PHP code injection vulnerability that allows remote attackers to execute arbitrary code by sending crafted requests with malicious PHP code.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 20, priority P0; signals: description_text, public_exploit_code, epss.",
+      "suggested_action": "No vendor patch reference in the record; apply the vendor's latest update, restrict network exposure, and monitor.",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "MetInfo CMS versions 7.9, 8.0, and 8.1 contain an unauthenticated PHP code injection vulnerability that allows remote attackers to execute arbitrary code by sending crafted requests with malicious PHP code."
+        }
+      ],
+      "unknowns": [
+        "No vendor patch reference in the record."
+      ],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:22:58Z"
+    },
+    {
+      "cve_id": "CVE-2026-48611",
+      "rank": 21,
+      "priority": "P0",
+      "summary": "Improper authentication checks in the OAuth implementation allow account hijacking even when OAuth is not configured or enabled, leading to unauthorized access in default installations.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 21, priority P0; signals: public_exploit_code, description_text, assigner_kev_history.",
+      "suggested_action": "No vendor patch reference in the record; apply the vendor's latest update, restrict network exposure, and monitor.",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "Improper authentication checks in the OAuth implementation allow account hijacking even when OAuth is not configured or enabled leading to unauthorized access in default installations."
+        }
+      ],
+      "unknowns": [
+        "No vendor patch reference in the record."
+      ],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:23:03Z"
+    },
+    {
+      "cve_id": "CVE-2026-6875",
+      "rank": 22,
+      "priority": "P0",
+      "summary": "ServiceNow has addressed a remote code execution vulnerability in the AI platform that could allow an unauthenticated user to execute code, and recommends applying an appropriate update or upgrading to a patched release.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 22, priority P0; signals: public_exploit_code, assigner_kev_history, epss.",
+      "suggested_action": "No vendor patch reference in the record; apply the vendor's latest update, restrict network exposure, and monitor.",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "ServiceNow has addressed a remote code execution vulnerability that was identified in the ServiceNow AI platform."
+        }
+      ],
+      "unknowns": [
+        "No vendor patch reference in the record."
+      ],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:23:11Z"
+    },
+    {
+      "cve_id": "CVE-2026-75616",
+      "rank": 23,
+      "priority": "P0",
+      "summary": "An OS command injection vulnerability exists in the web management interface of Archer C20 v6 firmware when processing certain WAN-related configuration operations, allowing an authenticated administrator to execute arbitrary system commands with elevated privileges.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 23, priority P0; signals: description_text, public_exploit_code, epss.",
+      "suggested_action": "Review the vendor advisory: https://www.tp-link.com/en/support/faq/5252/",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "An OS command injection vulnerability exists in the web management interface of Archer C20 v6 firmware when processing certain WAN-related configuration operations."
+        }
+      ],
+      "unknowns": [],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:23:19Z"
+    },
+    {
+      "cve_id": "CVE-2026-46725",
+      "rank": 24,
+      "priority": "P0",
+      "summary": "An attacker can supply a crafted serialized payload via a cookie to trigger PHP Object Injection, leading to Remote Code Execution on the TYPO3 server when the content element is configured with 'Persistent Mode: Static'.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 24, priority P0; signals: description_text, public_exploit_code, epss.",
+      "suggested_action": "No vendor patch reference in the record; apply the vendor's latest update, restrict network exposure, and monitor.",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "The extension passes an attacker-controlled cookie directly to PHP's unserialize() without safely processing the input."
+        }
+      ],
+      "unknowns": [
+        "No vendor patch reference in the record."
+      ],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:23:29Z"
+    },
+    {
+      "cve_id": "CVE-2026-28326",
+      "rank": 25,
+      "priority": "P0",
+      "summary": "SolarWinds Access Rights Manager is vulnerable to unauthenticated remote code execution due to a hardcoded static key.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 25, priority P0; signals: public_exploit_code, description_text, epss.",
+      "suggested_action": "No vendor patch reference in the record; apply the vendor's latest update, restrict network exposure, and monitor.",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "SolarWinds Access Rights Manager was reported to be affected by an unauthenticated remote code execution vulnerability."
+        }
+      ],
+      "unknowns": [
+        "No vendor patch reference in the record."
+      ],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:23:34Z"
+    },
+    {
+      "cve_id": "CVE-2026-2329",
+      "rank": 26,
+      "priority": "P0",
+      "summary": "An unauthenticated stack-based buffer overflow in the HTTP API endpoint /cgi-bin/api.values.get allows a remote attacker to achieve unauthenticated remote code execution with root privileges on all six device models in the series.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 26, priority P0; signals: description_text, public_exploit_code, epss.",
+      "suggested_action": "Review the vendor advisory: https://github.com/rapid7/metasploit-framework/pull/20983",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "An unauthenticated stack-based buffer overflow vulnerability exists in the HTTP API endpoint /cgi-bin/api.values.get."
+        }
+      ],
+      "unknowns": [],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:23:43Z"
+    },
+    {
+      "cve_id": "CVE-2026-42530",
+      "rank": 27,
+      "priority": "P0",
+      "summary": "When NGINX Open Source uses the HTTP/3 QUIC module, a remote unauthenticated attacker under certain conditions can exploit a crafted HTTP/3 session to reopen a QPACK encoder stream, leading to a Use-after-Free in the NGINX worker process and potentially causing a restart or code execution if ASLR is disabled or bypassed.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 27, priority P0; signals: public_exploit_code, description_text, epss.",
+      "suggested_action": "Review the vendor advisory: https://my.f5.com/manage/s/article/K000161616",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "NGINX Open Source has a vulnerability in the ngx_http_v3_module module."
+        }
+      ],
+      "unknowns": [],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:23:57Z"
+    },
+    {
+      "cve_id": "CVE-2026-19912",
+      "rank": 28,
+      "priority": "P0",
+      "summary": "The Kaltura HTML5 player (mwEmbed / html5lib) contains an unauthenticated remote code execution vulnerability caused by unsafe data deserialization and unsanitized filesystem path construction.",
+      "summary_source": "template",
+      "why_this_rank": "Rank 28, priority P0; signals: public_exploit_code, description_text, epss.",
+      "suggested_action": "No vendor patch reference in the record; apply the vendor's latest update, restrict network exposure, and monitor.",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "The Kaltura HTML5 player (mwEmbed / html5lib) contains an unauthenticated remote code execution vulnerability caused by unsafe data deserialization and unsanitized filesystem path construction."
+        }
+      ],
+      "unknowns": [
+        "No vendor patch reference in the record."
+      ],
+      "ai_generated": false,
+      "model_id": "deterministic-template",
+      "prompt_version": "summary-v1",
+      "validation_errors": [
+        "low content-word overlap 9/14"
+      ],
+      "generated_at": "2026-11-08T00:24:04Z"
+    },
+    {
+      "cve_id": "CVE-2026-4631",
+      "rank": 29,
+      "priority": "P0",
+      "summary": "Cockpit's remote login feature accepts user-supplied hostnames and usernames from the web interface and passes them directly to the SSH client without validation or sanitization, allowing an attacker to inject malicious SSH options or shell commands and achieve code execution on the Cockpit host without needing valid credentials.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 29, priority P0; signals: public_exploit_code, description_text, epss.",
+      "suggested_action": "No vendor patch reference in the record; apply the vendor's latest update, restrict network exposure, and monitor.",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "Cockpit's remote login feature passes user-supplied hostnames and usernames from the web interface to the SSH client without validation or sanitization."
+        }
+      ],
+      "unknowns": [
+        "No vendor patch reference in the record."
+      ],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:24:14Z"
+    },
+    {
+      "cve_id": "CVE-2026-39808",
+      "rank": 30,
+      "priority": "P0",
+      "summary": "A vulnerability in Fortinet FortiSandbox 4.4.0 through 4.4.8 allows attackers to execute unauthorized code or commands via improper neutralization of special elements in an os command.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 30, priority P0; signals: public_exploit_code, assigner_kev_history, description_text.",
+      "suggested_action": "Review the vendor advisory: https://fortiguard.fortinet.com/psirt/FG-IR-26-100",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "A improper neutralization of special elements used in an os command ('os command injection') vulnerability in Fortinet FortiSandbox 4.4.0 through 4.4.8 may allow attacker to execute unauthorized code or commands via <insert attack vector here>"
+        }
+      ],
+      "unknowns": [],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:24:22Z"
+    },
+    {
+      "cve_id": "CVE-2026-53787",
+      "rank": 31,
+      "priority": "P0",
+      "summary": "Amasty Order Attributes for Magento 2 before version 4.0.0 allows unauthenticated attackers to upload arbitrary files to the media directory, enabling remote code execution, malware hosting, stored cross-site scripting, and path traversal.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 31, priority P0; signals: public_exploit_code, description_text, epss.",
+      "suggested_action": "No vendor patch reference in the record; apply the vendor's latest update, restrict network exposure, and monitor.",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "Amasty Order Attributes for Magento 2 before version 4.0.0 contains an unauthenticated arbitrary file upload vulnerability that allows unauthenticated attackers to write arbitrary files to the store's media directory by submitting files of any type or name to the upload endpoint without authentication, session validation, or cart context."
+        }
+      ],
+      "unknowns": [
+        "No vendor patch reference in the record."
+      ],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:24:31Z"
+    },
+    {
+      "cve_id": "CVE-2023-54391",
+      "rank": 32,
+      "priority": "P0",
+      "summary": "In Proxmox Virtual Environment versions 7.0 through 8.0, an authentication bypass vulnerability exists in libpve-access-control before 8.0.4, allowing unauthenticated attackers to authenticate as any existing enabled user without a second factor by providing an arbitrary tfa-challenge value in the API login endpoint.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 32, priority P0; signals: public_exploit_code, description_text, epss.",
+      "suggested_action": "No vendor patch reference in the record; apply the vendor's latest update, restrict network exposure, and monitor.",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "Proxmox Virtual Environment (VE) 7.0 through 8.0 contains an authentication bypass vulnerability in libpve-access-control before 8.0.4 that allows unauthenticated attackers to authenticate as any existing enabled user without a configured second factor by supplying an arbitrary tfa-challenge value in the API login endpoint."
+        }
+      ],
+      "unknowns": [
+        "No vendor patch reference in the record."
+      ],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:24:44Z"
+    },
+    {
+      "cve_id": "CVE-2026-21048",
+      "rank": 33,
+      "priority": "P0",
+      "summary": "An out-of-bounds write occurs in the DNG format parsing code in libimagecodec.media.quram.so before the SMR Jul-2026 Release 1, allowing remote attackers to write out-of-bounds memory.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 33, priority P0; signals: public_exploit_code, description_text, epss.",
+      "suggested_action": "No vendor patch reference in the record; apply the vendor's latest update, restrict network exposure, and monitor.",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "Out-of-bounds write in parsing DNG format in libimagecodec.media.quram.so prior to SMR Jul-2026 Release 1 allows remote attackers to write out-of-bounds memory."
+        }
+      ],
+      "unknowns": [
+        "No vendor patch reference in the record."
+      ],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:24:54Z"
+    },
+    {
+      "cve_id": "CVE-2026-27180",
+      "rank": 34,
+      "priority": "P0",
+      "summary": "An attacker can poison the system update URL and trigger an update chain that downloads and extracts arbitrary PHP files to the webroot, enabling remote code execution without authentication.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 34, priority P0; signals: public_exploit_code, description_text, epss.",
+      "suggested_action": "No vendor patch reference in the record; apply the vendor's latest update, restrict network exposure, and monitor.",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "MajorDoMo (aka Major Domestic Module) is vulnerable to unauthenticated remote code execution through supply chain compromise via update URL poisoning."
+        }
+      ],
+      "unknowns": [
+        "No vendor patch reference in the record."
+      ],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:25:03Z"
+    },
+    {
+      "cve_id": "CVE-2026-91843",
+      "rank": 35,
+      "priority": "P0",
+      "summary": "A stack overflow during the unauthenticated login process may allow an attacker to run arbitrary code remotely with root privileges.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 35, priority P0; signals: public_exploit_code, description_text, assigner_kev_history.",
+      "suggested_action": "No vendor patch reference in the record; apply the vendor's latest update, restrict network exposure, and monitor.",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "A stack overflow during the unauthenticated login process may allow an attacker to run arbitrary code remotely with root privileges."
+        }
+      ],
+      "unknowns": [
+        "No vendor patch reference in the record."
+      ],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:25:08Z"
+    },
+    {
+      "cve_id": "CVE-2026-84645",
+      "rank": 36,
+      "priority": "P0",
+      "summary": "In Jenkins versions 2.579 and earlier, LTS 2.568.2 and earlier, user-submitted config.xml documents can cause nested field values from configuration files to be handled via Stapler, leading to remote code execution.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 36, priority P0; signals: description_text, public_exploit_code, epss.",
+      "suggested_action": "Review the vendor advisory: https://www.jenkins.io/security/advisory/2026-09-02/#SECURITY-3972",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "In Jenkins 2.579 and earlier, LTS 2.568.2 and earlier, objects of types marked as storing their configuration in independent top-level configuration files in Jenkins (such as the global configuration and jobs) can appear as nested field values in user-submitted `config.xml` documents and subsequently handle HTTP requests via Stapler, resulting in remote code execution."
+        }
+      ],
+      "unknowns": [],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:25:16Z"
+    },
+    {
+      "cve_id": "CVE-2025-12420",
+      "rank": 37,
+      "priority": "P0",
+      "summary": "An unauthenticated user can impersonate another user and perform their authorized operations due to a vulnerability in the ServiceNow AI Platform, which has been addressed by a security update.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 37, priority P0; signals: public_exploit_code, assigner_kev_history, description_text.",
+      "suggested_action": "Review the vendor advisory: https://support.servicenow.com/kb?id=kb_article_view&sysparm_article=KB2587329",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "A vulnerability has been identified in the ServiceNow AI Platform that could enable an unauthenticated user to impersonate another user and perform the operations that the impersonated user is entitled to perform."
+        }
+      ],
+      "unknowns": [],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:25:23Z"
+    },
+    {
+      "cve_id": "CVE-2026-19626",
+      "rank": 38,
+      "priority": "P0",
+      "summary": "An authenticated, non-administrative user can execute arbitrary code on the server by providing specially crafted input during report generation, which is processed unsafely during server-side rendering, leading to execution with the service account's privileges.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 38, priority P0; signals: public_exploit_code, description_text, epss.",
+      "suggested_action": "Review the vendor advisory: https://www.tenable.com/security/tns-2026-22",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "A remote code execution vulnerability exists in Tenable Security Center's report generation functionality."
+        }
+      ],
+      "unknowns": [],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:25:32Z"
+    },
+    {
+      "cve_id": "CVE-2026-84388",
+      "rank": 39,
+      "priority": "P0",
+      "summary": "An improper restriction of rendered UI layers or frames in Fortinet FortiPAM Chrome Extension 8.0 and all versions, and FortiPAM Chrome Extension 7.4 and all versions, may allow an attacker to perform a remote, unauthenticated information disclosure attack.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 39, priority P0; signals: public_exploit_code, description_text, epss.",
+      "suggested_action": "No vendor patch reference in the record; apply the vendor's latest update, restrict network exposure, and monitor.",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "A improper restriction of rendered ui layers or frames vulnerability in Fortinet FortiPAM Chrome Extension 8.0 all versions, FortiPAM Chrome Extension 7.4 all versions may allow attacker to information disclosure via remote unauthenticated attack"
+        }
+      ],
+      "unknowns": [
+        "No vendor patch reference in the record."
+      ],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:25:45Z"
+    },
+    {
+      "cve_id": "CVE-2026-21045",
+      "rank": 40,
+      "priority": "P0",
+      "summary": "Out-of-bounds write occurs in parsing TIFF format in libimagecodec.media.quram.so prior to SMR Jul-2026 Release 1, allowing remote attackers to write out-of-bounds memory.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 40, priority P0; signals: public_exploit_code, description_text, epss.",
+      "suggested_action": "No vendor patch reference in the record; apply the vendor's latest update, restrict network exposure, and monitor.",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "Out-of-bounds write in parsing TIFF format in libimagecodec.media.quram.so prior to SMR Jul-2026 Release 1 allows remote attackers to write out-of-bounds memory."
+        }
+      ],
+      "unknowns": [
+        "No vendor patch reference in the record."
+      ],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:25:52Z"
+    },
+    {
+      "cve_id": "CVE-2026-8508",
+      "rank": 41,
+      "priority": "P0",
+      "summary": "An improper authentication vulnerability in the 'social_login.cgi' CGI program in Zyxel WAX650S firmware versions through 7.10(ABRM.4)C0 could allow an attacker on the WLAN to bypass captive portal authentication.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 41, priority P0; signals: public_exploit_code, description_text, epss.",
+      "suggested_action": "No vendor patch reference in the record; apply the vendor's latest update, restrict network exposure, and monitor.",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "An improper authentication vulnerability in the \"social_login.cgi\" CGI program in Zyxel WAX650S firmware versions through 7.10(ABRM.4)C0 could allow an attacker on the WLAN to bypass captive portal authentication."
+        }
+      ],
+      "unknowns": [
+        "No vendor patch reference in the record."
+      ],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:26:06Z"
+    },
+    {
+      "cve_id": "CVE-2026-8451",
+      "rank": 42,
+      "priority": "P0",
+      "summary": "Insufficient input validation in NetScaler ADC and NetScaler Gateway leads to memory overread when configured as a SAML IDP.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 42, priority P0; signals: description_text, public_exploit_code, epss.",
+      "suggested_action": "Review the vendor advisory: https://support.citrix.com/support-home/kbsearch/article?articleNumber=CTX696604",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "Insufficient input validation in NetScaler ADC and NetScaler Gateway leading to memory overread if NetScaler ADC or NetScaler Gateway is configured as a SAML IDP"
+        }
+      ],
+      "unknowns": [],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:26:11Z"
+    },
+    {
+      "cve_id": "CVE-2026-29116",
+      "rank": 43,
+      "priority": "P0",
+      "summary": "An unauthenticated remote attacker can send a specially crafted packet that causes the system to reboot unexpectedly, resulting in a denial of service.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 43, priority P0; signals: public_exploit_code, description_text, assigner_kev_history.",
+      "suggested_action": "No vendor patch reference in the record; apply the vendor's latest update, restrict network exposure, and monitor.",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "A vulnerability has been found in some Dahua products could allow an unauthenticated remote attacker to send a specially crafted packet, triggering an exception that causes the system to reboot unexpectedly, resulting in a denial of service."
+        }
+      ],
+      "unknowns": [
+        "No vendor patch reference in the record."
+      ],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:26:16Z"
+    },
+    {
+      "cve_id": "CVE-2026-44277",
+      "rank": 44,
+      "priority": "P0",
+      "summary": "An improper access control vulnerability in Fortinet FortiAuthenticator allows attackers to execute unauthorized code or commands via crafted requests.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 44, priority P0; signals: public_exploit_code, description_text, epss.",
+      "suggested_action": "Review the vendor advisory: https://fortiguard.fortinet.com/psirt/FG-IR-26-128",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "A improper access control vulnerability in Fortinet FortiAuthenticator 8.0.2, FortiAuthenticator 8.0.0, FortiAuthenticator 6.6.0 through 6.6.8, FortiAuthenticator 6.5.0 through 6.5.6 may allow attacker to execute unauthorized code or commands via crafted requests."
+        }
+      ],
+      "unknowns": [],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:26:23Z"
+    },
+    {
+      "cve_id": "CVE-2026-0303",
+      "rank": 45,
+      "priority": "P0",
+      "summary": "A code execution vulnerability in Palo Alto Networks Checkov by Prisma Cloud allows arbitrary code execution when Checkov scans a directory containing an attacker-controlled configuration file.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 45, priority P0; signals: public_exploit_code, description_text, epss.",
+      "suggested_action": "No vendor patch reference in the record; apply the vendor's latest update, restrict network exposure, and monitor.",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "A code execution vulnerability in Palo Alto Networks Checkov by Prisma® Cloud can allow arbitrary code execution when Checkov scans a directory that contains an attacker-controlled configuration file."
+        }
+      ],
+      "unknowns": [
+        "No vendor patch reference in the record."
+      ],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:26:29Z"
+    },
+    {
+      "cve_id": "CVE-2026-53435",
+      "rank": 46,
+      "priority": "P0",
+      "summary": "Attackers can exploit a Jenkins vulnerability by submitting a crafted config.xml to trigger arbitrary deserialization, allowing them to impersonate users, send HTTP requests on behalf of users, run arbitrary code in the Script Console, or read arbitrary files from the Jenkins controller.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 46, priority P0; signals: description_text, public_exploit_code, epss.",
+      "suggested_action": "Review the vendor advisory: https://www.jenkins.io/security/advisory/2026-06-10/#SECURITY-3707",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "In Jenkins 2.567 and earlier, LTS 2.555.2 and earlier, it is possible for attackers to have Jenkins deserialize arbitrary types defined in Jenkins core or plugins from an attacker-controlled `config.xml` submission in a way that allows them to handle HTTP requests afterwards."
+        }
+      ],
+      "unknowns": [],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:26:37Z"
+    },
+    {
+      "cve_id": "CVE-2026-4092",
+      "rank": 47,
+      "priority": "P0",
+      "summary": "Path traversal in Clasp allows a remote attacker to execute code by uploading a malicious Google Apps Script project with specially crafted filenames containing directory traversal sequences.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 47, priority P0; signals: public_exploit_code, description_text, epss.",
+      "suggested_action": "Review the vendor advisory: https://github.com/google/clasp/pull/1109",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "Path Traversal in Clasp impacting versions < 3.2.0 allows a remote attacker to perform remote code execution via a malicious Google Apps Script project containing specially crafted filenames with directory traversal sequences."
+        }
+      ],
+      "unknowns": [],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:26:43Z"
+    },
+    {
+      "cve_id": "CVE-2026-61498",
+      "rank": 48,
+      "priority": "P0",
+      "summary": "Vitec Flamingo 4.12.2 has an unauthenticated OS command injection vulnerability in the admin/ajax/gen_graphs.php endpoint that allows remote unauthenticated attackers to execute arbitrary commands by supplying shell metacharacters in the start, end, key, or format HTTP GET parameters.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 48, priority P0; signals: description_text, public_exploit_code, epss.",
+      "suggested_action": "No vendor patch reference in the record; apply the vendor's latest update, restrict network exposure, and monitor.",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "Vitec Flamingo 4.12.2 contains an unauthenticated OS command injection vulnerability in the admin/ajax/gen_graphs.php endpoint that allows remote unauthenticated attackers to execute arbitrary commands by supplying shell metacharacters in the start, end, key, or format HTTP GET parameters."
+        }
+      ],
+      "unknowns": [
+        "No vendor patch reference in the record."
+      ],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:26:54Z"
+    },
+    {
+      "cve_id": "CVE-2026-86207",
+      "rank": 49,
+      "priority": "P0",
+      "summary": "An authentication bypass in N-central < 2026.3 HF 3 allows access to internal only APIs.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 49, priority P0; signals: public_exploit_code, description_text, assigner_kev_history.",
+      "suggested_action": "No vendor patch reference in the record; apply the vendor's latest update, restrict network exposure, and monitor.",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "An authentication bypass in N-central < 2026.3 HF 3 leads to authentication bypass in internal only APIs"
+        }
+      ],
+      "unknowns": [
+        "No vendor patch reference in the record."
+      ],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:26:59Z"
+    },
+    {
+      "cve_id": "CVE-2026-23918",
+      "rank": 50,
+      "priority": "P0",
+      "summary": "Double Free and possible RCE vulnerability in Apache HTTP Server with the HTTP/2 protocol.",
+      "summary_source": "template",
+      "why_this_rank": "Rank 50, priority P0; signals: public_exploit_code, description_text, epss.",
+      "suggested_action": "Review the vendor advisory: https://httpd.apache.org/security/vulnerabilities_24.html",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "Double Free and possible RCE vulnerability in Apache HTTP Server with the HTTP/2 protocol."
+        }
+      ],
+      "unknowns": [],
+      "ai_generated": false,
+      "model_id": "deterministic-template",
+      "prompt_version": "summary-v1",
+      "validation_errors": [
+        "low content-word overlap 11/18"
+      ],
+      "generated_at": "2026-11-08T00:27:07Z"
+    },
+    {
+      "cve_id": "CVE-2026-40987",
+      "rank": 51,
+      "priority": "P0",
+      "summary": "A malicious or compromised FTP/SFTP/SMB server can write arbitrary files anywhere on the client filesystem with attacker-controlled content.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 51, priority P0; signals: public_exploit_code, description_text, epss.",
+      "suggested_action": "Review the vendor advisory: https://spring.io/security/cve-2026-40987",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "A malicious or compromised FTP/SFTP/SMB server can write arbitrary files anywhere on the client filesystem (outside the configured local-directory) with attacker-controlled content."
+        }
+      ],
+      "unknowns": [],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:27:13Z"
+    },
+    {
+      "cve_id": "CVE-2026-93349",
+      "rank": 52,
+      "priority": "P0",
+      "summary": "Frictionless before 5.19.1 has an OS command injection vulnerability in the explore console command that allows an attacker to execute arbitrary operating system commands by injecting shell metacharacters in resource path values within a datapackage.json descriptor.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 52, priority P0; signals: description_text, public_exploit_code, epss.",
+      "suggested_action": "No vendor patch reference in the record; apply the vendor's latest update, restrict network exposure, and monitor.",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "Frictionless before 5.19.1 contains an OS command injection vulnerability in the explore console command that allows an attacker who supplies a crafted Data Package descriptor to execute arbitrary operating system commands as the user who explores it."
+        }
+      ],
+      "unknowns": [
+        "No vendor patch reference in the record."
+      ],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:27:22Z"
+    },
+    {
+      "cve_id": "CVE-2026-49042",
+      "rank": 53,
+      "priority": "P0",
+      "summary": "Apache Camel has an improper input validation vulnerability that affects versions 4.8.0 through 4.18.2 and 4.19.0 through 4.20.0, and should be fixed by upgrading to version 4.18.3 or 4.21.0.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 53, priority P0; signals: public_exploit_code, description_text, epss.",
+      "suggested_action": "Review the vendor advisory: https://camel.apache.org/security/CVE-2026-49042.html",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "Improper Input Validation vulnerability in Apache Camel."
+        }
+      ],
+      "unknowns": [],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:27:33Z"
+    },
+    {
+      "cve_id": "CVE-2026-41452",
+      "rank": 54,
+      "priority": "P0",
+      "summary": "Krayin CRM 2.2.4 allows unauthenticated remote attackers to overwrite the primary administrator account by sending a crafted HTTP POST request with the X-Requested-With: XMLHttpRequest header, bypassing the CanInstall middleware redirect check and updating the administrator user with arbitrary name, email, and password values.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 54, priority P0; signals: description_text, public_exploit_code, epss.",
+      "suggested_action": "No vendor patch reference in the record; apply the vendor's latest update, restrict network exposure, and monitor.",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "Krayin CRM 2.2.4 contains a missing authentication vulnerability in the installer middleware that allows unauthenticated remote attackers to overwrite the primary administrator account by sending a crafted HTTP POST request with the X-Requested-With: XMLHttpRequest header to bypass the CanInstall middleware redirect check."
+        }
+      ],
+      "unknowns": [
+        "No vendor patch reference in the record."
+      ],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:27:44Z"
+    },
+    {
+      "cve_id": "CVE-2026-44402",
+      "rank": 55,
+      "priority": "P0",
+      "summary": "Voltronic Power SNMP Web Pro 1.1 has an unauthenticated remote code execution vulnerability in the upload.cgi firmware update endpoint that allows remote attackers to execute arbitrary commands as root by uploading a crafted tar archive.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 55, priority P0; signals: description_text, public_exploit_code, epss.",
+      "suggested_action": "No vendor patch reference in the record; apply the vendor's latest update, restrict network exposure, and monitor.",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "Voltronic Power SNMP Web Pro 1.1 contains an unauthenticated remote code execution vulnerability in the upload.cgi firmware update endpoint that allows remote attackers to execute arbitrary commands as root by uploading a crafted tar archive without valid credentials."
+        }
+      ],
+      "unknowns": [
+        "No vendor patch reference in the record."
+      ],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:27:52Z"
+    },
+    {
+      "cve_id": "CVE-2026-58138",
+      "rank": 56,
+      "priority": "P0",
+      "summary": "Orkes Conductor 3.21.21 before 3.30.2 contains an unauthenticated remote code execution vulnerability that allows remote attackers to execute arbitrary OS commands by submitting inline workflow definitions containing malicious JavaScript or Python expressions to the workflow API endpoint prior to authentication.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 56, priority P0; signals: description_text, public_exploit_code, epss.",
+      "suggested_action": "No vendor patch reference in the record; apply the vendor's latest update, restrict network exposure, and monitor.",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "Orkes Conductor 3.21.21 before 3.30.2 contains an unauthenticated remote code execution vulnerability that allows remote attackers to execute arbitrary OS commands by submitting inline workflow definitions containing malicious JavaScript or Python expressions to the workflow API endpoint prior to authentication."
+        }
+      ],
+      "unknowns": [
+        "No vendor patch reference in the record."
+      ],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:28:03Z"
+    },
+    {
+      "cve_id": "CVE-2026-66754",
+      "rank": 57,
+      "priority": "P0",
+      "summary": "Rouille 0.1.6 through 3.6.2 contains a reachable assertion vulnerability in the Request::remove_prefix function that allows remote unauthenticated attackers to crash the server by sending a crafted percent-encoded URL.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 57, priority P0; signals: description_text, public_exploit_code, epss.",
+      "suggested_action": "No vendor patch reference in the record; apply the vendor's latest update, restrict network exposure, and monitor.",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "Rouille 0.1.6 through 3.6.2 contains a reachable assertion vulnerability in the Request::remove_prefix function that allows remote unauthenticated attackers to crash the server by sending a crafted percent-encoded URL."
+        }
+      ],
+      "unknowns": [
+        "No vendor patch reference in the record."
+      ],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:28:12Z"
+    },
+    {
+      "cve_id": "CVE-2026-56782",
+      "rank": 58,
+      "priority": "P0",
+      "summary": "Gorse before 0.5.10 has an authentication bypass vulnerability in the /api/dump and /api/restore endpoints that allows unauthenticated attackers to access protected functionality when admin_api_key is empty, enabling them to exfiltrate the entire database or overwrite it without authentication.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 58, priority P0; signals: public_exploit_code, description_text, epss.",
+      "suggested_action": "No vendor patch reference in the record; apply the vendor's latest update, restrict network exposure, and monitor.",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "Gorse before 0.5.10 contains an authentication bypass vulnerability in the /api/dump and /api/restore endpoints that allows unauthenticated attackers to access protected functionality when admin_api_key is empty, which is the default configuration."
+        }
+      ],
+      "unknowns": [
+        "No vendor patch reference in the record."
+      ],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:28:22Z"
+    },
+    {
+      "cve_id": "CVE-2026-76578",
+      "rank": 59,
+      "priority": "P0",
+      "summary": "A flaw in FreeIPA allows an unauthenticated LDAP client to create an arbitrary attacker-controlled Kerberos principal and add it to the administrators group, granting remote, unauthenticated administrator-group membership and administrative operations.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 59, priority P0; signals: description_text, public_exploit_code, epss.",
+      "suggested_action": "No vendor patch reference in the record; apply the vendor's latest update, restrict network exposure, and monitor.",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "A flaw was found in FreeIPA."
+        }
+      ],
+      "unknowns": [
+        "No vendor patch reference in the record."
+      ],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:28:31Z"
+    },
+    {
+      "cve_id": "CVE-2026-63621",
+      "rank": 60,
+      "priority": "P0",
+      "summary": "An unauthenticated attacker can inject Camel-internal headers via a structured-mode CloudEvent request, causing header-driven components to override configured values and enable server-side request forgery, path traversal, or message-dispatch redirection.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 60, priority P0; signals: public_exploit_code, description_text, epss.",
+      "suggested_action": "Review the vendor advisory: https://camel.apache.org/security/CVE-2026-63621.html",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "Improper Input Validation, Improper Neutralization of Special Elements in Output Used by a Downstream Component ('Injection') vulnerability in Apache Camel Knative component The Knative consumer in camel-knative maps inbound CloudEvent attributes onto Camel message headers."
+        }
+      ],
+      "unknowns": [],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:28:46Z"
+    },
+    {
+      "cve_id": "CVE-2026-49952",
+      "rank": 61,
+      "priority": "P0",
+      "summary": "Discuz! X5.0 releases 20260320 through 20260501 contains an authentication bypass vulnerability that allows unauthenticated remote attackers to gain unauthorized access to database backup and restore functionality by exploiting a shared cryptographic key between UCenter integration and the database backup API exposed by dbbak.php.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 61, priority P0; signals: public_exploit_code, description_text, epss.",
+      "suggested_action": "No vendor patch reference in the record; apply the vendor's latest update, restrict network exposure, and monitor.",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "Discuz!"
+        }
+      ],
+      "unknowns": [
+        "No vendor patch reference in the record."
+      ],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:28:57Z"
+    },
+    {
+      "cve_id": "CVE-2026-42055",
+      "rank": 62,
+      "priority": "P0",
+      "summary": "A remote, unauthenticated attacker can cause a heap-based buffer overflow in NGINX worker processes when using proxy_http_version to 2 or grpc_pass directives, the ignore_invalid_headers directive is off, and large_client_header_buffers is larger than 2 megabytes, leading to a restart or code execution if ASLR is disabled or bypassed.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 62, priority P0; signals: public_exploit_code, description_text, epss.",
+      "suggested_action": "Review the vendor advisory: https://my.f5.com/manage/s/article/K000161584",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "NGINX Plus and NGINX Open Source have a vulnerability in the ngx_http_proxy_v2_module and ngx_http_grpc_module modules."
+        }
+      ],
+      "unknowns": [],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:29:10Z"
+    },
+    {
+      "cve_id": "CVE-2026-42945",
+      "rank": 63,
+      "priority": "P0",
+      "summary": "An unauthenticated attacker can exploit a vulnerability in NGINX Plus and NGINX Open Source by sending crafted HTTP requests that trigger a heap buffer overflow in the NGINX worker process, leading to a restart, and potentially execute code if ASLR is disabled or bypassed.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 63, priority P0; signals: public_exploit_code, description_text, epss.",
+      "suggested_action": "Review the vendor advisory: https://my.f5.com/manage/s/article/K000161019",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "NGINX Plus and NGINX Open Source have a vulnerability in the ngx_http_rewrite_module module."
+        }
+      ],
+      "unknowns": [],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:29:21Z"
+    },
+    {
+      "cve_id": "CVE-2025-71389",
+      "rank": 64,
+      "priority": "P0",
+      "summary": "Cal.com before 5.9.9 is vulnerable to unauthenticated remote code execution because it bundles a version of Next.js whose React Server Components request handling deserializes attacker-controlled input, allowing a remote attacker to send a crafted RSC request and execute arbitrary code without authentication or user interaction.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 64, priority P0; signals: description_text, public_exploit_code, epss.",
+      "suggested_action": "No vendor patch reference in the record; apply the vendor's latest update, restrict network exposure, and monitor.",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "Cal.com (calcom/cal.diy) before 5.9.9 is vulnerable to unauthenticated remote code execution because it bundles a version of Next.js whose React Server Components (RSC) request handling deserializes attacker-controlled input."
+        }
+      ],
+      "unknowns": [
+        "No vendor patch reference in the record."
+      ],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:29:31Z"
+    },
+    {
+      "cve_id": "CVE-2026-57850",
+      "rank": 65,
+      "priority": "P0",
+      "summary": "RustDesk before 1.4.9 does not enforce a session's authorized connection scope on the server side, allowing a peer with a limited session type to send control messages and login options reserved for a full Remote session, which can be used to act outside its granted scope and observe or control the host beyond the permissions it was given.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 65, priority P0; signals: description_text, public_exploit_code, epss.",
+      "suggested_action": "No vendor patch reference in the record; apply the vendor's latest update, restrict network exposure, and monitor.",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "RustDesk before 1.4.9 does not enforce a session's authorized connection scope on the server side, so a peer granted a limited session type (FileTransfer, PortForward, ViewCamera, or Terminal) can send control messages and login options reserved for a full Remote session."
+        }
+      ],
+      "unknowns": [
+        "No vendor patch reference in the record."
+      ],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:29:44Z"
+    },
+    {
+      "cve_id": "CVE-2026-42533",
+      "rank": 66,
+      "priority": "P0",
+      "summary": "A crafted HTTP request can cause a heap buffer overflow in NGINX worker processes, leading to a restart or code execution depending on ASLR settings, by using a map directive with regex matching and referencing capture variables before output variables in a string expression.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 66, priority P0; signals: public_exploit_code, description_text, epss.",
+      "suggested_action": "Review the vendor advisory: https://my.f5.com/manage/s/article/K000162097",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "A vulnerability exists in NGINX Plus and NGINX Open Source when a map directive uses regex matching and a string expression references the map's regex capture variables before referencing the map output variable."
+        }
+      ],
+      "unknowns": [],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:29:54Z"
+    },
+    {
+      "cve_id": "CVE-2026-0834",
+      "rank": 67,
+      "priority": "P0",
+      "summary": "A logic vulnerability in TP-Link Archer C20 v5, 6.0, Archer AX53 v1.0 and TL-WR841N v13 (TDDP module) allows unauthenticated adjacent attackers to execute administrative commands including factory reset and device reboot without credentials.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 67, priority P0; signals: description_text, public_exploit_code, assigner_kev_history.",
+      "suggested_action": "No vendor patch reference in the record; apply the vendor's latest update, restrict network exposure, and monitor.",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "Logic vulnerability in TP-Link Archer C20 v5, 6.0, Archer AX53 v1.0 and TL-WR841N v13 (TDDP module) allows unauthenticated adjacent attackers to execute administrative commands including factory reset and device reboot without credentials."
+        }
+      ],
+      "unknowns": [
+        "No vendor patch reference in the record."
+      ],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:30:06Z"
+    },
+    {
+      "cve_id": "CVE-2026-46584",
+      "rank": 68,
+      "priority": "P0",
+      "summary": "The Apache Camel Mail Component improperly validates input, allowing untrusted headers in the mail.smtp or mail.smtps namespace to override SMTP settings and expose sensitive information.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 68, priority P0; signals: public_exploit_code, description_text, epss.",
+      "suggested_action": "Review the vendor advisory: https://camel.apache.org/security/CVE-2026-46584.html",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "Improper Input Validation, Exposure of Sensitive Information to an Unauthorized Actor vulnerability in Apache Camel Mail Component."
+        }
+      ],
+      "unknowns": [],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:30:20Z"
+    },
+    {
+      "cve_id": "CVE-2026-46587",
+      "rank": 69,
+      "priority": "P0",
+      "summary": "Improper Input Validation vulnerability in Apache Camel.",
+      "summary_source": "template",
+      "why_this_rank": "Rank 69, priority P0; signals: public_exploit_code, description_text, epss.",
+      "suggested_action": "Review the vendor advisory: https://camel.apache.org/security/CVE-2026-46587.html",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "Improper Input Validation vulnerability in Apache Camel."
+        }
+      ],
+      "unknowns": [],
+      "ai_generated": false,
+      "model_id": "deterministic-template",
+      "prompt_version": "summary-v1",
+      "validation_errors": [
+        "low content-word overlap 7/13"
+      ],
+      "generated_at": "2026-11-08T00:30:28Z"
+    },
+    {
+      "cve_id": "CVE-2026-46588",
+      "rank": 70,
+      "priority": "P0",
+      "summary": "Improper Input Validation vulnerability in Apache Camel.",
+      "summary_source": "template",
+      "why_this_rank": "Rank 70, priority P0; signals: public_exploit_code, description_text, epss.",
+      "suggested_action": "Review the vendor advisory: https://camel.apache.org/security/CVE-2026-46588.html",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "Improper Input Validation vulnerability in Apache Camel."
+        }
+      ],
+      "unknowns": [],
+      "ai_generated": false,
+      "model_id": "deterministic-template",
+      "prompt_version": "summary-v1",
+      "validation_errors": [
+        "low content-word overlap 7/13"
+      ],
+      "generated_at": "2026-11-08T00:30:34Z"
+    },
+    {
+      "cve_id": "CVE-2026-33868",
+      "rank": 71,
+      "priority": "P0",
+      "summary": "Prior to versions 4.5.8, 4.4.15, and 4.3.21, an unauthenticated Open Redirect vulnerability exists in the /web/* route due to improper handling of URL-encoded path segments, allowing attackers to redirect users to arbitrary external domains via crafted URLs.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 71, priority P0; signals: public_exploit_code, description_text, epss.",
+      "suggested_action": "Review the vendor advisory: https://github.com/mastodon/mastodon/security/advisories/GHSA-xqw8-4j56-5hj6",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "Mastodon is a free, open-source social network server based on ActivityPub."
+        }
+      ],
+      "unknowns": [],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:30:48Z"
+    },
+    {
+      "cve_id": "CVE-2026-8023",
+      "rank": 72,
+      "priority": "P0",
+      "summary": "The HTTP server serves files from a configured root directory, but does not resolve path traversal sequences (like ../) in the request path, allowing an attacker to read arbitrary files on the mounted volume by requesting a path that escapes the web root.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 72, priority P0; signals: description_text, public_exploit_code, epss.",
+      "suggested_action": "Review the vendor advisory: https://github.com/zephyrproject-rtos/zephyr/commit/f4a423c98554f209c5d2f22f041822422c9263b8",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "Zephyr's HTTP server (subsys/net/lib/http) provides a static-filesystem resource type (HTTP_RESOURCE_TYPE_STATIC_FS, available when CONFIG_FILE_SYSTEM is enabled) that serves files from a configured root directory."
+        }
+      ],
+      "unknowns": [],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:31:01Z"
+    },
+    {
+      "cve_id": "CVE-2026-86426",
+      "rank": 73,
+      "priority": "P0",
+      "summary": "LibreNMS before 26.8.0 has an authentication bypass vulnerability in the REST API where unauthenticated attackers can access protected endpoints by sending numeric values instead of string tokens, enabling access to device credentials and administrative features that lead to remote code execution through alert templates.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 73, priority P0; signals: description_text, public_exploit_code, epss.",
+      "suggested_action": "Review the vendor advisory: https://github.com/librenms/librenms/security/advisories/GHSA-cvq8-gqfq-3mvg",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "LibreNMS before 26.8.0 contains an authentication bypass vulnerability in the REST API that allows unauthenticated attackers to access protected endpoints by sending numeric values instead of string tokens."
+        }
+      ],
+      "unknowns": [],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:31:11Z"
+    },
+    {
+      "cve_id": "CVE-2026-65643",
+      "rank": 74,
+      "priority": "P0",
+      "summary": "Eval injection in cPanel 11.138.0.0 and earlier allows remote authenticated users to execute arbitrary code as root.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 74, priority P0; signals: public_exploit_code, description_text, epss.",
+      "suggested_action": "Review the vendor advisory: https://support.cpanel.net/hc/en-us/articles/42959571221527-Security-CVE-2026-65643-Park-API-Vulnerability-August-27-2026",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "Eval injection in cPanel 11.138.0.0 and earlier allows remote authenticated users to execute arbitrary code as root."
+        }
+      ],
+      "unknowns": [],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:31:17Z"
+    },
+    {
+      "cve_id": "CVE-2026-95675",
+      "rank": 75,
+      "priority": "P0",
+      "summary": "The firmware contains an unauthenticated remote code execution vulnerability that allows remote attackers to execute arbitrary commands as root by sending crafted requests to the web management interface without valid credentials, enabling full device compromise and use as a pivot point.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 75, priority P0; signals: description_text, public_exploit_code, epss.",
+      "suggested_action": "No vendor patch reference in the record; apply the vendor's latest update, restrict network exposure, and monitor.",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "D-Link DAP-1360 firmware version 6.14 and earlier contains an unauthenticated remote code execution vulnerability that allows remote attackers to execute arbitrary commands as root by sending crafted requests to the device's web management interface without valid credentials."
+        }
+      ],
+      "unknowns": [
+        "No vendor patch reference in the record."
+      ],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:31:25Z"
+    },
+    {
+      "cve_id": "CVE-2026-15733",
+      "rank": 76,
+      "priority": "P0",
+      "summary": "A Remote Code Execution vulnerability exists in WGDashboard version 4.2.3 and earlier, allowing authenticated attackers to execute arbitrary commands as root via multiple OS command injection mechanisms.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 76, priority P0; signals: public_exploit_code, description_text, epss.",
+      "suggested_action": "No vendor patch reference in the record; apply the vendor's latest update, restrict network exposure, and monitor.",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "A Remote Code Execution (RCE) vulnerability exist in WGDashboard version 4.2.3 and earlier."
+        }
+      ],
+      "unknowns": [
+        "No vendor patch reference in the record."
+      ],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:31:32Z"
+    },
+    {
+      "cve_id": "CVE-2026-64633",
+      "rank": 77,
+      "priority": "P0",
+      "summary": "A vulnerability allows remote unauthenticated code execution on the agent host.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 77, priority P0; signals: assigner_kev_history, description_text, public_exploit_code.",
+      "suggested_action": "No vendor patch reference in the record; apply the vendor's latest update, restrict network exposure, and monitor.",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "A vulnerability allowing remote unauthenticated code execution on the agent host."
+        }
+      ],
+      "unknowns": [
+        "No vendor patch reference in the record."
+      ],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:31:35Z"
+    },
+    {
+      "cve_id": "CVE-2026-67401",
+      "rank": 78,
+      "priority": "P0",
+      "summary": "A vulnerability in cPanel allows a mail-enabled account to achieve remote code execution as root through SQLi in the EmailTrack component.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 78, priority P0; signals: public_exploit_code, description_text, epss.",
+      "suggested_action": "No vendor patch reference in the record; apply the vendor's latest update, restrict network exposure, and monitor.",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "A vulnerability in cPanel allows a mail-enabled account to achieve remote code execution as root through SQLi in EmailTrack component"
+        }
+      ],
+      "unknowns": [
+        "No vendor patch reference in the record."
+      ],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:31:41Z"
+    },
+    {
+      "cve_id": "CVE-2026-40047",
+      "rank": 79,
+      "priority": "P0",
+      "summary": "The camel-docling component improperly validates custom CLI arguments, allowing argument injection and directory traversal when forwarding externally-influenced data into the CamelDoclingCustomArguments header, which can cause unintended docling command-line flags and path-like values to be passed to the subprocess.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 79, priority P0; signals: public_exploit_code, description_text, epss.",
+      "suggested_action": "Review the vendor advisory: https://camel.apache.org/security/CVE-2026-40047.html",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "Improper Neutralization of Argument Delimiters in a Command ('Argument Injection') vulnerability in Apache Camel Docling component."
+        }
+      ],
+      "unknowns": [],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:31:55Z"
+    },
+    {
+      "cve_id": "CVE-2026-31908",
+      "rank": 80,
+      "priority": "P0",
+      "summary": "An attacker can inject malicious headers by exploiting a configuration in the forward-auth plugin in Apache APISIX, affecting versions from 2.12.0 through 3.15.0.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 80, priority P0; signals: public_exploit_code, description_text, epss.",
+      "suggested_action": "Review the vendor advisory: https://lists.apache.org/thread/sob643s5lztov7x579j8o0c444t36n6b",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "Header injection vulnerability in Apache APISIX."
+        }
+      ],
+      "unknowns": [],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:32:03Z"
+    },
+    {
+      "cve_id": "CVE-2026-89013",
+      "rank": 81,
+      "priority": "P0",
+      "summary": "Dolibarr 23.0.4 before 24.0.1 allows unauthenticated attackers to read arbitrary files by using a crafted hashp parameter value, such as hashp=shared, which bypasses token validation and accesses application logs, uploaded business documents, database backups, and other entities' files.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 81, priority P0; signals: public_exploit_code, description_text, epss.",
+      "suggested_action": "No vendor patch reference in the record; apply the vendor's latest update, restrict network exposure, and monitor.",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "Dolibarr 23.0.4 before 24.0.1 contains an authorization bypass vulnerability that allows unauthenticated attackers to read arbitrary files through the document storage endpoints by supplying a crafted hashp parameter value."
+        }
+      ],
+      "unknowns": [
+        "No vendor patch reference in the record."
+      ],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:32:13Z"
+    },
+    {
+      "cve_id": "CVE-2026-5760",
+      "rank": 82,
+      "priority": "P0",
+      "summary": "SGLang's reranking endpoint achieves Remote Code Execution when a model file containing a malicious tokenizer.chat_template is loaded, because the Jinja2 chat templates are rendered using an unsandboxed jinja2.Environment()",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 82, priority P0; signals: public_exploit_code, assigner_kev_history, description_text.",
+      "suggested_action": "Review the vendor advisory: https://github.com/sgl-project/sglang/pull/23660",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "SGLang's reranking endpoint (/v1/rerank) achieves Remote Code Execution (RCE) when a model file containing a malcious tokenizer.chat_template is loaded, as the Jinja2 chat templates are rendered using an unsandboxed jinja2.Environment()."
+        }
+      ],
+      "unknowns": [],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:32:21Z"
+    },
+    {
+      "cve_id": "CVE-2026-77806",
+      "rank": 83,
+      "priority": "P0",
+      "summary": "SPIP before 4.4.21 allows unauthenticated remote attackers to execute arbitrary code via mishandled code injection from an X-Spip-Filtre HTTP request header.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 83, priority P0; signals: public_exploit_code, assigner_kev_history, description_text.",
+      "suggested_action": "No vendor patch reference in the record; apply the vendor's latest update, restrict network exposure, and monitor.",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "SPIP before 4.4.21 allows unauthenticated remote attackers to execute arbitrary code, as exploited in the wild in August 2026."
+        }
+      ],
+      "unknowns": [
+        "No vendor patch reference in the record."
+      ],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:32:28Z"
+    },
+    {
+      "cve_id": "CVE-2026-33453",
+      "rank": 84,
+      "priority": "P0",
+      "summary": "The Apache Camel Camel-Coap component improperly controls dynamically-determined object attributes by allowing arbitrary Camel* headers to be injected into CoAP requests, which can lead to remote code execution when the route uses a header-sensitive producer.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 84, priority P0; signals: public_exploit_code, description_text, epss.",
+      "suggested_action": "No vendor patch reference in the record; apply the vendor's latest update, restrict network exposure, and monitor.",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "Improperly Controlled Modification of Dynamically-Determined Object Attributes vulnerability in Apache Camel Camel-Coap component."
+        }
+      ],
+      "unknowns": [
+        "No vendor patch reference in the record."
+      ],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:32:52Z"
+    },
+    {
+      "cve_id": "CVE-2025-15545",
+      "rank": 85,
+      "priority": "P0",
+      "summary": "The backup restore function does not validate unexpected or unrecognized tags in the backup file, which can be interpreted by a shell and allow arbitrary command execution with root privileges.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 85, priority P0; signals: description_text, public_exploit_code, assigner_kev_history.",
+      "suggested_action": "Review the vendor advisory: https://www.tp-link.com/us/support/faq/4929/",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "The backup restore function does not properly validate unexpected or unrecognized tags within the backup file."
+        }
+      ],
+      "unknowns": [],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:33:00Z"
+    },
+    {
+      "cve_id": "CVE-2026-56876",
+      "rank": 86,
+      "priority": "P0",
+      "summary": "extract-zip does not validate symlink targets when extracting zip archives, allowing a symlink with a relative path to point outside the extraction directory and potentially read or write arbitrary files.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 86, priority P0; signals: public_exploit_code, description_text, epss.",
+      "suggested_action": "No vendor patch reference in the record; apply the vendor's latest update, restrict network exposure, and monitor.",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "extract-zip does not validate symlink targets when extracting zip archives."
+        }
+      ],
+      "unknowns": [
+        "No vendor patch reference in the record."
+      ],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:33:06Z"
+    },
+    {
+      "cve_id": "CVE-2026-49230",
+      "rank": 87,
+      "priority": "P0",
+      "summary": "The jwe-decrypt plugin in Apache APISIX has an improper validation of integrity check value vulnerability that allows authentication bypass due to default configuration.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 87, priority P0; signals: public_exploit_code, description_text, epss.",
+      "suggested_action": "Review the vendor advisory: https://lists.apache.org/thread/n0blgkpvz38ghh5rrh6wtl476919xj1b",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "Improper Validation of Integrity Check Value vulnerability in Apache APISIX."
+        }
+      ],
+      "unknowns": [],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:33:12Z"
+    },
+    {
+      "cve_id": "CVE-2026-9256",
+      "rank": 88,
+      "priority": "P0",
+      "summary": "An unauthenticated attacker can exploit a vulnerability in NGINX Plus and NGINX Open Source by sending crafted HTTP requests that use a rewrite directive with overlapping PCRE captures and a replacement referencing multiple captures, causing a heap buffer overflow and potentially leading to a restart or code execution if ASLR is disabled or bypassed.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 88, priority P0; signals: public_exploit_code, description_text, epss.",
+      "suggested_action": "Review the vendor advisory: https://my.f5.com/manage/s/article/K000161377",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "NGINX Plus and NGINX Open Source have a vulnerability in the ngx_http_rewrite_module module."
+        }
+      ],
+      "unknowns": [],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:33:25Z"
+    },
+    {
+      "cve_id": "CVE-2026-47670",
+      "rank": 89,
+      "priority": "P0",
+      "summary": "Versions 7.1.8 and prior of DbGate are vulnerable to authenticated Remote Code Execution via an unsanitized `functionName` parameter in the `/runners/load-reader` endpoint, allowing any user with valid credentials to execute arbitrary OS commands as root.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 89, priority P0; signals: public_exploit_code, description_text, epss.",
+      "suggested_action": "No vendor patch reference in the record; apply the vendor's latest update, restrict network exposure, and monitor.",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "DbGate is cross-platform database manager."
+        }
+      ],
+      "unknowns": [
+        "No vendor patch reference in the record."
+      ],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:33:35Z"
+    },
+    {
+      "cve_id": "CVE-2026-29519",
+      "rank": 90,
+      "priority": "P0",
+      "summary": "Lucee CFML Server versions across the 5.3.x, 6.1.x, 6.2.x, and 7.0.x release lines are vulnerable to reflected cross-site scripting by allowing unauthenticated remote attackers to execute arbitrary JavaScript in a victim's browser by embedding payloads in the request path.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 90, priority P0; signals: description_text, public_exploit_code, epss.",
+      "suggested_action": "No vendor patch reference in the record; apply the vendor's latest update, restrict network exposure, and monitor.",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "Lucee CFML Server versions across the 5.3.x, 6.1.x, 6.2.x, and 7.0.x release lines contain a reflected cross-site scripting vulnerability in URL path parsing that allows unauthenticated remote attackers to execute arbitrary JavaScript in a victim's browser by embedding HTML or JavaScript payloads within the request path."
+        }
+      ],
+      "unknowns": [
+        "No vendor patch reference in the record."
+      ],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:33:47Z"
+    },
+    {
+      "cve_id": "CVE-2026-67185",
+      "rank": 91,
+      "priority": "P0",
+      "summary": "TinyWeb through 0.0.8 allows unauthenticated attackers to read arbitrary files by using ../ sequences in the URL path, which are not normalized or checked, allowing access to sensitive files like credential stores and private keys.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 91, priority P0; signals: description_text, public_exploit_code, epss.",
+      "suggested_action": "No vendor patch reference in the record; apply the vendor's latest update, restrict network exposure, and monitor.",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "TinyWeb through 0.0.8 contains a path traversal vulnerability that allows unauthenticated attackers to read arbitrary files by submitting ../ sequences in the URL path, which are concatenated directly to the configured web root in HttpBuilder::buildResponse() without normalization, dot-segment removal, or boundary checks."
+        }
+      ],
+      "unknowns": [
+        "No vendor patch reference in the record."
+      ],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:33:56Z"
+    },
+    {
+      "cve_id": "CVE-2026-33006",
+      "rank": 92,
+      "priority": "P0",
+      "summary": "A timing attack against mod_auth_digest in Apache HTTP Server 2.4.66 allows a bypass of Digest authentication by a remote attacker.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 92, priority P0; signals: public_exploit_code, description_text, epss.",
+      "suggested_action": "Review the vendor advisory: https://httpd.apache.org/security/vulnerabilities_24.html",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "A timing attack against mod_auth_digest in Apache HTTP Server 2.4.66 allows a bypass of Digest authentication by a remote attacker."
+        }
+      ],
+      "unknowns": [],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:34:01Z"
+    },
+    {
+      "cve_id": "CVE-2026-4802",
+      "rank": 93,
+      "priority": "P0",
+      "summary": "A flaw in Cockpit allows a remote attacker to execute arbitrary commands on the host by injecting shell metacharacters into unsanitized user-controlled parameters in the system logs UI, leading to system compromise.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 93, priority P0; signals: description_text, public_exploit_code, epss.",
+      "suggested_action": "No vendor patch reference in the record; apply the vendor's latest update, restrict network exposure, and monitor.",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "A flaw was found in Cockpit."
+        }
+      ],
+      "unknowns": [
+        "No vendor patch reference in the record."
+      ],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:34:08Z"
+    },
+    {
+      "cve_id": "CVE-2026-42588",
+      "rank": 94,
+      "priority": "P0",
+      "summary": "An authenticated attacker can exploit an improper input validation and code injection vulnerability in Apache ActiveMQ by crafting a discovery URI that triggers VM transport's brokerConfig parameter using 'masterslave:// ' URL, leading to arbitrary code execution on the broker's JVM through Spring's bean factory methods.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 94, priority P0; signals: public_exploit_code, description_text, epss.",
+      "suggested_action": "Review the vendor advisory: https://lists.apache.org/thread/ns0zktfo16s9ql2mmtqtlb6p6xcs45xm",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "Improper Input Validation, Improper Control of Generation of Code ('Code Injection') vulnerability in Apache ActiveMQ Broker, Apache ActiveMQ All, Apache ActiveMQ."
+        }
+      ],
+      "unknowns": [],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:34:21Z"
+    },
+    {
+      "cve_id": "CVE-2026-85520",
+      "rank": 95,
+      "priority": "P0",
+      "summary": "An unauthenticated attacker can write and execute arbitrary PHP code via the gmfeed module's feed.php endpoint by controlling file name, path, extension, and content through request parameters, leading to remote code execution.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 95, priority P0; signals: description_text, public_exploit_code, epss.",
+      "suggested_action": "No vendor patch reference in the record; apply the vendor's latest update, restrict network exposure, and monitor.",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "Google Merchant Center Feed (gmfeed) module for PrestaShop is vulnerable to unauthenticated arbitrary file write in the feed.php endpoint."
+        }
+      ],
+      "unknowns": [
+        "No vendor patch reference in the record."
+      ],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:34:28Z"
+    },
+    {
+      "cve_id": "CVE-2025-40554",
+      "rank": 96,
+      "priority": "P0",
+      "summary": "SolarWinds Web Help Desk is susceptible to an authentication bypass vulnerability that allows an attacker to invoke specific actions within Web Help Desk.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 96, priority P0; signals: description_text, public_exploit_code, assigner_kev_history.",
+      "suggested_action": "Review the vendor advisory: https://www.solarwinds.com/trust-center/security-advisories/CVE-2025-40554",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "SolarWinds Web Help Desk was found to be susceptible to an authentication bypass vulnerability that, if exploited, could allow an attacker to invoke specific actions within Web Help Desk."
+        }
+      ],
+      "unknowns": [],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:34:33Z"
+    },
+    {
+      "cve_id": "CVE-2026-88899",
+      "rank": 97,
+      "priority": "P0",
+      "summary": "Versions before 0.31.0 fail to properly validate the x-opencode-directory request header in the /api/opencode proxy endpoint, allowing remote attackers to supply arbitrary directory paths and execute file operations outside the project root on the host system.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 97, priority P0; signals: description_text, public_exploit_code, epss.",
+      "suggested_action": "No vendor patch reference in the record; apply the vendor's latest update, restrict network exposure, and monitor.",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "knowns versions before 0.31.0 fail to properly validate the x-opencode-directory request header in the /api/opencode proxy endpoint."
+        }
+      ],
+      "unknowns": [
+        "No vendor patch reference in the record."
+      ],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:34:42Z"
+    },
+    {
+      "cve_id": "CVE-2026-82384",
+      "rank": 98,
+      "priority": "P0",
+      "summary": "Deserialization of untrusted data in Apache Roller 6.1.5 allows an unauthenticated remote attacker to execute arbitrary code by causing deserialization of attacker-controlled bytes through the XML-RPC endpoint, which accepts vendor extension types before authentication and is always mapped, even when XML-RPC is disabled.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 98, priority P0; signals: public_exploit_code, description_text, epss.",
+      "suggested_action": "No vendor patch reference in the record; apply the vendor's latest update, restrict network exposure, and monitor.",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "Deserialization of Untrusted Data in Apache Roller 6.1.5 allows an unauthenticated remote attacker to cause deserialization of attacker-controlled bytes, because the XML-RPC endpoint accepts vendor extension types that are deserialized during request parsing, before authentication."
+        }
+      ],
+      "unknowns": [
+        "No vendor patch reference in the record."
+      ],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:34:56Z"
+    },
+    {
+      "cve_id": "CVE-2026-86350",
+      "rank": 99,
+      "priority": "P0",
+      "summary": "Inconsistent interpretation of HTTP/2 requests ('HTTP Request/Response smuggling') vulnerability in Apache Tomcat caused by a regression in fix for CVE-2026-41293 can trigger request header mix-up.",
+      "summary_source": "template",
+      "why_this_rank": "Rank 99, priority P0; signals: public_exploit_code, description_text, epss.",
+      "suggested_action": "No vendor patch reference in the record; apply the vendor's latest update, restrict network exposure, and monitor.",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "Inconsistent interpretation of HTTP/2 requests ('HTTP Request/Response smuggling') vulnerability in Apache Tomcat caused by a regression in fix for CVE-2026-41293 can trigger request header mix-up."
+        }
+      ],
+      "unknowns": [
+        "No vendor patch reference in the record."
+      ],
+      "ai_generated": false,
+      "model_id": "deterministic-template",
+      "prompt_version": "summary-v1",
+      "validation_errors": [
+        "foreign CVE ID"
+      ],
+      "generated_at": "2026-11-08T00:35:09Z"
+    },
+    {
+      "cve_id": "CVE-2026-29146",
+      "rank": 100,
+      "priority": "P0",
+      "summary": "The Padding Oracle vulnerability exists in Apache Tomcat's EncryptInterceptor due to its default configuration.",
+      "summary_source": "granite",
+      "why_this_rank": "Rank 100, priority P0; signals: public_exploit_code, description_text, epss.",
+      "suggested_action": "Review the vendor advisory: https://lists.apache.org/thread/lzt04z2pb3dc5tk85obn80xygw3z1p0w",
+      "evidence": [
+        {
+          "field": "description",
+          "quote": "Padding Oracle vulnerability in Apache Tomcat's EncryptInterceptor with default configuration."
+        }
+      ],
+      "unknowns": [],
+      "ai_generated": true,
+      "model_id": "granite4.2:3b",
+      "prompt_version": "summary-v1",
+      "validation_errors": [],
+      "generated_at": "2026-11-08T00:35:14Z"
+    }
+  ]
+}

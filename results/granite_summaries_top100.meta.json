@@ -1,0 +1,9 @@
+{
+  "model_id": "granite4.2:3b",
+  "prompt_version": "summary-v1",
+  "rows": 100,
+  "granite_summaries": 94,
+  "template_fallbacks": 6,
+  "elapsed_seconds": 891.1,
+  "generated_at": "2026-11-08T00:35:14Z"
+}

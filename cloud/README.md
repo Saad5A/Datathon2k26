@@ -83,5 +83,18 @@ needs a paid plan (about $1.70 at $0.0001 per 1,000 tokens, estimate). The scrip
 2. `.venv/bin/python cloud/embed_granite.py --provider LOCAL --limit 200` (speed test; prints texts/second).
 3. `.venv/bin/python cloud/embed_granite.py --provider LOCAL` (writes straight into `data_cache/`; Ctrl-C and rerun to resume).
 
+## Option D: local Ollama Granite summaries (CPU, no API key, no GPU)
+
+This is the guaranteed IBM-track artifact: IBM Granite 4.2 3B writes a grounded one-sentence
+summary for the top 100 ranked CVEs. It does **not** change `scores_2026.csv` or `top500.csv`.
+1. Install/start Ollama and pull the model: `ollama pull granite4.2:3b`.
+2. Run: `.venv/bin/python cloud/explain_granite_ollama.py --limit 100`.
+3. Output: `results/granite_summaries_top100.json` + `.meta.json`. The 2026-11-08 run produced
+   100 rows, 94 Granite summaries that passed grounding, 6 deterministic template fallbacks,
+   and 0 unsupported versions/URLs/CVE IDs/banned claims in the final file.
+4. The script validates every summary and falls back to the description's first sentence on
+   failure. Template fallbacks are labelled `deterministic-template`, not AI-generated.
+5. `--limit 10` is a quick pilot; the model stays local and no credentials are used.
+
 ## Check
 `.venv/bin/python cloud/test_embed_granite.py` runs the cache/resume/output logic offline (no model, no network).
