@@ -625,10 +625,13 @@
     "test_positives": 65,
     "positives_whose_assigner_has_kev_additions_dated_2025": 58,
     "positives_own_kev_date_in_2025": 25,
-    "positives_own_kev_date_before_2025_10": 65,
+    "positives_own_kev_date_before_2025_09_01": 65,
+    "positives_own_kev_date_before_2025_01_01": 40,
+    "assigner_kev_population": "KEV rows joined to vulnerabilities.csv assigners, CVEs published 2021+ only (as in the asg features)",
     "note": "Train rows (2025 snapshots) carry asg_rate/asg_kev counted from KEV rows before their month, which include the 2024 test positives' own KEV additions: future knowledge of the test labels enters through the assigner features (and through the train labels' assigner mix)."
   },
   "too_good_auc_gt_0.93": {},
+  "interpretation": "Not a fair accuracy test. Test sets differ in difficulty and intervals overlap; C1's AUC is clearly above only the EPSS-based baselines here.",
   "notes": {
     "seed_sets": "C1 seed set s: text OOF folds seed s, HGB random_state s; TF-IDF and text model fitted on train rows only",
     "ci95_seed0": "percentile bootstrap, 2000 resamples, seed 0; C1 uses seed set 0; same resamples for every method",

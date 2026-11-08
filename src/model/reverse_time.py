@@ -8,6 +8,7 @@ NOT time-safe: the training rows and their assigner features postdate the test r
 Does not change the final model or top500.csv.
 """
 import json
+import math
 
 import joblib
 import numpy as np
@@ -40,7 +41,9 @@ def leakage_indicator(te):
     return {"test_positives": int(len(pos)),
             "positives_whose_assigner_has_kev_additions_dated_2025": int(pos.assigner.isin(asg25).sum()),
             "positives_own_kev_date_in_2025": int((pos.date_added.dt.year == 2025).sum()),
-            "positives_own_kev_date_before_2025_10": int((pos.date_added < "2025-10-01").sum()),
+            "positives_own_kev_date_before_2025_09_01": int((pos.date_added < "2025-09-01").sum()),
+            "positives_own_kev_date_before_2025_01_01": int((pos.date_added < "2025-01-01").sum()),
+            "assigner_kev_population": "KEV rows joined to vulnerabilities.csv assigners, CVEs published 2021+ only (as in the asg features)",
             "note": ("Train rows (2025 snapshots) carry asg_rate/asg_kev counted from KEV rows before their month, "
                      "which include the 2024 test positives' own KEV additions: future knowledge of the test labels "
                      "enters through the assigner features (and through the train labels' assigner mix).")}
@@ -81,6 +84,8 @@ def main():
                        "ci95_seed0": ci},
            "forward_fold1": fwd_f1, "future_knowledge_indicator": leakage_indicator(te),
            "too_good_auc_gt_0.93": too_good,
+           "interpretation": ("Not a fair accuracy test. Test sets differ in difficulty and intervals overlap; C1's AUC is "
+                              "clearly above only the EPSS-based baselines here."),
            "notes": {"seed_sets": "C1 seed set s: text OOF folds seed s, HGB random_state s; TF-IDF and text model fitted on train rows only",
                      "ci95_seed0": f"percentile bootstrap, {N_BOOT} resamples, seed {BOOT_SEED}; C1 uses seed set 0; same resamples for every method",
                      "ties": "top500_cve_id / top250_cve_id break ties by cve_id; top500_best/worst is the tie-aware range"}}
@@ -92,7 +97,7 @@ def main():
     claims = {}
 
     def add(key, text, value, unit):
-        claims["rev." + key] = {"text": text, "value": int(value) if unit == "count" else float(value), "unit": unit,
+        claims["rev." + key] = {"text": text, "value": int(value) if unit == "count" and float(value).is_integer() else float(value), "unit": unit,
                                 "source_script": SCRIPT_REL, "output_file": OUT_REL, "status": "unverified", "verified_by": None}
 
     for k in ("train_rows", "train_positives", "test_rows", "test_positives"):
@@ -112,9 +117,24 @@ def main():
             add(f"{n}.ci95_lo.{k}", f"{where}, {n}: bootstrap 95% CI lower bound, {k} ({lab})", v[0], u)
             add(f"{n}.ci95_hi.{k}", f"{where}, {n}: bootstrap 95% CI upper bound, {k} ({lab})", v[1], u)
     ind = res["future_knowledge_indicator"]
-    for k in ("positives_whose_assigner_has_kev_additions_dated_2025", "positives_own_kev_date_in_2025"):
-        add(f"indicator.{k}", f"{where}: 2024 test {k.replace('_', ' ')}", ind[k], "count")
+    add("indicator.positives_whose_assigner_has_kev_additions_dated_2025",
+        f"{where}: 2024 test positives whose assigner has KEV additions dated 2025 (counts KEV CVEs published 2021+ only, "
+        "as in the asg features)", ind["positives_whose_assigner_has_kev_additions_dated_2025"], "count")
+    add("indicator.positives_own_kev_date_in_2025", f"{where}: 2024 test positives own kev date in 2025",
+        ind["positives_own_kev_date_in_2025"], "count")
+    add("indicator.positives_own_kev_date_before_2025_09_01",
+        f"{where}: 2024 test positives whose own KEV addition predates 2025-09-01 (so it is in the assigner history of "
+        "at least the 2025-09 training rows)", ind["positives_own_kev_date_before_2025_09_01"], "count")
+    add("indicator.positives_own_kev_date_before_2025_01_01",
+        f"{where}: 2024 test positives whose own KEV addition predates 2025-01-01 (so it is in the assigner history of "
+        "every training row)", ind["positives_own_kev_date_before_2025_01_01"], "count")
     assert all(tag in c["text"] for c in claims.values())
+    old = json.loads(CLAIMS.read_text()) if CLAIMS.exists() else {}
+    for k, c in claims.items():  # an auditor's verdict survives only if text and value are unchanged
+        prev = old.get(k)
+        if prev and prev["text"] == c["text"] and type(prev["value"]) is type(c["value"]) and math.isclose(
+                prev["value"], c["value"], rel_tol=1e-9, abs_tol=1e-12):
+            c["status"], c["verified_by"] = prev["status"], prev["verified_by"]
     CLAIMS.write_text(json.dumps(dict(sorted(claims.items())), indent=2) + "\n")
     print(json.dumps({k: res[k] for k in ("train_rows", "train_positives", "test_rows", "test_positives",
                                           "train_test_cve_overlap", "too_good_auc_gt_0.93")}))

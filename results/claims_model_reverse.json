@@ -325,7 +325,7 @@
   },
   "rev.cvss3.ci95_hi.top500_expected": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, cvss3: bootstrap 95% CI upper bound, top500_expected (deterministic baseline)",
-    "value": 2,
+    "value": 2.759298839803446,
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
@@ -352,7 +352,7 @@
   },
   "rev.cvss3.ci95_lo.top500_expected": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, cvss3: bootstrap 95% CI lower bound, top500_expected (deterministic baseline)",
-    "value": 1,
+    "value": 1.3004618651891464,
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
@@ -577,7 +577,7 @@
   },
   "rev.exploit_then_epss.ci95_hi.top500_expected": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, exploit_then_epss: bootstrap 95% CI upper bound, top500_expected (deterministic baseline)",
-    "value": 24,
+    "value": 24.118988247084545,
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
@@ -604,7 +604,7 @@
   },
   "rev.exploit_then_epss.ci95_lo.top500_expected": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots, exploit_then_epss: bootstrap 95% CI lower bound, top500_expected (deterministic baseline)",
-    "value": 8,
+    "value": 8.878689655172415,
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
     "output_file": "results/reverse_time.json",
@@ -665,6 +665,24 @@
     "status": "verified",
     "verified_by": "audit/2026-11-07-reverse-time.md"
   },
+  "rev.indicator.positives_own_kev_date_before_2025_01_01": {
+    "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots: 2024 test positives whose own KEV addition predates 2025-01-01 (so it is in the assigner history of every training row)",
+    "value": 40,
+    "unit": "count",
+    "source_script": "src/model/reverse_time.py",
+    "output_file": "results/reverse_time.json",
+    "status": "unverified",
+    "verified_by": null
+  },
+  "rev.indicator.positives_own_kev_date_before_2025_09_01": {
+    "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots: 2024 test positives whose own KEV addition predates 2025-09-01 (so it is in the assigner history of at least the 2025-09 training rows)",
+    "value": 65,
+    "unit": "count",
+    "source_script": "src/model/reverse_time.py",
+    "output_file": "results/reverse_time.json",
+    "status": "unverified",
+    "verified_by": null
+  },
   "rev.indicator.positives_own_kev_date_in_2025": {
     "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots: 2024 test positives own kev date in 2025",
     "value": 25,
@@ -675,7 +693,7 @@
     "verified_by": "audit/2026-11-07-reverse-time.md"
   },
   "rev.indicator.positives_whose_assigner_has_kev_additions_dated_2025": {
-    "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots: 2024 test positives whose assigner has kev additions dated 2025",
+    "text": "reverse-time (not time-safe): trained 2025-01..09 snapshots, tested 2024-01..12 snapshots: 2024 test positives whose assigner has KEV additions dated 2025 (counts KEV CVEs published 2021+ only, as in the asg features)",
     "value": 58,
     "unit": "count",
     "source_script": "src/model/reverse_time.py",
