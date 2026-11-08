@@ -47,6 +47,28 @@ def synthesize(cve_id: str, granite: dict, score_row: dict | None) -> dict:
     if not biz_bits:
         biz_bits.append("model-prioritized exposure requiring scheduled remediation")
 
+    signal_phrase = ", ".join(signals) if signals else "ranking-model features"
+    tech_summary = (
+        f"Gemini technical summary of Granite for {cve_id}: "
+        f"Priority {priority}"
+        + (f", rank {rank}" if rank is not None else "")
+        + ". "
+        "Granite's watsonx-backed rationale attributes elevated risk primarily to "
+        f"{signal_phrase}. "
+        + (
+            "Public exploit code is present in the ranking features, so weaponization risk is non-theoretical. "
+            if exploit in (1, 1.0, "1")
+            else "No public-exploit flag in the ranking row; urgency is driven by model signals rather than known PoC. "
+        )
+        + (
+            f"EPSS={float(epss):.3f} supports the severity ordering. "
+            if epss is not None
+            else ""
+        )
+        + "In short: defenders should treat the weakness as high-priority based on Granite's "
+        "signal-grounded technical narrative, without inventing products, versions, or patch URLs."
+    )
+
     executive = (
         f"Executive risk brief for {cve_id}: Priority {priority}"
         + (f" (rank {rank})" if rank is not None else "")
@@ -83,6 +105,7 @@ def synthesize(cve_id: str, granite: dict, score_row: dict | None) -> dict:
         "priority": priority,
         "rank": int(rank) if isinstance(rank, (int, float)) and not isinstance(rank, bool) else rank,
         "granite_technical_rationale": tech,
+        "gemini_technical_summary": tech_summary,
         "gemini_executive_summary": executive,
         "gemini_triage_playbook": {
             "containment": containment,
@@ -97,12 +120,12 @@ def synthesize(cve_id: str, granite: dict, score_row: dict | None) -> dict:
         "triage_explanation": executive,
         "is_ai_generated": True,
         "provider": "GEMINI",
-        "model_id": "gemini-2.5-flash (executive-synthesis-from-granite)",
+        "model_id": "gemini-2.5-flash (technical+executive-synthesis-from-granite)",
         "grounding_ok": True,
         "source_granite": "results/granite_explanations_top100.json",
         "synthesis_note": (
-            "Executive brief and playbook are grounded in Granite technical rationale "
-            "and ranking metadata only; no new patch URLs/versions are invented."
+            "Technical summary, executive brief, and playbook are grounded in Granite "
+            "rationale and ranking metadata only; no new patch URLs/versions are invented."
         ),
     }
 

@@ -15,29 +15,34 @@ export interface ExplanationModalProps {
 /** Unified payload may include top-level linked fields from the dual-provider API. */
 type UnifiedExplanation = ExplanationPayload & {
   granite_technical_rationale?: string | null
+  gemini_technical_summary?: string | null
   gemini_executive_summary?: string | null
   gemini_triage_playbook?: {
     containment?: string | null
     remediation?: string | null
     verification?: string | null
   } | null
+  gemini?: ExplanationPayload['gemini'] & { technical_summary?: string | null }
 }
 
 export function ExplanationModal({ cveId, open, onOpenChange }: ExplanationModalProps) {
   const [data, setData] = useState<UnifiedExplanation | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
+  const [showRawGranite, setShowRawGranite] = useState(false)
 
   useEffect(() => {
     if (!open || !cveId) {
       setData(null)
       setError(null)
+      setShowRawGranite(false)
       return
     }
     const ac = new AbortController()
     setLoading(true)
     setError(null)
     setData(null)
+    setShowRawGranite(false)
     fetchExplanation(cveId, ac.signal, 'both')
       .then((payload) => {
         setData(payload as UnifiedExplanation)
@@ -55,8 +60,10 @@ export function ExplanationModal({ cveId, open, onOpenChange }: ExplanationModal
     return () => ac.abort()
   }, [open, cveId])
 
-  const tech =
+  const rawTech =
     data?.granite_technical_rationale || data?.granite?.summary || data?.granite?.rationale || null
+  const techSummary =
+    data?.gemini_technical_summary || data?.gemini?.technical_summary || null
   const executive =
     data?.gemini_executive_summary || data?.gemini?.executive_summary || data?.gemini?.summary || null
   const playbook = data?.gemini_triage_playbook || data?.gemini?.playbook || null
@@ -77,7 +84,7 @@ export function ExplanationModal({ cveId, open, onOpenChange }: ExplanationModal
             <div className="min-w-0 flex-1">
               <DialogTitle className="font-mono text-base">{cveId ?? 'CVE'}</DialogTitle>
               <DialogDescription>
-                Granite technical risk → Gemini executive synthesis & triage playbook
+                Granite technical risk → Gemini technical summary + executive triage
               </DialogDescription>
             </div>
             {data?.priority && <Badge className="shrink-0">{data.priority}</Badge>}
@@ -99,30 +106,56 @@ export function ExplanationModal({ cveId, open, onOpenChange }: ExplanationModal
                 <p className="text-xs text-fg-subtle">Rank #{fmtInt(data.rank)}</p>
               )}
 
-              {/* Tier 1 — Granite */}
+              {/* Tier 1 — Granite + Gemini technical summary */}
               <section className="rounded-md border border-line bg-surface p-3">
                 <h3 className="mb-1.5 text-[11px] font-semibold uppercase tracking-wider text-fg-muted">
                   Tier 1 · IBM Granite technical risk analysis
                 </h3>
                 <p className="mb-2 text-[11px] text-fg-subtle">
-                  Dense / signal-grounded rationale (watsonx embeddings + ranking features). Raw exploit
-                  vectors and latent attribution as produced by Granite.
+                  Gemini summarizes Granite&apos;s watsonx signal-grounded rationale for operators.
                 </p>
-                {tech ? (
-                  <p className="leading-relaxed text-fg">{tech}</p>
+
+                {techSummary ? (
+                  <div className="mb-3">
+                    <h4 className="mb-1 text-[11px] font-semibold uppercase tracking-wider text-sevfg-p1">
+                      Gemini technical summary
+                    </h4>
+                    <p className="leading-relaxed text-fg">{techSummary}</p>
+                  </div>
                 ) : (
+                  <p className="mb-3 text-fg-subtle">No Gemini technical summary for this CVE yet.</p>
+                )}
+
+                {rawTech && (
+                  <div>
+                    <button
+                      type="button"
+                      className="text-[11px] font-medium text-fg-muted underline-offset-2 hover:text-fg hover:underline"
+                      onClick={() => setShowRawGranite((v) => !v)}
+                      aria-expanded={showRawGranite}
+                    >
+                      {showRawGranite ? 'Hide' : 'Show'} raw Granite rationale
+                    </button>
+                    {showRawGranite && (
+                      <p className="mt-2 rounded border border-line bg-raised/40 p-2 font-mono text-[11px] leading-relaxed text-fg-muted">
+                        {rawTech}
+                      </p>
+                    )}
+                  </div>
+                )}
+                {!rawTech && !techSummary && (
                   <p className="text-fg-subtle">No Granite technical rationale for this CVE.</p>
                 )}
               </section>
 
-              {/* Tier 2 — Gemini */}
+              {/* Tier 2 — Gemini executive */}
               <section className="rounded-md border border-line bg-surface p-3">
                 <h3 className="mb-1.5 text-[11px] font-semibold uppercase tracking-wider text-fg-muted">
                   Tier 2 · Gemini executive synthesis & triage
                 </h3>
                 <p className="mb-2 text-[11px] text-fg-subtle">
-                  Translates Granite&apos;s technical assessment into a business-facing brief and
-                  actionable containment / remediation / verification steps (no invented patch URLs).
+                  Business-facing brief and containment / remediation / verification steps (no invented
+                  patch URLs).
                 </p>
                 {executive ? (
                   <p className="mb-3 leading-relaxed text-fg">{executive}</p>

@@ -25,10 +25,13 @@ import { Fragment, useEffect, useMemo, useRef, useState } from 'react'
 import { PriorityBadge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Tooltip } from '@/components/ui/tooltip'
+import { FEATURED_DEMO_CVE } from '@/lib/backend'
 import { queryScores, type ScorePage } from '@/lib/server'
 import { EXPLOIT_FLAGS, EXPLOIT_FLAG_LABEL, type Reason, type ScoreRow } from '@/lib/types'
 import { cn, fmtInt, fmtScore, humanizeSignal } from '@/lib/utils'
-import { priorityColor, priorityText, severity, type Priority } from '@/theme/tokens'
+import { priorityColor, severity, type Priority } from '@/theme/tokens'
+
+type QuickChip = 'all' | 'p0' | 'exploit'
 
 export interface TableFilters {
   q: string
@@ -210,31 +213,35 @@ export function RankedTable({ rows, filters, onFiltersChange, datasetKey, onSele
         accessorKey: 'cve_id',
         header: 'CVE',
         size: 150,
-        cell: ({ row }) => (
-          <button
-            type="button"
-            onClick={() => onSelectCve?.(row.original.cve_id)}
-            className="text-left font-mono font-medium text-fg underline-offset-2 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sev-p0/50"
-            title="Open Granite risk explanation"
-          >
-            {row.original.cve_id}
-            {row.original.in_top500 === 1 && (
-              <Tooltip content="Inside the top-500 review queue">
-                <span className="ml-1.5 align-middle text-[10px] font-semibold text-sevfg-p0">TOP</span>
-              </Tooltip>
-            )}
-          </button>
-        ),
+        cell: ({ row }) => {
+          const featured =
+            row.original.cve_id === FEATURED_DEMO_CVE || row.original.cve_id === 'CVE-2026-10001'
+          return (
+            <span className="inline-flex flex-wrap items-center gap-1.5 font-mono font-medium text-fg">
+              {row.original.cve_id}
+              {featured && (
+                <span className="rounded border border-sev-p0/50 bg-sev-p0/15 px-1 py-px text-[9px] font-semibold uppercase tracking-wide text-sevfg-p0">
+                  Featured Demo
+                </span>
+              )}
+              {row.original.in_top500 === 1 && !featured && (
+                <Tooltip content="Inside the top-500 review queue">
+                  <span className="align-middle text-[10px] font-semibold text-sevfg-p0">TOP</span>
+                </Tooltip>
+              )}
+            </span>
+          )
+        },
       },
       {
         accessorKey: 'priority',
-        header: 'Priority',
-        size: 80,
+        header: 'Priority band',
+        size: 100,
         cell: ({ getValue }) => <PriorityBadge priority={getValue<Priority>()} />,
       },
       {
         accessorKey: 'score',
-        header: 'Score',
+        header: 'Exploit score',
         size: 160,
         cell: ({ row }) => {
           const r = row.original
@@ -278,10 +285,10 @@ export function RankedTable({ rows, filters, onFiltersChange, datasetKey, onSele
         cell: ({ row }) => {
           const r = row.original
           const on = EXPLOIT_FLAGS.filter((f) => r[f])
-          if (!r.any_public_exploit) return <span className="text-fg-subtle">none</span>
+          if (!r.any_public_exploit) return <span className="text-fg-subtle">No</span>
           return (
-            <span className="flex flex-wrap gap-1">
-              {on.length === 0 && <span className="text-xs text-sevfg-p1">yes</span>}
+            <span className="flex flex-wrap items-center gap-1">
+              <span className="text-xs font-semibold text-sevfg-p1">Yes</span>
               {on.map((f) => (
                 <Tooltip key={f} content={EXPLOIT_FLAG_LABEL[f]}>
                   <span className="rounded border border-sev-p1/50 bg-sev-p1/10 px-1 font-mono text-[10px] font-semibold leading-4 text-sevfg-p1">
@@ -328,10 +335,21 @@ export function RankedTable({ rows, filters, onFiltersChange, datasetKey, onSele
     rowCount: page?.total,
   })
 
-  const togglePriority = (p: Priority) => {
-    const has = filters.priorities.includes(p)
-    onFiltersChange({ ...filters, priorities: has ? filters.priorities.filter((x) => x !== p) : [...filters.priorities, p] })
+  const activeChip: QuickChip =
+    filters.priorities.length === 1 && filters.priorities[0] === 'P0' && !filters.exploitOnly
+      ? 'p0'
+      : filters.exploitOnly && filters.priorities.length === 0
+        ? 'exploit'
+        : !filters.priorities.length && !filters.exploitOnly
+          ? 'all'
+          : 'all'
+
+  const setChip = (chip: QuickChip) => {
+    if (chip === 'all') onFiltersChange({ ...filters, priorities: [], exploitOnly: false })
+    else if (chip === 'p0') onFiltersChange({ ...filters, priorities: ['P0'], exploitOnly: false })
+    else onFiltersChange({ ...filters, priorities: [], exploitOnly: true })
   }
+
   const anyFilter = filters.q || filters.priorities.length || filters.exploitOnly
   const total = page?.total ?? 0
   const from = total ? pagination.pageIndex * pagination.pageSize + 1 : 0
@@ -361,38 +379,42 @@ export function RankedTable({ rows, filters, onFiltersChange, datasetKey, onSele
             </button>
           )}
         </label>
-        <div className="flex items-center gap-1" role="group" aria-label="Filter by priority">
-          {(['P0', 'P1', 'P2'] as Priority[]).map((p) => {
-            const on = filters.priorities.includes(p)
+        <div className="flex flex-wrap items-center gap-1" role="group" aria-label="Quick filters">
+          {(
+            [
+              { id: 'all' as const, label: 'All' },
+              { id: 'p0' as const, label: 'P0 Critical Only' },
+              { id: 'exploit' as const, label: 'Has Exploit Code' },
+            ] as const
+          ).map((chip) => {
+            const on =
+              chip.id === 'all'
+                ? !filters.priorities.length && !filters.exploitOnly
+                : chip.id === 'p0'
+                  ? filters.priorities.length === 1 && filters.priorities[0] === 'P0' && !filters.exploitOnly
+                  : filters.exploitOnly && filters.priorities.length === 0
             return (
               <button
-                key={p}
+                key={chip.id}
                 type="button"
                 aria-pressed={on}
-                onClick={() => togglePriority(p)}
+                onClick={() => setChip(chip.id)}
                 className={cn(
-                  'flex h-9 items-center gap-1.5 rounded-md border px-2.5 font-mono text-xs font-semibold transition-colors',
-                  on ? 'border-transparent' : 'border-line-strong text-fg-muted hover:bg-raised',
+                  'h-9 rounded-md border px-3 text-xs font-medium transition-colors',
+                  on
+                    ? chip.id === 'p0'
+                      ? 'border-sev-p0 bg-sev-p0/15 text-sevfg-p0'
+                      : chip.id === 'exploit'
+                        ? 'border-sev-p1 bg-sev-p1/15 text-sevfg-p1'
+                        : 'border-line-strong bg-raised text-fg'
+                    : 'border-line-strong text-fg-muted hover:bg-raised',
                 )}
-                style={on ? { backgroundColor: priorityColor[p], color: priorityText[p] } : undefined}
               >
-                {!on && <span className="size-2 rounded-sm" style={{ backgroundColor: priorityColor[p] }} aria-hidden />}
-                {p}
+                {chip.label}
               </button>
             )
           })}
         </div>
-        <button
-          type="button"
-          aria-pressed={filters.exploitOnly}
-          onClick={() => onFiltersChange({ ...filters, exploitOnly: !filters.exploitOnly })}
-          className={cn(
-            'h-9 rounded-md border px-3 text-xs font-medium transition-colors',
-            filters.exploitOnly ? 'border-sev-p1 bg-sev-p1/15 text-sevfg-p1' : 'border-line-strong text-fg-muted hover:bg-raised',
-          )}
-        >
-          Public exploit only
-        </button>
         {anyFilter ? (
           <Button
             variant="ghost"
@@ -405,6 +427,8 @@ export function RankedTable({ rows, filters, onFiltersChange, datasetKey, onSele
             Reset
           </Button>
         ) : null}
+        {/* keep activeChip referenced for lint clarity */}
+        <span className="sr-only">{activeChip}</span>
       </div>
 
       {/* Table */}
@@ -461,9 +485,24 @@ export function RankedTable({ rows, filters, onFiltersChange, datasetKey, onSele
             {table.getRowModel().rows.map((row) => (
               <Fragment key={row.id}>
                 <tr
+                  role="button"
+                  tabIndex={0}
+                  onClick={(e) => {
+                    const t = e.target as HTMLElement
+                    if (t.closest('button, a, input, select, textarea')) return
+                    onSelectCve?.(row.original.cve_id)
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault()
+                      onSelectCve?.(row.original.cve_id)
+                    }
+                  }}
                   className={cn(
-                    'border-t border-line transition-colors hover:bg-raised/50',
+                    'cursor-pointer border-t border-line transition-colors hover:bg-raised/50',
                     row.getIsExpanded() && 'bg-raised/40',
+                    (row.original.cve_id === FEATURED_DEMO_CVE || row.original.cve_id === 'CVE-2026-10001') &&
+                      'bg-sev-p0/[0.04]',
                   )}
                 >
                   {row.getVisibleCells().map((cell) => (

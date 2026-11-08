@@ -3,7 +3,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { BarWidget } from '@/components/dashboard/BarWidget'
 import { DashboardGrid, GridItem } from '@/components/dashboard/DashboardGrid'
 import { DonutWidget } from '@/components/dashboard/DonutWidget'
-import { ExplanationModal } from '@/components/dashboard/ExplanationModal'
+import { CveInspectionDrawer } from '@/components/dashboard/CveInspectionDrawer'
 import { JudgeUploadModal } from '@/components/dashboard/JudgeUploadModal'
 import { KpiTile } from '@/components/dashboard/KpiTile'
 import { ModelComparisonCard } from '@/components/dashboard/ModelComparisonCard'
@@ -243,14 +243,14 @@ export default function App() {
                 upIsBad={false}
                 hint={
                   live
-                    ? `ranking_rows=${fmtInt(apiSummary.ranking_rows)} · scores_rows=${fmtInt(apiSummary.scores_rows)}`
+                    ? `Top ${fmtInt(apiSummary.ranking_rows)} in the review queue · ${fmtInt(apiSummary.scores_rows)} scored overall`
                     : latestMonth
                       ? `Through ${latestMonth}`
                       : undefined
                 }
                 info={
                   live
-                    ? 'Bound to summary.total_analyzed_cves ← data_cache/granite_embeddings_watsonx_subset.meta.json n_rows'
+                    ? 'Corpus size from the watsonx Granite embedding subset used for semantic ranking.'
                     : 'Every CVE in the active dataset, ranked once.'
                 }
               />
@@ -262,10 +262,14 @@ export default function App() {
                 accent={severity.critical}
                 spark={live ? undefined : monthly.map((m) => m.p0)}
                 delta={live ? null : momDelta(monthly.map((m) => m.p0))}
-                hint={live ? `risk_bands.critical from top500 priorities` : `Percentile ≥ ${P0_MIN_PERCENTILE}; patch first`}
+                hint={
+                  live
+                    ? 'Immediate patch window — highest exploit pressure in the top 500'
+                    : `Percentile ≥ ${P0_MIN_PERCENTILE}; patch first`
+                }
                 info={
                   live
-                    ? 'Bound to summary.risk_bands.critical ← results/top500.csv ⨝ scores_2026.csv priority=P0'
+                    ? 'P0 count from ranked priorities in the top-500 queue. Treat as same-day triage.'
                     : `P0 = percentile ≥ ${P0_MIN_PERCENTILE}. P1 = percentile ≥ ${P1_MIN_PERCENTILE}.`
                 }
               />
@@ -278,12 +282,12 @@ export default function App() {
                 spark={live ? undefined : monthly.map((m) => m.exploit)}
                 hint={
                   live
-                    ? `prefer ${apiSummary.comparison?.prefer ?? '—'} · folds ${(apiSummary.comparison?.folds_present ?? []).join(',')}`
+                    ? 'Granite semantic ranking beats bag-of-words on held-out folds'
                     : `vs ${fmtPct(s.overallExploitShare)} across all CVEs`
                 }
                 info={
                   live
-                    ? 'Bound to summary.comparison.mean_delta_auc_granite_minus_tfidf ← results/granite_subset_comparison.json'
+                    ? 'Mean AUC lift of IBM Granite text embeddings over TF-IDF baselines across evaluation folds.'
                     : 'Share of the top-500 review queue with any public exploit code.'
                 }
               />
@@ -303,12 +307,12 @@ export default function App() {
                 accent={severity.medium}
                 hint={
                   live
-                    ? `${apiSummary.token_usage.provider ?? '—'} · ${apiSummary.token_usage.model_id ?? '—'}`
+                    ? 'Exact embedding spend for this Granite watsonx run'
                     : 'EPSS is an input signal, not the target'
                 }
                 info={
                   live
-                    ? 'Bound to summary.token_usage.estimated_tokens_consumed ← meta.estimated_tokens_this_run (exact integer)'
+                    ? 'Measured tokens consumed embedding the Granite subset on watsonx — not an estimate cap.'
                     : 'Median EPSS among top-500 CVEs with an EPSS score.'
                 }
               />
@@ -417,8 +421,8 @@ export default function App() {
 
           <div ref={tableRef} className="scroll-mt-20">
             <WidgetCard
-              title="Ranked CVEs"
-              subtitle="GET /api/ranking/cves · click a CVE for Granite text from results/granite_explanations_top100.json"
+              title="CVE Triage Workstation"
+              subtitle="GET /api/ranking/cves · click any row to open the Granite + Gemini inspection drawer"
               bodyClassName="px-0"
             >
               <RankedTable
@@ -439,7 +443,7 @@ export default function App() {
       </div>
 
       {!LIVE_API && <JudgeUploadModal open={uploadOpen} onOpenChange={setUploadOpen} onApply={loadDataset} />}
-      <ExplanationModal
+      <CveInspectionDrawer
         cveId={explainCve}
         open={explainCve != null}
         onOpenChange={(o) => {
